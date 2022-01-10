@@ -1,11 +1,21 @@
-import { Box } from "../../src/Box/Box";
-import "../theme.css";
+import { vars } from "../../src/vars.css";
+import { createBox } from "../../src";
+import { sprinkles } from "../sprinkles.css";
 
 export default {
   title: "Box",
-  component: Box,
 };
 
+const Box = createBox(sprinkles);
+
 export const Primary = () => {
-  return <Box fontFamily="default">Test</Box>;
+  return <Box color="primary">Test</Box>;
+};
+
+export const CustomTokens = () => {
+  return (
+    <Box color="customColor1" fontFamily="customFontFamily" padding="16">
+      Test
+    </Box>
+  );
 };

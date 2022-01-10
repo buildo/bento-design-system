@@ -29,6 +29,7 @@
   "homepage": "https://github.com/buildo/bento-design-system#readme",
   "dependencies": {
     "@csstools/normalize.css": "^12.0.0",
+    "@dessert-box/core": "^0.1.0",
     "@dessert-box/react": "^0.2.0",
     "@vanilla-extract/css": "^1.6.8",
     "@vanilla-extract/private": "^1.0.3",

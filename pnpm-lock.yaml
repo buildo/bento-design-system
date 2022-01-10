@@ -6,6 +6,7 @@ specifiers:
   '@babel/preset-react': ^7.16.0
   '@babel/preset-typescript': ^7.16.0
   '@csstools/normalize.css': ^12.0.0
+  '@dessert-box/core': ^0.1.0
   '@dessert-box/react': ^0.2.0
   '@storybook/addon-essentials': ^6.4.5
   '@storybook/addon-links': ^6.4.5
@@ -28,6 +29,7 @@ specifiers:
 
 dependencies:
   '@csstools/normalize.css': 12.0.0
+  '@dessert-box/core': 0.1.0
   '@dessert-box/react': 0.2.0_react@17.0.2
   '@vanilla-extract/css': 1.6.8
   '@vanilla-extract/private': 1.0.3
