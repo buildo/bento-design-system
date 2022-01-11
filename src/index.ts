@@ -1,3 +1,3 @@
 import "@csstools/normalize.css/opinionated.css";
 
-export { createBox } from "./Box/Box";
+export { createBentoBox } from "./Box/Box";

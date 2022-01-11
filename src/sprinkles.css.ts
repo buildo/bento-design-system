@@ -1,9 +1,9 @@
 import {
-  defineProperties,
-  createSprinkles,
+  ConditionalValue,
   createMapValueFn,
   createNormalizeValueFn,
-  ConditionalValue,
+  createSprinkles,
+  defineProperties,
   RequiredConditionalValue,
 } from "@vanilla-extract/sprinkles";
 import { breakpoints } from "./util/breakpoints";
@@ -20,11 +20,12 @@ export function defineUnconditionalProperties<T extends {}>(customFontFamilies: 
   });
 }
 
-export function defineResponsiveProperties<T>(customSpaces: T) {
+export function defineResponsiveProperties<T extends {}>(customSpaces: T) {
   const spaces = {
     ...vars.space,
     ...customSpaces,
   };
+
   return defineProperties({
     conditions: breakpoints,
     defaultCondition: "desktop",
@@ -35,6 +36,7 @@ export function defineResponsiveProperties<T>(customSpaces: T) {
         flexStart: "flex-start",
         center: "center",
         flexEnd: "flex-end",
+        stretch: "stretch",
       },
       justifyContent: {
         flexStart: "flex-start",
@@ -61,7 +63,7 @@ export function defineResponsiveProperties<T>(customSpaces: T) {
   });
 }
 
-export function defineStatusProperties<T>(customColors: T) {
+export function defineStatusProperties<T extends {}>(customColors: T) {
   const colors = { ...vars.color, ...customColors };
   return defineProperties({
     conditions: {
@@ -83,12 +85,11 @@ const unconditionalProperties = defineUnconditionalProperties({});
 const statusProperties = defineStatusProperties({});
 const responsiveProperties = defineResponsiveProperties({});
 
-export const sprinkles = createSprinkles(
+export const baseSprinkles = createSprinkles(
   unconditionalProperties,
   statusProperties,
   responsiveProperties
 );
-export type Sprinkles = Parameters<typeof sprinkles>[0];
 
 export const mapResponsiveValue = createMapValueFn(responsiveProperties);
 export const normalizeResponsiveValue = createNormalizeValueFn(responsiveProperties);

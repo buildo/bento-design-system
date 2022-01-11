@@ -28,4 +28,7 @@ export const myVars = createGlobalTheme(":root", {
   color: {
     customColor1: "#3C6FD6",
   },
+  space: {
+    12: "12px",
+  },
 });

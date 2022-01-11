@@ -16,7 +16,7 @@ import { myVars } from "./theme.css";
 
 const unconditionalProperties = defineUnconditionalProperties(myVars.fontFamily);
 const statusProperties = defineStatusProperties(myVars.color);
-const responsiveProperties = defineResponsiveProperties({});
+const responsiveProperties = defineResponsiveProperties(myVars.space);
 export const sprinkles = createSprinkles(
   unconditionalProperties,
   statusProperties,

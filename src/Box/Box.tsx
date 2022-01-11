@@ -1,16 +1,17 @@
-import { createBox as _createBox } from "@dessert-box/react";
+import { createBox as createBox } from "@dessert-box/react";
 import { ComponentProps, forwardRef } from "react";
-import clsx, { ClassValue } from "clsx";
+import clsx from "clsx";
 import { AtomsFnBase } from "@dessert-box/core";
+import { baseSprinkles } from "../sprinkles.css";
 
-export function createBox<AtomsFn extends AtomsFnBase>(sprinkles: AtomsFn) {
-  const SprinklesBox = _createBox({ atoms: sprinkles });
+export function createBentoBox<AtomsFn extends AtomsFnBase>(sprinkles: AtomsFn) {
+  const SprinklesBox = createBox({ atoms: sprinkles });
 
-  type Props = Omit<ComponentProps<typeof SprinklesBox>, "className"> & {
-    className?: ClassValue;
-  };
+  type Props = ComponentProps<typeof SprinklesBox>;
 
   return forwardRef<HTMLElement, Props>((props, ref) => (
-    <SprinklesBox ref={ref} {...(props as any)} className={clsx(props.className)} />
+    <SprinklesBox ref={ref} {...props} className={clsx(props.className)} />
   ));
 }
+
+export const Box = createBentoBox(baseSprinkles);
