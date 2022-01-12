@@ -12,7 +12,7 @@ const Box = createBentoBox(sprinkles);
 
 export const Primary = () => {
   return (
-    <Box color="primary" fontFamily="default" padding={16}>
+    <Box atoms={{ color: "primary", fontFamily: "default", padding: 16 }}>
       {unsafeLocalizedString("Test")}
     </Box>
   );
@@ -20,7 +20,7 @@ export const Primary = () => {
 
 export const CustomTokens = () => {
   return (
-    <Box color="customColor1" fontFamily="customFontFamily" padding={12}>
+    <Box atoms={{ color: "customColor1", fontFamily: "customFontFamily", padding: 12 }}>
       {unsafeLocalizedString("Test")}
     </Box>
   );

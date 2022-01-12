@@ -1,5 +1,5 @@
 import { vars } from "../../src/vars.css";
-import { createInline } from "../../src/Inline/Inline";
+import { createLayoutComponents } from "../../src/Layout/Layout";
 import { sprinkles } from "../sprinkles.css";
 import { unsafeLocalizedString } from "../../src/util/LocalizedString";
 
@@ -7,7 +7,7 @@ export default {
   title: "Inline",
 };
 
-const Inline = createInline(sprinkles);
+const { Inline } = createLayoutComponents(sprinkles);
 
 export const DefaultSpace = () => {
   return (

@@ -1,38 +1,30 @@
-import { createBox as createBox } from "@dessert-box/react";
+import { createBoxWithAtomsProp } from "@dessert-box/react";
 import { forwardRef } from "react";
 import clsx, { ClassValue } from "clsx";
 import { baseSprinkles } from "../sprinkles.css";
 import { Children } from "../util/Children";
 
-declare type HTMLProperties = Omit<
+type HTMLProperties = Omit<
   React.AllHTMLAttributes<HTMLElement>,
-  "as" | "color" | "height" | "width"
+  "as" | "color" | "height" | "width" | "children" | "className"
 >;
 
-export function createBentoBox<AtomsFn extends typeof baseSprinkles>(
-  sprinkles: AtomsFn
-): React.ForwardRefExoticComponent<
-  React.PropsWithoutRef<
-    {
-      as?: React.ElementType<any>;
-      children?: Children;
-      className?: ClassValue;
-    } & Parameters<AtomsFn>[0] &
-      HTMLProperties
-  > &
-    React.RefAttributes<HTMLElement>
-> {
-  const SprinklesBox = createBox({ atoms: sprinkles });
+export function createBentoBox<AtomsFn extends typeof baseSprinkles>(sprinkles: AtomsFn) {
+  const SprinklesBox = createBoxWithAtomsProp({ atoms: sprinkles });
 
   type Props = {
-    as?: React.ElementType<any>;
+    as?: React.ElementType;
     children?: Children;
     className?: ClassValue;
-  } & Parameters<AtomsFn>[0] &
-    HTMLProperties;
+    atoms?: Parameters<AtomsFn>[0];
+  } & HTMLProperties;
 
-  return forwardRef<HTMLElement, Props>(({ className, ...props }: Props, ref) => {
-    return <SprinklesBox ref={ref} {...(props as any)} className={clsx(className)} />;
+  return forwardRef<HTMLElement, Props>(({ className, children, atoms, ...props }, ref) => {
+    return (
+      <SprinklesBox ref={ref} {...props} className={clsx(className)} atoms={atoms}>
+        {children}
+      </SprinklesBox>
+    );
   });
 }
 

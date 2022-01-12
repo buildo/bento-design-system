@@ -4,21 +4,25 @@ import { Children } from "../util/Children";
 import { createBentoBox } from "../Box/Box";
 import { baseSprinkles } from "../sprinkles.css";
 
-export function createInline<AtomsFn extends typeof baseSprinkles>(sprinkles: AtomsFn) {
+export function createLayoutComponents<AtomsFn extends typeof baseSprinkles>(sprinkles: AtomsFn) {
   const Box = createBentoBox(sprinkles);
 
   type BoxProps = ComponentProps<typeof Box>;
 
   type InlineProps = {
-    space: BoxProps["gap"];
+    space: NonNullable<BoxProps["atoms"]>["gap"];
     children: Children;
   } & Pick<BoxProps, "as">;
 
-  return function Inline({ space, children, ...boxProps }: InlineProps) {
+  function Inline({ space, children, ...boxProps }: InlineProps) {
     return (
-      <Box {...(boxProps as any)} display="flex" flexWrap="wrap" gap={space}>
-        {flattenChildren(children)}
+      <Box {...boxProps} atoms={{ display: "flex", flexWrap: "wrap", gap: space }}>
+        {flattenChildren(children) as Children}
       </Box>
     );
+  }
+
+  return {
+    Inline,
   };
 }
