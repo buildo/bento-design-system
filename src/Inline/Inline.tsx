@@ -16,7 +16,7 @@ export function createInline<AtomsFn extends typeof baseSprinkles>(sprinkles: At
 
   return function Inline({ space, children, ...boxProps }: InlineProps) {
     return (
-      <Box {...boxProps} display="flex" flexWrap="wrap" gap={space}>
+      <Box {...(boxProps as any)} display="flex" flexWrap="wrap" gap={space}>
         {flattenChildren(children)}
       </Box>
     );
