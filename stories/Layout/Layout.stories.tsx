@@ -7,7 +7,7 @@ export default {
   title: "Layout",
 };
 
-const { Inline, Stack, Inset } = createLayoutComponents(sprinkles);
+const { Inline, Stack, Inset, Columns, Column } = createLayoutComponents(sprinkles);
 
 export const InlineLayout = () => {
   return (
@@ -32,5 +32,23 @@ export const InsetLayout = () => {
     <Inset space={12}>
       <div>{unsafeLocalizedString("Test1")}</div>
     </Inset>
+  );
+};
+
+export const ColumnsLayout = () => {
+  return (
+    <Columns space={12}>
+      <div>{unsafeLocalizedString("Test1")}</div>
+      <div>{unsafeLocalizedString("Test2")}</div>
+    </Columns>
+  );
+};
+
+export const ColumnsLayout2 = () => {
+  return (
+    <Columns space={12}>
+      <Column width="1/3">{unsafeLocalizedString("Test1")}</Column>
+      <Column>{unsafeLocalizedString("Test2")}</Column>
+    </Columns>
   );
 };
