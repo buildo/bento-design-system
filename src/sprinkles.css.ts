@@ -1,4 +1,11 @@
-import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
+import {
+  ConditionalValue,
+  createMapValueFn,
+  createNormalizeValueFn,
+  createSprinkles,
+  defineProperties,
+  RequiredConditionalValue,
+} from "@vanilla-extract/sprinkles";
 import { unconditionalProperties, responsiveProperties, statusProperties } from "./util/atoms";
 import { breakpoints } from "./util/breakpoints";
 import { statusConditions } from "./util/conditions";
@@ -29,3 +36,19 @@ export const baseSprinkles = createSprinkles(
   statusAtomicProperties,
   responsiveAtomicProperties
 );
+
+export type Sprinkles = Parameters<typeof baseSprinkles>[0];
+
+export const mapResponsiveValue = createMapValueFn(responsiveAtomicProperties);
+
+export const normalizeResponsiveValue = createNormalizeValueFn(responsiveAtomicProperties);
+
+export type OptionalResponsiveValue<Value extends string | number> = ConditionalValue<
+  typeof responsiveAtomicProperties,
+  Value
+>;
+
+export type RequiredResponsiveValue<Value extends string | number> = RequiredConditionalValue<
+  typeof responsiveAtomicProperties,
+  Value
+>;

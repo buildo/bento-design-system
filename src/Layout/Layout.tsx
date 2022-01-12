@@ -3,6 +3,10 @@ import flattenChildren from "react-keyed-flatten-children";
 import { Children } from "../util/Children";
 import { createBentoBox } from "../Box/Box";
 import { baseSprinkles } from "../sprinkles.css";
+import {
+  CollapsibleAlignmentProps,
+  responsiveCollapsibleAlignmentProps,
+} from "../util/collapsible";
 
 export function createLayoutComponents<AtomsFn extends typeof baseSprinkles>(sprinkles: AtomsFn) {
   const Box = createBentoBox(sprinkles);
@@ -12,11 +16,24 @@ export function createLayoutComponents<AtomsFn extends typeof baseSprinkles>(spr
   type InlineProps = {
     space: NonNullable<BoxProps["atoms"]>["gap"];
     children: Children;
-  } & Pick<BoxProps, "as">;
+  } & CollapsibleAlignmentProps &
+    Pick<BoxProps, "as">;
 
-  function Inline({ space, children, ...boxProps }: InlineProps) {
+  function Inline({ space, children, align, alignY, collapseBelow, ...boxProps }: InlineProps) {
     return (
-      <Box {...boxProps} atoms={{ display: "flex", flexWrap: "wrap", gap: space }}>
+      <Box
+        {...boxProps}
+        atoms={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: space,
+          ...responsiveCollapsibleAlignmentProps({
+            align,
+            alignY,
+            collapseBelow,
+          }),
+        }}
+      >
         {flattenChildren(children) as Children}
       </Box>
     );

@@ -4,7 +4,7 @@ import { sprinkles } from "../sprinkles.css";
 import { unsafeLocalizedString } from "../../src/util/LocalizedString";
 
 export default {
-  title: "Inline",
+  title: "Layout",
 };
 
 const { Inline } = createLayoutComponents(sprinkles);
