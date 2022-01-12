@@ -7,7 +7,7 @@ export default {
   title: "Layout",
 };
 
-const { Inline, Stack } = createLayoutComponents(sprinkles);
+const { Inline, Stack, Inset } = createLayoutComponents(sprinkles);
 
 export const InlineLayout = () => {
   return (
@@ -24,5 +24,13 @@ export const StackLayout = () => {
       <div>{unsafeLocalizedString("Test1")}</div>
       <div>{unsafeLocalizedString("Test2")}</div>
     </Stack>
+  );
+};
+
+export const InsetLayout = () => {
+  return (
+    <Inset space={12}>
+      <div>{unsafeLocalizedString("Test1")}</div>
+    </Inset>
   );
 };

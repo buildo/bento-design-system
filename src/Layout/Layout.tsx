@@ -16,8 +16,10 @@ export function createLayoutComponents<AtomsFn extends typeof baseSprinkles>(spr
 
   type BoxProps = ComponentProps<typeof Box>;
 
+  type ResponsiveSpace = NonNullable<BoxProps["atoms"]>["gap"];
+
   type InlineProps = {
-    space: NonNullable<BoxProps["atoms"]>["gap"];
+    space: ResponsiveSpace;
     children: Children;
   } & CollapsibleAlignmentProps &
     Pick<BoxProps, "as">;
@@ -43,7 +45,7 @@ export function createLayoutComponents<AtomsFn extends typeof baseSprinkles>(spr
   }
 
   type StackProps = {
-    space: NonNullable<BoxProps["atoms"]>["gap"];
+    space: ResponsiveSpace;
     children: Children;
     align?: ResponsiveAlign;
     dividers?: boolean;
@@ -74,8 +76,33 @@ export function createLayoutComponents<AtomsFn extends typeof baseSprinkles>(spr
     );
   }
 
+  type InsetProps = {
+    children: ComponentProps<typeof Box>["children"];
+  } & (
+    | {
+        space: ResponsiveSpace;
+        spaceX?: never;
+        spaceY?: never;
+      }
+    | {
+        space?: never;
+        spaceX: ResponsiveSpace;
+        spaceY?: ResponsiveSpace;
+      }
+    | {
+        space?: never;
+        spaceX?: ResponsiveSpace;
+        spaceY: ResponsiveSpace;
+      }
+  );
+
+  function Inset({ space, spaceX, spaceY, children }: InsetProps) {
+    return <Box atoms={{ padding: space, paddingX: spaceX, paddingY: spaceY }}>{children}</Box>;
+  }
+
   return {
     Inline,
     Stack,
+    Inset,
   };
 }
