@@ -2,6 +2,12 @@ import { vars } from "../vars.css";
 
 export const unconditionalProperties = {
   fontFamily: vars.fontFamily,
+  width: {
+    full: "100%",
+  },
+  height: {
+    full: "100%",
+  },
 } as const;
 
 export const responsiveProperties = {

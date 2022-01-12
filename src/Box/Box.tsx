@@ -2,11 +2,10 @@ import { createBoxWithAtomsProp } from "@dessert-box/react";
 import { forwardRef } from "react";
 import clsx, { ClassValue } from "clsx";
 import { baseSprinkles } from "../sprinkles.css";
-import { Children } from "../util/Children";
 
 type HTMLProperties = Omit<
   React.AllHTMLAttributes<HTMLElement>,
-  "as" | "color" | "height" | "width" | "children" | "className"
+  "as" | "color" | "height" | "width" | "className"
 >;
 
 export function createBentoBox<AtomsFn extends typeof baseSprinkles>(sprinkles: AtomsFn) {
@@ -14,7 +13,6 @@ export function createBentoBox<AtomsFn extends typeof baseSprinkles>(sprinkles: 
 
   type Props = {
     as?: React.ElementType;
-    children?: Children;
     className?: ClassValue;
     atoms?: Parameters<AtomsFn>[0];
   } & HTMLProperties;

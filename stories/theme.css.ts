@@ -7,7 +7,7 @@ createGlobalTheme(":root", vars, {
   },
   color: {
     primary: "#F05D68",
-    neutral: "#E4E8EE",
+    neutral20: "#E4E8EE",
   },
   space: {
     0: "0",
