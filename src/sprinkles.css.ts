@@ -1,23 +1,31 @@
 import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
-import {
-  buildResponsivePropertyOptions,
-  buildStatusPropertyOptions,
-  buildUnconditionalPropertyOptions,
-} from "./util/atoms";
+import { unconditionalProperties, responsiveProperties, statusProperties } from "./util/atoms";
+import { breakpoints } from "./util/breakpoints";
+import { statusConditions } from "./util/conditions";
 
-const unconditionalProperties = defineProperties(buildUnconditionalPropertyOptions({}));
-const responsiveProperties = defineProperties({
-  ...buildResponsivePropertyOptions({}),
+const unconditionalAtomicProperties = defineProperties({
+  properties: unconditionalProperties,
+});
+
+const responsiveAtomicProperties = defineProperties({
+  conditions: breakpoints,
+  defaultCondition: "desktop",
+  properties: responsiveProperties,
   shorthands: {
     padding: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
     paddingX: ["paddingLeft", "paddingRight"],
     paddingY: ["paddingTop", "paddingBottom"],
   },
 });
-const statusProperties = defineProperties(buildStatusPropertyOptions({}));
+
+const statusAtomicProperties = defineProperties({
+  conditions: statusConditions,
+  defaultCondition: "default",
+  properties: statusProperties,
+});
 
 export const baseSprinkles = createSprinkles(
-  unconditionalProperties,
-  statusProperties,
-  responsiveProperties
+  unconditionalAtomicProperties,
+  statusAtomicProperties,
+  responsiveAtomicProperties
 );
