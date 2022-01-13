@@ -56,6 +56,10 @@ jobs:
                 file: bento/ci/tasks/test.yml
               - task: build
                 file: bento/ci/tasks/build.yml
+              - task: chromatic
+                file: bento/ci/tasks/chromatic.yml
+                params:
+                  CHROMATIC_OPTIONS: --auto-accept-changes
         on_failure:
           put: slack-buildo
           params:
@@ -159,3 +163,6 @@ jobs:
                   resource: pr
                   params: { path: bento, status: failure, context: build }
                   get_params: { skip_download: true }
+
+              - task: chromatic
+                file: bento/ci/tasks/chromatic.yml
