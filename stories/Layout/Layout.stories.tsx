@@ -1,5 +1,4 @@
-import { vars } from "../../src/vars.css";
-import { createLayoutComponents } from "../../src/Layout/Layout";
+import { createLayoutComponents } from "../../src/Layout/createLayoutComponents";
 import { sprinkles } from "../sprinkles.css";
 import { unsafeLocalizedString } from "../../src/util/LocalizedString";
 
