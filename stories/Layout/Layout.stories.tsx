@@ -1,6 +1,5 @@
-import { createLayoutComponents } from "../../src/Layout/createLayoutComponents";
+import { createLayoutComponents, unsafeLocalizedString } from "../../src";
 import { sprinkles } from "../sprinkles.css";
-import { unsafeLocalizedString } from "../../src/util/LocalizedString";
 
 export default {
   title: "Layout",

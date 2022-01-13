@@ -1,8 +1,5 @@
-import { vars } from "../../src/vars.css";
-import { createBentoBox } from "../../src";
+import { createBentoBox } from "../../src/Box/createBentoBox";
 import { sprinkles } from "../sprinkles.css";
-import { createRef } from "react";
-import { unsafeLocalizedString } from "../../src/util/LocalizedString";
 
 export default {
   title: "Box",
