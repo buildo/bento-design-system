@@ -1,11 +1,24 @@
-import { Box } from "../../src/Box/Box";
-import "../theme.css";
+import { createBentoBox } from "../../src/Box/createBentoBox";
+import { sprinkles } from "../sprinkles.css";
 
 export default {
   title: "Box",
-  component: Box,
 };
 
+const Box = createBentoBox(sprinkles);
+
 export const Primary = () => {
-  return <Box fontFamily="default">Test</Box>;
+  return (
+    <Box color="primary" fontFamily="default" padding={16}>
+      Test
+    </Box>
+  );
+};
+
+export const CustomTokens = () => {
+  return (
+    <Box color="customColor1" fontFamily="customFontFamily" padding={12}>
+      Test
+    </Box>
+  );
 };
