@@ -7,36 +7,17 @@ import {
   RequiredConditionalValue,
 } from "@vanilla-extract/sprinkles";
 import { breakpoints } from "../src/util/breakpoints";
-import { unconditionalProperties, statusProperties, responsiveProperties } from "../src/util/atoms";
+import { unconditionalProperties, statusProperties, responsiveProperties } from "./atoms";
 import { statusConditions } from "../src/util/conditions";
-import { myVars } from "./theme.css";
-import { vars as bentoVars } from "../src/vars.css";
-
-const fontFamilies = {
-  ...bentoVars.fontFamily,
-  ...myVars.fontFamily,
-};
 
 const unconditionalAtomicProperties = defineProperties({
-  properties: { ...unconditionalProperties, fontFamily: fontFamilies },
+  properties: unconditionalProperties,
 });
-
-const spaces = {
-  ...bentoVars.space,
-  ...myVars.space,
-};
 
 const responsiveAtomicProperties = defineProperties({
   conditions: breakpoints,
   defaultCondition: "desktop",
-  properties: {
-    ...responsiveProperties,
-    paddingTop: spaces,
-    paddingBottom: spaces,
-    paddingLeft: spaces,
-    paddingRight: spaces,
-    gap: spaces,
-  },
+  properties: responsiveProperties,
   shorthands: {
     padding: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
     paddingX: ["paddingLeft", "paddingRight"],
@@ -44,15 +25,10 @@ const responsiveAtomicProperties = defineProperties({
   },
 });
 
-const colors = {
-  ...bentoVars.color,
-  ...myVars.color,
-};
-
 const statusAtomicProperties = defineProperties({
   conditions: statusConditions,
   defaultCondition: "default",
-  properties: { ...statusProperties, color: colors, background: colors },
+  properties: statusProperties,
 });
 
 export const sprinkles = createSprinkles(
