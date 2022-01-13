@@ -1,7 +1,7 @@
 import { createGlobalTheme } from "@vanilla-extract/css";
-import { vars } from "../src/vars.css";
+import { vars as bentoVars } from "../src/vars.css";
 
-createGlobalTheme(":root", vars, {
+createGlobalTheme(":root", bentoVars, {
   fontFamily: {
     default: "Arial",
   },
@@ -21,7 +21,7 @@ createGlobalTheme(":root", vars, {
   },
 });
 
-export const myVars = createGlobalTheme(":root", {
+export const vars = createGlobalTheme(":root", {
   fontFamily: {
     customFontFamily: "sans-serif",
   },
