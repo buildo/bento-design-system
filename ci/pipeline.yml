@@ -1,0 +1,161 @@
+resource_types:
+  - name: slack-notification
+    type: docker-image
+    source:
+      repository: cfcommunity/slack-notification-resource
+
+  - name: pull-request
+    type: docker-image
+    source:
+      repository: buildo/github-pr-resource
+      tag: omitapprovals
+
+resources:
+  - name: bento
+    type: git
+    icon: github
+    webhook_token: 0gd4XZNL4Y94zYDLql3C
+    check_every: 30m
+    source:
+      uri: git@github.com:buildo/bento-design-system.git
+      branch: main
+      private_key: ((private-key))
+
+  - name: pr
+    type: pull-request
+    icon: github
+    webhook_token: 0gd4XZNL4Y94zYDLql3C
+    check_every: 30m
+    source:
+      repository: buildo/bento-design-system
+      access_token: ((github-token))
+      omit_approvals: true
+
+  - name: slack-buildo
+    type: slack-notification
+    source:
+      url: ((buildo-slack-hook))
+    icon: slack
+
+jobs:
+  - name: main
+    plan:
+      - get: bento
+        trigger: true
+      - do:
+          - task: install
+            file: bento/ci/tasks/install.yml
+          - in_parallel:
+              - task: typecheck
+                file: bento/ci/tasks/typecheck.yml
+              - task: prettier
+                file: bento/ci/tasks/prettier.yml
+              - task: eslint
+                file: bento/ci/tasks/eslint.yml
+              - task: test
+                file: bento/ci/tasks/test.yml
+              - task: build
+                file: bento/ci/tasks/build.yml
+        on_failure:
+          put: slack-buildo
+          params:
+            channel: "#bento"
+            text: |
+              The build of $BUILD_JOB_NAME failed :cry:
+              See: $ATC_EXTERNAL_URL/builds/$BUILD_ID
+
+  - name: pr
+    plan:
+      - get: bento
+        resource: pr
+        trigger: true
+        version: every
+      - in_parallel:
+          - put: update-status
+            resource: pr
+            params: { path: bento, status: pending, context: typecheck }
+            get_params: { skip_download: true }
+          - put: update-status
+            resource: pr
+            params: { path: bento, status: pending, context: prettier }
+            get_params: { skip_download: true }
+          - put: update-status
+            resource: pr
+            params: { path: bento, status: pending, context: eslint }
+            get_params: { skip_download: true }
+          - put: update-status
+            resource: pr
+            params: { path: bento, status: pending, context: test }
+            get_params: { skip_download: true }
+          - put: update-status
+            resource: pr
+            params: { path: bento, status: pending, context: build }
+            get_params: { skip_download: true }
+      - do:
+          - task: install
+            file: bento/ci/tasks/install.yml
+          - in_parallel:
+              - task: typecheck
+                file: bento/ci/tasks/typecheck.yml
+                on_success:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: success, context: typecheck }
+                  get_params: { skip_download: true }
+                on_failure:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: failure, context: typecheck }
+                  get_params: { skip_download: true }
+
+              - task: prettier
+                file: bento/ci/tasks/prettier.yml
+                on_success:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: success, context: prettier }
+                  get_params: { skip_download: true }
+                on_failure:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: failure, context: prettier }
+                  get_params: { skip_download: true }
+
+              - task: eslint
+                file: bento/ci/tasks/eslint.yml
+                on_success:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: success, context: eslint }
+                  get_params: { skip_download: true }
+                on_failure:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: failure, context: eslint }
+                  get_params: { skip_download: true }
+
+              - task: test
+                file: bento/ci/tasks/test.yml
+                on_success:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: success, context: test }
+                  get_params: { skip_download: true }
+                on_failure:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: failure, context: test }
+                  get_params: { skip_download: true }
+
+              - task: build
+                file: bento/ci/tasks/build.yml
+                on_success:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: success, context: build }
+                  get_params: { skip_download: true }
+                on_failure:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: failure, context: build }
+                  get_params: { skip_download: true }
