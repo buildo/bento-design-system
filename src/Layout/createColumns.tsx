@@ -1,6 +1,6 @@
-import { ComponentProps, ReactChild, ReactElement } from "react";
+import { ReactChild, ReactElement } from "react";
 import flattenChildren from "react-keyed-flatten-children";
-import { BoxType } from "../Box/Box";
+import { BoxType, BoxProps } from "../Box/createBentoBox";
 import { baseSprinkles } from "../sprinkles.css";
 import { childKey } from "../util/childKey";
 import { Children } from "../util/Children";
@@ -11,9 +11,7 @@ import {
 import * as columnStyles from "./Column.css";
 
 export function createColumns<AtomsFn extends typeof baseSprinkles>(Box: BoxType<AtomsFn>) {
-  type BoxProps = ComponentProps<typeof Box>;
-
-  type ResponsiveSpace = NonNullable<BoxProps["atoms"]>["gap"];
+  type ResponsiveSpace = NonNullable<BoxProps<AtomsFn>["atoms"]>["gap"];
 
   type ColumnProps = {
     children: Children;
