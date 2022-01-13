@@ -7,7 +7,8 @@
     "lib"
   ],
   "scripts": {
-    "build": "webpack",
+    "build": "tsup --minify --clean",
+    "prepublishOnly": "pnpm build",
     "prettier-check": "prettier --parser=typescript \"{src,stories}/**/*.{ts,tsx}\" --check",
     "prettier-write": "prettier --parser=typescript \"{src,stories}/**/*.{ts,tsx}\" --write",
     "eslint-check": "eslint \"{src,stories}/**/*.{js,ts,tsx}\"",
@@ -34,7 +35,6 @@
     "@dessert-box/react": "^0.2.0",
     "@react-aria/separator": "^3.1.3",
     "@vanilla-extract/css": "^1.6.8",
-    "@vanilla-extract/private": "^1.0.3",
     "@vanilla-extract/sprinkles": "^1.3.3",
     "@vanilla-extract/webpack-plugin": "^2.1.4",
     "clsx": "^1.1.1",
@@ -51,6 +51,8 @@
     "@storybook/react": "^6.4.5",
     "@types/react": "^17.0.37",
     "@vanilla-extract/babel-plugin": "^1.1.3",
+    "@vanilla-extract/esbuild-plugin": "^2.0.2",
+    "@vanilla-extract/private": "^1.0.3",
     "css-loader": "^6.5.1",
     "eslint": "^8.6.0",
     "eslint-config-react-app": "^7.0.0",
@@ -61,6 +63,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "ts-loader": "^9.2.6",
+    "tsup": "^5.11.11",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1"
   },

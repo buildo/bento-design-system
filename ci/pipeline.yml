@@ -54,6 +54,8 @@ jobs:
                 file: bento/ci/tasks/eslint.yml
               - task: test
                 file: bento/ci/tasks/test.yml
+              - task: build
+                file: bento/ci/tasks/build.yml
         on_failure:
           put: slack-buildo
           params:
@@ -84,6 +86,10 @@ jobs:
           - put: update-status
             resource: pr
             params: { path: bento, status: pending, context: test }
+            get_params: { skip_download: true }
+          - put: update-status
+            resource: pr
+            params: { path: bento, status: pending, context: build }
             get_params: { skip_download: true }
       - do:
           - task: install
@@ -139,4 +145,17 @@ jobs:
                   put: update-status
                   resource: pr
                   params: { path: bento, status: failure, context: test }
+                  get_params: { skip_download: true }
+
+              - task: build
+                file: bento/ci/tasks/build.yml
+                on_success:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: success, context: build }
+                  get_params: { skip_download: true }
+                on_failure:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: failure, context: build }
                   get_params: { skip_download: true }
