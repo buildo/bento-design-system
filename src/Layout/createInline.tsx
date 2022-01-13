@@ -8,7 +8,7 @@ import {
 } from "../util/collapsible";
 
 export function createInline<AtomsFn extends typeof baseSprinkles>(Box: BoxType<AtomsFn>) {
-  type ResponsiveSpace = NonNullable<BoxProps<AtomsFn>["atoms"]>["gap"];
+  type ResponsiveSpace = BoxProps<AtomsFn>["gap"];
 
   type InlineProps = {
     space: ResponsiveSpace;
@@ -27,16 +27,14 @@ export function createInline<AtomsFn extends typeof baseSprinkles>(Box: BoxType<
     return (
       <Box
         {...boxProps}
-        atoms={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: space,
-          ...responsiveCollapsibleAlignmentProps({
-            align,
-            alignY,
-            collapseBelow,
-          }),
-        }}
+        display="flex"
+        flexWrap="wrap"
+        gap={space}
+        {...responsiveCollapsibleAlignmentProps({
+          align,
+          alignY,
+          collapseBelow,
+        })}
       >
         {flattenChildren(children)}
       </Box>

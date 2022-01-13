@@ -11,7 +11,7 @@ import {
 import * as columnStyles from "./Column.css";
 
 export function createColumns<AtomsFn extends typeof baseSprinkles>(Box: BoxType<AtomsFn>) {
-  type ResponsiveSpace = NonNullable<BoxProps<AtomsFn>["atoms"]>["gap"];
+  type ResponsiveSpace = BoxProps<AtomsFn>["gap"];
 
   type ColumnProps = {
     children: Children;
@@ -26,10 +26,8 @@ export function createColumns<AtomsFn extends typeof baseSprinkles>(Box: BoxType
             ? columnStyles.width[props.width]
             : undefined
         }
-        atoms={{
-          width: props.width !== "content" ? "full" : undefined,
-          flexShrink: props.width === "content" ? 0 : undefined,
-        }}
+        width={props.width !== "content" ? "full" : undefined}
+        flexShrink={props.width === "content" ? 0 : undefined}
       >
         {props.children}
       </Box>
@@ -44,11 +42,9 @@ export function createColumns<AtomsFn extends typeof baseSprinkles>(Box: BoxType
   function Columns({ space, children, align, alignY, collapseBelow }: Props) {
     return (
       <Box
-        atoms={{
-          display: "flex",
-          gap: space,
-          ...responsiveCollapsibleAlignmentProps({ align, alignY, collapseBelow }),
-        }}
+        display="flex"
+        gap={space}
+        {...responsiveCollapsibleAlignmentProps({ align, alignY, collapseBelow })}
       >
         {flattenChildren(children).map((child, index) => {
           if (isColumn(child)) {

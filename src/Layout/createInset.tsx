@@ -3,7 +3,7 @@ import { BoxProps, BoxType } from "../Box/createBentoBox";
 import { baseSprinkles } from "../sprinkles.css";
 
 export function createInset<AtomsFn extends typeof baseSprinkles>(Box: BoxType<AtomsFn>) {
-  type ResponsiveSpace = NonNullable<BoxProps<AtomsFn>["atoms"]>["gap"];
+  type ResponsiveSpace = BoxProps<AtomsFn>["gap"];
 
   type InsetProps = {
     children: ComponentProps<typeof Box>["children"];
@@ -26,6 +26,10 @@ export function createInset<AtomsFn extends typeof baseSprinkles>(Box: BoxType<A
   );
 
   return function Inset({ space, spaceX, spaceY, children }: InsetProps) {
-    return <Box atoms={{ padding: space, paddingX: spaceX, paddingY: spaceY }}>{children}</Box>;
+    return (
+      <Box padding={space} paddingX={spaceX} paddingY={spaceY}>
+        {children}
+      </Box>
+    );
   };
 }

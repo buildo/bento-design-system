@@ -8,7 +8,7 @@ import { childKey } from "../util/childKey";
 import { Children } from "../util/Children";
 
 export function createStack<AtomsFn extends typeof baseSprinkles>(Box: BoxType<AtomsFn>) {
-  type ResponsiveSpace = NonNullable<BoxProps<AtomsFn>["atoms"]>["gap"];
+  type ResponsiveSpace = BoxProps<AtomsFn>["gap"];
 
   type StackProps = {
     space: ResponsiveSpace;
@@ -21,12 +21,10 @@ export function createStack<AtomsFn extends typeof baseSprinkles>(Box: BoxType<A
     return (
       <Box
         {...boxProps}
-        atoms={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: alignToFlexAlign(align),
-          gap: space,
-        }}
+        display="flex"
+        flexDirection="column"
+        alignItems={alignToFlexAlign(align)}
+        gap={space}
       >
         {flattenChildren(children).map((child, index) => {
           if (dividers && index > 0) {
