@@ -21,6 +21,8 @@ run:
     - |
       corepack enable
 
+      apk add --no-progress git
+
       # The pull request resource works by rebasing the PR branch on top of the target branch, which
       # will confuse Chromatic. We fix this by manually setting the metadata stored by the resource.
       # This is only needed on PRs, hence the check below.
