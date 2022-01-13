@@ -1,0 +1,19 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: node
+    tag: "lts-alpine"
+
+inputs:
+  - name: bento
+
+run:
+  dir: bento
+  path: ash
+  args:
+    - -ce
+    - |
+      corepack enable
+      pnpm eslint-check
