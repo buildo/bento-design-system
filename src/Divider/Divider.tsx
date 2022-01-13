@@ -7,5 +7,5 @@ type Props = {};
 export function Divider(props: Props) {
   const { separatorProps } = useSeparator(props);
 
-  return <Box {...separatorProps} className={divider} atoms={{ color: undefined }} />;
+  return <Box {...separatorProps} className={divider} color={undefined} />;
 }
