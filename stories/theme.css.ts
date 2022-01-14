@@ -8,6 +8,7 @@ createGlobalTheme(":root", bentoVars, {
   color: {
     primary: "#F05D68",
     neutral20: "#E4E8EE",
+    neutral40: "#A4B0C0",
   },
   space: {
     "0": "0",
@@ -29,6 +30,6 @@ export const vars = createGlobalTheme(":root", {
     customColor1: "#3C6FD6",
   },
   space: {
-    12: "12px",
+    "12": "12px",
   },
 });

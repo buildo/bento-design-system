@@ -1,4 +1,4 @@
-import { createLayoutComponents } from "..";
+import { createLayoutComponents } from "../Layout/createLayoutComponents";
 import { bentoSprinkles } from "./sprinkles.css";
 
 export * from "./Box/Box";

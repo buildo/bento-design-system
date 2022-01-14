@@ -17,5 +17,6 @@ export const vars = createGlobalThemeContract({
   color: {
     primary: "color-primary",
     neutral20: "color-neutral-20",
+    neutral40: "color-neutral-40",
   },
 });
