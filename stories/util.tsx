@@ -3,6 +3,7 @@ import { JSXElementConstructor, ComponentProps, useState } from "react";
 import { alignToFlexAlignLookup, alignYToFlexAlignLookup } from "../src/util/align";
 import { unsafeLocalizedString } from "../src/util/LocalizedString";
 import { vars } from "./theme.css";
+import { vars as bentoVars } from "../src/vars.css";
 import { Omit } from "../src/util/Omit";
 
 export type Actions<Props> = {
@@ -66,7 +67,7 @@ type ArgType = {
 export const textArgType: ArgType = { control: { type: "text" } };
 export const disableControlArgType: ArgType = { control: { disable: true } };
 export const spaceArgType: ArgType = {
-  options: Object.keys(vars.space),
+  options: Object.keys({ ...bentoVars.space, ...vars.space }),
   control: {
     type: "select",
     mapping: vars.space,
