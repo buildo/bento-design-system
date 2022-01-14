@@ -29,5 +29,5 @@
     },
     "baseUrl": "."
   },
-  "include": ["src"]
+  "include": ["src", "stories"]
 }
