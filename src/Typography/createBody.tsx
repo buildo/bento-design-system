@@ -27,21 +27,13 @@ export type BodyConfig<AtomsFn extends typeof bentoSprinkles> = {
 
 export function createBody<AtomsFn extends typeof bentoSprinkles>(
   Box: BoxType<AtomsFn>,
-  fontFamily: BoxProps<AtomsFn>["fontFamily"],
   config: BodyConfig<AtomsFn>
 ) {
   type Props = {
     children: TextChildren;
     size: Size;
     weight?: "regular" | "semibold";
-    color?:
-      | "default"
-      | "secondary"
-      | "negative"
-      | "disabled"
-      | "positive"
-      | "informative"
-      | "warning";
+    color?: Color;
     align?: "left" | "center" | "right" | "justify";
     as?: BoxProps<AtomsFn>["as"];
   };
@@ -59,7 +51,7 @@ export function createBody<AtomsFn extends typeof bentoSprinkles>(
         as={as}
         className={bodyRecipe({ weight })}
         textAlign={align}
-        fontFamily={fontFamily}
+        fontFamily="default"
         fontSize={config.sizes[size].fontSize}
         lineHeight={config.sizes[size].lineHeight}
         color={config.colors[color]}

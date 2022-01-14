@@ -1,5 +1,5 @@
 import { BodyConfig } from "src/Typography/createBody";
-import { createBentoBox, createLayoutComponents, createTextComponents } from "../src";
+import { createBentoBox, createLayoutComponents, createTypographyComponents } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
 export { Placeholder } from "../src";
@@ -23,4 +23,4 @@ const bodyConfig: BodyConfig<typeof sprinkles> = {
 
 export const Box = createBentoBox(sprinkles);
 export const { Stack, Column, Columns, Inline, Inset } = createLayoutComponents(sprinkles);
-export const { Body } = createTextComponents(sprinkles, "customFontFamily", bodyConfig);
+export const { Body } = createTypographyComponents(sprinkles, bodyConfig);
