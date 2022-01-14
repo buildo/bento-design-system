@@ -2,12 +2,12 @@ import { ComponentProps, Fragment } from "react";
 import flattenChildren from "react-keyed-flatten-children";
 import { BoxProps, BoxType } from "../Box/createBentoBox";
 import { Divider } from "../Divider/Divider";
-import { baseSprinkles } from "../sprinkles.css";
+import { bentoSprinkles } from "../internal/sprinkles.css";
 import { ResponsiveAlign, alignToFlexAlign } from "../util/align";
 import { childKey } from "../util/childKey";
 import { Children } from "../util/Children";
 
-export function createStack<AtomsFn extends typeof baseSprinkles>(Box: BoxType<AtomsFn>) {
+export function createStack<AtomsFn extends typeof bentoSprinkles>(Box: BoxType<AtomsFn>) {
   type ResponsiveSpace = BoxProps<AtomsFn>["gap"];
 
   type StackProps = {

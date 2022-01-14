@@ -1,11 +1,11 @@
 import { createBentoBox } from "../Box/createBentoBox";
-import { baseSprinkles } from "../sprinkles.css";
+import { bentoSprinkles } from "../internal/sprinkles.css";
 import { createInline } from "./createInline";
 import { createStack } from "./createStack";
 import { createColumns } from "./createColumns";
 import { createInset } from "./createInset";
 
-export function createLayoutComponents<AtomsFn extends typeof baseSprinkles>(sprinkles: AtomsFn) {
+export function createLayoutComponents<AtomsFn extends typeof bentoSprinkles>(sprinkles: AtomsFn) {
   const Box = createBentoBox(sprinkles);
 
   const Inline = createInline(Box);

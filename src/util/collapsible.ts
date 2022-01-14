@@ -1,4 +1,4 @@
-import { normalizeResponsiveValue, Sprinkles } from "../sprinkles.css";
+import { normalizeResponsiveValue, Sprinkles } from "../internal/sprinkles.css";
 import { alignToFlexAlign, alignYToFlexAlign, ResponsiveAlign, ResponsiveAlignY } from "./align";
 import { Breakpoint } from "./breakpoints";
 

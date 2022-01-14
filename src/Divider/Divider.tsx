@@ -1,5 +1,5 @@
 import { useSeparator } from "@react-aria/separator";
-import { Box } from "../Box/Box";
+import { Box } from "../internal";
 import { divider } from "./Divider.css";
 
 type Props = {};

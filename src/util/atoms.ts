@@ -8,6 +8,7 @@ export const unconditionalProperties = {
   height: {
     full: "100%",
   },
+  position: ["relative", "absolute", "fixed"],
 } as const;
 
 export const responsiveProperties = {

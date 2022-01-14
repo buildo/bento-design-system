@@ -1,8 +1,8 @@
 import { ComponentProps } from "react";
 import { BoxProps, BoxType } from "../Box/createBentoBox";
-import { baseSprinkles } from "../sprinkles.css";
+import { bentoSprinkles } from "../internal/sprinkles.css";
 
-export function createInset<AtomsFn extends typeof baseSprinkles>(Box: BoxType<AtomsFn>) {
+export function createInset<AtomsFn extends typeof bentoSprinkles>(Box: BoxType<AtomsFn>) {
   type ResponsiveSpace = BoxProps<AtomsFn>["gap"];
 
   type InsetProps = {
