@@ -1,11 +1,11 @@
 import { style } from "@vanilla-extract/css";
-import { baseSprinkles } from "../sprinkles.css";
+import { bentoSprinkles } from "../internal/sprinkles.css";
 
 export const divider = style([
   {
     height: 1,
   },
-  baseSprinkles({
+  bentoSprinkles({
     background: "neutral20",
     width: "full",
   }),

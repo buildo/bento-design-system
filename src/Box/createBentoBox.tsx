@@ -1,9 +1,9 @@
 import { createBox } from "@dessert-box/react";
 import { forwardRef } from "react";
 import clsx, { ClassValue } from "clsx";
-import { baseSprinkles } from "../sprinkles.css";
+import { bentoSprinkles } from "../internal/sprinkles.css";
 
-export type BoxProps<AtomsFn extends typeof baseSprinkles> = {
+export type BoxProps<AtomsFn extends typeof bentoSprinkles> = {
   as?: React.ElementType;
   className?: ClassValue;
 } & HTMLProperties &
@@ -14,11 +14,11 @@ type HTMLProperties = Omit<
   "as" | "color" | "height" | "width" | "className"
 >;
 
-export type BoxType<AtomsFn extends typeof baseSprinkles> = React.ForwardRefExoticComponent<
+export type BoxType<AtomsFn extends typeof bentoSprinkles> = React.ForwardRefExoticComponent<
   BoxProps<AtomsFn> & React.RefAttributes<HTMLElement>
 >;
 
-export function createBentoBox<AtomsFn extends typeof baseSprinkles>(
+export function createBentoBox<AtomsFn extends typeof bentoSprinkles>(
   sprinkles: AtomsFn
 ): BoxType<AtomsFn> {
   const SprinklesBox = createBox({ atoms: sprinkles });

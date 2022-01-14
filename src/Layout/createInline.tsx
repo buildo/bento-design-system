@@ -1,13 +1,13 @@
 import flattenChildren from "react-keyed-flatten-children";
 import { BoxProps, BoxType } from "../Box/createBentoBox";
-import { baseSprinkles } from "../sprinkles.css";
+import { bentoSprinkles } from "../internal/sprinkles.css";
 import { Children } from "../util/Children";
 import {
   CollapsibleAlignmentProps,
   responsiveCollapsibleAlignmentProps,
 } from "../util/collapsible";
 
-export function createInline<AtomsFn extends typeof baseSprinkles>(Box: BoxType<AtomsFn>) {
+export function createInline<AtomsFn extends typeof bentoSprinkles>(Box: BoxType<AtomsFn>) {
   type ResponsiveSpace = BoxProps<AtomsFn>["gap"];
 
   type InlineProps = {

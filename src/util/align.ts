@@ -1,4 +1,4 @@
-import { mapResponsiveValue, OptionalResponsiveValue } from "../sprinkles.css";
+import { mapResponsiveValue, OptionalResponsiveValue } from "../internal/sprinkles.css";
 
 export type Align = "left" | "center" | "right";
 export type ResponsiveAlign = OptionalResponsiveValue<Align>;
