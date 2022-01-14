@@ -2,6 +2,10 @@ import { vars } from "../vars.css";
 
 export const unconditionalProperties = {
   fontFamily: vars.fontFamily,
+  fontWeight: vars.fontWeight,
+  fontSize: vars.fontSize,
+  lineHeight: vars.lineHeight,
+  letterSpacing: vars.letterSpacing,
   width: {
     full: "100%",
   },
@@ -36,6 +40,7 @@ export const responsiveProperties = {
   paddingLeft: vars.space,
   paddingRight: vars.space,
   gap: vars.space,
+  textAlign: ["left", "center", "right", "justify"],
 } as const;
 
 export const statusProperties = {
