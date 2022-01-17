@@ -1,6 +1,7 @@
 import { vars } from "../vars.css";
 
 export const unconditionalProperties = {
+  textTransform: ["none", "uppercase", "lowercase", "capitalize"],
   fontFamily: vars.fontFamily,
   fontWeight: vars.fontWeight,
   fontSize: vars.fontSize,

@@ -1,9 +1,10 @@
-import { BoxProps, BoxType } from "../Box/createBentoBox";
-import { bentoSprinkles } from "../internal/sprinkles.css";
-import { TextChildren, textChildrenToChildren } from "../util/TextChildren";
+import { BoxProps, BoxType } from "../../Box/createBentoBox";
+import { bentoSprinkles } from "../../internal/sprinkles.css";
+import { TextChildren, textChildrenToChildren } from "../../util/TextChildren";
 import { bodyRecipe } from "./Body.css";
 
 type Size = "small" | "medium" | "large";
+type Align = "left" | "center" | "right" | "justify";
 type Color =
   | "default"
   | "secondary"
@@ -34,7 +35,7 @@ export function createBody<AtomsFn extends typeof bentoSprinkles>(
     size: Size;
     weight?: "regular" | "semibold";
     color?: Color;
-    align?: "left" | "center" | "right" | "justify";
+    align?: Align;
     as?: BoxProps<AtomsFn>["as"];
   };
 
