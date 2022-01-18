@@ -11,7 +11,7 @@ const { defaultExport, createStory } = createComponentStories({
 export default defaultExport;
 
 export const Primary = createStory({
-  color: "primary",
+  color: "textPrimary",
   fontFamily: "default",
   padding: "16",
 });
