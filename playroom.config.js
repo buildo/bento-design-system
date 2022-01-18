@@ -3,10 +3,11 @@ const { ProvidePlugin } = require("webpack");
 const { ESBuildMinifyPlugin } = require("esbuild-loader");
 
 module.exports = {
-  components: "./src/index.ts",
+  components: "./playroom/components.ts",
   outputPath: "./dist/playroom",
   title: "Bento 🍱",
   widths: [320, 425, 768, 1024, 1440, 2560],
+  frameComponent: "./playroom/FrameComponent.tsx",
   themes: "./playroom/themes.ts",
   webpackConfig: () => ({
     plugins: [

@@ -1,1 +1,1 @@
-export { vars as storybook } from "../stories/theme.css";
+export { darkTheme, lightTheme } from "../stories/theme.css";

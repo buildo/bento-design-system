@@ -1,4 +1,4 @@
-import { createGlobalTheme } from "@vanilla-extract/css";
+import { createGlobalTheme, createTheme } from "@vanilla-extract/css";
 import { vars as bentoVars } from "../src/vars.css";
 
 const remBaseSize = 16;
@@ -10,11 +10,16 @@ const colors = {
   neutral01: "#F6F8FB",
   neutral05: "#ECEFF4",
   neutral20: "#CBD4E1",
+  neutral40: "#9AA8BC",
+  neutral50: "#728197",
   neutral60: "#525E6F",
+  neutral70: "#3B4554",
+  neutral80: "#27313F",
   neutral90: "#1A212B",
   informative05: "#D8E8FF",
   informative40: "#2D7AE5",
   informative60: "#004AB1",
+  informative70: "#003B8D",
   positive05: "#DAFCE6",
   positive50: "#21C357",
   positive70: "#078631",
@@ -25,10 +30,11 @@ const colors = {
   negative40: "#CE0718",
   negative50: "#CE0718",
   negative60: "#B1000F",
+  negative70: "#8D000C",
   interactive80: "#333333",
 };
 
-createGlobalTheme(":root", bentoVars, {
+const commonTheme = {
   fontFamily: {
     default: "Arial",
   },
@@ -74,6 +80,20 @@ createGlobalTheme(":root", bentoVars, {
     "1": "0.01em",
     "2": "0.02em",
   },
+  space: {
+    "0": "0",
+    "4": "4px",
+    "8": "8px",
+    "16": "16px",
+    "24": "24px",
+    "32": "32px",
+    "40": "40px",
+    "80": "80px",
+  },
+};
+
+export const lightTheme = createTheme(bentoVars, {
+  ...commonTheme,
   semanticColor: {
     informative: colors.informative40,
     positive: colors.positive50,
@@ -119,15 +139,54 @@ createGlobalTheme(":root", bentoVars, {
     error: colors.negative40,
     disabled: colors.neutral20,
   },
-  space: {
-    "0": "0",
-    "4": "4px",
-    "8": "8px",
-    "16": "16px",
-    "24": "24px",
-    "32": "32px",
-    "40": "40px",
-    "80": "80px",
+});
+
+export const darkTheme = createTheme(bentoVars, {
+  ...commonTheme,
+  semanticColor: {
+    informative: colors.informative40,
+    positive: colors.positive50,
+    warning: colors.warning40,
+    negative: colors.negative40,
+  },
+  color: {
+    textPrimary: colors.white,
+    textSecondary: colors.neutral40,
+    textInformative: colors.white,
+    textPositive: colors.white,
+    textWarning: colors.white,
+    textNegative: colors.white,
+    textDisabled: colors.neutral50,
+    interactivePrimaryOnEnabled: colors.black,
+    interactivePrimaryOnHover: colors.black,
+    interactivePrimaryOnFocus: colors.black,
+    interactiveDangerOnEnabled: colors.white,
+    interactiveDangerOnHover: colors.white,
+    interactiveDangerOnFocus: colors.white,
+    onDisabled: colors.neutral50,
+  },
+  background: {
+    primary: colors.neutral90,
+    secondary: colors.neutral80,
+    informative: colors.informative70,
+    positive: colors.positive70,
+    warning: colors.warning70,
+    negative: colors.negative70,
+    disabled: colors.neutral70,
+    interactivePrimaryEnabled: colors.white,
+    interactivePrimaryHover: colors.white,
+    interactivePrimaryFocus: colors.white,
+    interactiveDangerEnabled: colors.negative40,
+    interactiveDangerHover: colors.negative50,
+    interactiveDangerFocus: colors.negative50,
+  },
+  outline: {
+    interactive: colors.black,
+    input: colors.neutral60,
+    decorative: colors.neutral20,
+    container: colors.neutral05,
+    error: colors.negative40,
+    disabled: colors.neutral20,
   },
 });
 
