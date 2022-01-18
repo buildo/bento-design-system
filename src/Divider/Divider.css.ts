@@ -6,7 +6,6 @@ export const divider = style([
     height: 1,
   },
   bentoSprinkles({
-    background: "disabled",
     width: "full",
   }),
 ]);

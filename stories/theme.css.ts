@@ -111,6 +111,14 @@ createGlobalTheme(":root", bentoVars, {
     interactiveDangerHover: colors.negative50,
     interactiveDangerFocus: colors.negative50,
   },
+  outline: {
+    interactive: colors.black,
+    input: colors.neutral60,
+    decorative: colors.neutral20,
+    container: colors.neutral05,
+    error: colors.negative40,
+    disabled: colors.neutral20,
+  },
   space: {
     "0": "0",
     "4": "4px",

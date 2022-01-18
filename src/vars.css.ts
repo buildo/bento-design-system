@@ -93,4 +93,12 @@ export const vars = createGlobalThemeContract({
     interactiveDangerHover: "background-danger-hover",
     interactiveDangerFocus: "background-danger-focus",
   },
+  outline: {
+    interactive: "outline-interactive",
+    input: "outline-input",
+    decorative: "outline-decorative",
+    container: "outline-container",
+    error: "outline-error",
+    disabled: "outline-disabled",
+  },
 });

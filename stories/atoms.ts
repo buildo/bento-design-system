@@ -34,4 +34,5 @@ export const statusProperties = {
   ...bentoAtoms.statusProperties,
   color,
   fill: color,
+  stroke: color,
 };
