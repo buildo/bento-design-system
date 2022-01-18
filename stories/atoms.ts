@@ -9,6 +9,7 @@ const space = {
 
 const color = {
   ...bentoVars.color,
+  ...bentoVars.semanticColor,
   ...vars.color,
 };
 
@@ -32,5 +33,5 @@ export const responsiveProperties = {
 export const statusProperties = {
   ...bentoAtoms.statusProperties,
   color,
-  background: color,
+  fill: color,
 };
