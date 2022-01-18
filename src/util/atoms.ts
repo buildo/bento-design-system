@@ -45,6 +45,6 @@ export const responsiveProperties = {
 } as const;
 
 export const statusProperties = {
-  color: vars.color,
-  background: vars.color,
+  color: { ...vars.color, ...vars.semanticColor },
+  background: { ...vars.background, ...vars.semanticColor },
 } as const;
