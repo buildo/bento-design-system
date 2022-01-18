@@ -7,6 +7,7 @@ const pixelToRem = (px: number) => `${px / remBaseSize}rem`;
 const colors = {
   white: "#FFFFFF",
   black: "#000000",
+  brandTertiary50: "#45C1C0",
   neutral01: "#F6F8FB",
   neutral05: "#ECEFF4",
   neutral20: "#CBD4E1",
@@ -96,8 +97,8 @@ const commonTheme = {
     "16": "16px",
   },
   boxShadow: {
-    primary: `inset 0px 0px 0px 1px ${colors.positive50}`,
-    primaryStrong: `inset 0px 0px 0px 2px ${colors.positive50}`,
+    primary: `inset 0px 0px 0px 1px ${colors.brandTertiary50}`,
+    primaryStrong: `inset 0px 0px 0px 2px ${colors.brandTertiary50}`,
     neutral: `inset 0px 0px 0px 1px ${colors.neutral60}`,
     disabled: `inset 0px 0px 0px 1px ${colors.neutral40}`,
     negative: `inset 0px 0px 0px 1px ${colors.negative60}`,

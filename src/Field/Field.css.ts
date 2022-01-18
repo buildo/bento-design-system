@@ -25,7 +25,7 @@ export const inputRecipe = strictRecipe({
   variants: {
     validation: {
       valid: bentoSprinkles({
-        boxShadow: { default: "neutral", focus: "elevation4" },
+        boxShadow: { default: "neutral", focus: "primaryStrong" },
       }),
       invalid: bentoSprinkles({
         boxShadow: { default: "negative", focus: "negativeStrong" },
