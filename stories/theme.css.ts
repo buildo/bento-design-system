@@ -90,6 +90,23 @@ const commonTheme = {
     "40": "40px",
     "80": "80px",
   },
+  radius: {
+    "4": "4px",
+    "8": "8px",
+    "16": "16px",
+  },
+  boxShadow: {
+    primary: `inset 0px 0px 0px 1px ${colors.positive50}`,
+    primaryStrong: `inset 0px 0px 0px 2px ${colors.positive50}`,
+    neutral: `inset 0px 0px 0px 1px ${colors.neutral60}`,
+    disabled: `inset 0px 0px 0px 1px ${colors.neutral40}`,
+    negative: `inset 0px 0px 0px 1px ${colors.negative60}`,
+    negativeStrong: `inset 0px 0px 0px 2px ${colors.negative60}`,
+    dividerBottom: `inset 0px -1px 0px ${colors.neutral20}`,
+    elevation4: `0px 4px 8px rgba(0, 0, 0, 0.16)`,
+    elevation8: `0px 8px 16px rgba(0, 0, 0, 0.16)`,
+    elevation16: `0px 16px 32px rgba(0, 0, 0, 0.16)`,
+  },
 };
 
 export const lightTheme = createTheme(bentoVars, {

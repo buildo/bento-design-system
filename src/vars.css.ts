@@ -56,6 +56,11 @@ export const vars = createThemeContract({
     "40": null,
     "80": null,
   },
+  radius: {
+    "4": "radius-4",
+    "8": "radius-8",
+    "16": "radius-16",
+  },
   semanticColor: {
     informative: null,
     positive: null,
@@ -100,5 +105,17 @@ export const vars = createThemeContract({
     container: null,
     error: null,
     disabled: null,
+  },
+  boxShadow: {
+    primary: "box-shadow-primary",
+    primaryStrong: "box-shadow-primary-strong",
+    neutral: "box-shadow-neutral",
+    disabled: "box-shadow-disabled",
+    negative: "box-shadow-negative",
+    negativeStrong: "box-shadow-negative-strong",
+    dividerBottom: "box-shadow-divider-bottom",
+    elevation4: "box-shadow-elevation4",
+    elevation8: "box-shadow-elevation8",
+    elevation16: "box-shadow-elevation16",
   },
 });
