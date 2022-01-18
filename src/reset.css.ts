@@ -1,0 +1,53 @@
+import { IntrinsicHTMLElements } from "@react-aria/textfield";
+import { style } from "@vanilla-extract/css";
+
+export const base = style({
+  margin: 0,
+  padding: 0,
+  border: 0,
+  boxSizing: "border-box",
+  fontSize: "100%",
+  font: "inherit",
+  verticalAlign: "baseline",
+  WebkitTapHighlightColor: "transparent",
+});
+
+const button = style({
+  width: "auto",
+  overflow: "visible",
+  WebkitAppearance: "none",
+  selectors: {
+    "&::-moz-focus-inner": {
+      borderStyle: "none",
+      padding: 0,
+    },
+  },
+});
+
+const list = style({
+  listStyle: "none",
+});
+
+const div = style({
+  lineHeight: 0,
+});
+
+const input = style({
+  appearance: "none",
+  ":disabled": {
+    cursor: "inherit",
+  },
+});
+
+const label = style({
+  cursor: "inherit",
+});
+
+export const element: Partial<Record<keyof IntrinsicHTMLElements, string>> = {
+  button,
+  div,
+  input,
+  ol: list,
+  ul: list,
+  label,
+};

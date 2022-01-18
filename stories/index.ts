@@ -1,7 +1,6 @@
+import "../src/reset.css";
 import { createBentoBox, createLayoutComponents, createTextField } from "../src";
 import { sprinkles } from "./sprinkles.css";
-
-export { Placeholder } from "../src";
 
 export * from "../src/";
 export const Box = createBentoBox(sprinkles);
