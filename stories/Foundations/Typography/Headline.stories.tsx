@@ -1,5 +1,5 @@
 import { createComponentStories, formatMessage, textArgType } from "../../util";
-import { Headline } from "../..";
+import { Headline } from "../../../src/Typography/Headline/Headline";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Headline,

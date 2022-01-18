@@ -1,5 +1,5 @@
 import { createComponentStories, formatMessage, textArgType } from "../../util";
-import { Display } from "../..";
+import { Display } from "../../../src/Typography/Display/Display";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Display,

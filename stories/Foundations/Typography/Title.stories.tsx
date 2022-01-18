@@ -1,5 +1,5 @@
-import { Title } from "../..";
 import { createComponentStories, formatMessage, textArgType } from "../../util";
+import { Title } from "../../../src/Typography/Title/Title";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Title,

@@ -1,5 +1,5 @@
-import { Label } from "../..";
 import { createComponentStories, formatMessage, textArgType } from "../../util";
+import { Label } from "../../../src/Typography/Label/Label";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Label,
