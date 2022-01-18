@@ -9,7 +9,7 @@ export const inputRecipe = strictRecipe({
       },
       selectors: {
         "&:disabled::placeholder": {
-          color: "onDisabled",
+          color: "textDisabled",
         },
       },
     },
@@ -19,12 +19,13 @@ export const inputRecipe = strictRecipe({
         disabled: "disabled",
       },
       outline: "none",
+      boxShadow: { disabled: "disabled" },
     }),
   ],
   variants: {
     validation: {
       valid: bentoSprinkles({
-        boxShadow: { focus: "primaryStrong" },
+        boxShadow: { default: "neutral", focus: "elevation4" },
       }),
       invalid: bentoSprinkles({
         boxShadow: { default: "negative", focus: "negativeStrong" },
