@@ -1,15 +1,16 @@
 import { bentoSprinkles } from "../internal/sprinkles.css";
 import { strictRecipe } from "../util/strictRecipe";
+import { vars } from "../vars.css";
 
 export const inputRecipe = strictRecipe({
   base: [
     {
       "::placeholder": {
-        color: "textPrimary",
+        color: vars.color.textPrimary,
       },
       selectors: {
         "&:disabled::placeholder": {
-          color: "textDisabled",
+          color: vars.color.textDisabled,
         },
       },
     },
