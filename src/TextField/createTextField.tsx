@@ -15,7 +15,8 @@ type Props = FieldProps<string> & {
 };
 
 type TextFieldConfig<AtomsFn extends typeof bentoSprinkles> = {
-  padding: BoxProps<AtomsFn>["padding"];
+  paddingX: BoxProps<AtomsFn>["paddingX"];
+  paddingY: BoxProps<AtomsFn>["paddingY"];
   radius: BoxProps<AtomsFn>["borderRadius"];
 };
 
@@ -44,7 +45,7 @@ export function createTextField<AtomsFn extends typeof bentoSprinkles>(
         labelProps={labelProps}
         assistiveTextProps={descriptionProps}
         errorMessageProps={errorMessageProps}
-        leftSpace={config.padding}
+        leftSpace={config.paddingX}
       >
         <Box
           as="input"
@@ -56,7 +57,8 @@ export function createTextField<AtomsFn extends typeof bentoSprinkles>(
           width={undefined}
           height={undefined}
           borderRadius={config.radius}
-          padding={config.padding}
+          paddingX={config.paddingX}
+          paddingY={config.paddingY}
           className={[
             inputRecipe({ validation: validationState }),
             bodyRecipe({
