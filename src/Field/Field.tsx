@@ -1,4 +1,4 @@
-import { ComponentProps, ElementType, HTMLAttributes, LabelHTMLAttributes } from "react";
+import { ElementType, HTMLAttributes, LabelHTMLAttributes } from "react";
 import { Body } from "../Typography/Body/Body";
 import { Label } from "../Typography/Label/Label";
 import { Stack, Box, bentoSprinkles } from "../internal";
