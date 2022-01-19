@@ -1,9 +1,10 @@
-import { ElementType, HTMLAttributes, LabelHTMLAttributes } from "react";
+import { ComponentProps, ElementType, HTMLAttributes, LabelHTMLAttributes } from "react";
 import { Body } from "../Typography/Body/Body";
 import { Label } from "../Typography/Label/Label";
-import { Stack, Box } from "../internal";
+import { Stack, Box, bentoSprinkles } from "../internal";
 import { Children } from "../util/Children";
 import { FieldProps } from "./FieldProps";
+import { BoxProps } from "src";
 
 type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "hint"> & {
   /** The field label rendered on screen. Can be omitted in case of fields that have a custom label, such as CheckboxField  */
@@ -20,6 +21,7 @@ type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "
   errorMessageProps: HTMLAttributes<HTMLElement>;
   /** The field element */
   children: Children;
+  leftSpace: BoxProps<typeof bentoSprinkles>["paddingLeft"];
 };
 
 export type FieldType = React.FunctionComponent<Props>;
@@ -38,6 +40,7 @@ export function Field({
   children,
   disabled,
   labelElement = "label",
+  leftSpace,
 }: Props) {
   return (
     <Box disabled={disabled} cursor={{ disabled: "notAllowed" }}>
@@ -54,14 +57,14 @@ export function Field({
         )}
         {children}
         {assistiveText && !issues && (
-          <Box paddingLeft="16">
+          <Box paddingLeft={leftSpace}>
             <Body {...assistiveTextProps} size="small" color={disabled ? "disabled" : "secondary"}>
               {assistiveText}
             </Body>
           </Box>
         )}
         {issues && (
-          <Box paddingLeft="16">
+          <Box paddingLeft={leftSpace}>
             <Stack space="4">
               {issues.map((errorMessage, index) => (
                 <Body key={index} {...errorMessageProps} size="small" color="negative">
