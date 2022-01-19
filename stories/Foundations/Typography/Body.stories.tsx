@@ -1,5 +1,5 @@
-import { createComponentStories, formatMessage, textArgType } from "../util";
-import { Body } from "..";
+import { createComponentStories, formatMessage, textArgType } from "../../util";
+import { Body } from "../../../src/Typography/Body/Body";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Body,

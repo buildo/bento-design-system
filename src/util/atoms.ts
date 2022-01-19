@@ -1,6 +1,7 @@
 import { vars } from "../vars.css";
 
 export const unconditionalProperties = {
+  textTransform: ["none", "uppercase", "lowercase", "capitalize"],
   fontFamily: vars.fontFamily,
   fontWeight: vars.fontWeight,
   fontSize: vars.fontSize,
@@ -44,6 +45,9 @@ export const responsiveProperties = {
 } as const;
 
 export const statusProperties = {
-  color: vars.color,
-  background: vars.color,
+  color: { ...vars.color, ...vars.semanticColor },
+  background: { ...vars.backgroundColor, ...vars.semanticColor },
+  outline: vars.outlineColor,
+  stroke: { ...vars.color, ...vars.semanticColor },
+  fill: { ...vars.color, ...vars.semanticColor },
 } as const;

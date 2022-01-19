@@ -14,7 +14,7 @@ export function Placeholder({ label, height = 120, width = "auto" }: Props) {
     <Box
       position="relative"
       display="flex"
-      style={{ height, width, border: `2px solid ${vars.color.neutral40}` }}
+      style={{ height, width, border: `2px solid ${vars.outlineColor.decorative}` }}
       justifyContent="center"
       alignItems="center"
     >
@@ -23,14 +23,14 @@ export function Placeholder({ label, height = 120, width = "auto" }: Props) {
       ) : (
         <svg style={{ position: "absolute", width: "100%", height: "100%" }}>
           <line
-            style={{ strokeWidth: 2, stroke: vars.color.neutral40 }}
+            style={{ strokeWidth: 2, stroke: vars.outlineColor.decorative }}
             x1={0}
             y1={0}
             x2="100%"
             y2="100%"
           />
           <line
-            style={{ strokeWidth: 2, stroke: vars.color.neutral40 }}
+            style={{ strokeWidth: 2, stroke: vars.outlineColor.decorative }}
             x1="100%"
             y1={0}
             x2={0}
