@@ -5,4 +5,4 @@ export { Placeholder } from "../src";
 
 export * from "../src/";
 export const Box = createBentoBox(sprinkles);
-export const { Stack, Column, Columns, Inline, Inset } = createLayoutComponents(sprinkles);
+export const { Stack, Column, Columns, Inline, Inset } = createLayoutComponents(Box);

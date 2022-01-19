@@ -2,7 +2,8 @@
 
 import { createLayoutComponents } from "../Layout/createLayoutComponents";
 import { bentoSprinkles } from "./sprinkles.css";
+import { Box } from "./Box/Box";
 
 export { bentoSprinkles };
 export * from "./Box/Box";
-export const { Column, Columns, Inline, Inset, Stack } = createLayoutComponents(bentoSprinkles);
+export const { Column, Columns, Inline, Inset, Stack } = createLayoutComponents(Box);
