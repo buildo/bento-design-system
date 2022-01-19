@@ -116,7 +116,7 @@ export const lightTheme = createTheme(bentoVars, {
     interactiveDangerOnFocus: colors.white,
     onDisabled: colors.neutral20,
   },
-  background: {
+  backgroundColor: {
     primary: colors.white,
     secondary: colors.neutral01,
     informative: colors.informative05,
@@ -131,7 +131,7 @@ export const lightTheme = createTheme(bentoVars, {
     interactiveDangerHover: colors.negative50,
     interactiveDangerFocus: colors.negative50,
   },
-  outline: {
+  outlineColor: {
     interactive: colors.black,
     input: colors.neutral60,
     decorative: colors.neutral20,
@@ -165,7 +165,7 @@ export const darkTheme = createTheme(bentoVars, {
     interactiveDangerOnFocus: colors.white,
     onDisabled: colors.neutral50,
   },
-  background: {
+  backgroundColor: {
     primary: colors.neutral90,
     secondary: colors.neutral80,
     informative: colors.informative70,
@@ -180,7 +180,7 @@ export const darkTheme = createTheme(bentoVars, {
     interactiveDangerHover: colors.negative50,
     interactiveDangerFocus: colors.negative50,
   },
-  outline: {
+  outlineColor: {
     interactive: colors.black,
     input: colors.neutral60,
     decorative: colors.neutral20,

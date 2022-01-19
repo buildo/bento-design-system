@@ -11,7 +11,7 @@ export function Divider() {
       {...separatorProps}
       className={divider}
       color={undefined}
-      style={{ background: vars.outline.decorative }}
+      style={{ background: vars.outlineColor.decorative }}
     />
   );
 }

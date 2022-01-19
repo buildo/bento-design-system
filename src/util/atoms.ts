@@ -46,8 +46,8 @@ export const responsiveProperties = {
 
 export const statusProperties = {
   color: { ...vars.color, ...vars.semanticColor },
-  background: { ...vars.background, ...vars.semanticColor },
-  outline: vars.outline,
+  background: { ...vars.backgroundColor, ...vars.semanticColor },
+  outline: vars.outlineColor,
   stroke: { ...vars.color, ...vars.semanticColor },
   fill: { ...vars.color, ...vars.semanticColor },
 } as const;
