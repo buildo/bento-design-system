@@ -4,12 +4,11 @@ import { buttonRecipe } from "./Button.css";
 import { ComponentProps, useRef } from "react";
 import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
-import { CommonProps } from "../util/CommonProps";
 import { Label } from "../Typography/Label/Label";
 import { BentoSprinkles } from "src/internal";
 
 type Size = "small" | "medium";
-type Props = CommonProps & {
+type Props = {
   label: LocalizedString;
   onPress: () => void;
   kind: "primary" | "danger" | "ghostPrimary" | "ghostDanger";

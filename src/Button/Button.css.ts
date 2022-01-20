@@ -27,18 +27,6 @@ export const buttonRecipe = strictRecipe({
           disabled: "interactiveDisabled",
         },
       }),
-      // secondary: bentoSprinkles({
-      //   color: {
-      //     default: "interactive",
-      //     disabled: "neutral40",
-      //   },
-      //   background: {
-      //     default: "neutral60",
-      //     focus: "neutral70",
-      //     hover: "neutral70",
-      //     disabled: "neutral20",
-      //   },
-      // }),
       danger: bentoSprinkles({
         color: {
           default: "interactiveDangerOnEnabled",
@@ -62,15 +50,6 @@ export const buttonRecipe = strictRecipe({
         },
         background: "transparent",
       }),
-      // ghostSecondary: bentoSprinkles({
-      //   color: {
-      //     default: "neutral60",
-      //     focus: "neutral70",
-      //     hover: "neutral70",
-      //     disabled: "neutral40",
-      //   },
-      //   background: "transparent",
-      // }),
       ghostDanger: bentoSprinkles({
         color: {
           default: "interactiveDangerEnabled",
