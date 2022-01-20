@@ -1,10 +1,9 @@
 import { ComponentProps, ElementType, HTMLAttributes, LabelHTMLAttributes } from "react";
 import { Body } from "../Typography/Body/Body";
 import { Label } from "../Typography/Label/Label";
-import { Stack, Box, bentoSprinkles } from "../internal";
+import { Stack, Box, BentoSprinkles } from "../internal";
 import { Children } from "../util/Children";
 import { FieldProps } from "./FieldProps";
-import { BoxProps } from "src";
 
 type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "hint"> & {
   /** The field label rendered on screen. Can be omitted in case of fields that have a custom label, such as CheckboxField  */
@@ -25,20 +24,20 @@ type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "
 
 export type FieldType = React.FunctionComponent<Props>;
 type FieldConfig = {
-  leftSpace: BoxProps<typeof bentoSprinkles>["paddingX"];
-  labelSize: ComponentProps<typeof Label>["size"];
-  assistiveTextSize: ComponentProps<typeof Body>["size"];
+  label: {
+    size: ComponentProps<typeof Label>["size"];
+  };
+  assistiveText: {
+    size: ComponentProps<typeof Body>["size"];
+    paddingLeft: BentoSprinkles["paddingX"];
+  };
 };
 
 /**
  * A utility for rendering a form field with a label, a description and error message, alongside their accessibility props.
  * This is meant as an internal design system utility for implementing form fields.
  */
-export function createField({
-  labelSize = "small",
-  assistiveTextSize = "small",
-  leftSpace,
-}: FieldConfig) {
+export function createField(config: FieldConfig) {
   return function Field({
     label,
     assistiveText,
@@ -57,7 +56,7 @@ export function createField({
             <Label
               as={labelElement}
               {...labelProps}
-              size={labelSize}
+              size={config.label.size}
               color={disabled ? "disabled" : "secondary"}
             >
               {label}
@@ -65,10 +64,10 @@ export function createField({
           )}
           {children}
           {assistiveText && !issues && (
-            <Box paddingLeft={leftSpace}>
+            <Box paddingLeft={config.assistiveText.paddingLeft}>
               <Body
                 {...assistiveTextProps}
-                size={assistiveTextSize}
+                size={config.assistiveText.size}
                 color={disabled ? "disabled" : "secondary"}
               >
                 {assistiveText}
@@ -76,13 +75,13 @@ export function createField({
             </Box>
           )}
           {issues && (
-            <Box paddingLeft={leftSpace}>
+            <Box paddingLeft={config.assistiveText.paddingLeft}>
               <Stack space="4">
                 {issues.map((errorMessage, index) => (
                   <Body
                     key={index}
                     {...errorMessageProps}
-                    size={assistiveTextSize}
+                    size={config.assistiveText.size}
                     color="negative"
                   >
                     {errorMessage}

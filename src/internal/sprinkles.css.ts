@@ -37,7 +37,7 @@ export const bentoSprinkles = createSprinkles(
   responsiveAtomicProperties
 );
 
-export type Sprinkles = Parameters<typeof bentoSprinkles>[0];
+export type BentoSprinkles = Parameters<typeof bentoSprinkles>[0];
 
 export const mapResponsiveValue = createMapValueFn(responsiveAtomicProperties);
 
