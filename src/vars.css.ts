@@ -56,6 +56,11 @@ export const vars = createThemeContract({
     "40": null,
     "80": null,
   },
+  radius: {
+    "4": null,
+    "8": null,
+    "16": null,
+  },
   semanticColor: {
     informative: null,
     positive: null,
@@ -100,5 +105,17 @@ export const vars = createThemeContract({
     container: null,
     error: null,
     disabled: null,
+  },
+  boxShadow: {
+    primary: null,
+    primaryStrong: null,
+    neutral: null,
+    disabled: null,
+    negative: null,
+    negativeStrong: null,
+    dividerBottom: null,
+    elevation4: null,
+    elevation8: null,
+    elevation16: null,
   },
 });

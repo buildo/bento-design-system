@@ -1,4 +1,4 @@
-import { normalizeResponsiveValue, Sprinkles } from "../internal/sprinkles.css";
+import { normalizeResponsiveValue, BentoSprinkles } from "../internal/sprinkles.css";
 import { alignToFlexAlign, alignYToFlexAlign, ResponsiveAlign, ResponsiveAlignY } from "./align";
 import { Breakpoint } from "./breakpoints";
 
@@ -12,7 +12,10 @@ export function responsiveCollapsibleAlignmentProps({
   align,
   alignY,
   collapseBelow,
-}: CollapsibleAlignmentProps): Pick<Sprinkles, "flexDirection" | "justifyContent" | "alignItems"> {
+}: CollapsibleAlignmentProps): Pick<
+  BentoSprinkles,
+  "flexDirection" | "justifyContent" | "alignItems"
+> {
   const [collapseMobile, collapseTablet] = (() => {
     switch (collapseBelow) {
       case "desktop":

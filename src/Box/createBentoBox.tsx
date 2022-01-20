@@ -1,3 +1,4 @@
+import * as resetStyles from "../reset.css";
 import { createBox } from "@dessert-box/react";
 import { forwardRef } from "react";
 import clsx, { ClassValue } from "clsx";
@@ -24,8 +25,15 @@ export function createBentoBox<AtomsFn extends typeof bentoSprinkles>(
   const SprinklesBox = createBox({ atoms: sprinkles });
 
   return forwardRef<HTMLElement, BoxProps<AtomsFn>>(({ className, children, ...props }, ref) => {
+    const el = typeof props.as === "string" ? props.as : "div";
+    const elementReset = resetStyles.element[el as keyof typeof resetStyles.element];
+
     return (
-      <SprinklesBox ref={ref} {...(props as any)} className={clsx(className)}>
+      <SprinklesBox
+        ref={ref}
+        {...(props as any)}
+        className={clsx(resetStyles.base, elementReset, className)}
+      >
         {children}
       </SprinklesBox>
     );
