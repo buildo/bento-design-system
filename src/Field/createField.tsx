@@ -21,11 +21,11 @@ type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "
   errorMessageProps: HTMLAttributes<HTMLElement>;
   /** The field element */
   children: Children;
-  leftSpace: BoxProps<typeof bentoSprinkles>["paddingLeft"];
 };
 
 export type FieldType = React.FunctionComponent<Props>;
 type FieldConfig = {
+  leftSpace: BoxProps<typeof bentoSprinkles>["paddingX"];
   labelSize: ComponentProps<typeof Label>["size"];
   assistiveTextSize: ComponentProps<typeof Body>["size"];
 };
@@ -34,7 +34,11 @@ type FieldConfig = {
  * A utility for rendering a form field with a label, a description and error message, alongside their accessibility props.
  * This is meant as an internal design system utility for implementing form fields.
  */
-export function createField({ labelSize = "small", assistiveTextSize = "small" }: FieldConfig) {
+export function createField({
+  labelSize = "small",
+  assistiveTextSize = "small",
+  leftSpace,
+}: FieldConfig) {
   return function Field({
     label,
     assistiveText,
@@ -45,7 +49,6 @@ export function createField({ labelSize = "small", assistiveTextSize = "small" }
     children,
     disabled,
     labelElement = "label",
-    leftSpace,
   }: Props) {
     return (
       <Box disabled={disabled} cursor={{ disabled: "notAllowed" }}>

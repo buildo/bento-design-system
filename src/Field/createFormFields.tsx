@@ -21,7 +21,7 @@ export function createFormFields({
   inputPaddingY = "16",
   inputFontSize = "large",
 }: FieldsConfig) {
-  const Field = createField({ labelSize, assistiveTextSize });
+  const Field = createField({ labelSize, assistiveTextSize, leftSpace: inputPaddingX });
 
   const TextField = createTextField(Field, {
     radius: inputRadius,
