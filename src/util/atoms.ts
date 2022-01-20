@@ -50,9 +50,23 @@ export const responsiveProperties = {
   textAlign: ["left", "center", "right", "justify"],
 } as const;
 
+const color = {
+  ...vars.textColor,
+  ...vars.semanticColor,
+  ...vars.interactiveColor,
+  ...vars.onInteractiveColor,
+};
+
+const background = {
+  ...vars.backgroundColor,
+  ...vars.semanticColor,
+  ...vars.interactiveColor,
+  transparent: "transparent",
+};
+
 export const statusProperties = {
-  color: { ...vars.color, ...vars.semanticColor },
-  background: { ...vars.backgroundColor, ...vars.semanticColor },
+  color,
+  background,
   cursor: {
     pointer: "pointer",
     default: "default",
@@ -60,6 +74,6 @@ export const statusProperties = {
   },
   boxShadow: vars.boxShadow,
   outline: { ...vars.outlineColor, none: "none" },
-  stroke: { ...vars.color, ...vars.semanticColor },
-  fill: { ...vars.color, ...vars.semanticColor },
+  stroke: color,
+  fill: color,
 } as const;

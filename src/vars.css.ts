@@ -67,7 +67,7 @@ export const vars = createThemeContract({
     warning: null,
     negative: null,
   },
-  color: {
+  textColor: {
     textPrimary: null,
     textSecondary: null,
     textInformative: null,
@@ -75,13 +75,24 @@ export const vars = createThemeContract({
     textWarning: null,
     textNegative: null,
     textDisabled: null,
+  },
+  interactiveColor: {
+    interactivePrimaryEnabled: null,
+    interactivePrimaryHover: null,
+    interactivePrimaryFocus: null,
+    interactiveDangerEnabled: null,
+    interactiveDangerHover: null,
+    interactiveDangerFocus: null,
+    interactiveDisabled: null,
+  },
+  onInteractiveColor: {
     interactivePrimaryOnEnabled: null,
     interactivePrimaryOnHover: null,
     interactivePrimaryOnFocus: null,
     interactiveDangerOnEnabled: null,
     interactiveDangerOnHover: null,
     interactiveDangerOnFocus: null,
-    onDisabled: null,
+    interactiveOnDisabled: null,
   },
   backgroundColor: {
     primary: null,
@@ -91,12 +102,6 @@ export const vars = createThemeContract({
     warning: null,
     negative: null,
     disabled: null,
-    interactivePrimaryEnabled: null,
-    interactivePrimaryHover: null,
-    interactivePrimaryFocus: null,
-    interactiveDangerEnabled: null,
-    interactiveDangerHover: null,
-    interactiveDangerFocus: null,
   },
   outlineColor: {
     interactive: null,

@@ -6,11 +6,11 @@ export const inputRecipe = strictRecipe({
   base: [
     {
       "::placeholder": {
-        color: vars.color.textSecondary,
+        color: vars.textColor.textSecondary,
       },
       selectors: {
         "&:disabled::placeholder": {
-          color: vars.color.textDisabled,
+          color: vars.textColor.textDisabled,
         },
       },
     },
