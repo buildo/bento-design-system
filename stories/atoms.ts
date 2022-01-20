@@ -1,15 +1,13 @@
 import * as bentoAtoms from "../src/util/atoms";
-import { vars as bentoVars } from "../src/vars.css";
 import { vars } from "./theme.css";
 
 const space = {
-  ...bentoVars.space,
+  ...bentoAtoms.responsiveProperties.gap,
   ...vars.space,
 };
 
 const color = {
-  ...bentoVars.color,
-  ...bentoVars.semanticColor,
+  ...bentoAtoms.statusProperties.color,
   ...vars.color,
 };
 

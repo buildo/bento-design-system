@@ -1,3 +1,4 @@
+import "../src/reset.css.ts";
 import { darkTheme, lightTheme } from "../stories/theme.css";
 import { withThemes } from "storybook-addon-themes/react";
 
