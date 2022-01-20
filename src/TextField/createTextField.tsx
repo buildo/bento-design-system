@@ -47,7 +47,6 @@ export function createTextField<AtomsFn extends typeof bentoSprinkles>(
         labelProps={labelProps}
         assistiveTextProps={descriptionProps}
         errorMessageProps={errorMessageProps}
-        leftSpace={config.paddingX}
       >
         <Box
           as="input"
