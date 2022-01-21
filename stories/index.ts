@@ -1,8 +1,14 @@
 import "../src/reset.css";
-import { createBentoBox, createLayoutComponents, createFormFields, createButton } from "../src";
+import {
+  createBentoBox,
+  createLayoutComponents,
+  createFormFields,
+  createButton,
+  createBanner,
+} from "../src";
 import { sprinkles } from "./sprinkles.css";
 
-export * from "../src/";
+export * from "../src";
 export const Box = createBentoBox(sprinkles);
 export const { Stack, Column, Columns, Inline, Inset } = createLayoutComponents(Box);
 export const { TextField } = createFormFields({});
@@ -15,3 +21,4 @@ export const Button = createButton({
   labelSize: "large",
   radius: "8",
 });
+export const Banner = createBanner({});

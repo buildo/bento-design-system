@@ -1,3 +1,4 @@
+export * from "./Banner/createBanner";
 export * from "./Box/createBentoBox";
 export * from "./Button/createButton";
 export * from "./Divider/Divider";
