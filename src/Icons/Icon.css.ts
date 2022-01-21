@@ -15,12 +15,12 @@ export const iconRecipe = recipe({
     },
     color: {
       default: bentoSprinkles({ fill: "textPrimary" }),
-      primary: bentoSprinkles({ fill: "textPrimary" }),
-      informative: bentoSprinkles({ fill: "textInformative" }),
-      positive: bentoSprinkles({ fill: "textPositive" }),
-      warning: bentoSprinkles({ fill: "textWarning" }),
-      negative: bentoSprinkles({ fill: "textNegative" }),
-      disabled: bentoSprinkles({ fill: "textDisabled" }),
+      primary: bentoSprinkles({ fill: "interactivePrimaryEnabled" }),
+      informative: bentoSprinkles({ fill: "informative" }),
+      positive: bentoSprinkles({ fill: "positive" }),
+      warning: bentoSprinkles({ fill: "warning" }),
+      negative: bentoSprinkles({ fill: "negative" }),
+      disabled: bentoSprinkles({ fill: "interactiveDisabled" }),
     },
   },
 });
