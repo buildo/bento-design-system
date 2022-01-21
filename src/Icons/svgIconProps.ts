@@ -11,5 +11,6 @@ export function svgIconProps(
       sizeAxis === "horizontal"
         ? iconRecipe({ width: size, color })
         : iconRecipe({ height: size, color }),
+    viewBox: "0 0 24 24",
   };
 }
