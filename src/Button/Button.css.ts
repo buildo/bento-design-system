@@ -38,7 +38,7 @@ export const buttonRecipe = strictRecipe({
           default: "interactiveDangerEnabled",
           focus: "interactiveDangerFocus",
           hover: "interactiveDangerHover",
-          disabled: "disabled",
+          disabled: "interactiveDisabled",
         },
       }),
       ghostPrimary: bentoSprinkles({
