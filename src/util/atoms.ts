@@ -21,6 +21,10 @@ export const unconditionalProperties = {
     ...vars.space,
     full: "100%",
   },
+  top: vars.space,
+  bottom: vars.space,
+  left: vars.space,
+  right: vars.space,
   position: ["relative", "absolute", "fixed"],
 } as const;
 
