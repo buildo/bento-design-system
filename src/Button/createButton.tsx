@@ -8,7 +8,7 @@ import { Label } from "../Typography/Label/Label";
 import { BentoSprinkles } from "src/internal";
 
 type Size = "small" | "medium";
-type Props = {
+export type ButtonProps = {
   label: LocalizedString;
   onPress: () => void;
   kind: "primary" | "danger" | "ghostPrimary" | "ghostDanger";
@@ -28,7 +28,7 @@ type ButtonConfig = {
 };
 
 export function createButton(config: ButtonConfig) {
-  return function Button(props: Props) {
+  return function Button(props: ButtonProps) {
     const ref = useRef<HTMLButtonElement>(null);
     const { buttonProps } = useButton(props, ref);
     const { onKeyDown, onKeyUp } = props;
