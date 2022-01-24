@@ -5,6 +5,7 @@ import {
   createFormFields,
   createButton,
   createBanner,
+  createSnackbar,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -22,3 +23,4 @@ export const Button = createButton({
   radius: "8",
 });
 export const Banner = createBanner({});
+export const { Snackbar, SnackbarProvider } = createSnackbar(Button, {});
