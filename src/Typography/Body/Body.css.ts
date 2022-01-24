@@ -20,7 +20,7 @@ export const bodyRecipe = strictRecipe({
       disabled: bentoSprinkles({ color: "textDisabled" }),
       positive: bentoSprinkles({ color: "textPositive" }),
       warning: bentoSprinkles({ color: "textWarning" }),
-      informative: bentoSprinkles({ color: "textNegative" }),
+      informative: bentoSprinkles({ color: "textInformative" }),
     },
   },
 });
