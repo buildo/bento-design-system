@@ -8,7 +8,7 @@ import { Label } from "../Typography/Label/Label";
 import { BentoSprinkles } from "src/internal";
 
 type Size = "small" | "medium";
-type Props = {
+export type ButtonProps = {
   label: LocalizedString;
   onPress: () => void;
   kind: "primary" | "danger" | "ghostPrimary" | "ghostDanger";
@@ -21,14 +21,22 @@ type SizeConfig<T> = {
 };
 
 type ButtonConfig = {
-  paddingX: BentoSprinkles["paddingX"];
-  paddingY: SizeConfig<BentoSprinkles["paddingY"]>;
-  labelSize: ComponentProps<typeof Label>["size"];
-  radius: BentoSprinkles["borderRadius"];
+  paddingX?: BentoSprinkles["paddingX"];
+  paddingY?: SizeConfig<BentoSprinkles["paddingY"]>;
+  labelSize?: ComponentProps<typeof Label>["size"];
+  radius?: BentoSprinkles["borderRadius"];
 };
 
-export function createButton(config: ButtonConfig) {
-  return function Button(props: Props) {
+export function createButton({
+  paddingX = "16",
+  paddingY = {
+    small: "8",
+    medium: "16",
+  },
+  labelSize = "large",
+  radius = "8",
+}: ButtonConfig) {
+  return function Button(props: ButtonProps) {
     const ref = useRef<HTMLButtonElement>(null);
     const { buttonProps } = useButton(props, ref);
     const { onKeyDown, onKeyUp } = props;
@@ -46,11 +54,11 @@ export function createButton(config: ButtonConfig) {
         {...buttonProps}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
-        paddingX={config.paddingX}
-        paddingY={config.paddingY[size]}
-        borderRadius={config.radius}
+        paddingX={paddingX}
+        paddingY={paddingY[size]}
+        borderRadius={radius}
       >
-        <Label size={config.labelSize}>{props.label}</Label>
+        <Label size={labelSize}>{props.label}</Label>
       </Box>
     );
   };
