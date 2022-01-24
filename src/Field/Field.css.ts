@@ -16,8 +16,8 @@ export const inputRecipe = strictRecipe({
     },
     bentoSprinkles({
       background: {
-        default: "primary",
-        disabled: "disabled",
+        default: "backgroundPrimary",
+        disabled: "backgroundDisabled",
       },
       outline: "none",
       boxShadow: { disabled: "disabled" },

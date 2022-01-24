@@ -14,9 +14,11 @@ export const unconditionalProperties = {
   lineHeight: vars.lineHeight,
   letterSpacing: vars.letterSpacing,
   width: {
+    ...vars.space,
     full: "100%",
   },
   height: {
+    ...vars.space,
     full: "100%",
   },
   position: ["relative", "absolute", "fixed"],

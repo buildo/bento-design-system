@@ -14,7 +14,7 @@ const { defaultExport, createStory } = createComponentStories({
   },
   decorators: [
     (Story: FunctionComponent) => (
-      <Box background="disabled" style={{ width: "fit-content" }}>
+      <Box background="backgroundDisabled" style={{ width: "fit-content" }}>
         <Story />
       </Box>
     ),
