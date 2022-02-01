@@ -49,6 +49,12 @@ resources:
       private_key: ((private-key))
 
 jobs:
+  - name: update-pipeline
+    plan:
+      - get: bento
+        trigger: true
+      - set_pipeline: self
+        file: bento/ci/pipeline.yml
   - name: main
     plan:
       - get: bento
@@ -181,7 +187,6 @@ jobs:
   - name: release
     plan:
       - get: bento
-        resource: release
         trigger: true
       - task: release
         file: bento/ci/tasks/release.yml
