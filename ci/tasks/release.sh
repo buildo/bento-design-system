@@ -15,7 +15,7 @@ git config --global user.name "Nemobot"
 
 corepack enable
 
-pnpm install --no-progress
+pnpm install
 pnpm version --no-git-tag-version --new-version $VERSION
 
 git add .
