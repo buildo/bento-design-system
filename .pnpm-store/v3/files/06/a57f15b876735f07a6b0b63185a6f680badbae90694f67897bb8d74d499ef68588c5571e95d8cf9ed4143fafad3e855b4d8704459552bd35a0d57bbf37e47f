@@ -1,0 +1,24 @@
+{
+    "name": "@types/lz-string",
+    "version": "1.3.34",
+    "description": "TypeScript definitions for lz-string",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Roman Nikitin",
+            "url": "https://github.com/M0ns1gn0r",
+            "githubUsername": "M0ns1gn0r"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/lz-string"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "aad735b6e5aa73fc6eae36c37bd6037ad21b3d6ccaab66b699d7b78e903e4550",
+    "typeScriptVersion": "2.8"
+}

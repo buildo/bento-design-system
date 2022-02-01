@@ -1,0 +1,35 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function getClassName({
+  className,
+  atomicClasses,
+  defaultClassName
+}) {
+  const classes = [defaultClassName, className, atomicClasses].filter(Boolean);
+  return classes.length === 0 ? undefined : classes.join(" ");
+}
+function extractAtomsFromProps(props, atomsFn) {
+  let hasAtomProps = false;
+  let atomProps = {};
+  let otherProps = {};
+
+  for (const key in props) {
+    if (atomsFn.properties.has(key)) {
+      hasAtomProps = true;
+      atomProps[key] = props[key];
+    } else {
+      otherProps[key] = props[key];
+    }
+  }
+
+  return {
+    hasAtomProps,
+    atomProps,
+    otherProps
+  };
+}
+
+exports.extractAtomsFromProps = extractAtomsFromProps;
+exports.getClassName = getClassName;

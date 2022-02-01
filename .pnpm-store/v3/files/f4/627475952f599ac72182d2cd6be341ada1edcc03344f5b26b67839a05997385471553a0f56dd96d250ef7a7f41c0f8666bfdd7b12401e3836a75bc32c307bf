@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const recommended_1 = require("./config/recommended");
+const sort_export_all_1 = require("./rules/sort-export-all");
+module.exports = {
+    rules: {
+        "sort-export-all": sort_export_all_1.sortExportAll,
+    },
+    configs: {
+        recommended: recommended_1.recommended,
+    },
+};
+//# sourceMappingURL=index.js.map

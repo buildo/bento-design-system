@@ -1,0 +1,269 @@
+'use strict';
+
+var _regenerator = require('babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
+var _minimist = require('minimist');
+
+var _minimist2 = _interopRequireDefault(_minimist);
+
+var _tcomb = require('tcomb');
+
+var _tcomb2 = _interopRequireDefault(_tcomb);
+
+var _lodash = require('lodash');
+
+var _validations = require('./validations');
+
+var _validations2 = _interopRequireDefault(_validations);
+
+var _version = require('./npm/version');
+
+var _version2 = _interopRequireDefault(_version);
+
+var _publish = require('./npm/publish');
+
+var _publish2 = _interopRequireDefault(_publish);
+
+var _release = require('./github/release');
+
+var _release2 = _interopRequireDefault(_release);
+
+var _changelog = require('./github/changelog');
+
+var _changelog2 = _interopRequireDefault(_changelog);
+
+var _commitAndPush = require('./commitAndPush');
+
+var _commitAndPush2 = _interopRequireDefault(_commitAndPush);
+
+var _token = require('./github/token');
+
+var _utils = require('./utils');
+
+var _config = require('./config');
+
+var _config2 = _interopRequireDefault(_config);
+
+var _package = require('../package.json');
+
+var _package2 = _interopRequireDefault(_package);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _argv = (0, _minimist2.default)(process.argv.slice(2));
+
+var defaultArgv = _config2.default.tasks,
+    dataType = _config2.default.github.dataType;
+
+
+var runDefault = !(0, _lodash.some)((0, _keys2.default)(defaultArgv), function (arg) {
+  return _argv[arg] === true;
+});
+
+var Argv = _tcomb2.default.dict(_tcomb2.default.String, _tcomb2.default.maybe(_tcomb2.default.Boolean));
+var argv = Argv((0, _lodash.omit)(runDefault ? (0, _extends3.default)({}, defaultArgv, _argv) : (0, _lodash.mapValues)(defaultArgv, function (v, k) {
+  return _argv[k] || false;
+}), '_'));
+var mainArgument = _argv._[0];
+
+var promptUserBeforeRunningTask = function () {
+  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(task, message) {
+    var hasConfirmed;
+    return _regenerator2.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            if (!(argv[task] === null)) {
+              _context.next = 6;
+              break;
+            }
+
+            _context.next = 3;
+            return _utils.rl.confirmation(message);
+
+          case 3:
+            hasConfirmed = _context.sent;
+
+            (0, _utils.log)('\n');
+            return _context.abrupt('return', hasConfirmed);
+
+          case 6:
+            return _context.abrupt('return', argv[task]);
+
+          case 7:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, undefined);
+  }));
+
+  return function promptUserBeforeRunningTask(_x, _x2) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var main = function () {
+  var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
+    var hasIncreasedVersion, hasUpdatedChangelog;
+    return _regenerator2.default.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            hasIncreasedVersion = false;
+            hasUpdatedChangelog = false;
+
+            if (!(_argv.v || _argv.version)) {
+              _context2.next = 4;
+              break;
+            }
+
+            return _context2.abrupt('return', (0, _utils.log)(_package2.default.version));
+
+          case 4:
+
+            (0, _utils.log)((0, _utils.bold)('smooth-release v' + _package2.default.version));
+
+            _context2.prev = 5;
+            _context2.t0 = !_config2.default.github.token;
+
+            if (!_context2.t0) {
+              _context2.next = 10;
+              break;
+            }
+
+            _context2.next = 10;
+            return (0, _token.askForToken)();
+
+          case 10:
+            _context2.next = 12;
+            return promptUserBeforeRunningTask('validations', 'Do you want to run the "validations" task?');
+
+          case 12:
+            if (!_context2.sent) {
+              _context2.next = 15;
+              break;
+            }
+
+            _context2.next = 15;
+            return (0, _validations2.default)({ mayPublishOnNpm: argv['npm-publish'] !== false });
+
+          case 15:
+            _context2.next = 17;
+            return promptUserBeforeRunningTask('npm-version', 'Do you want to run the "npm-version" task and increase the version of your library?');
+
+          case 17:
+            if (!_context2.sent) {
+              _context2.next = 21;
+              break;
+            }
+
+            _context2.next = 20;
+            return (0, _version2.default)({ manualVersion: mainArgument, dataType: dataType });
+
+          case 20:
+            hasIncreasedVersion = true;
+
+          case 21:
+            _context2.next = 23;
+            return promptUserBeforeRunningTask('changelog', 'Do you want to run the "changelog" task and update the CHANGELOG.md file?');
+
+          case 23:
+            if (!_context2.sent) {
+              _context2.next = 27;
+              break;
+            }
+
+            _context2.next = 26;
+            return (0, _changelog2.default)({ hasIncreasedVersion: hasIncreasedVersion, dataType: dataType });
+
+          case 26:
+            hasUpdatedChangelog = true;
+
+          case 27:
+            if (!(hasIncreasedVersion || hasUpdatedChangelog)) {
+              _context2.next = 30;
+              break;
+            }
+
+            _context2.next = 30;
+            return (0, _commitAndPush2.default)({ hasIncreasedVersion: hasIncreasedVersion, hasUpdatedChangelog: hasUpdatedChangelog });
+
+          case 30:
+            _context2.next = 32;
+            return promptUserBeforeRunningTask('gh-release', 'Do you want to run the "gh-release" task and create a release on GitHub for the last version of you library?');
+
+          case 32:
+            if (!_context2.sent) {
+              _context2.next = 35;
+              break;
+            }
+
+            _context2.next = 35;
+            return (0, _release2.default)({ all: false });
+
+          case 35:
+            _context2.next = 37;
+            return promptUserBeforeRunningTask('npm-publish', 'Do you want to run the "npm-publish" task and publish your library on npm?');
+
+          case 37:
+            if (!_context2.sent) {
+              _context2.next = 40;
+              break;
+            }
+
+            _context2.next = 40;
+            return (0, _publish2.default)();
+
+          case 40:
+            _context2.next = 42;
+            return promptUserBeforeRunningTask('gh-release-all', 'Do you want to run the "gh-release-all" task and create a release on GitHub for every version of your library?');
+
+          case 42:
+            if (!_context2.sent) {
+              _context2.next = 45;
+              break;
+            }
+
+            _context2.next = 45;
+            return (0, _release2.default)({ all: true });
+
+          case 45:
+            _context2.next = 50;
+            break;
+
+          case 47:
+            _context2.prev = 47;
+            _context2.t1 = _context2['catch'](5);
+
+            (0, _utils.onError)(_context2.t1);
+
+          case 50:
+          case 'end':
+            return _context2.stop();
+        }
+      }
+    }, _callee2, undefined, [[5, 47]]);
+  }));
+
+  return function main() {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+(0, _utils.checkForUpdates)();
+main();

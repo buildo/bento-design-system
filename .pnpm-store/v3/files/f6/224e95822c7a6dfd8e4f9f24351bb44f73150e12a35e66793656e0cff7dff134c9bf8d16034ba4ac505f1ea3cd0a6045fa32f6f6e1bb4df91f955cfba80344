@@ -1,0 +1,140 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _fs = require('fs');
+
+var _fs2 = _interopRequireDefault(_fs);
+
+var _child_process = require('child_process');
+
+var _minimist2 = require('minimist');
+
+var _minimist3 = _interopRequireDefault(_minimist2);
+
+var _tcomb = require('tcomb');
+
+var _tcomb2 = _interopRequireDefault(_tcomb);
+
+var _lodash = require('lodash');
+
+var _token = require('./github/token');
+
+var _token2 = _interopRequireDefault(_token);
+
+var _betterConsole = require('better-console');
+
+var _betterConsole2 = _interopRequireDefault(_betterConsole);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _minimist = (0, _minimist3.default)(process.argv.slice(2)),
+    token = _minimist.token;
+
+_tcomb2.default.interface.strict = true;
+
+var getRootFolderPath = function getRootFolderPath() {
+  return (0, _child_process.execSync)('git rev-parse --show-toplevel', { encoding: 'utf8' }).trim();
+};
+
+var smoothReleaseRCPath = getRootFolderPath() + '/.smooth-releaserc';
+var smoothReleaseRC = _fs2.default.existsSync(smoothReleaseRCPath) ? JSON.parse(_fs2.default.readFileSync(smoothReleaseRCPath)) : {};
+
+var Config = _tcomb2.default.interface({
+  github: _tcomb2.default.interface({
+    token: _tcomb2.default.maybe(_tcomb2.default.String),
+    dataType: _tcomb2.default.maybe(_tcomb2.default.enums.of(['issues', 'pullRequests'])),
+    changelog: _tcomb2.default.interface({
+      outputPath: _tcomb2.default.String,
+      ignoredLabels: _tcomb2.default.list(_tcomb2.default.String),
+      breaking: _tcomb2.default.interface({
+        title: _tcomb2.default.String,
+        labels: _tcomb2.default.list(_tcomb2.default.String)
+      }),
+      bug: _tcomb2.default.interface({
+        title: _tcomb2.default.String,
+        labels: _tcomb2.default.list(_tcomb2.default.String)
+      }),
+      feature: _tcomb2.default.interface({
+        title: _tcomb2.default.String
+      })
+    })
+  }),
+  publish: _tcomb2.default.interface({
+    branch: _tcomb2.default.maybe(_tcomb2.default.String),
+    inSyncWithRemote: _tcomb2.default.Boolean,
+    noUncommittedChanges: _tcomb2.default.Boolean,
+    noUntrackedFiles: _tcomb2.default.Boolean,
+    validNpmCredentials: _tcomb2.default.Boolean,
+    validGithubToken: _tcomb2.default.Boolean,
+    packageFilesFilter: _tcomb2.default.union([_tcomb2.default.enums.of(['npmignore', 'files']), _tcomb2.default.Boolean]),
+    npmVersionConfirmation: _tcomb2.default.Boolean,
+    tarPackageConfirmation: _tcomb2.default.Boolean
+  }),
+  tasks: _tcomb2.default.interface({
+    changelog: _tcomb2.default.maybe(_tcomb2.default.Boolean),
+    validations: _tcomb2.default.maybe(_tcomb2.default.Boolean),
+    'npm-version': _tcomb2.default.maybe(_tcomb2.default.Boolean),
+    'npm-publish': _tcomb2.default.maybe(_tcomb2.default.Boolean),
+    'gh-release': _tcomb2.default.maybe(_tcomb2.default.Boolean),
+    'gh-release-all': _tcomb2.default.maybe(_tcomb2.default.Boolean)
+  })
+}, { name: 'SmoothReleaseRC' });
+
+var defaultConfig = {
+  github: {
+    dataType: 'issues',
+    changelog: {
+      outputPath: './CHANGELOG.md',
+      ignoredLabels: ['DX', 'invalid', 'discussion'],
+      bug: {
+        title: '#### Fixes (bugs & defects):',
+        labels: ['bug', 'defect']
+      },
+      breaking: {
+        title: '#### Breaking:',
+        labels: ['breaking']
+      },
+      feature: {
+        title: '#### New features:'
+      }
+    }
+  },
+  publish: {
+    branch: 'master',
+    inSyncWithRemote: true,
+    noUncommittedChanges: true,
+    noUntrackedFiles: true,
+    validNpmCredentials: true,
+    validGithubToken: true,
+    packageFilesFilter: 'files',
+    npmVersionConfirmation: true,
+    tarPackageConfirmation: true
+  },
+  tasks: {
+    validations: true,
+    'npm-publish': null,
+    'npm-version': null,
+    'gh-release': null,
+    'gh-release-all': false,
+    changelog: null
+  }
+};
+
+var config = (0, _lodash.mergeWith)(defaultConfig, smoothReleaseRC, { github: { token: token || (0, _token2.default)() } }, function (a, b) {
+  return _tcomb2.default.Array.is(a) ? b : undefined;
+});
+
+var validatedConfig = null;
+try {
+  validatedConfig = Config(config);
+} catch (e) {
+  _betterConsole2.default.error('\n".smooth-releaserc" is invalid.\n');
+  _betterConsole2.default.error(e);
+  _betterConsole2.default.error();
+  process.exit(1);
+}
+
+exports.default = validatedConfig;

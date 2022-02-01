@@ -1,0 +1,399 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
+var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _regenerator = require('babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _extends3 = require('babel-runtime/helpers/extends');
+
+var _extends4 = _interopRequireDefault(_extends3);
+
+var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _fs = require('fs');
+
+var _fs2 = _interopRequireDefault(_fs);
+
+var _staggerjs = require('staggerjs');
+
+var _staggerjs2 = _interopRequireDefault(_staggerjs);
+
+var _lodash = require('lodash');
+
+var _utils = require('../utils');
+
+var _getAllTags = require('../modules/getAllTags');
+
+var _getAllTags2 = _interopRequireDefault(_getAllTags);
+
+var _getAllClosedIssues = require('../modules/getAllClosedIssues');
+
+var _getAllClosedIssues2 = _interopRequireDefault(_getAllClosedIssues);
+
+var _getAllMergedPullRequests = require('../modules/getAllMergedPullRequests');
+
+var _getAllMergedPullRequests2 = _interopRequireDefault(_getAllMergedPullRequests);
+
+var _config = require('../config');
+
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _getGithubOwnerAndRep = (0, _utils.getGithubOwnerAndRepo)(),
+    owner = _getGithubOwnerAndRep.owner,
+    repo = _getGithubOwnerAndRep.repo;
+
+var addCreatedAtInfoToTags = function () {
+  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(tags) {
+    return _regenerator2.default.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return (0, _staggerjs2.default)(tags.map(function (tag) {
+              return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                var tagCommit;
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                  while (1) {
+                    switch (_context.prev = _context.next) {
+                      case 0:
+                        _context.next = 2;
+                        return _utils.github.commits(tag.commit.sha).fetch();
+
+                      case 2:
+                        tagCommit = _context.sent;
+                        return _context.abrupt('return', (0, _extends4.default)({}, tag, {
+                          createdAt: new Date(tagCommit.commit.author.date)
+                        }));
+
+                      case 4:
+                      case 'end':
+                        return _context.stop();
+                    }
+                  }
+                }, _callee, undefined);
+              }));
+            }), { maxOngoingMethods: 10, perSecond: 20 });
+
+          case 2:
+            return _context2.abrupt('return', _context2.sent);
+
+          case 3:
+          case 'end':
+            return _context2.stop();
+        }
+      }
+    }, _callee2, undefined);
+  }));
+
+  return function addCreatedAtInfoToTags(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var hasAtLeastOneLabel = function hasAtLeastOneLabel(issue, labels) {
+  return (0, _lodash.some)(labels, function (label) {
+    return (0, _lodash.find)(issue.labels, { name: label });
+  });
+};
+
+var groupIssuesByTag = function groupIssuesByTag(closedIssues, tags) {
+  var tagsSortedAsc = (0, _lodash.sortBy)(tags, ['createdAt']);
+  return closedIssues.reduce(function (issuesByTag, issue) {
+    var tag = (0, _lodash.find)(tagsSortedAsc, function (tag) {
+      return tag.createdAt > issue.closedAt;
+    });
+
+    if (tag) {
+      return (0, _extends4.default)({}, issuesByTag, (0, _defineProperty3.default)({}, tag.name, (issuesByTag[tag.name] || []).concat(issue)));
+    }
+
+    return (0, _extends4.default)({}, issuesByTag, {
+      unreleased: (issuesByTag.unreleased || []).concat(issue)
+    });
+  }, {});
+};
+
+var groupIssuesByType = function groupIssuesByType(issues) {
+  var isBreaking = function isBreaking(issue) {
+    return hasAtLeastOneLabel(issue, _config2.default.github.changelog.breaking.labels);
+  };
+  var isBug = function isBug(issue) {
+    return hasAtLeastOneLabel(issue, _config2.default.github.changelog.bug.labels);
+  };
+
+  return issues.reduce(function (issuesByType, issue) {
+    if (isBreaking(issue)) {
+      return (0, _extends4.default)({}, issuesByType, {
+        breaking: (issuesByType.breaking || []).concat(issue)
+      });
+    } else if (isBug(issue)) {
+      return (0, _extends4.default)({}, issuesByType, {
+        bug: (issuesByType.bug || []).concat(issue)
+      });
+    } else {
+      return (0, _extends4.default)({}, issuesByType, {
+        feature: (issuesByType.feature || []).concat(issue)
+      });
+    }
+  }, {});
+};
+
+var createChangelogSection = function createChangelogSection(_ref3) {
+  var previousTag = _ref3.previousTag,
+      tag = _ref3.tag,
+      _ref3$issues = _ref3.issues,
+      issues = _ref3$issues === undefined ? [] : _ref3$issues;
+
+  var dateTime = tag ? ' (' + tag.createdAt.toISOString().slice(0, 10) + ')' : '';
+  var tagLink = '## [' + (tag ? tag.name : 'Unreleased') + '](https://github.com/' + owner + '/' + repo + '/tree/' + (tag ? tag.name : 'HEAD') + ')' + dateTime;
+  var fullChangelogLink = previousTag ? '[Full Changelog](https://github.com/' + owner + '/' + repo + '/compare/' + previousTag.name + '...' + (tag ? tag.name : 'HEAD') + ')' : '';
+  var header = tagLink + '\n' + fullChangelogLink;
+
+  if (issues.length === 0) {
+    return header;
+  }
+
+  var issuesGroupedByType = groupIssuesByType(issues);
+
+  var types = (0, _keys2.default)(issuesGroupedByType);
+
+  var content = types.reduce(function (acc, type) {
+    var issues = issuesGroupedByType[type].map(function (issue) {
+      return '- ' + issue.title + ' [#' + issue.number + '](' + issue.htmlUrl + ')';
+    }).join('\n');
+    return acc + '\n\n' + _config2.default.github.changelog[type].title + '\n\n' + issues;
+  }, '');
+
+  return header + '\n\n' + content.trim();
+};
+
+var getDataFromGitHub = function () {
+  var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(dataType) {
+    var data, tags, tagsWithCreatedAt;
+    return _regenerator2.default.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            (0, _utils.info)('Get data from GitHub');
+            _utils.status.addSteps(['Get all ' + (dataType === 'pullRequests' ? 'merged pull requests' : 'closed issues') + ' from GitHub', 'Get all tags from GitHub', 'Add "createdAt" date-time info to each tag']);
+
+            // GET data from GitHub
+            data = void 0;
+            _context3.t0 = dataType;
+            _context3.next = _context3.t0 === 'issues' ? 6 : _context3.t0 === 'pullRequests' ? 11 : 16;
+            break;
+
+          case 6:
+            _context3.next = 8;
+            return (0, _getAllClosedIssues2.default)();
+
+          case 8:
+            _context3.t1 = function (i) {
+              return !hasAtLeastOneLabel(i, _config2.default.github.changelog.ignoredLabels);
+            };
+
+            data = _context3.sent.filter(_context3.t1);
+            return _context3.abrupt('break', 16);
+
+          case 11:
+            _context3.next = 13;
+            return (0, _getAllMergedPullRequests2.default)();
+
+          case 13:
+            _context3.t2 = function (i) {
+              return !hasAtLeastOneLabel(i, _config2.default.github.changelog.ignoredLabels);
+            };
+
+            data = _context3.sent.filter(_context3.t2);
+            return _context3.abrupt('break', 16);
+
+          case 16:
+            _utils.status.doneStep(true);
+
+            // GET tags
+            _context3.next = 19;
+            return (0, _getAllTags2.default)();
+
+          case 19:
+            tags = _context3.sent;
+
+            _utils.status.doneStep(true);
+
+            // ADD "created-at" info to each tag
+
+            if (!tags.length) {
+              _context3.next = 27;
+              break;
+            }
+
+            _context3.next = 24;
+            return addCreatedAtInfoToTags(tags);
+
+          case 24:
+            _context3.t3 = _context3.sent;
+            _context3.next = 28;
+            break;
+
+          case 27:
+            _context3.t3 = tags;
+
+          case 28:
+            tagsWithCreatedAt = _context3.t3;
+
+            _utils.status.doneStep(true);
+
+            return _context3.abrupt('return', { data: data, tagsWithCreatedAt: tagsWithCreatedAt });
+
+          case 31:
+          case 'end':
+            return _context3.stop();
+        }
+      }
+    }, _callee3, undefined);
+  }));
+
+  return function getDataFromGitHub(_x2) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+
+var generateChangelog = function generateChangelog(_ref5) {
+  var data = _ref5.data,
+      dataType = _ref5.dataType,
+      tagsWithCreatedAt = _ref5.tagsWithCreatedAt,
+      hasIncreasedVersion = _ref5.hasIncreasedVersion;
+
+  (0, _utils.info)('Generate the changelog');
+  _utils.status.addSteps(['Group ' + (dataType === 'pullRequests' ? 'merged pull requests' : 'closed issues') + ' by relative tag', 'Generate changelog for each tag']);
+
+  var tags = hasIncreasedVersion ? [{ name: 'v' + (0, _utils.getPackageJsonVersion)(), createdAt: new Date() }].concat((0, _toConsumableArray3.default)(tagsWithCreatedAt)) : tagsWithCreatedAt;
+
+  // GROUP data by tag
+  var dataGroupedByTag = void 0;
+  switch (dataType) {
+    case 'issues':
+      dataGroupedByTag = groupIssuesByTag(data, tags);
+      break;
+    case 'pullRequests':
+      dataGroupedByTag = groupIssuesByTag(data, tags);
+      break;
+  }
+  _utils.status.doneStep(true);
+
+  // WRITE changelog for each tag
+  var changelogSections = tags.map(function (tag, i) {
+    return createChangelogSection({ tag: tag, previousTag: tags[i + 1], issues: dataGroupedByTag[tag.name] });
+  });
+
+  // WRITE changelog for unreleased issues (without tag)
+  var unreleased = dataGroupedByTag.unreleased ? createChangelogSection({ previousTag: tags[0], tag: null, issues: dataGroupedByTag.unreleased }) : '';
+
+  // WRITE complete changelog
+  var changelogMarkdown = '#  Change Log\n\n' + [unreleased].concat(changelogSections).join('\n\n');
+  _utils.status.doneStep(true);
+
+  return changelogMarkdown;
+};
+
+var saveChangelog = function () {
+  var _ref6 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4(changelogMarkdown) {
+    return _regenerator2.default.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            (0, _utils.info)('Update CHANGELOG.md');
+            _utils.status.addSteps(['Update CHANGELOG.md locally']);
+
+            // SAVE changelog
+            _fs2.default.writeFileSync((0, _utils.getRootFolderPath)() + '/' + _config2.default.github.changelog.outputPath, changelogMarkdown);
+
+            // THROW error if changelog hasn't changed
+            _context4.next = 5;
+            return (0, _utils.exec)('git status --porcelain -- ' + _config2.default.github.changelog.outputPath);
+
+          case 5:
+            _context4.t0 = _context4.sent.trim().length;
+
+            if (!(_context4.t0 === 0)) {
+              _context4.next = 8;
+              break;
+            }
+
+            throw new _utils.SmoothReleaseError('CHANGELOG.md hasn\'t changed');
+
+          case 8:
+
+            _utils.status.doneStep(true);
+
+          case 9:
+          case 'end':
+            return _context4.stop();
+        }
+      }
+    }, _callee4, undefined);
+  }));
+
+  return function saveChangelog(_x3) {
+    return _ref6.apply(this, arguments);
+  };
+}();
+
+exports.default = function () {
+  var _ref8 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5(_ref7) {
+    var hasIncreasedVersion = _ref7.hasIncreasedVersion,
+        dataType = _ref7.dataType;
+
+    var _ref9, data, tagsWithCreatedAt, changelogMarkdown;
+
+    return _regenerator2.default.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            (0, _utils.title)('Update changelog');
+
+            _context5.next = 3;
+            return getDataFromGitHub(dataType);
+
+          case 3:
+            _ref9 = _context5.sent;
+            data = _ref9.data;
+            tagsWithCreatedAt = _ref9.tagsWithCreatedAt;
+            changelogMarkdown = generateChangelog({ data: data, dataType: dataType, tagsWithCreatedAt: tagsWithCreatedAt, hasIncreasedVersion: hasIncreasedVersion });
+            _context5.next = 9;
+            return saveChangelog(changelogMarkdown);
+
+          case 9:
+            return _context5.abrupt('return', changelogMarkdown);
+
+          case 10:
+          case 'end':
+            return _context5.stop();
+        }
+      }
+    }, _callee5, undefined);
+  }));
+
+  return function (_x4) {
+    return _ref8.apply(this, arguments);
+  };
+}();

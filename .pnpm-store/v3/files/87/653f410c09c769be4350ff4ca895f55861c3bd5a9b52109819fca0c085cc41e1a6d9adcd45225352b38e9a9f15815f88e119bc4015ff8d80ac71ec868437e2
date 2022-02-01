@@ -1,0 +1,22 @@
+{
+    "name": "@types/base64-url",
+    "version": "2.2.0",
+    "description": "TypeScript definitions for base64-url",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Uri Shaked",
+            "url": "https://github.com/urish",
+            "githubUsername": "urish"
+        }
+    ],
+    "main": "",
+    "repository": {
+        "type": "git",
+        "url": "https://www.github.com/DefinitelyTyped/DefinitelyTyped.git"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "5257cf49ddfe9f9efc15cea6e2f035a5c5360c04a0393aaabcd62050e845b716",
+    "typeScriptVersion": "2.0"
+}

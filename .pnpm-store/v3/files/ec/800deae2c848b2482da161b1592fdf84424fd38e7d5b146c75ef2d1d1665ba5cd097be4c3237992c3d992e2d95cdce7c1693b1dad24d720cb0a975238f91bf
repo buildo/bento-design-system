@@ -1,0 +1,7 @@
+export declare const recommended: {
+    plugins: string[];
+    rules: {
+        "sort-export-all/sort-export-all": string;
+    };
+};
+//# sourceMappingURL=recommended.d.ts.map

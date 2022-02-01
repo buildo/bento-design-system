@@ -1,0 +1,2 @@
+import { Theme } from '../models';
+export declare function getHtmlClasses(theme: Theme): string;

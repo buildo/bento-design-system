@@ -1,0 +1,72 @@
+{
+  "name": "parse-prop-types",
+  "version": "0.3.0",
+  "description": "Parses React prop-types into a readable object",
+  "license": "MIT",
+  "repository": "diegohaz/parse-prop-types",
+  "main": "dist/index.js",
+  "author": {
+    "name": "Diego Haz",
+    "email": "hazdiego@gmail.com",
+    "url": "https://github.com/diegohaz"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest",
+    "coverage": "npm test -- --coverage",
+    "postcoverage": "opn coverage/lcov-report/index.html",
+    "lint": "eslint src test",
+    "flow": "flow check",
+    "docs": "documentation readme src --section=API",
+    "clean": "rimraf dist",
+    "prebuild": "npm run docs && npm run clean",
+    "build": "babel src -d dist",
+    "preversion": "npm run lint && npm test && npm run build",
+    "version": "standard-changelog && git add CHANGELOG.md",
+    "postpublish": "git push origin master --follow-tags"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/src/ensureDevPropTypes.js"
+    ]
+  },
+  "keywords": [
+    "parse-prop-types",
+    "react",
+    "prop-types"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-eslint": "^8.0.0",
+    "babel-jest": "^22.1.0",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "documentation": "^5.3.2",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-flowtype": "^2.42.0",
+    "eslint-plugin-flowtype-errors": "^3.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "flow-bin": "^0.64.0",
+    "jest-cli": "^22.1.4",
+    "opn-cli": "^3.1.0",
+    "prettier": "^1.11.1",
+    "prop-types": "^15.6.0",
+    "rimraf": "^2.6.1",
+    "standard-changelog": "^2.0.0"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.0.0"
+  }
+}

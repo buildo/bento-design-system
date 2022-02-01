@@ -1,0 +1,22 @@
+{
+    "name": "@types/dedent",
+    "version": "0.7.0",
+    "description": "TypeScript definitions for dedent",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Douglas Duteil",
+            "url": "https://github.com/douglasduteil"
+        }
+    ],
+    "main": "",
+    "repository": {
+        "type": "git",
+        "url": "https://www.github.com/DefinitelyTyped/DefinitelyTyped.git"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "peerDependencies": {},
+    "typesPublisherContentHash": "3586f83cb6f2feeddc43e5f5c25f0476b60b7ffe068e4b24f562a18c1a877558",
+    "typeScriptVersion": "2.0"
+}

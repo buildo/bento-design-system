@@ -1,0 +1,4 @@
+export declare type CreateBoxParams<AtomsFn> = {
+    atoms: AtomsFn;
+    defaultClassName?: string;
+};

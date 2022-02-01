@@ -1,0 +1,61 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var react = require('react');
+var core = require('@dessert-box/core');
+
+function createBox({
+  atoms: atomsFn,
+  defaultClassName
+}) {
+  const Box = /*#__PURE__*/react.forwardRef(({
+    as: element = "div",
+    className,
+    ...props
+  }, ref) => {
+    const {
+      hasAtomProps,
+      atomProps,
+      otherProps
+    } = core.extractAtomsFromProps(props, atomsFn);
+    return /*#__PURE__*/react.createElement(element, {
+      ref,
+      ...otherProps,
+      className: core.getClassName({
+        hasAtomProps,
+        className,
+        atomicClasses: atomsFn(atomProps),
+        defaultClassName
+      })
+    });
+  });
+  return Box;
+}
+function createBoxWithAtomsProp({
+  atoms: atomsFn,
+  defaultClassName
+}) {
+  const Box = /*#__PURE__*/react.forwardRef(({
+    as: element = "div",
+    className,
+    atoms,
+    ...props
+  }, ref) => {
+    const hasAtomProps = typeof atoms !== "undefined";
+    return /*#__PURE__*/react.createElement(element, {
+      ref,
+      ...props,
+      className: core.getClassName({
+        hasAtomProps,
+        className,
+        atomicClasses: atomsFn(atoms),
+        defaultClassName
+      })
+    });
+  });
+  return Box;
+}
+
+exports.createBox = createBox;
+exports.createBoxWithAtomsProp = createBoxWithAtomsProp;

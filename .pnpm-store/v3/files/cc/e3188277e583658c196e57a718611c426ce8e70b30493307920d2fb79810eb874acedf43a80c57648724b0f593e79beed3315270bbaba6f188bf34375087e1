@@ -1,0 +1,22 @@
+{
+  "name": "better-console",
+  "version": "0.2.4",
+  "description": "A better console for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mohsen1/better-console"
+  },
+  "keywords": [
+    "console"
+  ],
+  "author": "Mohsen Azimi",
+  "license": "BSD",
+  "dependencies": {
+    "colors": "~0.6.0-1",
+    "cli-table": "~0.2.0"
+  }
+}

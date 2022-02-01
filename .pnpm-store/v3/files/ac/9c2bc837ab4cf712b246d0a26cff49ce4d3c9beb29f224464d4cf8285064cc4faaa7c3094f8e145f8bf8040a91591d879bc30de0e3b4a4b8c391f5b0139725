@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.recommended = void 0;
+exports.recommended = {
+    plugins: ["sort-export-all"],
+    rules: {
+        "sort-export-all/sort-export-all": "warn",
+    },
+};
+//# sourceMappingURL=recommended.js.map

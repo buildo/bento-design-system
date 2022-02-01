@@ -1,0 +1,58 @@
+{
+  "name": "smooth-release",
+  "version": "8.0.9",
+  "description": "Smart CLI tool to safely and automatically do every step to release a new version of a library hosted on GitHub and published on npm",
+  "main": "lib",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src test",
+    "build": "rm -rf lib && babel src -d lib",
+    "watch": "npm run build -- --watch --source-maps inline",
+    "preversion": "npm run lint",
+    "prepublish": "npm run build",
+    "release-version": "npm run build && ./smooth-release --validations --changelog --gh-release --npm-version --npm-publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buildo/smooth-release.git"
+  },
+  "bin": {
+    "smooth-release": "./smooth-release"
+  },
+  "author": "FrancescoCioria <francesco@buildo.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/buildo/smooth-release/issues"
+  },
+  "files": [
+    "lib",
+    "smooth-release"
+  ],
+  "homepage": "https://github.com/buildo/smooth-release#readme",
+  "dependencies": {
+    "babel-runtime": "^6.18.0",
+    "better-console": "^0.2.4",
+    "cli-color": "^1.2.0",
+    "elegant-status": "^1.1.0",
+    "error-ex": "^1.3.0",
+    "inquirer": "^0.10.1",
+    "lodash": "^4.16.4",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "octokat": "^0.4.18",
+    "semver": "^5.3.0",
+    "staggerjs": "^1.1.0",
+    "tar": "^4.1.1",
+    "tcomb": "^3.2.15",
+    "update-notifier": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6",
+    "babel-eslint": "^7.0.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "eslint": "^3.6.0",
+    "eslint-config-buildo": "0.1.0"
+  }
+}

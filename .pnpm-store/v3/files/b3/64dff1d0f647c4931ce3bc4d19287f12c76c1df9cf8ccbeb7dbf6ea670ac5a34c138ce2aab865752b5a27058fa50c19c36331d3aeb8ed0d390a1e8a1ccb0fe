@@ -1,0 +1,20 @@
+{
+  "name": "virtual-resource-loader",
+  "description": "Create new files inside a webpack compilation, without a file existing on disk",
+  "version": "1.0.0",
+  "main": "dist/virtual-resource-loader.cjs.js",
+  "module": "dist/virtual-resource-loader.esm.js",
+  "author": "SEEK",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seek-oss/vocab.git",
+    "directory": "packages/virtual-resource-loader"
+  },
+  "dependencies": {
+    "loader-utils": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/loader-utils": "^2.0.1"
+  }
+}

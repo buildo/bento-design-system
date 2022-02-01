@@ -1,0 +1,56 @@
+import { forwardRef, createElement } from 'react';
+import { extractAtomsFromProps, getClassName } from '@dessert-box/core';
+
+function createBox({
+  atoms: atomsFn,
+  defaultClassName
+}) {
+  const Box = /*#__PURE__*/forwardRef(({
+    as: element = "div",
+    className,
+    ...props
+  }, ref) => {
+    const {
+      hasAtomProps,
+      atomProps,
+      otherProps
+    } = extractAtomsFromProps(props, atomsFn);
+    return /*#__PURE__*/createElement(element, {
+      ref,
+      ...otherProps,
+      className: getClassName({
+        hasAtomProps,
+        className,
+        atomicClasses: atomsFn(atomProps),
+        defaultClassName
+      })
+    });
+  });
+  return Box;
+}
+function createBoxWithAtomsProp({
+  atoms: atomsFn,
+  defaultClassName
+}) {
+  const Box = /*#__PURE__*/forwardRef(({
+    as: element = "div",
+    className,
+    atoms,
+    ...props
+  }, ref) => {
+    const hasAtomProps = typeof atoms !== "undefined";
+    return /*#__PURE__*/createElement(element, {
+      ref,
+      ...props,
+      className: getClassName({
+        hasAtomProps,
+        className,
+        atomicClasses: atomsFn(atoms),
+        defaultClassName
+      })
+    });
+  });
+  return Box;
+}
+
+export { createBox, createBoxWithAtomsProp };

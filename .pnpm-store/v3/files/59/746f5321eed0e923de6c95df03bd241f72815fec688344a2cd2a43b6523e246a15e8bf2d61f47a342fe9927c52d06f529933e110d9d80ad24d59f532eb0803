@@ -1,0 +1,244 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var integration = require('@vanilla-extract/integration');
+
+const webpack4 = {
+  isWebpack5: false,
+  getNodeTemplatePlugin: () => require('webpack/lib/node/NodeTemplatePlugin'),
+  getNodeTargetPlugin: () => require('webpack/lib/node/NodeTargetPlugin'),
+  getLimitChunkCountPlugin: () => require('webpack/lib/optimize/LimitChunkCountPlugin'),
+  getExternalsPlugin: () => require('webpack/lib/ExternalsPlugin'),
+  isModuleUsed: (_compilation, module) => typeof module.used === 'boolean' ? module.used : true
+};
+const webpack5 = {
+  isWebpack5: true,
+  getNodeTemplatePlugin: compiler => compiler.webpack.node.NodeTemplatePlugin,
+  getNodeTargetPlugin: compiler => compiler.webpack.node.NodeTargetPlugin,
+  getLimitChunkCountPlugin: compiler => compiler.webpack.optimize.LimitChunkCountPlugin,
+  getExternalsPlugin: compiler => compiler.webpack.ExternalsPlugin,
+  isModuleUsed: (compilation, module) => {
+    const exportsInfo = compilation.moduleGraph.getExportsInfo(module);
+    return exportsInfo.isModuleUsed('main');
+  }
+};
+var createCompat = (isWebpack5 => {
+  if (isWebpack5) {
+    return webpack5;
+  }
+
+  return webpack4;
+});
+
+const getCompilerName = resource => `vanilla-extract-compiler:${resource}`;
+
+class ChildCompiler {
+  constructor(externals) {
+    this.externals = externals;
+  }
+
+  isChildCompiler(name) {
+    return typeof name === 'string' && name.startsWith('vanilla-extract-compiler');
+  }
+
+  async getCompiledSource(loader) {
+    const {
+      source,
+      fileDependencies,
+      contextDependencies
+    } = await compileVanillaSource(loader, this.externals); // Set loader dependencies to dependencies of the child compiler
+
+    fileDependencies.forEach(dep => {
+      loader.addDependency(dep);
+    });
+    contextDependencies.forEach(dep => {
+      loader.addContextDependency(dep);
+    });
+    return {
+      source,
+      dependencies: fileDependencies
+    };
+  }
+
+}
+
+function getRootCompilation(loader) {
+  var compiler = loader._compiler;
+  var compilation = loader._compilation;
+
+  while (compiler.parentCompilation) {
+    compilation = compiler.parentCompilation;
+    compiler = compilation.compiler;
+  }
+
+  return compilation;
+}
+
+function compileVanillaSource(loader, externals) {
+  return new Promise((resolve, reject) => {
+    const isWebpack5 = Boolean(loader._compiler.webpack && loader._compiler.webpack.version);
+    const compat = createCompat(isWebpack5); // Child compiler will compile vanilla-extract files to be evaled during compilation
+
+    const outputOptions = {
+      filename: loader.resourcePath
+    };
+    const compilerName = getCompilerName(loader.resourcePath);
+    const childCompiler = getRootCompilation(loader).createChildCompiler(compilerName, outputOptions, []);
+    const NodeTemplatePlugin = compat.getNodeTemplatePlugin(loader._compiler);
+    const NodeTargetPlugin = compat.getNodeTargetPlugin(loader._compiler);
+    const LimitChunkCountPlugin = compat.getLimitChunkCountPlugin(loader._compiler);
+    const ExternalsPlugin = compat.getExternalsPlugin(loader._compiler);
+    new NodeTemplatePlugin(outputOptions).apply(childCompiler);
+    new NodeTargetPlugin().apply(childCompiler);
+
+    if (compat.isWebpack5) {
+      const {
+        EntryOptionPlugin,
+        library: {
+          EnableLibraryPlugin
+        }
+      } = loader._compiler.webpack;
+      new EnableLibraryPlugin('commonjs2').apply(childCompiler);
+      EntryOptionPlugin.applyEntryOption(childCompiler, loader.context, {
+        child: {
+          library: {
+            type: 'commonjs2'
+          },
+          import: [loader.resourcePath]
+        }
+      });
+    } else {
+      // Webpack 4 code. Remove once support is removed
+      const {
+        LibraryTemplatePlugin,
+        SingleEntryPlugin
+      } = require('webpack');
+
+      new LibraryTemplatePlugin(null, 'commonjs2').apply(childCompiler);
+      new SingleEntryPlugin(loader.context, loader.resourcePath).apply(childCompiler);
+    }
+
+    new LimitChunkCountPlugin({
+      maxChunks: 1
+    }).apply(childCompiler);
+    new ExternalsPlugin('commonjs', ['@vanilla-extract/css', '@vanilla-extract/css/fileScope', externals]).apply(childCompiler);
+    let source;
+
+    if (compat.isWebpack5) {
+      childCompiler.hooks.compilation.tap(compilerName, compilation => {
+        compilation.hooks.processAssets.tap(compilerName, () => {
+          source = compilation.assets[loader.resourcePath] && compilation.assets[loader.resourcePath].source(); // Remove all chunk assets
+
+          compilation.chunks.forEach(chunk => {
+            chunk.files.forEach(file => {
+              compilation.deleteAsset(file);
+            });
+          });
+        });
+      });
+    } else {
+      childCompiler.hooks.afterCompile.tap(compilerName, compilation => {
+        source = compilation.assets[loader.resourcePath] && compilation.assets[loader.resourcePath].source(); // Remove all chunk assets
+
+        compilation.chunks.forEach(chunk => {
+          chunk.files.forEach(file => {
+            delete compilation.assets[file];
+          });
+        });
+      });
+    }
+
+    try {
+      childCompiler.runAsChild((err, _entries, compilation) => {
+        if (err) {
+          return reject(err);
+        }
+
+        if (!compilation) {
+          return reject(new Error('Missing compilation in child compiler result'));
+        }
+
+        if (compilation.errors.length > 0) {
+          return reject(compilation.errors[0]);
+        }
+
+        if (!source) {
+          return reject(new Error("Didn't get a result from child compiler"));
+        }
+
+        resolve({
+          source,
+          fileDependencies: Array.from(compilation.fileDependencies),
+          contextDependencies: Array.from(compilation.contextDependencies)
+        });
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+}
+
+const pluginName = 'VanillaExtractPlugin';
+
+function markCSSFilesAsSideEffects(compiler, compat) {
+  compiler.hooks.normalModuleFactory.tap(pluginName, nmf => {
+    if (compat.isWebpack5) {
+      nmf.hooks.createModule.tap(pluginName, // @ts-expect-error CreateData is typed as 'object'...
+      createData => {
+        if (createData.matchResource && createData.matchResource.endsWith('.vanilla.css')) {
+          createData.settings.sideEffects = true;
+        }
+      });
+    } else {
+      nmf.hooks.afterResolve.tap(pluginName, // @ts-expect-error Can't be typesafe for webpack 4
+      result => {
+        if (result.matchResource && result.matchResource.endsWith('.vanilla.css')) {
+          result.settings.sideEffects = true;
+        }
+      });
+    }
+  });
+}
+
+class VanillaExtractPlugin {
+  constructor(options = {}) {
+    const {
+      test = integration.cssFileFilter,
+      outputCss = true,
+      externals,
+      allowRuntime,
+      identifiers
+    } = options;
+
+    if (allowRuntime !== undefined) {
+      console.warn('The "allowRuntime" option is deprecated.');
+    }
+
+    this.test = test;
+    this.outputCss = outputCss;
+    this.allowRuntime = allowRuntime ?? false;
+    this.childCompiler = new ChildCompiler(externals);
+    this.identifiers = identifiers;
+  }
+
+  apply(compiler) {
+    const compat = createCompat(Boolean(compiler.webpack && compiler.webpack.version));
+    markCSSFilesAsSideEffects(compiler, compat);
+    compiler.options.module?.rules.splice(0, 0, {
+      test: this.test,
+      use: [{
+        loader: require.resolve('../loader'),
+        options: {
+          outputCss: this.outputCss,
+          childCompiler: this.childCompiler,
+          identifiers: this.identifiers,
+          packageInfo: integration.getPackageInfo(compiler.context)
+        }
+      }]
+    });
+  }
+
+}
+
+exports.VanillaExtractPlugin = VanillaExtractPlugin;

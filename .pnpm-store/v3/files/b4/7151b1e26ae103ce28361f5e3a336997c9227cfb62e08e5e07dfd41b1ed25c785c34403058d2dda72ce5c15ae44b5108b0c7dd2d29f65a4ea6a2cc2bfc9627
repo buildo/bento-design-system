@@ -1,0 +1,5 @@
+declare const parameters: {
+    readonly name: "withThemes";
+    readonly parameterName: "themes";
+};
+export default parameters;
