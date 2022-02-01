@@ -23,4 +23,4 @@ git commit -m "v$VERSION"
 git push origin HEAD:main
 
 echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> $HOME/.npmrc
-pnpm publish --publish-branch main
+pnpm publish --git-checks false
