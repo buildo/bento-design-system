@@ -22,5 +22,5 @@ git add .
 git commit -m "v$VERSION"
 git push origin HEAD:main
 
-echo "//registry.yarnpkg.com/:_authToken=$NPM_TOKEN" >> $HOME/.npmrc
+echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> $HOME/.npmrc
 pnpm publish --publish-branch main
