@@ -13,12 +13,14 @@ chmod 400 $HOME/.ssh/id_rsa
 git config --global user.email "nemobot@buildo.io"
 git config --global user.name "Nemobot"
 
-yarn install --no-progress
-yarn version --no-git-tag-version --new-version $VERSION
+corepack enable
+
+pnpm install --no-progress
+pnpm version --no-git-tag-version --new-version $VERSION
 
 git add .
 git commit -m "v$VERSION"
 git push origin HEAD:main
 
 echo "//registry.yarnpkg.com/:_authToken=$NPM_TOKEN" >> $HOME/.npmrc
-yarn publish --non-interactive
+pnpm publish --non-interactive
