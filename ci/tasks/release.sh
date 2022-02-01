@@ -13,7 +13,7 @@ chmod 400 $HOME/.ssh/id_rsa
 git config --global user.email "nemobot@buildo.io"
 git config --global user.name "Nemobot"
 
-curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+corepack enable
 
 pnpm install --no-progress
 pnpm version --no-git-tag-version --new-version $VERSION
