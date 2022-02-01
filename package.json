@@ -1,5 +1,5 @@
 {
-  "name": "bento-design-system",
+  "name": "@buildo/bento-design-system",
   "version": "0.0.1",
   "description": "The buildo DS",
   "main": "index.js",
