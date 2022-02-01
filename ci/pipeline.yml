@@ -37,6 +37,17 @@ resources:
       url: ((buildo-slack-hook))
     icon: slack
 
+  - name: release
+    type: git
+    icon: github
+    webhook_token: 0gd4XZNL4Y94zYDLql3C
+    check_every: 24h
+    source:
+      uri: git@github.com:buildo/bento-design-system
+      branch: main
+      tag_filter: v*
+      private_key: ((private-key))
+
 jobs:
   - name: main
     plan:
@@ -166,3 +177,11 @@ jobs:
 
               - task: chromatic
                 file: bento/ci/tasks/chromatic.yml
+
+  - name: release
+    plan:
+      - get: bento
+        resource: release
+        trigger: true
+      - task: release
+        file: bento/ci/tasks/release.yml
