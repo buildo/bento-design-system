@@ -1,0 +1,13 @@
+template: |
+  ## What’s Changed
+  $CHANGES
+categories:
+  - title: "🐞 Bug fixes"
+    labels:
+      - "bug"
+  - title: "🔧 Dependency updates"
+    labels:
+      - "dependencies"
+  - title: "🧹 Chores"
+    labels:
+      - "chore"
