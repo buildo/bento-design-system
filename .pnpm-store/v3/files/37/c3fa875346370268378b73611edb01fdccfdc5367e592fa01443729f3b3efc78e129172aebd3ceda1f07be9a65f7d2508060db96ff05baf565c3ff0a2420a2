@@ -1,3 +1,0 @@
-import { Rule } from "eslint";
-export declare const sortExportAll: Rule.RuleModule;
-//# sourceMappingURL=sort-export-all.d.ts.map

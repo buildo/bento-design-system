@@ -1,5 +1,0 @@
-export declare const ADDON_ID = "storybook-addon-themes";
-export declare const PARAM_KEY = "themes";
-export declare const CHANGE: string;
-export declare const DECORATOR: string;
-export declare const THEME: string;

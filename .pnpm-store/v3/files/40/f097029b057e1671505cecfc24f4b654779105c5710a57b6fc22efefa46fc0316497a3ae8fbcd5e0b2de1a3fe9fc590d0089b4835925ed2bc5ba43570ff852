@@ -1,2 +1,0 @@
-export {};
-//# sourceMappingURL=sort-export-all.test.d.ts.map
