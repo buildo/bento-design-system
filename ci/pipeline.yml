@@ -187,6 +187,7 @@ jobs:
   - name: release
     plan:
       - get: bento
+        resource: release
         trigger: true
       - task: release
         file: bento/ci/tasks/release.yml
