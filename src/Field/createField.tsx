@@ -51,7 +51,7 @@ export function createField(config: FieldConfig) {
   }: Props) {
     return (
       <Box disabled={disabled} cursor={{ disabled: "notAllowed" }}>
-        <Stack space="4">
+        <Stack space={4}>
           {label && (
             <Label
               as={labelElement}
@@ -76,7 +76,7 @@ export function createField(config: FieldConfig) {
           )}
           {issues && (
             <Box paddingLeft={config.assistiveText.paddingLeft}>
-              <Stack space="4">
+              <Stack space={4}>
                 {issues.map((errorMessage, index) => (
                   <Body
                     key={index}

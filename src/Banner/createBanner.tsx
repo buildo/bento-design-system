@@ -54,10 +54,10 @@ type BannerConfig = {
 };
 
 export function createBanner({
-  padding = "16",
+  padding = 16,
   titleSize = "small",
   descriptionSize = "small",
-  radius = "8",
+  radius = 8,
   closeIcon = IconClose,
   kindIcons = {
     informative: IconInformative,
@@ -68,19 +68,19 @@ export function createBanner({
 }: BannerConfig) {
   return function Banner({ title, description, kind, ...dismissProps }: Props) {
     const isWithoutTitle = title === undefined;
-    const iconSize = isWithoutTitle ? "16" : "24";
+    const iconSize = isWithoutTitle ? 16 : 24;
     const iconProps = { size: iconSize, color: kind } as const;
     const Icon = kindIcons[kind];
 
     return (
       <Box padding={padding} borderRadius={radius} className={bannerRecipe({ kind })}>
-        <Columns space="16" align="left" alignY={title && description ? "top" : "center"}>
+        <Columns space={16} align="left" alignY={title && description ? "top" : "center"}>
           <Column width="content">
             <Box>
               <Icon {...iconProps} />
             </Box>
           </Column>
-          <Stack align="left" space="4">
+          <Stack align="left" space={4}>
             {title && (
               <Title size={titleSize} color={kind}>
                 {title}
@@ -93,7 +93,7 @@ export function createBanner({
               <IconButton
                 label={dismissProps.dismissButtonLabel}
                 onPress={dismissProps.onDismiss}
-                size="16"
+                size={16}
                 icon={closeIcon}
                 color="primary"
               />

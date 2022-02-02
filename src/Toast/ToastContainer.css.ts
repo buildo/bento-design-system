@@ -4,7 +4,7 @@ import { bentoSprinkles } from "../internal";
 export const container = style([
   bentoSprinkles({
     position: "fixed",
-    bottom: "16",
-    right: "16",
+    bottom: 16,
+    right: 16,
   }),
 ]);

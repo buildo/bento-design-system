@@ -25,11 +25,11 @@ export function createToast(
   Button: FunctionComponent<ButtonProps>,
   {
     paddingX = {
-      withAction: "0",
-      withoutAction: "16",
+      withAction: 0,
+      withoutAction: 16,
     },
-    paddingY = "16",
-    radius = "8",
+    paddingY = 16,
+    radius = 8,
     messageSize = "medium",
   }: ToastConfig
 ) {

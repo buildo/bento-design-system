@@ -16,9 +16,9 @@ type FieldsConfig = {
 export function createFormFields({
   labelSize = "small",
   assistiveTextSize = "small",
-  inputRadius = "8",
-  inputPaddingX = "16",
-  inputPaddingY = "16",
+  inputRadius = 8,
+  inputPaddingX = 16,
+  inputPaddingY = 16,
   inputFontSize = "large",
 }: FieldsConfig) {
   const Field = createField({
