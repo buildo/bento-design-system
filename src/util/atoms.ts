@@ -57,17 +57,18 @@ export const responsiveProperties = {
 } as const;
 
 const color = {
+  ...vars.brandColor,
+  ...vars.foregroundColor,
   ...vars.textColor,
-  ...vars.semanticColor,
-  ...vars.interactiveColor,
-  ...vars.onInteractiveColor,
+  ...vars.interactiveForegroundColor,
+  ...vars.outlineColor,
 };
 
 const background = {
+  ...vars.brandColor,
   ...vars.backgroundColor,
-  ...vars.semanticColor,
-  ...vars.interactiveColor,
-  transparent: "transparent",
+  ...vars.interactiveBackgroundColor,
+  ...vars.outlineColor,
 };
 
 export const statusProperties = {
