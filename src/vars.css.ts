@@ -138,8 +138,8 @@ export const vars = createThemeContract({
     outlineDisabled: null,
   },
   boxShadow: {
-    elevation4: null,
-    elevation8: null,
-    elevation16: null,
+    small: null,
+    medium: null,
+    large: null,
   },
 });

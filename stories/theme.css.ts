@@ -104,9 +104,9 @@ const commonTheme = {
     "16": "16px",
   },
   boxShadow: {
-    elevation4: `0px 4px 8px rgba(0, 0, 0, 0.16)`,
-    elevation8: `0px 8px 16px rgba(0, 0, 0, 0.16)`,
-    elevation16: `0px 16px 32px rgba(0, 0, 0, 0.16)`,
+    small: `0px 4px 8px rgba(0, 0, 0, 0.16)`,
+    medium: `0px 8px 16px rgba(0, 0, 0, 0.16)`,
+    large: `0px 16px 32px rgba(0, 0, 0, 0.16)`,
   },
 };
 
