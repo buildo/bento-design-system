@@ -57,17 +57,18 @@ export const responsiveProperties = {
 } as const;
 
 const color = {
+  ...vars.brandColor,
+  ...vars.foregroundColor,
   ...vars.textColor,
-  ...vars.semanticColor,
-  ...vars.interactiveColor,
-  ...vars.onInteractiveColor,
+  ...vars.interactiveForegroundColor,
+  ...vars.outlineColor,
 };
 
 const background = {
+  ...vars.brandColor,
   ...vars.backgroundColor,
-  ...vars.semanticColor,
-  ...vars.interactiveColor,
-  transparent: "transparent",
+  ...vars.interactiveBackgroundColor,
+  ...vars.outlineColor,
 };
 
 export const statusProperties = {
@@ -78,7 +79,7 @@ export const statusProperties = {
     default: "default",
     notAllowed: "not-allowed",
   },
-  boxShadow: vars.boxShadow,
+  boxShadow: { ...vars.boxShadow, none: "none" },
   outline: { ...vars.outlineColor, none: "none" },
   stroke: color,
   fill: color,

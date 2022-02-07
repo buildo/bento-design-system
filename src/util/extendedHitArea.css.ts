@@ -17,7 +17,7 @@ export const extendedHitAreaRecipe = strictRecipe({
       },
       selectors: {
         [`${extendedHitAreaDebug} &:after`]: {
-          background: vars.semanticColor.informative,
+          background: vars.backgroundColor.backgroundInformative,
           zIndex: -1,
         },
       },

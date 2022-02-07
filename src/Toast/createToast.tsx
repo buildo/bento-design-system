@@ -1,11 +1,11 @@
 import { ComponentProps, FunctionComponent } from "react";
 import { BentoSprinkles } from "../internal";
-import { Body, ButtonProps, TextChildren } from "../";
-import { createSnackbarInternal } from "./createSnackbarInternal";
-import { createSnackbarContainer } from "./createSnackbarContainer";
-import { createSnackbarProvider } from "./createSnackbarProvider";
+import { Body, ButtonProps, TextChildren } from "..";
+import { createToastInternal } from "./createToastInternal";
+import { createToastContainer } from "./createToastContainer";
+import { createToastProvider } from "./createToastProvider";
 
-export type SnackbarConfig = {
+export type ToastConfig = {
   paddingX?: {
     withAction: BentoSprinkles["paddingX"];
     withoutAction: BentoSprinkles["paddingX"];
@@ -15,13 +15,13 @@ export type SnackbarConfig = {
   messageSize?: ComponentProps<typeof Body>["size"];
 };
 
-export type SnackbarProps = {
+export type ToastProps = {
   kind: "informative" | "positive" | "warning" | "negative" | "secondary";
   message: TextChildren;
   action?: Pick<ButtonProps, "onPress" | "label">;
 };
 
-export function createSnackbar(
+export function createToast(
   Button: FunctionComponent<ButtonProps>,
   {
     paddingX = {
@@ -31,11 +31,11 @@ export function createSnackbar(
     paddingY = "16",
     radius = "8",
     messageSize = "medium",
-  }: SnackbarConfig
+  }: ToastConfig
 ) {
-  const Snackbar = createSnackbarInternal(Button, { paddingX, paddingY, radius, messageSize });
-  const SnackbarContainer = createSnackbarContainer(Snackbar);
-  const SnackbarProvider = createSnackbarProvider(SnackbarContainer);
+  const Toast = createToastInternal(Button, { paddingX, paddingY, radius, messageSize });
+  const ToastContainer = createToastContainer(Toast);
+  const ToastProvider = createToastProvider(ToastContainer);
 
-  return { Snackbar, SnackbarProvider };
+  return { Toast, ToastProvider };
 }

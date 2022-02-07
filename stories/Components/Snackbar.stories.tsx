@@ -1,11 +1,11 @@
-import { Snackbar, SnackbarProvider, useSnackbar } from "../";
+import { Toast, ToastProvider, useToast } from "../";
 import { createComponentStories, formatMessage, textArgType } from "../util";
 import { action } from "@storybook/addon-actions";
 import { ComponentProps, useEffect } from "react";
 import { Meta, StoryFn } from "@storybook/react";
 
 const { defaultExport, createStory } = createComponentStories({
-  component: Snackbar,
+  component: Toast,
   args: {
     message: formatMessage("This is a message for you"),
   },
@@ -63,23 +63,23 @@ export const Secondary = createStory({
 export const WithProvider = ({
   message,
   kind = "informative",
-}: Meta<ComponentProps<typeof Snackbar>>["args"]) => {
-  const { showSnackbar } = useSnackbar();
+}: Meta<ComponentProps<typeof Toast>>["args"]) => {
+  const { showToast } = useToast();
   useEffect(() => {
-    showSnackbar({
+    showToast({
       message,
       kind,
       action: { label: formatMessage("Action"), onPress: action("onPress") },
     });
-  }, [message, kind, showSnackbar]);
+  }, [message, kind, showToast]);
 
   return <div />;
 };
 
 WithProvider.decorators = [
   (StoryFn: StoryFn) => (
-    <SnackbarProvider dismissAfterMs={1000000}>
+    <ToastProvider dismissAfterMs={1000000}>
       <StoryFn />
-    </SnackbarProvider>
+    </ToastProvider>
   ),
 ];

@@ -12,24 +12,32 @@ export const inputRecipe = strictRecipe({
         "&:disabled::placeholder": {
           color: vars.textColor.textDisabled,
         },
+        "&:disabled:not(:placeholder-shown)": {
+          background: vars.backgroundColor.backgroundSecondary,
+        },
       },
     },
     bentoSprinkles({
-      background: {
-        default: "backgroundPrimary",
-        disabled: "backgroundDisabled",
+      background: "backgroundPrimary",
+      boxShadow: {
+        disabled: "outlineDisabled",
       },
       outline: "none",
-      boxShadow: { disabled: "disabled" },
     }),
   ],
   variants: {
     validation: {
       valid: bentoSprinkles({
-        boxShadow: { default: "neutral", focus: "primaryStrong" },
+        boxShadow: {
+          default: "outlineInteractive",
+          focus: "outlineInteractiveStrong",
+        },
       }),
       invalid: bentoSprinkles({
-        boxShadow: { default: "negative", focus: "negativeStrong" },
+        boxShadow: {
+          default: "outlineNegative",
+          focus: "outlineNegativeStrong",
+        },
       }),
     },
   },

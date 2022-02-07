@@ -5,7 +5,7 @@ import {
   createFormFields,
   createButton,
   createBanner,
-  createSnackbar,
+  createToast,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -15,4 +15,4 @@ export const { Stack, Column, Columns, Inline, Inset } = createLayoutComponents(
 export const { TextField } = createFormFields({});
 export const Button = createButton({});
 export const Banner = createBanner({});
-export const { Snackbar, SnackbarProvider } = createSnackbar(Button, {});
+export const { Toast, ToastProvider } = createToast(Button, {});

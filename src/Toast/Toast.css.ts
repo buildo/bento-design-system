@@ -1,7 +1,7 @@
 import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
 
-export const snackbarRecipe = strictRecipe({
+export const toastRecipe = strictRecipe({
   base: [
     {
       width: 320,

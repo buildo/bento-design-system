@@ -21,12 +21,8 @@ export const Danger = createStory({
   kind: "danger",
 });
 
-export const GhostPrimary = createStory({
-  kind: "ghostPrimary",
-});
-
-export const GhostDanger = createStory({
-  kind: "ghostDanger",
+export const TransparentPrimary = createStory({
+  kind: "transparentPrimary",
 });
 
 export const PrimaryDisabled = createStory({
