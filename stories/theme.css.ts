@@ -103,11 +103,6 @@ const commonTheme = {
     "8": "8px",
     "16": "16px",
   },
-  boxShadow: {
-    small: `0px 4px 8px rgba(0, 0, 0, 0.16)`,
-    medium: `0px 8px 16px rgba(0, 0, 0, 0.16)`,
-    large: `0px 16px 32px rgba(0, 0, 0, 0.16)`,
-  },
 };
 
 export const lightTheme = createTheme(bentoVars, {
