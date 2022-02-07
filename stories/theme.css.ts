@@ -110,10 +110,6 @@ const commonTheme = {
   },
 };
 
-function rgbaFromColor(color: string, alpha: number) {
-  return `rgba(red(${color}), green(${color}), blue(${color}), ${alpha})`;
-}
-
 export const lightTheme = createTheme(bentoVars, {
   ...commonTheme,
   brandColor: {
@@ -128,8 +124,8 @@ export const lightTheme = createTheme(bentoVars, {
     backgroundPositive: colors.positive05,
     backgroundWarning: colors.warning05,
     backgroundNegative: colors.negative05,
-    backgroundLightOverlay: rgbaFromColor(colors.white, 0.8),
-    backgroundDarkOverlay: rgbaFromColor(colors.neutral90, 0.6),
+    backgroundLightOverlay: "rgba(255, 255, 255, 0.8)",
+    backgroundDarkOverlay: "rgba(26, 33, 43, 0.6)",
   },
   foregroundColor: {
     foregroundPrimary: colors.neutral90,
@@ -138,7 +134,7 @@ export const lightTheme = createTheme(bentoVars, {
     foregroundPositive: colors.positive60,
     foregroundWarning: colors.warning50,
     foregroundNegative: colors.negative40,
-    foregroundDisabled: rgbaFromColor(colors.neutral90, 0.3),
+    foregroundDisabled: "rgba(26, 33, 43, 0.3)",
   },
   textColor: {
     textPrimary: colors.neutral90,
@@ -147,39 +143,39 @@ export const lightTheme = createTheme(bentoVars, {
     textPositive: colors.positive70,
     textWarning: colors.warning60,
     textNegative: colors.negative60,
-    textDisabled: rgbaFromColor(colors.neutral60, 0.3),
+    textDisabled: "rgba(82, 94, 111, 0.3)",
   },
   interactiveBackgroundColor: {
     solidEnabledBackground: colors.black,
     solidHoverBackground: colors.interactive70,
     solidFocusBackground: colors.interactive70,
     solidActiveBackground: colors.black,
-    solidDisabledBackground: rgbaFromColor(colors.neutral60, 0.1),
+    solidDisabledBackground: "rgba(82, 94, 111, 0.1)",
     transparentEnabledBackground: "transparent",
-    transparentHoverBackground: rgbaFromColor(colors.neutral90, 0.1),
-    transparentFocusBackground: rgbaFromColor(colors.neutral90, 0.1),
-    transparentActiveBackground: rgbaFromColor(colors.neutral90, 0.2),
+    transparentHoverBackground: "rgba(26, 33, 43, 0.1)",
+    transparentFocusBackground: "rgba(26, 33, 43, 0.1)",
+    transparentActiveBackground: "rgba(26, 33, 43, 0.2)",
     transparentDisabledBackground: "transparent",
     dangerEnabledBackground: colors.negative40,
     dangerHoverBackground: colors.negative60,
     dangerFocusBackground: colors.negative60,
-    dangerDisabledBackground: rgbaFromColor(colors.neutral60, 0.1),
+    dangerDisabledBackground: "rgba(82, 94, 111, 0.1)",
   },
   interactiveForegroundColor: {
     solidEnabledForeground: colors.white,
     solidHoverForeground: colors.white,
     solidFocusForeground: colors.white,
     solidActiveForeground: colors.black,
-    solidDisabledForeground: rgbaFromColor(colors.neutral60, 0.3),
+    solidDisabledForeground: "rgba(82, 94, 111, 0.3)",
     transparentEnabledForeground: colors.black,
     transparentHoverForeground: colors.black,
     transparentFocusForeground: colors.black,
     transparentActiveForeground: colors.black,
-    transparentDisabledForeground: rgbaFromColor(colors.neutral60, 0.3),
+    transparentDisabledForeground: "rgba(82, 94, 111, 0.3)",
     dangerEnabledForeground: colors.white,
     dangerHoverForeground: colors.white,
     dangerFocusForeground: colors.white,
-    dangerDisabledForeground: rgbaFromColor(colors.neutral60, 0.3),
+    dangerDisabledForeground: "rgba(82, 94, 111, 0.3)",
   },
   outlineColor: {
     outlineSelected: colors.black,
