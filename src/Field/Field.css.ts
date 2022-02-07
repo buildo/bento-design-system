@@ -16,17 +16,25 @@ export const inputRecipe = strictRecipe({
     },
     bentoSprinkles({
       background: "backgroundPrimary",
-      outline: "outlineInput",
-      outlineWidth: { default: "1", active: "2" },
+      boxShadow: {
+        disabled: "outlineDisabled",
+      },
+      outline: "none",
     }),
   ],
   variants: {
     validation: {
       valid: bentoSprinkles({
-        outline: { default: "outlineInput", active: "outlineSelected", focus: "outlineSelected" },
+        boxShadow: {
+          default: "outlineInteractive",
+          focus: "outlineInteractiveStrong",
+        },
       }),
       invalid: bentoSprinkles({
-        outline: { default: "outlineNegative" },
+        boxShadow: {
+          default: "outlineNegative",
+          focus: "outlineNegativeStrong",
+        },
       }),
     },
   },

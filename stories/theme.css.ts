@@ -178,15 +178,22 @@ export const lightTheme = createTheme(bentoVars, {
     dangerDisabledForeground: "rgba(82, 94, 111, 0.3)",
   },
   outlineColor: {
-    outlineSelected: colors.black,
     outlineInput: colors.neutral50,
+    outlineInteractive: colors.black,
     outlineDecorative: colors.neutral20,
-    outlineContainer: colors.neutral05,
-    outlineInformative: colors.informative40,
-    outlinePositive: colors.positive60,
-    outlineWarning: colors.warning50,
     outlineNegative: colors.negative40,
     outlineDisabled: colors.neutral60,
+  },
+  boxShadow: {
+    outlineInput: `inset 0px 0px 0px 1px ${colors.neutral50}`,
+    outlineInteractive: `inset 0px 0px 0px 1px ${colors.black}`,
+    outlineInteractiveStrong: `inset 0px 0px 0px 2px ${colors.black}`,
+    outlineNegative: `inset 0px 0px 0px 1px ${colors.negative40}`,
+    outlineNegativeStrong: `inset 0px 0px 0px 2px ${colors.negative40}`,
+    outlineDisabled: `inset 0px 0px 0px 1px rgba(82, 94, 111, 0.3);`,
+    small: "0px 4px 8px rgba(0, 0, 0, 0.16)",
+    medium: "0px 8px 16px rgba(0, 0, 0, 0.16)",
+    large: "0px 16px 32px rgba(0, 0, 0, 0.16)",
   },
 });
 
