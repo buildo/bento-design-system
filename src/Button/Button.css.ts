@@ -15,49 +15,45 @@ export const buttonRecipe = strictRecipe({
     kind: {
       primary: bentoSprinkles({
         color: {
-          default: "interactivePrimaryOnEnabled",
-          focus: "interactivePrimaryOnFocus",
-          hover: "interactivePrimaryOnHover",
-          disabled: "interactiveOnDisabled",
+          default: "solidEnabledForeground",
+          focus: "solidFocusForeground",
+          hover: "solidHoverForeground",
+          disabled: "solidDisabledForeground",
         },
         background: {
-          default: "interactivePrimaryEnabled",
-          focus: "interactivePrimaryFocus",
-          hover: "interactivePrimaryHover",
-          disabled: "interactiveDisabled",
+          default: "solidEnabledBackground",
+          focus: "solidFocusBackground",
+          hover: "solidHoverBackground",
+          disabled: "solidDisabledBackground",
         },
       }),
       danger: bentoSprinkles({
         color: {
-          default: "interactiveDangerOnEnabled",
-          focus: "interactiveDangerOnFocus",
-          hover: "interactiveDangerOnHover",
-          disabled: "interactiveOnDisabled",
+          default: "dangerEnabledForeground",
+          focus: "dangerFocusForeground",
+          hover: "dangerHoverForeground",
+          disabled: "dangerDisabledForeground",
         },
         background: {
-          default: "interactiveDangerEnabled",
-          focus: "interactiveDangerFocus",
-          hover: "interactiveDangerHover",
-          disabled: "interactiveDisabled",
+          default: "dangerEnabledBackground",
+          focus: "dangerFocusBackground",
+          hover: "dangerHoverBackground",
+          disabled: "dangerDisabledBackground",
         },
       }),
-      ghostPrimary: bentoSprinkles({
+      transparentPrimary: bentoSprinkles({
         color: {
-          default: "interactivePrimaryEnabled",
-          hover: "interactivePrimaryHover",
-          focus: "interactivePrimaryFocus",
-          disabled: "interactiveDisabled",
+          default: "transparentEnabledForeground",
+          focus: "transparentFocusForeground",
+          hover: "transparentHoverForeground",
+          disabled: "transparentDisabledForeground",
         },
-        background: "transparent",
-      }),
-      ghostDanger: bentoSprinkles({
-        color: {
-          default: "interactiveDangerEnabled",
-          focus: "interactiveDangerFocus",
-          hover: "interactiveDangerHover",
-          disabled: "interactiveDisabled",
+        background: {
+          default: "transparentEnabledBackground",
+          focus: "transparentFocusBackground",
+          hover: "transparentHoverBackground",
+          disabled: "transparentDisabledBackground",
         },
-        background: "transparent",
       }),
     },
     size: {

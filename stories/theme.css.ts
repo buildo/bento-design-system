@@ -110,6 +110,10 @@ const commonTheme = {
   },
 };
 
+function rgbaFromColor(color: string, alpha: number) {
+  return `rgba(red(${color}), green(${color}), blue(${color}), ${alpha})`;
+}
+
 export const lightTheme = createTheme(bentoVars, {
   ...commonTheme,
   brandColor: {
@@ -124,8 +128,8 @@ export const lightTheme = createTheme(bentoVars, {
     backgroundPositive: colors.positive05,
     backgroundWarning: colors.warning05,
     backgroundNegative: colors.negative05,
-    backgroundLightOverlay: `rgba(${colors.white}, 0.8)`,
-    backgroundDarkOverlay: `rgba(${colors.neutral90}, 0.6)`,
+    backgroundLightOverlay: rgbaFromColor(colors.white, 0.8),
+    backgroundDarkOverlay: rgbaFromColor(colors.neutral90, 0.6),
   },
   foregroundColor: {
     foregroundPrimary: colors.neutral90,
@@ -134,7 +138,7 @@ export const lightTheme = createTheme(bentoVars, {
     foregroundPositive: colors.positive60,
     foregroundWarning: colors.warning50,
     foregroundNegative: colors.negative40,
-    foregroundDisabled: `rgba(${colors.neutral90}, 0.3)`,
+    foregroundDisabled: rgbaFromColor(colors.neutral90, 0.3),
   },
   textColor: {
     textPrimary: colors.neutral90,
@@ -143,39 +147,39 @@ export const lightTheme = createTheme(bentoVars, {
     textPositive: colors.positive70,
     textWarning: colors.warning60,
     textNegative: colors.negative60,
-    textDisabled: `rgba(${colors.neutral60}, 0.3)`,
+    textDisabled: rgbaFromColor(colors.neutral60, 0.3),
   },
   interactiveBackgroundColor: {
     solidEnabledBackground: colors.black,
     solidHoverBackground: colors.interactive70,
     solidFocusBackground: colors.interactive70,
     solidActiveBackground: colors.black,
-    solidDisabledBackground: `rgba(${colors.neutral60}, 0.1)`,
+    solidDisabledBackground: rgbaFromColor(colors.neutral60, 0.1),
     transparentEnabledBackground: "transparent",
-    transparentHoverBackground: `rgba(${colors.neutral90}, 0.1)`,
-    transparentFocusBackground: `rgba(${colors.neutral90}, 0.1)`,
-    transparentActiveBackground: `rgba(${colors.neutral90}, 0.2)`,
+    transparentHoverBackground: rgbaFromColor(colors.neutral90, 0.1),
+    transparentFocusBackground: rgbaFromColor(colors.neutral90, 0.1),
+    transparentActiveBackground: rgbaFromColor(colors.neutral90, 0.2),
     transparentDisabledBackground: "transparent",
     dangerEnabledBackground: colors.negative40,
     dangerHoverBackground: colors.negative60,
     dangerFocusBackground: colors.negative60,
-    dangerDisabledBackground: `rgba(${colors.neutral60}, 0.1)`,
+    dangerDisabledBackground: rgbaFromColor(colors.neutral60, 0.1),
   },
   interactiveForegroundColor: {
     solidEnabledForeground: colors.white,
     solidHoverForeground: colors.white,
     solidFocusForeground: colors.white,
     solidActiveForeground: colors.black,
-    solidDisabledForeground: `rgba(${colors.neutral60}, 0.3)`,
+    solidDisabledForeground: rgbaFromColor(colors.neutral60, 0.3),
     transparentEnabledForeground: colors.black,
     transparentHoverForeground: colors.black,
     transparentFocusForeground: colors.black,
     transparentActiveForeground: colors.black,
-    transparentDisabledForeground: `rgba(${colors.neutral60}, 0.3)`,
+    transparentDisabledForeground: rgbaFromColor(colors.neutral60, 0.3),
     dangerEnabledForeground: colors.white,
     dangerHoverForeground: colors.white,
     dangerFocusForeground: colors.white,
-    dangerDisabledForeground: `rgba(${colors.neutral60}, 0.3)`,
+    dangerDisabledForeground: rgbaFromColor(colors.neutral60, 0.3),
   },
   outlineColor: {
     outlineSelected: colors.black,

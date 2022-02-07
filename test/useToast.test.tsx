@@ -1,35 +1,35 @@
 import { render, screen, waitFor, waitForElementToBeRemoved } from "@testing-library/react";
 import user from "@testing-library/user-event";
-import { createButton, createSnackbar, unsafeLocalizedString, useSnackbar } from "../src";
+import { createButton, createToast, unsafeLocalizedString, useToast } from "../src";
 
 const Button = createButton({});
-const { SnackbarProvider } = createSnackbar(Button, {});
+const { ToastProvider } = createToast(Button, {});
 const message = unsafeLocalizedString("This is a message for you");
 const kind = "informative";
 
-function ShowSnackbar() {
-  const { showSnackbar } = useSnackbar();
-  return <button onClick={() => showSnackbar({ message, kind })}>Show snackbar</button>;
+function ShowToast() {
+  const { showToast } = useToast();
+  return <button onClick={() => showToast({ message, kind })}>Show toast</button>;
 }
 
-describe("useSnackbar", () => {
-  test("automatically dismisses snackbars after a delay", async () => {
+describe("useToast", () => {
+  test("automatically dismisses toasts after a delay", async () => {
     const { container } = render(
-      <SnackbarProvider dismissAfterMs={100}>
-        <ShowSnackbar />
-      </SnackbarProvider>
+      <ToastProvider dismissAfterMs={100}>
+        <ShowToast />
+      </ToastProvider>
     );
 
-    // No snackbar
+    // No toast
     expect(container.querySelector("aside")).not.toBeInTheDocument();
 
     user.click(screen.getByRole("button"));
 
-    // Snackbar should appear right away
+    // Toast should appear right away
     await waitFor(() => container.querySelector("aside"), { timeout: 1 });
     expect(container.querySelector("aside")).toHaveTextContent(message);
 
-    // Snackbar should disappear withing the expected delay
+    // Toast should disappear withing the expected delay
     await waitForElementToBeRemoved(() => container.querySelector("aside"), { timeout: 100 });
   });
 });

@@ -79,8 +79,12 @@ export const statusProperties = {
     default: "default",
     notAllowed: "not-allowed",
   },
-  boxShadow: vars.boxShadow,
+  boxShadow: { ...vars.boxShadow, none: "none" },
   outline: { ...vars.outlineColor, none: "none" },
+  outlineWidth: {
+    "1": "1px",
+    "2": "2px",
+  },
   stroke: color,
   fill: color,
 } as const;

@@ -11,7 +11,7 @@ type Size = "small" | "medium";
 export type ButtonProps = {
   label: LocalizedString;
   onPress: () => void;
-  kind: "primary" | "danger" | "ghostPrimary" | "ghostDanger";
+  kind: "primary" | "danger" | "transparentPrimary";
   isDisabled?: boolean;
   size?: Size;
 } & AriaButtonProps<"button">;

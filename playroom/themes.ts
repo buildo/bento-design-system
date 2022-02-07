@@ -1,1 +1,1 @@
-export { darkTheme, lightTheme } from "../stories/theme.css";
+export { lightTheme } from "../stories/theme.css";

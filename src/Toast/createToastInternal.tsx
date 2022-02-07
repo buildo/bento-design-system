@@ -1,23 +1,23 @@
 import { FunctionComponent } from "react";
 import { Box, Column, Columns } from "../internal";
-import { Body, ButtonProps, SnackbarProps } from "..";
-import { snackbarRecipe } from "./Snackbar.css";
-import { SnackbarConfig } from "./createSnackbar";
+import { Body, ButtonProps, ToastProps } from "..";
+import { toastRecipe } from "./Toast.css";
+import { ToastConfig } from "./createToast";
 
 /**
- * This component is not meant to be used directly: you should use the `showSnackbar` function
- * provided by `useSnackbar` instead.
+ * This component is not meant to be used directly: you should use the `showToast` function
+ * provided by `useToast` instead.
  */
-export function createSnackbarInternal(
+export function createToastInternal(
   Button: FunctionComponent<ButtonProps>,
-  config: { [P in keyof SnackbarConfig]-?: SnackbarConfig[P] }
+  config: { [P in keyof ToastConfig]-?: ToastConfig[P] }
 ) {
-  return function Snackbar({ kind, message, action }: SnackbarProps) {
+  return function Toast({ kind, message, action }: ToastProps) {
     return (
       <Box
         as="aside"
         aria-live="polite"
-        className={snackbarRecipe({ kind })}
+        className={toastRecipe({ kind })}
         borderRadius={config.radius}
         paddingY={config.paddingY}
         paddingLeft={config.paddingX.withoutAction}
@@ -29,7 +29,7 @@ export function createSnackbarInternal(
           </Body>
           {action && (
             <Column width="content">
-              <Button kind="ghostPrimary" size="small" {...action} />
+              <Button kind="transparentPrimary" size="small" {...action} />
             </Column>
           )}
         </Columns>
