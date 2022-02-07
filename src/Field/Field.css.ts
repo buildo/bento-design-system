@@ -12,6 +12,9 @@ export const inputRecipe = strictRecipe({
         "&:disabled::placeholder": {
           color: vars.textColor.textDisabled,
         },
+        "&:disabled:not(:placeholder-shown)": {
+          background: vars.backgroundColor.backgroundSecondary,
+        },
       },
     },
     bentoSprinkles({
