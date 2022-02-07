@@ -176,6 +176,7 @@ export const lightTheme = createTheme(bentoVars, {
     outlineInput: colors.neutral50,
     outlineInteractive: colors.black,
     outlineDecorative: colors.neutral20,
+    outlineContainer: colors.neutral05,
     outlineNegative: colors.negative40,
     outlineDisabled: colors.neutral60,
   },
@@ -186,9 +187,9 @@ export const lightTheme = createTheme(bentoVars, {
     outlineNegative: `inset 0px 0px 0px 1px ${colors.negative40}`,
     outlineNegativeStrong: `inset 0px 0px 0px 2px ${colors.negative40}`,
     outlineDisabled: `inset 0px 0px 0px 1px rgba(82, 94, 111, 0.3);`,
-    small: "0px 4px 8px rgba(0, 0, 0, 0.16)",
-    medium: "0px 8px 16px rgba(0, 0, 0, 0.16)",
-    large: "0px 16px 32px rgba(0, 0, 0, 0.16)",
+    elevationSmall: "0px 4px 8px rgba(0, 0, 0, 0.16)",
+    elevationMedium: "0px 8px 16px rgba(0, 0, 0, 0.16)",
+    elevationLarge: "0px 16px 32px rgba(0, 0, 0, 0.16)",
   },
 });
 

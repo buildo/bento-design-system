@@ -8,6 +8,7 @@ import {
   createBanner,
   createToast,
   createActions,
+  createCard,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -19,3 +20,4 @@ export const Button = createButton({});
 export const Banner = createBanner({});
 export const { Toast, ToastProvider } = createToast(Button, {});
 export const Actions = createActions(Button);
+export const Card = createCard({});

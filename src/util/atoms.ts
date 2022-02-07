@@ -26,6 +26,9 @@ export const unconditionalProperties = {
   left: vars.space,
   right: vars.space,
   position: ["relative", "absolute", "fixed"],
+  overflow: ["hidden", "visible", "auto"],
+  overflowX: ["hidden", "visible", "auto"],
+  overflowY: ["hidden", "visible", "auto"],
 } as const;
 
 export const responsiveProperties = {
