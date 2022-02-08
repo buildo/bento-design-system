@@ -1,3 +1,4 @@
+import { CSSProperties, StyleRule } from "@vanilla-extract/css";
 import {
   ConditionalValue,
   createMapValueFn,
@@ -6,26 +7,106 @@ import {
   defineProperties,
   RequiredConditionalValue,
 } from "@vanilla-extract/sprinkles";
-import { unconditionalProperties, responsiveProperties, statusProperties } from "../util/atoms";
+import { responsiveProperties, statusProperties, unconditionalProperties } from "../util/atoms";
 import { breakpoints } from "../util/breakpoints";
 import { statusConditions } from "../util/conditions";
 
-const unconditionalAtomicProperties = defineProperties({
+declare type AtomicProperties = {
+  [Property in keyof CSSProperties]?:
+    | Record<string, CSSProperties[Property] | StyleRule>
+    | ReadonlyArray<CSSProperties[Property]>;
+};
+declare type Values<Property, Result> = {
+  [Value in Property extends ReadonlyArray<any>
+    ? Property[number]
+    : Property extends Array<any>
+    ? Property[number]
+    : keyof Property]: Result;
+};
+declare type UnconditionalAtomicStyles<Properties extends AtomicProperties> = {
+  conditions: never;
+  styles: {
+    [Property in keyof Properties]: {
+      values: Values<
+        Properties[Property],
+        {
+          defaultClass: string;
+        }
+      >;
+    };
+  };
+};
+interface Condition {
+  "@media"?: string;
+  "@supports"?: string;
+  selector?: string;
+}
+declare type ConditionalAtomicStyles<
+  Properties extends AtomicProperties,
+  Conditions extends {
+    [conditionName: string]: Condition;
+  },
+  DefaultCondition extends keyof Conditions | Array<keyof Conditions> | false
+> = {
+  conditions: {
+    defaultCondition: DefaultCondition;
+    conditionNames: Array<keyof Conditions>;
+  };
+  styles: {
+    [Property in keyof Properties]: {
+      values: Values<
+        Properties[Property],
+        {
+          defaultClass: DefaultCondition extends false ? undefined : string;
+          conditions: {
+            [Rule in keyof Conditions]: string;
+          };
+        }
+      >;
+    };
+  };
+};
+declare type ShorthandAtomicStyles<
+  Shorthands extends {
+    [shorthandName: string]: Array<string | number | symbol>;
+  }
+> = {
+  styles: {
+    [Shorthand in keyof Shorthands]: {
+      mappings: Shorthands[Shorthand];
+    };
+  };
+};
+
+export const unconditionalAtomicProperties: UnconditionalAtomicStyles<
+  typeof unconditionalProperties
+> = defineProperties({
   properties: unconditionalProperties,
 });
 
-const responsiveAtomicProperties = defineProperties({
+const shorthands = {
+  padding: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
+  paddingX: ["paddingLeft", "paddingRight"],
+  paddingY: ["paddingTop", "paddingBottom"],
+};
+
+const responsiveAtomicProperties: ConditionalAtomicStyles<
+  typeof responsiveProperties,
+  typeof breakpoints,
+  "desktop"
+> &
+  ShorthandAtomicStyles<typeof shorthands> = defineProperties({
+  properties: responsiveProperties,
   conditions: breakpoints,
   defaultCondition: "desktop",
-  properties: responsiveProperties,
-  shorthands: {
-    padding: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
-    paddingX: ["paddingLeft", "paddingRight"],
-    paddingY: ["paddingTop", "paddingBottom"],
-  },
-});
+  shorthands,
+} as any) as any;
 
-const statusAtomicProperties = defineProperties({
+const statusAtomicProperties: ConditionalAtomicStyles<
+  typeof statusProperties,
+  typeof statusConditions,
+  "default"
+> = defineProperties({
   conditions: statusConditions,
   defaultCondition: "default",
   properties: statusProperties,

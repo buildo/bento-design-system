@@ -14,6 +14,7 @@ export * from "./Typography/Display/Display";
 export * from "./Typography/Headline/Headline";
 export * from "./Typography/Label/Label";
 export * from "./Typography/Title/Title";
+export * from "./internal/sprinkles.css";
 export * from "./util/LocalizedString";
 export * from "./util/TextChildren";
 export * from "./util/atoms";

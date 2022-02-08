@@ -1,26 +1,30 @@
-import * as bentoAtoms from "../src/util/atoms";
+import {
+  unconditionalProperties as bentoUnconditionalProperties,
+  statusProperties as bentoStatusProperties,
+  responsiveProperties as bentoResponsiveProperties,
+} from "../lib";
 import { vars } from "./theme.css";
 
 const space = {
-  ...bentoAtoms.responsiveProperties.gap,
+  ...bentoResponsiveProperties.gap,
   ...vars.space,
 };
 
 const color = {
-  ...bentoAtoms.statusProperties.color,
+  ...bentoStatusProperties.color,
   ...vars.color,
 };
 
 export const unconditionalProperties = {
-  ...bentoAtoms.unconditionalProperties,
+  ...bentoUnconditionalProperties,
   fontFamily: {
-    ...bentoAtoms.unconditionalProperties.fontFamily,
+    ...bentoUnconditionalProperties.fontFamily,
     ...vars.fontFamily,
   },
 };
 
 export const responsiveProperties = {
-  ...bentoAtoms.responsiveProperties,
+  ...bentoResponsiveProperties,
   paddingTop: space,
   paddingBottom: space,
   paddingLeft: space,
@@ -29,7 +33,7 @@ export const responsiveProperties = {
 };
 
 export const statusProperties = {
-  ...bentoAtoms.statusProperties,
+  ...bentoStatusProperties,
   color,
   fill: color,
   stroke: color,

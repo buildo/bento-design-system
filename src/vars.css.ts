@@ -1,6 +1,6 @@
 import { createThemeContract } from "@vanilla-extract/css";
 
-export const vars = createThemeContract({
+const values = {
   fontFamily: {
     default: null,
   },
@@ -123,4 +123,6 @@ export const vars = createThemeContract({
     elevation8: null,
     elevation16: null,
   },
-});
+};
+
+export const vars = createThemeContract(values);
