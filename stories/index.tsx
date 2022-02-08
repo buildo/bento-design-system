@@ -20,4 +20,4 @@ export const Button = createButton({});
 export const Banner = createBanner({});
 export const { Toast, ToastProvider } = createToast(Button, {});
 export const Actions = createActions(Button);
-export const Card = createCard({});
+export const Card = createCard<"4" | "8" | "16">({});

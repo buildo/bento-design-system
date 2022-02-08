@@ -2,6 +2,8 @@ import { bentoSprinkles, Box } from "../internal";
 import { BoxProps, Children } from "..";
 import { cardRecipe } from "./Card.css";
 
+type InternalBoxProps = BoxProps<typeof bentoSprinkles>;
+
 type PaddingKey =
   | "padding"
   | "paddingX"
@@ -12,16 +14,18 @@ type PaddingKey =
   | "paddingBottom";
 
 type CardConfig = {
-  radius?: BoxProps<typeof bentoSprinkles>["borderRadius"];
+  radius?: InternalBoxProps["borderRadius"];
 };
 
-export type CardProps = {
+export type CardProps<Paddings extends InternalBoxProps["padding"]> = {
   children: Children;
   elevation?: "small" | "medium" | "large";
-} & { [k in PaddingKey]?: "24" | "32" | "40" };
+} & { [k in PaddingKey]?: Paddings };
 
-export function createCard({ radius = "8" }: CardConfig) {
-  return function Card({ children, elevation, ...boxProps }: CardProps) {
+export function createCard<Paddings extends InternalBoxProps["padding"]>({
+  radius = "8",
+}: CardConfig) {
+  return function Card({ children, elevation, ...boxProps }: CardProps<Paddings>) {
     return (
       <Box
         borderRadius={radius}
