@@ -43,7 +43,13 @@ const label = style({
   cursor: "inherit",
 });
 
+const a = style({
+  textDecoration: "none",
+  color: "inherit",
+});
+
 export const element: Partial<Record<keyof IntrinsicHTMLElements, string>> = {
+  a,
   button,
   div,
   input,

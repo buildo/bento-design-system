@@ -32,7 +32,7 @@ export const unconditionalProperties = {
 } as const;
 
 export const responsiveProperties = {
-  display: ["flex", "none", "block"],
+  display: ["flex", "none", "block", "grid", "inline-block"],
   flexDirection: ["row", "column"],
   alignItems: {
     flexStart: "flex-start",
@@ -86,4 +86,5 @@ export const statusProperties = {
   outline: { ...vars.outlineColor, none: "none" },
   stroke: color,
   fill: color,
+  textDecoration: ["none", "underline"],
 } as const;

@@ -9,6 +9,7 @@ import {
   createToast,
   createActions,
   createCard,
+  createLink,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -21,3 +22,4 @@ export const Banner = createBanner({});
 export const { Toast, ToastProvider } = createToast(Button, {});
 export const Actions = createActions(Button);
 export const Card = createCard<"4" | "8" | "16">({});
+export const Link = createLink();

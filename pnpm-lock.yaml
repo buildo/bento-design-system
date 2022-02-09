@@ -7,6 +7,7 @@ specifiers:
   '@babel/preset-typescript': ^7.16.0
   '@dessert-box/react': ^0.2.0
   '@react-aria/button': ^3.3.4
+  '@react-aria/link': ^3.2.0
   '@react-aria/separator': ^3.1.3
   '@react-aria/textfield': ^3.5.0
   '@react-types/button': ^3.4.1
@@ -58,6 +59,7 @@ specifiers:
 dependencies:
   '@dessert-box/react': 0.2.0_react@17.0.2
   '@react-aria/button': 3.3.4_react@17.0.2
+  '@react-aria/link': 3.2.0_react@17.0.2
   '@react-aria/separator': 3.1.3_react@17.0.2
   '@react-aria/textfield': 3.5.0_react@17.0.2
   '@vanilla-extract/recipes': 0.2.3_@vanilla-extract+css@1.6.8
@@ -2234,6 +2236,20 @@ packages:
       react: 17.0.2
     dev: false
 
+  /@react-aria/link/3.2.0_react@17.0.2:
+    resolution: {integrity: sha512-UTAA1x+8n1t/SPAbP6LRnwru0nn/VySOwWp3tl3SJ8WLqtDQf5YTJL7shjkWf3HxVkGUv/pT4XvOPX49Yg7YtQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.16.3
+      '@react-aria/focus': 3.5.0_react@17.0.2
+      '@react-aria/interactions': 3.7.0_react@17.0.2
+      '@react-aria/utils': 3.11.0_react@17.0.2
+      '@react-types/link': 3.2.0_react@17.0.2
+      '@react-types/shared': 3.10.1_react@17.0.2
+      react: 17.0.2
+    dev: false
+
   /@react-aria/separator/3.1.3_react@17.0.2:
     resolution: {integrity: sha512-Vl5UjLvt7NojRZOmKunXzttDqrjZp9i3oIKmwk5ydppchfzvriKsPeFinbWzcRMzIaHOljQ8Gj8yqgGjJtuvuQ==}
     peerDependencies:
@@ -2324,6 +2340,16 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1
     dependencies:
+      '@react-types/shared': 3.10.1_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-types/link/3.2.0_react@17.0.2:
+    resolution: {integrity: sha512-0oSFoU2EenKCyhyJE+BN33lHVnOIN/+Gl4zj2ilJToY+obzOtzjSDFgiCJ0izVp9l9BQnkzc247RrVKhTLZ8Rw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@react-aria/interactions': 3.7.0_react@17.0.2
       '@react-types/shared': 3.10.1_react@17.0.2
       react: 17.0.2
     dev: false
