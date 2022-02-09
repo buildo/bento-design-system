@@ -18,8 +18,4 @@ export const { TextField } = createFormFields({});
 export const Button = createButton({});
 export const Banner = createBanner({});
 export const { Toast, ToastProvider } = createToast(Button, {});
-export const Actions = createActions(Button, {
-  primaryPosition: "right",
-  buttonsAlignment: "left",
-  spaceBetweenButtons: "16",
-});
+export const Actions = createActions(Button);
