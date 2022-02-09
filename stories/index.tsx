@@ -1,15 +1,16 @@
 import "./fonts.css";
 import "../src/reset.css";
 import {
-  createBentoBox,
-  createLayoutComponents,
-  createFormFields,
-  createButton,
   createBanner,
-  createToast,
+  createBentoBox,
+  createBreadcrumb,
+  createButton,
   createActions,
   createCard,
+  createFormFields,
+  createLayoutComponents,
   createLink,
+  createToast,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -23,3 +24,4 @@ export const { Toast, ToastProvider } = createToast(Button, {});
 export const Actions = createActions(Button);
 export const Card = createCard<"4" | "8" | "16">({});
 export const Link = createLink();
+export const Breadcrumb = createBreadcrumb(Link);

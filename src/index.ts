@@ -1,6 +1,7 @@
 export * from "./Actions/createActions";
 export * from "./Banner/createBanner";
 export * from "./Box/createBentoBox";
+export * from "./Breadcrumb/createBreadcrumb";
 export * from "./Button/createButton";
 export * from "./Card/createCard";
 export * from "./Divider/Divider";
