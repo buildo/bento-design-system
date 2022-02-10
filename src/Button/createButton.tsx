@@ -5,7 +5,7 @@ import { ComponentProps, useRef } from "react";
 import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
 import { Label } from "../Typography/Label/Label";
-import { BentoSprinkles } from "src/internal";
+import { BentoSprinkles } from "../internal";
 
 type Size = "small" | "medium";
 export type ButtonProps = {
