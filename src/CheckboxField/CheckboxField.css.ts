@@ -40,6 +40,7 @@ export const checkboxRecipe = strictRecipe({
     },
     isDisabled: {
       true: bentoSprinkles({
+        boxShadow: { default: "outlineDisabled", hover: "outlineDisabled" },
         cursor: "notAllowed",
       }),
     },
