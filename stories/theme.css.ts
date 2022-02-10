@@ -44,7 +44,7 @@ const colors = {
 
 const commonTheme = {
   fontFamily: {
-    default: "Arial",
+    default: "IBM Plex Sans",
   },
   fontSize: {
     bodySmall: pixelToRem(12),
@@ -67,12 +67,12 @@ const commonTheme = {
     bodySmall: pixelToRem(16),
     bodyMedium: pixelToRem(18),
     bodyLarge: pixelToRem(20),
-    headlineSmall: pixelToRem(30),
+    headlineSmall: pixelToRem(32),
     headlineMedium: pixelToRem(36),
-    headlineLarge: pixelToRem(40),
+    headlineLarge: pixelToRem(42),
     displaySmall: pixelToRem(46),
-    displayMedium: pixelToRem(56),
-    displayLarge: pixelToRem(72),
+    displayMedium: pixelToRem(58),
+    displayLarge: pixelToRem(74),
     labelSmall: pixelToRem(14),
     labelMedium: pixelToRem(16),
     labelLarge: pixelToRem(18),
