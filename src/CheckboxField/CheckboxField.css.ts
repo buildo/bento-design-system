@@ -28,8 +28,6 @@ export const checkboxRecipe = strictRecipe({
         background: {
           default: "solidEnabledBackground",
           hover: "solidHoverBackground",
-          focus: "solidFocusBackground",
-          disabled: "solidDisabledBackground",
         },
       }),
     },
@@ -41,8 +39,20 @@ export const checkboxRecipe = strictRecipe({
     isDisabled: {
       true: bentoSprinkles({
         boxShadow: { default: "outlineDisabled", hover: "outlineDisabled" },
+        background: "solidDisabledBackground",
         cursor: "notAllowed",
       }),
     },
   },
+  compoundVariants: [
+    {
+      variants: {
+        isFocused: true,
+        isSelected: true,
+      },
+      style: bentoSprinkles({
+        background: "solidFocusBackground",
+      }),
+    },
+  ],
 });
