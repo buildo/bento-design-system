@@ -1,3 +1,4 @@
+import "./fonts.css";
 import "../src/reset.css";
 import {
   createBentoBox,
