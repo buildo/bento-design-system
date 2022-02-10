@@ -3,12 +3,17 @@ import { Body, Label } from "..";
 import { createField } from "./createField";
 import { createTextField, TextFieldConfig } from "../TextField/createTextField";
 import { CheckboxFieldConfig, createCheckboxField } from "../CheckboxField/createCheckboxField";
+import {
+  createRadioGroupField,
+  RadioGroupFieldConfig,
+} from "../RadioGroupField/createRadioGroupField";
 
 type FieldsConfig = {
   labelSize: ComponentProps<typeof Label>["size"];
   assistiveTextSize: ComponentProps<typeof Body>["size"];
   input: TextFieldConfig;
   checkbox: CheckboxFieldConfig;
+  radioGroup: RadioGroupFieldConfig;
 };
 
 export function createFormFields(
@@ -24,6 +29,9 @@ export function createFormFields(
     checkbox: {
       labelSpacing: 8,
     },
+    radioGroup: {
+      labelSpacing: "8",
+    },
   }
 ) {
   const Field = createField({
@@ -33,6 +41,7 @@ export function createFormFields(
 
   const TextField = createTextField(Field, config.input);
   const CheckboxField = createCheckboxField(Field, config.checkbox);
+  const RadioGroupField = createRadioGroupField(Field, config.radioGroup);
 
-  return { Field, TextField, CheckboxField };
+  return { Field, TextField, CheckboxField, RadioGroupField };
 }
