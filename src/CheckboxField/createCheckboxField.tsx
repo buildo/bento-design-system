@@ -21,7 +21,7 @@ export type CheckboxFieldConfig = {
 
 export function createCheckboxField(
   Field: FieldType,
-  config: CheckboxConfig = {
+  config: CheckboxFieldConfig = {
     labelSpacing: "8",
   }
 ) {
@@ -38,8 +38,6 @@ export function createCheckboxField(
     const { inputProps } = useCheckbox(checkboxProps, state, ref);
     const { fieldProps, labelProps, errorMessageProps } = useField(checkboxProps);
     const { isFocusVisible, focusProps } = useFocusRing();
-
-    console.log(isFocusVisible);
 
     return (
       <Field
