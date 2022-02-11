@@ -1,5 +1,5 @@
 import "../src/reset.css.ts";
-import { darkTheme, lightTheme } from "../stories/theme.css";
+import { lightTheme } from "../stories/theme.css";
 import { withThemes } from "storybook-addon-themes/react";
 
 export const decorators = [withThemes];
@@ -14,9 +14,6 @@ export const parameters = {
   },
   themes: {
     default: "light",
-    list: [
-      { name: "light", class: lightTheme, color: "white" },
-      { name: "dark", class: darkTheme, color: "black" },
-    ],
+    list: [{ name: "light", class: lightTheme, color: "white" }],
   },
 };
