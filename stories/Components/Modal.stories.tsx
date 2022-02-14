@@ -1,0 +1,50 @@
+import { Modal, Body, Placeholder } from "../";
+import { createComponentStories, formatMessage, textArgType } from "../util";
+import { action } from "@storybook/addon-actions";
+
+const { defaultExport, createStory } = createComponentStories({
+  component: Modal,
+  args: {
+    title: formatMessage("Create item"),
+  },
+  argTypes: {
+    title: textArgType,
+    closeButtonLabel: textArgType,
+  },
+  parameters: {
+    docs: {
+      inlineStories: false,
+      iframeHeight: 400,
+    },
+  },
+});
+
+export default defaultExport;
+
+export const WithActions = createStory({
+  children: [<Placeholder />],
+  primaryAction: {
+    label: formatMessage("Create"),
+    onPress: action("Create"),
+  },
+  secondaryAction: {
+    label: formatMessage("Cancel"),
+    onPress: action("Cancel"),
+  },
+});
+
+export const Destructive = createStory({
+  isDestructive: true,
+  title: formatMessage("Delete item"),
+  children: (
+    <Body size="medium">{formatMessage("Are you sure you want to delete this item?")}</Body>
+  ),
+  primaryAction: {
+    label: formatMessage("Delete"),
+    onPress: action("Delete"),
+  },
+  secondaryAction: {
+    label: formatMessage("Cancel"),
+    onPress: action("Cancel"),
+  },
+});

@@ -12,6 +12,9 @@ import { statusConditions } from "../util/conditions";
 
 const unconditionalAtomicProperties = defineProperties({
   properties: unconditionalProperties,
+  shorthands: {
+    inset: ["top", "right", "bottom", "left"],
+  },
 });
 
 const responsiveAtomicProperties = defineProperties({

@@ -1,8 +1,16 @@
 import "../src/reset.css.ts";
 import { lightTheme } from "../stories/theme.css";
 import { withThemes } from "storybook-addon-themes/react";
+import { OverlayProvider } from "@react-aria/overlays";
 
-export const decorators = [withThemes];
+export const decorators = [
+  withThemes,
+  (Story) => (
+    <OverlayProvider>
+      <Story />
+    </OverlayProvider>
+  ),
+];
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
