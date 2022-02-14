@@ -7,6 +7,8 @@ import {
   createRadioGroupField,
   RadioGroupFieldConfig,
 } from "../RadioGroupField/createRadioGroupField";
+import { createNumberInput } from "src/NumberInput/createNumberInput";
+import { createNumberField } from "src/NumberField/createNumberField";
 
 type FieldsConfig = {
   labelSize: ComponentProps<typeof Label>["size"];
@@ -42,6 +44,8 @@ export function createFormFields(
   const TextField = createTextField(Field, config.input);
   const CheckboxField = createCheckboxField(Field, config.checkbox);
   const RadioGroupField = createRadioGroupField(Field, config.radioGroup);
+  const NumberInput = createNumberInput(config.input);
+  const NumberField = createNumberField(Field, NumberInput);
 
-  return { Field, TextField, CheckboxField, RadioGroupField };
+  return { CheckboxField, Field, NumberField, RadioGroupField, TextField };
 }

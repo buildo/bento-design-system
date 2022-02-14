@@ -14,12 +14,14 @@ specifiers:
   '@react-aria/i18n': ^3.3.4
   '@react-aria/label': ^3.2.1
   '@react-aria/link': ^3.2.0
+  '@react-aria/numberfield': ^3.1.1
   '@react-aria/overlays': ^3.7.3
   '@react-aria/radio': ^3.1.6
   '@react-aria/separator': ^3.1.3
   '@react-aria/textfield': ^3.5.0
   '@react-aria/utils': ^3.11.0
   '@react-aria/visually-hidden': ^3.2.3
+  '@react-stately/numberfield': ^3.0.2
   '@react-stately/radio': ^3.3.2
   '@react-stately/toggle': ^3.2.3
   '@react-types/button': ^3.4.1
@@ -81,12 +83,14 @@ dependencies:
   '@react-aria/i18n': 3.3.4_react@17.0.2
   '@react-aria/label': 3.2.1_react@17.0.2
   '@react-aria/link': 3.2.0_react@17.0.2
+  '@react-aria/numberfield': 3.1.1_react-dom@17.0.2+react@17.0.2
   '@react-aria/overlays': 3.7.3_react-dom@17.0.2+react@17.0.2
   '@react-aria/radio': 3.1.6_react@17.0.2
   '@react-aria/separator': 3.1.3_react@17.0.2
   '@react-aria/textfield': 3.5.0_react@17.0.2
   '@react-aria/utils': 3.11.0_react@17.0.2
   '@react-aria/visually-hidden': 3.2.3_react@17.0.2
+  '@react-stately/numberfield': 3.0.2_react@17.0.2
   '@react-stately/radio': 3.3.2_react@17.0.2
   '@react-stately/toggle': 3.2.3_react@17.0.2
   '@react-types/radio': 3.1.2_react@17.0.2
@@ -2391,6 +2395,41 @@ packages:
       react: 17.0.2
     dev: false
 
+  /@react-aria/live-announcer/3.0.1_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-c63UZ4JhXxy29F6FO1LUkQLDRzv17W4g3QQ+sy6tmFw7R5I5r8uh8jR7RCbBX7bdGCLnQDwOQ055KsM/a9MT3A==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+      react-dom: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.16.3
+      '@react-aria/utils': 3.11.0_react@17.0.2
+      '@react-aria/visually-hidden': 3.2.3_react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
+
+  /@react-aria/numberfield/3.1.1_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-6ep+sgNe4ZymoBHNfsSiqxhwqeTjN6eRQyCjfrq0WUq5ttjrL9a91w3pSoOGQKI7CQ92y7pvvLcCghkeP2meGQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+      react-dom: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.16.3
+      '@react-aria/i18n': 3.3.4_react@17.0.2
+      '@react-aria/interactions': 3.7.0_react@17.0.2
+      '@react-aria/live-announcer': 3.0.1_react-dom@17.0.2+react@17.0.2
+      '@react-aria/spinbutton': 3.0.1_react-dom@17.0.2+react@17.0.2
+      '@react-aria/textfield': 3.5.0_react@17.0.2
+      '@react-aria/utils': 3.11.0_react@17.0.2
+      '@react-stately/numberfield': 3.0.2_react@17.0.2
+      '@react-types/button': 3.4.1_react@17.0.2
+      '@react-types/numberfield': 3.1.0_react@17.0.2
+      '@react-types/shared': 3.10.1_react@17.0.2
+      '@react-types/textfield': 3.3.0_react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
+
   /@react-aria/overlays/3.7.3_react-dom@17.0.2+react@17.0.2:
     resolution: {integrity: sha512-N5F/TVJ9KIYgGuOknVMrRnqqzkNKcFos4nxLHQz4TeFZTp4/P+NqEHd/VBmjsSTNEjEuNAivG+U2o4F1NWn/Pw==}
     peerDependencies:
@@ -2435,6 +2474,22 @@ packages:
       '@react-aria/utils': 3.11.0_react@17.0.2
       '@react-types/shared': 3.10.1_react@17.0.2
       react: 17.0.2
+    dev: false
+
+  /@react-aria/spinbutton/3.0.1_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-V2wUhSgJDxSqzo5HPbx7OgGpFeuvxq8/7nNO8mT3cEZfZASUGvjIdCRmAf243qyfo9Yby4zdx9E/BxNOGCZ9cQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+      react-dom: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.16.3
+      '@react-aria/i18n': 3.3.4_react@17.0.2
+      '@react-aria/live-announcer': 3.0.1_react-dom@17.0.2+react@17.0.2
+      '@react-aria/utils': 3.11.0_react@17.0.2
+      '@react-types/button': 3.4.1_react@17.0.2
+      '@react-types/shared': 3.10.1_react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /@react-aria/ssr/3.1.0_react@17.0.2:
@@ -2510,6 +2565,19 @@ packages:
       '@react-stately/toggle': 3.2.3_react@17.0.2
       '@react-stately/utils': 3.3.0_react@17.0.2
       '@react-types/checkbox': 3.2.3_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-stately/numberfield/3.0.2_react@17.0.2:
+    resolution: {integrity: sha512-hxJt/Bj9cqJ8EPp9Vb0BL2CMWaRROWvxveiy76zcMMAT1TN33Wjhta+r+RjhJeUqDCHyvgcbYUeyxEbqrcipRA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.16.3
+      '@internationalized/number': 3.0.3
+      '@react-stately/utils': 3.3.0_react@17.0.2
+      '@react-types/numberfield': 3.1.0_react@17.0.2
+      '@react-types/shared': 3.10.1_react@17.0.2
       react: 17.0.2
     dev: false
 
@@ -2607,6 +2675,15 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1
     dependencies:
       '@react-aria/interactions': 3.7.0_react@17.0.2
+      '@react-types/shared': 3.10.1_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-types/numberfield/3.1.0_react@17.0.2:
+    resolution: {integrity: sha512-+QfvGqWD/QWOIyOCRDX/KyyV6QWdA/BQZKVpkFd0Vyy11GGT0eiKGyBevlN22/mwQkHbu53smVrRKXlHdB1tUQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
       '@react-types/shared': 3.10.1_react@17.0.2
       react: 17.0.2
     dev: false
