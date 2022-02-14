@@ -30,7 +30,7 @@ export function createActions(
   config: ActionsConfig = {
     primaryPosition: "right",
     buttonsAlignment: "right",
-    spaceBetweenButtons: "16",
+    spaceBetweenButtons: 16,
   }
 ) {
   return function Actions({ primaryAction, secondaryAction }: ActionsProps) {
@@ -50,7 +50,7 @@ export function createActions(
         : [secondaryActionButton, primaryActionButton];
 
     return config.buttonsAlignment === "spaceBetween" ? (
-      <Columns space="0">
+      <Columns space={0}>
         {buttons[0] || <Column>{null}</Column>}
         <Column width="content">{buttons[1]}</Column>
       </Columns>

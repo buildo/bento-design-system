@@ -22,8 +22,8 @@ export type CardProps<Paddings extends InternalBoxProps["padding"]> = {
   elevation?: "small" | "medium" | "large";
 } & { [k in PaddingKey]?: Paddings };
 
-export function createCard<Paddings extends InternalBoxProps["padding"] = "24" | "32" | "40">({
-  radius = "8",
+export function createCard<Paddings extends InternalBoxProps["padding"] = 24 | 32 | 40>({
+  radius = 8,
 }: CardConfig) {
   return function Card({ children, elevation, ...boxProps }: CardProps<Paddings>) {
     return (
