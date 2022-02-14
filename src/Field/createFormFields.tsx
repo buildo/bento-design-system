@@ -7,8 +7,8 @@ import {
   createRadioGroupField,
   RadioGroupFieldConfig,
 } from "../RadioGroupField/createRadioGroupField";
-import { createNumberInput } from "src/NumberInput/createNumberInput";
-import { createNumberField } from "src/NumberField/createNumberField";
+import { createNumberInput } from "../NumberInput/createNumberInput";
+import { createNumberField } from "../NumberField/createNumberField";
 
 type FieldsConfig = {
   labelSize: ComponentProps<typeof Label>["size"];
