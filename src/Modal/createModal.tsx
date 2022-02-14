@@ -1,14 +1,23 @@
-import { useRef } from "react";
-import { ActionsProps, ButtonProps, Children, CloseButton, LocalizedString, Title } from "..";
-import { Box, Column, Columns, Inset } from "../internal";
+import { ComponentProps, FunctionComponent, useRef } from "react";
+import {
+  ActionsProps,
+  ButtonProps,
+  Children,
+  IconButton,
+  IconClose,
+  LocalizedString,
+  Title,
+} from "..";
+import { BentoSprinkles, Box, Column, Columns, Inset } from "../internal";
 import { useOverlay, usePreventScroll, useModal } from "@react-aria/overlays";
 import { useDialog } from "@react-aria/dialog";
 import { FocusScope } from "@react-aria/focus";
 import { modal, underlay } from "./Modal.css";
 import useKeyPressEvent from "react-use/lib/useKeyPressEvent";
 import { ModalContext } from "./ModalContext";
+import { IconProps } from "src/Icons/IconProps";
 
-type Props = {
+export type ModalProps = {
   title: LocalizedString;
   children: Children;
   primaryAction?: Omit<ButtonProps, "kind" | "size">;
@@ -18,8 +27,23 @@ type Props = {
   isDestructive?: boolean;
 };
 
-export function createModal(Actions: React.FunctionComponent<ActionsProps>) {
-  return function Modal(props: Props) {
+type ModalConfig = {
+  padding: BentoSprinkles["padding"];
+  titleSize: ComponentProps<typeof Title>["size"];
+  closeIcon: FunctionComponent<IconProps>;
+  closeIconSize: IconProps["size"];
+};
+
+export function createModal(
+  Actions: React.FunctionComponent<ActionsProps>,
+  config: ModalConfig = {
+    padding: "24",
+    titleSize: "large",
+    closeIcon: IconClose,
+    closeIconSize: "16",
+  }
+) {
+  return function Modal(props: ModalProps) {
     const ref = useRef<HTMLDivElement>(null);
     const { overlayProps, underlayProps } = useOverlay({ ...props, isOpen: true }, ref);
 
@@ -52,21 +76,22 @@ export function createModal(Actions: React.FunctionComponent<ActionsProps>) {
               {...dialogProps}
               color={undefined}
             >
-              <Inset space="24">
+              <Inset space={config.padding}>
                 <Columns space="16" alignY="top">
-                  <Title size="large">{props.title}</Title>
+                  <Title size={config.titleSize}>{props.title}</Title>
                   <Column width="content">
-                    <CloseButton
+                    <IconButton
+                      icon={config.closeIcon}
                       label={props.closeButtonLabel}
                       onPress={props.onClose}
-                      size="16"
+                      size={config.closeIconSize}
                       tabIndex={-1}
                     />
                   </Column>
                 </Columns>
               </Inset>
-              <Inset spaceX="24">{props.children}</Inset>
-              <Inset space="24">
+              <Inset spaceX={config.padding}>{props.children}</Inset>
+              <Inset space={config.padding}>
                 <Actions
                   primaryAction={
                     props.primaryAction
