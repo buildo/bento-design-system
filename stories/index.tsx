@@ -11,6 +11,7 @@ import {
   createLayoutComponents,
   createLink,
   createToast,
+  createModal,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -25,3 +26,4 @@ export const Actions = createActions(Button);
 export const Card = createCard<"4" | "8" | "16">({});
 export const Link = createLink();
 export const Breadcrumb = createBreadcrumb(Link);
+export const Modal = createModal(Actions);

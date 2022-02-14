@@ -191,6 +191,9 @@ export const lightTheme = createTheme(bentoVars, {
     elevationMedium: "0px 8px 16px rgba(0, 0, 0, 0.16)",
     elevationLarge: "0px 16px 32px rgba(0, 0, 0, 0.16)",
   },
+  zIndex: {
+    modalUnderlay: "100",
+  },
 });
 
 export const vars = createGlobalTheme(":root", {

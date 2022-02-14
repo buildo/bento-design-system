@@ -10,6 +10,7 @@ export * from "./IconButton/IconButton";
 export * from "./Icons";
 export * from "./Layout/createLayoutComponents";
 export * from "./Link/createLink";
+export * from "./Modal/createModal";
 export * from "./Placeholder/Placeholder";
 export * from "./Toast/createToast";
 export * from "./Toast/useToast";

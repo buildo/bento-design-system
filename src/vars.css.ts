@@ -145,4 +145,7 @@ export const vars = createThemeContract({
     elevationMedium: null,
     elevationLarge: null,
   },
+  zIndex: {
+    modalUnderlay: null,
+  },
 });
