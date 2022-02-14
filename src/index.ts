@@ -1,6 +1,7 @@
 export * from "./Actions/createActions";
 export * from "./Banner/createBanner";
 export * from "./Box/createBentoBox";
+export * from "./Breadcrumb/createBreadcrumb";
 export * from "./Button/createButton";
 export * from "./Card/createCard";
 export * from "./Divider/Divider";
@@ -8,6 +9,7 @@ export * from "./Field/createFormFields";
 export * from "./IconButton/IconButton";
 export * from "./Icons";
 export * from "./Layout/createLayoutComponents";
+export * from "./Link/createLink";
 export * from "./Placeholder/Placeholder";
 export * from "./Toast/createToast";
 export * from "./Toast/useToast";

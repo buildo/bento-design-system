@@ -7,7 +7,7 @@ type Size = "small" | "medium" | "large";
 type Align = "left" | "center" | "right";
 type Color = "default" | "secondary" | "disabled";
 
-type Props = {
+export type LabelProps = {
   children: LocalizedString;
   size: Size;
   color?: Color;
@@ -25,7 +25,7 @@ export function Label({
   color = "default",
   uppercase = false,
   ...boxProps
-}: Props) {
+}: LabelProps) {
   return (
     <Box {...boxProps} className={labelRecipe({ size, color, uppercase })} textAlign={align}>
       {children}
