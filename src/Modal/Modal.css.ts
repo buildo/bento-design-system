@@ -7,7 +7,6 @@ export const modal = style([
   },
   bentoSprinkles({
     background: "backgroundPrimary",
-    borderRadius: "16",
     boxShadow: "elevationLarge",
   }),
 ]);

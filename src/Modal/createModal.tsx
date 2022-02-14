@@ -29,6 +29,7 @@ export type ModalProps = {
 
 type ModalConfig = {
   padding: BentoSprinkles["padding"];
+  radius: BentoSprinkles["borderRadius"];
   titleSize: ComponentProps<typeof Title>["size"];
   closeIcon: FunctionComponent<IconProps>;
   closeIconSize: IconProps["size"];
@@ -38,6 +39,7 @@ export function createModal(
   Actions: React.FunctionComponent<ActionsProps>,
   config: ModalConfig = {
     padding: "24",
+    radius: "8",
     titleSize: "large",
     closeIcon: IconClose,
     closeIconSize: "16",
@@ -75,6 +77,7 @@ export function createModal(
               {...modalProps}
               {...dialogProps}
               color={undefined}
+              borderRadius={config.radius}
             >
               <Inset space={config.padding}>
                 <Columns space="16" alignY="top">
