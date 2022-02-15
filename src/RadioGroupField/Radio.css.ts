@@ -3,7 +3,7 @@ import { strictRecipe } from "../util/strictRecipe";
 import { vars } from "../vars.css";
 import { radioOption } from "./RadioGroupField.css";
 
-export const radio = bentoSprinkles({ width: "24", height: "24" });
+export const radio = bentoSprinkles({ width: 24, height: 24 });
 
 export const outerRadioCircleRecipe = strictRecipe({
   variants: {
