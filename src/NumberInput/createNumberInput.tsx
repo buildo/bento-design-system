@@ -91,10 +91,10 @@ export function createNumberInput(config: TextFieldConfig) {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            paddingX="16"
-            top="0"
-            bottom="0"
-            right="0"
+            paddingX={16}
+            top={0}
+            bottom={0}
+            right={0}
           >
             <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
               {rightAccessoryContent}

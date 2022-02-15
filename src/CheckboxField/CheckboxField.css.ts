@@ -8,12 +8,12 @@ export const checkboxRecipe = strictRecipe({
   base: [
     { position: "relative", zIndex: "1" },
     bentoSprinkles({
-      width: "24",
-      height: "24",
+      width: 24,
+      height: 24,
       display: "flex",
       alignItems: "center",
-      padding: "4",
-      borderRadius: "4",
+      padding: 4,
+      borderRadius: 4,
       boxShadow: "outlineInteractive",
     }),
   ],

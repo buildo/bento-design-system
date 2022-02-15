@@ -31,7 +31,7 @@ export type RadioGroupFieldConfig = {
 export function createRadioGroupField(
   Field: FieldType,
   config: RadioGroupFieldConfig = {
-    labelSpacing: "8",
+    labelSpacing: 8,
   }
 ) {
   return function RadioGroupField<A extends string | number | boolean>(
@@ -72,11 +72,11 @@ export function createRadioGroupField(
           errorMessageProps={errorMessageProps}
           labelElement="span"
         >
-          <Inset spaceY="8">
+          <Inset spaceY={8}>
             {(props.orientation || "vertical") === "vertical" ? (
-              <Stack space="16">{radioOptions}</Stack>
+              <Stack space={16}>{radioOptions}</Stack>
             ) : (
-              <Inline space="24">{radioOptions}</Inline>
+              <Inline space={24}>{radioOptions}</Inline>
             )}
           </Inset>
         </Field>

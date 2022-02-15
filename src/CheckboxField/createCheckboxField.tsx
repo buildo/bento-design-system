@@ -22,7 +22,7 @@ export type CheckboxFieldConfig = {
 export function createCheckboxField(
   Field: FieldType,
   config: CheckboxFieldConfig = {
-    labelSpacing: "8",
+    labelSpacing: 8,
   }
 ) {
   return function CheckboxField(props: CheckboxFieldProps) {
@@ -53,7 +53,7 @@ export function createCheckboxField(
           {...focusProps}
           color={undefined}
           cursor={{ default: "pointer", disabled: "notAllowed" }}
-          paddingBottom="4"
+          paddingBottom={4}
           className={fieldContainer}
         >
           <VisuallyHidden>
