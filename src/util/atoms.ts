@@ -73,6 +73,7 @@ const background = {
   ...vars.backgroundColor,
   ...vars.interactiveBackgroundColor,
   ...vars.outlineColor,
+  ...vars.dataVisualizationColor,
 };
 
 export const statusProperties = {
