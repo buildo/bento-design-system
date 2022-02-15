@@ -15,7 +15,7 @@ import { FocusScope } from "@react-aria/focus";
 import { modal, underlay } from "./Modal.css";
 import useKeyPressEvent from "react-use/lib/useKeyPressEvent";
 import { ModalContext } from "./ModalContext";
-import { IconProps } from "src/Icons/IconProps";
+import { IconProps } from "../Icons/IconProps";
 
 export type ModalProps = {
   title: LocalizedString;

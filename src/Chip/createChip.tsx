@@ -1,5 +1,5 @@
 import { ComponentProps, FunctionComponent } from "react";
-import { IconProps } from "src/Icons/IconProps";
+import { IconProps } from "../Icons/IconProps";
 import { Label, LocalizedString, IconButton, IconClose } from "..";
 import { Box, Columns, Column, BentoSprinkles } from "../internal";
 import { chipRecipe } from "./Chip.css";

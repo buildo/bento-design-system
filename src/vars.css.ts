@@ -169,5 +169,7 @@ export const vars = createThemeContract({
   },
   zIndex: {
     modalUnderlay: null,
+    selectFieldMenu: null,
+    selectFieldMenuInModal: null,
   },
 });

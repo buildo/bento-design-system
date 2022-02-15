@@ -234,7 +234,9 @@ export const lightTheme = createTheme(bentoVars, {
     elevationLarge: "0px 16px 32px rgba(0, 0, 0, 0.16)",
   },
   zIndex: {
+    selectFieldMenu: "10",
     modalUnderlay: "100",
+    selectFieldMenuInModal: "110",
   },
 });
 

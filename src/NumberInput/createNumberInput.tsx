@@ -6,7 +6,7 @@ import { Box } from "../internal";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { FormatProps } from "./FormatProps";
-import { TextFieldConfig } from "src/TextField/createTextField";
+import { TextFieldConfig } from "../TextField/createTextField";
 
 export type NumberInputProps = {
   inputProps: React.InputHTMLAttributes<HTMLInputElement>;
