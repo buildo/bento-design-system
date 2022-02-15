@@ -6,7 +6,7 @@ import { Box } from "../internal";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { FormatProps } from "./FormatProps";
-import { TextFieldConfig } from "../TextField/createTextField";
+import { InputConfig } from "src/Field/InputConfig";
 
 export type NumberInputProps = {
   inputProps: React.InputHTMLAttributes<HTMLInputElement>;
@@ -16,7 +16,7 @@ export type NumberInputProps = {
   disabled?: boolean;
 } & FormatProps;
 
-export function createNumberInput(config: TextFieldConfig) {
+export function createNumberInput(config: InputConfig) {
   return function NumberInput(props: NumberInputProps) {
     const { locale } = useLocale();
 

@@ -23,7 +23,7 @@ type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "
 };
 
 export type FieldType = React.FunctionComponent<Props>;
-type FieldConfig = {
+export type FieldConfig = {
   label: {
     size: ComponentProps<typeof Label>["size"];
   };
@@ -31,6 +31,7 @@ type FieldConfig = {
     size: ComponentProps<typeof Body>["size"];
     paddingLeft: BentoSprinkles["paddingX"];
   };
+  internalSpacing: BentoSprinkles["gap"];
 };
 
 /**

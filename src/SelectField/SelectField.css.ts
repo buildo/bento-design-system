@@ -1,15 +1,12 @@
 import { style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
-import { bodyRecipe } from "../Typography/Body/Body.css";
 import { vars } from "../vars.css";
 
 export const control = strictRecipe({
   base: [
     { padding: "0" },
     bentoSprinkles({
-      padding: 16,
-      borderRadius: 8,
       background: {
         default: "backgroundPrimary",
       },
@@ -45,11 +42,6 @@ export const control = strictRecipe({
   ],
 });
 
-export const valueContainer = bentoSprinkles({
-  padding: 16,
-  gap: 8,
-});
-
 export const singleValue = style({
   gridArea: "1/1/2/3",
   textOverflow: "ellipsis",
@@ -59,27 +51,18 @@ export const singleValue = style({
 
 export const placeholder = style({ gridArea: "1/1/2/3" });
 
-export const input = bodyRecipe({
-  size: "large",
-  weight: "regular",
-  color: "default",
-});
-
 export const menu = style([
   {
     marginTop: vars.space[4],
     overflow: "hidden",
   },
   bentoSprinkles({
-    boxShadow: "elevationSmall",
-    borderRadius: 8,
     background: "backgroundPrimary",
   }),
 ]);
 
 export const optionRecipe = strictRecipe({
   base: bentoSprinkles({
-    padding: 16,
     cursor: { default: "pointer", disabled: "notAllowed" },
   }),
   variants: {

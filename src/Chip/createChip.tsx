@@ -35,7 +35,7 @@ type ChipConfig = {
   labelSize: ComponentProps<typeof Label>["size"];
   closeIcon: FunctionComponent<IconProps>;
   closeIconSize: IconProps["size"];
-  spaceBeforeCloseIcon: BentoSprinkles["gap"];
+  internalSpacing: BentoSprinkles["gap"];
 };
 
 export function createChip(
@@ -45,7 +45,7 @@ export function createChip(
     labelSize: "small",
     closeIcon: IconClose,
     closeIconSize: 8,
-    spaceBeforeCloseIcon: 8,
+    internalSpacing: 8,
   }
 ) {
   return function Chip({ color, label, ...dismissProps }: ChipProps) {
@@ -58,7 +58,7 @@ export function createChip(
             color,
           })}
         >
-          <Columns space={config.spaceBeforeCloseIcon} align="center" alignY="center">
+          <Columns space={config.internalSpacing} align="center" alignY="center">
             <Label size={config.labelSize}>{label}</Label>
             {dismissProps.onDismiss && (
               <Column width="content">

@@ -4,12 +4,15 @@ import Select, {
   MultiValueProps,
   SingleValue as SingleValueT,
 } from "react-select";
-import { Body, Children, LocalizedString } from "..";
+import { Body, Children, Label, LocalizedString } from "..";
 import { useField } from "@react-aria/label";
-import { useEffect, useMemo } from "react";
+import { ComponentProps, useEffect, useMemo } from "react";
 import { FieldProps } from "../Field/FieldProps";
 import { FieldType } from "../Field/createField";
-import { components, styles } from "./components";
+import { createComponents, styles } from "./components";
+import { InputConfig } from "src/Field/InputConfig";
+import { BentoSprinkles } from "src/internal";
+import { IconProps } from "src/Icons/IconProps";
 
 type SelectOption<A> = {
   value: A;
@@ -37,7 +40,41 @@ declare module "react-select/dist/declarations/src/Select" {
   }
 }
 
-export function createSelectField(Field: FieldType) {
+// TODO (vince): this configuration type should be used and exported by the List component
+type ListSize = "medium" | "large";
+type ListSizeConfig<T> = {
+  [k in ListSize]: T;
+};
+type ListConfig = {
+  paddingY: BentoSprinkles["paddingY"];
+  itemPaddingX: BentoSprinkles["paddingX"];
+  itemPaddingY: ListSizeConfig<BentoSprinkles["paddingY"]>;
+  fontSize: {
+    firstLine: ComponentProps<typeof Body>["size"];
+    secondLine: ComponentProps<typeof Body>["size"];
+    overline: ComponentProps<typeof Label>["size"];
+  };
+  internalSpacing: BentoSprinkles["gap"];
+  iconSize: {
+    leading: IconProps["size"];
+    trailing: IconProps["size"];
+    // TODO(vince): add illustration size
+  };
+};
+
+export type DropdownConfig = {
+  elevation: "small" | "medium" | "large";
+  radius: BentoSprinkles["borderRadius"];
+  list: ListConfig;
+};
+
+export function createSelectField(
+  Field: FieldType,
+  inputConfig: InputConfig,
+  dropdownConfig: DropdownConfig
+) {
+  const components = createComponents(inputConfig, dropdownConfig);
+
   return function SelectField<A, IsMulti extends boolean = false>({
     value,
     onChange,

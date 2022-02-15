@@ -7,22 +7,24 @@ import { useToggleState } from "@react-stately/toggle";
 import { useRef } from "react";
 import { FieldType } from "../Field/createField";
 import { Body, TextChildren } from "..";
-import { BentoSprinkles, Box, Column, Columns } from "../internal";
+import { Box, Column, Columns } from "../internal";
 import { FieldProps } from "../Field/FieldProps";
 import { vars } from "../vars.css";
 import { checkboxRecipe, fieldContainer } from "./CheckboxField.css";
+import { SelectionControlConfig } from "src/Field/SelectionControlConfig";
 
 export type CheckboxFieldProps = Omit<FieldProps<boolean>, "assistiveText"> & {
   label: TextChildren;
 };
-export type CheckboxFieldConfig = {
-  labelSpacing: BentoSprinkles["gap"];
+
+type CheckboxFieldConfig = {
+  controlLabelSpacing: SelectionControlConfig["controlLabelSpacing"];
 };
 
 export function createCheckboxField(
   Field: FieldType,
   config: CheckboxFieldConfig = {
-    labelSpacing: 8,
+    controlLabelSpacing: 8,
   }
 ) {
   return function CheckboxField(props: CheckboxFieldProps) {
@@ -59,7 +61,7 @@ export function createCheckboxField(
           <VisuallyHidden>
             <input {...mergeProps(inputProps, fieldProps, focusProps)} ref={ref} />
           </VisuallyHidden>
-          <Columns space={config.labelSpacing} alignY="center">
+          <Columns space={config.controlLabelSpacing} alignY="center">
             <Column width="content">
               <Checkbox
                 value={props.value}

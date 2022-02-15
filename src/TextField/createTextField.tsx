@@ -1,12 +1,12 @@
 import { useTextField } from "@react-aria/textfield";
-import { ComponentProps, useRef } from "react";
-import { BentoSprinkles, Box } from "../internal";
+import { useRef } from "react";
+import { Box } from "../internal";
 import { LocalizedString } from "../util/LocalizedString";
 import { inputRecipe } from "../Field/Field.css";
 import { FieldProps } from "../Field/FieldProps";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { FieldType } from "../Field/createField";
-import { Body } from "src";
+import { InputConfig } from "src/Field/InputConfig";
 
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;
@@ -14,14 +14,7 @@ type Props = FieldProps<string> & {
   disabled?: boolean;
 };
 
-export type TextFieldConfig = {
-  paddingX: BentoSprinkles["paddingX"];
-  paddingY: BentoSprinkles["paddingY"];
-  radius: BentoSprinkles["borderRadius"];
-  fontSize: ComponentProps<typeof Body>["size"];
-};
-
-export function createTextField(Field: FieldType, config: TextFieldConfig) {
+export function createTextField(Field: FieldType, config: InputConfig) {
   return function TextField(props: Props) {
     const inputRef = useRef<HTMLInputElement>(null);
 
