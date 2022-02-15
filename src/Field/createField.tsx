@@ -52,7 +52,7 @@ export function createField(config: FieldConfig) {
   }: Props) {
     return (
       <Box disabled={disabled} cursor={{ disabled: "notAllowed" }}>
-        <Stack space={4}>
+        <Stack space={config.internalSpacing}>
           {label && (
             <Label
               as={labelElement}
