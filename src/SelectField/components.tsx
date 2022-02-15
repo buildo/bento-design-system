@@ -24,7 +24,7 @@ import {
   control,
 } from "./SelectField.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
-import { InputConfig } from "src/Field/InputConfig";
+import { InputConfig } from "../Field/InputConfig";
 import { DropdownConfig } from "./createSelectField";
 import clsx from "clsx";
 
@@ -159,7 +159,7 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
           }),
           bentoSprinkles({
             paddingX: dropdownConfig.list.itemPaddingX,
-            paddingY: dropdownConfig.list.itemPaddingY.large,
+            paddingY: dropdownConfig.list.itemPaddingY[props.selectProps.size],
           })
         )}
       >

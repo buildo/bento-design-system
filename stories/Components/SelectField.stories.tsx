@@ -1,10 +1,11 @@
 import { StoryFn } from "@storybook/react";
-import { IconCheck, IconInformative, Modal, SelectField } from "../";
+import { Modal, SelectField } from "../";
 import { createComponentStories, fieldArgTypes, formatMessage, textArgType } from "../util";
 
 const { defaultExport, createControlledStory } = createComponentStories({
   component: SelectField,
   args: {
+    size: "large",
     name: "color",
     label: formatMessage("What's your favorite color?"),
     placeholder: formatMessage("Select a color"),
@@ -31,7 +32,9 @@ const { defaultExport, createControlledStory } = createComponentStories({
 
 export default defaultExport;
 
-export const Normal = createControlledStory(undefined, {});
+export const LargeMenu = createControlledStory(undefined, {});
+
+export const MediumMenu = createControlledStory(undefined, { size: "medium" });
 
 export const Disabled = createControlledStory(undefined, {
   disabled: true,

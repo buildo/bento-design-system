@@ -10,9 +10,9 @@ import { ComponentProps, useEffect, useMemo } from "react";
 import { FieldProps } from "../Field/FieldProps";
 import { FieldType } from "../Field/createField";
 import { createComponents, styles } from "./components";
-import { InputConfig } from "src/Field/InputConfig";
-import { BentoSprinkles } from "src/internal";
-import { IconProps } from "src/Icons/IconProps";
+import { InputConfig } from "../Field/InputConfig";
+import { BentoSprinkles } from "../internal";
+import { IconProps } from "../Icons/IconProps";
 
 type SelectOption<A> = {
   value: A;
@@ -23,6 +23,7 @@ type SelectOption<A> = {
 type Props<A, IsMulti extends boolean> = (IsMulti extends false
   ? FieldProps<A | undefined>
   : FieldProps<A[]>) & {
+  size: ListSize;
   placeholder: LocalizedString;
   options: Array<SelectOption<A>>;
   isMulti?: IsMulti;
@@ -35,6 +36,7 @@ export type { Props as SelectFieldProps };
 
 declare module "react-select/dist/declarations/src/Select" {
   export interface Props<Option, IsMulti extends boolean, Group extends GroupBase<Option>> {
+    size: ListSize;
     validationState: "valid" | "invalid";
     multiValueMessage: (numberOfSelectedOptions: number) => LocalizedString;
   }
@@ -90,6 +92,7 @@ export function createSelectField(
     noOptionsMessage,
     multiValueMessage,
     autoFocus,
+    size,
   }: Props<A, IsMulti>) {
     const validationState = issues ? "invalid" : "valid";
     const { labelProps, fieldProps, descriptionProps, errorMessageProps } = useField({
@@ -175,6 +178,7 @@ export function createSelectField(
           multiValueMessage={multiValueMessage}
           closeMenuOnSelect={!isMulti}
           hideSelectedOptions={false}
+          size={size}
         />
       </Field>
     );
