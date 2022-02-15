@@ -32,7 +32,7 @@ export function createFormFields(
       labelSpacing: 8,
     },
     radioGroup: {
-      labelSpacing: "8",
+      labelSpacing: 8,
     },
   }
 ) {
