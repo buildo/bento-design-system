@@ -19,7 +19,7 @@ export function Placeholder({ label, height = 120, width = "auto" }: Props) {
       alignItems="center"
     >
       {label ? (
-        <Inset space="8">{unsafeLocalizedString(label)}</Inset>
+        <Inset space={8}>{unsafeLocalizedString(label)}</Inset>
       ) : (
         <svg style={{ position: "absolute", width: "100%", height: "100%" }}>
           <line

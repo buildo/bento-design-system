@@ -31,10 +31,10 @@ const paddingType = {
 const { defaultExport, createStory } = createComponentStories({
   component: Card,
   args: {
-    paddingLeft: "24",
-    paddingRight: "24",
-    paddingTop: "40",
-    paddingBottom: "40",
+    paddingLeft: 24,
+    paddingRight: 24,
+    paddingTop: 40,
+    paddingBottom: 40,
     elevation: "small",
   },
   argTypes: {
@@ -53,7 +53,7 @@ export default defaultExport;
 
 export const card = createStory({
   children: (
-    <Stack space="8">
+    <Stack space={8}>
       <Title size="large">{formatMessage("Campaign type")}</Title>
       <Body size="large">{formatMessage("Drive-traffic advanced")}</Body>
     </Stack>

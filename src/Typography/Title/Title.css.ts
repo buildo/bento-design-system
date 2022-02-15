@@ -8,7 +8,7 @@ export const titleRecipe = strictRecipe({
       small: bentoSprinkles({
         fontSize: "titleSmall",
         lineHeight: "titleSmall",
-        letterSpacing: "1",
+        letterSpacing: 1,
       }),
       medium: bentoSprinkles({ fontSize: "titleMedium", lineHeight: "titleMedium" }),
       large: bentoSprinkles({ fontSize: "titleLarge", lineHeight: "titleLarge" }),

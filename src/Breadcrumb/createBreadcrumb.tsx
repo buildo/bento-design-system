@@ -28,8 +28,8 @@ export function createBreadcrumb(
   Link: FunctionComponent<LinkProps>,
   config: BreadcrumbConfig = {
     separator: IconChevronRight,
-    separatorSize: "8",
-    space: "16",
+    separatorSize: 8,
+    space: 16,
   }
 ) {
   const BreadcrumbItem = createBreadcrumbItem(Link);

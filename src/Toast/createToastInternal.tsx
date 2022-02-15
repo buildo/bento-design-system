@@ -23,7 +23,7 @@ export function createToastInternal(
         paddingLeft={config.paddingX.withoutAction}
         paddingRight={!!action ? config.paddingX.withAction : config.paddingX.withoutAction}
       >
-        <Columns space="16" alignY="center">
+        <Columns space={16} alignY="center">
           <Body size={config.messageSize} color={kind === "secondary" ? "default" : kind}>
             {message}
           </Body>

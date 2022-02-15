@@ -5,7 +5,7 @@ export const bodyRecipe = strictRecipe({
   base: bentoSprinkles({ fontFamily: "default" }),
   variants: {
     size: {
-      small: bentoSprinkles({ fontSize: "bodySmall", lineHeight: "bodySmall", letterSpacing: "1" }),
+      small: bentoSprinkles({ fontSize: "bodySmall", lineHeight: "bodySmall", letterSpacing: 1 }),
       medium: bentoSprinkles({ fontSize: "bodyMedium", lineHeight: "bodyMedium" }),
       large: bentoSprinkles({ fontSize: "bodyLarge", lineHeight: "bodyLarge" }),
     },

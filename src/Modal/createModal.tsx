@@ -38,11 +38,11 @@ type ModalConfig = {
 export function createModal(
   Actions: React.FunctionComponent<ActionsProps>,
   config: ModalConfig = {
-    padding: "24",
-    radius: "8",
+    padding: 24,
+    radius: 8,
     titleSize: "large",
     closeIcon: IconClose,
-    closeIconSize: "16",
+    closeIconSize: 16,
   }
 ) {
   return function Modal(props: ModalProps) {
@@ -80,7 +80,7 @@ export function createModal(
               borderRadius={config.radius}
             >
               <Inset space={config.padding}>
-                <Columns space="16" alignY="top">
+                <Columns space={16} alignY="top">
                   <Title size={config.titleSize}>{props.title}</Title>
                   <Column width="content">
                     <IconButton

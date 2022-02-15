@@ -14,7 +14,7 @@ export const modal = style([
 export const underlay = bentoSprinkles({
   position: "fixed",
   zIndex: "modalUnderlay",
-  inset: "0",
+  inset: 0,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

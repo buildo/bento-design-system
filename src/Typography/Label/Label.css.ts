@@ -8,17 +8,17 @@ export const labelRecipe = strictRecipe({
       small: bentoSprinkles({
         fontSize: "labelSmall",
         lineHeight: "labelSmall",
-        letterSpacing: "1",
+        letterSpacing: 1,
       }),
       medium: bentoSprinkles({
         fontSize: "labelMedium",
         lineHeight: "labelMedium",
-        letterSpacing: "1",
+        letterSpacing: 1,
       }),
       large: bentoSprinkles({
         fontSize: "labelLarge",
         lineHeight: "labelLarge",
-        letterSpacing: "2",
+        letterSpacing: 2,
       }),
     },
     color: {

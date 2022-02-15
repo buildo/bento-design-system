@@ -28,13 +28,13 @@ type ButtonConfig = {
 };
 
 export function createButton({
-  paddingX = "16",
+  paddingX = 16,
   paddingY = {
-    small: "8",
-    medium: "16",
+    small: 8,
+    medium: 16,
   },
   labelSize = "large",
-  radius = "8",
+  radius = 8,
 }: ButtonConfig) {
   return function Button(props: ButtonProps) {
     const ref = useRef<HTMLButtonElement>(null);

@@ -26,11 +26,11 @@ export default meta;
 
 export const Icons = (args: IconProps) => {
   return (
-    <Stack space="32">
-      <Inline space="32">
+    <Stack space={32}>
+      <Inline space={32}>
         {Object.entries(icons).map(([name, Icon]) => (
-          <Box padding="16" alignItems="center" justifyContent="center" style={{ width: 100 }}>
-            <Stack space="8" align="center">
+          <Box padding={16} alignItems="center" justifyContent="center" style={{ width: 100 }}>
+            <Stack space={8} align="center">
               <Box display="flex" alignItems="center" style={{ height: vars.space[args.size] }}>
                 <Icon size={args.size} color={args.color} />
               </Box>
