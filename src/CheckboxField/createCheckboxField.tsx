@@ -11,7 +11,7 @@ import { Box, Column, Columns } from "../internal";
 import { FieldProps } from "../Field/FieldProps";
 import { vars } from "../vars.css";
 import { checkboxRecipe, fieldContainer } from "./CheckboxField.css";
-import { SelectionControlConfig } from "src/Field/SelectionControlConfig";
+import { SelectionControlConfig } from "../Field/SelectionControlConfig";
 
 export type CheckboxFieldProps = Omit<FieldProps<boolean>, "assistiveText"> & {
   label: TextChildren;

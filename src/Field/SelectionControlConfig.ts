@@ -1,4 +1,4 @@
-import { BentoSprinkles } from "src/internal";
+import { BentoSprinkles } from "../internal";
 
 export type SelectionControlConfig = {
   paddingY: BentoSprinkles["gap"];

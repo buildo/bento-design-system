@@ -11,7 +11,7 @@ import { useRef } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { useFocusRing } from "@react-aria/focus";
 import { Radio } from "./Radio";
-import { SelectionControlConfig } from "src/Field/SelectionControlConfig";
+import { SelectionControlConfig } from "../Field/SelectionControlConfig";
 
 type Option<A> = {
   value: A;

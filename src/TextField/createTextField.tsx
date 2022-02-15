@@ -6,7 +6,7 @@ import { inputRecipe } from "../Field/Field.css";
 import { FieldProps } from "../Field/FieldProps";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { FieldType } from "../Field/createField";
-import { InputConfig } from "src/Field/InputConfig";
+import { InputConfig } from "../Field/InputConfig";
 
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;
