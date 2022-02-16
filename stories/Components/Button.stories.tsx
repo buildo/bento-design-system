@@ -64,5 +64,5 @@ export const PrimarySmall = createStory({
 export const PrimaryLarge = createStory({
   kind: "solid",
   hierarchy: "primary",
-  size: "small",
+  size: "large",
 });
