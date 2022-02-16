@@ -44,21 +44,23 @@ export function createFormFields(
       radius: 8,
       list: {
         paddingY: 8,
-        itemPaddingX: 16,
-        itemPaddingY: {
-          medium: 8,
-          large: 16,
-        },
-        fontSize: {
-          firstLine: "medium",
-          secondLine: "small",
-          overline: "small",
-        },
-        internalSpacing: 16,
-        iconSize: {
-          leading: 24,
-          trailing: 16,
-          //illustration: 32,
+        item: {
+          paddingX: 16,
+          paddingY: {
+            medium: 8,
+            large: 16,
+          },
+          fontSize: {
+            firstLine: "medium",
+            secondLine: "small",
+            overline: "small",
+          },
+          internalSpacing: 16,
+          iconSize: {
+            leading: 24,
+            trailing: 16,
+            illustration: 32,
+          },
         },
       },
     },
