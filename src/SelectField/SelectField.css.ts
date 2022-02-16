@@ -67,15 +67,15 @@ export const optionRecipe = strictRecipe({
   }),
   variants: {
     isSelected: {
-      true: bentoSprinkles({ background: "transparentFocusBackground" }),
-      false: bentoSprinkles({ background: { hover: "transparentHoverBackground" } }),
+      true: bentoSprinkles({ background: "primaryTransparentFocusBackground" }),
+      false: bentoSprinkles({ background: { hover: "primaryTransparentHoverBackground" } }),
     },
     isFocused: {
       true: bentoSprinkles({
         background: {
-          default: "transparentFocusBackground",
-          hover: "transparentHoverBackground",
-          focus: "transparentFocusBackground",
+          default: "primaryTransparentFocusBackground",
+          hover: "primaryTransparentHoverBackground",
+          focus: "primaryTransparentFocusBackground",
         },
       }),
     },
