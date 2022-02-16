@@ -59,7 +59,7 @@ export function createLink(
         fontWeight={config.labelWeight}
         textDecoration={config.labelDecoration}
       >
-        <Label as="span" size={config.labelSize} color={isDisabled ? "disabled" : "default"}>
+        <Label as="span" size={config.labelSize} color={isDisabled ? "disabled" : "link"}>
           {label}
         </Label>
       </Box>

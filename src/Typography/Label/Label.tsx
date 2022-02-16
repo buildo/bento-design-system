@@ -5,7 +5,7 @@ import { labelRecipe } from "./Label.css";
 
 type Size = "small" | "medium" | "large";
 type Align = "left" | "center" | "right";
-type Color = "default" | "secondary" | "disabled";
+type Color = "primary" | "secondary" | "disabled" | "link";
 
 export type LabelProps = {
   children: LocalizedString;
@@ -22,7 +22,7 @@ export function Label({
   children,
   size,
   align,
-  color = "default",
+  color = "primary",
   uppercase = false,
   ...boxProps
 }: LabelProps) {
