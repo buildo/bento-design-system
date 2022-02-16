@@ -61,7 +61,7 @@ export function createButton({
         {...buttonProps}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
-        paddingX={paddingX}
+        paddingX={paddingX[size]}
         paddingY={paddingY[size]}
         borderRadius={radius}
       >
