@@ -13,52 +13,134 @@ export const buttonRecipe = strictRecipe({
   }),
   variants: {
     kind: {
-      primary: bentoSprinkles({
-        color: {
-          default: "solidEnabledForeground",
-          focus: "solidFocusForeground",
-          hover: "solidHoverForeground",
-          disabled: "solidDisabledForeground",
-        },
-        background: {
-          default: "solidEnabledBackground",
-          focus: "solidFocusBackground",
-          hover: "solidHoverBackground",
-          disabled: "solidDisabledBackground",
-        },
+      solid: bentoSprinkles({
+        background: { disabled: "disabledSolidBackground" },
+        color: { disabled: "disabledSolidForeground" },
       }),
-      danger: bentoSprinkles({
-        color: {
-          default: "dangerEnabledForeground",
-          focus: "dangerFocusForeground",
-          hover: "dangerHoverForeground",
-          disabled: "dangerDisabledForeground",
-        },
-        background: {
-          default: "dangerEnabledBackground",
-          focus: "dangerFocusBackground",
-          hover: "dangerHoverBackground",
-          disabled: "dangerDisabledBackground",
-        },
+      transparent: bentoSprinkles({
+        background: { disabled: "disabledTransparentBackground" },
+        color: { disabled: "disabledTransparentForeground" },
       }),
-      transparentPrimary: bentoSprinkles({
-        color: {
-          default: "transparentEnabledForeground",
-          focus: "transparentFocusForeground",
-          hover: "transparentHoverForeground",
-          disabled: "transparentDisabledForeground",
-        },
-        background: {
-          default: "transparentEnabledBackground",
-          focus: "transparentFocusBackground",
-          hover: "transparentHoverBackground",
-          disabled: "transparentDisabledBackground",
-        },
-      }),
+    },
+    hierarchy: {
+      primary: {},
+      secondary: {},
+      danger: {},
     },
     size: {
       small: extendedHitAreaRecipe({ axis: "y" }),
       medium: [],
+      large: [],
     },
   },
+  compoundVariants: [
+    {
+      variants: {
+        kind: "solid",
+        hierarchy: "primary",
+      },
+      style: bentoSprinkles({
+        color: {
+          default: "primarySolidEnabledForeground",
+          hover: "primarySolidHoverForeground",
+          focus: "primarySolidFocusForeground",
+        },
+        background: {
+          default: "primarySolidEnabledBackground",
+          hover: "primarySolidHoverBackground",
+          focus: "primarySolidFocusBackground",
+        },
+      }),
+    },
+    {
+      variants: {
+        kind: "solid",
+        hierarchy: "secondary",
+      },
+      style: bentoSprinkles({
+        color: {
+          default: "secondarySolidEnabledForeground",
+          hover: "secondarySolidHoverForeground",
+          focus: "secondarySolidFocusForeground",
+        },
+        background: {
+          default: "secondarySolidEnabledBackground",
+          hover: "secondarySolidHoverBackground",
+          focus: "secondarySolidFocusBackground",
+        },
+      }),
+    },
+    {
+      variants: {
+        kind: "solid",
+        hierarchy: "danger",
+      },
+      style: bentoSprinkles({
+        color: {
+          default: "dangerSolidEnabledForeground",
+          hover: "dangerSolidHoverForeground",
+          focus: "dangerSolidFocusForeground",
+        },
+        background: {
+          default: "dangerSolidEnabledBackground",
+          hover: "dangerSolidHoverBackground",
+          focus: "dangerSolidFocusBackground",
+        },
+      }),
+    },
+    {
+      variants: {
+        kind: "transparent",
+        hierarchy: "primary",
+      },
+      style: bentoSprinkles({
+        color: {
+          default: "primaryTransparentEnabledForeground",
+          hover: "primaryTransparentHoverForeground",
+          focus: "primaryTransparentFocusForeground",
+        },
+        background: {
+          default: "primaryTransparentEnabledBackground",
+          hover: "primaryTransparentHoverBackground",
+          focus: "primaryTransparentFocusBackground",
+        },
+      }),
+    },
+    {
+      variants: {
+        kind: "transparent",
+        hierarchy: "secondary",
+      },
+      style: bentoSprinkles({
+        color: {
+          default: "secondaryTransparentEnabledForeground",
+          hover: "secondaryTransparentHoverForeground",
+          focus: "secondaryTransparentFocusForeground",
+        },
+        background: {
+          default: "secondaryTransparentEnabledBackground",
+          hover: "secondaryTransparentHoverBackground",
+          focus: "secondaryTransparentFocusBackground",
+        },
+      }),
+    },
+    {
+      variants: {
+        kind: "transparent",
+        hierarchy: "danger",
+      },
+      style: bentoSprinkles({
+        color: {
+          default: "dangerTransparentEnabledForeground",
+          hover: "dangerTransparentHoverForeground",
+          focus: "dangerTransparentFocusForeground",
+        },
+        background: {
+          default: "dangerTransparentEnabledBackground",
+          hover: "dangerTransparentHoverBackground",
+          focus: "dangerTransparentFocusBackground",
+        },
+      }),
+    },
+  ],
 });

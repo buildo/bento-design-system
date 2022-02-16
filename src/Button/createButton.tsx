@@ -7,11 +7,12 @@ import { useButton } from "@react-aria/button";
 import { Label } from "../Typography/Label/Label";
 import { BentoSprinkles } from "../internal";
 
-type Size = "small" | "medium";
+type Size = "small" | "medium" | "large";
 export type ButtonProps = {
   label: LocalizedString;
   onPress: () => void;
-  kind: "primary" | "danger" | "transparentPrimary";
+  kind: "solid" | "transparent";
+  hierarchy: "primary" | "secondary" | "danger";
   isDisabled?: boolean;
   size?: Size;
 } & AriaButtonProps<"button">;
@@ -21,17 +22,22 @@ type SizeConfig<T> = {
 };
 
 type ButtonConfig = {
-  paddingX?: BentoSprinkles["paddingX"];
+  paddingX?: SizeConfig<BentoSprinkles["paddingX"]>;
   paddingY?: SizeConfig<BentoSprinkles["paddingY"]>;
   labelSize?: ComponentProps<typeof Label>["size"];
   radius?: BentoSprinkles["borderRadius"];
 };
 
 export function createButton({
-  paddingX = 16,
-  paddingY = {
+  paddingX = {
     small: 8,
     medium: 16,
+    large: 16,
+  },
+  paddingY = {
+    small: 4,
+    medium: 8,
+    large: 16,
   },
   labelSize = "large",
   radius = 8,
@@ -49,6 +55,7 @@ export function createButton({
         ref={ref}
         className={buttonRecipe({
           kind: props.kind,
+          hierarchy: props.hierarchy,
           size,
         })}
         {...buttonProps}

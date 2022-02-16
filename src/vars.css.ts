@@ -120,8 +120,8 @@ export const vars = createThemeContract({
     dangerTransparentEnabledBackground: null,
     dangerTransparentHoverBackground: null,
     dangerTransparentFocusBackground: null,
-    solidDisabledBackground: null,
-    transparentDisabledBackground: null,
+    disabledSolidBackground: null,
+    disabledTransparentBackground: null,
   },
   interactiveForegroundColor: {
     primarySolidEnabledForeground: null,
@@ -142,8 +142,8 @@ export const vars = createThemeContract({
     dangerTransparentEnabledForeground: null,
     dangerTransparentHoverForeground: null,
     dangerTransparentFocusForeground: null,
-    solidDisabledForeground: null,
-    transparentDisabledForeground: null,
+    disabledSolidForeground: null,
+    disabledTransparentForeground: null,
   },
   outlineColor: {
     outlineInteractive: null,
