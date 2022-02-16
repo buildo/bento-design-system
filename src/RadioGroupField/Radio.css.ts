@@ -22,21 +22,21 @@ export const outerRadioCircleRecipe = strictRecipe({
         },
       ],
       true: [
-        bentoSprinkles({ fill: "solidEnabledBackground" }),
+        bentoSprinkles({ fill: "primarySolidEnabledBackground" }),
         {
           selectors: {
             [`${radioOption}:hover:not([disabled]) &`]: {
-              fill: vars.interactiveBackgroundColor.solidHoverBackground,
+              fill: vars.interactiveBackgroundColor.primarySolidHoverBackground,
             },
             [`${radioOption}[disabled] &`]: {
-              fill: vars.interactiveBackgroundColor.solidDisabledBackground,
+              fill: vars.interactiveBackgroundColor.disabledSolidBackground,
             },
           },
         },
       ],
     },
     focused: {
-      true: { fill: vars.interactiveBackgroundColor.solidFocusBackground },
+      true: { fill: vars.interactiveBackgroundColor.primarySolidFocusBackground },
     },
   },
 });
