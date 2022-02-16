@@ -102,6 +102,7 @@ export function createModal(
                       : undefined
                   }
                   secondaryAction={props.secondaryAction}
+                  size="large"
                 />
               </Inset>
             </Box>
