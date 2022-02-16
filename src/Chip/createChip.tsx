@@ -67,7 +67,6 @@ export function createChip(
                   label={dismissProps.dismissButtonLabel}
                   onPress={dismissProps.onDismiss}
                   size={config.closeIconSize}
-                  tabIndex={-1}
                 />
               </Column>
             )}
