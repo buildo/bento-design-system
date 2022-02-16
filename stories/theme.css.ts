@@ -178,7 +178,7 @@ export const lightTheme = createTheme(bentoVars, {
     outlineDecorative: colors.neutral20,
     outlineContainer: colors.neutral05,
     outlineNegative: colors.negative40,
-    outlineDisabled: colors.neutral60,
+    outlineDisabled: "rgba(82, 94, 111, 0.3)",
   },
   boxShadow: {
     outlineInput: `inset 0px 0px 0px 1px ${colors.neutral50}`,

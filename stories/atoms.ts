@@ -31,6 +31,6 @@ export const responsiveProperties = {
 export const statusProperties = {
   ...bentoAtoms.statusProperties,
   color,
-  fill: color,
+  fill: { ...color, ...bentoAtoms.statusProperties.background },
   stroke: color,
 };

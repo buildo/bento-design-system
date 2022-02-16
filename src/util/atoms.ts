@@ -86,6 +86,6 @@ export const statusProperties = {
   boxShadow: { ...vars.boxShadow, none: "none" },
   outline: { ...vars.outlineColor, none: "none" },
   stroke: color,
-  fill: color,
   textDecoration: ["none", "underline"],
+  fill: { ...color, ...background },
 } as const;

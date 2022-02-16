@@ -1,12 +1,12 @@
 import { useTextField } from "@react-aria/textfield";
 import { ComponentProps, useRef } from "react";
-import { bentoSprinkles, Box } from "../internal";
+import { BentoSprinkles, Box } from "../internal";
 import { LocalizedString } from "../util/LocalizedString";
 import { inputRecipe } from "../Field/Field.css";
 import { FieldProps } from "../Field/FieldProps";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { FieldType } from "../Field/createField";
-import { Body, BoxProps } from "src";
+import { Body } from "src";
 
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;
@@ -14,17 +14,14 @@ type Props = FieldProps<string> & {
   disabled?: boolean;
 };
 
-type TextFieldConfig<AtomsFn extends typeof bentoSprinkles> = {
-  paddingX: BoxProps<AtomsFn>["paddingX"];
-  paddingY: BoxProps<AtomsFn>["paddingY"];
-  radius: BoxProps<AtomsFn>["borderRadius"];
+export type TextFieldConfig = {
+  paddingX: BentoSprinkles["paddingX"];
+  paddingY: BentoSprinkles["paddingY"];
+  radius: BentoSprinkles["borderRadius"];
   fontSize: ComponentProps<typeof Body>["size"];
 };
 
-export function createTextField<AtomsFn extends typeof bentoSprinkles>(
-  Field: FieldType,
-  config: TextFieldConfig<AtomsFn>
-) {
+export function createTextField(Field: FieldType, config: TextFieldConfig) {
   return function TextField(props: Props) {
     const inputRef = useRef<HTMLInputElement>(null);
 
