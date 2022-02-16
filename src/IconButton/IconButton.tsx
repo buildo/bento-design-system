@@ -33,7 +33,7 @@ export function IconButton(props: Props) {
       title={props.label}
       color={undefined}
       className={iconButton}
-      tabIndex={props.tabIndex || buttonProps.tabIndex}
+      tabIndex={props.tabIndex ?? buttonProps.tabIndex}
     >
       {props.icon({ size: props.size, color: props.color })}
     </Box>
