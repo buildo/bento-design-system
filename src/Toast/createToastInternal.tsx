@@ -29,7 +29,7 @@ export function createToastInternal(
           </Body>
           {action && (
             <Column width="content">
-              <Button kind="transparentPrimary" size="small" {...action} />
+              <Button kind="transparent" hierarchy="primary" {...action} />
             </Column>
           )}
         </Columns>
