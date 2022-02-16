@@ -100,8 +100,8 @@ function CheckboxMark({ isDisabled }: { isDisabled: boolean }) {
         d="M2 5.89744L6 10L14 2"
         stroke={
           isDisabled
-            ? vars.interactiveForegroundColor.solidDisabledForeground
-            : vars.interactiveForegroundColor.solidEnabledForeground
+            ? vars.interactiveForegroundColor.disabledSolidForeground
+            : vars.interactiveForegroundColor.primarySolidEnabledForeground
         }
         strokeWidth={4}
         strokeLinecap="round"
