@@ -6,6 +6,7 @@ import { ButtonProps } from "../Button/createButton";
 type ActionProps = Omit<ButtonProps, "kind" | "size">;
 
 export type ActionsProps = {
+  size: ButtonProps["size"];
   primaryAction?: ActionProps & {
     isDestructive?: boolean;
   };
@@ -33,16 +34,24 @@ export function createActions(
     spaceBetweenButtons: 16,
   }
 ) {
-  return function Actions({ primaryAction, secondaryAction }: ActionsProps) {
+  return function Actions({ primaryAction, secondaryAction, size = "medium" }: ActionsProps) {
     const primaryActionButton = primaryAction && (
       <Button
         key="primary"
         {...primaryAction}
-        kind={primaryAction.isDestructive ? "danger" : "primary"}
+        kind="solid"
+        hierarchy={primaryAction.isDestructive ? "danger" : "primary"}
+        size={size}
       />
     );
     const secondaryActionButton = secondaryAction && (
-      <Button key="secondary" {...secondaryAction} kind="transparentPrimary" />
+      <Button
+        key="secondary"
+        {...secondaryAction}
+        kind="transparent"
+        hierarchy="secondary"
+        size={size}
+      />
     );
     const buttons: [JSX.Element | undefined, JSX.Element | undefined] =
       config.primaryPosition === "left"
