@@ -6,6 +6,7 @@ export * from "./Button/createButton";
 export * from "./Card/createCard";
 export * from "./Chip/createChip";
 export * from "./Disclosure/createDisclosure";
+export * from "./DisclosureGroup/createDisclosureGroup";
 export * from "./Divider/Divider";
 export * from "./Field/createFormFields";
 export * from "./IconButton/IconButton";

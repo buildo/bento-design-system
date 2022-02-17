@@ -15,6 +15,7 @@ import {
   createChip,
   createList,
   createDisclosure,
+  createDisclosureGroup,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -34,3 +35,4 @@ export const Modal = createModal(Actions);
 export const Chip = createChip();
 export const List = createList();
 export const Disclosure = createDisclosure();
+export const DisclosureGroup = createDisclosureGroup(Disclosure);

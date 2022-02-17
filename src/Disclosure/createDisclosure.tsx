@@ -89,3 +89,5 @@ export function createDisclosure(
     );
   };
 }
+
+export type { Props as DisclosureProps };
