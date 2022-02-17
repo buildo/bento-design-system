@@ -4,15 +4,14 @@ import Select, {
   MultiValueProps,
   SingleValue as SingleValueT,
 } from "react-select";
-import { Body, Children, Label, LocalizedString } from "..";
+import { Body, Children, ListConfig, ListSize, LocalizedString } from "..";
 import { useField } from "@react-aria/label";
-import { ComponentProps, useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { FieldProps } from "../Field/FieldProps";
 import { FieldType } from "../Field/createField";
 import { createComponents, styles } from "./components";
 import { InputConfig } from "../Field/InputConfig";
 import { BentoSprinkles } from "../internal";
-import { IconProps } from "../Icons/IconProps";
 
 type SelectOption<A> = {
   value: A;
@@ -41,28 +40,6 @@ declare module "react-select/dist/declarations/src/Select" {
     multiValueMessage: (numberOfSelectedOptions: number) => LocalizedString;
   }
 }
-
-// TODO (vince): this configuration type should be used and exported by the List component
-type ListSize = "medium" | "large";
-type ListSizeConfig<T> = {
-  [k in ListSize]: T;
-};
-type ListConfig = {
-  paddingY: BentoSprinkles["paddingY"];
-  itemPaddingX: BentoSprinkles["paddingX"];
-  itemPaddingY: ListSizeConfig<BentoSprinkles["paddingY"]>;
-  fontSize: {
-    firstLine: ComponentProps<typeof Body>["size"];
-    secondLine: ComponentProps<typeof Body>["size"];
-    overline: ComponentProps<typeof Label>["size"];
-  };
-  internalSpacing: BentoSprinkles["gap"];
-  iconSize: {
-    leading: IconProps["size"];
-    trailing: IconProps["size"];
-    // TODO(vince): add illustration size
-  };
-};
 
 export type DropdownConfig = {
   elevation: "small" | "medium" | "large";

@@ -158,21 +158,21 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
             isFocused: props.isFocused,
           }),
           bentoSprinkles({
-            paddingX: dropdownConfig.list.itemPaddingX,
-            paddingY: dropdownConfig.list.itemPaddingY[props.selectProps.size],
+            paddingX: dropdownConfig.list.item.paddingX,
+            paddingY: dropdownConfig.list.item.paddingY[props.selectProps.size],
           })
         )}
       >
-        <Columns space={dropdownConfig.list.internalSpacing} alignY="center">
+        <Columns space={dropdownConfig.list.item.internalSpacing} alignY="center">
           {"icon" in props.data && ( // TODO(vince): should this be just an Icon component?
             <Column width="content">{(props.data as unknown as { icon: Children }).icon}</Column>
           )}
-          <Body size={dropdownConfig.list.fontSize.firstLine}>
+          <Body size={dropdownConfig.list.item.fontSize.firstLine}>
             {props.children as TextChildren}
           </Body>
           {props.isSelected && (
             <Column width="content">
-              <IconCheck size={dropdownConfig.list.iconSize.trailing} />
+              <IconCheck size={dropdownConfig.list.item.iconSize.trailing} />
             </Column>
           )}
         </Columns>

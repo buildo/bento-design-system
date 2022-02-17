@@ -13,6 +13,7 @@ import {
   createToast,
   createModal,
   createChip,
+  createList,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -30,3 +31,4 @@ export const Link = createLink();
 export const Breadcrumb = createBreadcrumb(Link);
 export const Modal = createModal(Actions);
 export const Chip = createChip();
+export const List = createList();
