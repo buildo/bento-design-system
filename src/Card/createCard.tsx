@@ -20,7 +20,7 @@ type CardConfig = {
 export type CardProps<Paddings extends InternalBoxProps["padding"]> = {
   children: Children;
   elevation?: "small" | "medium" | "large";
-} & { [k in PaddingKey]?: Paddings };
+} & { [k in PaddingKey]?: 0 | Paddings };
 
 export function createCard<Paddings extends InternalBoxProps["padding"] = 24 | 32 | 40>({
   radius = 8,
