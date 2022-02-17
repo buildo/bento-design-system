@@ -1,5 +1,4 @@
 import "../src/reset.css.ts";
-import { lightTheme } from "../stories/theme.css";
 import { OverlayProvider } from "@react-aria/overlays";
 
 export const decorators = [
@@ -17,10 +16,5 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
-  },
-  themes: {
-    default: "light",
-    list: [{ name: "light", class: lightTheme, color: "white" }],
-    target: "body",
   },
 };

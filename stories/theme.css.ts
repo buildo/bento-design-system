@@ -1,4 +1,4 @@
-import { createGlobalTheme, createTheme } from "@vanilla-extract/css";
+import { createGlobalTheme } from "@vanilla-extract/css";
 import { vars as bentoVars } from "../src/vars.css";
 
 const remBaseSize = 16;
@@ -125,7 +125,7 @@ const commonTheme = {
   },
 };
 
-export const lightTheme = createTheme(bentoVars, {
+createGlobalTheme(":root", bentoVars, {
   ...commonTheme,
   brandColor: {
     brandPrimary: colors.primary30,
