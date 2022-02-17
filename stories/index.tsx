@@ -14,6 +14,7 @@ import {
   createModal,
   createChip,
   createList,
+  createDisclosure,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -26,9 +27,10 @@ export const Button = createButton({});
 export const Banner = createBanner({});
 export const { Toast, ToastProvider } = createToast(Button, {});
 export const Actions = createActions(Button);
-export const Card = createCard<4 | 8 | 16>({});
+export const Card = createCard<24 | 32 | 40>({});
 export const Link = createLink();
 export const Breadcrumb = createBreadcrumb(Link);
 export const Modal = createModal(Actions);
 export const Chip = createChip();
 export const List = createList();
+export const Disclosure = createDisclosure();
