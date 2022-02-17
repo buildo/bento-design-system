@@ -1,4 +1,4 @@
-import { createGlobalTheme, createTheme } from "@vanilla-extract/css";
+import { createGlobalTheme } from "@vanilla-extract/css";
 import { vars as bentoVars } from "../src/vars.css";
 
 const remBaseSize = 16;
@@ -12,7 +12,9 @@ const colors = {
   tertiary30: "#7BE6E6",
   neutral01: "#F6F8FB",
   neutral05: "#ECEFF4",
+  neutral10: "#DEE4ED",
   neutral20: "#CBD4E1",
+  neutral30: "#B6C2D3",
   neutral40: "#9AA8BC",
   neutral50: "#728197",
   neutral60: "#525E6F",
@@ -40,6 +42,24 @@ const colors = {
   negative70: "#8D000C",
   interactive70: "#4D4D4D",
   interactive80: "#333333",
+  red10: "#FFBDCB",
+  red30: "#FC5275",
+  orange10: "#FFD4BC",
+  orange30: "#FB8951",
+  yellow10: "#FFF4B2",
+  yellow30: "#FFD439",
+  green10: "#DBF1BC",
+  green30: "#A3D65C",
+  jade10: "#B7F6D7",
+  jade30: "#51E098",
+  blue10: "#BCF2FF",
+  blue30: "#51D0FB",
+  indigo10: "#C0D3F9",
+  indigo30: "#5F8CE6",
+  violet10: "#DABEEA",
+  violet30: "#A463C7",
+  pink10: "#F8B0DA",
+  pink30: "#E648A4",
 };
 
 const commonTheme = {
@@ -105,7 +125,7 @@ const commonTheme = {
   },
 };
 
-export const lightTheme = createTheme(bentoVars, {
+createGlobalTheme(":root", bentoVars, {
   ...commonTheme,
   brandColor: {
     brandPrimary: colors.primary30,
@@ -180,6 +200,28 @@ export const lightTheme = createTheme(bentoVars, {
     outlineNegative: colors.negative40,
     outlineDisabled: "rgba(82, 94, 111, 0.3)",
   },
+  dataVisualizationColor: {
+    softGrey: colors.neutral10,
+    softRed: colors.red10,
+    softOrange: colors.orange10,
+    softYellow: colors.yellow10,
+    softGreen: colors.green10,
+    softJade: colors.jade10,
+    softBlue: colors.blue10,
+    softIndigo: colors.indigo10,
+    softViolet: colors.violet10,
+    softPink: colors.pink10,
+    brightGrey: colors.neutral30,
+    brightRed: colors.red30,
+    brightOrange: colors.orange30,
+    brightYellow: colors.yellow30,
+    brightGreen: colors.green30,
+    brightJade: colors.jade30,
+    brightBlue: colors.blue30,
+    brightIndigo: colors.indigo30,
+    brightViolet: colors.violet30,
+    brightPink: colors.pink30,
+  },
   boxShadow: {
     outlineInput: `inset 0px 0px 0px 1px ${colors.neutral50}`,
     outlineInteractive: `inset 0px 0px 0px 1px ${colors.black}`,
@@ -192,7 +234,9 @@ export const lightTheme = createTheme(bentoVars, {
     elevationLarge: "0px 16px 32px rgba(0, 0, 0, 0.16)",
   },
   zIndex: {
+    selectFieldMenu: "10",
     modalUnderlay: "100",
+    selectFieldMenuInModal: "110",
   },
 });
 

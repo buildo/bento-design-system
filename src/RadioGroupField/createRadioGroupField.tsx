@@ -1,5 +1,5 @@
 import { Body, LocalizedString } from "..";
-import { BentoSprinkles, Box, Column, Columns, Inline, Inset, Stack } from "../internal";
+import { Box, Column, Columns, Inline, Inset, Stack } from "../internal";
 import { FieldProps } from "../Field/FieldProps";
 import { FieldType } from "../Field/createField";
 import { RadioGroupState, useRadioGroupState } from "@react-stately/radio";
@@ -11,6 +11,7 @@ import { useRef } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { useFocusRing } from "@react-aria/focus";
 import { Radio } from "./Radio";
+import { SelectionControlConfig } from "../Field/SelectionControlConfig";
 
 type Option<A> = {
   value: A;
@@ -24,14 +25,15 @@ export type RadioGroupFieldProps<A> = FieldProps<A | undefined, A> & {
   orientation?: "vertical" | "horizontal";
 };
 
-export type RadioGroupFieldConfig = {
-  labelSpacing: BentoSprinkles["gap"];
-};
-
 export function createRadioGroupField(
   Field: FieldType,
-  config: RadioGroupFieldConfig = {
-    labelSpacing: 8,
+  config: SelectionControlConfig = {
+    paddingY: 8,
+    controlLabelSpacing: 8,
+    internalSpacing: {
+      horizontal: 24,
+      vertical: 16,
+    },
   }
 ) {
   return function RadioGroupField<A extends string | number | boolean>(
@@ -72,11 +74,11 @@ export function createRadioGroupField(
           errorMessageProps={errorMessageProps}
           labelElement="span"
         >
-          <Inset spaceY={8}>
+          <Inset spaceY={config.paddingY}>
             {(props.orientation || "vertical") === "vertical" ? (
-              <Stack space={16}>{radioOptions}</Stack>
+              <Stack space={config.internalSpacing.vertical}>{radioOptions}</Stack>
             ) : (
-              <Inline space={24}>{radioOptions}</Inline>
+              <Inline space={config.internalSpacing.horizontal}>{radioOptions}</Inline>
             )}
           </Inset>
         </Field>
@@ -105,7 +107,7 @@ export function createRadioGroupField(
         <VisuallyHidden>
           <input {...inputProps} {...focusProps} ref={ref} />
         </VisuallyHidden>
-        <Columns space={config.labelSpacing} alignY="center">
+        <Columns space={config.controlLabelSpacing} alignY="center">
           <Column width="content">
             <Radio selected={selected} focused={isFocusVisible} />
           </Column>

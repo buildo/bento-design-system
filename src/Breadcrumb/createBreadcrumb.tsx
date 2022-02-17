@@ -1,6 +1,6 @@
 import { useBreadcrumbItem, useBreadcrumbs } from "@react-aria/breadcrumbs";
 import { useRef, Fragment, FunctionComponent } from "react";
-import { IconProps } from "src/Icons/IconProps";
+import { IconProps } from "../Icons/IconProps";
 import { IconChevronRight, Label, LinkProps, LocalizedString } from "../";
 import { Box, Inline, BentoSprinkles } from "../internal";
 

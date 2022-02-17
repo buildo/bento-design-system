@@ -8,7 +8,6 @@ module.exports = {
   title: "Bento 🍱",
   widths: [320, 425, 768, 1024, 1440, 2560],
   frameComponent: "./playroom/FrameComponent.tsx",
-  themes: "./playroom/themes.ts",
   webpackConfig: () => ({
     plugins: [
       new VanillaExtractPlugin(),

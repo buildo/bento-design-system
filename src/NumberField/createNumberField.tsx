@@ -7,7 +7,7 @@ import { FieldProps } from "../Field/FieldProps";
 import { FormatProps } from "../NumberInput/FormatProps";
 import { useFormatOptions } from "../NumberInput/formatOptions";
 import { FieldType } from "../Field/createField";
-import { NumberInputProps } from "src/NumberInput/createNumberInput";
+import { NumberInputProps } from "../NumberInput/createNumberInput";
 
 type Props = FieldProps<number | undefined, number> & {
   placeholder: LocalizedString;

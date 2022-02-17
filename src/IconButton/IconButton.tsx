@@ -21,7 +21,9 @@ export function IconButton(props: Props) {
       // buttons) so we need to use onClick instead. The types don't officially include  `onClick`
       // since it's deprecated in favor of `onPress`, but it works in practice.
       ["onClick" as any]: props.onPress,
-      onPress: undefined,
+      onPress: (e) => {
+        if (e.pointerType === "keyboard") props.onPress();
+      },
     },
     ref
   );
@@ -31,7 +33,7 @@ export function IconButton(props: Props) {
       title={props.label}
       color={undefined}
       className={iconButton}
-      tabIndex={props.tabIndex}
+      tabIndex={props.tabIndex ?? buttonProps.tabIndex}
     >
       {props.icon({ size: props.size, color: props.color })}
     </Box>

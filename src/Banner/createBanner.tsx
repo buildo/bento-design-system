@@ -13,7 +13,7 @@ import {
 import { Columns, Column, Box, Stack, BentoSprinkles } from "../internal";
 import { bannerRecipe } from "./Banner.css";
 import { ComponentProps, FunctionComponent } from "react";
-import { IconProps } from "src/Icons/IconProps";
+import { IconProps } from "../Icons/IconProps";
 
 type DismissProps =
   | {

@@ -1,10 +1,7 @@
 import "../src/reset.css.ts";
-import { lightTheme } from "../stories/theme.css";
-import { withThemes } from "storybook-addon-themes/react";
 import { OverlayProvider } from "@react-aria/overlays";
 
 export const decorators = [
-  withThemes,
   (Story) => (
     <OverlayProvider>
       <Story />
@@ -19,9 +16,5 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
-  },
-  themes: {
-    default: "light",
-    list: [{ name: "light", class: lightTheme, color: "white" }],
   },
 };

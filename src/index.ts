@@ -4,6 +4,7 @@ export * from "./Box/createBentoBox";
 export * from "./Breadcrumb/createBreadcrumb";
 export * from "./Button/createButton";
 export * from "./Card/createCard";
+export * from "./Chip/createChip";
 export * from "./Divider/Divider";
 export * from "./Field/createFormFields";
 export * from "./IconButton/IconButton";
