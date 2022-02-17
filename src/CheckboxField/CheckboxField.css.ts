@@ -26,8 +26,8 @@ export const checkboxRecipe = strictRecipe({
       true: bentoSprinkles({
         boxShadow: "none",
         background: {
-          default: "solidEnabledBackground",
-          hover: "solidHoverBackground",
+          default: "primarySolidEnabledBackground",
+          hover: "primarySolidHoverBackground",
         },
       }),
     },
@@ -39,7 +39,7 @@ export const checkboxRecipe = strictRecipe({
     isDisabled: {
       true: bentoSprinkles({
         boxShadow: { default: "outlineDisabled", hover: "outlineDisabled" },
-        background: "solidDisabledBackground",
+        background: "disabledSolidBackground",
         cursor: "notAllowed",
       }),
     },
@@ -51,7 +51,7 @@ export const checkboxRecipe = strictRecipe({
         isSelected: true,
       },
       style: bentoSprinkles({
-        background: "solidFocusBackground",
+        background: "primarySolidFocusBackground",
       }),
     },
   ],

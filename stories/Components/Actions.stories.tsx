@@ -46,3 +46,15 @@ export const TwoActionsDestructive = createStory({
   },
   secondaryAction,
 });
+
+export const TwoActionsSmall = createStory({
+  primaryAction,
+  secondaryAction,
+  size: "small",
+});
+
+export const TwoActionsLarge = createStory({
+  primaryAction,
+  secondaryAction,
+  size: "large",
+});

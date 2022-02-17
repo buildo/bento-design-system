@@ -5,7 +5,7 @@ import { labelRecipe } from "./Label.css";
 
 type Size = "small" | "medium" | "large";
 type Align = "left" | "center" | "right";
-type Color = "default" | "secondary" | "disabled";
+type Color = "default" | "primary" | "secondary" | "disabled" | "link";
 
 export type LabelProps = {
   children: LocalizedString;

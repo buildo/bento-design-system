@@ -13,24 +13,56 @@ const { defaultExport, createStory } = createComponentStories({
 
 export default defaultExport;
 
-export const Primary = createStory({
-  kind: "primary",
+export const PrimarySolid = createStory({
+  kind: "solid",
+  hierarchy: "primary",
 });
 
-export const Danger = createStory({
-  kind: "danger",
+export const SecondarySolid = createStory({
+  kind: "solid",
+  hierarchy: "secondary",
 });
 
-export const TransparentPrimary = createStory({
-  kind: "transparentPrimary",
+export const DangerSolid = createStory({
+  kind: "solid",
+  hierarchy: "danger",
 });
 
-export const PrimaryDisabled = createStory({
-  kind: "primary",
+export const PrimaryTransparent = createStory({
+  kind: "transparent",
+  hierarchy: "primary",
+});
+
+export const SecondaryTransparent = createStory({
+  kind: "transparent",
+  hierarchy: "secondary",
+});
+
+export const DangerTransparent = createStory({
+  kind: "transparent",
+  hierarchy: "danger",
+});
+
+export const SolidDisabled = createStory({
+  kind: "solid",
+  hierarchy: "primary",
+  isDisabled: true,
+});
+
+export const TransparentDisabled = createStory({
+  kind: "transparent",
+  hierarchy: "primary",
   isDisabled: true,
 });
 
 export const PrimarySmall = createStory({
-  kind: "primary",
+  kind: "solid",
+  hierarchy: "primary",
   size: "small",
+});
+
+export const PrimaryLarge = createStory({
+  kind: "solid",
+  hierarchy: "primary",
+  size: "large",
 });

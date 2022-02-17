@@ -111,7 +111,9 @@ export function createRadioGroupField(
           <Column width="content">
             <Radio selected={selected} focused={isFocusVisible} />
           </Column>
-          <Body size="medium">{option.label}</Body>
+          <Body size="medium" color={option.isDisabled ? "disabled" : "default"}>
+            {option.label}
+          </Body>
         </Columns>
       </Box>
     );

@@ -1,4 +1,4 @@
-import { Toast, ToastProvider, useToast } from "../";
+import { Toast, ToastProvider, useToast } from "..";
 import { createComponentStories, formatMessage, textArgType } from "../util";
 import { action } from "@storybook/addon-actions";
 import { ComponentProps, useEffect } from "react";

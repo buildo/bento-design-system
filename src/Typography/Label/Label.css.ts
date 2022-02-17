@@ -26,6 +26,7 @@ export const labelRecipe = strictRecipe({
       primary: bentoSprinkles({ color: "textPrimary", fill: "textPrimary" }),
       secondary: bentoSprinkles({ color: "textSecondary", fill: "textSecondary" }),
       disabled: bentoSprinkles({ color: "textDisabled", fill: "textDisabled" }),
+      link: bentoSprinkles({ color: "textLink", fill: "textLink" }),
     },
     uppercase: {
       false: {},
