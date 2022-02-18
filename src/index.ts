@@ -14,6 +14,7 @@ export * from "./IconButton/IconButton";
 export * from "./Icons";
 export * from "./Illustrations/IllustrationProps";
 export * from "./Illustrations/svgIllustrationProps";
+export * from "./InlineLoader/InlineLoader";
 export * from "./Layout/createLayoutComponents";
 export * from "./Link/createLink";
 export * from "./List/createList";
