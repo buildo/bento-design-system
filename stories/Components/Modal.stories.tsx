@@ -5,7 +5,9 @@ import { action } from "@storybook/addon-actions";
 const { defaultExport, createStory } = createComponentStories({
   component: Modal,
   args: {
-    title: formatMessage("Create item"),
+    title: formatMessage(
+      "Create item title veeeery very long very long title here do you see how long it is?"
+    ),
   },
   argTypes: {
     title: textArgType,

@@ -1,6 +1,7 @@
 import { Omit } from "../util/Omit";
-import { BentoSprinkles, Stack, Inset } from "../internal";
+import { BentoSprinkles } from "../internal";
 import { createListItem, ListItemConfig, ListItemProps } from "./createListItem";
+import { createInternalList } from "./createInternalList";
 
 export type ListSize = "medium" | "large";
 
@@ -38,16 +39,17 @@ export function createList(
     },
   }
 ) {
+  const InternalList = createInternalList(config);
   const ListItem = createListItem(config.item);
-  return function List({ size, items, dividers }: Props) {
+  return function List({ items, ...props }: Props) {
     return (
-      <Inset spaceY={config.paddingY}>
-        <Stack space={0} as="ul" dividers={dividers}>
-          {items.map((liProps) => (
-            <ListItem key={liProps.label} {...liProps} size={size} />
-          ))}
-        </Stack>
-      </Inset>
+      <InternalList {...props}>
+        {items.map((liProps) => (
+          <ListItem key={liProps.label} {...liProps} size={props.size} />
+        ))}
+      </InternalList>
     );
   };
 }
+
+export type { Props as ListProps };

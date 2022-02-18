@@ -12,5 +12,10 @@ export const listItemRecipe = strictRecipe({
         },
       }),
     },
+    focused: {
+      true: bentoSprinkles({
+        background: "primaryTransparentFocusBackground",
+      }),
+    },
   },
 });
