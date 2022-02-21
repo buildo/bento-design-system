@@ -54,13 +54,13 @@ export function createTooltip(
     const { tooltipProps } = useTooltip(_tooltipProps);
 
     // See https://floating-ui.com/docs/tutorial#arrow-middleware
-    const position: "left" | "right" | "top" | "bottom" = placement.split("-")[0];
-    const staticSide: any = {
+    const position: string = placement.split("-")[0];
+    const staticSide = {
       top: "bottom",
       right: "left",
       bottom: "top",
       left: "right",
-    }[position];
+    }[position]!;
 
     const arrowPosition = {
       left: Number.isFinite(arrowData?.x) ? arrowData?.x : undefined,
