@@ -20,6 +20,7 @@ export * from "./Modal/createModal";
 export * from "./Placeholder/Placeholder";
 export * from "./Toast/createToast";
 export * from "./Toast/useToast";
+export * from "./Tooltip/Tooltip";
 export * from "./Typography/Body/Body";
 export * from "./Typography/Display/Display";
 export * from "./Typography/Headline/Headline";
