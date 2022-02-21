@@ -11,6 +11,7 @@ export * from "./Disclosure/createDisclosure";
 export * from "./DisclosureGroup/createDisclosureGroup";
 export * from "./Divider/Divider";
 export * from "./Field/createFormFields";
+export * from "./Form/createFormLayoutComponents";
 export * from "./IconButton/IconButton";
 export * from "./Icons";
 export * from "./Illustrations/IllustrationProps";
