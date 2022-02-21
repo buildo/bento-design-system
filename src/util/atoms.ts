@@ -1,12 +1,18 @@
 import { vars } from "../vars.css";
 
+const radius = {
+  ...vars.radius,
+  circled: "50%",
+  // dirty trick to make the border-radius look good regardless of the width of the container
+  circledX: "100vh",
+};
+
 export const unconditionalProperties = {
-  borderRadius: {
-    ...vars.radius,
-    circled: "50%",
-    // dirty trick to make the border-radius look good regardless of the width of the container
-    circledX: "100vh",
-  },
+  borderRadius: radius,
+  borderTopLeftRadius: radius,
+  borderTopRightRadius: radius,
+  borderBottomLeftRadius: radius,
+  borderBottomRightRadius: radius,
   textTransform: ["none", "uppercase", "lowercase", "capitalize"],
   fontFamily: vars.fontFamily,
   fontWeight: vars.fontWeight,

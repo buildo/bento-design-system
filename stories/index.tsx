@@ -17,6 +17,7 @@ import {
   createDisclosure,
   createDisclosureGroup,
   createTooltip,
+  createTabs,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -38,3 +39,4 @@ export const List = createList();
 export const Disclosure = createDisclosure();
 export const DisclosureGroup = createDisclosureGroup(Disclosure);
 export const Tooltip = createTooltip();
+export const Tabs = createTabs();
