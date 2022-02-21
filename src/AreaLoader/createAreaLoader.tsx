@@ -50,7 +50,7 @@ export function createAreaLoader(
    *  <Card padding="24">
    *    <Box position="relative">
    *      {cardContent}
-   *      {isLoading && <Loader />}
+   *      {isLoading && <AreaLoader />}
    *    </Box>
    *  </Card>
    *  ```

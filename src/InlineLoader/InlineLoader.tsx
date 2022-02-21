@@ -8,11 +8,8 @@ type Props = {
 };
 
 const Loader = (
-  <svg width={16} height={16} fill="none">
-    <path
-      d="M8 1.5A6.5 6.5 0 0 0 1.5 8 .75.75 0 1 1 0 8a8 8 0 1 1 8 8 .75.75 0 1 1 0-1.5 6.5 6.5 0 1 0 0-13Z"
-      fill={vars.foregroundColor.foregroundSecondary}
-    />
+  <svg width={16} height={16} fill={vars.foregroundColor.foregroundSecondary}>
+    <path d="M8 1.5A6.5 6.5 0 0 0 1.5 8 .75.75 0 1 1 0 8a8 8 0 1 1 8 8 .75.75 0 1 1 0-1.5 6.5 6.5 0 1 0 0-13Z" />
   </svg>
 );
 
