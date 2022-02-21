@@ -7,6 +7,7 @@ export * from "./Breadcrumb/createBreadcrumb";
 export * from "./Button/createButton";
 export * from "./Card/createCard";
 export * from "./Chip/createChip";
+export * from "./ContentBlock/ContentBlock";
 export * from "./Disclosure/createDisclosure";
 export * from "./DisclosureGroup/createDisclosureGroup";
 export * from "./Divider/Divider";

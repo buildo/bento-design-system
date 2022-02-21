@@ -64,6 +64,10 @@ export const responsiveProperties = {
   paddingRight: vars.space,
   gap: vars.space,
   textAlign: ["left", "center", "right", "justify"],
+  maxWidth: {
+    700: "700px",
+    1440: "1440px",
+  },
 } as const;
 
 const color = {

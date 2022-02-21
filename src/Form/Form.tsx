@@ -4,6 +4,7 @@ import {
   Body,
   ButtonProps,
   Children,
+  ContentBlock,
   Display,
   Headline,
   LocalizedString,
@@ -35,23 +36,25 @@ export function createForm(Actions: FunctionComponent<ActionsProps>, config: For
   return function Form({ title, description, children, submitButton, secondaryButton }: Props) {
     return (
       <Box as="form" onSubmit={(e) => e.preventDefault()}>
-        <Stack space={config.formSpacing}>
-          {(title || description) && (
-            <Stack space={config.headerSpacing}>
-              {/** TODO: Headline se da mobile */}
-              {title && <Display size={config.headerTitleSize.desktop}>{title}</Display>}
-              {description && <Body size={config.headerDescriptionSize}>{description}</Body>}
-            </Stack>
-          )}
-          {children}
-          {(submitButton || secondaryButton) && (
-            <Actions
-              size={config.actionsSize}
-              primaryAction={submitButton}
-              secondaryAction={secondaryButton}
-            />
-          )}
-        </Stack>
+        <ContentBlock maxWidth={700}>
+          <Stack space={config.formSpacing}>
+            {(title || description) && (
+              <Stack space={config.headerSpacing}>
+                {/** TODO: Headline se da mobile */}
+                {title && <Display size={config.headerTitleSize.desktop}>{title}</Display>}
+                {description && <Body size={config.headerDescriptionSize}>{description}</Body>}
+              </Stack>
+            )}
+            {children}
+            {(submitButton || secondaryButton) && (
+              <Actions
+                size={config.actionsSize}
+                primaryAction={submitButton}
+                secondaryAction={secondaryButton}
+              />
+            )}
+          </Stack>
+        </ContentBlock>
       </Box>
     );
   };
