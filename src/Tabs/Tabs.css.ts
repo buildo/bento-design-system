@@ -9,7 +9,10 @@ export const tabRecipe = strictRecipe({
   }),
   variants: {
     active: {
-      true: bentoSprinkles({ background: "backgroundPrimaryInverse", color: "textPrimaryInverse" }),
+      true: bentoSprinkles({
+        background: "primarySolidEnabledBackground",
+        color: "primarySolidEnabledForeground",
+      }),
       false: bentoSprinkles({
         background: {
           default: "primaryTransparentEnabledBackground",

@@ -57,18 +57,20 @@ export function createTabs(
 
   return function Tabs<A>({ value, tabs, onChange }: Props<A>) {
     return (
-      <Columns space={0}>
-        {tabs.map((t) => (
-          <Column key={t.label} width="content">
-            <Tab
-              label={t.label}
-              onPress={() => onChange(t.value)}
-              active={value === t.value}
-              disabled={t.disabled}
-            />
-          </Column>
-        ))}
-      </Columns>
+      <Box boxShadow="outlineInteractiveBottom">
+        <Columns space={0}>
+          {tabs.map((t) => (
+            <Column key={t.label} width="content">
+              <Tab
+                label={t.label}
+                onPress={() => onChange(t.value)}
+                active={value === t.value}
+                disabled={t.disabled}
+              />
+            </Column>
+          ))}
+        </Columns>
+      </Box>
     );
   };
 }
