@@ -11,24 +11,26 @@ import {
   StylesConfig,
   ValueContainerProps,
 } from "react-select";
-import { MenuPortalProps, NoticeProps } from "react-select/dist/declarations/src/components/Menu";
+import {
+  MenuPortalProps,
+  NoticeProps,
+  MenuListProps,
+} from "react-select/dist/declarations/src/components/Menu";
 import { Body, IconChevronDown, TextChildren, Children, IconCheck } from "..";
 import { Box, Columns, Column, Inline, Inset, bentoSprinkles } from "../internal";
-import { useModalContext } from "../Modal/useModalContext";
-import {
-  singleValue,
-  placeholder,
-  menu,
-  optionRecipe,
-  menuPortalRecipe,
-  control,
-} from "./SelectField.css";
+import { singleValue, placeholder, menu, menuPortalRecipe, control } from "./SelectField.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { InputConfig } from "../Field/InputConfig";
-import { DropdownConfig } from "./createSelectField";
 import clsx from "clsx";
+import { DropdownConfig, SelectOption } from "./createSelectField";
+import { createInternalList } from "../List/createInternalList";
+import { createListItem } from "../List/createListItem";
+import { useModalContext } from "../Modal/useModalContext";
 
 export function createComponents(inputConfig: InputConfig, dropdownConfig: DropdownConfig) {
+  const InternalList = createInternalList(dropdownConfig.list);
+  const ListItem = createListItem(dropdownConfig.list.item);
+
   function Control<A, IsMulti extends boolean>({
     selectProps: { validationState: validation, isDisabled },
     innerProps,
@@ -143,39 +145,32 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
           })
         )}
       >
-        <Inset spaceY={dropdownConfig.list.paddingY}>{props.children}</Inset>
+        {props.children}
       </defaultComponents.Menu>
     );
   }
 
-  function Option<A, IsMulti extends boolean>(props: OptionProps<A, IsMulti>) {
+  function MenuList<A, IsMulti extends boolean>(props: MenuListProps<A, IsMulti>) {
     return (
-      <defaultComponents.Option
-        {...props}
-        className={clsx(
-          optionRecipe({
-            isSelected: props.isSelected,
-            isFocused: props.isFocused,
-          }),
-          bentoSprinkles({
-            paddingX: dropdownConfig.list.item.paddingX,
-            paddingY: dropdownConfig.list.item.paddingY[props.selectProps.size],
-          })
-        )}
-      >
-        <Columns space={dropdownConfig.list.item.internalSpacing} alignY="center">
-          {"icon" in props.data && ( // TODO(vince): should this be just an Icon component?
-            <Column width="content">{(props.data as unknown as { icon: Children }).icon}</Column>
-          )}
-          <Body size={dropdownConfig.list.item.fontSize.firstLine}>
-            {props.children as TextChildren}
-          </Body>
-          {props.isSelected && (
-            <Column width="content">
-              <IconCheck size={dropdownConfig.list.item.iconSize.trailing} />
-            </Column>
-          )}
-        </Columns>
+      <defaultComponents.MenuList {...props}>
+        <InternalList dividers>{props.children as unknown as Children}</InternalList>
+      </defaultComponents.MenuList>
+    );
+  }
+
+  function Option<B, A extends SelectOption<B>, IsMulti extends boolean>(
+    props: OptionProps<A, IsMulti>
+  ) {
+    return (
+      <defaultComponents.Option {...props}>
+        <ListItem
+          {...props.data}
+          size={props.selectProps.size}
+          onPress={() => props.selectOption(props.data)}
+          trailingIcon={props.isSelected ? IconCheck : undefined}
+          isFocused={props.isFocused}
+          ignoreTabIndex
+        />
       </defaultComponents.Option>
     );
   }
@@ -207,6 +202,7 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
     DropdownIndicator,
     Input,
     Menu,
+    MenuList,
     Option,
     MenuPortal,
     IndicatorSeparator: null,

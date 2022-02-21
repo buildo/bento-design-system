@@ -46,6 +46,8 @@ export type Props = Kind &
   RightItem & {
     disabled?: boolean;
     size: ListSize;
+    isFocused?: boolean;
+    ignoreTabIndex: boolean;
   } & (
     | {
         onPress?: () => void;
@@ -94,11 +96,15 @@ export function createListItem(config: ListItemConfig) {
     );
 
     const LinkComponent = useLinkComponent();
+    const interactive = !!props.onPress || !!props.href;
 
     return (
       <Box
         as="li"
-        className={listItemRecipe({ interactive: !!props.onPress || !!props.href })}
+        className={listItemRecipe({
+          interactive,
+          focused: !!props.isFocused,
+        })}
         disabled={props.disabled}
       >
         <Box
@@ -107,6 +113,7 @@ export function createListItem(config: ListItemConfig) {
           {...linkProps}
           href={props.href}
           display="block"
+          tabIndex={interactive && !props.ignoreTabIndex ? linkProps.tabIndex : undefined}
         >
           <Inset spaceX={config.paddingX} spaceY={config.paddingY[props.size]}>
             <Columns space={config.internalSpacing} alignY="center">

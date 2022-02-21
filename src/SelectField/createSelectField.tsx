@@ -4,7 +4,7 @@ import Select, {
   MultiValueProps,
   SingleValue as SingleValueT,
 } from "react-select";
-import { Body, Children, ListConfig, ListSize, LocalizedString } from "..";
+import { Body, ListConfig, ListSize, LocalizedString } from "..";
 import { useField } from "@react-aria/label";
 import { useEffect, useMemo } from "react";
 import { FieldProps } from "../Field/FieldProps";
@@ -12,11 +12,14 @@ import { FieldType } from "../Field/createField";
 import { createComponents, styles } from "./components";
 import { InputConfig } from "../Field/InputConfig";
 import { BentoSprinkles } from "../internal";
+import { ListItemProps } from "../List/createListItem";
+import { Omit } from "../util/Omit";
 
-type SelectOption<A> = {
+export type SelectOption<A> = Omit<
+  ListItemProps,
+  "trailingIcon" | "onPress" | "href" | "isFocused" | "ignoreTabIndex" | "size"
+> & {
   value: A;
-  label: LocalizedString;
-  icon?: Children;
 };
 
 type Props<A, IsMulti extends boolean> = (IsMulti extends false
