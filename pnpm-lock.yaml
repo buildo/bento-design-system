@@ -2464,17 +2464,6 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@react-aria/interactions/3.8.1_react@17.0.2:
-    resolution: {integrity: sha512-oE6Yo5BTiqInQCTnERMOALwULJy6TbBv+XXEAmifKWBvjbKSb6jN91lhWOruuYZpWAV+eAawHAk/u/KMzwVVEQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1
-    dependencies:
-      '@babel/runtime': 7.16.3
-      '@react-aria/utils': 3.11.2_react@17.0.2
-      '@react-types/shared': 3.11.1_react@17.0.2
-      react: 17.0.2
-    dev: false
-
   /@react-aria/label/3.2.1_react@17.0.2:
     resolution: {integrity: sha512-QZ5/dpJKRjB1JtFZfOVd5GUiCpA2yMgmNA6ky6jT5XNAo7H14QqGRFUGDTLAQYGd+Bc3s+NayOT3NKUYur/3Xw==}
     peerDependencies:
