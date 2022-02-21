@@ -40,7 +40,6 @@ export function createForm(Actions: FunctionComponent<ActionsProps>, config: For
           <Stack space={config.formSpacing}>
             {(title || description) && (
               <Stack space={config.headerSpacing}>
-                {/** TODO: Headline se da mobile */}
                 {title && <Display size={config.headerTitleSize.desktop}>{title}</Display>}
                 {description && <Body size={config.headerDescriptionSize}>{description}</Body>}
               </Stack>
