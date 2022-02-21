@@ -6,7 +6,6 @@ import {
   Children,
   ContentBlock,
   Display,
-  Headline,
   LocalizedString,
   TextChildren,
 } from "..";
@@ -22,10 +21,7 @@ type Props = {
 };
 
 export type FormConfig = {
-  headerTitleSize: {
-    desktop: ComponentProps<typeof Display>["size"];
-    mobile: ComponentProps<typeof Headline>["size"];
-  };
+  headerTitleSize: ComponentProps<typeof Display>["size"];
   headerDescriptionSize: ComponentProps<typeof Body>["size"];
   formSpacing: BentoSprinkles["gap"];
   headerSpacing: BentoSprinkles["gap"];
@@ -40,7 +36,7 @@ export function createForm(Actions: FunctionComponent<ActionsProps>, config: For
           <Stack space={config.formSpacing}>
             {(title || description) && (
               <Stack space={config.headerSpacing}>
-                {title && <Display size={config.headerTitleSize.desktop}>{title}</Display>}
+                {title && <Display size={config.headerTitleSize}>{title}</Display>}
                 {description && <Body size={config.headerDescriptionSize}>{description}</Body>}
               </Stack>
             )}

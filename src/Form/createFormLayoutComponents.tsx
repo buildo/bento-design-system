@@ -14,10 +14,7 @@ export function createFormLayoutComponents(
   Actions: FunctionComponent<ActionsProps>,
   config: FormLayoutConfig = {
     form: {
-      headerTitleSize: {
-        desktop: "small",
-        mobile: "medium",
-      },
+      headerTitleSize: "small",
       headerDescriptionSize: "medium",
       formSpacing: 40,
       headerSpacing: 16,
