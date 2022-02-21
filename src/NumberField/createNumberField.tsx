@@ -56,5 +56,3 @@ export function createNumberField(
     );
   };
 }
-
-export type { Props as NumberFieldProps };
