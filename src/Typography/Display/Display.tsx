@@ -1,4 +1,4 @@
-import { LocalizedString } from "src";
+import { LocalizedString } from "../../";
 import { Box } from "../../internal";
 import { displayRecipe } from "./Display.css";
 

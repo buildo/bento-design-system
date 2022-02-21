@@ -1,14 +1,21 @@
-import { LocalizedString } from "src";
+import { TextChildren, textChildrenToChildren } from "../../";
 import { BoxProps } from "../../Box/createBentoBox";
 import { Box, bentoSprinkles } from "../../internal";
 import { labelRecipe } from "./Label.css";
 
 type Size = "small" | "medium" | "large";
 type Align = "left" | "center" | "right";
-type Color = "default" | "primary" | "secondary" | "disabled" | "link";
+type Color =
+  | "default"
+  | "primary"
+  | "primaryInverse"
+  | "secondary"
+  | "secondaryInverse"
+  | "disabled"
+  | "link";
 
 export type LabelProps = {
-  children: LocalizedString;
+  children: TextChildren;
   size: Size;
   color?: Color;
   align?: Align;
@@ -28,7 +35,7 @@ export function Label({
 }: LabelProps) {
   return (
     <Box {...boxProps} className={labelRecipe({ size, color, uppercase })} textAlign={align}>
-      {children}
+      {textChildrenToChildren(children)}
     </Box>
   );
 }

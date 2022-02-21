@@ -16,6 +16,7 @@ import {
   createList,
   createDisclosure,
   createDisclosureGroup,
+  createTooltip,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -36,3 +37,4 @@ export const Chip = createChip();
 export const List = createList();
 export const Disclosure = createDisclosure();
 export const DisclosureGroup = createDisclosureGroup(Disclosure);
+export const Tooltip = createTooltip();

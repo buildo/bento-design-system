@@ -1,4 +1,4 @@
-import { LocalizedString } from "src";
+import { LocalizedString } from "../../";
 import { BoxProps } from "../../Box/createBentoBox";
 import { bentoSprinkles, Box } from "../../internal";
 import { titleRecipe } from "./Title.css";
