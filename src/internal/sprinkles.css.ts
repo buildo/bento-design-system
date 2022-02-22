@@ -14,6 +14,8 @@ const unconditionalAtomicProperties = defineProperties({
   properties: unconditionalProperties,
   shorthands: {
     inset: ["top", "right", "bottom", "left"],
+    borderTopRadius: ["borderTopLeftRadius", "borderTopRightRadius"],
+    borderBottomRadius: ["borderBottomLeftRadius", "borderBottomRightRadius"],
   },
 });
 

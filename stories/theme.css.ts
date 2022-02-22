@@ -249,6 +249,7 @@ createGlobalTheme(":root", bentoVars, {
     outlineInput: `inset 0px 0px 0px 1px ${colors.neutral50}`,
     outlineInteractive: `inset 0px 0px 0px 1px ${colors.black}`,
     outlineInteractiveStrong: `inset 0px 0px 0px 2px ${colors.black}`,
+    outlineInteractiveBottom: `inset 0px -1px 0px ${colors.black}`,
     outlineDecorative: `inset 0px 0px 0px 1px ${colors.neutral20}`,
     outlineContainer: `inset 0px 0px 0px 1px ${colors.neutral05}`,
     outlineInformative: `inset 0px 0px 0px 1px ${colors.informative40}`,
