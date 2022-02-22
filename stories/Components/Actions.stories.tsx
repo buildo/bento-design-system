@@ -6,6 +6,7 @@ const { defaultExport, createStory } = createComponentStories({
   component: Actions,
   args: {
     size: "medium",
+    loadingMessage: formatMessage("loading..."),
   },
 });
 
@@ -59,4 +60,18 @@ export const TwoActionsLarge = createStory({
   primaryAction,
   secondaryAction,
   size: "large",
+});
+
+export const AsyncPrimaryAction = createStory({
+  primaryAction: {
+    ...primaryAction,
+    onPress: () =>
+      new Promise((resolve) =>
+        setTimeout(() => {
+          primaryAction.onPress();
+          resolve(null);
+        }, 3000)
+      ),
+  },
+  secondaryAction,
 });

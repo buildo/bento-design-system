@@ -46,7 +46,7 @@ export const defaultButtonConfig: ButtonConfig = {
     large: 16,
   },
   labelSize: "large",
-  radius: 8,
+  radius: 4,
   internalSpacing: 8,
   iconSize: {
     small: 12,

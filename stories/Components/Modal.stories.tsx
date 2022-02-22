@@ -8,6 +8,7 @@ const { defaultExport, createStory } = createComponentStories({
     title: formatMessage(
       "Create item title veeeery very long very long title here do you see how long it is?"
     ),
+    loadingMessage: "Loading...",
   },
   argTypes: {
     title: textArgType,
@@ -44,6 +45,24 @@ export const Destructive = createStory({
   primaryAction: {
     label: formatMessage("Delete"),
     onPress: action("Delete"),
+  },
+  secondaryAction: {
+    label: formatMessage("Cancel"),
+    onPress: action("Cancel"),
+  },
+});
+
+export const WithAsyncPrimaryAction = createStory({
+  children: [<Placeholder />],
+  primaryAction: {
+    label: formatMessage("Create"),
+    onPress: () =>
+      new Promise((resolve) => {
+        setTimeout(() => {
+          action("Create")();
+          resolve(null);
+        }, 3000);
+      }),
   },
   secondaryAction: {
     label: formatMessage("Cancel"),
