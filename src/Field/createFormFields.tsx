@@ -7,12 +7,14 @@ import { createNumberField } from "../NumberField/createNumberField";
 import { createSelectField, DropdownConfig } from "../SelectField/createSelectField";
 import { SelectionControlConfig } from "./SelectionControlConfig";
 import { InputConfig } from "./InputConfig";
+import { createSearchBar, IconClose, IconSearch, SearchBarConfig } from "../";
 
 type FieldsConfig = {
   field: FieldConfig;
   input: InputConfig;
   selectionControl: SelectionControlConfig;
   dropdown: DropdownConfig;
+  searchBar: SearchBarConfig;
 };
 
 export function createFormFields(
@@ -64,6 +66,10 @@ export function createFormFields(
         },
       },
     },
+    searchBar: {
+      clearIcon: IconClose,
+      searchIcon: IconSearch,
+    },
   }
 ) {
   const Field = createField(config.field);
@@ -73,6 +79,7 @@ export function createFormFields(
   const NumberInput = createNumberInput(config.input);
   const NumberField = createNumberField(Field, NumberInput);
   const SelectField = createSelectField(Field, config.input, config.dropdown);
+  const SearchBar = createSearchBar(Field, config.input, config.searchBar);
 
-  return { CheckboxField, Field, NumberField, RadioGroupField, SelectField, TextField };
+  return { CheckboxField, Field, NumberField, RadioGroupField, SearchBar, SelectField, TextField };
 }
