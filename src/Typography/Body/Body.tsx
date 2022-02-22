@@ -12,7 +12,8 @@ type Color =
   | "disabled"
   | "positive"
   | "informative"
-  | "warning";
+  | "warning"
+  | "link";
 
 type Props = {
   children: TextChildren;

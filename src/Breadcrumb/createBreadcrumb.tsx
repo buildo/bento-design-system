@@ -1,7 +1,7 @@
 import { useBreadcrumbItem, useBreadcrumbs } from "@react-aria/breadcrumbs";
 import { useRef, Fragment, FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
-import { IconChevronRight, Label, LinkProps, LocalizedString } from "../";
+import { IconChevronRight, Body, LinkProps, LocalizedString } from "../";
 import { Box, Inline, BentoSprinkles } from "../internal";
 
 type LastItem = {
@@ -74,9 +74,9 @@ function createBreadcrumbItem(Link: FunctionComponent<LinkProps>) {
     return (
       <Box as="li" ref={ref}>
         {isCurrent ? (
-          <Label size="large" {...itemProps} color={undefined}>
+          <Body size="medium" {...itemProps} color="link">
             {label}
-          </Label>
+          </Body>
         ) : (
           <Link
             label={label}
