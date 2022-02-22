@@ -75,7 +75,7 @@ export function createSearchBar(
             display="flex"
             justifyContent="center"
             alignItems="center"
-            paddingX={16}
+            paddingX={inputConfig.paddingX}
             top={0}
             bottom={0}
             left={0}
@@ -117,7 +117,7 @@ export function createSearchBar(
               display="flex"
               justifyContent="center"
               alignItems="center"
-              paddingX={16}
+              paddingX={inputConfig.paddingX}
               top={0}
               bottom={0}
               right={0}
