@@ -1,5 +1,6 @@
 export * from "./Actions/createActions";
 export * from "./AreaLoader/createAreaLoader";
+export * from "./Avatar/createAvatar";
 export * from "./Banner/createBanner";
 export * from "./Box/createBentoBox";
 export * from "./Breadcrumb/createBreadcrumb";
