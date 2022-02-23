@@ -1,14 +1,14 @@
 import { useTextField } from "@react-aria/textfield";
 import { FunctionComponent, useRef } from "react";
 import useDimensions from "react-cool-dimensions";
-import { IconButton, LocalizedString } from "..";
+import { IconButton, IconClose, IconSearch, LocalizedString } from "..";
 import { Box } from "../internal";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { input } from "./SearchBar.css";
-import { FieldType } from "src/Field/createField";
-import { InputConfig } from "src/Field/InputConfig";
-import { IconProps } from "src/Icons/IconProps";
+import { FieldType } from "../Field/createField";
+import { defaultInputConfig, InputConfig } from "../Field/InputConfig";
+import { IconProps } from "../Icons/IconProps";
 
 type Props = {
   value: string;
@@ -26,8 +26,11 @@ export type SearchBarConfig = {
 
 export function createSearchBar(
   Field: FieldType,
-  inputConfig: InputConfig,
-  config: SearchBarConfig
+  config: InputConfig & SearchBarConfig = {
+    ...defaultInputConfig,
+    clearIcon: IconClose,
+    searchIcon: IconSearch,
+  }
 ) {
   return function SearchBar(props: Props) {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -75,7 +78,7 @@ export function createSearchBar(
             display="flex"
             justifyContent="center"
             alignItems="center"
-            paddingX={inputConfig.paddingX}
+            paddingX={config.paddingX}
             top={0}
             bottom={0}
             left={0}
@@ -97,7 +100,7 @@ export function createSearchBar(
               bodyRecipe({
                 color: props.disabled ? "disabled" : "default",
                 weight: "regular",
-                size: inputConfig.fontSize,
+                size: config.fontSize,
               }),
             ]}
             display="flex"
@@ -106,9 +109,9 @@ export function createSearchBar(
               paddingLeft: leftAccessoryWidth,
               paddingRight: rightAccessoryWidth,
             }}
-            borderRadius={inputConfig.radius}
-            paddingX={inputConfig.paddingX}
-            paddingY={inputConfig.paddingY}
+            borderRadius={config.radius}
+            paddingX={config.paddingX}
+            paddingY={config.paddingY}
           />
           {rightAccessoryContent && (
             <Box
@@ -117,7 +120,7 @@ export function createSearchBar(
               display="flex"
               justifyContent="center"
               alignItems="center"
-              paddingX={inputConfig.paddingX}
+              paddingX={config.paddingX}
               top={0}
               bottom={0}
               right={0}
