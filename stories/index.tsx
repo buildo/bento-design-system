@@ -18,6 +18,7 @@ import {
   createDisclosureGroup,
   createTooltip,
   createTabs,
+  createAreaLoader,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -40,3 +41,4 @@ export const Disclosure = createDisclosure();
 export const DisclosureGroup = createDisclosureGroup(Disclosure);
 export const Tooltip = createTooltip();
 export const Tabs = createTabs();
+export const AreaLoader = createAreaLoader();

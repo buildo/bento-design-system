@@ -5,6 +5,7 @@ export const cardRecipe = strictRecipe({
   base: bentoSprinkles({
     background: "backgroundPrimary",
     outline: "outlineContainer",
+    overflow: "hidden",
   }),
   variants: {
     elevation: {
