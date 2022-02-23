@@ -7,5 +7,6 @@ export * from "./IconClose";
 export * from "./IconInformative";
 export * from "./IconNegative";
 export * from "./IconProps";
+export * from "./IconSearch";
 export * from "./IconUser";
 export * from "./IconWarning";

@@ -6,7 +6,7 @@ import { createNumberInput } from "../NumberInput/createNumberInput";
 import { createNumberField } from "../NumberField/createNumberField";
 import { createSelectField, DropdownConfig } from "../SelectField/createSelectField";
 import { SelectionControlConfig } from "./SelectionControlConfig";
-import { InputConfig } from "./InputConfig";
+import { defaultInputConfig, InputConfig } from "./InputConfig";
 
 type FieldsConfig = {
   field: FieldConfig;
@@ -25,12 +25,7 @@ export function createFormFields(
       },
       internalSpacing: 4,
     },
-    input: {
-      radius: 4,
-      paddingX: 16,
-      paddingY: 16,
-      fontSize: "large",
-    },
+    input: defaultInputConfig,
     selectionControl: {
       paddingY: 8,
       controlLabelSpacing: 8,
