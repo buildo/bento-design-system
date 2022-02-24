@@ -104,3 +104,27 @@ export const responsiveAlign = createStory({
     desktop: "left",
   },
 });
+
+export const reverse = createStory({
+  reverse: true,
+  children: [
+    <Placeholder label="1" width={100} />,
+    <Placeholder label="2" width={100} />,
+    <Placeholder label="3" width={100} />,
+  ],
+});
+
+export const responsiveReverse = createStory(
+  {
+    reverse: {
+      tablet: true,
+    },
+    // collapseBelow: "desktop",
+    children: [
+      <Placeholder label="1" width={100} background="brandPrimary" />,
+      <Placeholder label="2" width={100} background="brandSecondary" />,
+      <Placeholder label="3" width={100} background="brandTertiary" />,
+    ],
+  },
+  { viewport: { defaultViewport: "tablet" } }
+);

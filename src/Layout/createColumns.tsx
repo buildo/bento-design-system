@@ -1,35 +1,49 @@
 import { ReactChild, ReactElement } from "react";
 import flattenChildren from "react-keyed-flatten-children";
 import { BoxType, BoxProps } from "../Box/createBentoBox";
-import { bentoSprinkles } from "../internal/sprinkles.css";
+import {
+  bentoSprinkles,
+  normalizeResponsiveValue,
+  OptionalResponsiveValue,
+} from "../internal/sprinkles.css";
 import { childKey } from "../util/childKey";
 import { Children } from "../util/Children";
 import {
   CollapsibleAlignmentProps,
   responsiveCollapsibleAlignmentProps,
 } from "../util/collapsible";
-import * as columnStyles from "./Column.css";
+import { desktopWidths, tabletWidths, mobileWidths, fullWidth } from "./Column.css";
 
 export function createColumns<AtomsFn extends typeof bentoSprinkles>(Box: BoxType<AtomsFn>) {
   type ResponsiveSpace = BoxProps<AtomsFn>["gap"];
 
   type ColumnProps = {
     children: Children;
-    width?: keyof typeof columnStyles.width | "content";
+    width?: OptionalResponsiveValue<keyof typeof desktopWidths>;
+    sticky?: {
+      top: BoxProps<AtomsFn>["top"];
+    };
   };
 
-  function Column(props: ColumnProps) {
+  function Column({ children, width, sticky }: ColumnProps) {
+    const { desktop, tablet, mobile } = width
+      ? normalizeResponsiveValue(width)
+      : { desktop: undefined, tablet: undefined, mobile: undefined };
+
+    const className =
+      width == null
+        ? fullWidth
+        : [
+            desktop && desktopWidths[desktop],
+            tablet && tabletWidths[tablet],
+            mobile && mobileWidths[mobile],
+          ];
+
+    const stickyProps = sticky ? ({ position: "sticky", top: sticky.top } as const) : {};
+
     return (
-      <Box
-        className={
-          props.width != null && props.width !== "content"
-            ? columnStyles.width[props.width]
-            : undefined
-        }
-        width={props.width !== "content" ? "full" : undefined}
-        flexShrink={props.width === "content" ? 0 : undefined}
-      >
-        {props.children}
+      <Box flexShrink={width === "content" ? 0 : undefined} className={className} {...stickyProps}>
+        {children}
       </Box>
     );
   }
@@ -39,12 +53,12 @@ export function createColumns<AtomsFn extends typeof bentoSprinkles>(Box: BoxTyp
     children: Children;
   } & CollapsibleAlignmentProps;
 
-  function Columns({ space, children, align, alignY, collapseBelow }: Props) {
+  function Columns({ space, children, align, alignY, collapseBelow, reverse }: Props) {
     return (
       <Box
         display="flex"
         gap={space}
-        {...responsiveCollapsibleAlignmentProps({ align, alignY, collapseBelow })}
+        {...responsiveCollapsibleAlignmentProps({ align, alignY, collapseBelow, reverse })}
       >
         {flattenChildren(children).map((child, index) => {
           if (isColumn(child)) {

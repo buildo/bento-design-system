@@ -22,6 +22,7 @@ export function createInline<AtomsFn extends typeof bentoSprinkles>(Box: BoxType
     align,
     alignY,
     collapseBelow,
+    reverse,
     ...boxProps
   }: InlineProps) {
     return (
@@ -34,6 +35,7 @@ export function createInline<AtomsFn extends typeof bentoSprinkles>(Box: BoxType
           align,
           alignY,
           collapseBelow,
+          reverse,
         })}
       >
         {flattenChildren(children)}

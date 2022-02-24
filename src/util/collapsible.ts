@@ -6,12 +6,14 @@ export type CollapsibleAlignmentProps = {
   align?: ResponsiveAlign;
   alignY?: ResponsiveAlignY;
   collapseBelow?: Exclude<Breakpoint, "mobile">;
+  reverse?: boolean | Partial<Record<Breakpoint, boolean>>;
 };
 
 export function responsiveCollapsibleAlignmentProps({
   align,
   alignY,
   collapseBelow,
+  reverse,
 }: CollapsibleAlignmentProps): Pick<
   BentoSprinkles,
   "flexDirection" | "justifyContent" | "alignItems"
@@ -26,6 +28,19 @@ export function responsiveCollapsibleAlignmentProps({
         return [false, false];
     }
   })();
+
+  const normalizedReverse = (() => {
+    if (typeof reverse === "boolean") {
+      return { desktop: reverse, tablet: reverse, mobile: reverse };
+    }
+    return reverse || {};
+  })();
+
+  const {
+    desktop: reverseDesktop,
+    tablet: reverseTablet = reverseDesktop,
+    mobile: reverseMobile = reverseTablet,
+  } = normalizedReverse;
 
   const normalizedAlign = normalizeResponsiveValue(alignToFlexAlign(align) || "flexStart");
   const {
@@ -43,22 +58,38 @@ export function responsiveCollapsibleAlignmentProps({
 
   return {
     flexDirection: {
-      mobile: collapseMobile ? "column" : "row",
-      tablet: collapseTablet ? "column" : "row",
-      desktop: "row",
+      mobile: collapseMobile
+        ? reverseMobile
+          ? "columnReverse"
+          : "column"
+        : reverseMobile
+        ? "rowReverse"
+        : "row",
+      tablet: collapseTablet
+        ? reverseTablet
+          ? "columnReverse"
+          : "column"
+        : reverseTablet
+        ? "rowReverse"
+        : "row",
+      desktop: reverseDesktop ? "rowReverse" : "row",
     },
     justifyContent: {
       mobile: collapseMobile
         ? alignItemsMobile === "stretch"
           ? undefined
           : alignItemsMobile
+        : reverseMobile
+        ? invertAlignment(justifyContentMobile)
         : justifyContentMobile,
       tablet: collapseTablet
         ? alignItemsTablet === "stretch"
           ? undefined
           : alignItemsTablet
+        : reverseTablet
+        ? invertAlignment(justifyContentTablet)
         : justifyContentTablet,
-      desktop: justifyContentDesktop,
+      desktop: reverseDesktop ? invertAlignment(justifyContentDesktop) : justifyContentDesktop,
     },
     alignItems: {
       mobile: collapseMobile ? justifyContentMobile : alignItemsMobile,
@@ -66,4 +97,16 @@ export function responsiveCollapsibleAlignmentProps({
       desktop: alignItemsDesktop,
     },
   };
+}
+
+function invertAlignment<Alignment extends string>(alignment: Alignment | undefined) {
+  if (alignment === "flexStart") {
+    return "flexEnd";
+  }
+
+  if (alignment === "flexEnd") {
+    return "flexStart";
+  }
+
+  return alignment;
 }
