@@ -26,7 +26,6 @@ type Props = {
 };
 
 export function Body({
-  id,
   children,
   size,
   weight = "regular",
@@ -36,7 +35,6 @@ export function Body({
 }: Props) {
   return (
     <Box
-      id={id}
       as={as}
       className={bodyRecipe({ weight, size, color })}
       textAlign={align}

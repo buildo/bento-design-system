@@ -79,14 +79,11 @@ export function createField(config: FieldConfig) {
             <Box paddingLeft={config.assistiveText.paddingLeft}>
               <Stack space={4}>
                 {issues.map((errorMessage, index) => (
-                  <Body
-                    key={index}
-                    {...errorMessageProps}
-                    size={config.assistiveText.size}
-                    color="negative"
-                  >
-                    {errorMessage}
-                  </Body>
+                  <Box {...errorMessageProps} color={undefined}>
+                    <Body key={index} size={config.assistiveText.size} color="negative">
+                      {errorMessage}
+                    </Body>
+                  </Box>
                 ))}
               </Stack>
             </Box>
