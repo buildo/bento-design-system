@@ -66,13 +66,11 @@ export function createField(config: FieldConfig) {
           {children}
           {assistiveText && !issues && (
             <Box paddingLeft={config.assistiveText.paddingLeft}>
-              <Body
-                {...assistiveTextProps}
-                size={config.assistiveText.size}
-                color={disabled ? "disabled" : "secondary"}
-              >
-                {assistiveText}
-              </Body>
+              <Box {...assistiveTextProps} color={undefined}>
+                <Body size={config.assistiveText.size} color={disabled ? "disabled" : "secondary"}>
+                  {assistiveText}
+                </Body>
+              </Box>
             </Box>
           )}
           {issues && (
