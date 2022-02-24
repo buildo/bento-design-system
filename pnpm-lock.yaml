@@ -6,7 +6,9 @@ specifiers:
   '@babel/preset-react': ^7.16.0
   '@babel/preset-typescript': ^7.16.0
   '@dessert-box/react': ^0.2.0
-  '@floating-ui/react-dom': ^0.4.3
+  '@farzadsh/floating-ui-core': ^0.4.1
+  '@farzadsh/floating-ui-dom': ^0.2.1
+  '@farzadsh/floating-ui-react-dom': ^0.4.4
   '@react-aria/breadcrumbs': ^3.1.5
   '@react-aria/button': ^3.3.4
   '@react-aria/checkbox': ^3.2.3
@@ -80,7 +82,9 @@ specifiers:
 
 dependencies:
   '@dessert-box/react': 0.2.0_react@17.0.2
-  '@floating-ui/react-dom': 0.4.3_5539cae010396b202b015f3568914e95
+  '@farzadsh/floating-ui-core': 0.4.1
+  '@farzadsh/floating-ui-dom': 0.2.1
+  '@farzadsh/floating-ui-react-dom': 0.4.4_5539cae010396b202b015f3568914e95
   '@react-aria/breadcrumbs': 3.1.5_react@17.0.2
   '@react-aria/button': 3.3.4_react@17.0.2
   '@react-aria/checkbox': 3.2.3_react@17.0.2
@@ -1871,23 +1875,24 @@ packages:
       - supports-color
     dev: true
 
-  /@floating-ui/core/0.3.1:
-    resolution: {integrity: sha512-ensKY7Ub59u16qsVIFEo2hwTCqZ/r9oZZFh51ivcLGHfUwTn8l1Xzng8RJUe91H/UP8PeqeBronAGx0qmzwk2g==}
+  /@farzadsh/floating-ui-core/0.4.1:
+    resolution: {integrity: sha512-rEgpRpTrbcC/2U03JtmjVY+w3Uv6pbPOnibKUlRwC6TTqogjJRr3Cb2oHriqpo5Iab3/Lbxh+jH2WWz+hL3Sag==}
     dev: false
 
-  /@floating-ui/dom/0.1.10:
-    resolution: {integrity: sha512-4kAVoogvQm2N0XE0G6APQJuCNuErjOfPW8Ux7DFxh8+AfugWflwVJ5LDlHOwrwut7z/30NUvdtHzQ3zSip4EzQ==}
+  /@farzadsh/floating-ui-dom/0.2.1:
+    resolution: {integrity: sha512-ZxqgdAPHCN9M0kbnpEjzCGkhi27RcI6i3PpgMuULyWvnhSvP9Fr/nPH17Lfp78BH7g+FyRa8QgMyVWyTjqa6lw==}
     dependencies:
-      '@floating-ui/core': 0.3.1
+      '@farzadsh/floating-ui-core': 0.4.1
     dev: false
 
-  /@floating-ui/react-dom/0.4.3_5539cae010396b202b015f3568914e95:
-    resolution: {integrity: sha512-ZL88ryd9p6sFh9jIC/+05JZoNsogcq6U09cygQjiy757QtQqxIVLQwFag+BAWWYqpNEMO0S60fkqmh8KIAV4oA==}
+  /@farzadsh/floating-ui-react-dom/0.4.4_5539cae010396b202b015f3568914e95:
+    resolution: {integrity: sha512-VDFGL2oVwbxLDy4BbT6MMyr5GoGa3Uml1YphuHHwXhYVw/GfZnHRwVYaghtapQs/LErvQyOX7QxNN7AREUUd+g==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      '@floating-ui/dom': 0.1.10
+      '@farzadsh/floating-ui-core': 0.4.1
+      '@farzadsh/floating-ui-dom': 0.2.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       use-isomorphic-layout-effect: 1.1.1_cfedea9b3ed0faf0dded75c187406c5e
