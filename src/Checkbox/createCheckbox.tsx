@@ -6,7 +6,6 @@ import { useFocusRing } from "@react-aria/focus";
 import { checkboxRecipe, fieldContainer } from "./Checkbox.css";
 import { vars } from "../vars.css";
 import { SelectionControlConfig } from "../Field/SelectionControlConfig";
-import { FieldProps } from "../Field/FieldProps";
 import { useLabel } from "@react-aria/label";
 import { InputHTMLAttributes, Ref } from "react";
 
@@ -45,8 +44,10 @@ function CheckboxMark({ isDisabled }: { isDisabled: boolean }) {
 type CheckboxConfig = Pick<SelectionControlConfig, "controlLabelSpacing">;
 
 type Props = {
-  option: Omit<FieldProps<boolean>, "assistiveText" | "issues"> & {
+  option: {
     label: TextChildren;
+    isSelected: boolean;
+    isDisabled?: boolean;
   };
   inputRef: Ref<HTMLInputElement>;
   inputProps: InputHTMLAttributes<HTMLInputElement>;
@@ -59,7 +60,7 @@ export function createCheckbox(config: CheckboxConfig) {
     return (
       <Box
         as="label"
-        disabled={option.disabled}
+        disabled={option.isDisabled}
         {...labelProps}
         {...focusProps}
         color={undefined}
@@ -73,12 +74,12 @@ export function createCheckbox(config: CheckboxConfig) {
         <Columns space={config.controlLabelSpacing} alignY="center">
           <Column width="content">
             <CheckboxUI
-              value={option.value}
+              value={option.isSelected}
               isFocusVisible={isFocusVisible}
-              isDisabled={option.disabled ?? false}
+              isDisabled={option.isDisabled ?? false}
             />
           </Column>
-          <Body size="medium" color={option.disabled ? "disabled" : "default"}>
+          <Body size="medium" color={option.isDisabled ? "disabled" : "default"}>
             {option.label}
           </Body>
         </Columns>

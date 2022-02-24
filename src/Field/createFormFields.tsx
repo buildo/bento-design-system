@@ -1,13 +1,13 @@
 import { createField, FieldConfig } from "./createField";
 import { createTextField } from "../TextField/createTextField";
-import { createCheckboxField } from "../CheckboxField/createCheckboxField";
 import { createRadioGroupField } from "../RadioGroupField/createRadioGroupField";
 import { createNumberInput } from "../NumberInput/createNumberInput";
 import { createNumberField } from "../NumberField/createNumberField";
 import { createSelectField, DropdownConfig } from "../SelectField/createSelectField";
 import { SelectionControlConfig } from "./SelectionControlConfig";
 import { defaultInputConfig, InputConfig } from "./InputConfig";
-import { createCheckbox } from "../Checkbox/createCheckbox";
+import { createCheckboxField } from "../CheckboxField/createCheckboxField";
+import { createCheckboxGroupField } from "../CheckboxGroupField/createCheckboxGroupField";
 
 type FieldsConfig = {
   field: FieldConfig;
@@ -64,12 +64,20 @@ export function createFormFields(
 ) {
   const Field = createField(config.field);
   const TextField = createTextField(Field, config.input);
-  const Checkbox = createCheckbox(config.selectionControl);
-  const CheckboxField = createCheckboxField(Field, Checkbox);
+  const CheckboxField = createCheckboxField(Field, config.selectionControl);
+  const CheckboxGroupField = createCheckboxGroupField(Field, config.selectionControl);
   const RadioGroupField = createRadioGroupField(Field, config.selectionControl);
   const NumberInput = createNumberInput(config.input);
   const NumberField = createNumberField(Field, NumberInput);
   const SelectField = createSelectField(Field, config.input, config.dropdown);
 
-  return { CheckboxField, Field, NumberField, RadioGroupField, SelectField, TextField };
+  return {
+    CheckboxField,
+    CheckboxGroupField,
+    Field,
+    NumberField,
+    RadioGroupField,
+    SelectField,
+    TextField,
+  };
 }

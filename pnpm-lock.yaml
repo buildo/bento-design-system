@@ -26,6 +26,7 @@ specifiers:
   '@react-aria/tooltip': ^3.1.5
   '@react-aria/utils': ^3.11.0
   '@react-aria/visually-hidden': ^3.2.3
+  '@react-stately/checkbox': ^3.0.5
   '@react-stately/numberfield': ^3.0.2
   '@react-stately/radio': ^3.3.2
   '@react-stately/toggle': ^3.2.3
@@ -102,6 +103,7 @@ dependencies:
   '@react-aria/tooltip': 3.1.5_react@17.0.2
   '@react-aria/utils': 3.11.0_react@17.0.2
   '@react-aria/visually-hidden': 3.2.3_react@17.0.2
+  '@react-stately/checkbox': 3.0.5_react@17.0.2
   '@react-stately/numberfield': 3.0.2_react@17.0.2
   '@react-stately/radio': 3.3.2_react@17.0.2
   '@react-stately/toggle': 3.2.3_react@17.0.2
@@ -2398,7 +2400,7 @@ packages:
       '@react-aria/label': 3.2.1_react@17.0.2
       '@react-aria/toggle': 3.1.5_react@17.0.2
       '@react-aria/utils': 3.11.0_react@17.0.2
-      '@react-stately/checkbox': 3.0.3_react@17.0.2
+      '@react-stately/checkbox': 3.0.5_react@17.0.2
       '@react-stately/toggle': 3.2.3_react@17.0.2
       '@react-types/checkbox': 3.2.3_react@17.0.2
       react: 17.0.2
@@ -2633,8 +2635,8 @@ packages:
       '@react-aria/focus': 3.5.0_react@17.0.2
       '@react-aria/interactions': 3.8.1_react@17.0.2
       '@react-aria/utils': 3.11.0_react@17.0.2
-      '@react-stately/toggle': 3.2.3_react@17.0.2
-      '@react-types/checkbox': 3.2.3_react@17.0.2
+      '@react-stately/toggle': 3.2.5_react@17.0.2
+      '@react-types/checkbox': 3.2.5_react@17.0.2
       '@react-types/shared': 3.10.1_react@17.0.2
       '@react-types/switch': 3.1.2_react@17.0.2
       react: 17.0.2
@@ -2693,15 +2695,15 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@react-stately/checkbox/3.0.3_react@17.0.2:
-    resolution: {integrity: sha512-amT889DTLdbjAVjZ9j9TytN73PszynGIspKi1QSUCvXeA2OVyCwShxhV0Pn7yYX8cMinvGXrjhWdhn0nhYeMdg==}
+  /@react-stately/checkbox/3.0.5_react@17.0.2:
+    resolution: {integrity: sha512-NCcv6nKBRNzzf+Us/UudjVVhCfNTXd+L5/+7FlrMPwfs0w44HdRQ1BVacyRnpf+YL25v4Q4/X8Wdf9BtjxgH4w==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1
     dependencies:
       '@babel/runtime': 7.16.3
-      '@react-stately/toggle': 3.2.3_react@17.0.2
-      '@react-stately/utils': 3.3.0_react@17.0.2
-      '@react-types/checkbox': 3.2.3_react@17.0.2
+      '@react-stately/toggle': 3.2.5_react@17.0.2
+      '@react-stately/utils': 3.4.1_react@17.0.2
+      '@react-types/checkbox': 3.2.5_react@17.0.2
       react: 17.0.2
     dev: false
 
@@ -2724,7 +2726,7 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1
     dependencies:
       '@babel/runtime': 7.16.3
-      '@react-stately/utils': 3.3.0_react@17.0.2
+      '@react-stately/utils': 3.4.1_react@17.0.2
       '@react-types/overlays': 3.5.1_react@17.0.2
       react: 17.0.2
     dev: false
@@ -2760,6 +2762,18 @@ packages:
       '@react-stately/utils': 3.3.0_react@17.0.2
       '@react-types/checkbox': 3.2.3_react@17.0.2
       '@react-types/shared': 3.10.1_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-stately/toggle/3.2.5_react@17.0.2:
+    resolution: {integrity: sha512-xvruQcjVn/3J+8Y2o8uR7KDbFX8WPB+uMtyURbvuQ7WSWzW48iK0UQgPBaV0gbAKyV/mJCl2QdJ9CoxoQ1CKag==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.16.3
+      '@react-stately/utils': 3.4.1_react@17.0.2
+      '@react-types/checkbox': 3.2.5_react@17.0.2
+      '@react-types/shared': 3.11.1_react@17.0.2
       react: 17.0.2
     dev: false
 
@@ -2816,6 +2830,15 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1
     dependencies:
       '@react-types/shared': 3.10.1_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-types/checkbox/3.2.5_react@17.0.2:
+    resolution: {integrity: sha512-QP1+g/Fu3EageMGI7doWT6t4J/pFKOHoWoQIj3AXrFx6pljX8pA9eRhgTznF4uT+4e34TK/xDoEssPAWq24s2A==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@react-types/shared': 3.11.1_react@17.0.2
       react: 17.0.2
     dev: false
 
@@ -2904,7 +2927,7 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1
     dependencies:
-      '@react-types/checkbox': 3.2.3_react@17.0.2
+      '@react-types/checkbox': 3.2.5_react@17.0.2
       '@react-types/shared': 3.11.1_react@17.0.2
       react: 17.0.2
     dev: false
