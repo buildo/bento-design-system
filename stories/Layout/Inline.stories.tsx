@@ -119,7 +119,6 @@ export const responsiveReverse = createStory(
     reverse: {
       tablet: true,
     },
-    // collapseBelow: "desktop",
     children: [
       <Placeholder label="1" width={100} background="brandPrimary" />,
       <Placeholder label="2" width={100} background="brandSecondary" />,
