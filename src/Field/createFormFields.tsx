@@ -7,6 +7,7 @@ import { createNumberField } from "../NumberField/createNumberField";
 import { createSelectField, DropdownConfig } from "../SelectField/createSelectField";
 import { SelectionControlConfig } from "./SelectionControlConfig";
 import { defaultInputConfig, InputConfig } from "./InputConfig";
+import { createCheckbox } from "../Checkbox/createCheckbox";
 
 type FieldsConfig = {
   field: FieldConfig;
@@ -63,7 +64,8 @@ export function createFormFields(
 ) {
   const Field = createField(config.field);
   const TextField = createTextField(Field, config.input);
-  const CheckboxField = createCheckboxField(Field, config.selectionControl);
+  const Checkbox = createCheckbox(config.selectionControl);
+  const CheckboxField = createCheckboxField(Field, Checkbox);
   const RadioGroupField = createRadioGroupField(Field, config.selectionControl);
   const NumberInput = createNumberInput(config.input);
   const NumberField = createNumberField(Field, NumberInput);
