@@ -34,9 +34,14 @@
   ],
   "license": "MIT",
   "homepage": "https://github.com/buildo/bento-design-system#readme",
+  "dependenciesComments": {
+    "@farzadsh/floating-ui-*": "NOTE(gabro): we are using a fork of Floating UI due to an issue with the build of the published package. See https://github.com/floating-ui/floating-ui/pull/1529"
+  },
   "dependencies": {
     "@dessert-box/react": "^0.2.0",
-    "@floating-ui/react-dom": "^0.4.3",
+    "@farzadsh/floating-ui-core": "^0.4.1",
+    "@farzadsh/floating-ui-dom": "^0.2.1",
+    "@farzadsh/floating-ui-react-dom": "^0.4.4",
     "@react-aria/breadcrumbs": "^3.1.5",
     "@react-aria/button": "^3.3.4",
     "@react-aria/checkbox": "^3.2.3",
