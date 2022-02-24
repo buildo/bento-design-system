@@ -16,6 +16,7 @@ type Color =
   | "link";
 
 type Props = {
+  id?: string;
   children: TextChildren;
   size: Size;
   weight?: "regular" | "semibold";

@@ -28,8 +28,15 @@ import { sprinkles } from "./sprinkles.css";
 export * from "../src";
 export const Box = createBentoBox(sprinkles);
 export const { Stack, Column, Columns, Inline, Inset } = createLayoutComponents(Box);
-export const { Field, CheckboxField, NumberField, RadioGroupField, SelectField, TextField } =
-  createFormFields();
+export const {
+  Field,
+  CheckboxField,
+  CheckboxGroupField,
+  NumberField,
+  RadioGroupField,
+  SelectField,
+  TextField,
+} = createFormFields();
 export const Button = createButton({});
 export const Actions = createActions(Button);
 export const { Form, FormSection, FormRow } = createFormLayoutComponents(Actions);

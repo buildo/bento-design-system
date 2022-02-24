@@ -66,27 +66,22 @@ export function createField(config: FieldConfig) {
           {children}
           {assistiveText && !issues && (
             <Box paddingLeft={config.assistiveText.paddingLeft}>
-              <Body
-                {...assistiveTextProps}
-                size={config.assistiveText.size}
-                color={disabled ? "disabled" : "secondary"}
-              >
-                {assistiveText}
-              </Body>
+              <Box {...assistiveTextProps} color={undefined}>
+                <Body size={config.assistiveText.size} color={disabled ? "disabled" : "secondary"}>
+                  {assistiveText}
+                </Body>
+              </Box>
             </Box>
           )}
           {issues && (
             <Box paddingLeft={config.assistiveText.paddingLeft}>
               <Stack space={4}>
                 {issues.map((errorMessage, index) => (
-                  <Body
-                    key={index}
-                    {...errorMessageProps}
-                    size={config.assistiveText.size}
-                    color="negative"
-                  >
-                    {errorMessage}
-                  </Body>
+                  <Box {...errorMessageProps} color={undefined}>
+                    <Body key={index} size={config.assistiveText.size} color="negative">
+                      {errorMessage}
+                    </Body>
+                  </Box>
                 ))}
               </Stack>
             </Box>

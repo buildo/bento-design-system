@@ -1,32 +1,23 @@
 import { useCheckbox } from "@react-aria/checkbox";
-import { useFocusRing } from "@react-aria/focus";
-import { useField } from "@react-aria/label";
-import { mergeProps } from "@react-aria/utils";
-import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { useToggleState } from "@react-stately/toggle";
 import { useRef } from "react";
 import { FieldType } from "../Field/createField";
-import { Body, TextChildren } from "..";
-import { Box, Column, Columns } from "../internal";
+import { TextChildren } from "..";
 import { FieldProps } from "../Field/FieldProps";
-import { vars } from "../vars.css";
-import { checkboxRecipe, fieldContainer } from "./CheckboxField.css";
+import { createCheckbox } from "../Checkbox/createCheckbox";
+import { useField } from "@react-aria/label";
 import { SelectionControlConfig } from "../Field/SelectionControlConfig";
 
 export type CheckboxFieldProps = Omit<FieldProps<boolean>, "assistiveText"> & {
   label: TextChildren;
 };
 
-type CheckboxFieldConfig = {
-  controlLabelSpacing: SelectionControlConfig["controlLabelSpacing"];
-};
-
 export function createCheckboxField(
   Field: FieldType,
-  config: CheckboxFieldConfig = {
-    controlLabelSpacing: 8,
-  }
+  config: Pick<SelectionControlConfig, "controlLabelSpacing">
 ) {
+  const Checkbox = createCheckbox(config);
+
   return function CheckboxField(props: CheckboxFieldProps) {
     const checkboxProps = {
       ...props,
@@ -34,12 +25,17 @@ export function createCheckboxField(
       isSelected: props.value,
       isDisabled: props.disabled,
       children: props.label,
+      validationState:
+        props.issues && props.issues.length > 0 ? ("invalid" as const) : ("valid" as const),
+      errorMessage: props.issues && props.issues.join(" "),
     };
     const state = useToggleState(checkboxProps);
     const ref = useRef<HTMLInputElement>(null);
-    const { inputProps } = useCheckbox(checkboxProps, state, ref);
-    const { fieldProps, labelProps, errorMessageProps } = useField(checkboxProps);
-    const { isFocusVisible, focusProps } = useFocusRing();
+    const { inputProps: _inputProps } = useCheckbox(checkboxProps, state, ref);
+    const { fieldProps, errorMessageProps } = useField(checkboxProps);
+    const inputProps = { ..._inputProps, "aria-describedby": fieldProps["aria-describedby"] };
+
+    console.log(errorMessageProps);
 
     return (
       <Field
@@ -48,65 +44,8 @@ export function createCheckboxField(
         assistiveTextProps={{}}
         errorMessageProps={errorMessageProps}
       >
-        <Box
-          as="label"
-          disabled={props.disabled}
-          {...labelProps}
-          {...focusProps}
-          color={undefined}
-          cursor={{ default: "pointer", disabled: "notAllowed" }}
-          paddingBottom={4}
-          className={fieldContainer}
-        >
-          <VisuallyHidden>
-            <input {...mergeProps(inputProps, fieldProps, focusProps)} ref={ref} />
-          </VisuallyHidden>
-          <Columns space={config.controlLabelSpacing} alignY="center">
-            <Column width="content">
-              <Checkbox
-                value={props.value}
-                isFocusVisible={isFocusVisible}
-                isDisabled={props.disabled ?? false}
-              />
-            </Column>
-            <Body size="medium" color={props.disabled ? "disabled" : "default"}>
-              {props.label}
-            </Body>
-          </Columns>
-        </Box>
+        <Checkbox option={checkboxProps} inputProps={inputProps} inputRef={ref} />
       </Field>
     );
   };
-}
-
-type CheckboxProps = {
-  value: boolean;
-  isDisabled: boolean;
-  isFocusVisible: boolean;
-};
-
-function Checkbox({ value, isFocusVisible, isDisabled }: CheckboxProps) {
-  return (
-    <Box className={checkboxRecipe({ isSelected: value, isFocused: isFocusVisible, isDisabled })}>
-      {value && <CheckboxMark isDisabled={isDisabled} />}
-    </Box>
-  );
-}
-
-function CheckboxMark({ isDisabled }: { isDisabled: boolean }) {
-  return (
-    <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-      <path
-        d="M2 5.89744L6 10L14 2"
-        stroke={
-          isDisabled
-            ? vars.interactiveForegroundColor.disabledSolidForeground
-            : vars.interactiveForegroundColor.primarySolidEnabledForeground
-        }
-        strokeWidth={4}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
 }
