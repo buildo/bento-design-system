@@ -2,58 +2,29 @@ import {
   ConditionalValue,
   createMapValueFn,
   createNormalizeValueFn,
-  createSprinkles,
-  defineProperties,
   RequiredConditionalValue,
 } from "@vanilla-extract/sprinkles";
+import { defineBentoSprinkles } from "../sprinkles";
 import { unconditionalProperties, responsiveProperties, statusProperties } from "../util/atoms";
-import { breakpoints } from "../util/breakpoints";
-import { statusConditions } from "../util/conditions";
 
-const unconditionalAtomicProperties = defineProperties({
-  properties: unconditionalProperties,
-  shorthands: {
-    borderTopRadius: ["borderTopLeftRadius", "borderTopRightRadius"],
-    borderBottomRadius: ["borderBottomLeftRadius", "borderBottomRightRadius"],
-  },
-});
-
-const responsiveAtomicProperties = defineProperties({
-  conditions: breakpoints,
-  defaultCondition: "desktop",
-  properties: responsiveProperties,
-  shorthands: {
-    inset: ["top", "right", "bottom", "left"],
-    padding: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
-    paddingX: ["paddingLeft", "paddingRight"],
-    paddingY: ["paddingTop", "paddingBottom"],
-  },
-});
-
-const statusAtomicProperties = defineProperties({
-  conditions: statusConditions,
-  defaultCondition: "default",
-  properties: statusProperties,
-});
-
-export const bentoSprinkles = createSprinkles(
-  unconditionalAtomicProperties,
-  statusAtomicProperties,
-  responsiveAtomicProperties
+export const [bentoSprinkles, _, responsiveStyles] = defineBentoSprinkles(
+  unconditionalProperties,
+  responsiveProperties,
+  statusProperties
 );
 
 export type BentoSprinkles = Parameters<typeof bentoSprinkles>[0];
 
-export const mapResponsiveValue = createMapValueFn(responsiveAtomicProperties);
+export const mapResponsiveValue = createMapValueFn(responsiveStyles);
 
-export const normalizeResponsiveValue = createNormalizeValueFn(responsiveAtomicProperties);
+export const normalizeResponsiveValue = createNormalizeValueFn(responsiveStyles);
 
 export type OptionalResponsiveValue<Value extends string | number> = ConditionalValue<
-  typeof responsiveAtomicProperties,
+  typeof responsiveStyles,
   Value
 >;
 
 export type RequiredResponsiveValue<Value extends string | number> = RequiredConditionalValue<
-  typeof responsiveAtomicProperties,
+  typeof responsiveStyles,
   Value
 >;
