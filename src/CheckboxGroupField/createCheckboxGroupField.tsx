@@ -9,7 +9,7 @@ import { CheckboxGroupState, useCheckboxGroupState } from "@react-stately/checkb
 import { Box, Inline, Inset, Stack } from "../internal";
 import { SelectionControlConfig } from "../Field/SelectionControlConfig";
 
-type CheckboxOption = {
+export type CheckboxOption = {
   value: string;
   label: TextChildren;
   isDisabled: boolean;

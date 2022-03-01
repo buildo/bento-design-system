@@ -81,3 +81,7 @@ export function createFormFields(
     TextField,
   };
 }
+
+export type { SelectOption } from "../SelectField/createSelectField";
+export type { RadioOption } from "../RadioGroupField/createRadioGroupField";
+export type { CheckboxOption } from "../CheckboxGroupField/createCheckboxGroupField";

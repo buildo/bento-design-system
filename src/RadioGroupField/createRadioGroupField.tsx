@@ -13,7 +13,7 @@ import { useFocusRing } from "@react-aria/focus";
 import { Radio } from "./Radio";
 import { SelectionControlConfig } from "../Field/SelectionControlConfig";
 
-type Option<A> = {
+export type RadioOption<A> = {
   value: A;
   label: LocalizedString;
   isDisabled?: boolean;
@@ -21,7 +21,7 @@ type Option<A> = {
 
 export type RadioGroupFieldProps<A> = FieldProps<A | undefined, A> & {
   name: string;
-  options: Array<Option<A>>;
+  options: Array<RadioOption<A>>;
   orientation?: "vertical" | "horizontal";
 };
 
@@ -90,7 +90,7 @@ export function createRadioGroupField(
     option,
     state,
   }: {
-    option: Option<A>;
+    option: RadioOption<A>;
     state: RadioGroupState;
   }) {
     const ref = useRef<HTMLInputElement>(null);
