@@ -24,7 +24,7 @@ export type SelectOption<A> = Omit<
 
 type Props<A, IsMulti extends boolean> = (IsMulti extends false
   ? FieldProps<A | undefined>
-  : FieldProps<A[]> & {}) & {
+  : FieldProps<A[]>) & {
   size: ListSize;
   placeholder: LocalizedString;
   options: Array<SelectOption<A>>;
