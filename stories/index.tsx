@@ -4,7 +4,7 @@ import {
   createBanner,
   createBentoBox,
   createBreadcrumb,
-  createButton,
+  createButtons,
   createActions,
   createCard,
   createFormFields,
@@ -38,7 +38,7 @@ export const {
   SelectField,
   TextField,
 } = createFormFields();
-export const Button = createButton({});
+export const { Button, ButtonLink } = createButtons();
 export const Actions = createActions(Button);
 export const { Form, FormSection, FormRow } = createFormLayoutComponents(Actions);
 export const Banner = createBanner({});
