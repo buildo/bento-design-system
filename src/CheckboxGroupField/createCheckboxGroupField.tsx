@@ -12,7 +12,7 @@ import { SelectionControlConfig } from "../Field/SelectionControlConfig";
 export type CheckboxOption = {
   value: string;
   label: TextChildren;
-  isDisabled: boolean;
+  isDisabled?: boolean;
 };
 
 export type CheckboxGroupFieldProps = FieldProps<string[]> & {

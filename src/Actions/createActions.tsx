@@ -3,7 +3,7 @@ import { BoxProps } from "../";
 import { bentoSprinkles, Column, Columns, Inline } from "../internal";
 import { ButtonProps } from "../Button/createButton";
 
-type ActionProps = Omit<ButtonProps, "kind" | "size">;
+type ActionProps = Omit<ButtonProps, "kind" | "size" | "hierarchy">;
 
 export type ActionsProps = {
   size: ButtonProps["size"];
