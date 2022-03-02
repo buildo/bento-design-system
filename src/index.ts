@@ -1,3 +1,5 @@
+import "./reset.css";
+
 export * from "./Actions/createActions";
 export * from "./AreaLoader/createAreaLoader";
 export * from "./Avatar/createAvatar";
