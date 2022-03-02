@@ -6,7 +6,7 @@ export * from "./Avatar/createAvatar";
 export * from "./Banner/createBanner";
 export * from "./Box/createBentoBox";
 export * from "./Breadcrumb/createBreadcrumb";
-export * from "./Button/createButton";
+export * from "./Button/createButtons";
 export * from "./Card/createCard";
 export * from "./Chip/createChip";
 export * from "./ContentBlock/ContentBlock";
