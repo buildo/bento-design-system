@@ -49,8 +49,6 @@ const { defaultExport, createControlledStory } = createComponentStories({
       },
     ],
     noOptionsMessage: formatMessage("No options"),
-    multiValueMessage: (numberOfSelectedOptions: number) =>
-      formatMessage(`${numberOfSelectedOptions} options selected`),
   },
   argTypes: {
     ...fieldArgTypes,
@@ -87,8 +85,12 @@ InModal.decorators = [
 
 export const MultiSelectOneOptionSelected = createControlledStory([1], {
   isMulti: true,
+  multiValueMessage: (numberOfSelectedOptions: number) =>
+    formatMessage(`${numberOfSelectedOptions} options selected`),
 });
 
 export const MultiSelectMultipleOptionsSelected = createControlledStory([1, 2], {
   isMulti: true,
+  multiValueMessage: (numberOfSelectedOptions: number) =>
+    formatMessage(`${numberOfSelectedOptions} options selected`),
 });
