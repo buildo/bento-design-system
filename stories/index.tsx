@@ -22,6 +22,7 @@ import {
   createAvatar,
   createFormLayoutComponents,
   createSearchBar,
+  createSwitch,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -55,3 +56,4 @@ export const Tabs = createTabs();
 export const AreaLoader = createAreaLoader();
 export const Avatar = createAvatar();
 export const SearchBar = createSearchBar(Field);
+export const Switch = createSwitch(Field);

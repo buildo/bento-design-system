@@ -26,6 +26,7 @@ export * from "./List/createList";
 export * from "./Modal/createModal";
 export * from "./Placeholder/Placeholder";
 export * from "./SearchBar/createSearchBar";
+export * from "./Switch/createSwitch";
 export * from "./Tabs/createTabs";
 export * from "./Toast/createToast";
 export * from "./Toast/useToast";
