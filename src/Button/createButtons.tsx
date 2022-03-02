@@ -1,5 +1,5 @@
 import { createButtonLink } from "./ButtonLink";
-import { ButtonConfig, createButton, defaultButtonConfig } from "./createButton";
+import { ButtonConfig, createButton, defaultButtonConfig, ButtonProps } from "./createButton";
 
 export function createButtons(config: ButtonConfig = defaultButtonConfig) {
   const Button = createButton(config);
@@ -7,3 +7,5 @@ export function createButtons(config: ButtonConfig = defaultButtonConfig) {
 
   return { Button, ButtonLink };
 }
+
+export type { ButtonProps };
