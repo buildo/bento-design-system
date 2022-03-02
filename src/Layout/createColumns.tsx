@@ -42,7 +42,7 @@ export function createColumns<AtomsFn extends typeof bentoSprinkles>(Box: BoxTyp
     const stickyProps = sticky ? ({ position: "sticky", top: sticky.top } as const) : {};
 
     return (
-      <Box flexShrink={width === "content" ? 0 : undefined} className={className} {...stickyProps}>
+      <Box className={className} {...stickyProps}>
         {children}
       </Box>
     );

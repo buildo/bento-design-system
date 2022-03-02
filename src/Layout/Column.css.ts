@@ -12,7 +12,7 @@ export const fullWidth = bentoSprinkles({
 });
 
 const widths = {
-  content: {},
+  content: { flexShrink: 0 },
   full: styleForScale(1),
   "1/2": styleForScale(1 / 2),
   "1/3": styleForScale(1 / 3),
