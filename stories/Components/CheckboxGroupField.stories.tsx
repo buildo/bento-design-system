@@ -6,7 +6,7 @@ const { defaultExport, createControlledStory } = createComponentStories({
   args: {
     label: formatMessage("What are your favourite colors?"),
     orientation: "vertical",
-    assistiveText: "You can select multiple options",
+    assistiveText: formatMessage("You can select multiple options"),
     options: [
       {
         value: "blue",

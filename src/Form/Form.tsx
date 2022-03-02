@@ -16,8 +16,8 @@ type Props = {
   children: Children;
   title?: LocalizedString;
   description?: TextChildren;
-  submitButton?: Omit<ButtonProps, "kind">;
-  secondaryButton?: Omit<ButtonProps, "kind">;
+  submitButton?: Omit<ButtonProps, "kind" | "hierarchy">;
+  secondaryButton?: Omit<ButtonProps, "kind" | "hierarchy">;
 };
 
 export type FormConfig = {

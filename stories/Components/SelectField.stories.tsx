@@ -22,21 +22,21 @@ const { defaultExport, createControlledStory } = createComponentStories({
         value: 1,
         label: formatMessage("Red"),
         kind: "two-line",
-        secondLine: "prova",
+        secondLine: formatMessage("prova"),
         illustration: Illustration,
       },
       {
         value: 2,
         label: formatMessage("Blue"),
         kind: "two-line",
-        secondLine: "prova",
+        secondLine: formatMessage("prova"),
         illustration: Illustration,
       },
       {
         value: 3,
         label: formatMessage("Green"),
         kind: "two-line",
-        secondLine: "prova",
+        secondLine: formatMessage("prova"),
         illustration: Illustration,
         disabled: true,
       },
@@ -49,8 +49,6 @@ const { defaultExport, createControlledStory } = createComponentStories({
       },
     ],
     noOptionsMessage: formatMessage("No options"),
-    multiValueMessage: (numberOfSelectedOptions: number) =>
-      formatMessage(`${numberOfSelectedOptions} options selected`),
   },
   argTypes: {
     ...fieldArgTypes,
@@ -87,8 +85,12 @@ InModal.decorators = [
 
 export const MultiSelectOneOptionSelected = createControlledStory([1], {
   isMulti: true,
+  multiValueMessage: (numberOfSelectedOptions: number) =>
+    formatMessage(`${numberOfSelectedOptions} options selected`),
 });
 
 export const MultiSelectMultipleOptionsSelected = createControlledStory([1, 2], {
   isMulti: true,
+  multiValueMessage: (numberOfSelectedOptions: number) =>
+    formatMessage(`${numberOfSelectedOptions} options selected`),
 });

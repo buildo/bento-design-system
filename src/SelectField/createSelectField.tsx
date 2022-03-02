@@ -30,9 +30,10 @@ type Props<A, IsMulti extends boolean> = (IsMulti extends false
   options: Array<SelectOption<A>>;
   isMulti?: IsMulti;
   noOptionsMessage?: LocalizedString;
-  multiValueMessage: (numberOfSelectedOptions: number) => LocalizedString;
   autoFocus?: boolean;
-};
+} & (IsMulti extends true
+    ? { multiValueMessage: (numberOfSelectedOptions: number) => LocalizedString }
+    : {});
 
 export type { Props as SelectFieldProps };
 
@@ -40,7 +41,7 @@ declare module "react-select/dist/declarations/src/Select" {
   export interface Props<Option, IsMulti extends boolean, Group extends GroupBase<Option>> {
     size: ListSize;
     validationState: "valid" | "invalid";
-    multiValueMessage: (numberOfSelectedOptions: number) => LocalizedString;
+    multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString;
   }
 }
 
@@ -57,23 +58,24 @@ export function createSelectField(
 ) {
   const components = createComponents(inputConfig, dropdownConfig);
 
-  return function SelectField<A, IsMulti extends boolean = false>({
-    value,
-    onChange,
-    options,
-    onBlur,
-    label,
-    hint,
-    assistiveText,
-    issues,
-    placeholder,
-    disabled,
-    isMulti,
-    noOptionsMessage,
-    multiValueMessage,
-    autoFocus,
-    size,
-  }: Props<A, IsMulti>) {
+  return function SelectField<A, IsMulti extends boolean = false>(props: Props<A, IsMulti>) {
+    const {
+      value,
+      onChange,
+      options,
+      onBlur,
+      label,
+      hint,
+      assistiveText,
+      issues,
+      placeholder,
+      disabled,
+      isMulti,
+      noOptionsMessage,
+      autoFocus,
+      size,
+    } = props;
+
     const validationState = issues ? "invalid" : "valid";
     const { labelProps, fieldProps, descriptionProps, errorMessageProps } = useField({
       label,
@@ -155,7 +157,9 @@ export function createSelectField(
           isMulti={isMulti}
           isClearable={false}
           noOptionsMessage={() => noOptionsMessage}
-          multiValueMessage={multiValueMessage}
+          multiValueMessage={
+            isMulti ? (props as unknown as Props<A, true>).multiValueMessage : undefined
+          }
           closeMenuOnSelect={!isMulti}
           hideSelectedOptions={false}
           size={size}
@@ -170,7 +174,7 @@ export function createSelectField(
   function MultiValue<A, IsMulti extends boolean>(props: MultiValueProps<A, IsMulti>) {
     const numberOfSelectedOptions = props.getValue().length;
 
-    if (props.index > 0) {
+    if (props.index > 0 || !props.selectProps.multiValueMessage) {
       return null;
     }
 
