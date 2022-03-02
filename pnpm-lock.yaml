@@ -22,6 +22,7 @@ specifiers:
   '@react-aria/overlays': ^3.7.3
   '@react-aria/radio': ^3.1.6
   '@react-aria/separator': ^3.1.3
+  '@react-aria/switch': ^3.1.5
   '@react-aria/textfield': ^3.5.0
   '@react-aria/tooltip': ^3.1.5
   '@react-aria/utils': ^3.11.0
@@ -99,6 +100,7 @@ dependencies:
   '@react-aria/overlays': 3.7.3_react-dom@17.0.2+react@17.0.2
   '@react-aria/radio': 3.1.6_react@17.0.2
   '@react-aria/separator': 3.1.3_react@17.0.2
+  '@react-aria/switch': 3.1.5_react@17.0.2
   '@react-aria/textfield': 3.5.0_react@17.0.2
   '@react-aria/tooltip': 3.1.5_react@17.0.2
   '@react-aria/utils': 3.11.0_react@17.0.2
@@ -2612,6 +2614,18 @@ packages:
       react: 17.0.2
     dev: false
 
+  /@react-aria/switch/3.1.5_react@17.0.2:
+    resolution: {integrity: sha512-M5KHEc8wqouDY1UkU7ZvgurfxM8fOtSqA8nw3bXxIWDH0kEwVy0D5fXBnJuNuyU/RXLbx2/rFT7x9q9rjHGRYQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.16.3
+      '@react-aria/toggle': 3.2.1_react@17.0.2
+      '@react-stately/toggle': 3.2.5_react@17.0.2
+      '@react-types/switch': 3.1.4_react@17.0.2
+      react: 17.0.2
+    dev: false
+
   /@react-aria/textfield/3.5.0_react@17.0.2:
     resolution: {integrity: sha512-EUsr5YCavNbp/nUoBCfiLiir0I0/NiZ2i/RPtOzzsGHMHw2xOME9PiRHYPrj7vOQQEfNgN1btr1psvLML4dk5w==}
     peerDependencies:
@@ -2639,6 +2653,22 @@ packages:
       '@react-types/checkbox': 3.2.5_react@17.0.2
       '@react-types/shared': 3.10.1_react@17.0.2
       '@react-types/switch': 3.1.2_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-aria/toggle/3.2.1_react@17.0.2:
+    resolution: {integrity: sha512-SdsRyNWoRb5YmGHuKoJMJ1Zlsf+nya3Ipm0j2rnbcCFVAdbCJWA/PIC4v2PNjRq9WDZzvOiPPgUhK3nbDSNK9Q==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.16.3
+      '@react-aria/focus': 3.5.2_react@17.0.2
+      '@react-aria/interactions': 3.8.1_react@17.0.2
+      '@react-aria/utils': 3.11.2_react@17.0.2
+      '@react-stately/toggle': 3.2.5_react@17.0.2
+      '@react-types/checkbox': 3.2.5_react@17.0.2
+      '@react-types/shared': 3.11.1_react@17.0.2
+      '@react-types/switch': 3.1.4_react@17.0.2
       react: 17.0.2
     dev: false
 
@@ -2924,6 +2954,16 @@ packages:
 
   /@react-types/switch/3.1.2_react@17.0.2:
     resolution: {integrity: sha512-EaYWoLvUCpOnt//Ov8VBxOjbs4hBpYE/rBAzzIknXaFvKOu867iZBFL7FJbcemOgC8/dwyaj6GUZ1Gw3Z1g59w==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@react-types/checkbox': 3.2.5_react@17.0.2
+      '@react-types/shared': 3.11.1_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-types/switch/3.1.4_react@17.0.2:
+    resolution: {integrity: sha512-KK1CrkoICzvk0xuhJWKtquShhqa6kqzcQyn4k5mBMzTuInSt7m65mPqfFgQcO6Oam56vjd4uG73HayMZsry0lw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1
     dependencies:
