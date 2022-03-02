@@ -75,7 +75,6 @@ const ExampleSelectField = <A extends {}>(
       name="selectField"
       onBlur={() => {}}
       isMulti={false}
-      multiValueMessage={() => formatMessage("")}
       {...props}
     />
   );
