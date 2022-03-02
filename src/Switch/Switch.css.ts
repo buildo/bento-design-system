@@ -90,13 +90,6 @@ export const switchOuterRecipe = strictRecipe({
           background: "disabledSolidBackground",
           boxShadow: "none",
         }),
-        {
-          selectors: {
-            [`${switchContainer}:hover:not([disabled]) &`]: {
-              background: vars.interactiveBackgroundColor.disabledSolidBackground,
-            },
-          },
-        },
       ],
     },
   ],
