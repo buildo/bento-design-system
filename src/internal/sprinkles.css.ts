@@ -13,7 +13,6 @@ import { statusConditions } from "../util/conditions";
 const unconditionalAtomicProperties = defineProperties({
   properties: unconditionalProperties,
   shorthands: {
-    inset: ["top", "right", "bottom", "left"],
     borderTopRadius: ["borderTopLeftRadius", "borderTopRightRadius"],
     borderBottomRadius: ["borderBottomLeftRadius", "borderBottomRightRadius"],
   },
@@ -24,6 +23,7 @@ const responsiveAtomicProperties = defineProperties({
   defaultCondition: "desktop",
   properties: responsiveProperties,
   shorthands: {
+    inset: ["top", "right", "bottom", "left"],
     padding: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
     paddingX: ["paddingLeft", "paddingRight"],
     paddingY: ["paddingTop", "paddingBottom"],

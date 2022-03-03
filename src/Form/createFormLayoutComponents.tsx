@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { ActionsProps } from "src";
+import { ActionsProps } from "../";
 import { createForm, FormConfig } from "./Form";
 import { createFormRow, FormRowConfig } from "./FormRow";
 import { createFormSection, FormSectionConfig } from "./FormSection";

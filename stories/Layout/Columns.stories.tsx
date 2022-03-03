@@ -82,3 +82,42 @@ export const alignYStretch = createStory({
   alignY: "stretch",
   children: [<Placeholder height={100} />, <Placeholder height="100%" />],
 });
+
+export const reverse = createStory({
+  children: [<Placeholder label="1" />, <Placeholder label="2" />, <Placeholder label="3" />],
+  reverse: true,
+});
+
+export const responsiveReverse = createStory(
+  {
+    children: [
+      <Placeholder background="brandPrimary" />,
+      <Column width={{ desktop: "content", tablet: "full", mobile: "full" }}>
+        <Placeholder label="sidebar" background="brandSecondary" />
+      </Column>,
+    ],
+    collapseBelow: "desktop",
+    reverse: {
+      tablet: true,
+      mobile: false,
+    },
+  },
+  { viewport: { defaultViewport: "tablet" } }
+);
+
+export const sticky = createStory(
+  {
+    collapseBelow: "desktop",
+    reverse: { tablet: true },
+    children: [
+      <Placeholder background="brandPrimary" height={600} />,
+      <Column
+        width={{ desktop: "content", tablet: "full" }}
+        sticky={{ top: { desktop: 40, tablet: 16 } }}
+      >
+        <Placeholder label="sidebar" background="brandSecondary" />
+      </Column>,
+    ],
+  },
+  { viewport: { defaultViewport: "mobile1" } }
+);

@@ -1,4 +1,4 @@
-import { Inset } from "../internal";
+import { BentoSprinkles, Inset } from "../internal";
 import { Box } from "../internal/Box/Box";
 import { vars } from "../vars.css";
 import { unsafeLocalizedString } from "..";
@@ -7,9 +7,10 @@ type Props = {
   height?: string | number;
   width?: string | number;
   label?: string;
+  background?: BentoSprinkles["background"];
 };
 
-export function Placeholder({ label, height = 120, width = "auto" }: Props) {
+export function Placeholder({ label, height = 120, width = "auto", background }: Props) {
   return (
     <Box
       position="relative"
@@ -17,6 +18,7 @@ export function Placeholder({ label, height = 120, width = "auto" }: Props) {
       style={{ height, width, border: `2px solid ${vars.outlineColor.outlineDecorative}` }}
       justifyContent="center"
       alignItems="center"
+      background={background}
     >
       {label ? (
         <Inset space={8}>{unsafeLocalizedString(label)}</Inset>

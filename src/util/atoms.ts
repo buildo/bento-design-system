@@ -19,19 +19,11 @@ export const unconditionalProperties = {
   fontSize: vars.fontSize,
   lineHeight: vars.lineHeight,
   letterSpacing: vars.letterSpacing,
-  width: {
-    ...vars.space,
-    full: "100%",
-  },
   height: {
     ...vars.space,
     full: "100%",
   },
-  top: vars.space,
-  bottom: vars.space,
-  left: vars.space,
-  right: vars.space,
-  position: ["relative", "absolute", "fixed"],
+  position: ["relative", "absolute", "fixed", "sticky"],
   overflow: ["hidden", "visible", "auto"],
   overflowX: ["hidden", "visible", "auto"],
   overflowY: ["hidden", "visible", "auto"],
@@ -40,7 +32,12 @@ export const unconditionalProperties = {
 
 export const responsiveProperties = {
   display: ["flex", "none", "block", "grid", "inline-block"],
-  flexDirection: ["row", "column"],
+  flexDirection: {
+    row: "row",
+    column: "column",
+    rowReverse: "row-reverse",
+    columnReverse: "column-reverse",
+  },
   alignItems: {
     flexStart: "flex-start",
     center: "center",
@@ -58,6 +55,10 @@ export const responsiveProperties = {
     wrapReverse: "wrap-reverse",
   },
   flexShrink: [0],
+  width: {
+    ...vars.space,
+    full: "100%",
+  },
   paddingTop: vars.space,
   paddingBottom: vars.space,
   paddingLeft: vars.space,
@@ -68,6 +69,10 @@ export const responsiveProperties = {
     700: "700px",
     1440: "1440px",
   },
+  top: vars.space,
+  bottom: vars.space,
+  left: vars.space,
+  right: vars.space,
 } as const;
 
 const color = {
