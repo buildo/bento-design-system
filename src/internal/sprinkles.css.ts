@@ -4,9 +4,10 @@ import {
   createNormalizeValueFn,
   RequiredConditionalValue,
 } from "@vanilla-extract/sprinkles";
-import { defineBentoSprinkles } from "../sprinkles";
+import { createDefineBentoSprinklesFn } from "../sprinkles";
 import { unconditionalProperties, responsiveProperties, statusProperties } from "../util/atoms";
 
+const defineBentoSprinkles = createDefineBentoSprinklesFn();
 export const [bentoSprinkles, _, responsiveStyles] = defineBentoSprinkles(
   unconditionalProperties,
   responsiveProperties,

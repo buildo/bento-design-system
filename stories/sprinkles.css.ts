@@ -5,8 +5,9 @@ import {
   RequiredConditionalValue,
 } from "@vanilla-extract/sprinkles";
 import { unconditionalProperties, statusProperties, responsiveProperties } from "./atoms";
-import { defineBentoSprinkles } from "../src/sprinkles";
+import { createDefineBentoSprinklesFn } from "../src/sprinkles";
 
+const defineBentoSprinkles = createDefineBentoSprinklesFn();
 export const [sprinkles, _, responsiveStyles] = defineBentoSprinkles(
   unconditionalProperties,
   responsiveProperties,
