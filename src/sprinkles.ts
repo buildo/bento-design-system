@@ -1,20 +1,24 @@
 import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
 import { addFunctionSerializer } from "@vanilla-extract/css/functionSerializer";
 import { SprinklesProperties } from "@vanilla-extract/sprinkles/dist/declarations/src/types";
-import { responsiveProperties, statusProperties, unconditionalProperties } from "./util/atoms";
+import {
+  responsiveProperties as bentoResponsiveProperties,
+  statusProperties as bentoStatusProperties,
+  unconditionalProperties as bentoUnconditionalProperties,
+} from "./util/atoms";
 import { breakpoints } from "./util/breakpoints";
 import { statusConditions } from "./util/conditions";
 
 export function createDefineBentoSprinklesFn() {
   function defineBentoSprinkles<
-    UP extends typeof unconditionalProperties,
-    RP extends typeof responsiveProperties,
-    SP extends typeof statusProperties,
-    OP extends ReadonlyArray<SprinklesProperties>
+    UP extends typeof bentoUnconditionalProperties = typeof bentoUnconditionalProperties,
+    RP extends typeof bentoResponsiveProperties = typeof bentoResponsiveProperties,
+    SP extends typeof bentoStatusProperties = typeof bentoStatusProperties,
+    OP extends ReadonlyArray<SprinklesProperties> = []
   >(
-    unconditionalProperties: UP,
-    responsiveProperties: RP,
-    statusProperties: SP,
+    unconditionalProperties: UP = bentoUnconditionalProperties as any,
+    responsiveProperties: RP = bentoResponsiveProperties as any,
+    statusProperties: SP = bentoStatusProperties as any,
     otherProperties?: OP
   ) {
     const unconditionalStyles = defineProperties({
