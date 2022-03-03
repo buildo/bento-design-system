@@ -21,6 +21,10 @@ export const buttonRecipe = strictRecipe({
         background: { disabled: "disabledTransparentBackground" },
         color: { disabled: "disabledTransparentForeground" },
       }),
+      outline: bentoSprinkles({
+        background: { disabled: "disabledTransparentBackground" },
+        color: { disabled: "disabledTransparentForeground" },
+      }),
     },
     hierarchy: {
       primary: {},
@@ -140,6 +144,63 @@ export const buttonRecipe = strictRecipe({
           hover: "dangerTransparentHoverBackground",
           focus: "dangerTransparentFocusBackground",
         },
+      }),
+    },
+    {
+      variants: {
+        kind: "outline",
+        hierarchy: "primary",
+      },
+      style: bentoSprinkles({
+        color: {
+          default: "primaryTransparentEnabledForeground",
+          hover: "primaryTransparentHoverForeground",
+          focus: "primaryTransparentFocusForeground",
+        },
+        background: {
+          default: "primaryTransparentEnabledBackground",
+          hover: "primaryTransparentHoverBackground",
+          focus: "primaryTransparentFocusBackground",
+        },
+        boxShadow: "inherit",
+      }),
+    },
+    {
+      variants: {
+        kind: "outline",
+        hierarchy: "secondary",
+      },
+      style: bentoSprinkles({
+        color: {
+          default: "secondaryTransparentEnabledForeground",
+          hover: "secondaryTransparentHoverForeground",
+          focus: "secondaryTransparentFocusForeground",
+        },
+        background: {
+          default: "secondaryTransparentEnabledBackground",
+          hover: "secondaryTransparentHoverBackground",
+          focus: "secondaryTransparentFocusBackground",
+        },
+        boxShadow: "inherit",
+      }),
+    },
+    {
+      variants: {
+        kind: "outline",
+        hierarchy: "danger",
+      },
+      style: bentoSprinkles({
+        color: {
+          default: "dangerTransparentEnabledForeground",
+          hover: "dangerTransparentHoverForeground",
+          focus: "dangerTransparentFocusForeground",
+        },
+        background: {
+          default: "dangerTransparentEnabledBackground",
+          hover: "dangerTransparentHoverBackground",
+          focus: "dangerTransparentFocusBackground",
+        },
+        boxShadow: "inherit",
       }),
     },
   ],

@@ -99,7 +99,7 @@ export const statusProperties = {
     default: "default",
     notAllowed: "not-allowed",
   },
-  boxShadow: { ...vars.boxShadow, none: "none" },
+  boxShadow: { ...vars.boxShadow, none: "none", inherit: "inset 0px 0px 0px 1px" },
   outline: { ...vars.outlineColor, none: "none" },
   stroke: color,
   textDecoration: ["none", "underline"],

@@ -11,7 +11,7 @@ type Size = "small" | "medium" | "large";
 export type ButtonProps = {
   label: LocalizedString;
   onPress: () => void;
-  kind: "solid" | "transparent";
+  kind: "solid" | "transparent" | "outline";
   hierarchy: "primary" | "secondary" | "danger";
   isDisabled?: boolean;
   size?: Size;
