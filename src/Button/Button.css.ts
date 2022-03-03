@@ -16,6 +16,7 @@ export const buttonRecipe = strictRecipe({
       solid: bentoSprinkles({
         background: { disabled: "disabledSolidBackground" },
         color: { disabled: "disabledSolidForeground" },
+        fill: { disabled: "disabledSolidForeground" },
       }),
       transparent: bentoSprinkles({
         background: { disabled: "disabledTransparentBackground" },
@@ -24,6 +25,7 @@ export const buttonRecipe = strictRecipe({
       outline: bentoSprinkles({
         background: { disabled: "disabledTransparentBackground" },
         color: { disabled: "disabledTransparentForeground" },
+        fill: { disabled: "disabledTransparentForeground" },
       }),
     },
     hierarchy: {
@@ -49,6 +51,11 @@ export const buttonRecipe = strictRecipe({
           hover: "primarySolidHoverForeground",
           focus: "primarySolidFocusForeground",
         },
+        fill: {
+          default: "primarySolidEnabledForeground",
+          hover: "primarySolidHoverForeground",
+          focus: "primarySolidFocusForeground",
+        },
         background: {
           default: "primarySolidEnabledBackground",
           hover: "primarySolidHoverBackground",
@@ -63,6 +70,11 @@ export const buttonRecipe = strictRecipe({
       },
       style: bentoSprinkles({
         color: {
+          default: "secondarySolidEnabledForeground",
+          hover: "secondarySolidHoverForeground",
+          focus: "secondarySolidFocusForeground",
+        },
+        fill: {
           default: "secondarySolidEnabledForeground",
           hover: "secondarySolidHoverForeground",
           focus: "secondarySolidFocusForeground",
@@ -85,6 +97,11 @@ export const buttonRecipe = strictRecipe({
           hover: "dangerSolidHoverForeground",
           focus: "dangerSolidFocusForeground",
         },
+        fill: {
+          default: "dangerSolidEnabledForeground",
+          hover: "dangerSolidHoverForeground",
+          focus: "dangerSolidFocusForeground",
+        },
         background: {
           default: "dangerSolidEnabledBackground",
           hover: "dangerSolidHoverBackground",
@@ -103,6 +120,11 @@ export const buttonRecipe = strictRecipe({
           hover: "primaryTransparentHoverForeground",
           focus: "primaryTransparentFocusForeground",
         },
+        fill: {
+          default: "primaryTransparentEnabledForeground",
+          hover: "primaryTransparentHoverForeground",
+          focus: "primaryTransparentFocusForeground",
+        },
         background: {
           default: "primaryTransparentEnabledBackground",
           hover: "primaryTransparentHoverBackground",
@@ -117,6 +139,11 @@ export const buttonRecipe = strictRecipe({
       },
       style: bentoSprinkles({
         color: {
+          default: "secondaryTransparentEnabledForeground",
+          hover: "secondaryTransparentHoverForeground",
+          focus: "secondaryTransparentFocusForeground",
+        },
+        fill: {
           default: "secondaryTransparentEnabledForeground",
           hover: "secondaryTransparentHoverForeground",
           focus: "secondaryTransparentFocusForeground",
@@ -139,6 +166,11 @@ export const buttonRecipe = strictRecipe({
           hover: "dangerTransparentHoverForeground",
           focus: "dangerTransparentFocusForeground",
         },
+        fill: {
+          default: "dangerTransparentEnabledForeground",
+          hover: "dangerTransparentHoverForeground",
+          focus: "dangerTransparentFocusForeground",
+        },
         background: {
           default: "dangerTransparentEnabledBackground",
           hover: "dangerTransparentHoverBackground",
@@ -153,6 +185,11 @@ export const buttonRecipe = strictRecipe({
       },
       style: bentoSprinkles({
         color: {
+          default: "primaryTransparentEnabledForeground",
+          hover: "primaryTransparentHoverForeground",
+          focus: "primaryTransparentFocusForeground",
+        },
+        fill: {
           default: "primaryTransparentEnabledForeground",
           hover: "primaryTransparentHoverForeground",
           focus: "primaryTransparentFocusForeground",
@@ -176,6 +213,11 @@ export const buttonRecipe = strictRecipe({
           hover: "secondaryTransparentHoverForeground",
           focus: "secondaryTransparentFocusForeground",
         },
+        fill: {
+          default: "secondaryTransparentEnabledForeground",
+          hover: "secondaryTransparentHoverForeground",
+          focus: "secondaryTransparentFocusForeground",
+        },
         background: {
           default: "secondaryTransparentEnabledBackground",
           hover: "secondaryTransparentHoverBackground",
@@ -191,6 +233,11 @@ export const buttonRecipe = strictRecipe({
       },
       style: bentoSprinkles({
         color: {
+          default: "dangerTransparentEnabledForeground",
+          hover: "dangerTransparentHoverForeground",
+          focus: "dangerTransparentFocusForeground",
+        },
+        fill: {
           default: "dangerTransparentEnabledForeground",
           hover: "dangerTransparentHoverForeground",
           focus: "dangerTransparentFocusForeground",

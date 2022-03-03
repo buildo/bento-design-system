@@ -103,5 +103,5 @@ export const statusProperties = {
   outline: { ...vars.outlineColor, none: "none" },
   stroke: color,
   textDecoration: ["none", "underline"],
-  fill: { ...color, ...background },
+  fill: { ...color, ...background, inherit: "inherit" },
 } as const;

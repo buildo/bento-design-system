@@ -1,5 +1,5 @@
 import { createComponentStories, formatMessage, textArgType } from "../util";
-import { Button } from "../";
+import { Button, IconCheck } from "../";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Button,
@@ -86,4 +86,10 @@ export const PrimaryLarge = createStory({
   kind: "solid",
   hierarchy: "primary",
   size: "large",
+});
+
+export const WithIcon = createStory({
+  kind: "solid",
+  hierarchy: "primary",
+  icon: IconCheck,
 });

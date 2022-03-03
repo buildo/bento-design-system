@@ -5,7 +5,8 @@ import { ComponentProps, useRef } from "react";
 import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
 import { Label } from "../Typography/Label/Label";
-import { BentoSprinkles } from "../internal";
+import { BentoSprinkles, Column, Columns } from "../internal";
+import { IconProps } from "src";
 
 type Size = "small" | "medium" | "large";
 export type ButtonProps = {
@@ -15,6 +16,7 @@ export type ButtonProps = {
   hierarchy: "primary" | "secondary" | "danger";
   isDisabled?: boolean;
   size?: Size;
+  icon?: (props: IconProps) => JSX.Element;
 } & AriaButtonProps<"button">;
 
 type SizeConfig<T> = {
@@ -26,6 +28,9 @@ export type ButtonConfig = {
   paddingY: SizeConfig<BentoSprinkles["paddingY"]>;
   labelSize: ComponentProps<typeof Label>["size"];
   radius: BentoSprinkles["borderRadius"];
+  internalSpacing: BentoSprinkles["gap"];
+  iconSize: SizeConfig<IconProps["size"]>;
+  uppercaseLabel: boolean;
 };
 
 export const defaultButtonConfig: ButtonConfig = {
@@ -41,6 +46,13 @@ export const defaultButtonConfig: ButtonConfig = {
   },
   labelSize: "large",
   radius: 8,
+  internalSpacing: 8,
+  iconSize: {
+    small: 12,
+    medium: 12,
+    large: 16,
+  },
+  uppercaseLabel: true,
 };
 
 export function createButton(config: ButtonConfig = defaultButtonConfig) {
@@ -67,7 +79,19 @@ export function createButton(config: ButtonConfig = defaultButtonConfig) {
         paddingY={config.paddingY[size]}
         borderRadius={config.radius}
       >
-        <Label size={config.labelSize}>{props.label}</Label>
+        <Columns space={config.internalSpacing} alignY="center">
+          {props.icon && (
+            <Column width="content">
+              {props.icon({
+                size: config.iconSize[size],
+                color: "inherit",
+              })}
+            </Column>
+          )}
+          <Label size={config.labelSize} uppercase={config.uppercaseLabel}>
+            {props.label}
+          </Label>
+        </Columns>
       </Box>
     );
   };

@@ -35,8 +35,6 @@ export function createCheckboxField(
     const { fieldProps, errorMessageProps } = useField(checkboxProps);
     const inputProps = { ..._inputProps, "aria-describedby": fieldProps["aria-describedby"] };
 
-    console.log(errorMessageProps);
-
     return (
       <Field
         {...props}
