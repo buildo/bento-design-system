@@ -5,7 +5,7 @@ const { defaultExport, createStory } = createComponentStories({
   component: Columns,
   subcomponents: { Column },
   args: {
-    space: "32",
+    space: 32,
   },
   argTypes: {
     space: spaceArgType,

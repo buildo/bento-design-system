@@ -277,6 +277,6 @@ export const vars = createGlobalTheme(":root", {
     customColor1: "#3C6FD6",
   },
   space: {
-    "12": "12px",
+    12: "12px",
   },
 });

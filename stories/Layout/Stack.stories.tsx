@@ -4,7 +4,7 @@ import { alignArgType, createComponentStories, disableControlArgType, spaceArgTy
 const { createStory, defaultExport } = createComponentStories({
   component: Stack,
   args: {
-    space: "32",
+    space: 32,
     children: [
       <Placeholder height={100} width={100} />,
       <Placeholder height={100} width={100} />,

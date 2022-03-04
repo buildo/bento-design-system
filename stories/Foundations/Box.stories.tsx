@@ -13,11 +13,11 @@ export default defaultExport;
 export const Primary = createStory({
   color: "textPrimary",
   fontFamily: "default",
-  padding: "16",
+  padding: 16,
 });
 
 export const CustomTokens = createStory({
   color: "customColor1",
   fontFamily: "customFontFamily",
-  padding: "12",
+  padding: 12,
 });

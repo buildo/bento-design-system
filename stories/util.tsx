@@ -1,29 +1,40 @@
-import { Parameters, ComponentMeta, ComponentStory } from "@storybook/react";
+import { Parameters } from "@storybook/addons";
+import { ComponentStory } from "@storybook/react";
 import { JSXElementConstructor, ComponentProps, useState } from "react";
 import { alignToFlexAlignLookup, alignYToFlexAlignLookup } from "../src/util/align";
-import { unsafeLocalizedString } from "../src/util/LocalizedString";
-import { vars } from "./theme.css";
-import { vars as bentoVars } from "../src/vars.css";
+import { vars } from "../src/vars.css";
 import { Omit } from "../src/util/Omit";
+import { unsafeLocalizedString } from "../src";
 
 export type Actions<Props> = {
   [k in keyof Props]-?: k extends `on${infer _}` ? k : never;
 }[keyof Props];
 
+type ComponentMeta<C extends JSXElementConstructor<any>, D extends Partial<ComponentProps<C>>> = {
+  component: C;
+  args: D;
+  argTypes?: Record<string, unknown>;
+  decorators?: Array<(story: ComponentStory<C>, args: D) => ComponentStory<C>>;
+  parameters?: Record<string, unknown>;
+  subcomponents?: Record<string, JSXElementConstructor<any>>;
+};
+
 export function createComponentStories<
-  C extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
+  C extends JSXElementConstructor<any>,
   D extends Partial<ComponentProps<C>>
 >(
-  meta: Omit<ComponentMeta<C>, "title"> & { component: C; args: D }
+  meta: ComponentMeta<C, D>
 ): {
-  defaultExport: Omit<ComponentMeta<C>, "title">;
+  defaultExport: ComponentMeta<C, D>;
   createStory: (
-    args: Omit<ComponentProps<C>, keyof D | Actions<ComponentProps<C>>>,
+    args: Omit<ComponentProps<C>, keyof D | Actions<ComponentProps<C>>> &
+      Partial<ComponentProps<C>>,
     parameters?: Parameters
   ) => ComponentStory<C>;
   createControlledStory: <S>(
     initialValue: S,
-    args: Omit<ComponentProps<C>, keyof D | Actions<ComponentProps<C>> | "value">,
+    args: Omit<ComponentProps<C>, keyof D | Actions<ComponentProps<C>> | "value"> &
+      Partial<ComponentProps<C>>,
     parameters?: Parameters
   ) => ComponentStory<C>;
 } {
@@ -55,25 +66,16 @@ export function createComponentStories<
   };
 }
 
-type ArgType = {
-  options?: string[];
-  control?: {
-    type?: "text" | "select" | "array";
-    mapping?: { [k: string]: string };
-    disable?: boolean;
-  };
-};
-
-export const textArgType: ArgType = { control: { type: "text" } };
-export const disableControlArgType: ArgType = { control: { disable: true } };
-export const spaceArgType: ArgType = {
-  options: Object.keys({ ...bentoVars.space, ...vars.space }),
+export const textArgType: any = { control: { type: "text" } };
+export const disableControlArgType: any = { control: { disable: true } };
+export const spaceArgType: any = {
+  options: Object.keys(vars.space),
   control: {
     type: "select",
     mapping: vars.space,
   },
 };
-export const alignArgType: ArgType = {
+export const alignArgType: any = {
   options: Object.keys(alignToFlexAlignLookup),
   control: {
     type: "select",
@@ -81,7 +83,7 @@ export const alignArgType: ArgType = {
   },
 };
 
-export const alignYArgType: ArgType = {
+export const alignYArgType: any = {
   options: Object.keys(alignYToFlexAlignLookup),
   control: {
     type: "select",
@@ -89,12 +91,13 @@ export const alignYArgType: ArgType = {
   },
 };
 
-export const issuesArgType: ArgType = { control: { type: "array" } };
+export const issuesArgType: any = { control: { type: "array" } };
 
 export const fieldArgTypes = {
   label: textArgType,
   assistiveText: textArgType,
   issues: issuesArgType,
+  hint: textArgType,
 };
 
 export const formatMessage = unsafeLocalizedString;

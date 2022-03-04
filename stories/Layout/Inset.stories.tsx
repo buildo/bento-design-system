@@ -24,18 +24,18 @@ const { defaultExport, createStory } = createComponentStories({
 export default defaultExport;
 
 export const allAxis = createStory({
-  space: "16",
+  space: 16,
 });
 
 export const horizontal = createStory({
-  spaceX: "16",
+  spaceX: 16,
 });
 
 export const vertical = createStory({
-  spaceY: "16",
+  spaceY: 16,
 });
 
 export const horizontalAndVertical = createStory({
-  spaceX: "40",
-  spaceY: "16",
+  spaceX: 40,
+  spaceY: 16,
 });
