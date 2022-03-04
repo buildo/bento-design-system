@@ -47,7 +47,7 @@ export type Props = Kind &
     disabled?: boolean;
     size: ListSize;
     isFocused?: boolean;
-    ignoreTabIndex: boolean;
+    ignoreTabIndex?: boolean;
   } & (
     | {
         onPress?: () => void;
