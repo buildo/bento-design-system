@@ -25,7 +25,7 @@ export type SelectOption<A> = Omit<
 type Props<A, IsMulti extends boolean> = (IsMulti extends false
   ? FieldProps<A | undefined>
   : FieldProps<A[]>) & {
-  size: ListSize;
+  menuSize?: ListSize;
   placeholder: LocalizedString;
   options: Array<SelectOption<A>>;
   isMulti?: IsMulti;
@@ -73,7 +73,7 @@ export function createSelectField(
       isMulti,
       noOptionsMessage,
       autoFocus,
-      size,
+      menuSize = "medium",
     } = props;
 
     const validationState = issues ? "invalid" : "valid";
@@ -162,7 +162,7 @@ export function createSelectField(
           }
           closeMenuOnSelect={!isMulti}
           hideSelectedOptions={false}
-          menuSize={size}
+          menuSize={menuSize}
         />
       </Field>
     );
