@@ -16,7 +16,7 @@ export type ListConfig = {
   item: ListItemConfig;
 };
 
-export function createList(
+export function createListComponents(
   config: ListConfig = {
     paddingY: 8,
     item: {
@@ -41,7 +41,7 @@ export function createList(
 ) {
   const InternalList = createInternalList(config);
   const ListItem = createListItem(config.item);
-  return function List({ items, ...props }: Props) {
+  function List({ items, ...props }: Props) {
     return (
       <InternalList {...props}>
         {items.map((liProps) => (
@@ -49,7 +49,9 @@ export function createList(
         ))}
       </InternalList>
     );
-  };
+  }
+
+  return { List, ListItem };
 }
 
 export type { Props as ListProps };

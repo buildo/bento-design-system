@@ -5,7 +5,7 @@ import { Box, Columns, Column, Inset, Stack, BentoSprinkles } from "../internal"
 import { IconProps } from "../Icons/IconProps";
 import { IllustrationProps } from "../Illustrations/IllustrationProps";
 import { listItemRecipe } from "./ListItem.css";
-import { ListSize } from "./createList";
+import { ListSize } from "./createListComponents";
 
 type Kind =
   | {

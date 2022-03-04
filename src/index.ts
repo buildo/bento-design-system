@@ -23,7 +23,7 @@ export * from "./Illustrations/svgIllustrationProps";
 export * from "./InlineLoader/InlineLoader";
 export * from "./Layout/createLayoutComponents";
 export * from "./Link/createLink";
-export * from "./List/createList";
+export * from "./List/createListComponents";
 export * from "./Modal/createModal";
 export * from "./Modal/useModalContext";
 export * from "./NumberInput/createNumberInput";
