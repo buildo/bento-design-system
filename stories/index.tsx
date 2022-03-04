@@ -44,7 +44,7 @@ export const {
 export const { Button, ButtonLink } = createButtons();
 export const Actions = createActions(Button);
 export const { Form, FormSection, FormRow } = createFormLayoutComponents(Actions);
-export const Banner = createBanner({});
+export const Banner = createBanner(Button, {});
 export const { Toast, ToastProvider } = createToast(Button, {});
 export const Card = createCard<24 | 32 | 40>({});
 export const Link = createLink();

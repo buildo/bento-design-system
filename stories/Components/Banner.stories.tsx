@@ -1,5 +1,6 @@
 import { createComponentStories, formatMessage, textArgType } from "../util";
 import { Banner } from "../";
+import { action } from "@storybook/addon-actions";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Banner,
@@ -25,6 +26,16 @@ export const Dismissable = createStory({
   kind: "informative",
   title,
   description: shortDescription,
+});
+
+export const DismissableWithAction = createStory({
+  kind: "informative",
+  title,
+  description: shortDescription,
+  action: {
+    label: formatMessage("Close"),
+    onPress: action("onAction"),
+  },
 });
 
 export const NonDismissable = createStory(

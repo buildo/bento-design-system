@@ -10,8 +10,9 @@ import {
   IconWarning,
   IconNegative,
   IconIdea,
+  ButtonProps,
 } from "..";
-import { Columns, Column, Box, Stack, BentoSprinkles } from "../internal";
+import { Columns, Column, Box, Stack, BentoSprinkles, Inline } from "../internal";
 import { bannerRecipe } from "./Banner.css";
 import { ComponentProps, FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
@@ -31,6 +32,7 @@ type Kind = "informative" | "positive" | "warning" | "negative" | "tip";
 
 type Props = {
   kind: Kind;
+  action?: ActionProps;
 } & DismissProps &
   (
     | {
@@ -42,6 +44,11 @@ type Props = {
         description: TextChildren;
       }
   );
+
+type ActionProps = {
+  label: LocalizedString;
+  onPress: ButtonProps["onPress"];
+};
 
 type KindConfig<T> = {
   [k in Kind]: T;
@@ -55,21 +62,24 @@ type BannerConfig = {
   kindIcons?: KindConfig<FunctionComponent<IconProps>>;
 };
 
-export function createBanner({
-  padding = 16,
-  titleSize = "small",
-  descriptionSize = "small",
-  radius = 8,
-  closeIcon = IconClose,
-  kindIcons = {
-    informative: IconInformative,
-    positive: IconCheckCircleSolid,
-    warning: IconWarning,
-    negative: IconNegative,
-    tip: IconIdea,
-  },
-}: BannerConfig) {
-  return function Banner({ title, description, kind, ...dismissProps }: Props) {
+export function createBanner(
+  Button: FunctionComponent<ButtonProps>,
+  {
+    padding = 16,
+    titleSize = "small",
+    descriptionSize = "small",
+    radius = 8,
+    closeIcon = IconClose,
+    kindIcons = {
+      informative: IconInformative,
+      positive: IconCheckCircleSolid,
+      warning: IconWarning,
+      negative: IconNegative,
+      tip: IconIdea,
+    },
+  }: BannerConfig
+) {
+  return function Banner({ title, description, kind, action, ...dismissProps }: Props) {
     const isWithoutTitle = title === undefined;
     const iconSize = isWithoutTitle ? 16 : 24;
     const iconProps = { size: iconSize, color: kind === "tip" ? "secondary" : kind } as const;
@@ -79,31 +89,46 @@ export function createBanner({
 
     return (
       <Box padding={padding} borderRadius={radius} className={bannerRecipe({ kind })}>
-        <Columns space={16} align="left" alignY={title && description ? "top" : "center"}>
-          <Column width="content">
-            <Box>
-              <Icon {...iconProps} />
-            </Box>
-          </Column>
-          <Stack align="left" space={4}>
-            {title && (
-              <Title size={titleSize} color={kind === "tip" ? "secondary" : kind}>
-                {title}
-              </Title>
-            )}
-            {description && <Body size={descriptionSize}>{description}</Body>}
-          </Stack>
-          {dismissProps.onDismiss && (
+        <Stack space={4}>
+          <Columns space={16} align="left" alignY={title && description ? "top" : "center"}>
             <Column width="content">
-              <IconButton
-                label={dismissProps.dismissButtonLabel ?? defaultMessages.Banner.dismissButtonLabel}
-                onPress={dismissProps.onDismiss}
-                size={12}
-                icon={closeIcon}
-              />
+              <Box>
+                <Icon {...iconProps} />
+              </Box>
             </Column>
+            <Stack align="left" space={4}>
+              {title && (
+                <Title size={titleSize} color={kind === "tip" ? "secondary" : kind}>
+                  {title}
+                </Title>
+              )}
+              {description && <Body size={descriptionSize}>{description}</Body>}
+            </Stack>
+            {dismissProps.onDismiss && (
+              <Column width="content">
+                <IconButton
+                  label={
+                    dismissProps.dismissButtonLabel ?? defaultMessages.Banner.dismissButtonLabel
+                  }
+                  onPress={dismissProps.onDismiss}
+                  size={12}
+                  icon={closeIcon}
+                />
+              </Column>
+            )}
+          </Columns>
+          {action && (
+            <Inline space={0} align="right">
+              <Button
+                onPress={action.onPress}
+                label={action.label}
+                kind="transparent"
+                hierarchy="secondary"
+                size="medium"
+              />
+            </Inline>
           )}
-        </Columns>
+        </Stack>
       </Box>
     );
   };
