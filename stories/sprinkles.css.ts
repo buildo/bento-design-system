@@ -8,7 +8,7 @@ import { unconditionalProperties, statusProperties, responsiveProperties } from 
 import { createDefineBentoSprinklesFn } from "../src/sprinkles";
 
 const defineBentoSprinkles = createDefineBentoSprinklesFn();
-export const [sprinkles, _, responsiveStyles] = defineBentoSprinkles(
+export const { sprinkles, responsiveStyles } = defineBentoSprinkles(
   unconditionalProperties,
   responsiveProperties,
   statusProperties

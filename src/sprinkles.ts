@@ -54,7 +54,7 @@ export function createDefineBentoSprinklesFn() {
       ...(otherProperties ?? [])
     );
 
-    return [sprinkles, unconditionalStyles, responsiveStyles, statusStyles] as const;
+    return { sprinkles, unconditionalStyles, responsiveStyles, statusStyles } as const;
   }
 
   return addFunctionSerializer(defineBentoSprinkles, {

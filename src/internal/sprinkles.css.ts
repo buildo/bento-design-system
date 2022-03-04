@@ -7,7 +7,7 @@ import {
 import { createDefineBentoSprinklesFn } from "../sprinkles";
 
 const defineBentoSprinkles = createDefineBentoSprinklesFn();
-export const [bentoSprinkles, _, responsiveStyles] = defineBentoSprinkles();
+export const { sprinkles: bentoSprinkles, responsiveStyles } = defineBentoSprinkles();
 
 export type BentoSprinkles = Parameters<typeof bentoSprinkles>[0];
 
