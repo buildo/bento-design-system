@@ -10,6 +10,7 @@ export * from "./Button/createButtons";
 export * from "./Card/createCard";
 export * from "./Chip/createChip";
 export * from "./ContentBlock/ContentBlock";
+export * from "./DefaultMessagesContext";
 export * from "./Disclosure/createDisclosure";
 export * from "./DisclosureGroup/createDisclosureGroup";
 export * from "./Divider/Divider";
