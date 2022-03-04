@@ -11,6 +11,11 @@ const color = {
   ...vars.color,
 };
 
+const fill = {
+  ...bentoAtoms.statusProperties.fill,
+  ...vars.color,
+};
+
 export const unconditionalProperties = {
   ...bentoAtoms.unconditionalProperties,
   fontFamily: {
@@ -31,6 +36,6 @@ export const responsiveProperties = {
 export const statusProperties = {
   ...bentoAtoms.statusProperties,
   color,
-  fill: { ...color, ...bentoAtoms.statusProperties.background },
+  fill,
   stroke: color,
 };
