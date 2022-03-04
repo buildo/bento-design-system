@@ -165,7 +165,7 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
       <defaultComponents.Option {...props}>
         <ListItem
           {...props.data}
-          size={props.selectProps.size}
+          size={props.selectProps.menuSize ?? "medium"}
           onPress={() => props.selectOption(props.data)}
           trailingIcon={props.isSelected ? IconCheck : undefined}
           isFocused={props.isFocused}
