@@ -16,6 +16,9 @@ export const bannerRecipe = strictRecipe({
       negative: bentoSprinkles({
         background: "backgroundNegative",
       }),
+      tip: bentoSprinkles({
+        background: "backgroundSecondary",
+      }),
     },
   },
 });

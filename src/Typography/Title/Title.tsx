@@ -5,7 +5,7 @@ import { titleRecipe } from "./Title.css";
 
 type Size = "small" | "medium" | "large";
 type Align = "left" | "center" | "right";
-type Color = "default" | "informative" | "positive" | "warning" | "negative";
+type Color = "default" | "informative" | "positive" | "warning" | "negative" | "secondary";
 
 type Props = {
   children: LocalizedString;
