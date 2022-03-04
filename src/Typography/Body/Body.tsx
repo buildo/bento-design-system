@@ -14,7 +14,7 @@ type Color =
   | "informative"
   | "warning"
   | "link"
-  | "inverse";
+  | "primaryInverse";
 
 type Props = {
   id?: string;

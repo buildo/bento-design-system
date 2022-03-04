@@ -22,7 +22,7 @@ export const bodyRecipe = strictRecipe({
       warning: bentoSprinkles({ color: "textWarning" }),
       informative: bentoSprinkles({ color: "textInformative" }),
       link: bentoSprinkles({ color: "textLink" }),
-      inverse: bentoSprinkles({ color: "textPrimaryInverse" }),
+      primaryInverse: bentoSprinkles({ color: "textPrimaryInverse" }),
     },
   },
 });
