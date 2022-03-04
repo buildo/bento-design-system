@@ -39,7 +39,7 @@ export type { Props as SelectFieldProps };
 
 declare module "react-select/dist/declarations/src/Select" {
   export interface Props<Option, IsMulti extends boolean, Group extends GroupBase<Option>> {
-    size: ListSize;
+    menuSize?: ListSize;
     validationState: "valid" | "invalid";
     multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString;
   }
@@ -162,7 +162,7 @@ export function createSelectField(
           }
           closeMenuOnSelect={!isMulti}
           hideSelectedOptions={false}
-          size={size}
+          menuSize={size}
         />
       </Field>
     );

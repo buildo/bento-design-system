@@ -13,7 +13,7 @@ import {
   createToast,
   createModal,
   createChip,
-  createList,
+  createListComponents,
   createDisclosure,
   createDisclosureGroup,
   createTooltip,
@@ -51,7 +51,7 @@ export const Link = createLink();
 export const Breadcrumb = createBreadcrumb(Link);
 export const Modal = createModal(Actions);
 export const Chip = createChip();
-export const List = createList();
+export const { List } = createListComponents();
 export const Disclosure = createDisclosure();
 export const DisclosureGroup = createDisclosureGroup(Disclosure);
 export const Tooltip = createTooltip();

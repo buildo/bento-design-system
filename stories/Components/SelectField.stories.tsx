@@ -13,7 +13,7 @@ function Illustration(props: IllustrationProps) {
 const { defaultExport, createControlledStory } = createComponentStories({
   component: SelectField,
   args: {
-    size: "large",
+    menuSize: "large",
     name: "color",
     label: formatMessage("What's your favorite color?"),
     placeholder: formatMessage("Select a color"),
@@ -60,7 +60,7 @@ export default defaultExport;
 
 export const LargeMenu = createControlledStory(undefined, {});
 
-export const MediumMenu = createControlledStory(undefined, { size: "medium" });
+export const MediumMenu = createControlledStory(undefined, { menuSize: "medium" });
 
 export const Disabled = createControlledStory(undefined, {
   disabled: true,
