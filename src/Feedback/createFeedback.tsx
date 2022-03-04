@@ -63,14 +63,16 @@ export function createFeedback(
       <Box className={feedbackStyle}>
         <Stack space={size === "large" ? 24 : 16} align="center">
           {renderIllustration(size, illustrationElement(status, illustration), background)}
-          <Display size="small" align="center">
-            {title}
-          </Display>
-          {description && (
-            <Body size="medium" align="center">
-              {description}
-            </Body>
-          )}
+          <Stack space={size === "large" ? 8 : 4}>
+            <Display size="small" align="center">
+              {title}
+            </Display>
+            {description && (
+              <Body size="medium" align="center">
+                {description}
+              </Body>
+            )}
+          </Stack>
           {action && (
             <Button
               label={action.label}
