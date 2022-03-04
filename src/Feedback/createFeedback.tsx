@@ -79,6 +79,7 @@ export function createFeedback(
               kind={size === "large" ? "solid" : "transparent"}
               hierarchy="primary"
               onPress={action.onPress}
+              size={size}
             />
           )}
         </Stack>
