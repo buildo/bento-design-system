@@ -97,7 +97,6 @@ export function createBanner({
                 onPress={dismissProps.onDismiss}
                 size={12}
                 icon={closeIcon}
-                color="primary"
               />
             </Column>
           )}
