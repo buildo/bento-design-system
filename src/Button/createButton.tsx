@@ -6,7 +6,7 @@ import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
 import { Label } from "../Typography/Label/Label";
 import { BentoSprinkles, Column, Columns } from "../internal";
-import { IconProps } from "src";
+import { IconProps } from "../";
 
 type Size = "small" | "medium" | "large";
 export type ButtonProps = {
