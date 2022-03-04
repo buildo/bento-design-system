@@ -28,6 +28,8 @@ import {
   IllustrationPositive,
   defaultChipConfig,
   createDesignSystemProvider,
+  createTable,
+  createTableColumns,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -98,3 +100,5 @@ export const Feedback = createFeedback(Button, {
   negativeIllustration: IllustrationNegative,
   positiveIllustration: IllustrationPositive,
 });
+export const Table = createTable(Tooltip, Feedback);
+export const tableColumn = createTableColumns(Button, ButtonLink, Chip);

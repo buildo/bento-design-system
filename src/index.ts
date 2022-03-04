@@ -31,6 +31,7 @@ export * from "./NumberInput/createNumberInput";
 export * from "./Placeholder/Placeholder";
 export * from "./SearchBar/createSearchBar";
 export * from "./Switch/createSwitch";
+export * from "./Table/createTable";
 export * from "./Tabs/createTabs";
 export * from "./Toast/createToast";
 export * from "./Toast/useToast";
