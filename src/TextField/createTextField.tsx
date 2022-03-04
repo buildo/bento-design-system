@@ -10,7 +10,7 @@ import { InputConfig } from "../Field/InputConfig";
 
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;
-  type?: "text" | "email" | "url" | "search";
+  type?: "text" | "email" | "url" | "password";
   disabled?: boolean;
 };
 
