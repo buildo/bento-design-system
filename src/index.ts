@@ -25,6 +25,7 @@ export * from "./Layout/createLayoutComponents";
 export * from "./Link/createLink";
 export * from "./List/createList";
 export * from "./Modal/createModal";
+export * from "./Modal/useModalContext";
 export * from "./NumberInput/createNumberInput";
 export * from "./Placeholder/Placeholder";
 export * from "./SearchBar/createSearchBar";
