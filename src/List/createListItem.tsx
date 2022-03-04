@@ -14,7 +14,7 @@ type Kind =
       label: LocalizedString;
     }
   | {
-      kind: "single-line";
+      kind?: "single-line";
       label: LocalizedString;
     }
   | {
@@ -172,7 +172,8 @@ export function createListItem(config: ListItemConfig) {
   function renderContent(props: Props) {
     switch (props.kind) {
       case "single-line":
-        return <SingleLine {...props} />;
+      case undefined:
+        return <SingleLine kind="single-line" {...props} />;
       case "two-line":
         return <TwoLine {...props} />;
       case "overline":
