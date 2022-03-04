@@ -95,7 +95,7 @@ export function createBanner({
               <IconButton
                 label={dismissProps.dismissButtonLabel}
                 onPress={dismissProps.onDismiss}
-                size={16}
+                size={12}
                 icon={closeIcon}
                 color="primary"
               />
