@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { tableColumn, FormRow, SelectField, Stack, Table, TextField } from "../";
+import { tableColumn, FormRow, SelectField, Stack, Table, TextField, IconInformative } from "../";
 import { createComponentStories, formatMessage } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
@@ -15,10 +15,16 @@ const exampleColumns = [
     accessor: "button",
     sticky: "left",
     disableSortBy: true,
+    align: "center",
   }),
   tableColumn.text({
     headerLabel: formatMessage("Name"),
     accessor: "name",
+  }),
+  tableColumn.textWithIcon({
+    headerLabel: formatMessage("Country"),
+    accessor: "country",
+    iconPosition: "right",
   }),
   tableColumn.number({
     headerLabel: formatMessage("Applications"),
@@ -36,6 +42,10 @@ const exampleColumns = [
 const exampleData = [
   {
     name: formatMessage("Amazon"),
+    country: {
+      icon: IconInformative,
+      text: formatMessage("US"),
+    },
     button: {
       label: formatMessage("Row 1"),
       kind: "transparent",
@@ -46,6 +56,10 @@ const exampleData = [
   },
   {
     name: formatMessage("Google"),
+    country: {
+      icon: IconInformative,
+      text: formatMessage("US"),
+    },
     button: {
       label: formatMessage("Row 2"),
       kind: "transparent",
@@ -57,6 +71,10 @@ const exampleData = [
   },
   {
     name: formatMessage("Microsoft"),
+    country: {
+      icon: IconInformative,
+      text: formatMessage("US"),
+    },
     button: {
       label: formatMessage("Row 3"),
       kind: "transparent",
@@ -68,6 +86,10 @@ const exampleData = [
   },
   {
     name: formatMessage("buildo"),
+    country: {
+      icon: IconInformative,
+      text: formatMessage("IT"),
+    },
     button: {
       label: formatMessage("Row 4"),
       kind: "transparent",
@@ -79,6 +101,10 @@ const exampleData = [
   },
   {
     name: formatMessage("Twitter"),
+    country: {
+      icon: IconInformative,
+      text: formatMessage("US"),
+    },
     button: {
       label: formatMessage("Row 5"),
       kind: "transparent",
@@ -106,9 +132,9 @@ export const WithFilter = (_args: Parameters<typeof createStory>[0]) => {
   }
 
   const statusOptions = [
-    { kind: "single-line", label: formatMessage("Active"), value: "Active" } as const,
-    { kind: "single-line", label: formatMessage("Paused"), value: "Paused" } as const,
-    { kind: "single-line", label: formatMessage("Pending"), value: "Pending" } as const,
+    { label: formatMessage("Active"), value: "Active" } as const,
+    { label: formatMessage("Paused"), value: "Paused" } as const,
+    { label: formatMessage("Pending"), value: "Pending" } as const,
   ];
   type Status = typeof statusOptions[number]["value"];
 

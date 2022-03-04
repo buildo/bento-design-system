@@ -1,11 +1,17 @@
 import { CellProps, Column as Column_, Row as Row_ } from "react-table";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import { LocalizedString, Children, Body, ButtonProps, ChipProps } from "..";
+import { LocalizedString, Children, Body, ButtonProps, ChipProps, IconProps } from "..";
 import { Box } from "../internal";
 import { Column } from "./types";
 import { FunctionComponent } from "react";
 import { ButtonLinkProps } from "../Button/ButtonLink";
-import { createButtonCell, createButtonLinkCell, createChipCell, TextCell } from "./cells";
+import {
+  createButtonCell,
+  createButtonLinkCell,
+  createChipCell,
+  TextCell,
+  TextWithIconCell,
+} from "./cells";
 
 export type { CellProps } from "react-table";
 
@@ -94,6 +100,35 @@ export function textColumn<A extends string>(options: ColumnOptionsBase<A>) {
   return column({
     ...options,
     Cell: TextCell,
+  });
+}
+
+export function textWithIconColumn<A extends string>({
+  iconPosition,
+  ...options
+}: ColumnOptionsBase<A> & {
+  iconPosition: "left" | "right";
+}) {
+  return column({
+    ...options,
+    Cell: ({
+      value: _value,
+      ...props
+    }: CellProps<
+      {},
+      {
+        icon: FunctionComponent<IconProps>;
+        text: LocalizedString;
+      }
+    >) => {
+      const value = { ..._value, iconPosition };
+      const textWithIconCellProps = {
+        ...props,
+        value,
+        cell: { ...props.cell, value },
+      };
+      return <TextWithIconCell {...textWithIconCellProps} />;
+    },
   });
 }
 

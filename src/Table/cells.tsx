@@ -1,8 +1,7 @@
 import { FunctionComponent } from "react";
 import { CellProps } from "react-table";
 import { ButtonLinkProps } from "../Button/ButtonLink";
-import { LocalizedString, Body, ButtonProps, ChipProps } from "..";
-
+import { LocalizedString, Body, ButtonProps, ChipProps, IconProps } from "..";
 import { Inline, Inset, Box } from "../internal";
 
 export function createButtonCell(Button: FunctionComponent<ButtonProps>) {
@@ -36,6 +35,27 @@ export function TextCell({ value, column: { align } }: CellProps<{}, LocalizedSt
     <Box padding={16} textAlign={align}>
       <Body size="medium">{value}</Body>
     </Box>
+  );
+}
+
+export function TextWithIconCell({
+  value: { icon, iconPosition, text },
+  column: { align },
+}: CellProps<
+  {},
+  {
+    icon: FunctionComponent<IconProps>;
+    iconPosition: "left" | "right";
+    text: LocalizedString;
+  }
+>) {
+  return (
+    <Inset space={16}>
+      <Inline space={8} alignY="center" align={align} reverse={iconPosition === "right"}>
+        {icon({ size: 12 })}
+        <Body size="medium">{text}</Body>
+      </Inline>
+    </Inset>
   );
 }
 

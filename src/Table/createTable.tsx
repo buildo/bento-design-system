@@ -43,6 +43,7 @@ import {
   createChipColumn,
   numberColumn,
   textColumn,
+  textWithIconColumn,
 } from "./tableColumn";
 import { ButtonLinkProps } from "../Button/ButtonLink";
 
@@ -427,6 +428,7 @@ export function createTableColumns(
   return {
     custom: textColumn,
     text: textColumn,
+    textWithIcon: textWithIconColumn,
     number: numberColumn,
     button: buttonColumn,
     buttonLink: buttonLinkColumn,
