@@ -17,7 +17,7 @@ export const iconRecipe = recipe({
       24: bentoSprinkles({ height: 24 }),
     },
     color: {
-      default: bentoSprinkles({ fill: "foregroundPrimary" }),
+      default: bentoSprinkles({ fill: "foregroundSecondary" }),
       primary: bentoSprinkles({ fill: "foregroundPrimary" }),
       secondary: bentoSprinkles({ fill: "foregroundSecondary" }),
       informative: bentoSprinkles({ fill: "foregroundInformative" }),

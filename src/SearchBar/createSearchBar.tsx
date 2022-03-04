@@ -60,7 +60,6 @@ export function createSearchBar(
           onPress={() => props.onChange("")}
           size={16}
           icon={config.clearIcon}
-          color="primary"
         />
       ) : null;
 

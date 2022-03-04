@@ -60,6 +60,12 @@ export const Negative = createStory({
   description: shortDescription,
 });
 
+export const Tip = createStory({
+  kind: "tip",
+  title,
+  description: shortDescription,
+});
+
 export const NoDescription = createStory({
   kind: "informative",
   title,

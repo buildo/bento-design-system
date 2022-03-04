@@ -20,8 +20,8 @@ import { IconProps } from "../Icons/IconProps";
 export type ModalProps = {
   title: LocalizedString;
   children: Children;
-  primaryAction?: Omit<ButtonProps, "kind" | "size">;
-  secondaryAction?: Omit<ButtonProps, "kind" | "size">;
+  primaryAction?: Omit<ButtonProps, "kind" | "hierarchy" | "size">;
+  secondaryAction?: Omit<ButtonProps, "kind" | "hierarchy" | "size">;
   onClose: () => void;
   closeButtonLabel: LocalizedString;
   isDestructive?: boolean;

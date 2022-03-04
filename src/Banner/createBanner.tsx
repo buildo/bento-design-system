@@ -9,6 +9,7 @@ import {
   IconCheckCircleSolid,
   IconWarning,
   IconNegative,
+  IconIdea,
 } from "..";
 import { Columns, Column, Box, Stack, BentoSprinkles } from "../internal";
 import { bannerRecipe } from "./Banner.css";
@@ -25,7 +26,7 @@ type DismissProps =
       onDismiss?: never;
     };
 
-type Kind = "informative" | "positive" | "warning" | "negative";
+type Kind = "informative" | "positive" | "warning" | "negative" | "tip";
 
 type Props = {
   kind: Kind;
@@ -64,12 +65,13 @@ export function createBanner({
     positive: IconCheckCircleSolid,
     warning: IconWarning,
     negative: IconNegative,
+    tip: IconIdea,
   },
 }: BannerConfig) {
   return function Banner({ title, description, kind, ...dismissProps }: Props) {
     const isWithoutTitle = title === undefined;
     const iconSize = isWithoutTitle ? 16 : 24;
-    const iconProps = { size: iconSize, color: kind } as const;
+    const iconProps = { size: iconSize, color: kind === "tip" ? "secondary" : kind } as const;
     const Icon = kindIcons[kind];
 
     return (
@@ -82,7 +84,7 @@ export function createBanner({
           </Column>
           <Stack align="left" space={4}>
             {title && (
-              <Title size={titleSize} color={kind}>
+              <Title size={titleSize} color={kind === "tip" ? "secondary" : kind}>
                 {title}
               </Title>
             )}
@@ -93,9 +95,8 @@ export function createBanner({
               <IconButton
                 label={dismissProps.dismissButtonLabel}
                 onPress={dismissProps.onDismiss}
-                size={16}
+                size={12}
                 icon={closeIcon}
-                color="primary"
               />
             </Column>
           )}
