@@ -3,10 +3,11 @@ import { IconProps } from "../Icons/IconProps";
 import { Label, LocalizedString, IconButton, IconClose } from "..";
 import { Box, Columns, Column, BentoSprinkles } from "../internal";
 import { chipRecipe } from "./Chip.css";
+import { useDefaultMessages } from "../util/useDefaultMessages";
 
 type DismissProps =
   | {
-      dismissButtonLabel: LocalizedString;
+      dismissButtonLabel?: LocalizedString;
       onDismiss: () => void;
     }
   | {
@@ -49,6 +50,8 @@ export function createChip(
   }
 ) {
   return function Chip({ color, label, ...dismissProps }: ChipProps) {
+    const { defaultMessages } = useDefaultMessages();
+
     return (
       <Box display="flex">
         <Box
@@ -64,7 +67,7 @@ export function createChip(
               <Column width="content">
                 <IconButton
                   icon={config.closeIcon}
-                  label={dismissProps.dismissButtonLabel}
+                  label={dismissProps.dismissButtonLabel ?? defaultMessages.Chip.dismissButtonLabel}
                   onPress={dismissProps.onDismiss}
                   size={config.closeIconSize}
                 />

@@ -14,6 +14,7 @@ import { InputConfig } from "../Field/InputConfig";
 import { BentoSprinkles } from "../internal";
 import { ListItemProps } from "../List/createListItem";
 import { Omit } from "../util/Omit";
+import { useDefaultMessages } from "../util/useDefaultMessages";
 
 export type SelectOption<A> = Omit<
   ListItemProps,
@@ -25,14 +26,14 @@ export type SelectOption<A> = Omit<
 type Props<A, IsMulti extends boolean> = (IsMulti extends false
   ? FieldProps<A | undefined>
   : FieldProps<A[]>) & {
-  size: ListSize;
+  menuSize?: ListSize;
   placeholder: LocalizedString;
   options: Array<SelectOption<A>>;
   isMulti?: IsMulti;
   noOptionsMessage?: LocalizedString;
   autoFocus?: boolean;
 } & (IsMulti extends true
-    ? { multiValueMessage: (numberOfSelectedOptions: number) => LocalizedString }
+    ? { multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString }
     : {});
 
 export type { Props as SelectFieldProps };
@@ -73,7 +74,7 @@ export function createSelectField(
       isMulti,
       noOptionsMessage,
       autoFocus,
-      size,
+      menuSize = "medium",
     } = props;
 
     const validationState = issues ? "invalid" : "valid";
@@ -94,6 +95,8 @@ export function createSelectField(
         }
       };
     }, [menuPortalTarget]);
+
+    const { defaultMessages } = useDefaultMessages();
 
     return (
       <Field
@@ -156,13 +159,16 @@ export function createSelectField(
           validationState={validationState}
           isMulti={isMulti}
           isClearable={false}
-          noOptionsMessage={() => noOptionsMessage}
+          noOptionsMessage={() => noOptionsMessage ?? defaultMessages.SelectField.noOptionsMessage}
           multiValueMessage={
-            isMulti ? (props as unknown as Props<A, true>).multiValueMessage : undefined
+            isMulti
+              ? (props as unknown as Props<A, true>).multiValueMessage ??
+                defaultMessages.SelectField.multiOptionsSelected
+              : undefined
           }
           closeMenuOnSelect={!isMulti}
           hideSelectedOptions={false}
-          menuSize={size}
+          menuSize={menuSize}
         />
       </Field>
     );

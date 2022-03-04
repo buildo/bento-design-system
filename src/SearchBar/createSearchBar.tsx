@@ -9,6 +9,7 @@ import { input } from "./SearchBar.css";
 import { FieldType } from "../Field/createField";
 import { defaultInputConfig, InputConfig } from "../Field/InputConfig";
 import { IconProps } from "../Icons/IconProps";
+import { useDefaultMessages } from "../util/useDefaultMessages";
 
 type Props = {
   value: string;
@@ -16,7 +17,7 @@ type Props = {
   onBlur?: () => unknown;
   placeholder: LocalizedString;
   disabled?: boolean;
-  clearButtonLabel: LocalizedString;
+  clearButtonLabel?: LocalizedString;
 };
 
 export type SearchBarConfig = {
@@ -53,10 +54,12 @@ export function createSearchBar(
       inputRef
     );
 
+    const { defaultMessages } = useDefaultMessages();
+
     const rightAccessoryContent =
       props.value.length > 0 ? (
         <IconButton
-          label={props.clearButtonLabel}
+          label={props.clearButtonLabel ?? defaultMessages.SearchBar.clearButtonLabel}
           onPress={() => props.onChange("")}
           size={16}
           icon={config.clearIcon}
