@@ -51,7 +51,7 @@ export function createAvatar(
           {initial ? (
             <Label size={config.labelSize}>{unsafeLocalizedString(initial)}</Label>
           ) : (
-            <config.icon size={16} />
+            <config.icon size={16} color="primary" />
           )}
         </Box>
       </Box>
