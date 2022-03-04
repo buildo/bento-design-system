@@ -15,10 +15,11 @@ import { Columns, Column, Box, Stack, BentoSprinkles } from "../internal";
 import { bannerRecipe } from "./Banner.css";
 import { ComponentProps, FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
+import { useDefaultMessages } from "../util/useDefaultMessages";
 
 type DismissProps =
   | {
-      dismissButtonLabel: LocalizedString;
+      dismissButtonLabel?: LocalizedString;
       onDismiss: () => void;
     }
   | {
@@ -74,6 +75,8 @@ export function createBanner({
     const iconProps = { size: iconSize, color: kind === "tip" ? "secondary" : kind } as const;
     const Icon = kindIcons[kind];
 
+    const { defaultMessages } = useDefaultMessages();
+
     return (
       <Box padding={padding} borderRadius={radius} className={bannerRecipe({ kind })}>
         <Columns space={16} align="left" alignY={title && description ? "top" : "center"}>
@@ -93,7 +96,7 @@ export function createBanner({
           {dismissProps.onDismiss && (
             <Column width="content">
               <IconButton
-                label={dismissProps.dismissButtonLabel}
+                label={dismissProps.dismissButtonLabel ?? defaultMessages.Banner.dismissButtonLabel}
                 onPress={dismissProps.onDismiss}
                 size={12}
                 icon={closeIcon}

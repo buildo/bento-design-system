@@ -16,6 +16,7 @@ import { modal, underlay } from "./Modal.css";
 import useKeyPressEvent from "react-use/lib/useKeyPressEvent";
 import { ModalContext } from "./ModalContext";
 import { IconProps } from "../Icons/IconProps";
+import { useDefaultMessages } from "../util/useDefaultMessages";
 
 export type ModalProps = {
   title: LocalizedString;
@@ -23,7 +24,7 @@ export type ModalProps = {
   primaryAction?: Omit<ButtonProps, "kind" | "hierarchy" | "size">;
   secondaryAction?: Omit<ButtonProps, "kind" | "hierarchy" | "size">;
   onClose: () => void;
-  closeButtonLabel: LocalizedString;
+  closeButtonLabel?: LocalizedString;
   isDestructive?: boolean;
 };
 
@@ -67,6 +68,8 @@ export function createModal(
       () => props.primaryAction?.onPress()
     );
 
+    const { defaultMessages } = useDefaultMessages();
+
     return (
       <Box className={underlay} {...underlayProps} color={undefined}>
         <ModalContext.Provider value={true}>
@@ -85,7 +88,7 @@ export function createModal(
                   <Column width="content">
                     <IconButton
                       icon={config.closeIcon}
-                      label={props.closeButtonLabel}
+                      label={props.closeButtonLabel ?? defaultMessages.Modal.closeButtonLabel}
                       onPress={props.onClose}
                       size={config.closeIconSize}
                       tabIndex={-1}

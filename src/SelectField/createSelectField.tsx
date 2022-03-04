@@ -14,6 +14,7 @@ import { InputConfig } from "../Field/InputConfig";
 import { BentoSprinkles } from "../internal";
 import { ListItemProps } from "../List/createListItem";
 import { Omit } from "../util/Omit";
+import { useDefaultMessages } from "../util/useDefaultMessages";
 
 export type SelectOption<A> = Omit<
   ListItemProps,
@@ -32,7 +33,7 @@ type Props<A, IsMulti extends boolean> = (IsMulti extends false
   noOptionsMessage?: LocalizedString;
   autoFocus?: boolean;
 } & (IsMulti extends true
-    ? { multiValueMessage: (numberOfSelectedOptions: number) => LocalizedString }
+    ? { multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString }
     : {});
 
 export type { Props as SelectFieldProps };
@@ -95,6 +96,8 @@ export function createSelectField(
       };
     }, [menuPortalTarget]);
 
+    const { defaultMessages } = useDefaultMessages();
+
     return (
       <Field
         label={label}
@@ -156,9 +159,12 @@ export function createSelectField(
           validationState={validationState}
           isMulti={isMulti}
           isClearable={false}
-          noOptionsMessage={() => noOptionsMessage}
+          noOptionsMessage={() => noOptionsMessage ?? defaultMessages.SelectField.noOptionsMessage}
           multiValueMessage={
-            isMulti ? (props as unknown as Props<A, true>).multiValueMessage : undefined
+            isMulti
+              ? (props as unknown as Props<A, true>).multiValueMessage ??
+                defaultMessages.SelectField.multiOptionsSelected
+              : undefined
           }
           closeMenuOnSelect={!isMulti}
           hideSelectedOptions={false}
