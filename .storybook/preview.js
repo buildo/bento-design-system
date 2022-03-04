@@ -1,15 +1,12 @@
 import "../src/reset.css.ts";
-import { OverlayProvider } from "@react-aria/overlays";
-import { DefaultMessagesContext } from "../src/DefaultMessagesContext";
 import { defaultMessages } from "../stories/defaultMessages";
+import { DesignSystemProvider } from "../stories/";
 
 export const decorators = [
   (Story) => (
-    <DefaultMessagesContext.Provider value={{ defaultMessages }}>
-      <OverlayProvider>
-        <Story />
-      </OverlayProvider>
-    </DefaultMessagesContext.Provider>
+    <DesignSystemProvider dismissAfterMs={1000000} defaultMessages={defaultMessages}>
+      <Story />
+    </DesignSystemProvider>
   ),
 ];
 

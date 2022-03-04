@@ -19,6 +19,11 @@ export type DefaultMessages = {
     SearchBar: {
       clearButtonLabel: LocalizedString;
     };
+    Table: {
+      noResultsTitle: LocalizedString;
+      noResultsDescription: LocalizedString;
+      missingValue: LocalizedString;
+    };
   };
 };
 

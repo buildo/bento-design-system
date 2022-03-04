@@ -10,7 +10,7 @@ export * from "./Button/createButtons";
 export * from "./Card/createCard";
 export * from "./Chip/createChip";
 export * from "./ContentBlock/ContentBlock";
-export * from "./DefaultMessagesContext";
+export * from "./DesignSystemProvider";
 export * from "./Disclosure/createDisclosure";
 export * from "./DisclosureGroup/createDisclosureGroup";
 export * from "./Divider/Divider";
@@ -48,6 +48,7 @@ export * from "./util/atoms";
 export * from "./util/breakpoints";
 export * from "./util/conditions";
 export * from "./util/link";
+export * from "./util/useDefaultMessages";
 
 export { bodyRecipe } from "./Typography/Body/Body.css";
 export { labelRecipe } from "./Typography/Label/Label.css";

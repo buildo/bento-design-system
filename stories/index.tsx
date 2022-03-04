@@ -27,6 +27,7 @@ import {
   IllustrationNegative,
   IllustrationPositive,
   defaultChipConfig,
+  createDesignSystemProvider,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -47,6 +48,7 @@ export const Actions = createActions(Button);
 export const { Form, FormSection, FormRow } = createFormLayoutComponents(Actions);
 export const Banner = createBanner(Button, {});
 export const { Toast, ToastProvider } = createToast(Button, {});
+export const DesignSystemProvider = createDesignSystemProvider(Toast);
 export const Card = createCard<24 | 32 | 40>({});
 export const Link = createLink();
 export const Breadcrumb = createBreadcrumb(Link);

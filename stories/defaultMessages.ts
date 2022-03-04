@@ -21,4 +21,11 @@ export const defaultMessages: DefaultMessages["defaultMessages"] = {
   SearchBar: {
     clearButtonLabel: formatMessage("Clear"),
   },
+  Table: {
+    noResultsTitle: formatMessage("No results found"),
+    noResultsDescription: formatMessage(
+      "Try adjusting your search filters to find what you're looking for."
+    ),
+    missingValue: formatMessage("-"),
+  },
 };
