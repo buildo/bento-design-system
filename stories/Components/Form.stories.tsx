@@ -142,7 +142,6 @@ export const multipleSections = createStory({
       </FormRow>
       <FormRow>
         <ExampleSelectField
-          size="medium"
           label={formatMessage("Select your gender")}
           options={[
             { label: formatMessage("Male"), value: "M", kind: "single-line" },
