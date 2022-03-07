@@ -8,7 +8,6 @@ const { defaultExport, createStory } = createComponentStories({
     title: formatMessage(
       "Create item title veeeery very long very long title here do you see how long it is?"
     ),
-    loadingMessage: "Loading...",
   },
   argTypes: {
     title: textArgType,
