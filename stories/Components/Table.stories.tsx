@@ -109,7 +109,6 @@ const exampleData = [
     },
     type: formatMessage("Private"),
     website: { href: "http://www.google.com", label: formatMessage("Link") },
-    alerts: null,
   },
   {
     name: formatMessage("Microsoft"),
@@ -149,7 +148,6 @@ const exampleData = [
     status: { label: formatMessage("Active"), color: "green" },
     type: formatMessage("Private"),
     website: { href: "http://www.buildo.io", label: formatMessage("Link") },
-    alerts: null,
   },
   {
     name: formatMessage("Twitter"),
@@ -171,7 +169,6 @@ const exampleData = [
     },
     type: formatMessage("Private"),
     website: { href: "http://www.twitter.com", label: formatMessage("Link") },
-    alerts: null,
   },
 ] as const;
 

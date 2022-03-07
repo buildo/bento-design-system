@@ -95,7 +95,7 @@ export function createLinkCell(Link: FunctionComponent<LinkProps>) {
 export function IconCell({
   value,
   column: { align },
-}: CellProps<{}, { icon: (props: IconProps) => JSX.Element; label: LocalizedString } | null>) {
+}: CellProps<{}, { icon: (props: IconProps) => JSX.Element; label: LocalizedString }>) {
   return (
     <Box padding={16} textAlign={align} aria-label={value?.label}>
       {value && value.icon({ size: 16, color: "default" })}
