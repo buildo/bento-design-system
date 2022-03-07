@@ -79,20 +79,31 @@ export function createActions(
                 error && <Banner kind="negative" description={error} />
               )}
             </Column>
-            <Inline space={config.spaceBetweenButtons} align="right" alignY="center">
+            <Inline
+              space={config.spaceBetweenButtons}
+              align="right"
+              alignY="center"
+              collapseBelow="tablet"
+              reverse={{ mobile: true }}
+            >
               {buttons}
             </Inline>
           </Columns>
         );
       case "left":
         return (
-          <Columns space={config.spaceBetweenButtons} alignY="center" collapseBelow="tablet">
-            <Inline space={config.spaceBetweenButtons} alignY="center">
+          <Columns
+            space={config.spaceBetweenButtons}
+            alignY="center"
+            collapseBelow="tablet"
+            reverse={{ mobile: true }}
+          >
+            <Inline space={config.spaceBetweenButtons} alignY="center" collapseBelow="tablet">
               {buttons}
             </Inline>
             <Column width="1/2">
               {isLoading ? (
-                <Inline space={0} align="right">
+                <Inline space={0} align="right" alignY="center">
                   <InlineLoader message={loadingMessage} />
                 </Inline>
               ) : (
@@ -103,18 +114,18 @@ export function createActions(
         );
       case "spaceBetween":
         return (
-          <Columns space={config.spaceBetweenButtons} alignY="center">
+          <Columns space={config.spaceBetweenButtons} alignY="center" collapseBelow="tablet">
             {buttons[0]}
             <Column width="content">
               {isLoading ? (
-                <Inline space={0} align="center">
+                <Inline space={0} align="center" alignY="center">
                   <InlineLoader message={loadingMessage} />
                 </Inline>
               ) : (
                 error && <Banner kind="negative" description={error} />
               )}
             </Column>
-            <Inline space={0} align="right">
+            <Inline space={0} align={{ desktop: "right", mobile: "left" }} alignY="center">
               {buttons[1]}
             </Inline>
           </Columns>
