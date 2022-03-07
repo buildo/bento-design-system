@@ -7,7 +7,7 @@ declare module "react-table" {
       UseSortByOptions<D>,
       UseGroupByOptions<D> {}
 
-  export interface TableState<D extends object> extends UseGroupByState<D> {}
+  export interface TableState<D extends object> extends UseGroupByState<D>, UseSortByState<D> {}
 
   interface ColumnInterface<D extends object> extends UseSortByColumnOptions<D> {
     align?: "left" | "right" | "center";

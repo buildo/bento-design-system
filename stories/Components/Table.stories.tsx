@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState, ComponentProps } from "react";
 import {
   tableColumn,
   FormRow,
@@ -10,6 +10,7 @@ import {
   IconWarning,
 } from "../";
 import { createComponentStories, formatMessage } from "../util";
+import orderBy from "lodash.orderby";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Table,
@@ -231,4 +232,19 @@ export const WithFilter = (_args: Parameters<typeof createStory>[0]) => {
       <Table columns={exampleColumns} data={data} />
     </Stack>
   );
+};
+
+export const WithControlledSorting = (_args: Parameters<typeof createStory>[0]) => {
+  const [data, setData] = useState(exampleData);
+
+  const onSort: NonNullable<ComponentProps<typeof Table>["onSort"]> = useCallback((sortBy) => {
+    const newData = orderBy(
+      exampleData,
+      sortBy.map((a) => (a.id === "country" ? "country.text" : a.id)),
+      sortBy.map((a) => (a.desc ? "desc" : "asc"))
+    );
+    setData(newData as any);
+  }, []);
+
+  return <Table columns={exampleColumns} data={data} onSort={onSort} />;
 };

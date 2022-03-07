@@ -8,6 +8,7 @@ import {
   useGridLayout,
   useGroupBy,
   Cell,
+  SortingRule,
 } from "react-table";
 import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
@@ -37,7 +38,14 @@ import {
   sectionHeaderContainer,
 } from "./Table.css";
 import { Column as ColumnType, Row as RowType } from "./types";
-import { useLayoutEffect, useMemo, useState, CSSProperties, FunctionComponent } from "react";
+import {
+  useLayoutEffect,
+  useMemo,
+  useState,
+  CSSProperties,
+  FunctionComponent,
+  useEffect,
+} from "react";
 import {
   createButtonColumn,
   createButtonLinkColumn,
@@ -63,18 +71,27 @@ type TextColumns<C extends readonly any[]> = C extends readonly [infer Head, ...
     : TextColumns<Tail>
   : [];
 
+type SortingProps<C extends ReadonlyArray<ColumnType<string, {}, any>>> =
+  | {
+      customSorting: (
+        rows: Row<RowType<C>>[],
+        columns: ColumnInstance<RowType<C>>[],
+        sortFns: SortFn<C>[]
+      ) => Row<RowType<C>>[];
+      onSort?: never;
+    }
+  | {
+      customSorting?: never;
+      onSort?: (sortBy: Array<SortingRule<C>>) => void;
+    };
+
 type Props<C extends ReadonlyArray<ColumnType<string, {}, any>>> = {
   columns: C;
   data: ReadonlyArray<RowType<C>>;
   groupBy?: TextColumns<C>[number]["accessor"];
   noResultsTitle?: LocalizedString;
   noResultsDescription?: LocalizedString;
-  customSorting?: (
-    rows: Row<RowType<C>>[],
-    columns: ColumnInstance<RowType<C>>[],
-    sortFns: SortFn<C>[]
-  ) => Row<RowType<C>>[];
-};
+} & SortingProps<C>;
 
 /**
  * A component that renders a Table, with sorting capabilities
@@ -116,6 +133,7 @@ export function createTable(
     noResultsTitle,
     noResultsDescription,
     customSorting,
+    onSort,
   }: Props<C>) {
     const customOrderByFn = useMemo(
       () =>
@@ -149,15 +167,18 @@ export function createTable(
       rows,
       prepareRow,
       columns: tableColumns,
+      state: { sortBy },
     } = useTable(
       {
         columns,
         data,
         initialState: {
+          sortBy: [],
           groupBy: groupBy ? [groupBy] : [],
           hiddenColumns: groupBy ? [groupBy] : [],
         },
         orderByFn: customOrderByFn,
+        manualSortBy: Boolean(onSort),
       },
       useGridLayout,
       useGroupBy,
@@ -165,6 +186,10 @@ export function createTable(
     );
 
     const { defaultMessages } = useDefaultMessages();
+
+    useEffect(() => {
+      onSort && onSort(sortBy);
+    }, [onSort, sortBy]);
 
     // Determine the ids of the sticky columns to the left
     const stickyLeftColumnsIds = useMemo(
