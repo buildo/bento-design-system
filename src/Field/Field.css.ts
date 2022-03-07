@@ -29,7 +29,7 @@ export const inputRecipe = strictRecipe({
     validation: {
       valid: bentoSprinkles({
         boxShadow: {
-          default: "outlineInteractive",
+          default: "outlineInput",
           focus: "outlineInteractiveStrong",
         },
       }),
