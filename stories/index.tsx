@@ -26,7 +26,7 @@ import {
   createFeedback,
   IllustrationNegative,
   IllustrationPositive,
-  IconClose,
+  defaultChipConfig,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -52,12 +52,7 @@ export const Link = createLink();
 export const Breadcrumb = createBreadcrumb(Link);
 export const Modal = createModal(Actions);
 export const Chip = createChip(Box, {
-  paddingX: 8,
-  paddingY: 4,
-  labelSize: "small",
-  closeIcon: IconClose,
-  closeIconSize: 8,
-  internalSpacing: 8,
+  ...defaultChipConfig,
   customColors: {
     custom: "customColor1",
   },

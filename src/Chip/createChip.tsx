@@ -1,6 +1,7 @@
 import { ComponentProps, FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
 import { Label, LocalizedString, IconButton, BoxProps, BoxType } from "..";
+import { IconClose } from "../Icons/IconClose";
 import { Column, Columns, BentoSprinkles, bentoSprinkles } from "../internal";
 import { chip } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
@@ -44,7 +45,7 @@ type ChipConfig<AtomsFn extends typeof bentoSprinkles, CustomColor extends strin
   };
 };
 
-const defaultColorsMapping: { [k in DefaultColor]: BentoSprinkles["background"] } = {
+const defaultColorsMapping: Record<DefaultColor, BentoSprinkles["background"]> = {
   grey: "softGrey",
   red: "softRed",
   orange: "softOrange",
@@ -92,3 +93,13 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
     );
   };
 }
+
+export const defaultChipConfig: ChipConfig<typeof bentoSprinkles, string> = {
+  paddingX: 8,
+  paddingY: 4,
+  labelSize: "small",
+  closeIcon: IconClose,
+  closeIconSize: 8,
+  internalSpacing: 8,
+  customColors: {},
+};
