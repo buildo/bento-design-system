@@ -73,16 +73,17 @@ type TextColumns<C extends readonly any[]> = C extends readonly [infer Head, ...
 
 type SortingProps<C extends ReadonlyArray<ColumnType<string, {}, any>>> =
   | {
+      customSorting?: never;
+      // This function must be memoized to avoid infinite rerenderings
+      onSort?: (sortBy: Array<SortingRule<C>>) => void;
+    }
+  | {
       customSorting: (
         rows: Row<RowType<C>>[],
         columns: ColumnInstance<RowType<C>>[],
         sortFns: SortFn<C>[]
       ) => Row<RowType<C>>[];
       onSort?: never;
-    }
-  | {
-      customSorting?: never;
-      onSort?: (sortBy: Array<SortingRule<C>>) => void;
     };
 
 type Props<C extends ReadonlyArray<ColumnType<string, {}, any>>> = {
