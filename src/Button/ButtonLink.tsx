@@ -52,6 +52,7 @@ export function createButtonLink(config: ButtonConfig = defaultButtonConfig) {
         paddingX={config.paddingX[size]}
         paddingY={config.paddingY[size]}
         borderRadius={config.radius}
+        textDecoration="none"
       >
         <Label as="span" size={config.labelSize}>
           {label}
