@@ -6,7 +6,7 @@ import { ButtonProps } from "../Button/createButton";
 type ActionProps = Omit<ButtonProps, "kind" | "size" | "hierarchy">;
 
 export type ActionsProps = {
-  size: ButtonProps["size"];
+  size?: ButtonProps["size"];
   primaryAction?: ActionProps & {
     isDestructive?: boolean;
   };
@@ -15,6 +15,7 @@ export type ActionsProps = {
 
 type ActionsConfig = {
   primaryPosition: "left" | "right";
+  defaultSize: ButtonProps["size"];
 } & (
   | {
       buttonsAlignment: "left" | "right";
@@ -32,9 +33,14 @@ export function createActions(
     primaryPosition: "right",
     buttonsAlignment: "right",
     spaceBetweenButtons: 16,
+    defaultSize: "medium",
   }
 ) {
-  return function Actions({ primaryAction, secondaryAction, size = "medium" }: ActionsProps) {
+  return function Actions({
+    primaryAction,
+    secondaryAction,
+    size = config.defaultSize,
+  }: ActionsProps) {
     const primaryActionButton = primaryAction && (
       <Button
         key="primary"
