@@ -77,7 +77,6 @@ InModal.decorators = [
       title={formatMessage("Title")}
       onClose={() => {}}
       closeButtonLabel={formatMessage("Close")}
-      loadingMessage={formatMessage("loading...")}
     >
       <Story />
     </Modal>

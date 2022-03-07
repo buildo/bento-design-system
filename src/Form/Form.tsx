@@ -18,6 +18,7 @@ type Props = {
   description?: TextChildren;
   submitButton?: Omit<ButtonProps, "kind" | "hierarchy">;
   secondaryButton?: Omit<ButtonProps, "kind" | "hierarchy">;
+  error?: LocalizedString;
 };
 
 export type FormConfig = {
@@ -29,7 +30,14 @@ export type FormConfig = {
 };
 
 export function createForm(Actions: FunctionComponent<ActionsProps>, config: FormConfig) {
-  return function Form({ title, description, children, submitButton, secondaryButton }: Props) {
+  return function Form({
+    title,
+    description,
+    children,
+    submitButton,
+    secondaryButton,
+    error,
+  }: Props) {
     return (
       <Box as="form" onSubmit={(e) => e.preventDefault()}>
         <ContentBlock maxWidth={700}>
@@ -46,6 +54,7 @@ export function createForm(Actions: FunctionComponent<ActionsProps>, config: For
                 size={config.actionsSize}
                 primaryAction={submitButton}
                 secondaryAction={secondaryButton}
+                error={error}
               />
             )}
           </Stack>
