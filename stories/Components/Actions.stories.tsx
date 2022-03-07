@@ -6,6 +6,7 @@ const { defaultExport, createStory } = createComponentStories({
   component: Actions,
   args: {
     size: "medium",
+    error: formatMessage("Something went wrong"),
   },
 });
 
