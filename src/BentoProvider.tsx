@@ -7,7 +7,7 @@ import { FunctionComponent, useContext } from "react";
 
 type Props = {
   children?: Children;
-  snackbarDismissAfterMs?: number;
+  toastDismissAfterMs?: number;
   /**
    * The component which will be used to render a link (such as in `ButtonLink`).
    * You can use this to customize the link rendering, such as using React Router's `Link` component.
@@ -32,11 +32,11 @@ type Props = {
   linkComponent?: LinkComponent;
 } & DefaultMessages;
 
-export function createDesignSystemProvider(ToastContainer: FunctionComponent<ToastProps>) {
+export function createBentoProvider(ToastContainer: FunctionComponent<ToastProps>) {
   const ToastProvider = createToastProvider(ToastContainer);
-  return function DesignSystemProvider({
+  return function BentoProvider({
     children,
-    snackbarDismissAfterMs = 5000,
+    toastDismissAfterMs = 5000,
     defaultMessages,
     linkComponent,
   }: Props) {
@@ -46,7 +46,7 @@ export function createDesignSystemProvider(ToastContainer: FunctionComponent<Toa
       <OverlayProvider>
         <DefaultMessagesContext.Provider value={{ defaultMessages }}>
           <LinkComponentContext.Provider value={linkComponent || linkComponentFromContext}>
-            <ToastProvider dismissAfterMs={snackbarDismissAfterMs}>{children}</ToastProvider>
+            <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
           </LinkComponentContext.Provider>
         </DefaultMessagesContext.Provider>
       </OverlayProvider>

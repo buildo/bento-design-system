@@ -86,7 +86,7 @@ const exampleData = [
     },
     type: formatMessage("Private"),
     website: { href: "http://www.amazon.com", label: formatMessage("Link") },
-    alerts: IconWarning,
+    alerts: { icon: IconWarning, label: formatMessage("Warning") },
   },
   {
     name: formatMessage("Google"),
@@ -130,7 +130,7 @@ const exampleData = [
     },
     type: formatMessage("Private"),
     website: { href: "http://www.microsoft.com", label: formatMessage("Link") },
-    alerts: IconWarning,
+    alerts: { icon: IconWarning, label: formatMessage("Warning") },
   },
   {
     name: formatMessage("buildo"),

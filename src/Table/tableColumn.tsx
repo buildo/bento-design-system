@@ -209,5 +209,6 @@ export function iconColumn<A extends string>(options: ColumnOptionsBase<A>) {
   return column({
     ...options,
     Cell: IconCell,
+    sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
 }

@@ -3,8 +3,12 @@ import { svgIconProps } from "./svgIconProps";
 
 export function IconMinus(props: IconProps) {
   return (
-    <svg viewBox="0 0 24 18" {...svgIconProps(props)}>
-      <path d="M22.286 13.43H1.714a1.714 1.714 0 0 1 0-3.43h20.572a1.714 1.714 0 0 1 0 3.43Z" />
+    <svg {...svgIconProps(props)}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0 12a2 2 0 0 1 2-2h20a2 2 0 1 1 0 4H2a2 2 0 0 1-2-2Z"
+      />
     </svg>
   );
 }
