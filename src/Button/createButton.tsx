@@ -31,6 +31,7 @@ export type ButtonConfig = {
   internalSpacing: BentoSprinkles["gap"];
   iconSize: SizeConfig<IconProps["size"]>;
   uppercaseLabel: boolean;
+  defaultSize: Size;
 };
 
 export const defaultButtonConfig: ButtonConfig = {
@@ -53,6 +54,7 @@ export const defaultButtonConfig: ButtonConfig = {
     large: 16,
   },
   uppercaseLabel: true,
+  defaultSize: "medium",
 };
 
 export function createButton(config: ButtonConfig = defaultButtonConfig) {
@@ -61,7 +63,7 @@ export function createButton(config: ButtonConfig = defaultButtonConfig) {
     const { buttonProps } = useButton(props, ref);
     const { onKeyDown, onKeyUp } = props;
 
-    const size = props.size || "medium";
+    const size = props.size ?? config.defaultSize;
 
     return (
       <Box
