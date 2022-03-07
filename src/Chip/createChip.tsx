@@ -1,10 +1,9 @@
 import { ComponentProps, FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
 import { Label, LocalizedString, IconButton, BoxProps, BoxType } from "..";
-import { Column, BentoSprinkles, bentoSprinkles } from "../internal";
+import { Column, Columns, BentoSprinkles, bentoSprinkles } from "../internal";
 import { chip } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import { ColumnsProps } from "src/Layout/createColumns";
 
 type DismissProps =
   | {
@@ -28,20 +27,20 @@ type DefaultColor =
   | "violet"
   | "pink";
 
-export type ChipProps<CustomColor extends {}> = {
+export type ChipProps<CustomColor extends string> = {
   label: LocalizedString;
-  color: DefaultColor | keyof CustomColor;
+  color: DefaultColor | CustomColor;
 } & DismissProps;
 
-type ChipConfig<AtomsFn extends typeof bentoSprinkles, CustomColor extends {}> = {
-  paddingX: BoxProps<AtomsFn>["paddingX"];
-  paddingY: BoxProps<AtomsFn>["paddingY"];
+type ChipConfig<AtomsFn extends typeof bentoSprinkles, CustomColor extends string> = {
+  paddingX: BentoSprinkles["paddingX"];
+  paddingY: BentoSprinkles["paddingY"];
   labelSize: ComponentProps<typeof Label>["size"];
   closeIcon: FunctionComponent<IconProps>;
   closeIconSize: IconProps["size"];
-  internalSpacing: BoxProps<AtomsFn>["gap"];
+  internalSpacing: BentoSprinkles["gap"];
   customColors: {
-    [k in keyof CustomColor]: BoxProps<AtomsFn>["background"];
+    [k in CustomColor]: BoxProps<AtomsFn>["background"];
   };
 };
 
@@ -58,9 +57,8 @@ const defaultColorsMapping: { [k in DefaultColor]: BentoSprinkles["background"] 
   pink: "softPink",
 };
 
-export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors extends {}>(
+export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors extends string>(
   Box: BoxType<AtomsFn>,
-  Columns: (props: ColumnsProps<AtomsFn>) => JSX.Element,
   config: ChipConfig<AtomsFn, CustomColors>
 ) {
   const colorsMapping = { ...defaultColorsMapping, ...config.customColors };

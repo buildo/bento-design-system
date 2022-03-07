@@ -51,12 +51,7 @@ export const Card = createCard<24 | 32 | 40>({});
 export const Link = createLink();
 export const Breadcrumb = createBreadcrumb(Link);
 export const Modal = createModal(Actions);
-export const Chip = createChip<
-  typeof sprinkles,
-  {
-    primary: true;
-  }
->(Box, Columns, {
+export const Chip = createChip(Box, {
   paddingX: 8,
   paddingY: 4,
   labelSize: "small",
@@ -64,7 +59,7 @@ export const Chip = createChip<
   closeIconSize: 8,
   internalSpacing: 8,
   customColors: {
-    primary: "brandPrimary",
+    brandPrimary: "brandPrimary",
   },
 });
 export const { List } = createListComponents();

@@ -25,5 +25,5 @@ export const Dismissable = createStory({
 });
 
 export const CustomColor = createStory({
-  color: "primary",
+  color: "brandPrimary",
 });
