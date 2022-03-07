@@ -79,8 +79,8 @@ const exampleData = [
       kind: "transparent",
       hierarchy: "primary",
       onPress: () => {},
-    },
-    status: { label: formatMessage("Active"), color: "green" },
+    } as const,
+    status: { label: formatMessage("Active"), color: "green" } as const,
     value: {
       numericValue: 100,
       icon: IconInformative,
@@ -100,9 +100,9 @@ const exampleData = [
       kind: "transparent",
       hierarchy: "primary",
       onPress: () => {},
-    },
+    } as const,
     applications: 10_000,
-    status: { label: formatMessage("Paused"), color: "blue" },
+    status: { label: formatMessage("Paused"), color: "blue" } as const,
     value: {
       numericValue: 150,
       icon: IconInformative,
@@ -121,9 +121,9 @@ const exampleData = [
       kind: "transparent",
       hierarchy: "primary",
       onPress: () => {},
-    },
+    } as const,
     applications: 1_000,
-    status: { label: formatMessage("Pending"), color: "yellow" },
+    status: { label: formatMessage("Pending"), color: "yellow" } as const,
     value: {
       numericValue: 120,
       icon: IconInformative,
@@ -143,9 +143,9 @@ const exampleData = [
       kind: "transparent",
       hierarchy: "primary",
       onPress: () => {},
-    },
+    } as const,
     applications: 1_200,
-    status: { label: formatMessage("Active"), color: "green" },
+    status: { label: formatMessage("Active"), color: "green" } as const,
     type: formatMessage("Private"),
     website: { href: "http://www.buildo.io", label: formatMessage("Link") },
   },
@@ -160,9 +160,9 @@ const exampleData = [
       kind: "transparent",
       hierarchy: "primary",
       onPress: () => {},
-    },
+    } as const,
     applications: 12_000,
-    status: { label: formatMessage("Paused"), color: "blue" },
+    status: { label: formatMessage("Paused"), color: "blue" } as const,
     value: {
       numericValue: 137,
       icon: IconInformative,
@@ -170,7 +170,7 @@ const exampleData = [
     type: formatMessage("Private"),
     website: { href: "http://www.twitter.com", label: formatMessage("Link") },
   },
-] as const;
+];
 
 export const Simple = createStory({
   columns: exampleColumns,
@@ -240,7 +240,7 @@ export const WithControlledSorting = (_args: Parameters<typeof createStory>[0]) 
       sortBy.map((a) => (a.id === "country" ? "country.text" : a.id)),
       sortBy.map((a) => (a.desc ? "desc" : "asc"))
     );
-    setData(newData as any);
+    setData(newData);
   }, []);
 
   return <Table columns={exampleColumns} data={data} onSort={onSort} />;
