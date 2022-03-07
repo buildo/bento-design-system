@@ -26,6 +26,7 @@ import {
   ButtonProps,
   ChipProps,
   FeedbackProps,
+  LinkProps,
 } from "..";
 import { Box, Column, Columns } from "../internal";
 import {
@@ -41,7 +42,10 @@ import {
   createButtonColumn,
   createButtonLinkColumn,
   createChipColumn,
+  createLinkColumn,
+  labelColumn,
   numberColumn,
+  numberWithIconColumn,
   textColumn,
   textWithIconColumn,
 } from "./tableColumn";
@@ -420,18 +424,23 @@ export function createTable(
 export function createTableColumns(
   Button: FunctionComponent<ButtonProps>,
   ButtonLink: FunctionComponent<ButtonLinkProps>,
-  Chip: FunctionComponent<ChipProps>
+  Chip: FunctionComponent<ChipProps>,
+  Link: FunctionComponent<LinkProps>
 ) {
   const buttonColumn = createButtonColumn(Button);
   const buttonLinkColumn = createButtonLinkColumn(ButtonLink);
   const chipColumn = createChipColumn(Chip);
+  const linkColumn = createLinkColumn(Link);
   return {
     custom: textColumn,
     text: textColumn,
     textWithIcon: textWithIconColumn,
     number: numberColumn,
+    numberWithIcon: numberWithIconColumn,
     button: buttonColumn,
     buttonLink: buttonLinkColumn,
     chip: chipColumn,
+    label: labelColumn,
+    link: linkColumn,
   };
 }

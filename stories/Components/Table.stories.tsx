@@ -32,10 +32,24 @@ const exampleColumns = [
     valueFormatter: (value) => formatMessage(Intl.NumberFormat("en").format(value)),
     align: "right",
   }),
+  tableColumn.numberWithIcon({
+    headerLabel: formatMessage("Value"),
+    accessor: "value",
+    valueFormatter: (value) => formatMessage(Intl.NumberFormat("en").format(value)),
+    align: "right",
+  }),
+  tableColumn.label({
+    headerLabel: formatMessage("Type"),
+    accessor: "type",
+  }),
   tableColumn.chip({
     headerLabel: formatMessage("Status"),
     accessor: "status",
     align: "center",
+  }),
+  tableColumn.link({
+    headerLabel: formatMessage("Website"),
+    accessor: "website",
   }),
 ];
 
@@ -53,6 +67,12 @@ const exampleData = [
       onPress: () => {},
     },
     status: { label: formatMessage("Active"), color: "green" },
+    value: {
+      numericValue: 100,
+      icon: IconInformative,
+    },
+    type: formatMessage("Private"),
+    website: { href: "http://www.amazon.com", label: "Link" },
   },
   {
     name: formatMessage("Google"),
@@ -68,11 +88,17 @@ const exampleData = [
     },
     applications: 10_000,
     status: { label: formatMessage("Paused"), color: "blue" },
+    value: {
+      numericValue: 150,
+      icon: IconInformative,
+    },
+    type: formatMessage("Private"),
+    website: { href: "http://www.google.com", label: "Link" },
   },
   {
     name: formatMessage("Microsoft"),
     country: {
-      icon: IconInformative,
+      icon: null,
       text: formatMessage("US"),
     },
     button: {
@@ -83,6 +109,12 @@ const exampleData = [
     },
     applications: 1_000,
     status: { label: formatMessage("Pending"), color: "yellow" },
+    value: {
+      numericValue: 120,
+      icon: IconInformative,
+    },
+    type: formatMessage("Private"),
+    website: { href: "http://www.microsoft.com", label: "Link" },
   },
   {
     name: formatMessage("buildo"),
@@ -98,6 +130,12 @@ const exampleData = [
     },
     applications: 1_200,
     status: { label: formatMessage("Active"), color: "green" },
+    value: {
+      numericValue: 202,
+      icon: null,
+    },
+    type: formatMessage("Private"),
+    website: { href: "http://www.buildo.io", label: "Link" },
   },
   {
     name: formatMessage("Twitter"),
@@ -113,6 +151,12 @@ const exampleData = [
     },
     applications: 12_000,
     status: { label: formatMessage("Paused"), color: "blue" },
+    value: {
+      numericValue: 137,
+      icon: IconInformative,
+    },
+    type: formatMessage("Private"),
+    website: { href: "http://www.twitter.com", label: "Link" },
   },
 ] as const;
 

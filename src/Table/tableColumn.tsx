@@ -1,6 +1,6 @@
 import { CellProps, Column as Column_, Row as Row_ } from "react-table";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import { LocalizedString, Children, Body, ButtonProps, ChipProps, IconProps } from "..";
+import { LocalizedString, Children, Body, ButtonProps, ChipProps, IconProps, LinkProps } from "..";
 import { Box } from "../internal";
 import { Column } from "./types";
 import { FunctionComponent } from "react";
@@ -9,6 +9,8 @@ import {
   createButtonCell,
   createButtonLinkCell,
   createChipCell,
+  createLinkCell,
+  LabelCell,
   TextCell,
   TextWithIconCell,
 } from "./cells";
@@ -117,7 +119,7 @@ export function textWithIconColumn<A extends string>({
     }: CellProps<
       {},
       {
-        icon: FunctionComponent<IconProps>;
+        icon: FunctionComponent<IconProps> | null;
         text: LocalizedString;
       }
     >) => {
@@ -151,4 +153,51 @@ export function numberColumn<A extends string>({
     },
     sortType: (a = 0, b = 0) => a - b,
   });
+}
+
+export function numberWithIconColumn<A extends string>({
+  valueFormatter,
+  ...options
+}: ColumnOptionsBase<A> & {
+  valueFormatter: (n: number) => LocalizedString;
+}) {
+  return column({
+    ...options,
+    Cell: ({
+      value: { numericValue, icon },
+      ...props
+    }: CellProps<
+      {},
+      {
+        icon: FunctionComponent<IconProps> | null;
+        numericValue: number;
+      }
+    >) => {
+      const value = { text: valueFormatter(numericValue), icon, iconPosition: "right" as const };
+      const textCellProps = {
+        ...props,
+        value,
+        cell: { ...props.cell, value },
+      };
+      return <TextWithIconCell {...textCellProps} />;
+    },
+  });
+}
+
+export function labelColumn<A extends string>(options: ColumnOptionsBase<A>) {
+  return column({
+    ...options,
+    Cell: LabelCell,
+  });
+}
+
+export function createLinkColumn(Link: FunctionComponent<LinkProps>) {
+  const LinkCell = createLinkCell(Link);
+  return function buttonColumn<A extends string>(options: ColumnOptionsBase<A>) {
+    return column({
+      ...options,
+      Cell: LinkCell,
+      sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
+    });
+  };
 }

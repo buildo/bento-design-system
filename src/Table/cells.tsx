@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { CellProps } from "react-table";
 import { ButtonLinkProps } from "../Button/ButtonLink";
-import { LocalizedString, Body, ButtonProps, ChipProps, IconProps } from "..";
+import { LocalizedString, Body, ButtonProps, ChipProps, IconProps, Label, LinkProps } from "..";
 import { Inline, Inset, Box } from "../internal";
 
 export function createButtonCell(Button: FunctionComponent<ButtonProps>) {
@@ -44,7 +44,7 @@ export function TextWithIconCell({
 }: CellProps<
   {},
   {
-    icon: FunctionComponent<IconProps>;
+    icon: FunctionComponent<IconProps> | null;
     iconPosition: "left" | "right";
     text: LocalizedString;
   }
@@ -52,7 +52,7 @@ export function TextWithIconCell({
   return (
     <Inset space={16}>
       <Inline space={8} alignY="center" align={align} reverse={iconPosition === "right"}>
-        {icon({ size: 12 })}
+        {icon && icon({ size: 12 })}
         <Body size="medium">{text}</Body>
       </Inline>
     </Inset>
@@ -67,6 +67,27 @@ export function createChipCell(Chip: FunctionComponent<ChipProps>) {
           <Chip {...chipProps} />
         </Inline>
       </Inset>
+    );
+  };
+}
+
+export function LabelCell({ value, column: { align } }: CellProps<{}, LocalizedString>) {
+  return (
+    <Box padding={16} textAlign={align}>
+      <Label size="large">{value}</Label>
+    </Box>
+  );
+}
+
+export function createLinkCell(Link: FunctionComponent<LinkProps>) {
+  return function LinkCell({
+    value,
+    column: { align },
+  }: CellProps<{}, { href: string; label: LocalizedString; isDisabled?: boolean }>) {
+    return (
+      <Box padding={16} textAlign={align}>
+        <Link {...value} />
+      </Box>
     );
   };
 }
