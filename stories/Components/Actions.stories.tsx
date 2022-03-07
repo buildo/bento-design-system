@@ -6,7 +6,6 @@ const { defaultExport, createStory } = createComponentStories({
   component: Actions,
   args: {
     size: "medium",
-    error: formatMessage("c'è stato un errore"),
   },
 });
 
@@ -40,6 +39,12 @@ export const OneSecondaryAction = createStory({
 export const TwoActions = createStory({
   primaryAction,
   secondaryAction,
+});
+
+export const TwoActionsWithError = createStory({
+  primaryAction,
+  secondaryAction,
+  error: formatMessage("Something went wrong"),
 });
 
 export const TwoActionsDestructive = createStory({
