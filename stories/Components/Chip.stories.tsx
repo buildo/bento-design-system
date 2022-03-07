@@ -23,3 +23,7 @@ export const NonDismissable = createStory(
 export const Dismissable = createStory({
   color: "blue",
 });
+
+export const CustomColor = createStory({
+  color: "custom",
+});
