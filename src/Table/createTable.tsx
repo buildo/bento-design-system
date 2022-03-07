@@ -47,6 +47,7 @@ import {
   useEffect,
 } from "react";
 import {
+  column,
   createButtonColumn,
   createButtonLinkColumn,
   createChipColumn,
@@ -459,7 +460,7 @@ export function createTableColumns<CustomChipColor extends string>(
   const chipColumn = createChipColumn(Chip);
   const linkColumn = createLinkColumn(Link);
   return {
-    custom: textColumn,
+    custom: column,
     text: textColumn,
     textWithIcon: textWithIconColumn,
     number: numberColumn,
@@ -472,3 +473,13 @@ export function createTableColumns<CustomChipColor extends string>(
     icon: iconColumn,
   };
 }
+
+export type {
+  CellProps as TableCellProps,
+  Column as TableColumn,
+  Row as TableRow,
+} from "react-table";
+
+export type { Column, Row } from "./types";
+
+export type { ColumnOptionsBase } from "./tableColumn";

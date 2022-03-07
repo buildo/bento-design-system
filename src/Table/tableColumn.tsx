@@ -18,7 +18,7 @@ import {
 
 export type { CellProps } from "react-table";
 
-type ColumnOptionsBase<A> = {
+export type ColumnOptionsBase<A> = {
   accessor: A;
   headerLabel?: LocalizedString;
   missingValue?: LocalizedString;
