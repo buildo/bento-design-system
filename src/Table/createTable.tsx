@@ -448,10 +448,10 @@ export function createTable(
   }
 }
 
-export function createTableColumns(
+export function createTableColumns<CustomChipColor extends string>(
   Button: FunctionComponent<ButtonProps>,
   ButtonLink: FunctionComponent<ButtonLinkProps>,
-  Chip: FunctionComponent<ChipProps>,
+  Chip: FunctionComponent<ChipProps<CustomChipColor>>,
   Link: FunctionComponent<LinkProps>
 ) {
   const buttonColumn = createButtonColumn(Button);

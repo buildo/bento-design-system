@@ -88,7 +88,9 @@ export function createButtonLinkColumn(ButtonLink: FunctionComponent<ButtonLinkP
   };
 }
 
-export function createChipColumn(Chip: FunctionComponent<ChipProps>) {
+export function createChipColumn<CustomColor extends string>(
+  Chip: FunctionComponent<ChipProps<CustomColor>>
+) {
   const ChipCell = createChipCell(Chip);
   return function chipColumn<A extends string>(options: ColumnOptionsBase<A>) {
     return column({

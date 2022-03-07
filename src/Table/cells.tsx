@@ -59,8 +59,13 @@ export function TextWithIconCell({
   );
 }
 
-export function createChipCell(Chip: FunctionComponent<ChipProps>) {
-  return function ChipCell({ value: chipProps, column: { align } }: CellProps<{}, ChipProps>) {
+export function createChipCell<CustomColor extends string>(
+  Chip: FunctionComponent<ChipProps<CustomColor>>
+) {
+  return function ChipCell({
+    value: chipProps,
+    column: { align },
+  }: CellProps<{}, ChipProps<CustomColor>>) {
     return (
       <Inset space={16}>
         <Inline space={0} align={align} alignY="center">
