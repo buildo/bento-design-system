@@ -7,6 +7,7 @@ const { defaultExport, createStory } = createComponentStories({
   args: {
     size: "medium",
     loadingMessage: formatMessage("loading..."),
+    error: formatMessage("c'è stato un errore"),
   },
 });
 
