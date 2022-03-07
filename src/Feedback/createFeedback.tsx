@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Body, ButtonProps, Children, Display, LocalizedString } from "..";
+import { Body, ButtonProps, Children, Display, LocalizedString, TextChildren } from "..";
 import { Box, Stack } from "../internal";
 import { feedbackStyle } from "./Feedback.css";
 import { IllustrationProps } from "../Illustrations/IllustrationProps";
@@ -9,7 +9,7 @@ type Status = "positive" | "negative";
 
 type Props = {
   title: LocalizedString;
-  description?: LocalizedString;
+  description?: TextChildren;
   action?: Pick<ButtonProps, "label" | "onPress">;
   background?: boolean;
   size: "medium" | "large";
