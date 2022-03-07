@@ -26,7 +26,7 @@ export function createActions(
   Button: FunctionComponent<ButtonProps>,
   Banner: FunctionComponent<BannerProps>,
   config: ActionsConfig = {
-    buttonsAlignment: "left",
+    buttonsAlignment: "right",
     primaryPosition: "right",
     spaceBetweenButtons: 16,
     defaultSize: "medium",
