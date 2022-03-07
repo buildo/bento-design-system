@@ -11,7 +11,7 @@ export type ActionsProps = {
     isDestructive?: boolean;
   };
   secondaryAction?: ActionProps;
-  loadingMessage: LocalizedString;
+  loadingMessage?: LocalizedString;
   error?: LocalizedString;
 };
 

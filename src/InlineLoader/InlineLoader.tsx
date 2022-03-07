@@ -2,9 +2,10 @@ import { Box, Inline } from "../internal";
 import { Body, LocalizedString } from "..";
 import { icon } from "./InlineLoader.css";
 import { vars } from "../vars.css";
+import { useDefaultMessages } from "../util/useDefaultMessages";
 
 type Props = {
-  message: LocalizedString;
+  message?: LocalizedString;
 };
 
 const Loader = (
@@ -14,11 +15,19 @@ const Loader = (
 );
 
 export function InlineLoader({ message }: Props) {
+  const {
+    defaultMessages: {
+      Loader: { loadingMessage: defaultLoadingMessage },
+    },
+  } = useDefaultMessages();
+
+  const loadingMessage = message || defaultLoadingMessage;
+
   return (
     <Inline space={8} alignY="center">
       <Box className={icon}>{Loader}</Box>
       <Body size="medium" color="secondary">
-        {message}
+        {loadingMessage}
       </Body>
     </Inline>
   );

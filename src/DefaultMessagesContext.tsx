@@ -24,6 +24,9 @@ export type DefaultMessages = {
       noResultsDescription: LocalizedString;
       missingValue: LocalizedString;
     };
+    Loader: {
+      loadingMessage: LocalizedString;
+    };
   };
 };
 

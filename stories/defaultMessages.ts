@@ -28,4 +28,7 @@ export const defaultMessages: DefaultMessages["defaultMessages"] = {
     ),
     missingValue: formatMessage("-"),
   },
+  Loader: {
+    loadingMessage: formatMessage("Loading..."),
+  },
 };
