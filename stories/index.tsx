@@ -46,9 +46,9 @@ export const {
   TextField,
 } = createFormFields();
 export const { Button, ButtonLink } = createButtons();
-export const Actions = createActions(Button);
-export const { Form, FormSection, FormRow } = createFormLayoutComponents(Actions);
 export const Banner = createBanner(Button, {});
+export const Actions = createActions(Button, Banner);
+export const { Form, FormSection, FormRow } = createFormLayoutComponents(Actions);
 export const { Toast, ToastProvider } = createToast(Button, {});
 export const BentoProvider = createBentoProvider(Toast);
 export const Card = createCard<24 | 32 | 40>({});

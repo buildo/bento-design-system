@@ -1,5 +1,5 @@
-import { FunctionComponent } from "react";
-import { BoxProps } from "../";
+import { FunctionComponent, useState } from "react";
+import { BannerProps, BoxProps, InlineLoader, LocalizedString } from "../";
 import { bentoSprinkles, Column, Columns, Inline } from "../internal";
 import { ButtonProps } from "../Button/createButton";
 
@@ -11,27 +11,23 @@ export type ActionsProps = {
     isDestructive?: boolean;
   };
   secondaryAction?: ActionProps;
+  loadingMessage?: LocalizedString;
+  error?: LocalizedString;
 };
 
 type ActionsConfig = {
   primaryPosition: "left" | "right";
   defaultSize: ButtonProps["size"];
-} & (
-  | {
-      buttonsAlignment: "left" | "right";
-      spaceBetweenButtons: BoxProps<typeof bentoSprinkles>["gap"];
-    }
-  | {
-      buttonsAlignment: "spaceBetween";
-      spaceBetweenButtons?: never;
-    }
-);
+  buttonsAlignment: "left" | "right" | "spaceBetween";
+  spaceBetweenButtons: BoxProps<typeof bentoSprinkles>["gap"];
+};
 
 export function createActions(
   Button: FunctionComponent<ButtonProps>,
+  Banner: FunctionComponent<BannerProps>,
   config: ActionsConfig = {
-    primaryPosition: "right",
     buttonsAlignment: "right",
+    primaryPosition: "right",
     spaceBetweenButtons: 16,
     defaultSize: "medium",
   }
@@ -40,7 +36,11 @@ export function createActions(
     primaryAction,
     secondaryAction,
     size = config.defaultSize,
+    loadingMessage,
+    error,
   }: ActionsProps) {
+    const [isLoading, setIsLoading] = useState(false);
+
     const primaryActionButton = primaryAction && (
       <Button
         key="primary"
@@ -48,6 +48,10 @@ export function createActions(
         kind="solid"
         hierarchy={primaryAction.isDestructive ? "danger" : "primary"}
         size={size}
+        onPress={() => {
+          setIsLoading(true);
+          Promise.resolve(primaryAction.onPress()).then(() => setIsLoading(false));
+        }}
       />
     );
     const secondaryActionButton = secondaryAction && (
@@ -64,20 +68,68 @@ export function createActions(
         ? [primaryActionButton, secondaryActionButton]
         : [secondaryActionButton, primaryActionButton];
 
-    return config.buttonsAlignment === "spaceBetween" ? (
-      <Columns space={0}>
-        {buttons[0] || <Column>{null}</Column>}
-        <Column width="content">{buttons[1]}</Column>
-      </Columns>
-    ) : (
-      <Inline
-        space={config.spaceBetweenButtons}
-        align={config.buttonsAlignment}
-        alignY="center"
-        collapseBelow="tablet"
-      >
-        {buttons}
-      </Inline>
-    );
+    switch (config.buttonsAlignment) {
+      case "right":
+        return (
+          <Columns space={config.spaceBetweenButtons} alignY="center" collapseBelow="tablet">
+            <Column width="1/2">
+              {isLoading ? (
+                <InlineLoader message={loadingMessage} />
+              ) : (
+                error && <Banner kind="negative" description={error} />
+              )}
+            </Column>
+            <Inline
+              space={config.spaceBetweenButtons}
+              align="right"
+              alignY="center"
+              collapseBelow="tablet"
+              reverse={{ mobile: true }}
+            >
+              {buttons}
+            </Inline>
+          </Columns>
+        );
+      case "left":
+        return (
+          <Columns
+            space={config.spaceBetweenButtons}
+            alignY="center"
+            collapseBelow="tablet"
+            reverse={{ mobile: true }}
+          >
+            <Inline space={config.spaceBetweenButtons} alignY="center" collapseBelow="tablet">
+              {buttons}
+            </Inline>
+            <Column width="1/2">
+              {isLoading ? (
+                <Inline space={0} align="right" alignY="center">
+                  <InlineLoader message={loadingMessage} />
+                </Inline>
+              ) : (
+                <Column>{error && <Banner kind="negative" description={error} />}</Column>
+              )}
+            </Column>
+          </Columns>
+        );
+      case "spaceBetween":
+        return (
+          <Columns space={config.spaceBetweenButtons} alignY="center" collapseBelow="tablet">
+            {buttons[0]}
+            <Column width="content">
+              {isLoading ? (
+                <Inline space={0} align="center" alignY="center">
+                  <InlineLoader message={loadingMessage} />
+                </Inline>
+              ) : (
+                error && <Banner kind="negative" description={error} />
+              )}
+            </Column>
+            <Inline space={0} align={{ desktop: "right", mobile: "left" }} alignY="center">
+              {buttons[1]}
+            </Inline>
+          </Columns>
+        );
+    }
   };
 }

@@ -6,6 +6,7 @@ const { defaultExport, createStory } = createComponentStories({
   component: Actions,
   args: {
     size: "medium",
+    error: formatMessage("Something went wrong"),
   },
 });
 
@@ -41,6 +42,12 @@ export const TwoActions = createStory({
   secondaryAction,
 });
 
+export const TwoActionsWithError = createStory({
+  primaryAction,
+  secondaryAction,
+  error: formatMessage("Something went wrong"),
+});
+
 export const TwoActionsDestructive = createStory({
   primaryAction: {
     ...primaryAction,
@@ -59,4 +66,18 @@ export const TwoActionsLarge = createStory({
   primaryAction,
   secondaryAction,
   size: "large",
+});
+
+export const AsyncPrimaryAction = createStory({
+  primaryAction: {
+    ...primaryAction,
+    onPress: () =>
+      new Promise((resolve) =>
+        setTimeout(() => {
+          primaryAction.onPress();
+          resolve(null);
+        }, 3000)
+      ),
+  },
+  secondaryAction,
 });

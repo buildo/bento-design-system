@@ -133,3 +133,5 @@ export function createBanner(
     );
   };
 }
+
+export type { Props as BannerProps };

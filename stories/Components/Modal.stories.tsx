@@ -50,3 +50,21 @@ export const Destructive = createStory({
     onPress: action("Cancel"),
   },
 });
+
+export const WithAsyncPrimaryAction = createStory({
+  children: [<Placeholder />],
+  primaryAction: {
+    label: formatMessage("Create"),
+    onPress: () =>
+      new Promise((resolve) => {
+        setTimeout(() => {
+          action("Create")();
+          resolve(null);
+        }, 3000);
+      }),
+  },
+  secondaryAction: {
+    label: formatMessage("Cancel"),
+    onPress: action("Cancel"),
+  },
+});
