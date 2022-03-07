@@ -1,9 +1,10 @@
 import { ComponentProps, FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
-import { Label, LocalizedString, IconButton, IconClose } from "..";
-import { Box, Columns, Column, BentoSprinkles } from "../internal";
-import { chipRecipe } from "./Chip.css";
+import { Label, LocalizedString, IconButton, BoxProps, BoxType } from "..";
+import { Column, BentoSprinkles, bentoSprinkles } from "../internal";
+import { chip } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
+import { ColumnsProps } from "src/Layout/createColumns";
 
 type DismissProps =
   | {
@@ -15,41 +16,56 @@ type DismissProps =
       onDismiss?: never;
     };
 
-export type ChipProps = {
+type DefaultColor =
+  | "grey"
+  | "red"
+  | "orange"
+  | "yellow"
+  | "green"
+  | "jade"
+  | "blue"
+  | "indigo"
+  | "violet"
+  | "pink";
+
+export type ChipProps<CustomColor extends {}> = {
   label: LocalizedString;
-  color:
-    | "grey"
-    | "red"
-    | "orange"
-    | "yellow"
-    | "green"
-    | "jade"
-    | "blue"
-    | "indigo"
-    | "violet"
-    | "pink";
+  color: DefaultColor | keyof CustomColor;
 } & DismissProps;
 
-type ChipConfig = {
-  paddingX: BentoSprinkles["paddingX"];
-  paddingY: BentoSprinkles["paddingY"];
+type ChipConfig<AtomsFn extends typeof bentoSprinkles, CustomColor extends {}> = {
+  paddingX: BoxProps<AtomsFn>["paddingX"];
+  paddingY: BoxProps<AtomsFn>["paddingY"];
   labelSize: ComponentProps<typeof Label>["size"];
   closeIcon: FunctionComponent<IconProps>;
   closeIconSize: IconProps["size"];
-  internalSpacing: BentoSprinkles["gap"];
+  internalSpacing: BoxProps<AtomsFn>["gap"];
+  customColors: {
+    [k in keyof CustomColor]: BoxProps<AtomsFn>["background"];
+  };
 };
 
-export function createChip(
-  config: ChipConfig = {
-    paddingX: 8,
-    paddingY: 4,
-    labelSize: "small",
-    closeIcon: IconClose,
-    closeIconSize: 8,
-    internalSpacing: 8,
-  }
+const defaultColorsMapping: { [k in DefaultColor]: BentoSprinkles["background"] } = {
+  grey: "softGrey",
+  red: "softRed",
+  orange: "softOrange",
+  yellow: "softYellow",
+  green: "softGreen",
+  jade: "softJade",
+  blue: "softBlue",
+  indigo: "softIndigo",
+  violet: "softViolet",
+  pink: "softPink",
+};
+
+export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors extends {}>(
+  Box: BoxType<AtomsFn>,
+  Columns: (props: ColumnsProps<AtomsFn>) => JSX.Element,
+  config: ChipConfig<AtomsFn, CustomColors>
 ) {
-  return function Chip({ color, label, ...dismissProps }: ChipProps) {
+  const colorsMapping = { ...defaultColorsMapping, ...config.customColors };
+
+  return function Chip({ color, label, ...dismissProps }: ChipProps<CustomColors>) {
     const { defaultMessages } = useDefaultMessages();
 
     return (
@@ -57,9 +73,8 @@ export function createChip(
         <Box
           paddingX={config.paddingX}
           paddingY={config.paddingY}
-          className={chipRecipe({
-            color,
-          })}
+          className={chip}
+          background={colorsMapping[color]}
         >
           <Columns space={config.internalSpacing} align="center" alignY="center">
             <Label size={config.labelSize}>{label}</Label>

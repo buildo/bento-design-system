@@ -11,6 +11,11 @@ const color = {
   ...vars.color,
 };
 
+const background = {
+  ...bentoAtoms.statusProperties.background,
+  ...vars.color,
+};
+
 const fill = {
   ...bentoAtoms.statusProperties.fill,
   ...vars.color,
@@ -35,6 +40,7 @@ export const responsiveProperties = {
 
 export const statusProperties = {
   ...bentoAtoms.statusProperties,
+  background,
   color,
   fill,
   stroke: color,

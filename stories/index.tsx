@@ -26,6 +26,7 @@ import {
   createFeedback,
   IllustrationNegative,
   IllustrationPositive,
+  IconClose,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -50,7 +51,22 @@ export const Card = createCard<24 | 32 | 40>({});
 export const Link = createLink();
 export const Breadcrumb = createBreadcrumb(Link);
 export const Modal = createModal(Actions);
-export const Chip = createChip();
+export const Chip = createChip<
+  typeof sprinkles,
+  {
+    primary: true;
+  }
+>(Box, Columns, {
+  paddingX: 8,
+  paddingY: 4,
+  labelSize: "small",
+  closeIcon: IconClose,
+  closeIconSize: 8,
+  internalSpacing: 8,
+  customColors: {
+    primary: "brandPrimary",
+  },
+});
 export const { List } = createListComponents();
 export const Disclosure = createDisclosure();
 export const DisclosureGroup = createDisclosureGroup(Disclosure);

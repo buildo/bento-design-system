@@ -14,9 +14,12 @@ import {
 } from "../util/collapsible";
 import { desktopWidths, tabletWidths, mobileWidths, fullWidth } from "./Column.css";
 
-export function createColumns<AtomsFn extends typeof bentoSprinkles>(Box: BoxType<AtomsFn>) {
-  type ResponsiveSpace = BoxProps<AtomsFn>["gap"];
+type Props<AtomsFn extends typeof bentoSprinkles> = {
+  space: BoxProps<AtomsFn>["gap"];
+  children: Children;
+} & CollapsibleAlignmentProps;
 
+export function createColumns<AtomsFn extends typeof bentoSprinkles>(Box: BoxType<AtomsFn>) {
   type ColumnProps = {
     children: Children;
     width?: OptionalResponsiveValue<keyof typeof desktopWidths>;
@@ -48,12 +51,7 @@ export function createColumns<AtomsFn extends typeof bentoSprinkles>(Box: BoxTyp
     );
   }
 
-  type Props = {
-    space: ResponsiveSpace;
-    children: Children;
-  } & CollapsibleAlignmentProps;
-
-  function Columns({ space, children, align, alignY, collapseBelow, reverse }: Props) {
+  function Columns({ space, children, align, alignY, collapseBelow, reverse }: Props<AtomsFn>) {
     return (
       <Box
         display="flex"
@@ -76,3 +74,5 @@ export function createColumns<AtomsFn extends typeof bentoSprinkles>(Box: BoxTyp
 
   return { Column, Columns };
 }
+
+export type { Props as ColumnsProps };
