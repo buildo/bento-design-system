@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { tableColumn, FormRow, SelectField, Stack, Table, TextField, IconInformative } from "../";
+import {
+  tableColumn,
+  FormRow,
+  SelectField,
+  Stack,
+  Table,
+  TextField,
+  IconInformative,
+  IconWarning,
+} from "../";
 import { createComponentStories, formatMessage } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
@@ -42,14 +51,18 @@ const exampleColumns = [
     headerLabel: formatMessage("Type"),
     accessor: "type",
   }),
+  tableColumn.link({
+    headerLabel: formatMessage("Website"),
+    accessor: "website",
+  }),
+  tableColumn.icon({
+    headerLabel: formatMessage("Alerts"),
+    accessor: "alerts",
+  }),
   tableColumn.chip({
     headerLabel: formatMessage("Status"),
     accessor: "status",
     align: "center",
-  }),
-  tableColumn.link({
-    headerLabel: formatMessage("Website"),
-    accessor: "website",
   }),
 ];
 
@@ -72,7 +85,8 @@ const exampleData = [
       icon: IconInformative,
     },
     type: formatMessage("Private"),
-    website: { href: "http://www.amazon.com", label: "Link" },
+    website: { href: "http://www.amazon.com", label: formatMessage("Link") },
+    alerts: IconWarning,
   },
   {
     name: formatMessage("Google"),
@@ -93,12 +107,13 @@ const exampleData = [
       icon: IconInformative,
     },
     type: formatMessage("Private"),
-    website: { href: "http://www.google.com", label: "Link" },
+    website: { href: "http://www.google.com", label: formatMessage("Link") },
+    alerts: null,
   },
   {
     name: formatMessage("Microsoft"),
     country: {
-      icon: null,
+      icon: IconInformative,
       text: formatMessage("US"),
     },
     button: {
@@ -114,12 +129,13 @@ const exampleData = [
       icon: IconInformative,
     },
     type: formatMessage("Private"),
-    website: { href: "http://www.microsoft.com", label: "Link" },
+    website: { href: "http://www.microsoft.com", label: formatMessage("Link") },
+    alerts: IconWarning,
   },
   {
     name: formatMessage("buildo"),
     country: {
-      icon: IconInformative,
+      icon: null,
       text: formatMessage("IT"),
     },
     button: {
@@ -130,12 +146,9 @@ const exampleData = [
     },
     applications: 1_200,
     status: { label: formatMessage("Active"), color: "green" },
-    value: {
-      numericValue: 202,
-      icon: null,
-    },
     type: formatMessage("Private"),
-    website: { href: "http://www.buildo.io", label: "Link" },
+    website: { href: "http://www.buildo.io", label: formatMessage("Link") },
+    alerts: null,
   },
   {
     name: formatMessage("Twitter"),
@@ -156,7 +169,8 @@ const exampleData = [
       icon: IconInformative,
     },
     type: formatMessage("Private"),
-    website: { href: "http://www.twitter.com", label: "Link" },
+    website: { href: "http://www.twitter.com", label: formatMessage("Link") },
+    alerts: null,
   },
 ] as const;
 

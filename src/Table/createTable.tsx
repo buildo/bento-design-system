@@ -43,6 +43,7 @@ import {
   createButtonLinkColumn,
   createChipColumn,
   createLinkColumn,
+  iconColumn,
   labelColumn,
   numberColumn,
   numberWithIconColumn,
@@ -442,5 +443,6 @@ export function createTableColumns(
     chip: chipColumn,
     label: labelColumn,
     link: linkColumn,
+    icon: iconColumn,
   };
 }

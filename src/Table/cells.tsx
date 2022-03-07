@@ -91,3 +91,14 @@ export function createLinkCell(Link: FunctionComponent<LinkProps>) {
     );
   };
 }
+
+export function IconCell({
+  value,
+  column: { align },
+}: CellProps<{}, ((props: IconProps) => JSX.Element) | null>) {
+  return (
+    <Box padding={16} textAlign={align}>
+      {value && value({ size: 16, color: "default" })}
+    </Box>
+  );
+}
