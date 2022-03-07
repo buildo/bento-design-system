@@ -60,3 +60,5 @@ export function createButtonLink(config: ButtonConfig = defaultButtonConfig) {
     );
   };
 }
+
+export type { Props as ButtonLinkProps };

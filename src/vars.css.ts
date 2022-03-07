@@ -184,6 +184,7 @@ export const vars = createThemeContract({
     outlineInteractiveStrong: null,
     outlineInteractiveBottom: null,
     outlineDecorative: null,
+    outlineDecorativeBottom: null,
     outlineContainer: null,
     outlineInformative: null,
     outlinePositive: null,

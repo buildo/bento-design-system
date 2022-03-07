@@ -133,3 +133,5 @@ export function createFeedback(
     }
   }
 }
+
+export type { Props as FeedbackProps };

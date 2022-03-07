@@ -27,6 +27,9 @@ import {
   IllustrationNegative,
   IllustrationPositive,
   defaultChipConfig,
+  createBentoProvider,
+  createTable,
+  createTableColumns,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -47,6 +50,7 @@ export const Actions = createActions(Button);
 export const { Form, FormSection, FormRow } = createFormLayoutComponents(Actions);
 export const Banner = createBanner(Button, {});
 export const { Toast, ToastProvider } = createToast(Button, {});
+export const BentoProvider = createBentoProvider(Toast);
 export const Card = createCard<24 | 32 | 40>({});
 export const Link = createLink();
 export const Breadcrumb = createBreadcrumb(Link);
@@ -96,3 +100,5 @@ export const Feedback = createFeedback(Button, {
   negativeIllustration: IllustrationNegative,
   positiveIllustration: IllustrationPositive,
 });
+export const Table = createTable(Tooltip, Feedback);
+export const tableColumn = createTableColumns(Button, ButtonLink, Chip, Link);
