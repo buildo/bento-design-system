@@ -59,7 +59,7 @@ export const Chip = createChip(Box, {
   closeIconSize: 8,
   internalSpacing: 8,
   customColors: {
-    brandPrimary: "brandPrimary",
+    custom: "customColor1",
   },
 });
 export const { List } = createListComponents();
