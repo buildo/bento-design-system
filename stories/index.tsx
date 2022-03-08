@@ -36,6 +36,7 @@ import { sprinkles } from "./sprinkles.css";
 export * from "../src";
 export const Box = createBentoBox(sprinkles);
 export const { Stack, Column, Columns, Inline, Inset } = createLayoutComponents(Box);
+export const Tooltip = createTooltip();
 export const {
   Field,
   CheckboxField,
@@ -44,7 +45,7 @@ export const {
   RadioGroupField,
   SelectField,
   TextField,
-} = createFormFields();
+} = createFormFields(Tooltip);
 export const { Button, ButtonLink } = createButtons();
 export const Banner = createBanner(Button, {});
 export const Actions = createActions(Button, Banner);
@@ -64,7 +65,6 @@ export const Chip = createChip(Box, {
 export const { List } = createListComponents();
 export const Disclosure = createDisclosure();
 export const DisclosureGroup = createDisclosureGroup(Disclosure);
-export const Tooltip = createTooltip();
 export const Tabs = createTabs();
 export const AreaLoader = createAreaLoader();
 export const Avatar = createAvatar();

@@ -88,6 +88,7 @@ export const vars = createThemeContract({
     foregroundWarning: null,
     foregroundNegative: null,
     foregroundDisabled: null,
+    foregroundInteractive: null,
   },
   textColor: {
     textPrimary: null,
