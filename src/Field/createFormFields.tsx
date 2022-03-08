@@ -38,8 +38,8 @@ export function createFormFields(
     dropdown: {
       elevation: "medium",
       radius: 8,
+      menuPaddingY: 8,
       list: {
-        paddingY: 8,
         item: {
           paddingX: 16,
           paddingY: {

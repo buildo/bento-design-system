@@ -1,7 +1,6 @@
 import { Omit } from "../util/Omit";
-import { BentoSprinkles } from "../internal";
 import { createListItem, ListItemConfig, ListItemProps } from "./createListItem";
-import { createInternalList } from "./createInternalList";
+import { InternalList } from "./InternalList";
 
 export type ListSize = "medium" | "large";
 
@@ -12,13 +11,11 @@ type Props = {
 };
 
 export type ListConfig = {
-  paddingY: BentoSprinkles["paddingY"];
   item: ListItemConfig;
 };
 
 export function createListComponents(
   config: ListConfig = {
-    paddingY: 8,
     item: {
       paddingX: 16,
       paddingY: {
@@ -39,7 +36,6 @@ export function createListComponents(
     },
   }
 ) {
-  const InternalList = createInternalList(config);
   const ListItem = createListItem(config.item);
   function List({ items, ...props }: Props) {
     return (

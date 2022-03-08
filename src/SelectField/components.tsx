@@ -23,12 +23,11 @@ import { bodyRecipe } from "../Typography/Body/Body.css";
 import { InputConfig } from "../Field/InputConfig";
 import clsx from "clsx";
 import { DropdownConfig, SelectOption } from "./createSelectField";
-import { createInternalList } from "../List/createInternalList";
+import { InternalList } from "../List/InternalList";
 import { createListItem } from "../List/createListItem";
 import { useModalContext } from "../Modal/useModalContext";
 
 export function createComponents(inputConfig: InputConfig, dropdownConfig: DropdownConfig) {
-  const InternalList = createInternalList(dropdownConfig.list);
   const ListItem = createListItem(dropdownConfig.list.item);
 
   function Control<A, IsMulti extends boolean>({
@@ -153,7 +152,9 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
   function MenuList<A, IsMulti extends boolean>(props: MenuListProps<A, IsMulti>) {
     return (
       <defaultComponents.MenuList {...props}>
-        <InternalList dividers>{props.children as unknown as Children}</InternalList>
+        <Inset spaceY={dropdownConfig.menuPaddingY}>
+          <InternalList dividers>{props.children as unknown as Children}</InternalList>
+        </Inset>
       </defaultComponents.MenuList>
     );
   }
