@@ -38,6 +38,12 @@ export const buttonRecipe = strictRecipe({
       medium: [],
       large: [],
     },
+    active: {
+      true: bentoSprinkles({
+        color: "primaryTransparentEnabledForeground",
+        background: "backgroundSecondary",
+      }),
+    },
   },
   compoundVariants: [
     {

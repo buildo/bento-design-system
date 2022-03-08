@@ -46,7 +46,7 @@ export function createButtonLink(config: ButtonConfig = defaultButtonConfig) {
         {...props}
         as={LinkComponent}
         href={href}
-        className={[buttonRecipe({ kind, hierarchy, size })]}
+        className={[buttonRecipe({ kind, hierarchy, size, active })]}
         disabled={isDisabled}
         display="inline-block"
         paddingX={config.paddingX[size]}

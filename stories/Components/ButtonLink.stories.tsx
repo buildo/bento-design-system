@@ -19,3 +19,9 @@ export const Primary = createStory({
   kind: "solid",
   hierarchy: "primary",
 });
+
+export const Active = createStory({
+  kind: "solid",
+  hierarchy: "primary",
+  active: true,
+});
