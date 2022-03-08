@@ -78,7 +78,7 @@ export function createField(Tooltip: FunctionComponent<TooltipProps>, config: Fi
                   <Tooltip
                     trigger={(ref, props) => (
                       <Box display="inline-block" ref={ref} {...props}>
-                        <IconInformative size={12} color={disabled ? "disabled" : "primary"} />
+                        <IconInformative size={12} color={disabled ? "disabled" : "interactive"} />
                       </Box>
                     )}
                     content={hint}
