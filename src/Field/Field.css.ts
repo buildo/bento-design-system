@@ -20,7 +20,7 @@ export const inputRecipe = strictRecipe({
     bentoSprinkles({
       background: "backgroundPrimary",
       boxShadow: {
-        disabled: "outlineDisabled",
+        disabled: "outlineInputDisabled",
       },
       outline: "none",
     }),
@@ -29,8 +29,9 @@ export const inputRecipe = strictRecipe({
     validation: {
       valid: bentoSprinkles({
         boxShadow: {
-          default: "outlineInput",
-          focus: "outlineInteractiveStrong",
+          default: "outlineInputEnabled",
+          hover: "outlineInputHover",
+          focus: "outlineInputFocus",
         },
       }),
       invalid: bentoSprinkles({

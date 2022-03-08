@@ -29,12 +29,12 @@ export const switchOuterRecipe = strictRecipe({
           background: {
             default: "backgroundPrimary",
           },
-          boxShadow: "outlineInteractive",
+          boxShadow: "outlineInputEnabled",
         }),
         {
           selectors: {
             [`${switchContainer}:hover:not([disabled]) &`]: {
-              boxShadow: vars.boxShadow.outlineInteractiveStrong,
+              boxShadow: vars.boxShadow.outlineInputHover,
             },
           },
         },
@@ -56,13 +56,13 @@ export const switchOuterRecipe = strictRecipe({
     },
     isFocused: {
       true: bentoSprinkles({
-        boxShadow: "outlineInteractiveStrong",
+        boxShadow: "outlineInputFocus",
       }),
     },
     isDisabled: {
       true: [
         bentoSprinkles({
-          boxShadow: "outlineDisabled",
+          boxShadow: "outlineInputDisabled",
         }),
       ],
     },

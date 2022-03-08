@@ -61,8 +61,7 @@ export function createAreaLoader(
         className={clsx(
           container,
           bentoSprinkles({
-            background:
-              config.overlay === "dark" ? "backgroundDarkOverlay" : "backgroundLightOverlay",
+            background: config.overlay === "dark" ? "backgroundDarkScrim" : "backgroundLightScrim",
           })
         )}
       >
