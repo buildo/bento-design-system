@@ -1,63 +1,57 @@
+import { style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
 import { vars } from "../vars.css";
 import { radioOption } from "./RadioGroupField.css";
 
-export const radio = bentoSprinkles({ width: 24, height: 24 });
-
 export const outerRadioCircleRecipe = strictRecipe({
+  base: bentoSprinkles({
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: 24,
+    height: 24,
+    borderRadius: "circled",
+  }),
   variants: {
     selected: {
       false: [
-        bentoSprinkles({ fill: "outlineInputEnabled" }),
+        bentoSprinkles({ boxShadow: "outlineInputEnabled" }),
         {
           selectors: {
             [`${radioOption}:hover:not([disabled]) &`]: {
-              fill: vars.outlineColor.outlineInputHover,
+              boxShadow: vars.boxShadow.outlineInputHover,
             },
             [`${radioOption}[disabled] &`]: {
-              fill: vars.outlineColor.outlineInputDisabled,
+              boxShadow: vars.boxShadow.outlineInputDisabled,
             },
           },
         },
       ],
       true: [
-        bentoSprinkles({ fill: "primarySolidEnabledBackground" }),
+        bentoSprinkles({ background: "primarySolidEnabledBackground" }),
         {
           selectors: {
             [`${radioOption}:hover:not([disabled]) &`]: {
-              fill: vars.interactiveBackgroundColor.primarySolidHoverBackground,
+              background: vars.interactiveBackgroundColor.primarySolidHoverBackground,
             },
             [`${radioOption}[disabled] &`]: {
-              fill: vars.interactiveBackgroundColor.disabledSolidBackground,
+              background: vars.interactiveBackgroundColor.disabledSolidBackground,
             },
           },
         },
       ],
     },
     focused: {
-      true: { fill: vars.interactiveBackgroundColor.primarySolidFocusBackground },
+      true: { background: vars.interactiveBackgroundColor.primarySolidFocusBackground },
     },
   },
 });
 
-export const innerRadioCircleRecipe = strictRecipe({
-  base: bentoSprinkles({ fill: "backgroundPrimary" }),
-  variants: {
-    selected: {
-      false: {
-        r: "11",
-      },
-      true: { r: "5" },
-    },
-    focused: {
-      true: {},
-    },
-  },
-  compoundVariants: [
-    {
-      variants: { selected: false, focused: true },
-      style: { r: "10" },
-    },
-  ],
-});
+export const innerRadioCircle = [
+  bentoSprinkles({
+    background: "backgroundPrimary",
+    borderRadius: "circled",
+  }),
+  style({ width: 10, height: 10 }),
+];
