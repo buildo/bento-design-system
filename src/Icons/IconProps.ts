@@ -11,6 +11,7 @@ export type IconProps = {
     | "warning"
     | "negative"
     | "disabled"
-    | "inherit";
+    | "inherit"
+    | "interactive";
   className?: string;
 };
