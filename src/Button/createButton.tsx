@@ -73,6 +73,7 @@ export function createButton(config: ButtonConfig = defaultButtonConfig) {
           kind: props.kind,
           hierarchy: props.hierarchy,
           size,
+          active: false,
         })}
         {...buttonProps}
         onKeyDown={onKeyDown}
