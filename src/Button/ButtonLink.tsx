@@ -21,7 +21,7 @@ export function createButtonLink(config: ButtonConfig = defaultButtonConfig) {
     href,
     kind,
     hierarchy,
-    size = "medium",
+    size = config.defaultSize,
     isDisabled,
     label,
     active = false,
