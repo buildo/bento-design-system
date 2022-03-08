@@ -19,6 +19,7 @@ export * from "./Field/createFormFields";
 export * from "./Form/createFormLayoutComponents";
 export * from "./IconButton/IconButton";
 export * from "./Icons";
+export * from "./Icons/svgIconProps";
 export * from "./Illustrations";
 export * from "./Illustrations/svgIllustrationProps";
 export * from "./InlineLoader/InlineLoader";
@@ -59,3 +60,5 @@ export { displayRecipe } from "./Typography/Display/Display.css";
 export { inputRecipe } from "./Field/Field.css";
 
 export type { SelectFieldProps } from "./SelectField/createSelectField";
+export type { FieldProps } from "./Field/FieldProps";
+export type { IconButtonProps } from "./IconButton/IconButtonProps";
