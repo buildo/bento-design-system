@@ -1,9 +1,16 @@
-import { ComponentProps, ElementType, HTMLAttributes, LabelHTMLAttributes } from "react";
+import {
+  ComponentProps,
+  ElementType,
+  FunctionComponent,
+  HTMLAttributes,
+  LabelHTMLAttributes,
+} from "react";
 import { Body } from "../Typography/Body/Body";
 import { Label } from "../Typography/Label/Label";
-import { Stack, Box, BentoSprinkles } from "../internal";
+import { Stack, Box, BentoSprinkles, Columns, Column } from "../internal";
 import { Children } from "../util/Children";
 import { FieldProps } from "./FieldProps";
+import { IconInformative, TooltipProps } from "..";
 
 type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "hint"> & {
   /** The field label rendered on screen. Can be omitted in case of fields that have a custom label, such as CheckboxField  */
@@ -38,7 +45,7 @@ export type FieldConfig = {
  * A utility for rendering a form field with a label, a description and error message, alongside their accessibility props.
  * This is meant as an internal design system utility for implementing form fields.
  */
-export function createField(config: FieldConfig) {
+export function createField(Tooltip: FunctionComponent<TooltipProps>, config: FieldConfig) {
   return function Field({
     label,
     assistiveText,
@@ -49,20 +56,35 @@ export function createField(config: FieldConfig) {
     children,
     disabled,
     labelElement = "label",
+    hint,
   }: Props) {
     return (
       <Box disabled={disabled} cursor={{ disabled: "notAllowed" }}>
         <Stack space={config.internalSpacing}>
-          {label && (
-            <Label
-              as={labelElement}
-              {...labelProps}
-              size={config.label.size}
-              color={disabled ? "disabled" : "secondary"}
-            >
-              {label}
-            </Label>
-          )}
+          <Columns space={8} alignY="bottom">
+            {label && (
+              <Label
+                as={labelElement}
+                {...labelProps}
+                size={config.label.size}
+                color={disabled ? "disabled" : "secondary"}
+              >
+                {label}
+              </Label>
+            )}
+            {hint && (
+              <Column width="content">
+                <Tooltip
+                  trigger={(ref, props) => (
+                    <Box display="inline-block" ref={ref} {...props}>
+                      <IconInformative size={12} color={disabled ? "disabled" : "primary"} />
+                    </Box>
+                  )}
+                  content={hint}
+                />
+              </Column>
+            )}
+          </Columns>
           {children}
           {assistiveText && !issues && (
             <Box paddingLeft={config.assistiveText.paddingLeft}>

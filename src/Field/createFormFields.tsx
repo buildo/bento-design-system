@@ -8,6 +8,8 @@ import { SelectionControlConfig } from "./SelectionControlConfig";
 import { defaultInputConfig, InputConfig } from "./InputConfig";
 import { createCheckboxField } from "../CheckboxField/createCheckboxField";
 import { createCheckboxGroupField } from "../CheckboxGroupField/createCheckboxGroupField";
+import { FunctionComponent } from "react";
+import { TooltipProps } from "..";
 
 type FieldsConfig = {
   field: FieldConfig;
@@ -17,6 +19,7 @@ type FieldsConfig = {
 };
 
 export function createFormFields(
+  Tooltip: FunctionComponent<TooltipProps>,
   config: FieldsConfig = {
     field: {
       label: { size: "small" },
@@ -62,7 +65,7 @@ export function createFormFields(
     },
   }
 ) {
-  const Field = createField(config.field);
+  const Field = createField(Tooltip, config.field);
   const TextField = createTextField(Field, config.input);
   const CheckboxField = createCheckboxField(Field, config.selectionControl);
   const CheckboxGroupField = createCheckboxGroupField(Field, config.selectionControl);
