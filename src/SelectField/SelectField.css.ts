@@ -10,7 +10,7 @@ export const control = strictRecipe({
       background: {
         default: "backgroundPrimary",
       },
-      boxShadow: { disabled: "outlineDisabled" },
+      boxShadow: { disabled: "outlineInputDisabled" },
       cursor: { default: "pointer", disabled: "notAllowed" },
     }),
   ],
@@ -22,7 +22,11 @@ export const control = strictRecipe({
     {
       variants: { menuIsOpen: false, validation: "valid" },
       style: bentoSprinkles({
-        boxShadow: { default: "outlineInput", focus: "outlineInteractiveStrong" },
+        boxShadow: {
+          default: "outlineInputEnabled",
+          focus: "outlineInputFocus",
+          hover: "outlineInputHover",
+        },
       }),
     },
     {
@@ -33,7 +37,7 @@ export const control = strictRecipe({
     },
     {
       variants: { menuIsOpen: true, validation: "valid" },
-      style: bentoSprinkles({ boxShadow: "outlineInteractiveStrong" }),
+      style: bentoSprinkles({ boxShadow: "outlineInputFocus" }),
     },
     {
       variants: { menuIsOpen: true, validation: "invalid" },

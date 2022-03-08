@@ -14,13 +14,13 @@ export const checkboxRecipe = strictRecipe({
       alignItems: "center",
       padding: 4,
       borderRadius: 4,
-      boxShadow: "outlineInteractive",
+      boxShadow: "outlineInputEnabled",
     }),
   ],
   variants: {
     isSelected: {
       false: bentoSprinkles({
-        boxShadow: { hover: "outlineInteractiveStrong" },
+        boxShadow: { hover: "outlineInputHover" },
         background: { default: "backgroundPrimary" },
       }),
       true: bentoSprinkles({
@@ -33,12 +33,12 @@ export const checkboxRecipe = strictRecipe({
     },
     isFocused: {
       true: bentoSprinkles({
-        boxShadow: "outlineInteractiveStrong",
+        boxShadow: "outlineInputFocus",
       }),
     },
     isDisabled: {
       true: bentoSprinkles({
-        boxShadow: { default: "outlineDisabled", hover: "outlineDisabled" },
+        boxShadow: { default: "outlineInputDisabled", hover: "outlineInputDisabled" },
         background: "disabledSolidBackground",
         cursor: "notAllowed",
       }),

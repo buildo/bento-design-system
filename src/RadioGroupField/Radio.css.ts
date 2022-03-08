@@ -9,14 +9,14 @@ export const outerRadioCircleRecipe = strictRecipe({
   variants: {
     selected: {
       false: [
-        bentoSprinkles({ fill: "outlineInput" }),
+        bentoSprinkles({ fill: "outlineInputEnabled" }),
         {
           selectors: {
             [`${radioOption}:hover:not([disabled]) &`]: {
-              fill: vars.outlineColor.outlineInteractive,
+              fill: vars.outlineColor.outlineInputHover,
             },
             [`${radioOption}[disabled] &`]: {
-              fill: vars.outlineColor.outlineDisabled,
+              fill: vars.outlineColor.outlineInputDisabled,
             },
           },
         },
@@ -47,11 +47,6 @@ export const innerRadioCircleRecipe = strictRecipe({
     selected: {
       false: {
         r: "11",
-        selectors: {
-          [`${radioOption}:hover:not([disabled]) &`]: {
-            r: "10",
-          },
-        },
       },
       true: { r: "5" },
     },

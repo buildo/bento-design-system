@@ -18,5 +18,5 @@ export const underlay = bentoSprinkles({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  background: "backgroundDarkOverlay",
+  background: "backgroundDarkScrim",
 });
