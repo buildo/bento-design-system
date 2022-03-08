@@ -22,7 +22,11 @@ export const control = strictRecipe({
     {
       variants: { menuIsOpen: false, validation: "valid" },
       style: bentoSprinkles({
-        boxShadow: { default: "outlineInputEnabled", focus: "outlineInputFocus" },
+        boxShadow: {
+          default: "outlineInputEnabled",
+          focus: "outlineInputFocus",
+          hover: "outlineInputHover",
+        },
       }),
     },
     {
