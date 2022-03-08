@@ -26,6 +26,7 @@ export const iconRecipe = recipe({
       negative: bentoSprinkles({ fill: "foregroundNegative" }),
       disabled: bentoSprinkles({ fill: "foregroundDisabled" }),
       inherit: bentoSprinkles({ fill: "inherit" }),
+      interactive: bentoSprinkles({ fill: "foregroundInteractive" }),
     },
   },
 });

@@ -155,6 +155,7 @@ createGlobalTheme(":root", bentoVars, {
     foregroundWarning: colors.warning50,
     foregroundNegative: colors.negative40,
     foregroundDisabled: "rgba(26, 33, 43, 0.3)",
+    foregroundInteractive: colors.interactive70,
   },
   textColor: {
     textPrimary: colors.neutral90,
