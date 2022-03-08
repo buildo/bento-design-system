@@ -50,6 +50,7 @@ export type DropdownConfig = {
   elevation: "small" | "medium" | "large";
   radius: BentoSprinkles["borderRadius"];
   list: ListConfig;
+  menuPaddingY: BentoSprinkles["paddingY"];
 };
 
 export function createSelectField(
