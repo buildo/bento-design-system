@@ -61,30 +61,32 @@ export function createField(Tooltip: FunctionComponent<TooltipProps>, config: Fi
     return (
       <Box disabled={disabled} cursor={{ disabled: "notAllowed" }}>
         <Stack space={config.internalSpacing}>
-          <Columns space={8} alignY="bottom">
-            {label && (
-              <Label
-                as={labelElement}
-                {...labelProps}
-                size={config.label.size}
-                color={disabled ? "disabled" : "secondary"}
-              >
-                {label}
-              </Label>
-            )}
-            {hint && (
-              <Column width="content">
-                <Tooltip
-                  trigger={(ref, props) => (
-                    <Box display="inline-block" ref={ref} {...props}>
-                      <IconInformative size={12} color={disabled ? "disabled" : "primary"} />
-                    </Box>
-                  )}
-                  content={hint}
-                />
-              </Column>
-            )}
-          </Columns>
+          {(label || hint) && (
+            <Columns space={8} alignY="bottom">
+              {label && (
+                <Label
+                  as={labelElement}
+                  {...labelProps}
+                  size={config.label.size}
+                  color={disabled ? "disabled" : "secondary"}
+                >
+                  {label}
+                </Label>
+              )}
+              {hint && (
+                <Column width="content">
+                  <Tooltip
+                    trigger={(ref, props) => (
+                      <Box display="inline-block" ref={ref} {...props}>
+                        <IconInformative size={12} color={disabled ? "disabled" : "primary"} />
+                      </Box>
+                    )}
+                    content={hint}
+                  />
+                </Column>
+              )}
+            </Columns>
+          )}
           {children}
           {assistiveText && !issues && (
             <Box paddingLeft={config.assistiveText.paddingLeft}>
