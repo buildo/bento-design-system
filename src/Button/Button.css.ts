@@ -1,6 +1,7 @@
 import { strictRecipe } from "../util/strictRecipe";
 import { bentoSprinkles } from "../internal/sprinkles.css";
 import { extendedHitAreaRecipe } from "../util/extendedHitArea.css";
+import { vars } from "../vars.css";
 
 export const buttonRecipe = strictRecipe({
   base: bentoSprinkles({
@@ -39,10 +40,11 @@ export const buttonRecipe = strictRecipe({
       large: [],
     },
     active: {
-      true: bentoSprinkles({
-        color: "primaryTransparentEnabledForeground",
-        background: "backgroundSecondary",
-      }),
+      true: {
+        // NOTE(gabro): using vars directly to take precedence over the other styles
+        color: vars.interactiveForegroundColor.primaryTransparentEnabledForeground,
+        background: vars.backgroundColor.backgroundSecondary,
+      },
     },
   },
   compoundVariants: [
