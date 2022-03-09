@@ -354,7 +354,7 @@ export function createTable(
       <Tooltip
         trigger={(ref, props) => (
           <Box as="div" display="inline-block" ref={ref} {...props}>
-            <IconInformative size={16} color="primary" />
+            <IconInformative size={16} color="interactive" />
           </Box>
         )}
         content={column.hint}
@@ -391,7 +391,7 @@ export function createTable(
   }) {
     const sectionHeaderContent = (
       <Box className={sectionHeader}>
-        <Label as="span" size="small">
+        <Label as="span" size="small" color="primaryInverse">
           {label}
         </Label>
       </Box>
@@ -411,13 +411,13 @@ export function createTable(
             gridColumn: `1 / ${numberOfStickyColumns > 0 ? numberOfStickyColumns + 1 : -1}`,
           }}
         >
-          <Box style={{ marginRight: 8 }} background="backgroundPrimaryInverse">
+          <Box style={{ marginRight: 8 }} background="backgroundSecondaryInverse">
             {sectionHeaderContent}
           </Box>
         </Box>
         {numberOfStickyColumns > 0 && (
           <Box
-            background="backgroundPrimaryInverse"
+            background="backgroundSecondaryInverse"
             style={{
               gridColumn: `${numberOfStickyColumns + 1} / -1`,
             }}
