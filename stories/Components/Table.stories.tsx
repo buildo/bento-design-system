@@ -260,8 +260,5 @@ export const Grouped = createStory({
     }),
   ] as const,
   data: exampleData,
-  // NOTE(gabro): createStory messes up the type-inference of groupBy, given that this only happens
-  // in the stories I don't think it's too important to fix properly
-  // @ts-expect-error
   groupBy: "group",
 });

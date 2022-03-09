@@ -66,12 +66,6 @@ type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
   b: Row<RowType<C>>
 ) => number;
 
-type TextColumns<C extends readonly any[]> = C extends readonly [infer Head, ...infer Tail]
-  ? Head extends ColumnType<string, {}, LocalizedString>
-    ? [Head, ...TextColumns<Tail>]
-    : TextColumns<Tail>
-  : [];
-
 type SortingProps<C extends ReadonlyArray<ColumnType<string, {}, any>>> =
   | {
       customSorting?: never;
@@ -90,7 +84,7 @@ type SortingProps<C extends ReadonlyArray<ColumnType<string, {}, any>>> =
 type Props<C extends ReadonlyArray<ColumnType<string, {}, any>>> = {
   columns: C;
   data: ReadonlyArray<RowType<C>>;
-  groupBy?: TextColumns<C>[number]["accessor"];
+  groupBy?: C[number]["accessor"];
   noResultsTitle?: LocalizedString;
   noResultsDescription?: LocalizedString;
 } & SortingProps<C>;
