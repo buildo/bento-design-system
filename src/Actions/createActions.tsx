@@ -72,13 +72,15 @@ export function createActions(
       case "right":
         return (
           <Columns space={config.spaceBetweenButtons} alignY="center" collapseBelow="tablet">
-            <Column width="1/2">
-              {isLoading ? (
-                <InlineLoader message={loadingMessage} />
-              ) : (
-                error && <Banner kind="negative" description={error} />
-              )}
-            </Column>
+            {(isLoading || error) && (
+              <Column width="1/2">
+                {isLoading ? (
+                  <InlineLoader message={loadingMessage} />
+                ) : (
+                  error && <Banner kind="negative" description={error} />
+                )}
+              </Column>
+            )}
             <Inline
               space={config.spaceBetweenButtons}
               align="right"
