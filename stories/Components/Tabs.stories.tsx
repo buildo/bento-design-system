@@ -1,5 +1,5 @@
 import { createComponentStories, formatMessage } from "../util";
-import { Tabs } from "../";
+import { IconInformative, IconNegative, Tabs } from "../";
 
 const { defaultExport, createControlledStory } = createComponentStories({
   component: Tabs,
@@ -13,6 +13,8 @@ export const tabs = createControlledStory("tab1", {
     {
       label: formatMessage("Tab 1"),
       value: "tab1",
+      icon: IconNegative,
+      hasNotification: true,
     },
     {
       label: formatMessage("Tab 2"),
@@ -26,6 +28,8 @@ export const tabs = createControlledStory("tab1", {
     {
       label: formatMessage("Tab 4"),
       value: "tab4",
+      icon: IconInformative,
+      hasNotification: true,
     },
   ],
 });

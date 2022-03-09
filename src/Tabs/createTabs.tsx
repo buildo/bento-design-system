@@ -1,6 +1,6 @@
 import { usePress } from "@react-aria/interactions";
 import { Box, Columns, Column, BentoSprinkles } from "../internal";
-import { Label } from "..";
+import { Children, IconPlaceholder, IconProps, Label } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { tabRecipe } from "./Tabs.css";
 import { ComponentProps } from "react";
@@ -10,6 +10,8 @@ type TabProps = {
   onPress: () => void;
   active: boolean;
   disabled?: boolean;
+  icon?: (props: IconProps) => Children;
+  hasNotification?: boolean;
 };
 
 type TabsConfig = {
@@ -27,7 +29,7 @@ export function createTabs(
     labelSize: "large",
   }
 ) {
-  function Tab({ active, onPress, label, disabled }: TabProps) {
+  function Tab({ active, onPress, label, disabled, icon, hasNotification }: TabProps) {
     const {
       pressProps: { color: ignored1, ...pressProps },
     } = usePress({ onPress, isDisabled: disabled });
@@ -42,9 +44,17 @@ export function createTabs(
         paddingX={config.paddingX}
         paddingY={config.paddingY}
       >
-        <Label size={config.labelSize} uppercase>
-          {label}
-        </Label>
+        <Columns space={8} alignY="center">
+          {icon && <Column width="content">{icon({ size: 16, color: "inherit" })}</Column>}
+          <Label size={config.labelSize} uppercase>
+            {label}
+          </Label>
+          {hasNotification && (
+            <Column width="content">
+              <IconPlaceholder size={8} color="inherit" />
+            </Column>
+          )}
+        </Columns>
       </Box>
     );
   }
@@ -52,7 +62,13 @@ export function createTabs(
   type Props<A> = {
     value: A;
     onChange: (v: A) => void;
-    tabs: Array<{ value: A; label: LocalizedString; disabled?: boolean }>;
+    tabs: Array<{
+      value: A;
+      label: LocalizedString;
+      disabled?: boolean;
+      icon?: (props: IconProps) => Children;
+      hasNotification?: boolean;
+    }>;
   };
 
   return function Tabs<A>({ value, tabs, onChange }: Props<A>) {
@@ -66,6 +82,8 @@ export function createTabs(
                 onPress={() => onChange(t.value)}
                 active={value === t.value}
                 disabled={t.disabled}
+                icon={t.icon}
+                hasNotification={t.hasNotification}
               />
             </Column>
           ))}
