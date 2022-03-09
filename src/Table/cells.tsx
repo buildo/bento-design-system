@@ -11,7 +11,7 @@ export function createButtonCell(Button: FunctionComponent<ButtonProps>) {
   }: CellProps<{}, Omit<ButtonProps, "size">>) {
     return (
       <Inline space={0} align={align} alignY="center">
-        <Button {...buttonProps} size="small" />
+        <Button {...buttonProps} size="medium" />
       </Inline>
     );
   };
@@ -24,7 +24,7 @@ export function createButtonLinkCell(ButtonLink: FunctionComponent<ButtonLinkPro
   }: CellProps<{}, Omit<ButtonLinkProps, "size">>) {
     return (
       <Inline space={0} align={align}>
-        <ButtonLink {...buttonProps} size="small" />
+        <ButtonLink {...buttonProps} size="medium" />
       </Inline>
     );
   };
