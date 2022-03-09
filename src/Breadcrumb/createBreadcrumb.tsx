@@ -66,15 +66,14 @@ export function createBreadcrumb(
 function createBreadcrumbItem(Link: FunctionComponent<LinkProps>) {
   return function BreadcrumbItem({ isCurrent, label, href = "" }: BreadcrumbItemProps) {
     const ref = useRef(null);
-    const { itemProps } = useBreadcrumbItem(
-      { children: label, isCurrent, elementType: "div" },
-      ref
-    );
+    const {
+      itemProps: { color, ...itemProps },
+    } = useBreadcrumbItem({ children: label, isCurrent, elementType: "div" }, ref);
 
     return (
       <Box as="li" ref={ref}>
         {isCurrent ? (
-          <Body size="medium" {...itemProps} color="link">
+          <Body size="medium" {...itemProps}>
             {label}
           </Body>
         ) : (
