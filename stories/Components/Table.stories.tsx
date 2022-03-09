@@ -88,6 +88,7 @@ const exampleData = [
     type: formatMessage("Private"),
     website: { href: "http://www.amazon.com", label: formatMessage("Link") },
     alerts: { icon: IconWarning, label: formatMessage("Warning") },
+    group: formatMessage("Group 1"),
   },
   {
     name: formatMessage("Google"),
@@ -109,6 +110,7 @@ const exampleData = [
     },
     type: formatMessage("Private"),
     website: { href: "http://www.google.com", label: formatMessage("Link") },
+    group: formatMessage("Group 2"),
   },
   {
     name: formatMessage("Microsoft"),
@@ -131,6 +133,7 @@ const exampleData = [
     type: formatMessage("Private"),
     website: { href: "http://www.microsoft.com", label: formatMessage("Link") },
     alerts: { icon: IconWarning, label: formatMessage("Warning") },
+    group: formatMessage("Group 1"),
   },
   {
     name: formatMessage("buildo"),
@@ -148,6 +151,7 @@ const exampleData = [
     status: { label: formatMessage("Active"), color: "green" } as const,
     type: formatMessage("Private"),
     website: { href: "http://www.buildo.io", label: formatMessage("Link") },
+    group: formatMessage("Group 2"),
   },
   {
     name: formatMessage("Twitter"),
@@ -169,6 +173,7 @@ const exampleData = [
     },
     type: formatMessage("Private"),
     website: { href: "http://www.twitter.com", label: formatMessage("Link") },
+    group: formatMessage("Group 1"),
   },
 ];
 
@@ -245,3 +250,18 @@ export const WithControlledSorting = (_args: Parameters<typeof createStory>[0]) 
 
   return <Table columns={exampleColumns} data={data} onSort={onSort} />;
 };
+
+export const Grouped = createStory({
+  columns: [
+    ...exampleColumns,
+    tableColumn.text({
+      headerLabel: formatMessage("Group"),
+      accessor: "group",
+    }),
+  ] as const,
+  data: exampleData,
+  // NOTE(gabro): createStory messes up the type-inference of groupBy, given that this only happens
+  // in the stories I don't think it's too important to fix properly
+  // @ts-expect-error
+  groupBy: "group",
+});
