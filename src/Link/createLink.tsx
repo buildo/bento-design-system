@@ -58,8 +58,9 @@ export function createLink(
         display="inline-block"
         fontWeight={config.labelWeight}
         textDecoration={config.labelDecoration}
+        color={isDisabled ? "textDisabled" : "textLink"}
       >
-        <Label as="span" size={config.labelSize} color={isDisabled ? "disabled" : "link"}>
+        <Label as="span" size={config.labelSize}>
           {label}
         </Label>
       </Box>
