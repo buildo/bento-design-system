@@ -8,6 +8,7 @@ export * from "./IconIdea";
 export * from "./IconInformative";
 export * from "./IconMinus";
 export * from "./IconNegative";
+export * from "./IconPlaceholder";
 export * from "./IconProps";
 export * from "./IconSearch";
 export * from "./IconUser";

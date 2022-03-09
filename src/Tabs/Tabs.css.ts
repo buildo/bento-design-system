@@ -4,6 +4,7 @@ import { strictRecipe } from "../util/strictRecipe";
 export const tabRecipe = strictRecipe({
   base: bentoSprinkles({
     color: { disabled: "disabledTransparentForeground" },
+    fill: { disabled: "disabledTransparentForeground" },
     cursor: { disabled: "notAllowed" },
     outline: "none",
   }),
@@ -12,6 +13,7 @@ export const tabRecipe = strictRecipe({
       true: bentoSprinkles({
         background: "primarySolidEnabledBackground",
         color: "primarySolidEnabledForeground",
+        fill: "primarySolidEnabledForeground",
       }),
       false: bentoSprinkles({
         background: {
@@ -20,6 +22,11 @@ export const tabRecipe = strictRecipe({
           focus: "primaryTransparentFocusBackground",
         },
         color: {
+          default: "primaryTransparentEnabledForeground",
+          hover: "primaryTransparentHoverForeground",
+          focus: "primaryTransparentFocusForeground",
+        },
+        fill: {
           default: "primaryTransparentEnabledForeground",
           hover: "primaryTransparentHoverForeground",
           focus: "primaryTransparentFocusForeground",
