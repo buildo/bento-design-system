@@ -354,7 +354,7 @@ export function createTable(
       <Tooltip
         trigger={(ref, props) => (
           <Box as="div" display="inline-block" ref={ref} {...props}>
-            <IconInformative size={16} color="primary" />
+            <IconInformative size={16} color="interactive" />
           </Box>
         )}
         content={column.hint}
