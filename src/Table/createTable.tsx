@@ -68,16 +68,13 @@ type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
 
 type SortingProps<C extends ReadonlyArray<ColumnType<string, {}, any>>> =
   | {
+      /** This function must be memoized to avoid infinite re-renderings */
       customSorting?: never;
-      // This function must be memoized to avoid infinite rerenderings
+      /** This function must be memoized to avoid infinite re-renderings */
       onSort?: (sortBy: Array<SortingRule<C>>) => void;
     }
   | {
-      customSorting: (
-        rows: Row<RowType<C>>[],
-        columns: ColumnInstance<RowType<C>>[],
-        sortFns: SortFn<C>[]
-      ) => Row<RowType<C>>[];
+      customSorting: (rows: Row<RowType<C>>[], sortFns: SortFn<C>[]) => Row<RowType<C>>[];
       onSort?: never;
     };
 
@@ -141,20 +138,19 @@ export function createTable(
             ): Row<RowType<C>>[] => {
               return customSorting(
                 rows,
-                tableColumns,
-                sortFns
-                  .map((s, i) => {
-                    const targetColumn = tableColumns.find((c) => c.sortedIndex === i);
-                    return targetColumn
-                      ? (a: Row<RowType<C>>, b: Row<RowType<C>>) =>
-                          s(a, b, targetColumn.id, directions[i]) * (!directions[i] ? -1 : 1)
-                      : undefined;
-                  })
-                  .filter((s): s is SortFn<C> => s !== undefined)
+                sortFns.map((s, i) => {
+                  return (a: Row<RowType<C>>, b: Row<RowType<C>>) => {
+                    /**
+                     * NOTE: we use a blank string for the columnId, since it's unused internally
+                     * See: https://github.com/TanStack/react-table/blob/76a4a861ee56b782404ef91987c3b5691ecf2ebc/src/plugin-hooks/useSortBy.js#L385
+                     */
+                    return s(a, b, "", directions[i]) * (!directions[i] ? -1 : 1);
+                  };
+                })
               );
             }
           : undefined,
-      []
+      [customSorting]
     );
 
     const {
@@ -162,7 +158,6 @@ export function createTable(
       headerGroups,
       rows,
       prepareRow,
-      columns: tableColumns,
       state: { sortBy },
     } = useTable(
       {
