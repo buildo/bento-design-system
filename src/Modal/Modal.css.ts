@@ -1,9 +1,11 @@
 import { style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal";
+import { vars } from "../vars.css";
 
 export const modal = style([
   {
     width: "560px",
+    border: `1px solid ${vars.outlineColor.outlineContainer}`,
   },
   bentoSprinkles({
     background: "backgroundPrimary",
