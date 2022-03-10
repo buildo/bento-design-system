@@ -56,6 +56,16 @@ export const vars = createThemeContract({
     40: null,
     80: null,
   },
+  negativeSpace: {
+    "0": null,
+    "-4": null,
+    "-8": null,
+    "-16": null,
+    "-24": null,
+    "-32": null,
+    "-40": null,
+    "-80": null,
+  },
   radius: {
     4: null,
     8: null,

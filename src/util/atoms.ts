@@ -73,6 +73,10 @@ export const responsiveProperties = {
   bottom: vars.space,
   left: vars.space,
   right: vars.space,
+  marginTop: vars.negativeSpace,
+  marginBottom: vars.negativeSpace,
+  marginLeft: vars.negativeSpace,
+  marginRight: vars.negativeSpace,
 } as const;
 
 const color = {

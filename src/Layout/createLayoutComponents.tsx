@@ -4,6 +4,7 @@ import { createInline } from "./createInline";
 import { createStack } from "./createStack";
 import { createColumns } from "./createColumns";
 import { createInset } from "./createInset";
+import { createBleed } from "./createBleed";
 
 export function createLayoutComponents<AtomsFn extends typeof bentoSprinkles>(
   Box: BoxType<AtomsFn>
@@ -12,6 +13,7 @@ export function createLayoutComponents<AtomsFn extends typeof bentoSprinkles>(
   const Inset = createInset(Box);
   const Stack = createStack(Box);
   const { Column, Columns } = createColumns(Box);
+  const Bleed = createBleed(Box);
 
   return {
     Inline,
@@ -19,5 +21,6 @@ export function createLayoutComponents<AtomsFn extends typeof bentoSprinkles>(
     Inset,
     Column,
     Columns,
+    Bleed,
   };
 }

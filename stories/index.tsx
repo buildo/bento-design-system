@@ -35,7 +35,7 @@ import { sprinkles } from "./sprinkles.css";
 
 export * from "../src";
 export const Box = createBentoBox(sprinkles);
-export const { Stack, Column, Columns, Inline, Inset } = createLayoutComponents(Box);
+export const { Stack, Column, Columns, Inline, Inset, Bleed } = createLayoutComponents(Box);
 export const Tooltip = createTooltip();
 export const {
   Field,
