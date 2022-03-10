@@ -6,13 +6,11 @@ import { createToastContainer } from "./createToastContainer";
 import { createToastProvider } from "./createToastProvider";
 
 export type ToastConfig = {
-  paddingX?: {
-    withAction: BentoSprinkles["paddingX"];
-    withoutAction: BentoSprinkles["paddingX"];
-  };
+  paddingX?: BentoSprinkles["paddingX"];
   paddingY?: BentoSprinkles["paddingY"];
   radius?: BentoSprinkles["borderRadius"];
   messageSize?: ComponentProps<typeof Body>["size"];
+  mediumButtonPaddingX: BentoSprinkles["paddingY"];
 };
 
 export type ToastProps = {
@@ -24,16 +22,20 @@ export type ToastProps = {
 export function createToast(
   Button: FunctionComponent<ButtonProps>,
   {
-    paddingX = {
-      withAction: 0,
-      withoutAction: 16,
-    },
+    paddingX = 16,
     paddingY = 16,
     radius = 8,
     messageSize = "medium",
+    mediumButtonPaddingX,
   }: ToastConfig
 ) {
-  const Toast = createToastInternal(Button, { paddingX, paddingY, radius, messageSize });
+  const Toast = createToastInternal(Button, {
+    paddingX,
+    paddingY,
+    mediumButtonPaddingX,
+    radius,
+    messageSize,
+  });
   const ToastContainer = createToastContainer(Toast);
   const ToastProvider = createToastProvider(ToastContainer);
 

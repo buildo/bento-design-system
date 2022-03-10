@@ -50,7 +50,9 @@ export const { Button, ButtonLink } = createButtons();
 export const Banner = createBanner(Button, {});
 export const Actions = createActions(Button, Banner);
 export const { Form, FormSection, FormRow } = createFormLayoutComponents(Actions);
-export const { Toast, ToastProvider } = createToast(Button, {});
+export const { Toast, ToastProvider } = createToast(Button, {
+  mediumButtonPaddingX: 16,
+});
 export const BentoProvider = createBentoProvider(ToastProvider);
 export const Card = createCard<24 | 32 | 40>({});
 export const Link = createLink();
