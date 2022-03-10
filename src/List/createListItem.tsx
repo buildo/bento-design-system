@@ -114,6 +114,7 @@ export function createListItem(config: ListItemConfig) {
           href={props.href}
           display="block"
           tabIndex={interactive && !props.ignoreTabIndex ? linkProps.tabIndex : undefined}
+          textDecoration="none"
         >
           <Inset spaceX={config.paddingX} spaceY={config.paddingY[props.size ?? "medium"]}>
             <Columns space={config.internalSpacing} alignY="center">
