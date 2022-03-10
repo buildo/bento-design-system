@@ -16,7 +16,7 @@ import {
   NoticeProps,
   MenuListProps,
 } from "react-select/dist/declarations/src/components/Menu";
-import { Body, IconChevronDown, TextChildren, Children, IconCheck } from "..";
+import { Body, IconChevronDown, TextChildren, Children, IconCheck, IconProps } from "..";
 import { Box, Columns, Column, Inline, Inset, bentoSprinkles } from "../internal";
 import { singleValue, placeholder, menu, menuPortalRecipe, control } from "./SelectField.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
@@ -76,7 +76,11 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
       <Box className={singleValue}>
         <Columns space={16} alignY="center">
           {"icon" in data && (
-            <Column width="content">{(data as unknown as { icon: Children }).icon}</Column>
+            <Column width="content">
+              {(data as unknown as { icon: (props: IconProps) => Children }).icon({
+                size: 24,
+              })}
+            </Column>
           )}
           <Body size={inputConfig.fontSize} color={isDisabled ? "disabled" : "default"}>
             {children as any}

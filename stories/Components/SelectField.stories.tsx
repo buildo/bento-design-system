@@ -1,5 +1,12 @@
 import { StoryFn } from "@storybook/react";
-import { IllustrationProps, Modal, SelectField, svgIllustrationProps } from "../";
+import {
+  IconIdea,
+  IconUser,
+  IllustrationProps,
+  Modal,
+  SelectField,
+  svgIllustrationProps,
+} from "../";
 import { createComponentStories, fieldArgTypes, formatMessage, textArgType } from "../util";
 
 function Illustration(props: IllustrationProps) {
@@ -93,4 +100,11 @@ export const MultiSelectMultipleOptionsSelected = createControlledStory([1, 2], 
   isMulti: true,
   multiValueMessage: (numberOfSelectedOptions: number) =>
     formatMessage(`${numberOfSelectedOptions} options selected`),
+});
+
+export const WithIconSelected = createControlledStory(1, {
+  options: [
+    { value: 1, label: formatMessage("Idea"), icon: IconIdea },
+    { value: 2, label: formatMessage("User"), icon: IconUser },
+  ],
 });
