@@ -89,6 +89,7 @@ export const vars = createThemeContract({
     backgroundPrimaryInverse: null,
     backgroundSecondaryInverse: null,
     backgroundInteractive: null,
+    backgroundInteractiveOverlay: null,
     backgroundInformative: null,
     backgroundPositive: null,
     backgroundWarning: null,

@@ -11,25 +11,25 @@ export const tabRecipe = strictRecipe({
   variants: {
     active: {
       true: bentoSprinkles({
-        background: "primarySolidEnabledBackground",
-        color: "primarySolidEnabledForeground",
-        fill: "primarySolidEnabledForeground",
+        background: "backgroundInteractiveOverlay",
+        color: "textInteractive",
+        fill: "textInteractive",
       }),
       false: bentoSprinkles({
         background: {
-          default: "primaryTransparentEnabledBackground",
-          hover: "primaryTransparentHoverBackground",
-          focus: "primaryTransparentFocusBackground",
+          default: "secondaryTransparentEnabledBackground",
+          hover: "secondaryTransparentHoverBackground",
+          focus: "secondaryTransparentFocusBackground",
         },
         color: {
-          default: "primaryTransparentEnabledForeground",
-          hover: "primaryTransparentHoverForeground",
-          focus: "primaryTransparentFocusForeground",
+          default: "secondaryTransparentEnabledForeground",
+          hover: "secondaryTransparentHoverForeground",
+          focus: "secondaryTransparentFocusForeground",
         },
         fill: {
-          default: "primaryTransparentEnabledForeground",
-          hover: "primaryTransparentHoverForeground",
-          focus: "primaryTransparentFocusForeground",
+          default: "secondaryTransparentEnabledForeground",
+          hover: "secondaryTransparentHoverForeground",
+          focus: "secondaryTransparentFocusForeground",
         },
         cursor: "pointer",
       }),
