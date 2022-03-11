@@ -19,12 +19,12 @@ export function createBleed<AtomsFn extends typeof bentoSprinkles>(Box: BoxType<
 
   function negateSpace(space: ResponsiveSpace | undefined): ResponsiveNegativeSpace | undefined {
     if (typeof space === "number") {
-      return `-${space}`;
+      return `negative${space}`;
     } else if (!!space) {
       return {
-        desktop: space.desktop ? `-${space.desktop}` : undefined,
-        tablet: space.tablet ? `-${space.tablet}` : undefined,
-        mobile: space.mobile ? `-${space.mobile}` : undefined,
+        desktop: space.desktop ? `negative${space.desktop}` : undefined,
+        tablet: space.tablet ? `negative${space.tablet}` : undefined,
+        mobile: space.mobile ? `negative${space.mobile}` : undefined,
       };
     } else {
       return undefined;
