@@ -26,6 +26,8 @@ export type ModalProps = {
   onClose: () => void;
   closeButtonLabel?: LocalizedString;
   isDestructive?: boolean;
+  loadingMessage?: ActionsProps["loadingMessage"];
+  error?: ActionsProps["error"];
 };
 
 type ModalConfig = {
@@ -106,6 +108,8 @@ export function createModal(
                   }
                   secondaryAction={props.secondaryAction}
                   size="large"
+                  loadingMessage={props.loadingMessage}
+                  error={props.error}
                 />
               </Inset>
             </Box>

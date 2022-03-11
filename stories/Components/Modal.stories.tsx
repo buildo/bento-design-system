@@ -35,6 +35,19 @@ export const WithActions = createStory({
   },
 });
 
+export const WithError = createStory({
+  children: [<Placeholder />],
+  primaryAction: {
+    label: formatMessage("Create"),
+    onPress: action("Create"),
+  },
+  secondaryAction: {
+    label: formatMessage("Cancel"),
+    onPress: action("Cancel"),
+  },
+  error: formatMessage("Something went wrong"),
+});
+
 export const Destructive = createStory({
   isDestructive: true,
   title: formatMessage("Delete item"),
