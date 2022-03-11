@@ -28,6 +28,7 @@ export * from "./Link/createLink";
 export * from "./List/createListComponents";
 export * from "./Modal/createModal";
 export * from "./Modal/useModalContext";
+export * from "./Navigation/createNavigation";
 export * from "./NumberInput/createNumberInput";
 export * from "./Placeholder/Placeholder";
 export * from "./SearchBar/createSearchBar";
