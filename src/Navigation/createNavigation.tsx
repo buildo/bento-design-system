@@ -30,14 +30,14 @@ type NavigationConfig = {
   activeVisualElement: JSX.Element;
 };
 
-type IconType = "none" | "icon" | "illustration";
+type Kind = "none" | "icon" | "illustration";
 
-type DestinationIconProps<IT extends IconType> = IT extends "none"
+type DestinationIconProps<T extends Kind> = T extends "none"
   ? {
       icon?: never;
       illustration?: never;
     }
-  : IT extends "icon"
+  : T extends "icon"
   ? {
       icon: (props: IconProps) => JSX.Element;
       illustration?: never;
@@ -91,8 +91,8 @@ export function createNavigation(config: NavigationConfig) {
     );
   }
 
-  type Props<A, IT extends IconType> = {
-    iconType: IT;
+  type Props<A, T extends Kind> = {
+    kind: T;
     size: Size;
     value: A;
     onChange: (v: A) => void;
@@ -101,16 +101,16 @@ export function createNavigation(config: NavigationConfig) {
         value: A;
         label: LocalizedString;
         disabled?: boolean;
-      } & DestinationIconProps<IT>
+      } & DestinationIconProps<T>
     >;
   };
 
-  return function Navigation<A, IT extends IconType>({
+  return function Navigation<A, T extends Kind>({
     value,
     destinations,
     onChange,
     size,
-  }: Props<A, IT>) {
+  }: Props<A, T>) {
     return (
       <Inset spaceX={config.paddingX}>
         <Columns space={config.destinationsSpacing}>

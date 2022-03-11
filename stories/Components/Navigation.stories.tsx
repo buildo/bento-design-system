@@ -26,7 +26,7 @@ const destinations: ComponentProps<typeof Navigation>["destinations"] = [
 const { defaultExport, createControlledStory } = createComponentStories({
   component: Navigation,
   args: {
-    iconType: "none",
+    kind: "none",
     destinations,
     size: "large",
   },
@@ -37,10 +37,10 @@ export default defaultExport;
 export const medium = createControlledStory("destination1", { size: "medium" });
 export const large = createControlledStory("destination1", {});
 export const withIcons = createControlledStory("destination1", {
-  iconType: "icon",
+  kind: "icon",
   destinations: destinations.map((d) => ({ ...d, icon: IconInformative })) as any,
 });
 export const withIllustrations = createControlledStory("destination1", {
-  iconType: "illustration",
+  kind: "illustration",
   destinations: destinations.map((d) => ({ ...d, illustration: IllustrationIdea })) as any,
 });
