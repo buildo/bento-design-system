@@ -33,7 +33,7 @@ describe("textChildrenToChildren", () => {
       Array [
         <ForwardRef
           as="b"
-          fontWeight="semibold"
+          fontWeight="bodyStrong"
         >
           Bold text
         </ForwardRef>,
@@ -62,7 +62,7 @@ describe("textChildrenToChildren", () => {
         "Hello",
         <ForwardRef
           as="b"
-          fontWeight="semibold"
+          fontWeight="bodyStrong"
         >
           World
         </ForwardRef>,
@@ -84,14 +84,14 @@ describe("textChildrenToChildren", () => {
         "First",
         <ForwardRef
           as="b"
-          fontWeight="semibold"
+          fontWeight="bodyStrong"
         >
           line
         </ForwardRef>,
         <br />,
         <ForwardRef
           as="b"
-          fontWeight="semibold"
+          fontWeight="bodyStrong"
         >
           Second
         </ForwardRef>,

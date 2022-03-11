@@ -64,7 +64,7 @@ function textChildrenToChildrenArray(children: TextChildren): Array<Children> {
       return [
         // NOTE: we render a "raw" component, so that everything else
         // is inherited by the surrounding typography component
-        <Box as="b" fontWeight="semibold">
+        <Box as="b" fontWeight="bodyStrong">
           {children.text}
         </Box>,
       ];
