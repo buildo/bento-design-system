@@ -1,8 +1,9 @@
-import { Toast, ToastProvider, useToast } from "..";
+import { BentoProvider, Toast, useToast } from "..";
 import { createComponentStories, formatMessage, textArgType } from "../util";
 import { action } from "@storybook/addon-actions";
 import { ComponentProps, useEffect } from "react";
 import { Meta, StoryFn } from "@storybook/react";
+import { defaultMessages } from "../defaultMessages";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Toast,
@@ -78,8 +79,8 @@ export const WithProvider = ({
 
 WithProvider.decorators = [
   (StoryFn: StoryFn) => (
-    <ToastProvider dismissAfterMs={1000000}>
+    <BentoProvider toastDismissAfterMs={1000000} defaultMessages={defaultMessages}>
       <StoryFn />
-    </ToastProvider>
+    </BentoProvider>
   ),
 ];

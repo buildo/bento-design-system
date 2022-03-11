@@ -7,6 +7,7 @@ type Props = {
   children?: Children;
   dismissAfterMs: number;
 };
+export type { Props as ToastProviderProps };
 
 export function createToastProvider(ToastContainer: FunctionComponent<ToastProps>) {
   return function ToastProvider({ children, dismissAfterMs }: Props) {

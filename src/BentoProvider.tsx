@@ -1,5 +1,5 @@
-import { Children, ToastProps } from ".";
-import { createToastProvider } from "./Toast/createToastProvider";
+import { Children } from ".";
+import { ToastProviderProps } from "./Toast/createToastProvider";
 import { OverlayProvider } from "@react-aria/overlays";
 import { DefaultMessages, DefaultMessagesContext } from "./DefaultMessagesContext";
 import { LinkComponent, LinkComponentContext } from "./util/link";
@@ -32,8 +32,7 @@ type Props = {
   linkComponent?: LinkComponent;
 } & DefaultMessages;
 
-export function createBentoProvider(ToastContainer: FunctionComponent<ToastProps>) {
-  const ToastProvider = createToastProvider(ToastContainer);
+export function createBentoProvider(ToastProvider: FunctionComponent<ToastProviderProps>) {
   return function BentoProvider({
     children,
     toastDismissAfterMs = 5000,
