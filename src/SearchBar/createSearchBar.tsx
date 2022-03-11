@@ -101,7 +101,7 @@ export function createSearchBar(
               inputRecipe({ validation: "valid" }),
               bodyRecipe({
                 color: props.disabled ? "disabled" : "default",
-                weight: "regular",
+                weight: "default",
                 size: config.fontSize,
               }),
             ]}

@@ -119,7 +119,7 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
         {...props}
         className={bodyRecipe({
           size: inputConfig.fontSize,
-          weight: "regular",
+          weight: "default",
           color: "default",
         })}
       />

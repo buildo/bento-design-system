@@ -54,7 +54,7 @@ export function createTextField(Field: FieldType, config: InputConfig) {
             inputRecipe({ validation: validationState }),
             bodyRecipe({
               color: props.disabled ? "disabled" : "default",
-              weight: "regular",
+              weight: "default",
               size: config.fontSize,
             }),
           ]}
