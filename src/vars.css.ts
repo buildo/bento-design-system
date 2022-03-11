@@ -56,6 +56,18 @@ export const vars = createThemeContract({
     40: null,
     80: null,
   },
+  negativeSpace: {
+    "0": null,
+    // NOTE(gabro): ideally we would use "-4" and so on here, but we can't due to
+    // https://github.com/Swatinem/rollup-plugin-dts/issues/201
+    negative4: null,
+    negative8: null,
+    negative16: null,
+    negative24: null,
+    negative32: null,
+    negative40: null,
+    negative80: null,
+  },
   radius: {
     4: null,
     8: null,

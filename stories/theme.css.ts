@@ -119,6 +119,16 @@ const commonTheme = {
     "40": "40px",
     "80": "80px",
   },
+  negativeSpace: {
+    "0": "0",
+    negative4: "-4px",
+    negative8: "-8px",
+    negative16: "-16px",
+    negative24: "-24px",
+    negative32: "-32px",
+    negative40: "-40px",
+    negative80: "-80px",
+  },
   radius: {
     "4": "4px",
     "8": "8px",

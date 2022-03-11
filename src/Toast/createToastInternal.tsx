@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Box, Column, Columns } from "../internal";
+import { Box, Column, Columns, Bleed } from "../internal";
 import { Body, ButtonProps, ToastProps } from "..";
 import { toastRecipe } from "./Toast.css";
 import { ToastConfig } from "./createToast";
@@ -20,8 +20,7 @@ export function createToastInternal(
         className={toastRecipe({ kind })}
         borderRadius={config.radius}
         paddingY={config.paddingY}
-        paddingLeft={config.paddingX.withoutAction}
-        paddingRight={!!action ? config.paddingX.withAction : config.paddingX.withoutAction}
+        paddingX={config.paddingX}
       >
         <Columns space={16} alignY="center">
           <Body size={config.messageSize} color={kind === "secondary" ? "default" : kind}>
@@ -29,7 +28,9 @@ export function createToastInternal(
           </Body>
           {action && (
             <Column width="content">
-              <Button size="medium" kind="transparent" hierarchy="secondary" {...action} />
+              <Bleed spaceRight={config.mediumButtonPaddingX}>
+                <Button size="medium" kind="transparent" hierarchy="secondary" {...action} />
+              </Bleed>
             </Column>
           )}
         </Columns>

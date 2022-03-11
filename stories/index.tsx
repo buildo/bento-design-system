@@ -35,7 +35,7 @@ import { sprinkles } from "./sprinkles.css";
 
 export * from "../src";
 export const Box = createBentoBox(sprinkles);
-export const { Stack, Column, Columns, Inline, Inset } = createLayoutComponents(Box);
+export const { Stack, Column, Columns, Inline, Inset, Bleed } = createLayoutComponents(Box);
 export const Tooltip = createTooltip();
 export const {
   Field,
@@ -50,7 +50,9 @@ export const { Button, ButtonLink } = createButtons();
 export const Banner = createBanner(Button, {});
 export const Actions = createActions(Button, Banner);
 export const { Form, FormSection, FormRow } = createFormLayoutComponents(Actions);
-export const { Toast, ToastProvider } = createToast(Button, {});
+export const { Toast, ToastProvider } = createToast(Button, {
+  mediumButtonPaddingX: 16,
+});
 export const BentoProvider = createBentoProvider(ToastProvider);
 export const Card = createCard<24 | 32 | 40>({});
 export const Link = createLink();
