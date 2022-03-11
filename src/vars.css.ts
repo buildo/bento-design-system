@@ -5,8 +5,12 @@ export const vars = createThemeContract({
     default: null,
   },
   fontWeight: {
-    regular: null,
-    semibold: null,
+    body: null,
+    bodyStrong: null,
+    display: null,
+    headline: null,
+    label: null,
+    title: null,
   },
   fontSize: {
     bodySmall: null,

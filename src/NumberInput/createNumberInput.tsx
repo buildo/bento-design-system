@@ -74,7 +74,7 @@ export function createNumberInput(config: InputConfig) {
             inputRecipe({ validation: props.validationState }),
             bodyRecipe({
               color: props.disabled ? "disabled" : "default",
-              weight: "regular",
+              weight: "default",
               size: config.fontSize,
             }),
           ]}

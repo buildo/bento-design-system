@@ -16,14 +16,12 @@ export type LinkProps = {
 
 type LinkConfig = {
   labelSize: LabelProps["size"];
-  labelWeight: BentoSprinkles["fontWeight"];
   labelDecoration: BentoSprinkles["textDecoration"];
 };
 
 export function createLink(
   config: LinkConfig = {
     labelSize: "large",
-    labelWeight: "semibold",
     labelDecoration: {
       default: "none",
       active: "none",
@@ -56,7 +54,6 @@ export function createLink(
         className={[link, extendedHitAreaRecipe({ axis: "y" }), resetStyles.element["a"]]}
         disabled={isDisabled}
         display="inline-block"
-        fontWeight={config.labelWeight}
         textDecoration={config.labelDecoration}
         color={isDisabled ? "textDisabled" : "textLink"}
       >
