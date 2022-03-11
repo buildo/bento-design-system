@@ -168,7 +168,7 @@ createGlobalTheme(":root", bentoVars, {
     textLink: colors.neutral55,
     textInformative: colors.informative50,
     textPositive: colors.positive70,
-    textWarning: colors.warning60,
+    textWarning: colors.warning70,
     textNegative: colors.negative60,
     textDisabled: "rgba(82, 94, 111, 0.3)",
   },
