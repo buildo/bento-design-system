@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { Avatar, Body, Box, Button, Dropdown, Stack, Title } from "../";
+import { Avatar, Box, Button, Dropdown } from "../";
 import { createComponentStories, formatMessage } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
