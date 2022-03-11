@@ -31,6 +31,7 @@ export * from "./Modal/useModalContext";
 export * from "./Navigation/createNavigation";
 export * from "./NumberInput/createNumberInput";
 export * from "./Placeholder/Placeholder";
+export * from "./Popover/Popover";
 export * from "./SearchBar/createSearchBar";
 export * from "./Switch/createSwitch";
 export * from "./Table/createTable";
