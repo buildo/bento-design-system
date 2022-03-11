@@ -14,6 +14,7 @@ export * from "./ContentBlock/ContentBlock";
 export * from "./Disclosure/createDisclosure";
 export * from "./DisclosureGroup/createDisclosureGroup";
 export * from "./Divider/Divider";
+export * from "./Dropdown/createDropdown";
 export * from "./Feedback/createFeedback";
 export * from "./Field/createFormFields";
 export * from "./Form/createFormLayoutComponents";
