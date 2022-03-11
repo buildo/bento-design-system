@@ -20,7 +20,7 @@ type Props = {
   id?: string;
   children: TextChildren;
   size: Size;
-  weight?: "regular" | "semibold";
+  weight?: "default" | "strong";
   color?: Color;
   align?: Align;
   as?: BoxProps<typeof bentoSprinkles>["as"];
@@ -29,7 +29,7 @@ type Props = {
 export function Body({
   children,
   size,
-  weight = "regular",
+  weight = "default",
   color = "default",
   align,
   as = "span",

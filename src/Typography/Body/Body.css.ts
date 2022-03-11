@@ -10,8 +10,8 @@ export const bodyRecipe = strictRecipe({
       large: bentoSprinkles({ fontSize: "bodyLarge", lineHeight: "bodyLarge" }),
     },
     weight: {
-      regular: bentoSprinkles({ fontWeight: "regular" }),
-      semibold: bentoSprinkles({ fontWeight: "semibold" }),
+      default: bentoSprinkles({ fontWeight: "body" }),
+      strong: bentoSprinkles({ fontWeight: "bodyStrong" }),
     },
     color: {
       default: bentoSprinkles({ color: "textPrimary" }),

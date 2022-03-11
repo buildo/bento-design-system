@@ -2,7 +2,7 @@ import { strictRecipe } from "../../util/strictRecipe";
 import { bentoSprinkles } from "../../internal/sprinkles.css";
 
 export const titleRecipe = strictRecipe({
-  base: bentoSprinkles({ fontFamily: "default", fontWeight: "semibold" }),
+  base: bentoSprinkles({ fontFamily: "default", fontWeight: "title" }),
   variants: {
     size: {
       small: bentoSprinkles({

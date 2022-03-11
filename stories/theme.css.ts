@@ -102,8 +102,12 @@ const commonTheme = {
     titleLarge: pixelToRem(28),
   },
   fontWeight: {
-    regular: "400",
-    semibold: "600",
+    body: "400",
+    bodyStrong: "500",
+    display: "500",
+    headline: "500",
+    label: "600",
+    title: "600",
   },
   letterSpacing: {
     "1": "0.01em",

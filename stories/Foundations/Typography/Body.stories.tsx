@@ -25,11 +25,11 @@ export const SizeLarge = createStory({
   size: "large",
 });
 
-export const WeightRegular = createStory({
+export const WeightDefault = createStory({
   size: "large",
 });
 
-export const WeightSemibold = createStory({
-  weight: "semibold",
+export const WeightStrong = createStory({
+  weight: "strong",
   size: "large",
 });
