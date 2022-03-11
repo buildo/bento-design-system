@@ -35,7 +35,7 @@ const colors = {
   warning40: "#F2A60D",
   warning50: "#D66F00",
   warning60: "#BA5900",
-  warning70: "#946300",
+  warning70: "#943C00",
   negative05: "#FFD4D8",
   negative40: "#CE0718",
   negative50: "#CE0718",
