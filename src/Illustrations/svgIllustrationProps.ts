@@ -16,11 +16,15 @@ function outlineColor(color: (IllustrationProps & { style: "outline" })["color"]
       return vars.foregroundColor.foregroundSecondary;
     case "disabled":
       return vars.foregroundColor.foregroundDisabled;
+    case "inherit":
+      return "inherit";
   }
 }
 
 function sizeToDimensions(size: IllustrationProps["size"]): { width: number; height: number } {
   switch (size) {
+    case 24:
+      return { width: 24, height: 24 };
     case 32:
       return { width: 32, height: 32 };
     case 40:
