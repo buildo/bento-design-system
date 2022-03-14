@@ -64,6 +64,7 @@
     "@react-stately/checkbox": "^3.0.5",
     "@react-stately/menu": "^3.2.6",
     "@react-stately/numberfield": "^3.0.2",
+    "@react-stately/overlays": "^3.1.6",
     "@react-stately/radio": "^3.3.2",
     "@react-stately/toggle": "^3.2.3",
     "@react-stately/tooltip": "^3.0.7",

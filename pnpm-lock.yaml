@@ -31,6 +31,7 @@ specifiers:
   '@react-stately/checkbox': ^3.0.5
   '@react-stately/menu': ^3.2.6
   '@react-stately/numberfield': ^3.0.2
+  '@react-stately/overlays': ^3.1.6
   '@react-stately/radio': ^3.3.2
   '@react-stately/toggle': ^3.2.3
   '@react-stately/tooltip': ^3.0.7
@@ -117,6 +118,7 @@ dependencies:
   '@react-stately/checkbox': 3.0.5_react@17.0.2
   '@react-stately/menu': 3.2.6_react@17.0.2
   '@react-stately/numberfield': 3.0.2_react@17.0.2
+  '@react-stately/overlays': 3.1.6_react@17.0.2
   '@react-stately/radio': 3.3.2_react@17.0.2
   '@react-stately/toggle': 3.2.3_react@17.0.2
   '@react-stately/tooltip': 3.0.7_react@17.0.2
@@ -2451,7 +2453,7 @@ packages:
       '@babel/runtime': 7.16.3
       '@react-aria/focus': 3.5.0_react@17.0.2
       '@react-aria/utils': 3.11.0_react@17.0.2
-      '@react-stately/overlays': 3.1.3_react@17.0.2
+      '@react-stately/overlays': 3.1.6_react@17.0.2
       '@react-types/dialog': 3.3.1_react@17.0.2
       react: 17.0.2
     dev: false
@@ -2641,7 +2643,7 @@ packages:
       '@react-aria/interactions': 3.8.1_react@17.0.2
       '@react-aria/utils': 3.11.0_react@17.0.2
       '@react-aria/visually-hidden': 3.2.3_react@17.0.2
-      '@react-stately/overlays': 3.1.3_react@17.0.2
+      '@react-stately/overlays': 3.1.6_react@17.0.2
       '@react-types/button': 3.4.1_react@17.0.2
       '@react-types/overlays': 3.5.4_react@17.0.2
       dom-helpers: 3.4.0
@@ -2930,28 +2932,6 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@react-stately/overlays/3.1.3_react@17.0.2:
-    resolution: {integrity: sha512-X8H/h9F8ZjevwJ7P8ak7v500qQd5x4Y76LsXUXrR6LtcO8FXfp2I+W8sGmBtLZwLQpTJiF1U0WMQqXLE1g6eLA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1
-    dependencies:
-      '@babel/runtime': 7.16.3
-      '@react-stately/utils': 3.4.1_react@17.0.2
-      '@react-types/overlays': 3.5.4_react@17.0.2
-      react: 17.0.2
-    dev: false
-
-  /@react-stately/overlays/3.1.5_react@17.0.2:
-    resolution: {integrity: sha512-Md//mgFBk6toWYWqEvETS8OHStkZUrUz/PyMpRf3o0z/bInJzWtL+FHkCR6dksURJLjMbLH1CADC70GEa2cixA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1
-    dependencies:
-      '@babel/runtime': 7.16.3
-      '@react-stately/utils': 3.4.1_react@17.0.2
-      '@react-types/overlays': 3.5.4_react@17.0.2
-      react: 17.0.2
-    dev: false
-
   /@react-stately/overlays/3.1.6_react@17.0.2:
     resolution: {integrity: sha512-0iOdRqYjhTj8966lO9xN8+9IXXJ1Ngv2hCF2imPa40Jl1BXLBogLPblCq3HEQPcPsa+0pU3+xoaIb0MWdIkY9w==}
     peerDependencies:
@@ -3016,7 +2996,7 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1
     dependencies:
       '@babel/runtime': 7.16.3
-      '@react-stately/overlays': 3.1.5_react@17.0.2
+      '@react-stately/overlays': 3.1.6_react@17.0.2
       '@react-stately/utils': 3.4.1_react@17.0.2
       '@react-types/tooltip': 3.1.4_react@17.0.2
       react: 17.0.2
