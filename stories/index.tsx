@@ -32,6 +32,8 @@ import {
   createTableColumns,
   createNavigation,
   defaultNavigationConfig,
+  defaultDropdownConfig,
+  createDropdown,
 } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
@@ -107,3 +109,4 @@ export const Feedback = createFeedback(Button, {
 export const Table = createTable(Tooltip, Feedback);
 export const tableColumn = createTableColumns(Button, ButtonLink, Chip, Link);
 export const Navigation = createNavigation(defaultNavigationConfig);
+export const Dropdown = createDropdown(List, defaultDropdownConfig);
