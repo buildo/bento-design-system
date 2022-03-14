@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    // NOTE(gabro): without this, vars.css.ts does not compile.
+    // This implements the fix suggested at https://github.com/microsoft/TypeScript/issues/29808#issuecomment-540292885
+    "paths": {
+      "@vanilla-extract/private": ["node_modules/@vanilla-extract/private/"]
+    },
+    "baseUrl": "."
+  },
+  "include": ["src/**/*"]
+}

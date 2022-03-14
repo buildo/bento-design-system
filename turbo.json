@@ -1,0 +1,21 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "baseBranch": "origin/main",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "start": {},
+    "prettier-check": {},
+    "prettier-write": {},
+    "lint-staged": {},
+    "test": {},
+    "eslint-check": {},
+    "chromatic": {
+      "dependsOn": ["^build"]
+    }
+  }
+}

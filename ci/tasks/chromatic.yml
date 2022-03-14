@@ -31,4 +31,5 @@ run:
         export CHROMATIC_SHA=$(cat .git/resource/head_sha)
       fi
 
-      pnpm chromatic --ci --exit-zero-on-changes --exit-once-uploaded $CHROMATIC_OPTIONS
+      CHROMATIC_OPTIONS="--ci --exit-zero-on-changes --exit-once-uploaded ${CHROMATIC_OPTIONS}"
+      pnpm chromatic
