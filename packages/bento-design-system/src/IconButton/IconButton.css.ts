@@ -1,9 +1,9 @@
 import { style } from "@vanilla-extract/css";
-import { recipe } from "@vanilla-extract/recipes";
 import { bentoSprinkles } from "../internal";
 import { extendedHitAreaRecipe } from "../util/extendedHitArea.css";
+import { strictRecipe } from "../util/strictRecipe";
 
-export const iconButtonRecipe = recipe({
+export const iconButtonRecipe = strictRecipe({
   base: style([extendedHitAreaRecipe({ axis: "both" }), { lineHeight: 0 }]),
   variants: {
     kind: {
