@@ -8,6 +8,7 @@ const destinations: ComponentProps<typeof Navigation>["destinations"] = [
     label: formatMessage("Destination 1"),
     href: "https://google.com",
     target: "_blank",
+    active: true,
   },
   {
     label: formatMessage("Destination 2"),
