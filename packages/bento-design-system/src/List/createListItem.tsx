@@ -1,5 +1,5 @@
 import { useLink } from "@react-aria/link";
-import { ComponentProps, useRef } from "react";
+import { AnchorHTMLAttributes, ComponentProps, useRef } from "react";
 import { Body, Label, LocalizedString, useLinkComponent } from "..";
 import { Box, Columns, Column, Inset, Stack, BentoSprinkles } from "../internal";
 import { IconProps } from "../Icons/IconProps";
@@ -52,9 +52,11 @@ export type Props = Kind &
     | {
         onPress?: () => void;
         href?: never;
+        target?: never;
       }
     | {
         href?: string;
+        target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
         onPress?: never;
       }
   );
@@ -112,6 +114,7 @@ export function createListItem(config: ListItemConfig) {
           as={props.href ? LinkComponent : "div"}
           {...linkProps}
           href={props.href}
+          target={props.target}
           display="block"
           tabIndex={interactive && !props.ignoreTabIndex ? linkProps.tabIndex : undefined}
           textDecoration="none"
