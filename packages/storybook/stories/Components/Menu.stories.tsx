@@ -1,9 +1,10 @@
+import { Body, Title } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
-import { Avatar, Box, Button, Dropdown } from "..";
+import { Avatar, Box, Button, Menu, Stack } from "..";
 import { createComponentStories, formatMessage } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
-  component: Dropdown,
+  component: Menu,
   args: {
     size: "medium",
     initialIsOpen: true,
@@ -45,6 +46,15 @@ export const ButtonTrigger = createStory({
 });
 
 export const AvatarTrigger = createStory({
+  header: (
+    <Stack space={4}>
+      <Title size="medium">{formatMessage("Jane Doe")}</Title>
+      <Body size="medium">{formatMessage("hello@example.com")}</Body>
+      <Body size="small" color="secondary">
+        {formatMessage("Admin")}
+      </Body>
+    </Stack>
+  ),
   trigger: (ref, triggerProps, { toggle }) => (
     <Box
       ref={ref}

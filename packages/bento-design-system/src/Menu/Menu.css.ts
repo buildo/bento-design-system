@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
 
-export const dropdownRecipe = strictRecipe({
+export const menuRecipe = strictRecipe({
   base: [
     style([
       {
