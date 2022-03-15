@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { BentoSprinkles, Box } from "../internal";
 import { Children } from "../util/Children";
 import { IconProps } from "../Icons/IconProps";
-import { iconButton } from "./IconButton.css";
+import { iconButtonRecipe } from "./IconButton.css";
 import { buttonRecipe } from "../Button/Button.css";
 import { LocalizedString } from "../util/LocalizedString";
 
@@ -53,7 +53,7 @@ export function createIconButton(config: IconButtonConfig) {
             size: "medium",
             active: false,
           }),
-          iconButton,
+          iconButtonRecipe({ kind: props.kind, size: props.size }),
         ]}
         tabIndex={props.tabIndex ?? buttonProps.tabIndex}
         alignItems="center"
