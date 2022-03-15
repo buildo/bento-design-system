@@ -16,6 +16,7 @@ git config --global user.name "Nemobot"
 corepack enable
 
 pnpm install
+cd packages/bento-design-system
 pnpm version --no-git-tag-version --new-version $VERSION
 
 git add .
