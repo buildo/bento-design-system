@@ -175,6 +175,7 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
           trailingIcon={props.isSelected ? IconCheck : undefined}
           isFocused={props.isFocused}
           ignoreTabIndex
+          target={undefined}
         />
       </defaultComponents.Option>
     );
