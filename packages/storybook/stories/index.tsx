@@ -34,6 +34,7 @@ import {
   defaultDropdownConfig,
   createDropdown,
 } from "@buildo/bento-design-system";
+import "@buildo/bento-design-system/lib/index.css";
 import { sprinkles } from "./sprinkles.css";
 
 export * from "@buildo/bento-design-system";
