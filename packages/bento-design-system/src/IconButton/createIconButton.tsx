@@ -59,7 +59,7 @@ export function createIconButton(config: IconButtonConfig) {
         alignItems="center"
         justifyContent="center"
         borderRadius={config.radius}
-        padding={config.padding[props.size]}
+        padding={props.kind === "solid" ? config.padding[props.size] : undefined}
       >
         {props.icon({ size: props.size, color: "inherit" })}
       </Box>
