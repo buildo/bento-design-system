@@ -1,25 +1,25 @@
-import { usePress } from "@react-aria/interactions";
-import { Box, Columns, Column, BentoSprinkles, Inset } from "../internal";
-import { IconProps, IllustrationProps, Label } from "..";
+import { Box, Columns, Column, BentoSprinkles } from "../internal";
+import { IconProps, IllustrationProps, Label, useLinkComponent } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { destinationRecipe } from "./Navigation.css";
-import { ComponentProps } from "react";
+import { AnchorHTMLAttributes, ComponentProps, useRef } from "react";
+import { useLink } from "@react-aria/link";
 
 type DestinationProps = {
   size: Size;
   label: LocalizedString;
-  onPress: () => void;
-  active: boolean;
+  href: string;
+  active?: boolean;
   disabled?: boolean;
   icon?: (props: IconProps) => JSX.Element;
   illustration?: (props: IllustrationProps) => JSX.Element;
+  target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
 };
 
 type Size = "medium" | "large";
 type SizeConfig<A> = Record<Size, A>;
 
 type NavigationConfig = {
-  paddingX: BentoSprinkles["paddingX"];
   destinationsSpacing: BentoSprinkles["gap"];
   destinationPaddingX: SizeConfig<BentoSprinkles["paddingX"]>;
   destinationPaddingY: SizeConfig<BentoSprinkles["paddingY"]>;
@@ -49,23 +49,38 @@ type DestinationIconProps<T extends Kind> = T extends "none"
 
 export function createNavigation(config: NavigationConfig) {
   function Destination({
-    active,
-    onPress,
+    active = false,
     label,
     disabled,
     icon,
     illustration,
     size,
+    href,
+    target,
   }: DestinationProps) {
+    const linkRef = useRef<HTMLElement>(null);
+
     const {
-      pressProps: { color: ignored1, ...pressProps },
-    } = usePress({ onPress, isDisabled: disabled });
+      linkProps: { color, ...linkProps },
+    } = useLink(
+      {
+        isDisabled: disabled,
+        elementType: "a",
+      },
+      linkRef
+    );
+
+    const LinkComponent = useLinkComponent();
 
     return (
       <Box
         tabIndex={active || disabled ? -1 : 0}
         className={destinationRecipe({ active })}
-        {...pressProps}
+        as={LinkComponent}
+        {...linkProps}
+        href={href}
+        display="block"
+        target={target}
         disabled={disabled}
         paddingX={config.destinationPaddingX[size]}
         paddingY={config.destinationPaddingY[size]}
@@ -91,52 +106,45 @@ export function createNavigation(config: NavigationConfig) {
     );
   }
 
-  type Props<A, T extends Kind> = {
+  type Props<T extends Kind> = {
     kind: T;
     size: Size;
-    value: A;
-    onChange: (v: A) => void;
     destinations: Array<
       {
-        value: A;
+        href: string;
+        target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
         label: LocalizedString;
+        active?: boolean;
         disabled?: boolean;
       } & DestinationIconProps<T>
     >;
   };
 
-  return function Navigation<A, T extends Kind>({
-    value,
-    destinations,
-    onChange,
-    size,
-  }: Props<A, T>) {
+  return function Navigation<T extends Kind>({ destinations, size }: Props<T>) {
     return (
-      <Inset spaceX={config.paddingX}>
-        <Columns space={config.destinationsSpacing}>
-          {destinations.map((d) => {
-            return (
-              <Column key={d.label} width="content">
-                <Destination
-                  label={d.label}
-                  onPress={() => onChange(d.value)}
-                  active={value === d.value}
-                  disabled={d.disabled}
-                  size={size}
-                  icon={d.icon}
-                  illustration={d.illustration}
-                />
-              </Column>
-            );
-          })}
-        </Columns>
-      </Inset>
+      <Columns space={config.destinationsSpacing}>
+        {destinations.map((d) => {
+          return (
+            <Column key={d.label} width="content">
+              <Destination
+                label={d.label}
+                href={d.href}
+                target={d.target}
+                active={d.active}
+                disabled={d.disabled}
+                size={size}
+                icon={d.icon}
+                illustration={d.illustration}
+              />
+            </Column>
+          );
+        })}
+      </Columns>
     );
   };
 }
 
 export const defaultNavigationConfig: NavigationConfig = {
-  paddingX: 0,
   destinationPaddingX: {
     medium: 16,
     large: 24,
