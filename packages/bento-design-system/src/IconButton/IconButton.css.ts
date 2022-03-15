@@ -1,9 +1,9 @@
 import { style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 import { bentoSprinkles } from "../internal";
 import { extendedHitAreaRecipe } from "../util/extendedHitArea.css";
-import { strictRecipe } from "../util/strictRecipe";
 
-export const iconButtonRecipe = strictRecipe({
+export const iconButtonRecipe = recipe({
   base: style([extendedHitAreaRecipe({ axis: "both" }), { lineHeight: 0 }]),
   variants: {
     kind: {
@@ -11,11 +11,6 @@ export const iconButtonRecipe = strictRecipe({
       transparent: bentoSprinkles({
         borderRadius: "circled",
       }),
-    },
-    hierarchy: {
-      primary: {},
-      secondary: {},
-      danger: {},
     },
     size: {
       8: {},
@@ -63,45 +58,6 @@ export const iconButtonRecipe = strictRecipe({
       style: bentoSprinkles({
         margin: "negative8",
         padding: 8,
-      }),
-    },
-    {
-      variants: {
-        kind: "transparent",
-        hierarchy: "primary",
-      },
-      style: bentoSprinkles({
-        background: {
-          default: "primaryTransparentEnabledBackground",
-          hover: "primaryTransparentHoverBackground",
-          focus: "primaryTransparentFocusBackground",
-        },
-      }),
-    },
-    {
-      variants: {
-        kind: "transparent",
-        hierarchy: "secondary",
-      },
-      style: bentoSprinkles({
-        background: {
-          default: "secondaryTransparentEnabledBackground",
-          hover: "secondaryTransparentHoverBackground",
-          focus: "secondaryTransparentFocusBackground",
-        },
-      }),
-    },
-    {
-      variants: {
-        kind: "transparent",
-        hierarchy: "danger",
-      },
-      style: bentoSprinkles({
-        background: {
-          default: "dangerTransparentEnabledBackground",
-          hover: "dangerTransparentHoverBackground",
-          focus: "dangerTransparentFocusBackground",
-        },
       }),
     },
   ],
