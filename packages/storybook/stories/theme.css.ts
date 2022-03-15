@@ -230,6 +230,10 @@ createGlobalTheme(":root", bentoVars, {
     dangerTransparentFocusForeground: colors.negative60,
     disabledSolidForeground: "rgba(82, 94, 111, 0.3)",
     disabledTransparentForeground: "rgba(82, 94, 111, 0.3)",
+    linkEnabled: colors.black,
+    linkHover: colors.interactive70,
+    linkFocus: colors.interactive70,
+    linkDisabled: "rgba(82, 94, 111, 0.3)",
   },
   outlineColor: {
     outlineInteractive: colors.black,

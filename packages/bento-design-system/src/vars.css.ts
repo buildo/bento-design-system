@@ -165,6 +165,10 @@ export const vars = createThemeContract({
     dangerTransparentFocusForeground: null,
     disabledSolidForeground: null,
     disabledTransparentForeground: null,
+    linkEnabled: null,
+    linkHover: null,
+    linkFocus: null,
+    linkDisabled: null,
   },
   outlineColor: {
     outlineInteractive: null,
