@@ -5,6 +5,7 @@ import { IconClose } from "../Icons/IconClose";
 import { Column, Columns, BentoSprinkles, bentoSprinkles } from "../internal";
 import { chip } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
+import { IconButtonProps } from "../IconButton/createIconButton";
 
 type DismissProps =
   | {
@@ -60,6 +61,7 @@ const defaultColorsMapping: Record<DefaultColor, BentoSprinkles["background"]> =
 
 export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors extends string>(
   Box: BoxType<AtomsFn>,
+  IconButton: FunctionComponent<IconButtonProps>,
   config: ChipConfig<AtomsFn, CustomColors>
 ) {
   const colorsMapping = { ...defaultColorsMapping, ...config.customColors };
@@ -84,6 +86,8 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
                   label={dismissProps.dismissButtonLabel ?? defaultMessages.Chip.dismissButtonLabel}
                   onPress={dismissProps.onDismiss}
                   size={config.closeIconSize}
+                  kind="transparent"
+                  hierarchy="secondary"
                 />
               </Column>
             )}

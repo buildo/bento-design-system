@@ -33,7 +33,10 @@ import {
   defaultNavigationConfig,
   defaultMenuConfig,
   createMenu,
+  createIconButton,
+  defaultIconButtonConfig,
 } from "@buildo/bento-design-system";
+
 import "@buildo/bento-design-system/lib/index.css";
 import { sprinkles } from "./sprinkles.css";
 
@@ -51,7 +54,8 @@ export const {
   TextField,
 } = createFormFields(Tooltip);
 export const { Button, ButtonLink } = createButtons();
-export const Banner = createBanner(Button, {});
+export const IconButton = createIconButton(defaultIconButtonConfig);
+export const Banner = createBanner(Button, IconButton, {});
 export const Actions = createActions(Button, Banner);
 export const { Form, FormSection, FormRow } = createFormLayoutComponents(Actions);
 export const { Toast, ToastProvider } = createToast(Button, {
@@ -61,8 +65,8 @@ export const BentoProvider = createBentoProvider(ToastProvider);
 export const Card = createCard<24 | 32 | 40>({});
 export const Link = createLink();
 export const Breadcrumb = createBreadcrumb(Link);
-export const Modal = createModal(Actions);
-export const Chip = createChip(Box, {
+export const Modal = createModal(Actions, IconButton);
+export const Chip = createChip(Box, IconButton, {
   ...defaultChipConfig,
   customColors: {
     custom: "customColor1",
@@ -74,7 +78,7 @@ export const DisclosureGroup = createDisclosureGroup(Disclosure);
 export const Tabs = createTabs();
 export const AreaLoader = createAreaLoader();
 export const Avatar = createAvatar();
-export const SearchBar = createSearchBar(Field);
+export const SearchBar = createSearchBar(Field, IconButton);
 export const Switch = createSwitch(Field);
 const FeedbackBackground = (
   <svg viewBox="0 0 440 240">

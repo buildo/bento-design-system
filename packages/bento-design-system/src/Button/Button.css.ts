@@ -22,6 +22,7 @@ export const buttonRecipe = strictRecipe({
       transparent: bentoSprinkles({
         background: { disabled: "disabledTransparentBackground" },
         color: { disabled: "disabledTransparentForeground" },
+        fill: { disabled: "disabledTransparentForeground" },
       }),
       outline: bentoSprinkles({
         background: { disabled: "disabledTransparentBackground" },
