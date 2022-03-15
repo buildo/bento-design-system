@@ -1,7 +1,7 @@
 import { action } from "@storybook/addon-actions";
 import { ComponentProps, useState } from "react";
-import { SelectFieldProps } from "..";
 import {
+  SelectFieldProps,
   Form,
   FormSection,
   FormRow,

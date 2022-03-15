@@ -1,4 +1,6 @@
 import "./reset.css";
+import * as icons from "./Icons";
+import * as illustrations from "./Illustrations";
 
 export * from "./Actions/createActions";
 export * from "./AreaLoader/createAreaLoader";
@@ -48,14 +50,9 @@ export * from "./Typography/Title/Title";
 export * from "./sprinkles";
 export * from "./util/Children";
 export * from "./util/LocalizedString";
-export * from "./util/TextChildren";
-export * from "./util/atoms";
-export * from "./util/breakpoints";
-export * from "./util/conditions";
-export * from "./util/link";
-export * from "./util/useDefaultMessages";
-export * from "./util/align";
 export * from "./util/Omit";
+export * from "./util/TextChildren";
+export * from "./util/align";
 
 export { bodyRecipe } from "./Typography/Body/Body.css";
 export { labelRecipe } from "./Typography/Label/Label.css";
@@ -68,5 +65,12 @@ export type { SelectFieldProps } from "./SelectField/createSelectField";
 export type { FieldProps } from "./Field/FieldProps";
 export type { IconButtonProps } from "./IconButton/IconButtonProps";
 
-export * as icons from "./Icons";
-export * as illustrations from "./Illustrations";
+export * from "./util/atoms";
+export * from "./util/breakpoints";
+
+export * from "./util/conditions";
+
+export * from "./util/link";
+export * from "./util/useDefaultMessages";
+
+export { icons, illustrations };
