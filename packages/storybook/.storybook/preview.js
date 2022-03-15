@@ -1,6 +1,5 @@
 import { defaultMessages } from "../stories/defaultMessages";
 import { BentoProvider } from "../stories/";
-import "@buildo/bento-design-system/lib/index.css";
 
 export const decorators = [
   (Story) => (
