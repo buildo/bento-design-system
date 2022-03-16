@@ -1,7 +1,7 @@
 import { ComponentProps, FunctionComponent, Ref, useRef } from "react";
-import { Popover } from "..";
+import { Children, Popover } from "..";
 import { BentoSprinkles, Box, Inset } from "../internal";
-import { dropdownRecipe } from "./Dropdown.css";
+import { menuRecipe } from "./Menu.css";
 import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState, MenuTriggerState } from "@react-stately/menu";
 import { AriaButtonProps } from "@react-types/button";
@@ -12,6 +12,17 @@ import { ListItemProps } from "../List/createListItem";
 type Props = {
   size: ListProps["size"];
   items: Array<ListItemProps>;
+  /**
+   * Optional static content that is displayed before the menu items.
+   */
+  header?: Children;
+  /**
+   * The trigger element that will be used to open the menu.
+   * It must accept a `ref` prop and other accessibility props to ensure the menu is properly
+   * connected to its trigger, for accessibility purposes.
+   *
+   * It can use the `state` parameter to determine and change the menu state.
+   */
   trigger: (
     ref: Ref<HTMLElement>,
     props: Pick<AriaButtonProps, "id" | "aria-labelledby">,
@@ -21,14 +32,16 @@ type Props = {
   placement?: ComponentProps<typeof Popover>["placement"];
 };
 
-type DropdownConfig = {
+type MenuConfig = {
   paddingY: BentoSprinkles["paddingY"];
   radius: BentoSprinkles["borderRadius"];
   elevation: "small" | "medium" | "large";
+  headerPaddingX: BentoSprinkles["paddingX"];
+  headerPaddingY: BentoSprinkles["paddingY"];
 };
 
-export function createDropdown(List: FunctionComponent<ListProps>, config: DropdownConfig) {
-  return function Dropdown({ items, trigger, initialIsOpen, placement, size }: Props) {
+export function createMenu(List: FunctionComponent<ListProps>, config: MenuConfig) {
+  return function Menu({ items, header, trigger, initialIsOpen, placement, size }: Props) {
     const triggerRef = useRef(null);
 
     const state = useMenuTriggerState({
@@ -47,11 +60,20 @@ export function createDropdown(List: FunctionComponent<ListProps>, config: Dropd
         {state.isOpen && (
           <Popover onClose={() => state.close()} triggerRef={triggerRef} placement={placement}>
             <Box
-              className={dropdownRecipe({ elevation: config.elevation })}
+              className={menuRecipe({ elevation: config.elevation })}
               {...menuProps}
               color={undefined}
               borderRadius={config.radius}
             >
+              {header && (
+                <Box
+                  background="backgroundSecondary"
+                  paddingX={config.headerPaddingX}
+                  paddingY={config.headerPaddingY}
+                >
+                  {header}
+                </Box>
+              )}
               <Inset spaceY={config.paddingY}>
                 <List items={items} size={size} />
               </Inset>
@@ -63,8 +85,10 @@ export function createDropdown(List: FunctionComponent<ListProps>, config: Dropd
   };
 }
 
-export const defaultDropdownConfig: DropdownConfig = {
+export const defaultMenuConfig: MenuConfig = {
   paddingY: 8,
   radius: 8,
   elevation: "medium",
+  headerPaddingX: 24,
+  headerPaddingY: 24,
 };
