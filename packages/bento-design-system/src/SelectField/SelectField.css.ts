@@ -17,10 +17,11 @@ export const control = strictRecipe({
   variants: {
     validation: { valid: {}, invalid: {} },
     menuIsOpen: { true: {} },
+    isReadOnly: { true: {} },
   },
   compoundVariants: [
     {
-      variants: { menuIsOpen: false, validation: "valid" },
+      variants: { menuIsOpen: false, validation: "valid", isReadOnly: false },
       style: bentoSprinkles({
         boxShadow: {
           default: "outlineInputEnabled",
@@ -30,18 +31,25 @@ export const control = strictRecipe({
       }),
     },
     {
-      variants: { menuIsOpen: false, validation: "invalid" },
+      variants: { menuIsOpen: false, validation: "invalid", isReadOnly: false },
       style: bentoSprinkles({
         boxShadow: { default: "outlineNegative", focus: "outlineNegativeStrong" },
       }),
     },
     {
-      variants: { menuIsOpen: true, validation: "valid" },
+      variants: { menuIsOpen: true, validation: "valid", isReadOnly: false },
       style: bentoSprinkles({ boxShadow: "outlineInputFocus" }),
     },
     {
-      variants: { menuIsOpen: true, validation: "invalid" },
+      variants: { menuIsOpen: true, validation: "invalid", isReadOnly: false },
       style: bentoSprinkles({ boxShadow: "outlineNegativeStrong" }),
+    },
+    {
+      variants: { menuIsOpen: false, validation: "valid", isReadOnly: true },
+      style: bentoSprinkles({
+        boxShadow: { default: "none", disabled: "none" },
+        background: "backgroundSecondary",
+      }),
     },
   ],
 });

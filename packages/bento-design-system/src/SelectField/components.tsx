@@ -31,7 +31,7 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
   const ListItem = createListItem(dropdownConfig.list.item);
 
   function Control<A, IsMulti extends boolean>({
-    selectProps: { validationState: validation, isDisabled },
+    selectProps: { validationState: validation, isDisabled, isReadOnly },
     innerProps,
     innerRef,
     menuIsOpen,
@@ -43,7 +43,7 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
         ref={innerRef}
         color={undefined}
         display="flex"
-        className={control({ validation, menuIsOpen })}
+        className={control({ validation, menuIsOpen, isReadOnly })}
         disabled={isDisabled}
         borderRadius={inputConfig.radius}
         paddingX={inputConfig.paddingX}
@@ -105,7 +105,9 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
 
   function DropdownIndicator<A, IsMulti extends boolean>({
     isDisabled,
+    selectProps: { isReadOnly },
   }: DropdownIndicatorProps<A, IsMulti>) {
+    if (isReadOnly) return null;
     return (
       <Box paddingX={16}>
         <IconChevronDown size={16} color={isDisabled ? "disabled" : "default"} />

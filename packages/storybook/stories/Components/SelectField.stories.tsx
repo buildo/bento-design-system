@@ -17,7 +17,7 @@ function Illustration(props: IllustrationProps) {
   );
 }
 
-const { defaultExport, createControlledStory } = createComponentStories({
+const { defaultExport, createStory, createControlledStory } = createComponentStories({
   component: SelectField,
   args: {
     menuSize: "large",
@@ -107,4 +107,13 @@ export const WithIconSelected = createControlledStory(1, {
     { value: 1, label: formatMessage("Idea"), icon: IconIdea },
     { value: 2, label: formatMessage("User"), icon: IconUser },
   ],
+});
+
+export const ReadOnly = createStory({
+  value: 1,
+  options: [
+    { value: 1, label: formatMessage("Idea"), icon: IconIdea },
+    { value: 2, label: formatMessage("User"), icon: IconUser },
+  ],
+  isReadOnly: true,
 });

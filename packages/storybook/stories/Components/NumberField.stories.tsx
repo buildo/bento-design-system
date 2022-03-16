@@ -1,7 +1,7 @@
 import { NumberField } from "../";
 import { createComponentStories, fieldArgTypes, formatMessage, textArgType } from "../util";
 
-const { defaultExport, createControlledStory } = createComponentStories({
+const { defaultExport, createStory, createControlledStory } = createComponentStories({
   component: NumberField,
   args: {
     name: "applications",
@@ -34,4 +34,10 @@ export const Currency = createControlledStory(0, {
 
 export const Percentage = createControlledStory(0, {
   kind: "percentage",
+});
+
+export const ReadOnly = createStory({
+  value: 50,
+  kind: "percentage",
+  isReadOnly: true,
 });
