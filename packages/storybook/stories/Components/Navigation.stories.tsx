@@ -6,20 +6,23 @@ import { IconInformative, IllustrationIdea } from "..";
 const destinations: ComponentProps<typeof Navigation>["destinations"] = [
   {
     label: formatMessage("Destination 1"),
-    value: "destination1",
+    href: "https://google.com",
+    target: "_blank",
+    active: true,
   },
   {
     label: formatMessage("Destination 2"),
-    value: "destination2",
+    href: "https://amazon.com",
+    target: "_blank",
   },
   {
     label: formatMessage("Destination 3"),
-    value: "destination3",
+    href: "https://apple.com",
     disabled: true,
   },
   {
     label: formatMessage("Destination 4"),
-    value: "destination4",
+    href: "https://microsoft.com",
   },
 ];
 

@@ -19,6 +19,7 @@ type Props = {
 export function createButtonLink(config: ButtonConfig = defaultButtonConfig) {
   return function ButtonLink({
     href,
+    target,
     kind,
     hierarchy,
     size = config.defaultSize,
@@ -46,6 +47,7 @@ export function createButtonLink(config: ButtonConfig = defaultButtonConfig) {
         {...props}
         as={LinkComponent}
         href={href}
+        target={target}
         className={[buttonRecipe({ kind, hierarchy, size, active })]}
         disabled={isDisabled}
         display="inline-block"
