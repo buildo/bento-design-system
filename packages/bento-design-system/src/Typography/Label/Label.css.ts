@@ -31,7 +31,6 @@ export const labelRecipe = strictRecipe({
         fill: "textSecondaryInverse",
       }),
       disabled: bentoSprinkles({ color: "textDisabled", fill: "textDisabled" }),
-      link: bentoSprinkles({ color: "textLink", fill: "textLink" }),
     },
     uppercase: {
       false: {},

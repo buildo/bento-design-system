@@ -180,7 +180,6 @@ createGlobalTheme(":root", bentoVars, {
     textPrimaryInverse: colors.white,
     textSecondaryInverse: colors.neutral40,
     textInteractive: colors.black,
-    textLink: colors.neutral55,
     textInformative: colors.informative50,
     textPositive: colors.positive70,
     textWarning: colors.warning70,

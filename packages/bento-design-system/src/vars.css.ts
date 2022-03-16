@@ -115,7 +115,6 @@ export const vars = createThemeContract({
     textPrimaryInverse: null,
     textSecondaryInverse: null,
     textInteractive: null,
-    textLink: null,
     textInformative: null,
     textPositive: null,
     textWarning: null,

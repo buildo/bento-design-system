@@ -11,8 +11,7 @@ type Color =
   | "primaryInverse"
   | "secondary"
   | "secondaryInverse"
-  | "disabled"
-  | "link";
+  | "disabled";
 
 export type LabelProps = {
   children: TextChildren;
