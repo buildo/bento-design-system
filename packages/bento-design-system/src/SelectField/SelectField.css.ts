@@ -17,7 +17,14 @@ export const control = strictRecipe({
   variants: {
     validation: { valid: {}, invalid: {} },
     menuIsOpen: { true: {} },
-    isReadOnly: { true: {} },
+    isReadOnly: {
+      true: bentoSprinkles({
+        cursor: {
+          default: "default",
+          disabled: "default",
+        },
+      }),
+    },
   },
   compoundVariants: [
     {

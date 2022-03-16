@@ -117,7 +117,7 @@ export function createSelectField(
           id={fieldProps.id}
           aria-label={fieldProps["aria-label"]}
           aria-labelledby={fieldProps["aria-labelledby"]}
-          isDisabled={disabled || isReadOnly}
+          isDisabled={disabled}
           isReadOnly={isReadOnly || false}
           autoFocus={autoFocus}
           value={
@@ -174,6 +174,8 @@ export function createSelectField(
           closeMenuOnSelect={!isMulti}
           hideSelectedOptions={false}
           menuSize={menuSize}
+          menuIsOpen={isReadOnly ? false : undefined}
+          isSearchable={isReadOnly ? false : undefined}
         />
       </Field>
     );
