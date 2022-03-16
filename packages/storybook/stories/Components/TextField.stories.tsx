@@ -1,7 +1,7 @@
 import { TextField } from "..";
 import { createComponentStories, fieldArgTypes, formatMessage, textArgType } from "../util";
 
-const { defaultExport, createControlledStory } = createComponentStories({
+const { defaultExport, createStory, createControlledStory } = createComponentStories({
   component: TextField,
   args: {
     name: "nickname",
@@ -27,4 +27,9 @@ export const Disabled = createControlledStory("", {
 
 export const Error = createControlledStory("", {
   issues: [formatMessage("Please insert at least 3 characters")],
+});
+
+export const ReadOnly = createStory({
+  value: "MyNickname",
+  isReadOnly: true,
 });

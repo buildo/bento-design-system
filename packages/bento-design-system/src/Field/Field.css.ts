@@ -12,7 +12,7 @@ export const inputRecipe = strictRecipe({
         "&:disabled::placeholder": {
           color: vars.textColor.textDisabled,
         },
-        "&:disabled:not(:placeholder-shown)": {
+        "&:read-only": {
           background: vars.backgroundColor.backgroundSecondary,
         },
       },
@@ -40,6 +40,7 @@ export const inputRecipe = strictRecipe({
           focus: "outlineNegativeStrong",
         },
       }),
+      notSet: {},
     },
   },
 });

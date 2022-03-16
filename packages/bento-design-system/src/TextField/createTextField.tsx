@@ -11,14 +11,14 @@ import { InputConfig } from "../Field/InputConfig";
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;
   type?: "text" | "email" | "url" | "password";
-  disabled?: boolean;
+  isReadOnly?: boolean;
 };
 
 export function createTextField(Field: FieldType, config: InputConfig) {
   return function TextField(props: Props) {
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const validationState = props.issues ? "invalid" : "valid";
+    const validationState = props.isReadOnly ? undefined : props.issues ? "invalid" : "valid";
 
     const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
       {
@@ -51,7 +51,7 @@ export function createTextField(Field: FieldType, config: InputConfig) {
           paddingX={config.paddingX}
           paddingY={config.paddingY}
           className={[
-            inputRecipe({ validation: validationState }),
+            inputRecipe({ validation: validationState || "notSet" }),
             bodyRecipe({
               color: props.disabled ? "disabled" : "default",
               weight: "default",
@@ -63,3 +63,5 @@ export function createTextField(Field: FieldType, config: InputConfig) {
     );
   };
 }
+
+export type { Props as TextFieldProps };
