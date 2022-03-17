@@ -97,9 +97,7 @@ export function createNavigation(config: NavigationConfig) {
                 })}
             </Column>
           )}
-          <Label size={config.labelSize[size]} uppercase>
-            {label}
-          </Label>
+          <Label size={config.labelSize[size]}>{label}</Label>
         </Columns>
         {active && config.activeVisualElement}
       </Box>
