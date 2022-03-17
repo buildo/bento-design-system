@@ -1,18 +1,21 @@
-import { FunctionComponent } from "react";
+import { ComponentProps, FunctionComponent } from "react";
 import { Body, ButtonProps, Children, Display, LocalizedString, TextChildren } from "..";
 import { Box, Stack } from "../internal";
 import { feedbackStyle } from "./Feedback.css";
 import { IllustrationProps } from "../Illustrations/IllustrationProps";
 import { IllustrationNegative, IllustrationPositive } from "../Illustrations";
+import { Title } from "../Typography/Title/Title";
+import { Headline } from "../Typography/Headline/Headline";
 
 type Status = "positive" | "negative";
+type Size = "medium" | "large";
 
 type Props = {
   title: LocalizedString;
   description?: TextChildren;
   action?: Pick<ButtonProps, "label" | "onPress">;
   background?: boolean;
-  size: "medium" | "large";
+  size: Size;
 } & (
   | {
       /** Use as:
@@ -32,24 +35,31 @@ type Props = {
     }
 );
 
+type SizeConfig<T> = Record<Size, T>;
+
 type FeedbackConfig = {
   background: JSX.Element | null;
   positiveIllustration: (props: IllustrationProps) => Children;
   negativeIllustration: (props: IllustrationProps) => Children;
+  illustrationSize: SizeConfig<IllustrationProps["size"]>;
+  title: {
+    medium: ComponentProps<typeof Title>["size"];
+    large:
+      | { kind: "display"; size: ComponentProps<typeof Display>["size"] }
+      | { kind: "headline"; size: ComponentProps<typeof Headline>["size"] };
+  };
+  descriptionSize: SizeConfig<ComponentProps<typeof Body>["size"]>;
+  action: SizeConfig<{
+    hierarchy: Extract<ButtonProps["hierarchy"], "primary" | "secondary">;
+    kind: ButtonProps["kind"];
+    size: ButtonProps["size"];
+  }>;
 };
-
 /**
  * Feedback can render a predefined feedback status (when using the `status` prop) or render a custom illustration
  * (when using the `illustration` prop).
  */
-export function createFeedback(
-  Button: FunctionComponent<ButtonProps>,
-  config: FeedbackConfig = {
-    background: null,
-    positiveIllustration: IllustrationPositive,
-    negativeIllustration: IllustrationNegative,
-  }
-) {
+export function createFeedback(Button: FunctionComponent<ButtonProps>, config: FeedbackConfig) {
   return function Feedback({
     title,
     description,
@@ -64,11 +74,9 @@ export function createFeedback(
         <Stack space={size === "large" ? 24 : 16} align="center">
           {renderIllustration(size, illustrationElement(status, illustration), background)}
           <Stack space={size === "large" ? 8 : 4}>
-            <Display size="small" align="center">
-              {title}
-            </Display>
+            {renderTitle(size, title)}
             {description && (
-              <Body size="medium" align="center">
+              <Body size={config.descriptionSize[size]} align="center">
                 {description}
               </Body>
             )}
@@ -76,16 +84,42 @@ export function createFeedback(
           {action && (
             <Button
               label={action.label}
-              kind={size === "large" ? "solid" : "transparent"}
-              hierarchy="primary"
+              kind={config.action[size].kind}
+              hierarchy={config.action[size].hierarchy}
+              size={config.action[size].size}
               onPress={action.onPress}
-              size={size}
             />
           )}
         </Stack>
       </Box>
     );
   };
+
+  function renderTitle(size: Size, title: LocalizedString) {
+    switch (size) {
+      case "medium":
+        return (
+          <Title size={config.title.medium} align="center">
+            {title}
+          </Title>
+        );
+      case "large":
+        switch (config.title.large.kind) {
+          case "display":
+            return (
+              <Display size={config.title.large.size} align="center">
+                {title}
+              </Display>
+            );
+          case "headline":
+            return (
+              <Headline size={config.title.large.size} align="center">
+                {title}
+              </Headline>
+            );
+        }
+    }
+  }
 
   function illustrationElement(
     status: Props["status"],
@@ -114,7 +148,7 @@ export function createFeedback(
     background: boolean | undefined
   ): Children {
     const illustrationProps: IllustrationProps = {
-      size: size === "large" ? 160 : 80,
+      size: config.illustrationSize[size],
       style: "color",
     };
     if (background) {
@@ -135,3 +169,33 @@ export function createFeedback(
 }
 
 export type { Props as FeedbackProps };
+
+export const defaultFeedbackConfig: FeedbackConfig = {
+  background: null,
+  positiveIllustration: IllustrationPositive,
+  negativeIllustration: IllustrationNegative,
+  title: {
+    medium: "large",
+    large: { kind: "display", size: "small" },
+  },
+  descriptionSize: {
+    medium: "medium",
+    large: "medium",
+  },
+  illustrationSize: {
+    medium: 80,
+    large: 160,
+  },
+  action: {
+    medium: {
+      kind: "transparent",
+      hierarchy: "primary",
+      size: "medium",
+    },
+    large: {
+      kind: "solid",
+      hierarchy: "primary",
+      size: "large",
+    },
+  },
+};
