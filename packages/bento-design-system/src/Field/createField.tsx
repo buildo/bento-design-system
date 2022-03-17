@@ -115,3 +115,12 @@ export function createField(Tooltip: FunctionComponent<TooltipProps>, config: Fi
     );
   };
 }
+
+export const defaultFieldConfig: FieldConfig = {
+  label: { size: "small" },
+  assistiveText: {
+    size: "small",
+    paddingLeft: 16,
+  },
+  internalSpacing: 4,
+};

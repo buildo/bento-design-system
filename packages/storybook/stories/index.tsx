@@ -36,6 +36,10 @@ import {
   createIconButton,
   defaultIconButtonConfig,
   defaultFeedbackConfig,
+  defaultFieldConfig,
+  defaultInputConfig,
+  defaultSelectionControlConfig,
+  defaultDropdownConfig,
 } from "@buildo/bento-design-system";
 
 import "@buildo/bento-design-system/lib/index.css";
@@ -54,7 +58,12 @@ export const {
   SelectField,
   TextField,
   ReadOnlyField,
-} = createFormFields(Tooltip);
+} = createFormFields(Tooltip, {
+  field: defaultFieldConfig,
+  input: defaultInputConfig,
+  selectionControl: defaultSelectionControlConfig,
+  dropdown: defaultDropdownConfig,
+});
 export const { Button, ButtonLink } = createButtons();
 export const IconButton = createIconButton(defaultIconButtonConfig);
 export const Banner = createBanner(Button, IconButton, {});
@@ -81,7 +90,7 @@ export const Tabs = createTabs();
 export const AreaLoader = createAreaLoader();
 export const Avatar = createAvatar();
 export const SearchBar = createSearchBar(Field, IconButton);
-export const Switch = createSwitch(Field);
+export const Switch = createSwitch(Field, defaultSelectionControlConfig.element);
 const FeedbackBackground = (
   <svg viewBox="0 0 440 240">
     <path

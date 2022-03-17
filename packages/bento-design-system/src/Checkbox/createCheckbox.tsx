@@ -41,8 +41,6 @@ function CheckboxMark({ isDisabled }: { isDisabled: boolean }) {
   );
 }
 
-type CheckboxConfig = Pick<SelectionControlConfig, "controlLabelSpacing">;
-
 type Props = {
   option: {
     label: TextChildren;
@@ -53,7 +51,7 @@ type Props = {
   inputProps: InputHTMLAttributes<HTMLInputElement>;
 };
 
-export function createCheckbox(config: CheckboxConfig) {
+export function createCheckbox(config: SelectionControlConfig) {
   return function Checkbox({ option, inputRef, inputProps }: Props) {
     const { fieldProps, labelProps } = useLabel(option);
     const { isFocusVisible, focusProps } = useFocusRing();
@@ -71,7 +69,7 @@ export function createCheckbox(config: CheckboxConfig) {
         <VisuallyHidden>
           <input {...mergeProps(inputProps, fieldProps, focusProps)} ref={inputRef} />
         </VisuallyHidden>
-        <Columns space={config.controlLabelSpacing} alignY="center">
+        <Columns space={config.controlLabelSpacing}>
           <Column width="content">
             <CheckboxUI
               value={option.isSelected}
@@ -79,9 +77,11 @@ export function createCheckbox(config: CheckboxConfig) {
               isDisabled={option.isDisabled ?? false}
             />
           </Column>
-          <Body size="medium" color={option.isDisabled ? "disabled" : "default"}>
-            {option.label}
-          </Body>
+          <Box style={{ paddingTop: config.labelPaddingTop }}>
+            <Body size={config.labelSize} color={option.isDisabled ? "disabled" : "default"}>
+              {option.label}
+            </Body>
+          </Box>
         </Columns>
       </Box>
     );

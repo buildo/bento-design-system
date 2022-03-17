@@ -16,16 +16,7 @@ export type SwitchProps = Omit<FieldProps<boolean>, "assistiveText"> & {
   label: TextChildren;
 };
 
-type SwitchConfig = {
-  controlLabelSpacing: SelectionControlConfig["controlLabelSpacing"];
-};
-
-export function createSwitch(
-  Field: FieldType,
-  config: SwitchConfig = {
-    controlLabelSpacing: 8,
-  }
-) {
+export function createSwitch(Field: FieldType, config: SelectionControlConfig) {
   return function Switch(props: SwitchProps) {
     const switchProps = {
       ...props,
@@ -54,7 +45,7 @@ export function createSwitch(
           <VisuallyHidden>
             <input {...mergeProps(inputProps, fieldProps, focusProps)} ref={ref} />
           </VisuallyHidden>
-          <Columns space={config.controlLabelSpacing} alignY="center">
+          <Columns space={config.controlLabelSpacing}>
             <Column width="content">
               <SwitchIndicator
                 value={props.value}
@@ -62,9 +53,11 @@ export function createSwitch(
                 isDisabled={props.disabled ?? false}
               />
             </Column>
-            <Body size="medium" color={props.disabled ? "disabled" : "default"}>
-              {props.label}
-            </Body>
+            <Box style={{ paddingTop: config.labelPaddingTop }}>
+              <Body size={config.labelSize} color={props.disabled ? "disabled" : "default"}>
+                {props.label}
+              </Body>
+            </Box>
           </Columns>
         </Box>
       </Field>
