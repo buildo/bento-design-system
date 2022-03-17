@@ -66,6 +66,7 @@ export const AvatarTrigger = createStory({
       <Avatar color="violet" />
     </Box>
   ),
+  offset: 20,
 });
 
 export const Large = createStory({
