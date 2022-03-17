@@ -31,6 +31,8 @@ function sizeToDimensions(size: IllustrationProps["size"]): { width: number; hei
       return { width: 40, height: 40 };
     case 80:
       return { width: 80, height: 80 };
+    case 145:
+      return { width: 145, height: 145 };
     case 160:
       return { width: 160, height: 160 };
   }

@@ -35,6 +35,7 @@ import {
   createMenu,
   createIconButton,
   defaultIconButtonConfig,
+  defaultFeedbackConfig,
 } from "@buildo/bento-design-system";
 
 import "@buildo/bento-design-system/lib/index.css";
@@ -107,6 +108,7 @@ const FeedbackBackground = (
   </svg>
 );
 export const Feedback = createFeedback(Button, {
+  ...defaultFeedbackConfig,
   background: FeedbackBackground,
   negativeIllustration: IllustrationNegative,
   positiveIllustration: IllustrationPositive,
