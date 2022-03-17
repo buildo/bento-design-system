@@ -71,8 +71,8 @@ export const Negative = createStory({
   description: shortDescription,
 });
 
-export const Tip = createStory({
-  kind: "tip",
+export const Secondary = createStory({
+  kind: "secondary",
   title,
   description: shortDescription,
 });
