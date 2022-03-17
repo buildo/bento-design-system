@@ -19,7 +19,9 @@ export const iconRecipe = recipe({
     color: {
       default: bentoSprinkles({ fill: "foregroundSecondary" }),
       primary: bentoSprinkles({ fill: "foregroundPrimary" }),
+      primaryInverse: bentoSprinkles({ fill: "foregroundPrimaryInverse" }),
       secondary: bentoSprinkles({ fill: "foregroundSecondary" }),
+      secondaryInverse: bentoSprinkles({ fill: "foregroundSecondaryInverse" }),
       informative: bentoSprinkles({ fill: "foregroundInformative" }),
       positive: bentoSprinkles({ fill: "foregroundPositive" }),
       warning: bentoSprinkles({ fill: "foregroundWarning" }),

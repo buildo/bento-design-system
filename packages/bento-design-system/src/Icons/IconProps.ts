@@ -6,6 +6,8 @@ export type IconProps = {
     | "default"
     | "primary"
     | "secondary"
+    | "primaryInverse"
+    | "secondaryInverse"
     | "informative"
     | "positive"
     | "warning"
