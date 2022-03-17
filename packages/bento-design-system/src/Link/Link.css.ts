@@ -6,4 +6,10 @@ export const link = bentoSprinkles({
     disabled: "notAllowed",
   },
   outline: "none",
+  color: {
+    default: "linkEnabled",
+    hover: "linkHover",
+    focus: "linkFocus",
+    disabled: "linkDisabled",
+  },
 });

@@ -13,7 +13,6 @@ type Color =
   | "positive"
   | "informative"
   | "warning"
-  | "link"
   | "primaryInverse";
 
 type Props = {

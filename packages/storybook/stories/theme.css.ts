@@ -180,7 +180,6 @@ createGlobalTheme(":root", bentoVars, {
     textPrimaryInverse: colors.white,
     textSecondaryInverse: colors.neutral40,
     textInteractive: colors.black,
-    textLink: colors.neutral55,
     textInformative: colors.informative50,
     textPositive: colors.positive70,
     textWarning: colors.warning70,
@@ -230,6 +229,10 @@ createGlobalTheme(":root", bentoVars, {
     dangerTransparentFocusForeground: colors.negative60,
     disabledSolidForeground: "rgba(82, 94, 111, 0.3)",
     disabledTransparentForeground: "rgba(82, 94, 111, 0.3)",
+    linkEnabled: colors.black,
+    linkHover: colors.interactive70,
+    linkFocus: colors.interactive70,
+    linkDisabled: "rgba(82, 94, 111, 0.3)",
   },
   outlineColor: {
     outlineInteractive: colors.black,

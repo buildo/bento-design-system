@@ -55,7 +55,6 @@ export function createLink(
         disabled={isDisabled}
         display="inline-block"
         textDecoration={config.labelDecoration}
-        color={isDisabled ? "textDisabled" : "textLink"}
       >
         <Label as="span" size={config.labelSize}>
           {label}
