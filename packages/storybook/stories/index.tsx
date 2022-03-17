@@ -112,6 +112,6 @@ export const Feedback = createFeedback(Button, {
   positiveIllustration: IllustrationPositive,
 });
 export const Table = createTable(Tooltip, Feedback);
-export const tableColumn = createTableColumns(Button, ButtonLink, Chip, Link);
+export const tableColumn = createTableColumns({ Button, ButtonLink, Chip, Link, IconButton });
 export const Navigation = createNavigation(defaultNavigationConfig);
 export const Menu = createMenu(List, defaultMenuConfig);

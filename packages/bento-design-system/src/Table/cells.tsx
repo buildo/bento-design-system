@@ -3,6 +3,7 @@ import { CellProps } from "react-table";
 import { ButtonLinkProps } from "../Button/ButtonLink";
 import { LocalizedString, Body, ButtonProps, ChipProps, IconProps, Label, LinkProps } from "..";
 import { Inline, Inset, Box } from "../internal";
+import { IconButtonProps } from "../IconButton/createIconButton";
 
 export function createButtonCell(Button: FunctionComponent<ButtonProps>) {
   return function ButtonCell({
@@ -106,4 +107,17 @@ export function IconCell({
       {value.icon({ size: 16, color: "default" })}
     </Box>
   );
+}
+
+export function createIconButtonCell(IconButton: FunctionComponent<IconButtonProps>) {
+  return function IconButtonCell({
+    value: iconButtonProps,
+    column: { align },
+  }: CellProps<{}, Omit<IconButtonProps, "size" | "kind" | "hierarchy">>) {
+    return (
+      <Inline space={0} align={align} alignY="center">
+        <IconButton kind="transparent" hierarchy="primary" {...iconButtonProps} size={16} />
+      </Inline>
+    );
+  };
 }

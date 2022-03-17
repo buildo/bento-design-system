@@ -11,6 +11,7 @@ import {
 } from "../";
 import { createComponentStories, formatMessage } from "../util";
 import orderBy from "lodash.orderby";
+import { IconClose } from "@buildo/bento-design-system";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Table,
@@ -65,7 +66,19 @@ const exampleColumns = [
     accessor: "status",
     align: "center",
   }),
+  tableColumn.iconButton({
+    headerLabel: formatMessage("Actions"),
+    accessor: "deleteAction",
+    align: "center",
+    disableSortBy: true,
+  }),
 ];
+
+const deleteAction = {
+  label: formatMessage("Delete"),
+  icon: IconClose,
+  onPress: () => {},
+};
 
 const exampleData = [
   {
@@ -89,6 +102,7 @@ const exampleData = [
     website: { href: "http://www.amazon.com", label: formatMessage("Link") },
     alerts: { icon: IconWarning, label: formatMessage("Warning") },
     group: formatMessage("Group 1"),
+    deleteAction,
   },
   {
     name: formatMessage("Google"),
@@ -111,6 +125,7 @@ const exampleData = [
     type: formatMessage("Private"),
     website: { href: "http://www.google.com", label: formatMessage("Link") },
     group: formatMessage("Group 2"),
+    deleteAction,
   },
   {
     name: formatMessage("Microsoft"),
@@ -134,6 +149,7 @@ const exampleData = [
     website: { href: "http://www.microsoft.com", label: formatMessage("Link") },
     alerts: { icon: IconWarning, label: formatMessage("Warning") },
     group: formatMessage("Group 1"),
+    deleteAction,
   },
   {
     name: formatMessage("buildo"),
@@ -152,6 +168,7 @@ const exampleData = [
     type: formatMessage("Private"),
     website: { href: "http://www.buildo.io", label: formatMessage("Link") },
     group: formatMessage("Group 2"),
+    deleteAction,
   },
   {
     name: formatMessage("Twitter"),
@@ -174,6 +191,7 @@ const exampleData = [
     type: formatMessage("Private"),
     website: { href: "http://www.twitter.com", label: formatMessage("Link") },
     group: formatMessage("Group 1"),
+    deleteAction,
   },
 ];
 
