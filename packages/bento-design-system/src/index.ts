@@ -19,7 +19,7 @@ export * from "./Divider/Divider";
 export * from "./Feedback/createFeedback";
 export * from "./Field/createFormFields";
 export * from "./Form/createFormLayoutComponents";
-export * from "./IconButton/IconButton";
+export * from "./IconButton/createIconButton";
 export * from "./Icons";
 export * from "./Icons/svgIconProps";
 export * from "./Illustrations";
@@ -63,7 +63,7 @@ export { inputRecipe } from "./Field/Field.css";
 
 export type { SelectFieldProps } from "./SelectField/createSelectField";
 export type { FieldProps } from "./Field/FieldProps";
-export type { IconButtonProps } from "./IconButton/IconButtonProps";
+export type { IconButtonProps } from "./IconButton/createIconButton";
 
 export * from "./util/atoms";
 export * from "./util/breakpoints";

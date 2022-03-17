@@ -1,13 +1,5 @@
 import { ComponentProps, FunctionComponent, useRef } from "react";
-import {
-  ActionsProps,
-  ButtonProps,
-  Children,
-  IconButton,
-  IconClose,
-  LocalizedString,
-  Title,
-} from "..";
+import { ActionsProps, ButtonProps, Children, IconClose, LocalizedString, Title } from "..";
 import { BentoSprinkles, Box, Column, Columns, Inset } from "../internal";
 import { useOverlay, usePreventScroll, useModal } from "@react-aria/overlays";
 import { useDialog } from "@react-aria/dialog";
@@ -17,6 +9,7 @@ import useKeyPressEvent from "react-use/lib/useKeyPressEvent";
 import { ModalContext } from "./ModalContext";
 import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
+import { IconButtonProps } from "../IconButton/createIconButton";
 
 export type ModalProps = {
   title: LocalizedString;
@@ -39,7 +32,8 @@ type ModalConfig = {
 };
 
 export function createModal(
-  Actions: React.FunctionComponent<ActionsProps>,
+  Actions: FunctionComponent<ActionsProps>,
+  IconButton: FunctionComponent<IconButtonProps>,
   config: ModalConfig = {
     padding: 24,
     radius: 8,
@@ -94,6 +88,8 @@ export function createModal(
                       onPress={props.onClose}
                       size={config.closeIconSize}
                       tabIndex={-1}
+                      kind="transparent"
+                      hierarchy="secondary"
                     />
                   </Column>
                 </Columns>

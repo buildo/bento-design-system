@@ -1,7 +1,7 @@
 import { useTextField } from "@react-aria/textfield";
 import { FunctionComponent, useRef } from "react";
 import useDimensions from "react-cool-dimensions";
-import { IconButton, IconClose, IconSearch, LocalizedString } from "..";
+import { IconClose, IconSearch, LocalizedString } from "..";
 import { Box } from "../internal";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
@@ -10,6 +10,7 @@ import { FieldType } from "../Field/createField";
 import { defaultInputConfig, InputConfig } from "../Field/InputConfig";
 import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
+import { IconButtonProps } from "../IconButton/createIconButton";
 
 type Props = {
   value: string;
@@ -27,6 +28,7 @@ export type SearchBarConfig = {
 
 export function createSearchBar(
   Field: FieldType,
+  IconButton: FunctionComponent<IconButtonProps>,
   config: InputConfig & SearchBarConfig = {
     ...defaultInputConfig,
     clearIcon: IconClose,
@@ -63,6 +65,8 @@ export function createSearchBar(
           onPress={() => props.onChange("")}
           size={16}
           icon={config.clearIcon}
+          kind="transparent"
+          hierarchy="secondary"
         />
       ) : null;
 

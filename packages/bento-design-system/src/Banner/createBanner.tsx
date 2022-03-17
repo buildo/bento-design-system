@@ -3,7 +3,6 @@ import {
   Title,
   Body,
   TextChildren,
-  IconButton,
   IconClose,
   IconInformative,
   IconCheckCircleSolid,
@@ -17,6 +16,7 @@ import { bannerRecipe } from "./Banner.css";
 import { ComponentProps, FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
+import { IconButtonProps } from "../IconButton/createIconButton";
 
 type DismissProps =
   | {
@@ -64,6 +64,7 @@ type BannerConfig = {
 
 export function createBanner(
   Button: FunctionComponent<ButtonProps>,
+  IconButton: FunctionComponent<IconButtonProps>,
   {
     padding = 16,
     titleSize = "small",
@@ -112,6 +113,8 @@ export function createBanner(
                   }
                   onPress={dismissProps.onDismiss}
                   size={12}
+                  kind="transparent"
+                  hierarchy="secondary"
                   icon={closeIcon}
                 />
               </Column>

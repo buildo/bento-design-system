@@ -1,15 +1,23 @@
-import { IconButton } from "../src/IconButton/IconButton";
 import { render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
-import { IconClose, unsafeLocalizedString } from "../src";
+import {
+  createIconButton,
+  defaultIconButtonConfig,
+  IconClose,
+  unsafeLocalizedString,
+} from "../src";
 import { act } from "react-dom/test-utils";
 import { ignoreWarnings } from "./util/ignoreWarnings";
+
+const IconButton = createIconButton(defaultIconButtonConfig);
 
 describe("IconButton", () => {
   test("onPress fires once", async () => {
     const onPress = jest.fn();
     render(
       <IconButton
+        kind="solid"
+        hierarchy="primary"
         size={8}
         onPress={onPress}
         icon={IconClose}
