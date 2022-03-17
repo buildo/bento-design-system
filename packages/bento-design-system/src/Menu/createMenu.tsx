@@ -39,6 +39,7 @@ type MenuConfig = {
   elevation: "small" | "medium" | "large";
   headerPaddingX: BentoSprinkles["paddingX"];
   headerPaddingY: BentoSprinkles["paddingY"];
+  defaultOffset: number;
 };
 
 export function createMenu(List: FunctionComponent<ListProps>, config: MenuConfig) {
@@ -63,7 +64,7 @@ export function createMenu(List: FunctionComponent<ListProps>, config: MenuConfi
             onClose={() => state.close()}
             triggerRef={triggerRef}
             placement={placement}
-            offset={offset}
+            offset={offset || config.defaultOffset}
           >
             <Box
               className={menuRecipe({ elevation: config.elevation })}
@@ -97,4 +98,5 @@ export const defaultMenuConfig: MenuConfig = {
   elevation: "medium",
   headerPaddingX: 24,
   headerPaddingY: 24,
+  defaultOffset: 4,
 };
