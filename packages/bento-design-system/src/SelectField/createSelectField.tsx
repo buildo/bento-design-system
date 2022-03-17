@@ -32,6 +32,7 @@ type Props<A, IsMulti extends boolean> = (IsMulti extends false
   isMulti?: IsMulti;
   noOptionsMessage?: LocalizedString;
   autoFocus?: boolean;
+  isReadOnly?: boolean;
 } & (IsMulti extends true
     ? { multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString }
     : {});
@@ -43,6 +44,7 @@ declare module "react-select/dist/declarations/src/Select" {
     menuSize?: ListSize;
     validationState: "valid" | "invalid";
     multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString;
+    isReadOnly: boolean;
   }
 }
 
@@ -72,6 +74,7 @@ export function createSelectField(
       issues,
       placeholder,
       disabled,
+      isReadOnly,
       isMulti,
       noOptionsMessage,
       autoFocus,
@@ -115,6 +118,7 @@ export function createSelectField(
           aria-label={fieldProps["aria-label"]}
           aria-labelledby={fieldProps["aria-labelledby"]}
           isDisabled={disabled}
+          isReadOnly={isReadOnly || false}
           autoFocus={autoFocus}
           value={
             isMulti
@@ -170,6 +174,8 @@ export function createSelectField(
           closeMenuOnSelect={!isMulti}
           hideSelectedOptions={false}
           menuSize={menuSize}
+          menuIsOpen={isReadOnly ? false : undefined}
+          isSearchable={isReadOnly ? false : undefined}
         />
       </Field>
     );

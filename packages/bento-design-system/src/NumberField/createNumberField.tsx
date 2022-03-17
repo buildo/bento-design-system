@@ -12,6 +12,7 @@ import { NumberInputProps } from "../NumberInput/createNumberInput";
 type Props = FieldProps<number | undefined, number> & {
   placeholder: LocalizedString;
   autoFocus?: boolean;
+  isReadOnly?: boolean;
 } & FormatProps;
 
 export function createNumberField(
@@ -32,6 +33,7 @@ export function createNumberField(
         errorMessage: props.issues,
         description: props.assistiveText,
         isDisabled: props.disabled,
+        isReadOnly: props.isReadOnly,
         validationState,
         formatOptions,
       },

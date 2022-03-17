@@ -10,6 +10,7 @@ import { createCheckboxField } from "../CheckboxField/createCheckboxField";
 import { createCheckboxGroupField } from "../CheckboxGroupField/createCheckboxGroupField";
 import { FunctionComponent } from "react";
 import { TooltipProps } from "..";
+import { createReadOnlyField } from "../ReadOnlyField/createReadOnlyField";
 
 type FieldsConfig = {
   field: FieldConfig;
@@ -73,6 +74,7 @@ export function createFormFields(
   const NumberInput = createNumberInput(config.input);
   const NumberField = createNumberField(Field, NumberInput);
   const SelectField = createSelectField(Field, config.input, config.dropdown);
+  const ReadOnlyField = createReadOnlyField(TextField);
 
   return {
     CheckboxField,
@@ -82,6 +84,7 @@ export function createFormFields(
     RadioGroupField,
     SelectField,
     TextField,
+    ReadOnlyField,
   };
 }
 

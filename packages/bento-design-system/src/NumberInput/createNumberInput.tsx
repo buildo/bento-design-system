@@ -14,6 +14,7 @@ export type NumberInputProps = {
   placeholder?: LocalizedString;
   validationState: "valid" | "invalid";
   disabled?: boolean;
+  isReadOnly?: boolean;
 } & FormatProps;
 
 export function createNumberInput(config: InputConfig) {
@@ -71,7 +72,7 @@ export function createNumberInput(config: InputConfig) {
           width="full"
           height={undefined}
           className={[
-            inputRecipe({ validation: props.validationState }),
+            inputRecipe({ validation: props.isReadOnly ? "notSet" : props.validationState }),
             bodyRecipe({
               color: props.disabled ? "disabled" : "default",
               weight: "default",
