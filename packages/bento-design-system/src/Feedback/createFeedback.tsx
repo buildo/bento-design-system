@@ -184,7 +184,7 @@ export const defaultFeedbackConfig: FeedbackConfig = {
   },
   illustrationSize: {
     medium: 80,
-    large: 145,
+    large: 160,
   },
   action: {
     medium: {
