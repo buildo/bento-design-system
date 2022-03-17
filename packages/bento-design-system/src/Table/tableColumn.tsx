@@ -9,12 +9,14 @@ import {
   createButtonCell,
   createButtonLinkCell,
   createChipCell,
+  createIconButtonCell,
   createLinkCell,
   IconCell,
   LabelCell,
   TextCell,
   TextWithIconCell,
 } from "./cells";
+import { IconButtonProps } from "../IconButton/createIconButton";
 
 export type { CellProps } from "react-table";
 
@@ -213,4 +215,15 @@ export function iconColumn<A extends string>(options: ColumnOptionsBase<A>) {
     Cell: IconCell,
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
+}
+
+export function createIconButtonColumn(IconButton: FunctionComponent<IconButtonProps>) {
+  const IconButtonCell = createIconButtonCell(IconButton);
+  return function buttonColumn<A extends string>(options: ColumnOptionsBase<A>) {
+    return column({
+      ...options,
+      Cell: IconButtonCell,
+      sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
+    });
+  };
 }

@@ -51,6 +51,7 @@ import {
   createButtonColumn,
   createButtonLinkColumn,
   createChipColumn,
+  createIconButtonColumn,
   createLinkColumn,
   iconColumn,
   labelColumn,
@@ -60,6 +61,7 @@ import {
   textWithIconColumn,
 } from "./tableColumn";
 import { ButtonLinkProps } from "../Button/ButtonLink";
+import { IconButtonProps } from "../IconButton/createIconButton";
 
 type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
   a: Row<RowType<C>>,
@@ -438,16 +440,24 @@ export function createTable(
   }
 }
 
-export function createTableColumns<CustomChipColor extends string>(
-  Button: FunctionComponent<ButtonProps>,
-  ButtonLink: FunctionComponent<ButtonLinkProps>,
-  Chip: FunctionComponent<ChipProps<CustomChipColor>>,
-  Link: FunctionComponent<LinkProps>
-) {
+export function createTableColumns<CustomChipColor extends string>({
+  Button,
+  ButtonLink,
+  IconButton,
+  Chip,
+  Link,
+}: {
+  Button: FunctionComponent<ButtonProps>;
+  ButtonLink: FunctionComponent<ButtonLinkProps>;
+  Chip: FunctionComponent<ChipProps<CustomChipColor>>;
+  Link: FunctionComponent<LinkProps>;
+  IconButton: FunctionComponent<IconButtonProps>;
+}) {
   const buttonColumn = createButtonColumn(Button);
   const buttonLinkColumn = createButtonLinkColumn(ButtonLink);
   const chipColumn = createChipColumn(Chip);
   const linkColumn = createLinkColumn(Link);
+  const iconButtonColumn = createIconButtonColumn(IconButton);
   return {
     custom: column,
     text: textColumn,
@@ -456,6 +466,7 @@ export function createTableColumns<CustomChipColor extends string>(
     numberWithIcon: numberWithIconColumn,
     button: buttonColumn,
     buttonLink: buttonLinkColumn,
+    iconButton: iconButtonColumn,
     chip: chipColumn,
     label: labelColumn,
     link: linkColumn,
