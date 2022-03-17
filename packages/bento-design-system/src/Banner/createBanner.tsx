@@ -28,7 +28,7 @@ type DismissProps =
       onDismiss?: never;
     };
 
-type Kind = "informative" | "positive" | "warning" | "negative" | "tip";
+type Kind = "informative" | "positive" | "warning" | "negative" | "secondary";
 
 type Props = {
   kind: Kind;
@@ -76,14 +76,14 @@ export function createBanner(
       positive: IconCheckCircleSolid,
       warning: IconWarning,
       negative: IconNegative,
-      tip: IconIdea,
+      secondary: IconIdea,
     },
   }: BannerConfig
 ) {
   return function Banner({ title, description, kind, action, ...dismissProps }: Props) {
     const isWithoutTitle = title === undefined;
     const iconSize = isWithoutTitle ? 16 : 24;
-    const iconProps = { size: iconSize, color: kind === "tip" ? "secondary" : kind } as const;
+    const iconProps = { size: iconSize, color: kind } as const;
     const Icon = kindIcons[kind];
 
     const { defaultMessages } = useDefaultMessages();
@@ -99,7 +99,7 @@ export function createBanner(
             </Column>
             <Stack align="left" space={4}>
               {title && (
-                <Title size={titleSize} color={kind === "tip" ? "secondary" : kind}>
+                <Title size={titleSize} color={kind}>
                   {title}
                 </Title>
               )}
