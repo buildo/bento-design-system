@@ -100,3 +100,5 @@ export const defaultMenuConfig: MenuConfig = {
   headerPaddingY: 24,
   defaultOffset: 4,
 };
+
+export type { MenuTriggerState };
