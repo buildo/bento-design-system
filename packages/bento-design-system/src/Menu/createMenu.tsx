@@ -64,7 +64,7 @@ export function createMenu(List: FunctionComponent<ListProps>, config: MenuConfi
             onClose={() => state.close()}
             triggerRef={triggerRef}
             placement={placement}
-            offset={offset || config.defaultOffset}
+            offset={offset ?? config.defaultOffset}
           >
             <Box
               className={menuRecipe({ elevation: config.elevation })}
