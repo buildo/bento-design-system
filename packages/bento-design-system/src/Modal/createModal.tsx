@@ -4,7 +4,7 @@ import { BentoSprinkles, Box, Column, Columns, Inset } from "../internal";
 import { useOverlay, usePreventScroll, useModal } from "@react-aria/overlays";
 import { useDialog } from "@react-aria/dialog";
 import { FocusScope } from "@react-aria/focus";
-import { modal, underlay } from "./Modal.css";
+import { modalRecipe, underlay, modalBody } from "./Modal.css";
 import useKeyPressEvent from "react-use/lib/useKeyPressEvent";
 import { ModalContext } from "./ModalContext";
 import { IconProps } from "../Icons/IconProps";
@@ -21,6 +21,7 @@ export type ModalProps = {
   isDestructive?: boolean;
   loadingMessage?: ActionsProps["loadingMessage"];
   error?: ActionsProps["error"];
+  size?: "small" | "medium" | "large";
 };
 
 type ModalConfig = {
@@ -71,7 +72,7 @@ export function createModal(
         <ModalContext.Provider value={true}>
           <FocusScope contain restoreFocus autoFocus>
             <Box
-              className={modal}
+              className={modalRecipe({ size: props.size ?? "medium" })}
               {...overlayProps}
               {...modalProps}
               {...dialogProps}
@@ -94,7 +95,9 @@ export function createModal(
                   </Column>
                 </Columns>
               </Inset>
-              <Inset spaceX={config.padding}>{props.children}</Inset>
+              <Box className={modalBody} paddingX={config.padding}>
+                {props.children}
+              </Box>
               <Inset space={config.padding}>
                 <Actions
                   primaryAction={
