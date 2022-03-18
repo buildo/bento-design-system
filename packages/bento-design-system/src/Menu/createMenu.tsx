@@ -30,6 +30,7 @@ type Props = {
   ) => JSX.Element;
   initialIsOpen?: boolean;
   placement?: ComponentProps<typeof Popover>["placement"];
+  offset?: ComponentProps<typeof Popover>["offset"];
 };
 
 type MenuConfig = {
@@ -38,10 +39,11 @@ type MenuConfig = {
   elevation: "small" | "medium" | "large";
   headerPaddingX: BentoSprinkles["paddingX"];
   headerPaddingY: BentoSprinkles["paddingY"];
+  defaultOffset: number;
 };
 
 export function createMenu(List: FunctionComponent<ListProps>, config: MenuConfig) {
-  return function Menu({ items, header, trigger, initialIsOpen, placement, size }: Props) {
+  return function Menu({ items, header, trigger, initialIsOpen, placement, offset, size }: Props) {
     const triggerRef = useRef(null);
 
     const state = useMenuTriggerState({
@@ -58,7 +60,12 @@ export function createMenu(List: FunctionComponent<ListProps>, config: MenuConfi
       <Box position="relative">
         {trigger(triggerRef, triggerProps, state)}
         {state.isOpen && (
-          <Popover onClose={() => state.close()} triggerRef={triggerRef} placement={placement}>
+          <Popover
+            onClose={() => state.close()}
+            triggerRef={triggerRef}
+            placement={placement}
+            offset={offset ?? config.defaultOffset}
+          >
             <Box
               className={menuRecipe({ elevation: config.elevation })}
               {...menuProps}
@@ -91,4 +98,5 @@ export const defaultMenuConfig: MenuConfig = {
   elevation: "medium",
   headerPaddingX: 24,
   headerPaddingY: 24,
+  defaultOffset: 4,
 };
