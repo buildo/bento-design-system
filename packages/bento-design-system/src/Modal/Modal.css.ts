@@ -6,13 +6,13 @@ import { vars } from "../vars.css";
 export const modalRecipe = strictRecipe({
   base: style([
     {
-      display: "flex",
-      flexDirection: "column",
       width: "560px",
       border: `1px solid ${vars.outlineColor.outlineContainer}`,
       maxHeight: "clamp(80%, 500px, 90%)",
     },
     bentoSprinkles({
+      display: "flex",
+      flexDirection: "column",
       background: "backgroundPrimary",
       boxShadow: "elevationLarge",
     }),
@@ -37,5 +37,5 @@ export const underlay = bentoSprinkles({
 });
 
 export const modalBody = style({
-  overflowY: "scroll",
+  overflowY: "auto",
 });

@@ -95,8 +95,8 @@ export function createModal(
                   </Column>
                 </Columns>
               </Inset>
-              <Box className={modalBody}>
-                <Inset spaceX={config.padding}>{props.children}</Inset>
+              <Box className={modalBody} paddingX={config.padding}>
+                {props.children}
               </Box>
               <Inset space={config.padding}>
                 <Actions
