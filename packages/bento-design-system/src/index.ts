@@ -73,4 +73,6 @@ export * from "./util/conditions";
 export * from "./util/link";
 export * from "./util/useDefaultMessages";
 
+export * from "./util/strictRecipe";
+
 export { icons, illustrations };
