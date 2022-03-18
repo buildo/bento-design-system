@@ -11,7 +11,10 @@ import { useRef } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { useFocusRing } from "@react-aria/focus";
 import { Radio } from "./Radio";
-import { SelectionControlConfig } from "../Field/SelectionControlConfig";
+import {
+  SelectionControlConfig,
+  SelectionControlGroupConfig,
+} from "../Field/SelectionControlConfig";
 
 export type RadioOption<A> = {
   value: A;
@@ -27,13 +30,9 @@ export type RadioGroupFieldProps<A> = FieldProps<A | undefined, A> & {
 
 export function createRadioGroupField(
   Field: FieldType,
-  config: SelectionControlConfig = {
-    paddingY: 8,
-    controlLabelSpacing: 8,
-    internalSpacing: {
-      horizontal: 24,
-      vertical: 16,
-    },
+  config: {
+    group: SelectionControlGroupConfig;
+    element: SelectionControlConfig;
   }
 ) {
   return function RadioGroupField<A extends string | number | boolean>(
@@ -74,11 +73,11 @@ export function createRadioGroupField(
           errorMessageProps={errorMessageProps}
           labelElement="span"
         >
-          <Inset spaceY={config.paddingY}>
+          <Inset spaceY={config.group.paddingY}>
             {(props.orientation || "vertical") === "vertical" ? (
-              <Stack space={config.internalSpacing.vertical}>{radioOptions}</Stack>
+              <Stack space={config.group.internalSpacing.vertical}>{radioOptions}</Stack>
             ) : (
-              <Inline space={config.internalSpacing.horizontal}>{radioOptions}</Inline>
+              <Inline space={config.group.internalSpacing.horizontal}>{radioOptions}</Inline>
             )}
           </Inset>
         </Field>
@@ -107,13 +106,18 @@ export function createRadioGroupField(
         <VisuallyHidden>
           <input {...inputProps} {...focusProps} ref={ref} />
         </VisuallyHidden>
-        <Columns space={config.controlLabelSpacing} alignY="center">
+        <Columns space={config.element.controlLabelSpacing}>
           <Column width="content">
             <Radio selected={selected} focused={isFocusVisible} />
           </Column>
-          <Body size="medium" color={option.isDisabled ? "disabled" : "default"}>
-            {option.label}
-          </Body>
+          <Box style={{ paddingTop: config.element.labelPaddingTop }}>
+            <Body
+              size={config.element.labelSize}
+              color={option.isDisabled ? "disabled" : "default"}
+            >
+              {option.label}
+            </Body>
+          </Box>
         </Columns>
       </Box>
     );

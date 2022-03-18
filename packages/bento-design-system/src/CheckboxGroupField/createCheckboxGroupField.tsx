@@ -7,7 +7,10 @@ import { createCheckbox } from "../Checkbox/createCheckbox";
 import { useField } from "@react-aria/label";
 import { CheckboxGroupState, useCheckboxGroupState } from "@react-stately/checkbox";
 import { Box, Inline, Inset, Stack } from "../internal";
-import { SelectionControlConfig } from "../Field/SelectionControlConfig";
+import {
+  SelectionControlConfig,
+  SelectionControlGroupConfig,
+} from "../Field/SelectionControlConfig";
 
 export type CheckboxOption = {
   value: string;
@@ -21,8 +24,14 @@ export type CheckboxGroupFieldProps = FieldProps<string[]> & {
   orientation?: "vertical" | "horizontal";
 };
 
-export function createCheckboxGroupField(Field: FieldType, config: SelectionControlConfig) {
-  const Checkbox = createCheckbox(config);
+export function createCheckboxGroupField(
+  Field: FieldType,
+  config: {
+    group: SelectionControlGroupConfig;
+    element: SelectionControlConfig;
+  }
+) {
+  const Checkbox = createCheckbox(config.element);
 
   function CheckboxItem({ state, option }: { state: CheckboxGroupState; option: CheckboxOption }) {
     const ref = useRef<HTMLInputElement>(null);
@@ -65,11 +74,11 @@ export function createCheckboxGroupField(Field: FieldType, config: SelectionCont
           assistiveTextProps={descriptionProps}
           errorMessageProps={errorMessageProps}
         >
-          <Inset spaceY={config.paddingY}>
+          <Inset spaceY={config.group.paddingY}>
             {(props.orientation || "vertical") === "vertical" ? (
-              <Stack space={config.internalSpacing.vertical}>{groupOptions}</Stack>
+              <Stack space={config.group.internalSpacing.vertical}>{groupOptions}</Stack>
             ) : (
-              <Inline space={config.internalSpacing.horizontal}>{groupOptions}</Inline>
+              <Inline space={config.group.internalSpacing.horizontal}>{groupOptions}</Inline>
             )}
           </Inset>
         </Field>

@@ -12,10 +12,7 @@ export type CheckboxFieldProps = Omit<FieldProps<boolean>, "assistiveText"> & {
   label: TextChildren;
 };
 
-export function createCheckboxField(
-  Field: FieldType,
-  config: Pick<SelectionControlConfig, "controlLabelSpacing">
-) {
+export function createCheckboxField(Field: FieldType, config: SelectionControlConfig) {
   const Checkbox = createCheckbox(config);
 
   return function CheckboxField(props: CheckboxFieldProps) {
