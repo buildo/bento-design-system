@@ -1,4 +1,4 @@
-import { Modal, Body, Placeholder } from "../";
+import { Modal, Body, Placeholder, Stack } from "../";
 import { createComponentStories, formatMessage, textArgType } from "../util";
 import { action } from "@storybook/addon-actions";
 
@@ -25,6 +25,26 @@ export default defaultExport;
 
 export const WithActions = createStory({
   children: [<Placeholder />],
+  primaryAction: {
+    label: formatMessage("Create"),
+    onPress: action("Create"),
+  },
+  secondaryAction: {
+    label: formatMessage("Cancel"),
+    onPress: action("Cancel"),
+  },
+});
+
+export const Scrollable = createStory({
+  children: [
+    <Stack space={16}>
+      <Placeholder />
+      <Placeholder />
+      <Placeholder />
+      <Placeholder />
+      <Placeholder />
+    </Stack>,
+  ],
   primaryAction: {
     label: formatMessage("Create"),
     onPress: action("Create"),
@@ -75,6 +95,32 @@ export const WithAsyncPrimaryAction = createStory({
           resolve(null);
         }, 3000);
       }),
+  },
+  secondaryAction: {
+    label: formatMessage("Cancel"),
+    onPress: action("Cancel"),
+  },
+});
+
+export const Small = createStory({
+  size: "small",
+  children: [<Placeholder />],
+  primaryAction: {
+    label: formatMessage("Create"),
+    onPress: action("Create"),
+  },
+  secondaryAction: {
+    label: formatMessage("Cancel"),
+    onPress: action("Cancel"),
+  },
+});
+
+export const Large = createStory({
+  size: "large",
+  children: [<Placeholder />],
+  primaryAction: {
+    label: formatMessage("Create"),
+    onPress: action("Create"),
   },
   secondaryAction: {
     label: formatMessage("Cancel"),
