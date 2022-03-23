@@ -191,3 +191,10 @@ jobs:
         trigger: true
       - task: release
         file: bento/ci/tasks/release.yml
+    on_success:
+      put: slack-buildo
+      params:
+        channel: "#bento"
+        text: |
+          :tada: A new release has been successfully performed
+      inputs: []
