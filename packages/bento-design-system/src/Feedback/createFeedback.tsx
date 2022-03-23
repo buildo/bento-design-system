@@ -151,7 +151,7 @@ export function createFeedback(Button: FunctionComponent<ButtonProps>, config: F
       size: config.illustrationSize[size],
       style: "color",
     };
-    if (background) {
+    if (background && config.background) {
       // NOTE(gabro): when we have a background, the overall size of the illustration is the one of
       // the background so the background has position relative and the illustration has position absolute.
       return (
