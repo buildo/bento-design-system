@@ -76,3 +76,5 @@ export function Popover({
     </OverlayContainer>
   );
 }
+
+export type { Placement };
