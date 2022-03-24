@@ -191,3 +191,10 @@ jobs:
         trigger: true
       - task: release
         file: bento/ci/tasks/release.yml
+    on_success:
+      put: slack-buildo
+      params:
+        channel: "#bento"
+        text_file: bento/.git/ref
+        text: |
+          :tada: Version $TEXT_FILE_CONTENT has been released!
