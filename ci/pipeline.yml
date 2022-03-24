@@ -195,6 +195,6 @@ jobs:
       put: slack-buildo
       params:
         channel: "#bento"
+        text_file: bento/.git/ref
         text: |
-          :tada: A new release has been successfully performed
-      inputs: []
+          :tada: A new release ($TEXT_FILE_CONTENT) has been successfully performed!
