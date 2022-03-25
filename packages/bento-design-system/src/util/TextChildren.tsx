@@ -1,4 +1,4 @@
-import { isValidElement } from "react";
+import { HTMLAttributeAnchorTarget, isValidElement } from "react";
 import flattenChildren from "react-keyed-flatten-children";
 import { Box } from "../internal/Box/Box";
 import { Children } from "./Children";
@@ -28,8 +28,9 @@ import { splitBy } from "./splitBy";
 type TextChildrenConcreteType =
   | LocalizedString
   | LocalizedBold
+  | LocalizedLink
   | LineBreak
-  | NonEmptyArray<LocalizedString | LocalizedBold | LineBreak>;
+  | NonEmptyArray<LocalizedString | LocalizedBold | LocalizedLink | LineBreak>;
 
 export type TextChildren =
   | LocalizedString
@@ -48,6 +49,21 @@ export type LocalizedBold = { type: "bold"; text: LocalizedString };
 export function bold(text: LocalizedString): LocalizedBold {
   return { type: "bold", text };
 }
+
+export function link(
+  text: LocalizedString,
+  href: string,
+  target?: HTMLAttributeAnchorTarget
+): LocalizedLink {
+  return { type: "link", text, href, target };
+}
+
+export type LocalizedLink = {
+  type: "link";
+  text: LocalizedString;
+  href: string;
+  target?: HTMLAttributeAnchorTarget;
+};
 
 export function makeTextChildrenFromElements(c: TextChildrenConcreteType) {
   return c as TextChildren;
@@ -70,6 +86,13 @@ function textChildrenToChildrenArray(children: TextChildren): Array<Children> {
       ];
     case "lineBreak":
       return [<br />];
+    case "link":
+      // TODO(gabro): we should allow custom Link components here
+      return [
+        <Box as="a" href={children.href} target={children.target}>
+          {children.text}
+        </Box>,
+      ];
   }
 }
 

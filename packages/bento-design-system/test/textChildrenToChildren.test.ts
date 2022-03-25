@@ -4,6 +4,7 @@ import {
   bold,
   lineBreak,
   textChildrenToChildren,
+  link,
 } from "../src";
 
 const formatMessage = unsafeLocalizedString;
@@ -36,6 +37,23 @@ describe("textChildrenToChildren", () => {
           fontWeight="bodyStrong"
         >
           Bold text
+        </ForwardRef>,
+      ]
+    `);
+  });
+
+  test("link", () => {
+    const input = makeTextChildrenFromElements(
+      link(formatMessage("Link"), "https://www.google.com", "_blank")
+    );
+    expect(textChildrenToChildren(input)).toMatchInlineSnapshot(`
+      Array [
+        <ForwardRef
+          as="a"
+          href="https://www.google.com"
+          target="_blank"
+        >
+          Link
         </ForwardRef>,
       ]
     `);
@@ -78,6 +96,7 @@ describe("textChildrenToChildren", () => {
       lineBreak,
       bold(formatMessage("Second")),
       formatMessage("line"),
+      link(formatMessage("Link"), "https://www.google.com", "_blank"),
     ]);
     expect(textChildrenToChildren(input)).toMatchInlineSnapshot(`
       Array [
@@ -96,6 +115,13 @@ describe("textChildrenToChildren", () => {
           Second
         </ForwardRef>,
         "line",
+        <ForwardRef
+          as="a"
+          href="https://www.google.com"
+          target="_blank"
+        >
+          Link
+        </ForwardRef>,
       ]
     `);
   });
