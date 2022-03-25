@@ -6,6 +6,7 @@ import { IconProps } from "../Icons/IconProps";
 import { IllustrationProps } from "../Illustrations/IllustrationProps";
 import { listItemRecipe } from "./ListItem.css";
 import { ListSize } from "./createListComponents";
+import { element } from "../reset.css";
 
 type Kind =
   | {
@@ -112,12 +113,12 @@ export function createListItem(config: ListItemConfig) {
         <Box
           ref={linkRef}
           as={props.href ? LinkComponent : "div"}
+          className={element.a}
           {...linkProps}
           href={props.href}
           target={props.target}
           display="block"
           tabIndex={interactive && !props.ignoreTabIndex ? linkProps.tabIndex : undefined}
-          textDecoration="none"
         >
           <Inset spaceX={config.paddingX} spaceY={config.paddingY[props.size ?? "medium"]}>
             <Columns space={config.internalSpacing} alignY="center">
