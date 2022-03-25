@@ -5,6 +5,7 @@ import { ButtonConfig, ButtonProps, defaultButtonConfig } from "./createButton";
 import { Label } from "..";
 import { Box } from "../internal";
 import { useLink } from "@react-aria/link";
+import { element } from "../reset.css";
 
 type Props = {
   href: string;
@@ -48,13 +49,12 @@ export function createButtonLink(config: ButtonConfig = defaultButtonConfig) {
         as={LinkComponent}
         href={href}
         target={target}
-        className={[buttonRecipe({ kind, hierarchy, size, active })]}
+        className={[buttonRecipe({ kind, hierarchy, size, active }), element.a]}
         disabled={isDisabled}
         display="inline-block"
         paddingX={config.paddingX[size]}
         paddingY={config.paddingY[size]}
         borderRadius={config.radius}
-        textDecoration="none"
       >
         <Label as="span" size={config.labelSize}>
           {label}

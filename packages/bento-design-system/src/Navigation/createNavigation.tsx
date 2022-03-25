@@ -4,6 +4,7 @@ import { LocalizedString } from "../util/LocalizedString";
 import { destinationRecipe } from "./Navigation.css";
 import { AnchorHTMLAttributes, ComponentProps, useRef } from "react";
 import { useLink } from "@react-aria/link";
+import { element } from "../reset.css";
 
 type DestinationProps = {
   size: Size;
@@ -75,7 +76,7 @@ export function createNavigation(config: NavigationConfig) {
     return (
       <Box
         tabIndex={active || disabled ? -1 : 0}
-        className={destinationRecipe({ active })}
+        className={[destinationRecipe({ active }), element.a]}
         as={LinkComponent}
         {...linkProps}
         href={href}
