@@ -77,7 +77,9 @@ export const Error = createControlledStory(undefined, {
   issues: [formatMessage("Please select a color")],
 });
 
-export const InModal = createControlledStory(undefined, {});
+export const InModal = createControlledStory(undefined, {
+  hint: formatMessage("Something useful"),
+});
 InModal.decorators = [
   (Story: StoryFn) => (
     <Modal

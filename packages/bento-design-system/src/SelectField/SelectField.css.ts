@@ -100,12 +100,3 @@ export const optionRecipe = strictRecipe({
     },
   },
 });
-
-export const menuPortalRecipe = strictRecipe({
-  variants: {
-    inDialog: {
-      false: bentoSprinkles({ zIndex: "selectFieldMenu" }),
-      true: bentoSprinkles({ zIndex: "selectFieldMenuInModal" }),
-    },
-  },
-});

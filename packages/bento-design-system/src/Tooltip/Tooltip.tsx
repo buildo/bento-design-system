@@ -5,6 +5,7 @@ import { useFloating, shift, autoPlacement, offset, arrow } from "@farzadsh/floa
 import { useTooltipTriggerState } from "@react-stately/tooltip";
 import { useTooltipTrigger, useTooltip } from "@react-aria/tooltip";
 import { tooltip, arrow as arrowStyle } from "./Tooltip.css";
+import { createPortal } from "../util/createPortal";
 
 type Props = {
   content: TextChildren;
@@ -71,27 +72,28 @@ export function createTooltip(
     return (
       <>
         {props.trigger(reference, triggerProps)}
-        {state.isOpen && (
-          <Box
-            className={tooltip}
-            borderRadius={config.radius}
-            ref={floating}
-            style={{
-              position: strategy,
-              top: y ?? "",
-              left: x ?? "",
-            }}
-            {...tooltipProps}
-            color={undefined}
-          >
-            <Inset space={config.padding}>
-              <Label size={config.labelSize} color="primaryInverse">
-                {props.content}
-              </Label>
-            </Inset>
-            <Box ref={arrowRef} className={arrowStyle} style={arrowPosition} />
-          </Box>
-        )}
+        {state.isOpen &&
+          createPortal(
+            <Box
+              className={tooltip}
+              borderRadius={config.radius}
+              ref={floating}
+              style={{
+                position: strategy,
+                top: y ?? "",
+                left: x ?? "",
+              }}
+              {...tooltipProps}
+              color={undefined}
+            >
+              <Inset space={config.padding}>
+                <Label size={config.labelSize} color="primaryInverse">
+                  {props.content}
+                </Label>
+              </Inset>
+              <Box ref={arrowRef} className={arrowStyle} style={arrowPosition} />
+            </Box>
+          )}
       </>
     );
   };

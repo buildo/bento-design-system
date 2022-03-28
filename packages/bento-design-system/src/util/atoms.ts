@@ -27,7 +27,7 @@ export const unconditionalProperties = {
   overflow: ["hidden", "visible", "auto"],
   overflowX: ["hidden", "visible", "auto"],
   overflowY: ["hidden", "visible", "auto"],
-  zIndex: vars.zIndex,
+  isolation: ["auto", "isolate"],
 } as const;
 
 export const responsiveProperties = {

@@ -1,4 +1,5 @@
 import "./reset.css";
+import "./global.css";
 import * as icons from "./Icons";
 import * as illustrations from "./Illustrations";
 

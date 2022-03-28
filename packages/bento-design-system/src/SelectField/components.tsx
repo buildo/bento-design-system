@@ -18,14 +18,13 @@ import {
 } from "react-select/dist/declarations/src/components/Menu";
 import { Body, IconChevronDown, TextChildren, Children, IconCheck, IconProps } from "..";
 import { Box, Columns, Column, Inline, Inset, bentoSprinkles } from "../internal";
-import { singleValue, placeholder, menu, menuPortalRecipe, control } from "./SelectField.css";
+import { singleValue, placeholder, menu, control } from "./SelectField.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { InputConfig } from "../Field/InputConfig";
 import clsx from "clsx";
 import { DropdownConfig, SelectOption } from "./createSelectField";
 import { InternalList } from "../List/InternalList";
 import { createListItem } from "../List/createListItem";
-import { useModalContext } from "../Modal/useModalContext";
 
 export function createComponents(inputConfig: InputConfig, dropdownConfig: DropdownConfig) {
   const ListItem = createListItem(dropdownConfig.list.item);
@@ -186,8 +185,7 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
   function MenuPortal<A, IsMulti extends boolean>(
     props: MenuPortalProps<A, IsMulti, GroupBase<A>>
   ) {
-    const inDialog = useModalContext();
-    return <defaultComponents.MenuPortal {...props} className={menuPortalRecipe({ inDialog })} />;
+    return <defaultComponents.MenuPortal {...props} />;
   }
 
   function NoOptionsMessage<A, IsMulti extends boolean>(props: NoticeProps<A, IsMulti>) {
