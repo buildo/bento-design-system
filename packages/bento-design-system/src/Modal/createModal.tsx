@@ -10,6 +10,7 @@ import { ModalContext } from "./ModalContext";
 import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
+import { createPortal } from "../util/createPortal";
 
 export type ModalProps = {
   title: LocalizedString;
@@ -67,7 +68,7 @@ export function createModal(
 
     const { defaultMessages } = useDefaultMessages();
 
-    return (
+    return createPortal(
       <Box className={underlay} {...underlayProps} color={undefined}>
         <ModalContext.Provider value={true}>
           <FocusScope contain restoreFocus autoFocus>
