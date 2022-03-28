@@ -28,7 +28,6 @@ export const modalRecipe = strictRecipe({
 
 export const underlay = bentoSprinkles({
   position: "fixed",
-  zIndex: "modalUnderlay",
   inset: 0,
   display: "flex",
   alignItems: "center",
