@@ -9,3 +9,4 @@ export function createButtons(config: ButtonConfig = defaultButtonConfig) {
 }
 
 export type { ButtonProps };
+export { defaultButtonConfig };

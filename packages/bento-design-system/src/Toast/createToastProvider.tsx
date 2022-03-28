@@ -19,12 +19,17 @@ export function createToastProvider(ToastContainer: FunctionComponent<ToastProps
       };
     }, []);
 
+    const hideToast = () => {
+      clearTimeout(timeoutRef.current);
+      setToastProps(null);
+    };
+
     return (
       <ToastContext.Provider
         value={{
           showToast: useCallback(
-            (props) => {
-              setToastProps(props);
+            ({ dismissable, ...props }) => {
+              setToastProps({ ...props, onDismiss: dismissable ? hideToast : undefined });
               clearTimeout(timeoutRef.current);
               timeoutRef.current = window.setTimeout(() => setToastProps(null), dismissAfterMs);
             },
