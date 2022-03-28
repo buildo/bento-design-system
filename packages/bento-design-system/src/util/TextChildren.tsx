@@ -91,7 +91,6 @@ function textChildrenToChildrenArray(
     case "lineBreak":
       return [<br />];
     case "link":
-      // TODO(gabro): we should allow custom Link components here
       return [
         <Box as={LinkComponent} href={children.href} target={children.target}>
           {children.text}
