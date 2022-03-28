@@ -18,7 +18,9 @@ export const makeLinkComponent = (
 
 export type LinkComponent = ComponentType<LinkComponentProps>;
 
-const DefaultLinkComponent = makeLinkComponent((props, ref) => <Box as="a" ref={ref} {...props} />);
+export const DefaultLinkComponent = makeLinkComponent((props, ref) => (
+  <Box as="a" ref={ref} {...props} />
+));
 
 export const LinkComponentContext = createContext<LinkComponent>(DefaultLinkComponent);
 
