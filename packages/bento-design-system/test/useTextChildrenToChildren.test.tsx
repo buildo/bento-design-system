@@ -3,16 +3,28 @@ import {
   makeTextChildrenFromElements,
   bold,
   lineBreak,
-  textChildrenToChildren,
+  useTextChildrenToChildren,
   link,
+  TextChildren,
+  DefaultLinkComponent,
 } from "../src";
+import { renderHook } from "@testing-library/react-hooks";
 
 const formatMessage = unsafeLocalizedString;
+
+function toChildren(input: TextChildren) {
+  const { result } = renderHook(() => {
+    const textChildrenToChildren = useTextChildrenToChildren();
+    return textChildrenToChildren(input);
+  });
+  return result.current;
+}
 
 describe("textChildrenToChildren", () => {
   test("regular string", () => {
     const input = formatMessage("Hello");
-    expect(textChildrenToChildren(input)).toMatchInlineSnapshot(`
+    const result = toChildren(input);
+    expect(result).toMatchInlineSnapshot(`
       Array [
         "Hello",
       ]
@@ -21,7 +33,8 @@ describe("textChildrenToChildren", () => {
 
   test("lineBreak", () => {
     const input = makeTextChildrenFromElements(lineBreak);
-    expect(textChildrenToChildren(input)).toMatchInlineSnapshot(`
+    const result = toChildren(input);
+    expect(result).toMatchInlineSnapshot(`
       Array [
         <br />,
       ]
@@ -30,7 +43,8 @@ describe("textChildrenToChildren", () => {
 
   test("bold", () => {
     const input = makeTextChildrenFromElements(bold(formatMessage("Bold text")));
-    expect(textChildrenToChildren(input)).toMatchInlineSnapshot(`
+    const result = toChildren(input);
+    expect(result).toMatchInlineSnapshot(`
       Array [
         <ForwardRef
           as="b"
@@ -46,10 +60,16 @@ describe("textChildrenToChildren", () => {
     const input = makeTextChildrenFromElements(
       link(formatMessage("Link"), "https://www.google.com", "_blank")
     );
-    expect(textChildrenToChildren(input)).toMatchInlineSnapshot(`
+    const result = toChildren(input);
+    expect(result).toMatchInlineSnapshot(`
       Array [
         <ForwardRef
-          as="a"
+          as={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "render": [Function],
+            }
+          }
           href="https://www.google.com"
           target="_blank"
         >
@@ -61,7 +81,8 @@ describe("textChildrenToChildren", () => {
 
   test("array of regular strings", () => {
     const input = makeTextChildrenFromElements([formatMessage("Hello"), formatMessage("World")]);
-    expect(textChildrenToChildren(input)).toMatchInlineSnapshot(`
+    const result = toChildren(input);
+    expect(result).toMatchInlineSnapshot(`
       Array [
         "Hello",
         "World",
@@ -75,7 +96,8 @@ describe("textChildrenToChildren", () => {
       bold(formatMessage("World")),
       formatMessage("!"),
     ]);
-    expect(textChildrenToChildren(input)).toMatchInlineSnapshot(`
+    const result = toChildren(input);
+    expect(result).toMatchInlineSnapshot(`
       Array [
         "Hello",
         <ForwardRef
@@ -98,7 +120,8 @@ describe("textChildrenToChildren", () => {
       formatMessage("line"),
       link(formatMessage("Link"), "https://www.google.com", "_blank"),
     ]);
-    expect(textChildrenToChildren(input)).toMatchInlineSnapshot(`
+    const result = toChildren(input);
+    expect(result).toMatchInlineSnapshot(`
       Array [
         "First",
         <ForwardRef
@@ -116,7 +139,12 @@ describe("textChildrenToChildren", () => {
         </ForwardRef>,
         "line",
         <ForwardRef
-          as="a"
+          as={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "render": [Function],
+            }
+          }
           href="https://www.google.com"
           target="_blank"
         >
