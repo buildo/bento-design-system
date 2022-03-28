@@ -1,5 +1,6 @@
 import { render, screen, waitFor, waitForElementToBeRemoved } from "@testing-library/react";
 import user from "@testing-library/user-event";
+import { DefaultMessagesContext } from "../src/DefaultMessagesContext";
 import {
   createButtons,
   createIconButton,
@@ -8,6 +9,7 @@ import {
   unsafeLocalizedString,
   useToast,
 } from "../src";
+import { defaultMessages } from "./util/defaultMessages";
 
 const { Button } = createButtons();
 const IconButton = createIconButton(defaultIconButtonConfig);
@@ -25,9 +27,11 @@ function ShowToast() {
 describe("useToast", () => {
   test("automatically dismisses toasts after a delay", async () => {
     const { container } = render(
-      <ToastProvider dismissAfterMs={100}>
-        <ShowToast />
-      </ToastProvider>
+      <DefaultMessagesContext.Provider value={{ defaultMessages }}>
+        <ToastProvider dismissAfterMs={100}>
+          <ShowToast />
+        </ToastProvider>
+      </DefaultMessagesContext.Provider>
     );
 
     // No toast
