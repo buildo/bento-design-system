@@ -21,6 +21,13 @@ export const Message = createStory({
   kind: "informative",
 });
 
+export const NonDismissable = createStory(
+  {
+    kind: "informative",
+  },
+  { actions: { argTypesRegex: "" } }
+);
+
 export const MessageAndAction = createStory({
   kind: "informative",
   action: {
@@ -28,6 +35,17 @@ export const MessageAndAction = createStory({
     onPress: action("onPress"),
   },
 });
+
+export const NonDismissableAndAction = createStory(
+  {
+    kind: "informative",
+    action: {
+      label: formatMessage("Action"),
+      onPress: action("onPress"),
+    },
+  },
+  { actions: { argTypesRegex: "" } }
+);
 
 export const Positive = createStory({
   kind: "positive",
@@ -71,6 +89,7 @@ export const WithProvider = ({
       message,
       kind,
       action: { label: formatMessage("Action"), onPress: action("onPress") },
+      dismissable: true,
     });
   }, [message, kind, showToast]);
 

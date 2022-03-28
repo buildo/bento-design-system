@@ -40,6 +40,7 @@ import {
   defaultInputConfig,
   defaultSelectionControlConfig,
   defaultDropdownConfig,
+  defaultButtonConfig,
 } from "@buildo/bento-design-system";
 
 import "@buildo/bento-design-system/lib/index.css";
@@ -69,8 +70,8 @@ export const IconButton = createIconButton(defaultIconButtonConfig);
 export const Banner = createBanner(Button, IconButton, {});
 export const Actions = createActions(Button, Banner);
 export const { Form, FormSection, FormRow } = createFormLayoutComponents(Actions);
-export const { Toast, ToastProvider } = createToast(Button, {
-  mediumButtonPaddingX: 16,
+export const { Toast, ToastProvider } = createToast(Button, IconButton, {
+  smallButtonPaddingY: defaultButtonConfig.paddingY.small,
 });
 export const BentoProvider = createBentoProvider(ToastProvider);
 export const Card = createCard<24 | 32 | 40>({});

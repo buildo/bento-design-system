@@ -1,6 +1,6 @@
 import { ComponentProps, FunctionComponent } from "react";
 import { BentoSprinkles } from "../internal";
-import { Body, ButtonProps, TextChildren } from "..";
+import { Body, ButtonProps, IconButtonProps, IconClose, IconProps, TextChildren } from "..";
 import { createToastInternal } from "./createToastInternal";
 import { createToastContainer } from "./createToastContainer";
 import { createToastProvider } from "./createToastProvider";
@@ -10,31 +10,39 @@ export type ToastConfig = {
   paddingY?: BentoSprinkles["paddingY"];
   radius?: BentoSprinkles["borderRadius"];
   messageSize?: ComponentProps<typeof Body>["size"];
-  mediumButtonPaddingX: BentoSprinkles["paddingY"];
+  closeIcon?: FunctionComponent<IconProps>;
+  closeIconSize?: IconProps["size"];
+  smallButtonPaddingY: BentoSprinkles["paddingY"];
 };
 
 export type ToastProps = {
   kind: "informative" | "positive" | "warning" | "negative" | "secondary";
   message: TextChildren;
   action?: Pick<ButtonProps, "onPress" | "label">;
+  onDismiss?: () => void;
 };
 
 export function createToast(
   Button: FunctionComponent<ButtonProps>,
+  IconButton: FunctionComponent<IconButtonProps>,
   {
     paddingX = 16,
     paddingY = 16,
     radius = 8,
     messageSize = "medium",
-    mediumButtonPaddingX,
+    closeIcon = IconClose,
+    closeIconSize = 12,
+    smallButtonPaddingY,
   }: ToastConfig
 ) {
-  const Toast = createToastInternal(Button, {
+  const Toast = createToastInternal(Button, IconButton, {
     paddingX,
     paddingY,
-    mediumButtonPaddingX,
     radius,
     messageSize,
+    smallButtonPaddingY,
+    closeIcon,
+    closeIconSize,
   });
   const ToastContainer = createToastContainer(Toast);
   const ToastProvider = createToastProvider(ToastContainer);
