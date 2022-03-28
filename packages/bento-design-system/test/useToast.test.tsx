@@ -1,10 +1,18 @@
 import { render, screen, waitFor, waitForElementToBeRemoved } from "@testing-library/react";
 import user from "@testing-library/user-event";
-import { createButtons, createToast, unsafeLocalizedString, useToast } from "../src";
+import {
+  createButtons,
+  createIconButton,
+  createToast,
+  defaultIconButtonConfig,
+  unsafeLocalizedString,
+  useToast,
+} from "../src";
 
 const { Button } = createButtons();
-const { ToastProvider } = createToast(Button, {
-  mediumButtonPaddingX: 16,
+const IconButton = createIconButton(defaultIconButtonConfig);
+const { ToastProvider } = createToast(Button, IconButton, {
+  smallButtonPaddingY: 4,
 });
 const message = unsafeLocalizedString("This is a message for you");
 const kind = "informative";
