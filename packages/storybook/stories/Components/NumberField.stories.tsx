@@ -41,3 +41,9 @@ export const ReadOnly = createStory({
   kind: "percentage",
   isReadOnly: true,
 });
+
+export const MinMaxValue = createStory({
+  value: 5,
+  minValue: 0.1,
+  maxValue: 10
+});
