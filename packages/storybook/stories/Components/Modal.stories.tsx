@@ -1,6 +1,7 @@
 import { Modal, Body, Placeholder, Stack } from "../";
 import { createComponentStories, formatMessage, textArgType } from "../util";
 import { action } from "@storybook/addon-actions";
+import { screen } from "@storybook/testing-library";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Modal,
@@ -101,6 +102,10 @@ export const WithAsyncPrimaryAction = createStory({
     onPress: action("Cancel"),
   },
 });
+WithAsyncPrimaryAction.play = async () => {
+  const button = screen.getByRole("button", { name: /create new item/i });
+  await button.click();
+};
 
 export const Small = createStory({
   size: "small",

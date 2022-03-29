@@ -26,6 +26,7 @@
     "@storybook/addon-links": "^6.4.5",
     "@storybook/addons": "^6.4.12",
     "@storybook/react": "^6.4.5",
+    "@storybook/testing-library": "^0.0.9",
     "@types/lodash.orderby": "^4.6.6",
     "@types/react": "^17.0.37",
     "@types/react-table": "^7.7.9",

@@ -185,6 +185,7 @@ importers:
       '@storybook/addon-links': ^6.4.5
       '@storybook/addons': ^6.4.12
       '@storybook/react': ^6.4.5
+      '@storybook/testing-library': ^0.0.9
       '@types/lodash.orderby': ^4.6.6
       '@types/react': ^17.0.37
       '@types/react-table': ^7.7.9
@@ -217,6 +218,7 @@ importers:
       '@storybook/addon-links': 6.4.19_react-dom@17.0.2+react@17.0.2
       '@storybook/addons': 6.4.19_react-dom@17.0.2+react@17.0.2
       '@storybook/react': 6.4.19_5cddf79ad28a16ac508fd78ad02fcb36
+      '@storybook/testing-library': 0.0.9_react-dom@17.0.2+react@17.0.2
       '@types/lodash.orderby': 4.6.6
       '@types/react': 17.0.40
       '@types/react-table': 7.7.9
@@ -4907,6 +4909,18 @@ packages:
       lodash: 4.17.21
     dev: true
 
+  /@storybook/instrumenter/6.4.19_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-KwOJUW7tItZw1CLffUbaSfEzH1p1HdGmJs1Q42uWGJSbXbVHZ7i7bJWYb3Lf90+yHTlqQjTr1PKAymwDwHseTA==}
+    dependencies:
+      '@storybook/addons': 6.4.19_react-dom@17.0.2+react@17.0.2
+      '@storybook/client-logger': 6.4.19
+      '@storybook/core-events': 6.4.19
+      global: 4.4.0
+    transitivePeerDependencies:
+      - react
+      - react-dom
+    dev: true
+
   /@storybook/manager-webpack4/6.4.19_8846f69c2ca4625dec4d61e95f53dee5:
     resolution: {integrity: sha512-R8ugZjTYqXvlc6gDOcw909L65sIleOmIJLZR+N6/H85MivGXHu39jOwONqB7tVACufRty4FNecn8tEiQL2SAKA==}
     peerDependencies:
@@ -5163,6 +5177,19 @@ packages:
       synchronous-promise: 2.0.15
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
+    dev: true
+
+  /@storybook/testing-library/0.0.9_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-X4/Tk7RryB0tZ/9NLUHYTBXW01zRpf6+IhdhqsVl6WOWRyUaIv3zEhr43gQyZhBe4ZZyt5d90FJC9qWmY1oFKg==}
+    dependencies:
+      '@storybook/client-logger': 6.4.19
+      '@storybook/instrumenter': 6.4.19_react-dom@17.0.2+react@17.0.2
+      '@testing-library/dom': 8.11.3
+      '@testing-library/user-event': 13.5.0_@testing-library+dom@8.11.3
+      ts-dedent: 2.2.0
+    transitivePeerDependencies:
+      - react
+      - react-dom
     dev: true
 
   /@storybook/theming/6.4.19_react-dom@17.0.2+react@17.0.2:
@@ -5429,7 +5456,7 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 3.0.5
-      '@types/node': 14.18.12
+      '@types/node': 17.0.21
     dev: true
 
   /@types/graceful-fs/4.1.5:
@@ -5685,7 +5712,7 @@ packages:
   /@types/webpack-sources/3.2.0:
     resolution: {integrity: sha512-Ft7YH3lEVRQ6ls8k4Ff1oB4jN6oy/XmU6tQISKdhfh+1mR+viZFphS6WL0IrtDOzvefmJg5a0s7ZQoRXwqTEFg==}
     dependencies:
-      '@types/node': 14.18.12
+      '@types/node': 17.0.21
       '@types/source-list-map': 0.1.2
       source-map: 0.7.3
     dev: true
@@ -12045,7 +12072,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 14.18.12
+      '@types/node': 17.0.21
       merge-stream: 2.0.0
       supports-color: 7.2.0
     dev: true
