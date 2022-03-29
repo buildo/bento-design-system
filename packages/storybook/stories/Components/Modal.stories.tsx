@@ -1,7 +1,7 @@
 import { Modal, Body, Placeholder, Stack } from "../";
 import { createComponentStories, formatMessage, textArgType } from "../util";
 import { action } from "@storybook/addon-actions";
-import { screen } from "@testing-library/dom";
+import { screen } from "@storybook/testing-library";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Modal,
