@@ -87,7 +87,7 @@ export const Destructive = createStory({
 export const WithAsyncPrimaryAction = createStory({
   children: [<Placeholder />],
   primaryAction: {
-    label: formatMessage("Create"),
+    label: formatMessage("Create new item"),
     onPress: () =>
       new Promise((resolve) => {
         setTimeout(() => {
