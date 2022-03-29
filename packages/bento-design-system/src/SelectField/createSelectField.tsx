@@ -44,7 +44,7 @@ declare module "react-select/dist/declarations/src/Select" {
     menuSize?: ListSize;
     validationState: "valid" | "invalid";
     multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString;
-    isReadOnly: boolean;
+    isReadOnly?: boolean;
   }
 }
 
