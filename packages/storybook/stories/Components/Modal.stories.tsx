@@ -25,7 +25,7 @@ const { defaultExport, createStory } = createComponentStories({
 export default defaultExport;
 
 export const WithActions = createStory({
-  children: [<Placeholder />],
+  children: [<Placeholder />, <Placeholder />],
   primaryAction: {
     label: formatMessage("Create"),
     onPress: action("Create"),
