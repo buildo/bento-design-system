@@ -29,6 +29,7 @@ type NavigationConfig = {
   illustrationSize: SizeConfig<IllustrationProps["size"]>;
   internalSpacing: SizeConfig<BentoSprinkles["gap"]>;
   activeVisualElement: JSX.Element;
+  uppercaseLabel: boolean;
 };
 
 type Kind = "none" | "icon" | "illustration";
@@ -98,7 +99,9 @@ export function createNavigation(config: NavigationConfig) {
                 })}
             </Column>
           )}
-          <Label size={config.labelSize[size]}>{label}</Label>
+          <Label size={config.labelSize[size]} uppercase={config.uppercaseLabel}>
+            {label}
+          </Label>
         </Columns>
         {active && config.activeVisualElement}
       </Box>
@@ -179,4 +182,5 @@ export const defaultNavigationConfig: NavigationConfig = {
       style={{ height: 2 }}
     />
   ),
+  uppercaseLabel: false,
 };
