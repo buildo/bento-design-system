@@ -30,7 +30,7 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
   const ListItem = createListItem(dropdownConfig.list.item);
 
   function Control<A, IsMulti extends boolean>({
-    selectProps: { validationState: validation, isDisabled, isReadOnly },
+    selectProps: { validationState: validation, isDisabled, isReadOnly = false },
     innerProps,
     innerRef,
     menuIsOpen,
