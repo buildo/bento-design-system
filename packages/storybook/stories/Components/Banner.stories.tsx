@@ -23,7 +23,7 @@ Extensively long description, this is so big that it
 should overfill the screen and break into several lines. It's really a long description, not gonna lie.`);
 
 export const Dismissable = createStory({
-  kind: "informative",
+  kind: "positive",
   title,
   description: shortDescription,
 });
