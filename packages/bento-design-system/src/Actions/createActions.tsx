@@ -72,13 +72,14 @@ export function createActions(
       case "right":
         return (
           <Columns space={config.spaceBetweenButtons} alignY="center" collapseBelow="tablet">
-            {(isLoading || error) && (
+            {isLoading && (
+              <Column width="content">
+                <InlineLoader message={loadingMessage} />
+              </Column>
+            )}
+            {error && !isLoading && (
               <Column width="1/2">
-                {isLoading ? (
-                  <InlineLoader message={loadingMessage} />
-                ) : (
-                  error && <Banner kind="negative" description={error} />
-                )}
+                <Banner kind="negative" description={error} />
               </Column>
             )}
             <Inline
@@ -103,15 +104,18 @@ export function createActions(
             <Inline space={config.spaceBetweenButtons} alignY="center" collapseBelow="tablet">
               {buttons}
             </Inline>
-            <Column width="1/2">
-              {isLoading ? (
+            {isLoading && (
+              <Column width="content">
                 <Inline space={0} align="right" alignY="center">
                   <InlineLoader message={loadingMessage} />
                 </Inline>
-              ) : (
-                <Column>{error && <Banner kind="negative" description={error} />}</Column>
-              )}
-            </Column>
+              </Column>
+            )}
+            {error && !isLoading && (
+              <Column width="1/2">
+                <Banner kind="negative" description={error} />
+              </Column>
+            )}
           </Columns>
         );
       case "spaceBetween":
