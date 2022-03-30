@@ -7,7 +7,7 @@ import { checkboxRecipe, fieldContainer } from "./Checkbox.css";
 import { vars } from "../vars.css";
 import { useLabel } from "@react-aria/label";
 import { InputHTMLAttributes, Ref } from "react";
-import { SelectionControlGroupConfig } from "../Field/Config";
+import { SelectionControlConfig } from "../Field/Config";
 
 type CheckboxUIProps = {
   value: boolean;
@@ -51,7 +51,7 @@ type Props = {
   inputProps: InputHTMLAttributes<HTMLInputElement>;
 };
 
-export function createCheckbox(config: SelectionControlGroupConfig) {
+export function createCheckbox(config: SelectionControlConfig) {
   return function Checkbox({ option, inputRef, inputProps }: Props) {
     const { fieldProps, labelProps } = useLabel(option);
     const { isFocusVisible, focusProps } = useFocusRing();
