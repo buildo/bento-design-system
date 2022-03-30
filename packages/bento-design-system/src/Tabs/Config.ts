@@ -36,5 +36,5 @@ export type TabsConfig = TabsWidthConfig &
     uppercaseLabel: boolean;
     iconSize: IconProps["size"];
     notificationSize: IconProps["size"];
-    notificationColor: IconProps["color"];
+    notificationColor: IconProps["fill"];
   };

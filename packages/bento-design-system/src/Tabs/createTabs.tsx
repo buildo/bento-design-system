@@ -1,5 +1,5 @@
 import { usePress } from "@react-aria/interactions";
-import { Box, Columns, Column } from "../internal";
+import { Box, Columns, Column, bentoSprinkles } from "../internal";
 import { Children, IconProps, Label } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { tabRecipe } from "./Tabs.css";
@@ -44,6 +44,7 @@ export function createTabs(config: TabsConfig) {
         borderTopRadius={config.kind === "folder" ? config.radius : undefined}
         paddingX={config.paddingX[size]}
         paddingY={config.paddingY[size]}
+        position="relative"
       >
         <Columns space={config.internalSpacing} alignY="center">
           {icon && (
@@ -55,9 +56,11 @@ export function createTabs(config: TabsConfig) {
           {hasNotification && (
             <Column width="content">
               <svg
-                viewBox="0 0 24 24"
+                className={bentoSprinkles({
+                  fill: config.notificationColor,
+                })}
                 width={config.notificationSize}
-                fill={config.notificationColor}
+                viewBox="0 0 24 24"
               >
                 <path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Z" />
               </svg>
@@ -70,29 +73,24 @@ export function createTabs(config: TabsConfig) {
 
   return function Tabs<A>({ size, value, tabs, onChange }: Props<A>) {
     return (
-      <Box boxShadow="outlineInteractiveBottom">
-        <Columns
-          space={config.spaceBetweenTabs}
-          align={config.tabsWidth === "fit-content" ? config.tabsAlignment : undefined}
-        >
-          {tabs.map((t) => (
-            <Column
-              key={t.label}
-              width={config.tabsWidth === "fit-content" ? "content" : undefined}
-            >
-              <Tab
-                size={size}
-                label={t.label}
-                onPress={() => onChange(t.value)}
-                active={value === t.value}
-                disabled={t.disabled}
-                icon={t.icon}
-                hasNotification={t.hasNotification}
-              />
-            </Column>
-          ))}
-        </Columns>
-      </Box>
+      <Columns
+        space={config.spaceBetweenTabs}
+        align={config.tabsWidth === "fit-content" ? config.tabsAlignment : undefined}
+      >
+        {tabs.map((t) => (
+          <Column key={t.label} width={config.tabsWidth === "fit-content" ? "content" : undefined}>
+            <Tab
+              size={size}
+              label={t.label}
+              onPress={() => onChange(t.value)}
+              active={value === t.value}
+              disabled={t.disabled}
+              icon={t.icon}
+              hasNotification={t.hasNotification}
+            />
+          </Column>
+        ))}
+      </Columns>
     );
   };
 }
