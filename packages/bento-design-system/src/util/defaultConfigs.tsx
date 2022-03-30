@@ -114,9 +114,11 @@ export const chip: ChipConfig<typeof bentoSprinkles, string> = {
   paddingX: 8,
   paddingY: 4,
   labelSize: "small",
+  iconSize: 12,
   closeIcon: IconClose,
   closeIconSize: 8,
-  internalSpacing: 8,
+  spacingAfterIcon: 4,
+  spacingAfterLabel: 8,
   customColors: {},
 };
 

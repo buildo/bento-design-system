@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
+import { IconProps } from "../Icons/IconProps";
 import { Label, LocalizedString, BoxType } from "..";
-import { Column, Columns, BentoSprinkles, bentoSprinkles } from "../internal";
+import { Column, Columns, BentoSprinkles, bentoSprinkles, Inline } from "../internal";
 import { chip } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
@@ -31,6 +32,7 @@ type DefaultColor =
 type Props<CustomColor extends string> = {
   label: LocalizedString;
   color: DefaultColor | CustomColor;
+  icon?: FunctionComponent<IconProps>;
 } & DismissProps;
 
 const defaultColorsMapping: Record<DefaultColor, BentoSprinkles["background"]> = {
@@ -58,7 +60,7 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
 ) {
   const colorsMapping = { ...defaultColorsMapping, ...config.customColors };
 
-  return function Chip({ color, label, ...dismissProps }: Props<CustomColors>) {
+  return function Chip({ color, label, icon, ...dismissProps }: Props<CustomColors>) {
     const { defaultMessages } = useDefaultMessages();
 
     return (
@@ -69,8 +71,11 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
           className={chip}
           background={colorsMapping[color]}
         >
-          <Columns space={config.internalSpacing} align="center" alignY="center">
-            <Label size={config.labelSize}>{label}</Label>
+          <Columns space={config.spacingAfterLabel} align="center" alignY="center">
+            <Inline space={config.spacingAfterIcon} alignY="center">
+              {icon && icon({ size: config.iconSize, color: "secondary" })}
+              <Label size={config.labelSize}>{label}</Label>
+            </Inline>
             {dismissProps.onDismiss && (
               <Column width="content">
                 <IconButton

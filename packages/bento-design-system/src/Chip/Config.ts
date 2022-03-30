@@ -8,9 +8,11 @@ export type ChipConfig<AtomsFn extends typeof bentoSprinkles, CustomColor extend
   paddingX: BentoSprinkles["paddingX"];
   paddingY: BentoSprinkles["paddingY"];
   labelSize: LabelProps["size"];
+  iconSize: IconProps["size"];
   closeIcon: FunctionComponent<IconProps>;
   closeIconSize: IconProps["size"];
-  internalSpacing: BentoSprinkles["gap"];
+  spacingAfterIcon: BentoSprinkles["gap"];
+  spacingAfterLabel: BentoSprinkles["gap"];
   customColors: {
     [k in CustomColor]: BoxProps<AtomsFn>["background"];
   };
