@@ -5,17 +5,15 @@ import {
   createButtons,
   createIconButton,
   createToast,
-  defaultIconButtonConfig,
   unsafeLocalizedString,
   useToast,
 } from "../src";
 import { defaultMessages } from "./util/defaultMessages";
+import * as defaultConfigs from "../src/util/defaultConfigs";
 
-const { Button } = createButtons();
-const IconButton = createIconButton(defaultIconButtonConfig);
-const { ToastProvider } = createToast(Button, IconButton, {
-  smallButtonPaddingY: 4,
-});
+const { Button } = createButtons(defaultConfigs.button);
+const IconButton = createIconButton(defaultConfigs.iconButton);
+const { ToastProvider } = createToast(defaultConfigs.toast, { Button, IconButton });
 const message = unsafeLocalizedString("This is a message for you");
 const kind = "informative";
 

@@ -13,7 +13,7 @@ import {
   IconUser,
   IconWarning,
   IconSearch,
-} from "src/Icons";
+} from "../Icons";
 import { ButtonConfig } from "../Button/Config";
 import { CardConfig } from "../Card/Config";
 import { ChipConfig } from "../Chip/Config";
