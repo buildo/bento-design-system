@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
 import { Label, LocalizedString, BoxType } from "..";
-import { Column, Columns, BentoSprinkles, bentoSprinkles, Inline } from "../internal";
+import { Column, Columns, BentoSprinkles, bentoSprinkles } from "../internal";
 import { chip } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
@@ -72,10 +72,12 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
           background={colorsMapping[color]}
         >
           <Columns space={config.spacingAfterLabel} align="center" alignY="center">
-            <Inline space={config.spacingAfterIcon} alignY="center">
-              {icon && icon({ size: config.iconSize, color: "secondary" })}
+            <Columns space={config.spacingAfterIcon} alignY="center">
+              <Column width="content">
+                {icon && icon({ size: config.iconSize, color: "secondary" })}
+              </Column>
               <Label size={config.labelSize}>{label}</Label>
-            </Inline>
+            </Columns>
             {dismissProps.onDismiss && (
               <Column width="content">
                 <IconButton
