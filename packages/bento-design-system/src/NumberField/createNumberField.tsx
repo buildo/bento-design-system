@@ -14,7 +14,7 @@ type Props = FieldProps<number | undefined, number> & {
   autoFocus?: boolean;
   isReadOnly?: boolean;
 } & FormatProps &
-  Pick<NumberFieldStateProps, "minValue" | "maxValue">;
+  Pick<NumberFieldStateProps, "minValue" | "maxValue" | "step">;
 
 export function createNumberField(
   Field: FieldType,
