@@ -1,8 +1,8 @@
-import { createComponentStories, formatMessage } from "../util";
-import { IconInformative, IconNegative, Tabs } from "../";
+import { createComponentStories, formatMessage } from "../../util";
+import { IconInformative, IconNegative, UnderlineTabs } from "../..";
 
 const { defaultExport, createControlledStory } = createComponentStories({
-  component: Tabs,
+  component: UnderlineTabs,
   args: {
     size: "medium",
   },
