@@ -31,7 +31,18 @@ import {
   createNavigation,
   createMenu,
   createIconButton,
+<<<<<<< HEAD
   defaultConfigs,
+=======
+  defaultIconButtonConfig,
+  defaultFeedbackConfig,
+  defaultFieldConfig,
+  defaultInputConfig,
+  defaultSelectionControlConfig,
+  defaultDropdownConfig,
+  defaultButtonConfig,
+  defaultFolderTabsConfig,
+>>>>>>> 44df554a (add tabs underline kind)
 } from "@buildo/bento-design-system";
 
 import "@buildo/bento-design-system/lib/index.css";
@@ -89,11 +100,22 @@ export const Disclosure = createDisclosure(defaultConfigs.disclosure);
 export const DisclosureGroup = createDisclosureGroup(defaultConfigs.disclosureGroup, {
   Disclosure,
 });
+<<<<<<< HEAD
 export const Tabs = createTabs(defaultConfigs.tabs);
 export const AreaLoader = createAreaLoader(defaultConfigs.areaLoader);
 export const Avatar = createAvatar(defaultConfigs.avatar);
 export const SearchBar = createSearchBar(defaultConfigs.searchBar, { Field, IconButton });
 export const Switch = createSwitch(defaultConfigs.selectionControl.element, { Field });
+=======
+export const { List } = createListComponents();
+export const Disclosure = createDisclosure();
+export const DisclosureGroup = createDisclosureGroup(Disclosure);
+export const Tabs = createTabs(defaultFolderTabsConfig);
+export const AreaLoader = createAreaLoader();
+export const Avatar = createAvatar();
+export const SearchBar = createSearchBar(Field, IconButton);
+export const Switch = createSwitch(Field, defaultSelectionControlConfig.element);
+>>>>>>> 44df554a (add tabs underline kind)
 const FeedbackBackground = (
   <svg viewBox="0 0 440 240">
     <path

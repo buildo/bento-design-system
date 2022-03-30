@@ -10,17 +10,7 @@ export const tabRecipe = strictRecipe({
   }),
   variants: {
     active: {
-      true: bentoSprinkles({
-        background: "backgroundInteractiveOverlay",
-        color: "textInteractive",
-        fill: "textInteractive",
-      }),
       false: bentoSprinkles({
-        background: {
-          default: "secondaryTransparentEnabledBackground",
-          hover: "secondaryTransparentHoverBackground",
-          focus: "secondaryTransparentFocusBackground",
-        },
         color: {
           default: "secondaryTransparentEnabledForeground",
           hover: "secondaryTransparentHoverForeground",
@@ -34,5 +24,49 @@ export const tabRecipe = strictRecipe({
         cursor: "pointer",
       }),
     },
+    kind: {
+      folder: {},
+      underline: {},
+    },
   },
+  compoundVariants: [
+    {
+      variants: {
+        active: false,
+        kind: "folder",
+      },
+      style: bentoSprinkles({
+        background: {
+          default: "secondaryTransparentEnabledBackground",
+          hover: "secondaryTransparentHoverBackground",
+          focus: "secondaryTransparentFocusBackground",
+        },
+      }),
+    },
+    {
+      variants: {
+        active: true,
+        kind: "folder",
+      },
+      style: bentoSprinkles({
+        background: {
+          default: "backgroundInteractiveOverlay",
+          hover: "backgroundInteractiveOverlay",
+          focus: "backgroundInteractiveOverlay",
+        },
+        color: { default: "textInteractive", hover: "textInteractive", focus: "textInteractive" },
+        fill: { default: "textInteractive", hover: "textInteractive", focus: "textInteractive" },
+      }),
+    },
+    {
+      variants: {
+        active: true,
+        kind: "underline",
+      },
+      style: bentoSprinkles({
+        color: { default: "textPrimary", hover: "textPrimary", focus: "textPrimary" },
+        fill: { default: "textPrimary", hover: "textPrimary", focus: "textPrimary" },
+      }),
+    },
+  ],
 });

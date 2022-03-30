@@ -354,13 +354,6 @@ export const table: TableConfig = {
   emptyIllustration: IllustrationSearch,
 };
 
-export const tabs: TabsConfig = {
-  radius: 8,
-  paddingX: 40,
-  paddingY: 8,
-  labelSize: "large",
-};
-
 export const toast: ToastConfig = {
   paddingX: 16,
   paddingY: 16,
@@ -369,4 +362,44 @@ export const toast: ToastConfig = {
   closeIcon: IconClose,
   closeIconSize: 12,
   smallButtonPaddingY: button.paddingY.small,
+};
+
+const tabsBaseConfig = {
+  tabsWidth: "fit-content",
+  tabsAlignment: "left",
+  spaceBetweenTabs: 0,
+  internalSpacing: 8,
+  paddingX: {
+    medium: 40,
+    large: 40,
+  },
+  paddingY: {
+    medium: 8,
+    large: 16,
+  },
+  labelSize: {
+    medium: "medium",
+    large: "large",
+  },
+  uppercaseLabel: false,
+  iconSize: 16,
+  notificationSize: 8,
+  notificationColor: "interactive",
+} as const;
+
+export const folderTabs: TabsConfig = {
+  ...tabsBaseConfig,
+  kind: "folder",
+  radius: 4,
+};
+
+export const underlineTabs: TabsConfig = {
+  ...tabsBaseConfig,
+  kind: "underline",
+  lineHeight: 2,
+  lineColor: {
+    default: "brandPrimary",
+    hover: "foregroundSecondaryInverse",
+    focus: "foregroundSecondaryInverse",
+  },
 };
