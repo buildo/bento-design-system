@@ -73,9 +73,9 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
         >
           <Columns space={config.spacingAfterLabel} align="center" alignY="center">
             <Columns space={config.spacingAfterIcon} alignY="center">
-              <Column width="content">
-                {icon && icon({ size: config.iconSize, color: "secondary" })}
-              </Column>
+              {icon && <Column width="content">
+                {icon({ size: config.iconSize, color: "secondary" })}
+              </Column>}
               <Label size={config.labelSize}>{label}</Label>
             </Columns>
             {dismissProps.onDismiss && (
