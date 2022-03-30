@@ -12,6 +12,25 @@ import { Children } from "../util/Children";
 import { FieldProps } from "./FieldProps";
 import { IconInformative, TooltipProps } from "..";
 
+export type FieldConfig = {
+  label: {
+    size: ComponentProps<typeof Label>["size"];
+  };
+  assistiveText: {
+    size: ComponentProps<typeof Body>["size"];
+    paddingLeft: BentoSprinkles["paddingX"];
+  };
+  internalSpacing: BentoSprinkles["gap"];
+};
+export const defaultFieldConfig: FieldConfig = {
+  label: { size: "small" },
+  assistiveText: {
+    size: "small",
+    paddingLeft: 16,
+  },
+  internalSpacing: 4,
+};
+
 type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "hint"> & {
   /** The field label rendered on screen. Can be omitted in case of fields that have a custom label, such as CheckboxField  */
   label?: FieldProps<never>["label"];
@@ -29,23 +48,18 @@ type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "
   children: Children;
 };
 
-export type FieldType = React.FunctionComponent<Props>;
-export type FieldConfig = {
-  label: {
-    size: ComponentProps<typeof Label>["size"];
-  };
-  assistiveText: {
-    size: ComponentProps<typeof Body>["size"];
-    paddingLeft: BentoSprinkles["paddingX"];
-  };
-  internalSpacing: BentoSprinkles["gap"];
-};
-
 /**
  * A utility for rendering a form field with a label, a description and error message, alongside their accessibility props.
  * This is meant as an internal design system utility for implementing form fields.
  */
-export function createField(Tooltip: FunctionComponent<TooltipProps>, config: FieldConfig) {
+export function createField(
+  config: FieldConfig,
+  {
+    Tooltip,
+  }: {
+    Tooltip: FunctionComponent<TooltipProps>;
+  }
+) {
   return function Field({
     label,
     assistiveText,
@@ -116,11 +130,5 @@ export function createField(Tooltip: FunctionComponent<TooltipProps>, config: Fi
   };
 }
 
-export const defaultFieldConfig: FieldConfig = {
-  label: { size: "small" },
-  assistiveText: {
-    size: "small",
-    paddingLeft: 16,
-  },
-  internalSpacing: 4,
-};
+export type FieldType = React.FunctionComponent<Props>;
+export type { Props as FieldProps };

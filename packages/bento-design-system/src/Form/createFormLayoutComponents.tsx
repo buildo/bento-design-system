@@ -9,31 +9,40 @@ type FormLayoutConfig = {
   section: FormSectionConfig;
   row: FormRowConfig;
 };
+export const defaultFormLayoutConfig: FormLayoutConfig = {
+  form: {
+    headerTitleSize: "small",
+    headerDescriptionSize: "medium",
+    formSpacing: 40,
+    headerSpacing: 16,
+    actionsSize: "large",
+  },
+  section: {
+    sectionTitleSize: "large",
+    sectionDescriptionSize: "medium",
+    sectionHeaderSpacing: 8,
+    sectionSpacing: 24,
+  },
+  row: {
+    rowSpacing: 16,
+  },
+};
 
 export function createFormLayoutComponents(
-  Actions: FunctionComponent<ActionsProps>,
-  config: FormLayoutConfig = {
-    form: {
-      headerTitleSize: "small",
-      headerDescriptionSize: "medium",
-      formSpacing: 40,
-      headerSpacing: 16,
-      actionsSize: "large",
-    },
-    section: {
-      sectionTitleSize: "large",
-      sectionDescriptionSize: "medium",
-      sectionHeaderSpacing: 8,
-      sectionSpacing: 24,
-    },
-    row: {
-      rowSpacing: 16,
-    },
+  config: FormLayoutConfig,
+  {
+    Actions,
+  }: {
+    Actions: FunctionComponent<ActionsProps>;
   }
 ) {
-  const Form = createForm(Actions, config.form);
+  const Form = createForm(config.form, { Actions });
   const FormSection = createFormSection(config.section);
   const FormRow = createFormRow(config.row);
 
   return { Form, FormSection, FormRow };
 }
+
+export type { FormProps } from "./Form";
+export type { FormRowProps } from "./FormRow";
+export type { FormSectionProps } from "./FormSection";

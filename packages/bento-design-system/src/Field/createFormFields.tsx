@@ -22,16 +22,23 @@ type FieldsConfig = {
   dropdown: DropdownConfig;
 };
 
-export function createFormFields(Tooltip: FunctionComponent<TooltipProps>, config: FieldsConfig) {
-  const Field = createField(Tooltip, config.field);
-  const TextField = createTextField(Field, config.input);
-  const CheckboxField = createCheckboxField(Field, config.selectionControl.element);
-  const CheckboxGroupField = createCheckboxGroupField(Field, config.selectionControl);
-  const RadioGroupField = createRadioGroupField(Field, config.selectionControl);
+export function createFormFields(
+  config: FieldsConfig,
+  {
+    Tooltip,
+  }: {
+    Tooltip: FunctionComponent<TooltipProps>;
+  }
+) {
+  const Field = createField(config.field, { Tooltip });
+  const TextField = createTextField(config.input, { Field });
+  const CheckboxField = createCheckboxField(config.selectionControl.element, { Field });
+  const CheckboxGroupField = createCheckboxGroupField(config.selectionControl, { Field });
+  const RadioGroupField = createRadioGroupField(config.selectionControl, { Field });
   const NumberInput = createNumberInput(config.input);
-  const NumberField = createNumberField(Field, NumberInput);
-  const SelectField = createSelectField(Field, config.input, config.dropdown);
-  const ReadOnlyField = createReadOnlyField(TextField);
+  const NumberField = createNumberField({ Field, NumberInput });
+  const SelectField = createSelectField(config.input, config.dropdown, { Field });
+  const ReadOnlyField = createReadOnlyField({ TextField });
 
   return {
     CheckboxField,
@@ -45,9 +52,15 @@ export function createFormFields(Tooltip: FunctionComponent<TooltipProps>, confi
   };
 }
 
-export type { SelectOption } from "../SelectField/createSelectField";
-export type { RadioOption } from "../RadioGroupField/createRadioGroupField";
-export type { CheckboxOption } from "../CheckboxGroupField/createCheckboxGroupField";
+export type { TextFieldProps } from "../TextField/createTextField";
+export type { ReadOnlyFieldProps } from "../ReadOnlyField/createReadOnlyField";
+export type { SelectOption, SelectFieldProps } from "../SelectField/createSelectField";
+export type { RadioOption, RadioGroupFieldProps } from "../RadioGroupField/createRadioGroupField";
+export type {
+  CheckboxOption,
+  CheckboxGroupFieldProps,
+} from "../CheckboxGroupField/createCheckboxGroupField";
+export type { NumberFieldProps } from "../NumberField/createNumberField";
 export { defaultSelectionControlConfig } from "./SelectionControlConfig";
 export { defaultDropdownConfig } from "../SelectField/createSelectField";
 export { defaultInputConfig } from "./InputConfig";

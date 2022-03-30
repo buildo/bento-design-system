@@ -63,6 +63,15 @@ import {
 import { ButtonLinkProps } from "../Button/ButtonLink";
 import { IconButtonProps } from "../IconButton/createIconButton";
 
+type TableConfig = {
+  headerInfoIcon: (props: IconProps) => JSX.Element;
+  emptyIllustration: (props: IllustrationProps) => JSX.Element;
+};
+export const defaultTableConfig: TableConfig = {
+  headerInfoIcon: IconInformative,
+  emptyIllustration: IllustrationSearch,
+};
+
 type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
   a: Row<RowType<C>>,
   b: Row<RowType<C>>
@@ -107,18 +116,14 @@ type Props<C extends ReadonlyArray<ColumnType<string, {}, any>>> = {
  * <Table columns={[tableColumn(...), tableColumn(...)]} data={data} />
  * ```
  */
-
-type TableConfig = {
-  headerInfoIcon: (props: IconProps) => JSX.Element;
-  emptyIllustration: (props: IllustrationProps) => JSX.Element;
-};
-
 export function createTable(
-  Tooltip: FunctionComponent<TooltipProps>,
-  Feedback: FunctionComponent<FeedbackProps>,
-  config: TableConfig = {
-    headerInfoIcon: IconInformative,
-    emptyIllustration: IllustrationSearch,
+  config: TableConfig,
+  {
+    Tooltip,
+    Feedback,
+  }: {
+    Tooltip: FunctionComponent<TooltipProps>;
+    Feedback: FunctionComponent<FeedbackProps>;
   }
 ) {
   return function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
@@ -483,3 +488,4 @@ export type {
 export type { Column, Row } from "./types";
 
 export type { ColumnOptionsBase } from "./tableColumn";
+export type { Props as TableProps };

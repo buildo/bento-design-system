@@ -8,6 +8,25 @@ import { listItemRecipe } from "./ListItem.css";
 import { ListSize } from "./createListComponents";
 import { element } from "../reset.css";
 
+type ListItemSizeConfig<T> = {
+  [k in ListSize]: T;
+};
+export type ListItemConfig = {
+  paddingX: BentoSprinkles["paddingX"];
+  paddingY: ListItemSizeConfig<BentoSprinkles["paddingY"]>;
+  fontSize: {
+    firstLine: ComponentProps<typeof Body>["size"];
+    secondLine: ComponentProps<typeof Body>["size"];
+    overline: ComponentProps<typeof Label>["size"];
+  };
+  internalSpacing: BentoSprinkles["gap"];
+  iconSize: {
+    leading: IconProps["size"];
+    trailing: IconProps["size"];
+    illustration: IllustrationProps["size"];
+  };
+};
+
 type Kind =
   | {
       kind: "overline";
@@ -42,7 +61,7 @@ type RightItem = {
   trailingIcon?: (props: IconProps) => JSX.Element;
 };
 
-export type Props = Kind &
+type Props = Kind &
   LeftItem &
   RightItem & {
     disabled?: boolean;
@@ -61,27 +80,6 @@ export type Props = Kind &
         onPress?: never;
       }
   );
-
-export type { Props as ListItemProps };
-
-type ListItemSizeConfig<T> = {
-  [k in ListSize]: T;
-};
-export type ListItemConfig = {
-  paddingX: BentoSprinkles["paddingX"];
-  paddingY: ListItemSizeConfig<BentoSprinkles["paddingY"]>;
-  fontSize: {
-    firstLine: ComponentProps<typeof Body>["size"];
-    secondLine: ComponentProps<typeof Body>["size"];
-    overline: ComponentProps<typeof Label>["size"];
-  };
-  internalSpacing: BentoSprinkles["gap"];
-  iconSize: {
-    leading: IconProps["size"];
-    trailing: IconProps["size"];
-    illustration: IllustrationProps["size"];
-  };
-};
 
 export function createListItem(config: ListItemConfig) {
   return function ListItem(props: Props) {
@@ -224,3 +222,5 @@ export function createListItem(config: ListItemConfig) {
     );
   }
 }
+
+export type { Props as ListItemProps };

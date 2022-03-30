@@ -10,6 +10,55 @@ import { Headline } from "../Typography/Headline/Headline";
 type Status = "positive" | "negative";
 type Size = "medium" | "large";
 
+type SizeConfig<T> = Record<Size, T>;
+type FeedbackConfig = {
+  background: JSX.Element | null;
+  positiveIllustration: (props: IllustrationProps) => Children;
+  negativeIllustration: (props: IllustrationProps) => Children;
+  illustrationSize: SizeConfig<IllustrationProps["size"]>;
+  title: {
+    medium: ComponentProps<typeof Title>["size"];
+    large:
+      | { kind: "display"; size: ComponentProps<typeof Display>["size"] }
+      | { kind: "headline"; size: ComponentProps<typeof Headline>["size"] };
+  };
+  descriptionSize: SizeConfig<ComponentProps<typeof Body>["size"]>;
+  action: SizeConfig<{
+    hierarchy: Extract<ButtonProps["hierarchy"], "primary" | "secondary">;
+    kind: ButtonProps["kind"];
+    size: ButtonProps["size"];
+  }>;
+};
+export const defaultFeedbackConfig: FeedbackConfig = {
+  background: null,
+  positiveIllustration: IllustrationPositive,
+  negativeIllustration: IllustrationNegative,
+  title: {
+    medium: "large",
+    large: { kind: "display", size: "small" },
+  },
+  descriptionSize: {
+    medium: "medium",
+    large: "medium",
+  },
+  illustrationSize: {
+    medium: 80,
+    large: 160,
+  },
+  action: {
+    medium: {
+      kind: "transparent",
+      hierarchy: "primary",
+      size: "medium",
+    },
+    large: {
+      kind: "solid",
+      hierarchy: "primary",
+      size: "large",
+    },
+  },
+};
+
 type Props = {
   title: LocalizedString;
   description?: TextChildren;
@@ -35,31 +84,18 @@ type Props = {
     }
 );
 
-type SizeConfig<T> = Record<Size, T>;
-
-type FeedbackConfig = {
-  background: JSX.Element | null;
-  positiveIllustration: (props: IllustrationProps) => Children;
-  negativeIllustration: (props: IllustrationProps) => Children;
-  illustrationSize: SizeConfig<IllustrationProps["size"]>;
-  title: {
-    medium: ComponentProps<typeof Title>["size"];
-    large:
-      | { kind: "display"; size: ComponentProps<typeof Display>["size"] }
-      | { kind: "headline"; size: ComponentProps<typeof Headline>["size"] };
-  };
-  descriptionSize: SizeConfig<ComponentProps<typeof Body>["size"]>;
-  action: SizeConfig<{
-    hierarchy: Extract<ButtonProps["hierarchy"], "primary" | "secondary">;
-    kind: ButtonProps["kind"];
-    size: ButtonProps["size"];
-  }>;
-};
 /**
  * Feedback can render a predefined feedback status (when using the `status` prop) or render a custom illustration
  * (when using the `illustration` prop).
  */
-export function createFeedback(Button: FunctionComponent<ButtonProps>, config: FeedbackConfig) {
+export function createFeedback(
+  config: FeedbackConfig,
+  {
+    Button,
+  }: {
+    Button: FunctionComponent<ButtonProps>;
+  }
+) {
   return function Feedback({
     title,
     description,
@@ -169,33 +205,3 @@ export function createFeedback(Button: FunctionComponent<ButtonProps>, config: F
 }
 
 export type { Props as FeedbackProps };
-
-export const defaultFeedbackConfig: FeedbackConfig = {
-  background: null,
-  positiveIllustration: IllustrationPositive,
-  negativeIllustration: IllustrationNegative,
-  title: {
-    medium: "large",
-    large: { kind: "display", size: "small" },
-  },
-  descriptionSize: {
-    medium: "medium",
-    large: "medium",
-  },
-  illustrationSize: {
-    medium: 80,
-    large: 160,
-  },
-  action: {
-    medium: {
-      kind: "transparent",
-      hierarchy: "primary",
-      size: "medium",
-    },
-    large: {
-      kind: "solid",
-      hierarchy: "primary",
-      size: "large",
-    },
-  },
-};

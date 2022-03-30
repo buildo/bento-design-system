@@ -5,30 +5,40 @@ import { LocalizedString } from "../util/LocalizedString";
 import { tabRecipe } from "./Tabs.css";
 import { ComponentProps } from "react";
 
-type TabProps = {
-  label: LocalizedString;
-  onPress: () => void;
-  active: boolean;
-  disabled?: boolean;
-  icon?: (props: IconProps) => Children;
-  hasNotification?: boolean;
-};
-
 type TabsConfig = {
   radius: BentoSprinkles["borderRadius"];
   paddingX: BentoSprinkles["paddingX"];
   paddingY: BentoSprinkles["paddingY"];
   labelSize: ComponentProps<typeof Label>["size"];
 };
+export const defaultTabsConfig: TabsConfig = {
+  radius: 8,
+  paddingX: 40,
+  paddingY: 8,
+  labelSize: "large",
+};
 
-export function createTabs(
-  config: TabsConfig = {
-    radius: 8,
-    paddingX: 40,
-    paddingY: 8,
-    labelSize: "large",
-  }
-) {
+type Props<A> = {
+  value: A;
+  onChange: (v: A) => void;
+  tabs: Array<{
+    value: A;
+    label: LocalizedString;
+    disabled?: boolean;
+    icon?: (props: IconProps) => Children;
+    hasNotification?: boolean;
+  }>;
+};
+
+export function createTabs(config: TabsConfig) {
+  type TabProps = {
+    label: LocalizedString;
+    onPress: () => void;
+    active: boolean;
+    disabled?: boolean;
+    icon?: (props: IconProps) => Children;
+    hasNotification?: boolean;
+  };
   function Tab({ active, onPress, label, disabled, icon, hasNotification }: TabProps) {
     const {
       pressProps: { color: ignored1, ...pressProps },
@@ -59,18 +69,6 @@ export function createTabs(
     );
   }
 
-  type Props<A> = {
-    value: A;
-    onChange: (v: A) => void;
-    tabs: Array<{
-      value: A;
-      label: LocalizedString;
-      disabled?: boolean;
-      icon?: (props: IconProps) => Children;
-      hasNotification?: boolean;
-    }>;
-  };
-
   return function Tabs<A>({ value, tabs, onChange }: Props<A>) {
     return (
       <Box boxShadow="outlineInteractiveBottom">
@@ -92,3 +90,5 @@ export function createTabs(
     );
   };
 }
+
+export type { Props as TabsProps };

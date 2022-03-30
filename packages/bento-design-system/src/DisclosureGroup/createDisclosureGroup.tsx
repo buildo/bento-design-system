@@ -3,17 +3,21 @@ import { DisclosureProps } from "..";
 import { BentoSprinkles, Box, Stack } from "../internal";
 import { Omit } from "../util/Omit";
 
-type LeafItem = Omit<DisclosureProps, "level">;
-type NodeItem = Omit<LeafItem, "children"> & { items: Array<LeafItem> };
-
-type Props = {
-  items: Array<NodeItem | LeafItem>;
-};
-
 type DisclosureGroupConfig = {
   groupSpacing: BentoSprinkles["gap"];
   disclosureSpacing: BentoSprinkles["gap"];
   dividers: boolean;
+};
+export const defaultDisclosureGroupConfig: DisclosureGroupConfig = {
+  groupSpacing: 40,
+  disclosureSpacing: 24,
+  dividers: true,
+};
+
+type LeafItem = Omit<DisclosureProps, "level">;
+type NodeItem = Omit<LeafItem, "children"> & { items: Array<LeafItem> };
+type Props = {
+  items: Array<NodeItem | LeafItem>;
 };
 
 function isLeaf(item: NodeItem | LeafItem): item is LeafItem {
@@ -21,11 +25,11 @@ function isLeaf(item: NodeItem | LeafItem): item is LeafItem {
 }
 
 export function createDisclosureGroup(
-  Disclosure: FunctionComponent<DisclosureProps>,
-  config: DisclosureGroupConfig = {
-    groupSpacing: 40,
-    disclosureSpacing: 24,
-    dividers: true,
+  config: DisclosureGroupConfig,
+  {
+    Disclosure,
+  }: {
+    Disclosure: FunctionComponent<DisclosureProps>;
   }
 ) {
   return function DisclosureGroup({ items }: Props) {

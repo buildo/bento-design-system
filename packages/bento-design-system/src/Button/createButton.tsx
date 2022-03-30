@@ -1,15 +1,16 @@
 import { LocalizedString } from "../util/LocalizedString";
 import { Box } from "../internal/Box/Box";
 import { buttonRecipe } from "./Button.css";
-import { ComponentProps, useRef } from "react";
+import { useRef } from "react";
 import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
 import { Label } from "../Typography/Label/Label";
-import { BentoSprinkles, Column, Columns } from "../internal";
+import { Column, Columns } from "../internal";
 import { IconProps } from "../";
+import { ButtonConfig } from "./createButtons";
 
-type Size = "small" | "medium" | "large";
-export type ButtonProps = {
+export type Size = "small" | "medium" | "large";
+type Props = {
   label: LocalizedString;
   onPress: () => void;
   kind: "solid" | "transparent" | "outline";
@@ -19,46 +20,8 @@ export type ButtonProps = {
   icon?: (props: IconProps) => JSX.Element;
 } & AriaButtonProps<"button">;
 
-type SizeConfig<T> = {
-  [k in Size]: T;
-};
-
-export type ButtonConfig = {
-  paddingX: SizeConfig<BentoSprinkles["paddingX"]>;
-  paddingY: SizeConfig<BentoSprinkles["paddingY"]>;
-  labelSize: ComponentProps<typeof Label>["size"];
-  radius: BentoSprinkles["borderRadius"];
-  internalSpacing: BentoSprinkles["gap"];
-  iconSize: SizeConfig<IconProps["size"]>;
-  uppercaseLabel: boolean;
-  defaultSize: Size;
-};
-
-export const defaultButtonConfig: ButtonConfig = {
-  paddingX: {
-    small: 8,
-    medium: 16,
-    large: 16,
-  },
-  paddingY: {
-    small: 4,
-    medium: 8,
-    large: 16,
-  },
-  labelSize: "large",
-  radius: 4,
-  internalSpacing: 8,
-  iconSize: {
-    small: 12,
-    medium: 12,
-    large: 16,
-  },
-  uppercaseLabel: true,
-  defaultSize: "medium",
-};
-
-export function createButton(config: ButtonConfig = defaultButtonConfig) {
-  return function Button(props: ButtonProps) {
+export function createButton(config: ButtonConfig) {
+  return function Button(props: Props) {
     const ref = useRef<HTMLButtonElement>(null);
     const { buttonProps } = useButton(props, ref);
     const { onKeyDown, onKeyUp } = props;
@@ -100,3 +63,5 @@ export function createButton(config: ButtonConfig = defaultButtonConfig) {
     );
   };
 }
+
+export type { Props as ButtonProps };

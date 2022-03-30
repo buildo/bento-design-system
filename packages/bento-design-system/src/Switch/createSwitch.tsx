@@ -12,12 +12,12 @@ import { FieldProps } from "../Field/FieldProps";
 import { switchContainer, switchOuterRecipe, switchInnerRecipe } from "./Switch.css";
 import { SelectionControlConfig } from "../Field/SelectionControlConfig";
 
-export type SwitchProps = Omit<FieldProps<boolean>, "assistiveText"> & {
+type Props = Omit<FieldProps<boolean>, "assistiveText"> & {
   label: TextChildren;
 };
 
-export function createSwitch(Field: FieldType, config: SelectionControlConfig) {
-  return function Switch(props: SwitchProps) {
+export function createSwitch(config: SelectionControlConfig, { Field }: { Field: FieldType }) {
+  return function Switch(props: Props) {
     const switchProps = {
       ...props,
       value: undefined,
@@ -86,3 +86,5 @@ function SwitchIndicator({ value, isFocusVisible, isDisabled }: SwitchIndicatorP
     </Box>
   );
 }
+
+export type { Props as SwitchProps };

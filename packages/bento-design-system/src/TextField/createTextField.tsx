@@ -14,7 +14,7 @@ type Props = FieldProps<string> & {
   isReadOnly?: boolean;
 };
 
-export function createTextField(Field: FieldType, config: InputConfig) {
+export function createTextField(config: InputConfig, { Field }: { Field: FieldType }) {
   return function TextField(props: Props) {
     const inputRef = useRef<HTMLInputElement>(null);
 

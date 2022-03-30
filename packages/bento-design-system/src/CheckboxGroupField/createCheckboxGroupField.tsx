@@ -18,18 +18,18 @@ export type CheckboxOption = {
   isDisabled?: boolean;
 };
 
-export type CheckboxGroupFieldProps = FieldProps<string[]> & {
+type Props = FieldProps<string[]> & {
   label: TextChildren;
   options: Array<CheckboxOption>;
   orientation?: "vertical" | "horizontal";
 };
 
 export function createCheckboxGroupField(
-  Field: FieldType,
   config: {
     group: SelectionControlGroupConfig;
     element: SelectionControlConfig;
-  }
+  },
+  { Field }: { Field: FieldType }
 ) {
   const Checkbox = createCheckbox(config.element);
 
@@ -49,7 +49,7 @@ export function createCheckboxGroupField(
     );
   }
 
-  return function CheckboxGroupField(props: CheckboxGroupFieldProps) {
+  return function CheckboxGroupField(props: Props) {
     const checkboxGroupProps = {
       ...props,
       children: props.label,
@@ -86,3 +86,5 @@ export function createCheckboxGroupField(
     );
   };
 }
+
+export type { Props as CheckboxGroupFieldProps };

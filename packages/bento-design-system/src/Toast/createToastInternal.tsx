@@ -9,9 +9,14 @@ import { ToastConfig } from "./createToast";
  * provided by `useToast` instead.
  */
 export function createToastInternal(
-  Button: FunctionComponent<ButtonProps>,
-  IconButton: FunctionComponent<IconButtonProps>,
-  config: { [P in keyof ToastConfig]-?: ToastConfig[P] }
+  config: { [P in keyof ToastConfig]-?: ToastConfig[P] },
+  {
+    Button,
+    IconButton,
+  }: {
+    Button: FunctionComponent<ButtonProps>;
+    IconButton: FunctionComponent<IconButtonProps>;
+  }
 ) {
   return function Toast({ kind, message, action, onDismiss }: ToastProps) {
     const { defaultMessages } = useDefaultMessages();

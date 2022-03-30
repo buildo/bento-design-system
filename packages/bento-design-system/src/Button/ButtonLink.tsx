@@ -1,11 +1,12 @@
 import { AnchorHTMLAttributes, useRef } from "react";
 import { buttonRecipe } from "../Button/Button.css";
 import { useLinkComponent } from "../util/link";
-import { ButtonConfig, ButtonProps, defaultButtonConfig } from "./createButton";
+import { ButtonProps } from "./createButton";
 import { Label } from "..";
 import { Box } from "../internal";
 import { useLink } from "@react-aria/link";
 import { element } from "../reset.css";
+import { ButtonConfig } from "./createButtons";
 
 type Props = {
   href: string;
@@ -17,7 +18,7 @@ type Props = {
   active?: boolean;
 } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "color">;
 
-export function createButtonLink(config: ButtonConfig = defaultButtonConfig) {
+export function createButtonLink(config: ButtonConfig) {
   return function ButtonLink({
     href,
     target,

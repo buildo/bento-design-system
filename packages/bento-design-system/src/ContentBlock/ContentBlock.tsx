@@ -16,3 +16,5 @@ export function ContentBlock({ maxWidth, alignSelf = "left", children }: Props) 
     </Box>
   );
 }
+
+export type { Props as ContentBlockProps };

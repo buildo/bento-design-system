@@ -22,22 +22,20 @@ export type RadioOption<A> = {
   isDisabled?: boolean;
 };
 
-export type RadioGroupFieldProps<A> = FieldProps<A | undefined, A> & {
+type Props<A> = FieldProps<A | undefined, A> & {
   name: string;
   options: Array<RadioOption<A>>;
   orientation?: "vertical" | "horizontal";
 };
 
 export function createRadioGroupField(
-  Field: FieldType,
   config: {
     group: SelectionControlGroupConfig;
     element: SelectionControlConfig;
-  }
+  },
+  { Field }: { Field: FieldType }
 ) {
-  return function RadioGroupField<A extends string | number | boolean>(
-    props: RadioGroupFieldProps<A>
-  ) {
+  return function RadioGroupField<A extends string | number | boolean>(props: Props<A>) {
     const ariaProps: AriaRadioGroupProps = {
       ...props,
       isDisabled: props.disabled,
@@ -123,3 +121,5 @@ export function createRadioGroupField(
     );
   }
 }
+
+export type { Props as RadioGroupFieldProps };

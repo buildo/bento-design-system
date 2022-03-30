@@ -41,6 +41,22 @@ import {
   defaultSelectionControlConfig,
   defaultDropdownConfig,
   defaultButtonConfig,
+  defaultActionsConfig,
+  defaultBannerConfig,
+  defaultFormLayoutConfig,
+  defaultToastConfig,
+  defaultCardConfig,
+  defaultLinkConfig,
+  defaultBreadcrumbConfig,
+  defaultModalConfig,
+  defaultListConfig,
+  defaultDisclosureConfig,
+  defaultDisclosureGroupConfig,
+  defaultTabsConfig,
+  defaultAreadLoaderConfig,
+  defaultAvatarConfig,
+  defaultSearchBarConfig,
+  defaultTableConfig,
 } from "@buildo/bento-design-system";
 
 import "@buildo/bento-design-system/lib/index.css";
@@ -59,39 +75,45 @@ export const {
   SelectField,
   TextField,
   ReadOnlyField,
-} = createFormFields(Tooltip, {
-  field: defaultFieldConfig,
-  input: defaultInputConfig,
-  selectionControl: defaultSelectionControlConfig,
-  dropdown: defaultDropdownConfig,
-});
-export const { Button, ButtonLink } = createButtons();
-export const IconButton = createIconButton(defaultIconButtonConfig);
-export const Banner = createBanner(Button, IconButton, {});
-export const Actions = createActions(Button, Banner);
-export const { Form, FormSection, FormRow } = createFormLayoutComponents(Actions);
-export const { Toast, ToastProvider } = createToast(Button, IconButton, {
-  smallButtonPaddingY: defaultButtonConfig.paddingY.small,
-});
-export const BentoProvider = createBentoProvider(ToastProvider);
-export const Card = createCard<24 | 32 | 40>({});
-export const Link = createLink();
-export const Breadcrumb = createBreadcrumb(Link);
-export const Modal = createModal(Actions, IconButton);
-export const Chip = createChip(Box, IconButton, {
-  ...defaultChipConfig,
-  customColors: {
-    custom: "customColor1",
+} = createFormFields(
+  {
+    field: defaultFieldConfig,
+    input: defaultInputConfig,
+    selectionControl: defaultSelectionControlConfig,
+    dropdown: defaultDropdownConfig,
   },
+  { Tooltip }
+);
+export const { Button, ButtonLink } = createButtons(defaultButtonConfig);
+export const IconButton = createIconButton(defaultIconButtonConfig);
+export const Banner = createBanner(defaultBannerConfig, { Button, IconButton });
+export const Actions = createActions(defaultActionsConfig, { Button, Banner });
+export const { Form, FormSection, FormRow } = createFormLayoutComponents(defaultFormLayoutConfig, {
+  Actions,
 });
-export const { List } = createListComponents();
-export const Disclosure = createDisclosure();
-export const DisclosureGroup = createDisclosureGroup(Disclosure);
-export const Tabs = createTabs();
-export const AreaLoader = createAreaLoader();
-export const Avatar = createAvatar();
-export const SearchBar = createSearchBar(Field, IconButton);
-export const Switch = createSwitch(Field, defaultSelectionControlConfig.element);
+export const { Toast, ToastProvider } = createToast(defaultToastConfig, { Button, IconButton });
+export const BentoProvider = createBentoProvider(ToastProvider);
+export const Card = createCard<24 | 32 | 40>(defaultCardConfig);
+export const Link = createLink(defaultLinkConfig);
+export const Breadcrumb = createBreadcrumb(defaultBreadcrumbConfig, { Link });
+export const Modal = createModal(defaultModalConfig, { Actions, IconButton });
+export const Chip = createChip(
+  {
+    ...defaultChipConfig,
+    customColors: {
+      custom: "customColor1",
+    },
+  },
+  { Box, IconButton }
+);
+export const { List } = createListComponents(defaultListConfig);
+export const Disclosure = createDisclosure(defaultDisclosureConfig);
+export const DisclosureGroup = createDisclosureGroup(defaultDisclosureGroupConfig, { Disclosure });
+export const Tabs = createTabs(defaultTabsConfig);
+export const AreaLoader = createAreaLoader(defaultAreadLoaderConfig);
+export const Avatar = createAvatar(defaultAvatarConfig);
+export const SearchBar = createSearchBar(defaultSearchBarConfig, { Field, IconButton });
+export const Switch = createSwitch(defaultSelectionControlConfig.element, { Field });
 const FeedbackBackground = (
   <svg viewBox="0 0 440 240">
     <path
@@ -117,13 +139,16 @@ const FeedbackBackground = (
     />
   </svg>
 );
-export const Feedback = createFeedback(Button, {
-  ...defaultFeedbackConfig,
-  background: FeedbackBackground,
-  negativeIllustration: IllustrationNegative,
-  positiveIllustration: IllustrationPositive,
-});
-export const Table = createTable(Tooltip, Feedback);
+export const Feedback = createFeedback(
+  {
+    ...defaultFeedbackConfig,
+    background: FeedbackBackground,
+    negativeIllustration: IllustrationNegative,
+    positiveIllustration: IllustrationPositive,
+  },
+  { Button }
+);
+export const Table = createTable(defaultTableConfig, { Tooltip, Feedback });
 export const tableColumn = createTableColumns({ Button, ButtonLink, Chip, Link, IconButton });
 export const Navigation = createNavigation(defaultNavigationConfig);
-export const Menu = createMenu(List, defaultMenuConfig);
+export const Menu = createMenu(defaultMenuConfig, { List });

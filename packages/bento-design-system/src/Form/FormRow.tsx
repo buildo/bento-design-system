@@ -14,3 +14,5 @@ export function createFormRow(config: FormRowConfig) {
     return <Columns space={config.rowSpacing} collapseBelow="tablet" children={children} />;
   };
 }
+
+export type { Props as FormRowProps };

@@ -12,6 +12,16 @@ import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
 
+type SearchBarConfig = InputConfig & {
+  clearIcon: FunctionComponent<IconProps>;
+  searchIcon: FunctionComponent<IconProps>;
+};
+export const defaultSearchBarConfig: SearchBarConfig = {
+  ...defaultInputConfig,
+  clearIcon: IconClose,
+  searchIcon: IconSearch,
+};
+
 type Props = {
   value: string;
   onChange: (value: string) => unknown;
@@ -21,18 +31,14 @@ type Props = {
   clearButtonLabel?: LocalizedString;
 };
 
-export type SearchBarConfig = {
-  clearIcon: FunctionComponent<IconProps>;
-  searchIcon: FunctionComponent<IconProps>;
-};
-
 export function createSearchBar(
-  Field: FieldType,
-  IconButton: FunctionComponent<IconButtonProps>,
-  config: InputConfig & SearchBarConfig = {
-    ...defaultInputConfig,
-    clearIcon: IconClose,
-    searchIcon: IconSearch,
+  config: SearchBarConfig,
+  {
+    Field,
+    IconButton,
+  }: {
+    Field: FieldType;
+    IconButton: FunctionComponent<IconButtonProps>;
   }
 ) {
   return function SearchBar(props: Props) {
@@ -139,3 +145,5 @@ export function createSearchBar(
     );
   };
 }
+
+export type { Props as SearchBarProps };

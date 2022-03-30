@@ -6,15 +6,20 @@ import { Body, LocalizedString } from "..";
 type DotConfig = {
   color: "brandPrimary" | "brandSecondary" | "brandTertiary";
 };
-
-type LoaderConfig = {
+type AreaLoaderConfig = {
   dots: DotConfig[];
   overlay: "light" | "dark";
   visibilityAreaColor: "primary" | "secondary" | "primary-inverse" | "secondary-inverse";
 };
 
+export const defaultAreadLoaderConfig: AreaLoaderConfig = {
+  dots: [{ color: "brandPrimary" }, { color: "brandSecondary" }, { color: "brandTertiary" }],
+  overlay: "light",
+  visibilityAreaColor: "primary",
+};
+
 function visibilityAreaColorToBackground(
-  color: LoaderConfig["visibilityAreaColor"]
+  color: AreaLoaderConfig["visibilityAreaColor"]
 ): BentoSprinkles["background"] {
   switch (color) {
     case "primary":
@@ -32,13 +37,7 @@ type Props = {
   message?: LocalizedString;
 };
 
-export function createAreaLoader(
-  config: LoaderConfig = {
-    dots: [{ color: "brandPrimary" }, { color: "brandSecondary" }, { color: "brandTertiary" }],
-    overlay: "light",
-    visibilityAreaColor: "primary",
-  }
-) {
+export function createAreaLoader(config: AreaLoaderConfig) {
   /**
    *  `Loader` fills the parent container with an overlay and renders an animated indefinite loader
    *  centered in it.

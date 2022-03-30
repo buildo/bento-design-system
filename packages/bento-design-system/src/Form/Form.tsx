@@ -29,7 +29,14 @@ export type FormConfig = {
   actionsSize: ActionsProps["size"];
 };
 
-export function createForm(Actions: FunctionComponent<ActionsProps>, config: FormConfig) {
+export function createForm(
+  config: FormConfig,
+  {
+    Actions,
+  }: {
+    Actions: FunctionComponent<ActionsProps>;
+  }
+) {
   return function Form({
     title,
     description,
@@ -63,3 +70,5 @@ export function createForm(Actions: FunctionComponent<ActionsProps>, config: For
     );
   };
 }
+
+export type { Props as FormProps };

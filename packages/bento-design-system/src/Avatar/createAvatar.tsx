@@ -3,6 +3,22 @@ import { IconUser, Label, unsafeLocalizedString, IconProps } from "..";
 import { avatarRecipe } from "./Avatar.css";
 import { BentoSprinkles, Box } from "../internal";
 
+type AvatarConfig = {
+  width: BentoSprinkles["width"];
+  height: BentoSprinkles["height"];
+  radius: BentoSprinkles["borderRadius"];
+  labelSize: ComponentProps<typeof Label>["size"];
+  icon: FunctionComponent<IconProps>;
+};
+
+export const defaultAvatarConfig: AvatarConfig = {
+  width: 40,
+  height: 40,
+  radius: "circled",
+  labelSize: "large",
+  icon: IconUser,
+};
+
 type Props = {
   name?: string;
   color:
@@ -18,23 +34,7 @@ type Props = {
     | "pink";
 };
 
-type AvatarConfig = {
-  width: BentoSprinkles["width"];
-  height: BentoSprinkles["height"];
-  radius: BentoSprinkles["borderRadius"];
-  labelSize: ComponentProps<typeof Label>["size"];
-  icon: FunctionComponent<IconProps>;
-};
-
-export function createAvatar(
-  config: AvatarConfig = {
-    width: 40,
-    height: 40,
-    radius: "circled",
-    labelSize: "large",
-    icon: IconUser,
-  }
-) {
+export function createAvatar(config: AvatarConfig) {
   return function Avatar({ color, name }: Props) {
     const initial = name?.trim()[0];
 

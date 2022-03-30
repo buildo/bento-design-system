@@ -2,7 +2,7 @@ import { ComponentProps } from "react";
 import { Body, Children, LocalizedString, TextChildren, Title } from "..";
 import { BentoSprinkles, Stack } from "../internal";
 
-export type Props = {
+type Props = {
   title?: LocalizedString;
   description?: TextChildren;
   children: Children;
@@ -30,3 +30,5 @@ export function createFormSection(config: FormSectionConfig) {
     );
   };
 }
+
+export type { Props as FormSectionProps };

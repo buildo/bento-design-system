@@ -13,7 +13,11 @@ const constVoid = () => {};
  * A convenient wrapper to the TextField, that forces isReadOnly=true
  * and doesn't require all those props that don't make sense for a read-only field (onChange, onBlur, placeholder, ...)
  */
-export function createReadOnlyField(TextField: FunctionComponent<TextFieldProps>) {
+export function createReadOnlyField({
+  TextField,
+}: {
+  TextField: FunctionComponent<TextFieldProps>;
+}) {
   return function ReadOnlyField(props: Props) {
     return (
       <TextField
@@ -26,3 +30,4 @@ export function createReadOnlyField(TextField: FunctionComponent<TextFieldProps>
     );
   };
 }
+export type { Props as ReadOnlyFieldProps };

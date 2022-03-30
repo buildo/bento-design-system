@@ -6,20 +6,9 @@ import { AnchorHTMLAttributes, ComponentProps, useRef } from "react";
 import { useLink } from "@react-aria/link";
 import { element } from "../reset.css";
 
-type DestinationProps = {
-  size: Size;
-  label: LocalizedString;
-  href: string;
-  active?: boolean;
-  disabled?: boolean;
-  icon?: (props: IconProps) => JSX.Element;
-  illustration?: (props: IllustrationProps) => JSX.Element;
-  target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
-};
-
 type Size = "medium" | "large";
-type SizeConfig<A> = Record<Size, A>;
 
+type SizeConfig<A> = Record<Size, A>;
 type NavigationConfig = {
   destinationsSpacing: BentoSprinkles["gap"];
   destinationPaddingX: SizeConfig<BentoSprinkles["paddingX"]>;
@@ -30,6 +19,45 @@ type NavigationConfig = {
   internalSpacing: SizeConfig<BentoSprinkles["gap"]>;
   activeVisualElement: JSX.Element;
   uppercaseLabel: boolean;
+};
+
+export const defaultNavigationConfig: NavigationConfig = {
+  destinationPaddingX: {
+    medium: 16,
+    large: 24,
+  },
+  destinationPaddingY: {
+    medium: 8,
+    large: 16,
+  },
+  destinationsSpacing: 0,
+  iconSize: {
+    medium: 16,
+    large: 16,
+  },
+  illustrationSize: {
+    medium: 24,
+    large: 24,
+  },
+  internalSpacing: {
+    medium: 8,
+    large: 8,
+  },
+  labelSize: {
+    medium: "large",
+    large: "large",
+  },
+  activeVisualElement: (
+    <Box
+      position="absolute"
+      left={0}
+      bottom={0}
+      background="brandPrimary"
+      width="full"
+      style={{ height: 2 }}
+    />
+  ),
+  uppercaseLabel: false,
 };
 
 type Kind = "none" | "icon" | "illustration";
@@ -49,7 +77,31 @@ type DestinationIconProps<T extends Kind> = T extends "none"
       illustration: (props: IllustrationProps) => JSX.Element;
     };
 
+type Props<T extends Kind> = {
+  kind: T;
+  size: Size;
+  destinations: Array<
+    {
+      href: string;
+      target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
+      label: LocalizedString;
+      active?: boolean;
+      disabled?: boolean;
+    } & DestinationIconProps<T>
+  >;
+};
+
 export function createNavigation(config: NavigationConfig) {
+  type DestinationProps = {
+    size: Size;
+    label: LocalizedString;
+    href: string;
+    active?: boolean;
+    disabled?: boolean;
+    icon?: (props: IconProps) => JSX.Element;
+    illustration?: (props: IllustrationProps) => JSX.Element;
+    target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
+  };
   function Destination({
     active = false,
     label,
@@ -108,20 +160,6 @@ export function createNavigation(config: NavigationConfig) {
     );
   }
 
-  type Props<T extends Kind> = {
-    kind: T;
-    size: Size;
-    destinations: Array<
-      {
-        href: string;
-        target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
-        label: LocalizedString;
-        active?: boolean;
-        disabled?: boolean;
-      } & DestinationIconProps<T>
-    >;
-  };
-
   return function Navigation<T extends Kind>({ destinations, size }: Props<T>) {
     return (
       <Columns space={config.destinationsSpacing}>
@@ -146,41 +184,4 @@ export function createNavigation(config: NavigationConfig) {
   };
 }
 
-export const defaultNavigationConfig: NavigationConfig = {
-  destinationPaddingX: {
-    medium: 16,
-    large: 24,
-  },
-  destinationPaddingY: {
-    medium: 8,
-    large: 16,
-  },
-  destinationsSpacing: 0,
-  iconSize: {
-    medium: 16,
-    large: 16,
-  },
-  illustrationSize: {
-    medium: 24,
-    large: 24,
-  },
-  internalSpacing: {
-    medium: 8,
-    large: 8,
-  },
-  labelSize: {
-    medium: "large",
-    large: "large",
-  },
-  activeVisualElement: (
-    <Box
-      position="absolute"
-      left={0}
-      bottom={0}
-      background="brandPrimary"
-      width="full"
-      style={{ height: 2 }}
-    />
-  ),
-  uppercaseLabel: false,
-};
+export type { Props as NavigationProps };

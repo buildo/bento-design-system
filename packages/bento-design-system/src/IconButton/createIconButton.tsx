@@ -7,6 +7,20 @@ import { iconButtonRecipe } from "./IconButton.css";
 import { buttonRecipe } from "../Button/Button.css";
 import { LocalizedString } from "../util/LocalizedString";
 
+type IconButtonConfig = {
+  radius: BentoSprinkles["borderRadius"];
+  padding: Record<IconProps["size"], BentoSprinkles["padding"]>;
+};
+export const defaultIconButtonConfig: IconButtonConfig = {
+  radius: 4,
+  padding: {
+    8: 8,
+    12: 8,
+    16: 16,
+    24: 16,
+  },
+};
+
 type Props = {
   kind: "solid" | "transparent";
   hierarchy: "primary" | "secondary" | "danger";
@@ -16,11 +30,6 @@ type Props = {
   tabIndex?: number;
   isDisabled?: boolean;
   icon: (props: IconProps) => Children;
-};
-
-type IconButtonConfig = {
-  radius: BentoSprinkles["borderRadius"];
-  padding: Record<IconProps["size"], BentoSprinkles["padding"]>;
 };
 
 export function createIconButton(config: IconButtonConfig) {
@@ -68,13 +77,3 @@ export function createIconButton(config: IconButtonConfig) {
 }
 
 export type { Props as IconButtonProps };
-
-export const defaultIconButtonConfig: IconButtonConfig = {
-  radius: 4,
-  padding: {
-    8: 8,
-    12: 8,
-    16: 16,
-    24: 16,
-  },
-};

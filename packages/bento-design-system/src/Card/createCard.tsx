@@ -3,6 +3,12 @@ import { BoxProps, Children } from "..";
 import { cardRecipe } from "./Card.css";
 
 type InternalBoxProps = BoxProps<typeof bentoSprinkles>;
+type CardConfig = {
+  radius: InternalBoxProps["borderRadius"];
+};
+export const defaultCardConfig: CardConfig = {
+  radius: 8,
+};
 
 type PaddingKey =
   | "padding"
@@ -13,22 +19,18 @@ type PaddingKey =
   | "paddingTop"
   | "paddingBottom";
 
-type CardConfig = {
-  radius?: InternalBoxProps["borderRadius"];
-};
-
-export type CardProps<Paddings extends InternalBoxProps["padding"]> = {
+type Props<Paddings extends InternalBoxProps["padding"]> = {
   children: Children;
   elevation?: "small" | "medium" | "large";
 } & { [k in PaddingKey]?: 0 | Paddings };
 
-export function createCard<Paddings extends InternalBoxProps["padding"] = 24 | 32 | 40>({
-  radius = 8,
-}: CardConfig) {
-  return function Card({ children, elevation, ...boxProps }: CardProps<Paddings>) {
+export function createCard<Paddings extends InternalBoxProps["padding"] = 24 | 32 | 40>(
+  config: CardConfig
+) {
+  return function Card({ children, elevation, ...boxProps }: Props<Paddings>) {
     return (
       <Box
-        borderRadius={radius}
+        borderRadius={config.radius}
         className={cardRecipe({ elevation: elevation || "none" })}
         {...boxProps}
       >
@@ -37,3 +39,5 @@ export function createCard<Paddings extends InternalBoxProps["padding"] = 24 | 3
     );
   };
 }
+
+export type { Props as CardProps };
