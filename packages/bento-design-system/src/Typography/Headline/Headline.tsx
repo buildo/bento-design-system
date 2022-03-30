@@ -18,3 +18,5 @@ export function Headline({ children, size, align }: Props) {
     </Box>
   );
 }
+
+export type { Props as HeadlineProps };

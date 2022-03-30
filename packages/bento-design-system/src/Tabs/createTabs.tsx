@@ -1,22 +1,9 @@
 import { usePress } from "@react-aria/interactions";
-import { Box, Columns, Column, BentoSprinkles } from "../internal";
+import { Box, Columns, Column } from "../internal";
 import { Children, IconPlaceholder, IconProps, Label } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { tabRecipe } from "./Tabs.css";
-import { ComponentProps } from "react";
-
-type TabsConfig = {
-  radius: BentoSprinkles["borderRadius"];
-  paddingX: BentoSprinkles["paddingX"];
-  paddingY: BentoSprinkles["paddingY"];
-  labelSize: ComponentProps<typeof Label>["size"];
-};
-export const defaultTabsConfig: TabsConfig = {
-  radius: 8,
-  paddingX: 40,
-  paddingY: 8,
-  labelSize: "large",
-};
+import { TabsConfig } from "./Config";
 
 type Props<A> = {
   value: A;

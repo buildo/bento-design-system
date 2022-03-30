@@ -1,18 +1,8 @@
 import { FunctionComponent } from "react";
 import { DisclosureProps } from "..";
-import { BentoSprinkles, Box, Stack } from "../internal";
+import { Box, Stack } from "../internal";
 import { Omit } from "../util/Omit";
-
-type DisclosureGroupConfig = {
-  groupSpacing: BentoSprinkles["gap"];
-  disclosureSpacing: BentoSprinkles["gap"];
-  dividers: boolean;
-};
-export const defaultDisclosureGroupConfig: DisclosureGroupConfig = {
-  groupSpacing: 40,
-  disclosureSpacing: 24,
-  dividers: true,
-};
+import { DisclosureGroupConfig } from "./Config";
 
 type LeafItem = Omit<DisclosureProps, "level">;
 type NodeItem = Omit<LeafItem, "children"> & { items: Array<LeafItem> };

@@ -1,6 +1,6 @@
 import { ComponentProps, FunctionComponent, Ref, useRef } from "react";
 import { Children, Popover } from "..";
-import { BentoSprinkles, Box, Inset } from "../internal";
+import { Box, Inset } from "../internal";
 import { menuRecipe } from "./Menu.css";
 import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState, MenuTriggerState } from "@react-stately/menu";
@@ -8,23 +8,7 @@ import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
 import { ListProps } from "../List/createListComponents";
 import { ListItemProps } from "../List/createListItem";
-
-type MenuConfig = {
-  paddingY: BentoSprinkles["paddingY"];
-  radius: BentoSprinkles["borderRadius"];
-  elevation: "small" | "medium" | "large";
-  headerPaddingX: BentoSprinkles["paddingX"];
-  headerPaddingY: BentoSprinkles["paddingY"];
-  defaultOffset: number;
-};
-export const defaultMenuConfig: MenuConfig = {
-  paddingY: 8,
-  radius: 8,
-  elevation: "medium",
-  headerPaddingX: 24,
-  headerPaddingY: 24,
-  defaultOffset: 4,
-};
+import { MenuConfig } from "./Config";
 
 type Props = {
   size: ListProps["size"];

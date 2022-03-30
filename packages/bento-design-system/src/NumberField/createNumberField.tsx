@@ -1,7 +1,7 @@
 import { useLocale } from "@react-aria/i18n";
 import { useNumberField } from "@react-aria/numberfield";
 import { NumberFieldStateProps, useNumberFieldState } from "@react-stately/numberfield";
-import { useRef } from "react";
+import { FunctionComponent, useRef } from "react";
 import { LocalizedString } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { FormatProps } from "../NumberInput/FormatProps";
@@ -21,7 +21,7 @@ export function createNumberField({
   NumberInput,
 }: {
   Field: FieldType;
-  NumberInput: React.FunctionComponent<NumberInputProps>;
+  NumberInput: FunctionComponent<NumberInputProps>;
 }) {
   return function NumberField(props: Props) {
     const { locale } = useLocale();

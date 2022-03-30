@@ -1,23 +1,7 @@
-import { ComponentProps, FunctionComponent } from "react";
-import { IconUser, Label, unsafeLocalizedString, IconProps } from "..";
+import { Label, unsafeLocalizedString } from "..";
 import { avatarRecipe } from "./Avatar.css";
-import { BentoSprinkles, Box } from "../internal";
-
-type AvatarConfig = {
-  width: BentoSprinkles["width"];
-  height: BentoSprinkles["height"];
-  radius: BentoSprinkles["borderRadius"];
-  labelSize: ComponentProps<typeof Label>["size"];
-  icon: FunctionComponent<IconProps>;
-};
-
-export const defaultAvatarConfig: AvatarConfig = {
-  width: 40,
-  height: 40,
-  radius: "circled",
-  labelSize: "large",
-  icon: IconUser,
-};
+import { Box } from "../internal";
+import { AvatarConfig } from "./Config";
 
 type Props = {
   name?: string;

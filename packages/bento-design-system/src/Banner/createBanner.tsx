@@ -1,50 +1,13 @@
 import { LocalizedString } from "../util/LocalizedString";
-import {
-  Title,
-  Body,
-  TextChildren,
-  IconClose,
-  IconInformative,
-  IconCheckCircleSolid,
-  IconWarning,
-  IconNegative,
-  IconIdea,
-  ButtonProps,
-} from "..";
-import { Columns, Column, Box, Stack, BentoSprinkles, Inline } from "../internal";
+import { Title, Body, TextChildren, ButtonProps } from "..";
+import { Columns, Column, Box, Stack, Inline } from "../internal";
 import { bannerRecipe } from "./Banner.css";
-import { ComponentProps, FunctionComponent } from "react";
-import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
+import { BannerConfig } from "./Config";
+import { FunctionComponent } from "react";
 
-type Kind = "informative" | "positive" | "warning" | "negative" | "secondary";
-
-type KindConfig<T> = {
-  [k in Kind]: T;
-};
-type BannerConfig = {
-  padding: BentoSprinkles["padding"];
-  radius: BentoSprinkles["borderRadius"];
-  titleSize: ComponentProps<typeof Title>["size"];
-  descriptionSize: ComponentProps<typeof Body>["size"];
-  closeIcon: FunctionComponent<IconProps>;
-  kindIcons: KindConfig<FunctionComponent<IconProps>>;
-};
-export const defaultBannerConfig: BannerConfig = {
-  padding: 16,
-  titleSize: "small",
-  descriptionSize: "small",
-  radius: 8,
-  closeIcon: IconClose,
-  kindIcons: {
-    informative: IconInformative,
-    positive: IconCheckCircleSolid,
-    warning: IconWarning,
-    negative: IconNegative,
-    secondary: IconIdea,
-  },
-};
+export type Kind = "informative" | "positive" | "warning" | "negative" | "secondary";
 
 type DismissProps =
   | {

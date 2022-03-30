@@ -10,7 +10,7 @@ import { Body, TextChildren } from "..";
 import { Box, Column, Columns } from "../internal";
 import { FieldProps } from "../Field/FieldProps";
 import { switchContainer, switchOuterRecipe, switchInnerRecipe } from "./Switch.css";
-import { SelectionControlConfig } from "../Field/SelectionControlConfig";
+import { SelectionControlConfig } from "../Field/Config";
 
 type Props = Omit<FieldProps<boolean>, "assistiveText"> & {
   label: TextChildren;

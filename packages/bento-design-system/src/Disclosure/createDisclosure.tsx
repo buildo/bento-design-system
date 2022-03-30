@@ -1,25 +1,11 @@
 import { usePress } from "@react-aria/interactions";
-import { ComponentProps, useState } from "react";
+import { useState } from "react";
 import { extendedHitAreaRecipe } from "../util/extendedHitArea.css";
 import { Children, IconChevronDown, IconChevronUp, LocalizedString, Title } from "..";
-import { Box, Columns, Column, Stack, BentoSprinkles } from "../internal";
+import { Box, Columns, Column, Stack } from "../internal";
 import { useId } from "@react-aria/utils";
 import { useFocusRing } from "@react-aria/focus";
-
-type DisclosureConfig = {
-  internalSpacing: BentoSprinkles["gap"];
-  titleSize: {
-    1: ComponentProps<typeof Title>["size"];
-    2: ComponentProps<typeof Title>["size"];
-  };
-};
-export const defaultDisclosureConfig: DisclosureConfig = {
-  internalSpacing: 16,
-  titleSize: {
-    1: "medium",
-    2: "small",
-  },
-};
+import { DisclosureConfig } from "./Config";
 
 type Props = {
   title: LocalizedString;

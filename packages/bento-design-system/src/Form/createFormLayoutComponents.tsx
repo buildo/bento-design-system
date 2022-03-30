@@ -1,32 +1,9 @@
 import { FunctionComponent } from "react";
 import { ActionsProps } from "../";
-import { createForm, FormConfig } from "./Form";
-import { createFormRow, FormRowConfig } from "./FormRow";
-import { createFormSection, FormSectionConfig } from "./FormSection";
-
-type FormLayoutConfig = {
-  form: FormConfig;
-  section: FormSectionConfig;
-  row: FormRowConfig;
-};
-export const defaultFormLayoutConfig: FormLayoutConfig = {
-  form: {
-    headerTitleSize: "small",
-    headerDescriptionSize: "medium",
-    formSpacing: 40,
-    headerSpacing: 16,
-    actionsSize: "large",
-  },
-  section: {
-    sectionTitleSize: "large",
-    sectionDescriptionSize: "medium",
-    sectionHeaderSpacing: 8,
-    sectionSpacing: 24,
-  },
-  row: {
-    rowSpacing: 16,
-  },
-};
+import { FormLayoutConfig } from "./Config";
+import { createForm } from "./Form";
+import { createFormRow } from "./FormRow";
+import { createFormSection } from "./FormSection";
 
 export function createFormLayoutComponents(
   config: FormLayoutConfig,

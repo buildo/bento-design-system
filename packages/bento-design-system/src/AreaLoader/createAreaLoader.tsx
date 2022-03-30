@@ -2,21 +2,7 @@ import clsx from "clsx";
 import { BentoSprinkles, bentoSprinkles, Box, Inline, Stack } from "../internal";
 import { container, dot, text } from "./AreaLoader.css";
 import { Body, LocalizedString } from "..";
-
-type DotConfig = {
-  color: "brandPrimary" | "brandSecondary" | "brandTertiary";
-};
-type AreaLoaderConfig = {
-  dots: DotConfig[];
-  overlay: "light" | "dark";
-  visibilityAreaColor: "primary" | "secondary" | "primary-inverse" | "secondary-inverse";
-};
-
-export const defaultAreadLoaderConfig: AreaLoaderConfig = {
-  dots: [{ color: "brandPrimary" }, { color: "brandSecondary" }, { color: "brandTertiary" }],
-  overlay: "light",
-  visibilityAreaColor: "primary",
-};
+import { AreaLoaderConfig } from "./Config";
 
 function visibilityAreaColorToBackground(
   color: AreaLoaderConfig["visibilityAreaColor"]

@@ -14,7 +14,6 @@ import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import {
   Children,
-  IllustrationSearch,
   Label,
   LocalizedString,
   IconChevronDown,
@@ -23,7 +22,6 @@ import {
   IconMinus,
   unsafeLocalizedString,
   TooltipProps,
-  IllustrationProps,
   ButtonProps,
   ChipProps,
   FeedbackProps,
@@ -62,15 +60,7 @@ import {
 } from "./tableColumn";
 import { ButtonLinkProps } from "../Button/ButtonLink";
 import { IconButtonProps } from "../IconButton/createIconButton";
-
-type TableConfig = {
-  headerInfoIcon: (props: IconProps) => JSX.Element;
-  emptyIllustration: (props: IllustrationProps) => JSX.Element;
-};
-export const defaultTableConfig: TableConfig = {
-  headerInfoIcon: IconInformative,
-  emptyIllustration: IllustrationSearch,
-};
+import { TableConfig } from "./Config";
 
 type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
   a: Row<RowType<C>>,

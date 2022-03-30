@@ -1,36 +1,9 @@
-import { ComponentProps, FunctionComponent } from "react";
-import { BentoSprinkles } from "../internal";
-import {
-  Body,
-  ButtonProps,
-  defaultButtonConfig,
-  IconButtonProps,
-  IconClose,
-  IconProps,
-  TextChildren,
-} from "..";
+import { FunctionComponent } from "react";
+import { ButtonProps, IconButtonProps, TextChildren } from "..";
 import { createToastInternal } from "./createToastInternal";
 import { createToastContainer } from "./createToastContainer";
 import { createToastProvider } from "./createToastProvider";
-
-export type ToastConfig = {
-  paddingX: BentoSprinkles["paddingX"];
-  paddingY: BentoSprinkles["paddingY"];
-  radius: BentoSprinkles["borderRadius"];
-  messageSize: ComponentProps<typeof Body>["size"];
-  closeIcon: FunctionComponent<IconProps>;
-  closeIconSize: IconProps["size"];
-  smallButtonPaddingY: BentoSprinkles["paddingY"];
-};
-export const defaultToastConfig: ToastConfig = {
-  paddingX: 16,
-  paddingY: 16,
-  radius: 8,
-  messageSize: "medium",
-  closeIcon: IconClose,
-  closeIconSize: 12,
-  smallButtonPaddingY: defaultButtonConfig.paddingY.small,
-};
+import { ToastConfig } from "./Config";
 
 type Props = {
   kind: "informative" | "positive" | "warning" | "negative" | "secondary";

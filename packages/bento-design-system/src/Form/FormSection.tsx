@@ -1,18 +1,11 @@
-import { ComponentProps } from "react";
 import { Body, Children, LocalizedString, TextChildren, Title } from "..";
-import { BentoSprinkles, Stack } from "../internal";
+import { Stack } from "../internal";
+import { FormSectionConfig } from "./Config";
 
 type Props = {
   title?: LocalizedString;
   description?: TextChildren;
   children: Children;
-};
-
-export type FormSectionConfig = {
-  sectionTitleSize: ComponentProps<typeof Title>["size"];
-  sectionDescriptionSize: ComponentProps<typeof Body>["size"];
-  sectionHeaderSpacing: BentoSprinkles["gap"];
-  sectionSpacing: BentoSprinkles["gap"];
 };
 
 export function createFormSection(config: FormSectionConfig) {

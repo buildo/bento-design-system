@@ -1,32 +1,10 @@
-import { ComponentProps, FunctionComponent } from "react";
-import { IconProps } from "../Icons/IconProps";
-import { Label, LocalizedString, BoxProps, BoxType } from "..";
-import { IconClose } from "../Icons/IconClose";
+import { FunctionComponent } from "react";
+import { Label, LocalizedString, BoxType } from "..";
 import { Column, Columns, BentoSprinkles, bentoSprinkles } from "../internal";
 import { chip } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
-
-type ChipConfig<AtomsFn extends typeof bentoSprinkles, CustomColor extends string> = {
-  paddingX: BentoSprinkles["paddingX"];
-  paddingY: BentoSprinkles["paddingY"];
-  labelSize: ComponentProps<typeof Label>["size"];
-  closeIcon: FunctionComponent<IconProps>;
-  closeIconSize: IconProps["size"];
-  internalSpacing: BentoSprinkles["gap"];
-  customColors: {
-    [k in CustomColor]: BoxProps<AtomsFn>["background"];
-  };
-};
-export const defaultChipConfig: ChipConfig<typeof bentoSprinkles, string> = {
-  paddingX: 8,
-  paddingY: 4,
-  labelSize: "small",
-  closeIcon: IconClose,
-  closeIconSize: 8,
-  internalSpacing: 8,
-  customColors: {},
-};
+import { ChipConfig } from "./Config";
 
 type DismissProps =
   | {

@@ -1,26 +1,12 @@
 import { AnchorHTMLAttributes, useRef } from "react";
 import { useLinkComponent } from "../util/link";
-import { Label, LabelProps, LocalizedString } from "..";
-import { BentoSprinkles, Box } from "../internal";
+import { Label, LocalizedString } from "..";
+import { Box } from "../internal";
 import { useLink } from "@react-aria/link";
 import * as resetStyles from "../reset.css";
 import { link } from "./Link.css";
 import { extendedHitAreaRecipe } from "../util/extendedHitArea.css";
-
-type LinkConfig = {
-  labelSize: LabelProps["size"];
-  labelDecoration: BentoSprinkles["textDecoration"];
-};
-export const defaultLinkConfig: LinkConfig = {
-  labelSize: "large",
-  labelDecoration: {
-    default: "none",
-    active: "none",
-    hover: "underline",
-    focus: "underline",
-    disabled: "none",
-  },
-};
+import { LinkConfig } from "./Config";
 
 type Props = {
   href: string;

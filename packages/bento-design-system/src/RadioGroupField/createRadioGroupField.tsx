@@ -11,10 +11,7 @@ import { useRef } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { useFocusRing } from "@react-aria/focus";
 import { Radio } from "./Radio";
-import {
-  SelectionControlConfig,
-  SelectionControlGroupConfig,
-} from "../Field/SelectionControlConfig";
+import { SelectionControlConfig, SelectionControlGroupConfig } from "../Field/Config";
 
 export type RadioOption<A> = {
   value: A;

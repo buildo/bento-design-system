@@ -1,31 +1,16 @@
-import { ComponentProps, FunctionComponent, useRef } from "react";
-import { ActionsProps, ButtonProps, Children, IconClose, LocalizedString, Title } from "..";
-import { BentoSprinkles, Box, Column, Columns, Inset } from "../internal";
+import { FunctionComponent, useRef } from "react";
+import { ActionsProps, ButtonProps, Children, LocalizedString, Title } from "..";
+import { Box, Column, Columns, Inset } from "../internal";
 import { useOverlay, usePreventScroll, useModal } from "@react-aria/overlays";
 import { useDialog } from "@react-aria/dialog";
 import { FocusScope } from "@react-aria/focus";
 import { modalRecipe, underlay, modalBody } from "./Modal.css";
 import useKeyPressEvent from "react-use/lib/useKeyPressEvent";
 import { ModalContext } from "./ModalContext";
-import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { createPortal } from "../util/createPortal";
-
-type ModalConfig = {
-  padding: BentoSprinkles["padding"];
-  radius: BentoSprinkles["borderRadius"];
-  titleSize: ComponentProps<typeof Title>["size"];
-  closeIcon: FunctionComponent<IconProps>;
-  closeIconSize: IconProps["size"];
-};
-export const defaultModalConfig: ModalConfig = {
-  padding: 24,
-  radius: 8,
-  titleSize: "large",
-  closeIcon: IconClose,
-  closeIconSize: 16,
-};
+import { ModalConfig } from "./Config";
 
 type Props = {
   title: LocalizedString;

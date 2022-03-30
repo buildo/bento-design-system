@@ -4,49 +4,17 @@ import Select, {
   MultiValueProps,
   SingleValue as SingleValueT,
 } from "react-select";
-import { Body, ListConfig, ListSize, LocalizedString } from "..";
+import { Body, ListSize, LocalizedString } from "..";
 import { useField } from "@react-aria/label";
 import { useEffect, useMemo } from "react";
 import { FieldProps } from "../Field/FieldProps";
 import { FieldType } from "../Field/createField";
 import { createComponents, styles } from "./components";
-import { InputConfig } from "../Field/InputConfig";
-import { BentoSprinkles } from "../internal";
 import { ListItemProps } from "../List/createListItem";
 import { Omit } from "../util/Omit";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-
-export type DropdownConfig = {
-  elevation: "small" | "medium" | "large";
-  radius: BentoSprinkles["borderRadius"];
-  list: ListConfig;
-  menuPaddingY: BentoSprinkles["paddingY"];
-};
-export const defaultDropdownConfig: DropdownConfig = {
-  elevation: "medium",
-  radius: 8,
-  menuPaddingY: 8,
-  list: {
-    item: {
-      paddingX: 16,
-      paddingY: {
-        medium: 8,
-        large: 16,
-      },
-      fontSize: {
-        firstLine: "medium",
-        secondLine: "small",
-        overline: "small",
-      },
-      internalSpacing: 16,
-      iconSize: {
-        leading: 24,
-        trailing: 16,
-        illustration: 32,
-      },
-    },
-  },
-};
+import { InputConfig } from "../Field/Config";
+import { DropdownConfig } from "./Config";
 
 export type SelectOption<A> = Omit<
   ListItemProps,

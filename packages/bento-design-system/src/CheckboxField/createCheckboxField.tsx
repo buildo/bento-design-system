@@ -6,7 +6,7 @@ import { TextChildren } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { createCheckbox } from "../Checkbox/createCheckbox";
 import { useField } from "@react-aria/label";
-import { SelectionControlConfig } from "../Field/SelectionControlConfig";
+import { SelectionControlConfig } from "../Field/Config";
 
 type Props = Omit<FieldProps<boolean>, "assistiveText"> & {
   label: TextChildren;

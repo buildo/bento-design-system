@@ -7,16 +7,16 @@ import { useButton } from "@react-aria/button";
 import { Label } from "../Typography/Label/Label";
 import { Column, Columns } from "../internal";
 import { IconProps } from "../";
-import { ButtonConfig } from "./createButtons";
+import { ButtonConfig } from "./Config";
 
-export type Size = "small" | "medium" | "large";
+export type ButtonSize = "small" | "medium" | "large";
 type Props = {
   label: LocalizedString;
   onPress: () => void;
   kind: "solid" | "transparent" | "outline";
   hierarchy: "primary" | "secondary" | "danger";
   isDisabled?: boolean;
-  size?: Size;
+  size?: ButtonSize;
   icon?: (props: IconProps) => JSX.Element;
 } & AriaButtonProps<"button">;
 

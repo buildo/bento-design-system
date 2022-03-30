@@ -1,19 +1,8 @@
 import { useBreadcrumbItem, useBreadcrumbs } from "@react-aria/breadcrumbs";
 import { useRef, Fragment, FunctionComponent } from "react";
-import { IconProps } from "../Icons/IconProps";
-import { IconChevronRight, Body, LinkProps, LocalizedString } from "../";
-import { Box, Inline, BentoSprinkles } from "../internal";
-
-type BreadcrumbConfig = {
-  separator: FunctionComponent<IconProps>;
-  separatorSize: IconProps["size"];
-  space: BentoSprinkles["gap"];
-};
-export const defaultBreadcrumbConfig: BreadcrumbConfig = {
-  separator: IconChevronRight,
-  separatorSize: 8,
-  space: 16,
-};
+import { Body, LinkProps, LocalizedString } from "../";
+import { Box, Inline } from "../internal";
+import { BreadcrumbConfig } from "./Config";
 
 type LastItem = {
   label: LocalizedString;

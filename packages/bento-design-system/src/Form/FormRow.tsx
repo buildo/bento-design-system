@@ -1,12 +1,9 @@
 import { Children } from "..";
-import { BentoSprinkles, Columns } from "../internal";
+import { Columns } from "../internal";
+import { FormRowConfig } from "./Config";
 
 type Props = {
   children: Children;
-};
-
-export type FormRowConfig = {
-  rowSpacing: BentoSprinkles["gap"];
 };
 
 export function createFormRow(config: FormRowConfig) {

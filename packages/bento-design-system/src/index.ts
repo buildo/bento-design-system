@@ -2,6 +2,7 @@ import "./reset.css";
 import "./global.css";
 import * as icons from "./Icons";
 import * as illustrations from "./Illustrations";
+import * as defaultConfigs from "./util/defaultConfigs";
 
 export * from "./Actions/createActions";
 export * from "./AreaLoader/createAreaLoader";
@@ -76,3 +77,5 @@ export * from "./util/strictRecipe";
 export * from "./util/useDefaultMessages";
 
 export { icons, illustrations };
+
+export { defaultConfigs };

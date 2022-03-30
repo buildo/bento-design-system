@@ -6,7 +6,7 @@ import { Label } from "..";
 import { Box } from "../internal";
 import { useLink } from "@react-aria/link";
 import { element } from "../reset.css";
-import { ButtonConfig } from "./createButtons";
+import { ButtonConfig } from "./Config";
 
 type Props = {
   href: string;

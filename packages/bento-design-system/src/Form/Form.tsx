@@ -1,4 +1,4 @@
-import { ComponentProps, FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import {
   ActionsProps,
   Body,
@@ -10,7 +10,8 @@ import {
   TextChildren,
 } from "..";
 
-import { BentoSprinkles, Box, Stack } from "../internal";
+import { Box, Stack } from "../internal";
+import { FormConfig } from "./Config";
 
 type Props = {
   children: Children;
@@ -19,14 +20,6 @@ type Props = {
   submitButton?: Omit<ButtonProps, "kind" | "hierarchy">;
   secondaryButton?: Omit<ButtonProps, "kind" | "hierarchy">;
   error?: LocalizedString;
-};
-
-export type FormConfig = {
-  headerTitleSize: ComponentProps<typeof Display>["size"];
-  headerDescriptionSize: ComponentProps<typeof Body>["size"];
-  formSpacing: BentoSprinkles["gap"];
-  headerSpacing: BentoSprinkles["gap"];
-  actionsSize: ActionsProps["size"];
 };
 
 export function createForm(

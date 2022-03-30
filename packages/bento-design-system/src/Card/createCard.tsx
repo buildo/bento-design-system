@@ -1,14 +1,9 @@
 import { bentoSprinkles, Box } from "../internal";
 import { BoxProps, Children } from "..";
 import { cardRecipe } from "./Card.css";
+import { CardConfig } from "./Config";
 
 type InternalBoxProps = BoxProps<typeof bentoSprinkles>;
-type CardConfig = {
-  radius: InternalBoxProps["borderRadius"];
-};
-export const defaultCardConfig: CardConfig = {
-  radius: 8,
-};
 
 type PaddingKey =
   | "padding"

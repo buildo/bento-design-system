@@ -7,10 +7,7 @@ import { createCheckbox } from "../Checkbox/createCheckbox";
 import { useField } from "@react-aria/label";
 import { CheckboxGroupState, useCheckboxGroupState } from "@react-stately/checkbox";
 import { Box, Inline, Inset, Stack } from "../internal";
-import {
-  SelectionControlConfig,
-  SelectionControlGroupConfig,
-} from "../Field/SelectionControlConfig";
+import { SelectionControlConfig, SelectionControlGroupConfig } from "../Field/Config";
 
 export type CheckboxOption = {
   value: string;

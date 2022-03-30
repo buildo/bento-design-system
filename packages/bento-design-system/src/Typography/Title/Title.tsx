@@ -21,3 +21,5 @@ export function Title({ children, size, align, color = "default", ...boxProps }:
     </Box>
   );
 }
+
+export type { Props as TitleProps };

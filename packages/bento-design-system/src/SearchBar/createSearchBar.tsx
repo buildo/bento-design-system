@@ -1,26 +1,15 @@
 import { useTextField } from "@react-aria/textfield";
 import { FunctionComponent, useRef } from "react";
 import useDimensions from "react-cool-dimensions";
-import { IconClose, IconSearch, LocalizedString } from "..";
+import { LocalizedString } from "..";
 import { Box } from "../internal";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { input } from "./SearchBar.css";
 import { FieldType } from "../Field/createField";
-import { defaultInputConfig, InputConfig } from "../Field/InputConfig";
-import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
-
-type SearchBarConfig = InputConfig & {
-  clearIcon: FunctionComponent<IconProps>;
-  searchIcon: FunctionComponent<IconProps>;
-};
-export const defaultSearchBarConfig: SearchBarConfig = {
-  ...defaultInputConfig,
-  clearIcon: IconClose,
-  searchIcon: IconSearch,
-};
+import { SearchBarConfig } from "./Config";
 
 type Props = {
   value: string;
