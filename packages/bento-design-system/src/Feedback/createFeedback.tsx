@@ -1,21 +1,21 @@
-import { ComponentProps, FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import { Body, ButtonProps, Children, Display, LocalizedString, TextChildren } from "..";
 import { Box, Stack } from "../internal";
 import { feedbackStyle } from "./Feedback.css";
 import { IllustrationProps } from "../Illustrations/IllustrationProps";
-import { IllustrationNegative, IllustrationPositive } from "../Illustrations";
 import { Title } from "../Typography/Title/Title";
 import { Headline } from "../Typography/Headline/Headline";
+import { FeedbackConfig } from "./Config";
 
 type Status = "positive" | "negative";
-type Size = "medium" | "large";
+export type FeedbackSize = "medium" | "large";
 
 type Props = {
   title: LocalizedString;
   description?: TextChildren;
   action?: Pick<ButtonProps, "label" | "onPress">;
   background?: boolean;
-  size: Size;
+  size: FeedbackSize;
 } & (
   | {
       /** Use as:
@@ -35,31 +35,18 @@ type Props = {
     }
 );
 
-type SizeConfig<T> = Record<Size, T>;
-
-type FeedbackConfig = {
-  background: JSX.Element | null;
-  positiveIllustration: (props: IllustrationProps) => Children;
-  negativeIllustration: (props: IllustrationProps) => Children;
-  illustrationSize: SizeConfig<IllustrationProps["size"]>;
-  title: {
-    medium: ComponentProps<typeof Title>["size"];
-    large:
-      | { kind: "display"; size: ComponentProps<typeof Display>["size"] }
-      | { kind: "headline"; size: ComponentProps<typeof Headline>["size"] };
-  };
-  descriptionSize: SizeConfig<ComponentProps<typeof Body>["size"]>;
-  action: SizeConfig<{
-    hierarchy: Extract<ButtonProps["hierarchy"], "primary" | "secondary">;
-    kind: ButtonProps["kind"];
-    size: ButtonProps["size"];
-  }>;
-};
 /**
  * Feedback can render a predefined feedback status (when using the `status` prop) or render a custom illustration
  * (when using the `illustration` prop).
  */
-export function createFeedback(Button: FunctionComponent<ButtonProps>, config: FeedbackConfig) {
+export function createFeedback(
+  config: FeedbackConfig,
+  {
+    Button,
+  }: {
+    Button: FunctionComponent<ButtonProps>;
+  }
+) {
   return function Feedback({
     title,
     description,
@@ -95,7 +82,7 @@ export function createFeedback(Button: FunctionComponent<ButtonProps>, config: F
     );
   };
 
-  function renderTitle(size: Size, title: LocalizedString) {
+  function renderTitle(size: FeedbackSize, title: LocalizedString) {
     switch (size) {
       case "medium":
         return (
@@ -169,33 +156,3 @@ export function createFeedback(Button: FunctionComponent<ButtonProps>, config: F
 }
 
 export type { Props as FeedbackProps };
-
-export const defaultFeedbackConfig: FeedbackConfig = {
-  background: null,
-  positiveIllustration: IllustrationPositive,
-  negativeIllustration: IllustrationNegative,
-  title: {
-    medium: "large",
-    large: { kind: "display", size: "small" },
-  },
-  descriptionSize: {
-    medium: "medium",
-    large: "medium",
-  },
-  illustrationSize: {
-    medium: 80,
-    large: 160,
-  },
-  action: {
-    medium: {
-      kind: "transparent",
-      hierarchy: "primary",
-      size: "medium",
-    },
-    large: {
-      kind: "solid",
-      hierarchy: "primary",
-      size: "large",
-    },
-  },
-};

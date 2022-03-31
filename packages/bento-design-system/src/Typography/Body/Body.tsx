@@ -45,3 +45,5 @@ export function Body({
     </Box>
   );
 }
+
+export type { Props as BodyProps };

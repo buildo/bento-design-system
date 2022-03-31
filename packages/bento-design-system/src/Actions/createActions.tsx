@@ -1,10 +1,10 @@
 import { FunctionComponent, useState } from "react";
-import { BannerProps, BoxProps, InlineLoader, LocalizedString } from "../";
-import { bentoSprinkles, Column, Columns, Inline } from "../internal";
+import { BannerProps, InlineLoader, LocalizedString } from "../";
+import { Column, Columns, Inline } from "../internal";
 import { ButtonProps } from "../Button/createButton";
+import { ActionsConfig } from "./Config";
 
 type ActionProps = Omit<ButtonProps, "kind" | "size" | "hierarchy">;
-
 export type ActionsProps = {
   size?: ButtonProps["size"];
   primaryAction?: ActionProps & {
@@ -15,21 +15,14 @@ export type ActionsProps = {
   error?: LocalizedString;
 };
 
-type ActionsConfig = {
-  primaryPosition: "left" | "right";
-  defaultSize: ButtonProps["size"];
-  buttonsAlignment: "left" | "right" | "spaceBetween";
-  spaceBetweenButtons: BoxProps<typeof bentoSprinkles>["gap"];
-};
-
 export function createActions(
-  Button: FunctionComponent<ButtonProps>,
-  Banner: FunctionComponent<BannerProps>,
-  config: ActionsConfig = {
-    buttonsAlignment: "right",
-    primaryPosition: "right",
-    spaceBetweenButtons: 16,
-    defaultSize: "medium",
+  config: ActionsConfig,
+  {
+    Button,
+    Banner,
+  }: {
+    Button: FunctionComponent<ButtonProps>;
+    Banner: FunctionComponent<BannerProps>;
   }
 ) {
   return function Actions({

@@ -6,16 +6,19 @@ import { TextChildren } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { createCheckbox } from "../Checkbox/createCheckbox";
 import { useField } from "@react-aria/label";
-import { SelectionControlConfig } from "../Field/SelectionControlConfig";
+import { SelectionControlConfig } from "../Field/Config";
 
-export type CheckboxFieldProps = Omit<FieldProps<boolean>, "assistiveText"> & {
+type Props = Omit<FieldProps<boolean>, "assistiveText"> & {
   label: TextChildren;
 };
 
-export function createCheckboxField(Field: FieldType, config: SelectionControlConfig) {
+export function createCheckboxField(
+  config: SelectionControlConfig,
+  { Field }: { Field: FieldType }
+) {
   const Checkbox = createCheckbox(config);
 
-  return function CheckboxField(props: CheckboxFieldProps) {
+  return function CheckboxField(props: Props) {
     const checkboxProps = {
       ...props,
       value: undefined,
@@ -44,3 +47,5 @@ export function createCheckboxField(Field: FieldType, config: SelectionControlCo
     );
   };
 }
+
+export type { Props as CheckboxFieldProps };

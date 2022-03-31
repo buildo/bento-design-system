@@ -4,17 +4,17 @@ import Select, {
   MultiValueProps,
   SingleValue as SingleValueT,
 } from "react-select";
-import { Body, ListConfig, ListSize, LocalizedString } from "..";
+import { Body, ListSize, LocalizedString } from "..";
 import { useField } from "@react-aria/label";
 import { useEffect, useMemo } from "react";
 import { FieldProps } from "../Field/FieldProps";
 import { FieldType } from "../Field/createField";
 import { createComponents, styles } from "./components";
-import { InputConfig } from "../Field/InputConfig";
-import { BentoSprinkles } from "../internal";
 import { ListItemProps } from "../List/createListItem";
 import { Omit } from "../util/Omit";
 import { useDefaultMessages } from "../util/useDefaultMessages";
+import { InputConfig } from "../Field/Config";
+import { DropdownConfig } from "./Config";
 
 export type SelectOption<A> = Omit<
   ListItemProps,
@@ -37,8 +37,6 @@ type Props<A, IsMulti extends boolean> = (IsMulti extends false
     ? { multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString }
     : {});
 
-export type { Props as SelectFieldProps };
-
 declare module "react-select/dist/declarations/src/Select" {
   export interface Props<Option, IsMulti extends boolean, Group extends GroupBase<Option>> {
     menuSize?: ListSize;
@@ -48,19 +46,12 @@ declare module "react-select/dist/declarations/src/Select" {
   }
 }
 
-export type DropdownConfig = {
-  elevation: "small" | "medium" | "large";
-  radius: BentoSprinkles["borderRadius"];
-  list: ListConfig;
-  menuPaddingY: BentoSprinkles["paddingY"];
-};
-
 export function createSelectField(
-  Field: FieldType,
   inputConfig: InputConfig,
-  dropdownConfig: DropdownConfig
+  dropdownConfig: DropdownConfig,
+  { Field }: { Field: FieldType }
 ) {
-  const components = createComponents(inputConfig, dropdownConfig);
+  const selectComponents = createComponents(inputConfig, dropdownConfig);
 
   return function SelectField<A, IsMulti extends boolean = false>(props: Props<A, IsMulti>) {
     const {
@@ -156,7 +147,7 @@ export function createSelectField(
           placeholder={placeholder}
           menuPortalTarget={menuPortalTarget}
           components={{
-            ...components,
+            ...selectComponents,
             MultiValue,
           }}
           openMenuOnFocus
@@ -192,35 +183,11 @@ export function createSelectField(
     }
 
     if (numberOfSelectedOptions === 1) {
-      return components.SingleValue(props);
+      return selectComponents.SingleValue(props);
     }
 
     return <Body size="large">{props.selectProps.multiValueMessage(numberOfSelectedOptions)}</Body>;
   }
 }
 
-export const defaultDropdownConfig: DropdownConfig = {
-  elevation: "medium",
-  radius: 8,
-  menuPaddingY: 8,
-  list: {
-    item: {
-      paddingX: 16,
-      paddingY: {
-        medium: 8,
-        large: 16,
-      },
-      fontSize: {
-        firstLine: "medium",
-        secondLine: "small",
-        overline: "small",
-      },
-      internalSpacing: 16,
-      iconSize: {
-        leading: 24,
-        trailing: 16,
-        illustration: 32,
-      },
-    },
-  },
-};
+export type { Props as SelectFieldProps };

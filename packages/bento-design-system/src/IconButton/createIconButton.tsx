@@ -1,11 +1,12 @@
 import { useButton } from "@react-aria/button";
 import { useRef } from "react";
-import { BentoSprinkles, Box } from "../internal";
+import { Box } from "../internal";
 import { Children } from "../util/Children";
 import { IconProps } from "../Icons/IconProps";
 import { iconButtonRecipe } from "./IconButton.css";
 import { buttonRecipe } from "../Button/Button.css";
 import { LocalizedString } from "../util/LocalizedString";
+import { IconButtonConfig } from "./Config";
 
 type Props = {
   kind: "solid" | "transparent";
@@ -16,11 +17,6 @@ type Props = {
   tabIndex?: number;
   isDisabled?: boolean;
   icon: (props: IconProps) => Children;
-};
-
-type IconButtonConfig = {
-  radius: BentoSprinkles["borderRadius"];
-  padding: Record<IconProps["size"], BentoSprinkles["padding"]>;
 };
 
 export function createIconButton(config: IconButtonConfig) {
@@ -68,13 +64,3 @@ export function createIconButton(config: IconButtonConfig) {
 }
 
 export type { Props as IconButtonProps };
-
-export const defaultIconButtonConfig: IconButtonConfig = {
-  radius: 4,
-  padding: {
-    8: 8,
-    12: 8,
-    16: 16,
-    24: 16,
-  },
-};

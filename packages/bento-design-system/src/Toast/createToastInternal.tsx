@@ -2,16 +2,21 @@ import { FunctionComponent } from "react";
 import { Bleed, Box, Column, Columns } from "../internal";
 import { Body, ButtonProps, IconButtonProps, ToastProps, useDefaultMessages } from "..";
 import { toastRecipe } from "./Toast.css";
-import { ToastConfig } from "./createToast";
+import { ToastConfig } from "./Config";
 
 /**
  * This component is not meant to be used directly: you should use the `showToast` function
  * provided by `useToast` instead.
  */
 export function createToastInternal(
-  Button: FunctionComponent<ButtonProps>,
-  IconButton: FunctionComponent<IconButtonProps>,
-  config: { [P in keyof ToastConfig]-?: ToastConfig[P] }
+  config: { [P in keyof ToastConfig]-?: ToastConfig[P] },
+  {
+    Button,
+    IconButton,
+  }: {
+    Button: FunctionComponent<ButtonProps>;
+    IconButton: FunctionComponent<IconButtonProps>;
+  }
 ) {
   return function Toast({ kind, message, action, onDismiss }: ToastProps) {
     const { defaultMessages } = useDefaultMessages();

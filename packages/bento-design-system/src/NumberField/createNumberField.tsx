@@ -1,7 +1,7 @@
 import { useLocale } from "@react-aria/i18n";
 import { useNumberField } from "@react-aria/numberfield";
 import { NumberFieldStateProps, useNumberFieldState } from "@react-stately/numberfield";
-import { useRef } from "react";
+import { FunctionComponent, useRef } from "react";
 import { LocalizedString } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { FormatProps } from "../NumberInput/FormatProps";
@@ -16,10 +16,13 @@ type Props = FieldProps<number | undefined, number> & {
 } & FormatProps &
   Pick<NumberFieldStateProps, "minValue" | "maxValue" | "step">;
 
-export function createNumberField(
-  Field: FieldType,
-  NumberInput: React.FunctionComponent<NumberInputProps>
-) {
+export function createNumberField({
+  Field,
+  NumberInput,
+}: {
+  Field: FieldType;
+  NumberInput: FunctionComponent<NumberInputProps>;
+}) {
   return function NumberField(props: Props) {
     const { locale } = useLocale();
     const formatOptions = useFormatOptions(props);
@@ -59,3 +62,5 @@ export function createNumberField(
     );
   };
 }
+
+export type { Props as NumberFieldProps };

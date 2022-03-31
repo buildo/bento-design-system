@@ -1,7 +1,7 @@
-import { ComponentProps, FunctionComponent } from "react";
-import { IconUser, Label, unsafeLocalizedString, IconProps } from "..";
+import { Label, unsafeLocalizedString } from "..";
 import { avatarRecipe } from "./Avatar.css";
-import { BentoSprinkles, Box } from "../internal";
+import { Box } from "../internal";
+import { AvatarConfig } from "./Config";
 
 type Props = {
   name?: string;
@@ -18,23 +18,7 @@ type Props = {
     | "pink";
 };
 
-type AvatarConfig = {
-  width: BentoSprinkles["width"];
-  height: BentoSprinkles["height"];
-  radius: BentoSprinkles["borderRadius"];
-  labelSize: ComponentProps<typeof Label>["size"];
-  icon: FunctionComponent<IconProps>;
-};
-
-export function createAvatar(
-  config: AvatarConfig = {
-    width: 40,
-    height: 40,
-    radius: "circled",
-    labelSize: "large",
-    icon: IconUser,
-  }
-) {
+export function createAvatar(config: AvatarConfig) {
   return function Avatar({ color, name }: Props) {
     const initial = name?.trim()[0];
 

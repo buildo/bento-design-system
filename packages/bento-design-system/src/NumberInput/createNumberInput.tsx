@@ -6,9 +6,9 @@ import { Box } from "../internal";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { FormatProps } from "./FormatProps";
-import { InputConfig } from "../Field/InputConfig";
+import { InputConfig } from "../Field/Config";
 
-export type NumberInputProps = {
+type Props = {
   inputProps: React.InputHTMLAttributes<HTMLInputElement>;
   inputRef: React.Ref<HTMLInputElement>;
   placeholder?: LocalizedString;
@@ -18,7 +18,7 @@ export type NumberInputProps = {
 } & FormatProps;
 
 export function createNumberInput(config: InputConfig) {
-  return function NumberInput(props: NumberInputProps) {
+  return function NumberInput(props: Props) {
     const { locale } = useLocale();
 
     const { observe: rightAccessoryRef, width: rightAccessoryWidth } = useDimensions({
@@ -106,3 +106,5 @@ export function createNumberInput(config: InputConfig) {
     );
   };
 }
+
+export type { Props as NumberInputProps };

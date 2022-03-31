@@ -1,37 +1,22 @@
 import { AnchorHTMLAttributes, useRef } from "react";
 import { useLinkComponent } from "../util/link";
-import { Label, LabelProps, LocalizedString } from "..";
-import { BentoSprinkles, Box } from "../internal";
+import { Label, LocalizedString } from "..";
+import { Box } from "../internal";
 import { useLink } from "@react-aria/link";
 import * as resetStyles from "../reset.css";
 import { link } from "./Link.css";
 import { extendedHitAreaRecipe } from "../util/extendedHitArea.css";
+import { LinkConfig } from "./Config";
 
-export type LinkProps = {
+type Props = {
   href: string;
   label: LocalizedString;
   isDisabled?: boolean;
   active?: boolean;
 } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "color">;
 
-type LinkConfig = {
-  labelSize: LabelProps["size"];
-  labelDecoration: BentoSprinkles["textDecoration"];
-};
-
-export function createLink(
-  config: LinkConfig = {
-    labelSize: "large",
-    labelDecoration: {
-      default: "none",
-      active: "none",
-      hover: "underline",
-      focus: "underline",
-      disabled: "none",
-    },
-  }
-) {
-  return function Link({ href, isDisabled, label, active = false, ...props }: LinkProps) {
+export function createLink(config: LinkConfig) {
+  return function Link({ href, isDisabled, label, active = false, ...props }: Props) {
     const LinkComponent = useLinkComponent();
     const ref = useRef<HTMLAnchorElement>(null);
     const {
@@ -63,3 +48,5 @@ export function createLink(
     );
   };
 }
+
+export type { Props as LinkProps };

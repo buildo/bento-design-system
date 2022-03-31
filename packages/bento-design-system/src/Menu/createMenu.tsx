@@ -1,6 +1,6 @@
 import { ComponentProps, FunctionComponent, Ref, useRef } from "react";
 import { Children, Popover } from "..";
-import { BentoSprinkles, Box, Inset } from "../internal";
+import { Box, Inset } from "../internal";
 import { menuRecipe } from "./Menu.css";
 import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState, MenuTriggerState } from "@react-stately/menu";
@@ -8,6 +8,7 @@ import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
 import { ListProps } from "../List/createListComponents";
 import { ListItemProps } from "../List/createListItem";
+import { MenuConfig } from "./Config";
 
 type Props = {
   size: ListProps["size"];
@@ -33,16 +34,14 @@ type Props = {
   offset?: ComponentProps<typeof Popover>["offset"];
 };
 
-type MenuConfig = {
-  paddingY: BentoSprinkles["paddingY"];
-  radius: BentoSprinkles["borderRadius"];
-  elevation: "small" | "medium" | "large";
-  headerPaddingX: BentoSprinkles["paddingX"];
-  headerPaddingY: BentoSprinkles["paddingY"];
-  defaultOffset: number;
-};
-
-export function createMenu(List: FunctionComponent<ListProps>, config: MenuConfig) {
+export function createMenu(
+  config: MenuConfig,
+  {
+    List,
+  }: {
+    List: FunctionComponent<ListProps>;
+  }
+) {
   return function Menu({ items, header, trigger, initialIsOpen, placement, offset, size }: Props) {
     const triggerRef = useRef(null);
 
@@ -92,13 +91,5 @@ export function createMenu(List: FunctionComponent<ListProps>, config: MenuConfi
   };
 }
 
-export const defaultMenuConfig: MenuConfig = {
-  paddingY: 8,
-  radius: 8,
-  elevation: "medium",
-  headerPaddingX: 24,
-  headerPaddingY: 24,
-  defaultOffset: 4,
-};
-
+export type { Props as MenuProps };
 export type { MenuTriggerState };

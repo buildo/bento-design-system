@@ -1,12 +1,13 @@
 import { useLink } from "@react-aria/link";
-import { AnchorHTMLAttributes, ComponentProps, useRef } from "react";
+import { AnchorHTMLAttributes, useRef } from "react";
 import { Body, Label, LocalizedString, useLinkComponent } from "..";
-import { Box, Columns, Column, Inset, Stack, BentoSprinkles } from "../internal";
+import { Box, Columns, Column, Inset, Stack } from "../internal";
 import { IconProps } from "../Icons/IconProps";
 import { IllustrationProps } from "../Illustrations/IllustrationProps";
 import { listItemRecipe } from "./ListItem.css";
 import { ListSize } from "./createListComponents";
 import { element } from "../reset.css";
+import { ListItemConfig } from "./Config";
 
 type Kind =
   | {
@@ -42,7 +43,7 @@ type RightItem = {
   trailingIcon?: (props: IconProps) => JSX.Element;
 };
 
-export type Props = Kind &
+type Props = Kind &
   LeftItem &
   RightItem & {
     disabled?: boolean;
@@ -61,27 +62,6 @@ export type Props = Kind &
         onPress?: never;
       }
   );
-
-export type { Props as ListItemProps };
-
-type ListItemSizeConfig<T> = {
-  [k in ListSize]: T;
-};
-export type ListItemConfig = {
-  paddingX: BentoSprinkles["paddingX"];
-  paddingY: ListItemSizeConfig<BentoSprinkles["paddingY"]>;
-  fontSize: {
-    firstLine: ComponentProps<typeof Body>["size"];
-    secondLine: ComponentProps<typeof Body>["size"];
-    overline: ComponentProps<typeof Label>["size"];
-  };
-  internalSpacing: BentoSprinkles["gap"];
-  iconSize: {
-    leading: IconProps["size"];
-    trailing: IconProps["size"];
-    illustration: IllustrationProps["size"];
-  };
-};
 
 export function createListItem(config: ListItemConfig) {
   return function ListItem(props: Props) {
@@ -224,3 +204,5 @@ export function createListItem(config: ListItemConfig) {
     );
   }
 }
+
+export type { Props as ListItemProps };

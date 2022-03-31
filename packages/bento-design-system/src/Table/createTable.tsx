@@ -14,7 +14,6 @@ import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import {
   Children,
-  IllustrationSearch,
   Label,
   LocalizedString,
   IconChevronDown,
@@ -23,7 +22,6 @@ import {
   IconMinus,
   unsafeLocalizedString,
   TooltipProps,
-  IllustrationProps,
   ButtonProps,
   ChipProps,
   FeedbackProps,
@@ -62,6 +60,7 @@ import {
 } from "./tableColumn";
 import { ButtonLinkProps } from "../Button/ButtonLink";
 import { IconButtonProps } from "../IconButton/createIconButton";
+import { TableConfig } from "./Config";
 
 type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
   a: Row<RowType<C>>,
@@ -107,18 +106,14 @@ type Props<C extends ReadonlyArray<ColumnType<string, {}, any>>> = {
  * <Table columns={[tableColumn(...), tableColumn(...)]} data={data} />
  * ```
  */
-
-type TableConfig = {
-  headerInfoIcon: (props: IconProps) => JSX.Element;
-  emptyIllustration: (props: IllustrationProps) => JSX.Element;
-};
-
 export function createTable(
-  Tooltip: FunctionComponent<TooltipProps>,
-  Feedback: FunctionComponent<FeedbackProps>,
-  config: TableConfig = {
-    headerInfoIcon: IconInformative,
-    emptyIllustration: IllustrationSearch,
+  config: TableConfig,
+  {
+    Tooltip,
+    Feedback,
+  }: {
+    Tooltip: FunctionComponent<TooltipProps>;
+    Feedback: FunctionComponent<FeedbackProps>;
   }
 ) {
   return function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
@@ -483,3 +478,4 @@ export type {
 export type { Column, Row } from "./types";
 
 export type { ColumnOptionsBase } from "./tableColumn";
+export type { Props as TableProps };

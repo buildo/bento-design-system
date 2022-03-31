@@ -1,22 +1,13 @@
 import { LocalizedString } from "../util/LocalizedString";
-import {
-  Title,
-  Body,
-  TextChildren,
-  IconClose,
-  IconInformative,
-  IconCheckCircleSolid,
-  IconWarning,
-  IconNegative,
-  IconIdea,
-  ButtonProps,
-} from "..";
-import { Columns, Column, Box, Stack, BentoSprinkles, Inline } from "../internal";
+import { Title, Body, TextChildren, ButtonProps } from "..";
+import { Columns, Column, Box, Stack, Inline } from "../internal";
 import { bannerRecipe } from "./Banner.css";
-import { ComponentProps, FunctionComponent } from "react";
-import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
+import { BannerConfig } from "./Config";
+import { FunctionComponent } from "react";
+
+export type Kind = "informative" | "positive" | "warning" | "negative" | "secondary";
 
 type DismissProps =
   | {
@@ -28,7 +19,10 @@ type DismissProps =
       onDismiss?: never;
     };
 
-type Kind = "informative" | "positive" | "warning" | "negative" | "secondary";
+type ActionProps = {
+  label: LocalizedString;
+  onPress: ButtonProps["onPress"];
+};
 
 type Props = {
   kind: Kind;
@@ -45,51 +39,26 @@ type Props = {
       }
   );
 
-type ActionProps = {
-  label: LocalizedString;
-  onPress: ButtonProps["onPress"];
-};
-
-type KindConfig<T> = {
-  [k in Kind]: T;
-};
-type BannerConfig = {
-  padding?: BentoSprinkles["padding"];
-  radius?: BentoSprinkles["borderRadius"];
-  titleSize?: ComponentProps<typeof Title>["size"];
-  descriptionSize?: ComponentProps<typeof Body>["size"];
-  closeIcon?: FunctionComponent<IconProps>;
-  kindIcons?: KindConfig<FunctionComponent<IconProps>>;
-};
-
 export function createBanner(
-  Button: FunctionComponent<ButtonProps>,
-  IconButton: FunctionComponent<IconButtonProps>,
+  config: BannerConfig,
   {
-    padding = 16,
-    titleSize = "small",
-    descriptionSize = "small",
-    radius = 8,
-    closeIcon = IconClose,
-    kindIcons = {
-      informative: IconInformative,
-      positive: IconCheckCircleSolid,
-      warning: IconWarning,
-      negative: IconNegative,
-      secondary: IconIdea,
-    },
-  }: BannerConfig
+    Button,
+    IconButton,
+  }: {
+    Button: FunctionComponent<ButtonProps>;
+    IconButton: FunctionComponent<IconButtonProps>;
+  }
 ) {
   return function Banner({ title, description, kind, action, ...dismissProps }: Props) {
     const isWithoutTitle = title === undefined;
     const iconSize = isWithoutTitle ? 16 : 24;
     const iconProps = { size: iconSize, color: kind } as const;
-    const Icon = kindIcons[kind];
+    const Icon = config.kindIcons[kind];
 
     const { defaultMessages } = useDefaultMessages();
 
     return (
-      <Box padding={padding} borderRadius={radius} className={bannerRecipe({ kind })}>
+      <Box padding={config.padding} borderRadius={config.radius} className={bannerRecipe({ kind })}>
         <Stack space={4}>
           <Columns space={16} align="left" alignY={title && description ? "top" : "center"}>
             <Column width="content">
@@ -99,11 +68,11 @@ export function createBanner(
             </Column>
             <Stack align="left" space={4}>
               {title && (
-                <Title size={titleSize} color={kind}>
+                <Title size={config.titleSize} color={kind}>
                   {title}
                 </Title>
               )}
-              {description && <Body size={descriptionSize}>{description}</Body>}
+              {description && <Body size={config.descriptionSize}>{description}</Body>}
             </Stack>
             {dismissProps.onDismiss && (
               <Column width="content">
@@ -115,7 +84,7 @@ export function createBanner(
                   size={12}
                   kind="transparent"
                   hierarchy="secondary"
-                  icon={closeIcon}
+                  icon={config.closeIcon}
                 />
               </Column>
             )}

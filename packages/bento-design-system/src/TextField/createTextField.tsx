@@ -6,7 +6,7 @@ import { inputRecipe } from "../Field/Field.css";
 import { FieldProps } from "../Field/FieldProps";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { FieldType } from "../Field/createField";
-import { InputConfig } from "../Field/InputConfig";
+import { InputConfig } from "../Field/Config";
 
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;
@@ -14,7 +14,7 @@ type Props = FieldProps<string> & {
   isReadOnly?: boolean;
 };
 
-export function createTextField(Field: FieldType, config: InputConfig) {
+export function createTextField(config: InputConfig, { Field }: { Field: FieldType }) {
   return function TextField(props: Props) {
     const inputRef = useRef<HTMLInputElement>(null);
 

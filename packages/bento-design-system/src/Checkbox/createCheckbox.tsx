@@ -5,9 +5,9 @@ import { Body, TextChildren } from "../";
 import { useFocusRing } from "@react-aria/focus";
 import { checkboxRecipe, fieldContainer } from "./Checkbox.css";
 import { vars } from "../vars.css";
-import { SelectionControlConfig } from "../Field/SelectionControlConfig";
 import { useLabel } from "@react-aria/label";
 import { InputHTMLAttributes, Ref } from "react";
+import { SelectionControlConfig } from "../Field/Config";
 
 type CheckboxUIProps = {
   value: boolean;

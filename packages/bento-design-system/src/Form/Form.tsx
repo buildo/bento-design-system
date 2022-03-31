@@ -1,4 +1,4 @@
-import { ComponentProps, FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import {
   ActionsProps,
   Body,
@@ -10,7 +10,8 @@ import {
   TextChildren,
 } from "..";
 
-import { BentoSprinkles, Box, Stack } from "../internal";
+import { Box, Stack } from "../internal";
+import { FormConfig } from "./Config";
 
 type Props = {
   children: Children;
@@ -21,15 +22,14 @@ type Props = {
   error?: LocalizedString;
 };
 
-export type FormConfig = {
-  headerTitleSize: ComponentProps<typeof Display>["size"];
-  headerDescriptionSize: ComponentProps<typeof Body>["size"];
-  formSpacing: BentoSprinkles["gap"];
-  headerSpacing: BentoSprinkles["gap"];
-  actionsSize: ActionsProps["size"];
-};
-
-export function createForm(Actions: FunctionComponent<ActionsProps>, config: FormConfig) {
+export function createForm(
+  config: FormConfig,
+  {
+    Actions,
+  }: {
+    Actions: FunctionComponent<ActionsProps>;
+  }
+) {
   return function Form({
     title,
     description,
@@ -63,3 +63,5 @@ export function createForm(Actions: FunctionComponent<ActionsProps>, config: For
     );
   };
 }
+
+export type { Props as FormProps };

@@ -7,10 +7,7 @@ import { createCheckbox } from "../Checkbox/createCheckbox";
 import { useField } from "@react-aria/label";
 import { CheckboxGroupState, useCheckboxGroupState } from "@react-stately/checkbox";
 import { Box, Inline, Inset, Stack } from "../internal";
-import {
-  SelectionControlConfig,
-  SelectionControlGroupConfig,
-} from "../Field/SelectionControlConfig";
+import { SelectionControlConfig, SelectionControlGroupConfig } from "../Field/Config";
 
 export type CheckboxOption = {
   value: string;
@@ -18,18 +15,18 @@ export type CheckboxOption = {
   isDisabled?: boolean;
 };
 
-export type CheckboxGroupFieldProps = FieldProps<string[]> & {
+type Props = FieldProps<string[]> & {
   label: TextChildren;
   options: Array<CheckboxOption>;
   orientation?: "vertical" | "horizontal";
 };
 
 export function createCheckboxGroupField(
-  Field: FieldType,
   config: {
     group: SelectionControlGroupConfig;
     element: SelectionControlConfig;
-  }
+  },
+  { Field }: { Field: FieldType }
 ) {
   const Checkbox = createCheckbox(config.element);
 
@@ -49,7 +46,7 @@ export function createCheckboxGroupField(
     );
   }
 
-  return function CheckboxGroupField(props: CheckboxGroupFieldProps) {
+  return function CheckboxGroupField(props: Props) {
     const checkboxGroupProps = {
       ...props,
       children: props.label,
@@ -86,3 +83,5 @@ export function createCheckboxGroupField(
     );
   };
 }
+
+export type { Props as CheckboxGroupFieldProps };

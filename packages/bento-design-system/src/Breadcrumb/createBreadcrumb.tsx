@@ -1,40 +1,30 @@
 import { useBreadcrumbItem, useBreadcrumbs } from "@react-aria/breadcrumbs";
 import { useRef, Fragment, FunctionComponent } from "react";
-import { IconProps } from "../Icons/IconProps";
-import { IconChevronRight, Body, LinkProps, LocalizedString } from "../";
-import { Box, Inline, BentoSprinkles } from "../internal";
+import { Body, LinkProps, LocalizedString } from "../";
+import { Box, Inline } from "../internal";
+import { BreadcrumbConfig } from "./Config";
 
 type LastItem = {
   label: LocalizedString;
 };
-
 type Item = LastItem & {
   href: string;
 };
-
-export type BreadcrumbProps = {
+type Props = {
   items: [...Item[], LastItem];
 };
 
-type BreadcrumbItemProps = LastItem & Partial<Item> & { isCurrent: boolean };
-
-type BreadcrumbConfig = {
-  separator: FunctionComponent<IconProps>;
-  separatorSize: IconProps["size"];
-  space: BentoSprinkles["gap"];
-};
-
 export function createBreadcrumb(
-  Link: FunctionComponent<LinkProps>,
-  config: BreadcrumbConfig = {
-    separator: IconChevronRight,
-    separatorSize: 8,
-    space: 16,
+  config: BreadcrumbConfig,
+  {
+    Link,
+  }: {
+    Link: FunctionComponent<LinkProps>;
   }
 ) {
   const BreadcrumbItem = createBreadcrumbItem(Link);
   const Separator = config.separator;
-  return function Breadcrumb(props: BreadcrumbProps) {
+  return function Breadcrumb(props: Props) {
     const children = (
       <Box as="ol">
         <Inline space={config.space} alignY="center">
@@ -63,6 +53,7 @@ export function createBreadcrumb(
   };
 }
 
+type BreadcrumbItemProps = LastItem & Partial<Item> & { isCurrent: boolean };
 function createBreadcrumbItem(Link: FunctionComponent<LinkProps>) {
   return function BreadcrumbItem({ isCurrent, label, href = "" }: BreadcrumbItemProps) {
     const ref = useRef(null);
@@ -89,3 +80,5 @@ function createBreadcrumbItem(Link: FunctionComponent<LinkProps>) {
     );
   };
 }
+
+export type { Props as BreadcrumbProps };

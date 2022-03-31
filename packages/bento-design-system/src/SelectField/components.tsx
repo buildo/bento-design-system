@@ -20,11 +20,12 @@ import { Body, IconChevronDown, TextChildren, Children, IconCheck, IconProps } f
 import { Box, Columns, Column, Inline, Inset, bentoSprinkles } from "../internal";
 import { singleValue, placeholder, menu, control } from "./SelectField.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
-import { InputConfig } from "../Field/InputConfig";
 import clsx from "clsx";
-import { DropdownConfig, SelectOption } from "./createSelectField";
+import { SelectOption } from "./createSelectField";
 import { InternalList } from "../List/InternalList";
 import { createListItem } from "../List/createListItem";
+import { DropdownConfig } from "./Config";
+import { InputConfig } from "../Field/Config";
 
 export function createComponents(inputConfig: InputConfig, dropdownConfig: DropdownConfig) {
   const ListItem = createListItem(dropdownConfig.list.item);

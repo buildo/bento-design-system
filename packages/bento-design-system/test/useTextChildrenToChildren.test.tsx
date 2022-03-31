@@ -6,7 +6,6 @@ import {
   useTextChildrenToChildren,
   link,
   TextChildren,
-  DefaultLinkComponent,
 } from "../src";
 import { renderHook } from "@testing-library/react-hooks";
 

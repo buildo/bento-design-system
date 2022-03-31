@@ -1,18 +1,18 @@
-import { ComponentProps, FunctionComponent, useRef } from "react";
-import { ActionsProps, ButtonProps, Children, IconClose, LocalizedString, Title } from "..";
-import { BentoSprinkles, Box, Column, Columns, Inset } from "../internal";
+import { FunctionComponent, useRef } from "react";
+import { ActionsProps, ButtonProps, Children, LocalizedString, Title } from "..";
+import { Box, Column, Columns, Inset } from "../internal";
 import { useOverlay, usePreventScroll, useModal } from "@react-aria/overlays";
 import { useDialog } from "@react-aria/dialog";
 import { FocusScope } from "@react-aria/focus";
 import { modalRecipe, underlay, modalBody } from "./Modal.css";
 import useKeyPressEvent from "react-use/lib/useKeyPressEvent";
 import { ModalContext } from "./ModalContext";
-import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { createPortal } from "../util/createPortal";
+import { ModalConfig } from "./Config";
 
-export type ModalProps = {
+type Props = {
   title: LocalizedString;
   children: Children;
   primaryAction?: Omit<ButtonProps, "kind" | "hierarchy" | "size">;
@@ -25,26 +25,17 @@ export type ModalProps = {
   size?: "small" | "medium" | "large";
 };
 
-type ModalConfig = {
-  padding: BentoSprinkles["padding"];
-  radius: BentoSprinkles["borderRadius"];
-  titleSize: ComponentProps<typeof Title>["size"];
-  closeIcon: FunctionComponent<IconProps>;
-  closeIconSize: IconProps["size"];
-};
-
 export function createModal(
-  Actions: FunctionComponent<ActionsProps>,
-  IconButton: FunctionComponent<IconButtonProps>,
-  config: ModalConfig = {
-    padding: 24,
-    radius: 8,
-    titleSize: "large",
-    closeIcon: IconClose,
-    closeIconSize: 16,
+  config: ModalConfig,
+  {
+    Actions,
+    IconButton,
+  }: {
+    Actions: FunctionComponent<ActionsProps>;
+    IconButton: FunctionComponent<IconButtonProps>;
   }
 ) {
-  return function Modal(props: ModalProps) {
+  return function Modal(props: Props) {
     const ref = useRef<HTMLDivElement>(null);
     const { overlayProps, underlayProps } = useOverlay({ ...props, isOpen: true }, ref);
 
@@ -119,3 +110,5 @@ export function createModal(
     );
   };
 }
+
+export type { Props as ModalProps };

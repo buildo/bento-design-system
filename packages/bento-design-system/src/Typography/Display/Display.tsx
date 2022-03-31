@@ -18,3 +18,5 @@ export function Display({ children, size, align }: Props) {
     </Box>
   );
 }
+
+export type { Props as DisplayProps };
