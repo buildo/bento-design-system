@@ -1,3 +1,4 @@
+import { IconPlaceholder } from "@buildo/bento-design-system";
 import { Chip } from "../";
 import { createComponentStories, formatMessage, textArgType } from "../util";
 
@@ -26,4 +27,9 @@ export const Dismissable = createStory({
 
 export const CustomColor = createStory({
   color: "custom",
+});
+
+export const WithIcon = createStory({
+  color: "blue",
+  icon: IconPlaceholder,
 });
