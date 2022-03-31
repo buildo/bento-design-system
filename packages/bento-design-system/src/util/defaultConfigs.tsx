@@ -379,7 +379,7 @@ const tabsBaseConfig = {
   },
   uppercaseLabel: false,
   iconSize: 16,
-  notificationSize: 8,
+  notificationSize: 6,
   notificationColor: "foregroundInteractive",
 } as const;
 
