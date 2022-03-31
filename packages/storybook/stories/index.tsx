@@ -89,7 +89,8 @@ export const Disclosure = createDisclosure(defaultConfigs.disclosure);
 export const DisclosureGroup = createDisclosureGroup(defaultConfigs.disclosureGroup, {
   Disclosure,
 });
-export const Tabs = createTabs(defaultConfigs.tabs);
+export const FolderTabs = createTabs(defaultConfigs.folderTabs);
+export const UnderlineTabs = createTabs(defaultConfigs.underlineTabs);
 export const AreaLoader = createAreaLoader(defaultConfigs.areaLoader);
 export const Avatar = createAvatar(defaultConfigs.avatar);
 export const SearchBar = createSearchBar(defaultConfigs.searchBar, { Field, IconButton });

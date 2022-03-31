@@ -6,7 +6,7 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "start": "turbo run start",
+    "start": "pnpm --filter bento-design-system start -- --onSuccess 'pnpm --filter storybook start'",
     "prepare": "husky install",
     "prettier-check": "turbo run prettier-check",
     "prettier-write": "turbo run prettier-write",

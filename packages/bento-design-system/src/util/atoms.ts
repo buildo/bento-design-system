@@ -27,6 +27,11 @@ export const unconditionalProperties = {
   overflow: ["hidden", "visible", "auto"],
   overflowX: ["hidden", "visible", "auto"],
   overflowY: ["hidden", "visible", "auto"],
+  borderBottomWidth: {
+    1: "1px",
+    2: "2px",
+  },
+  borderStyle: ["solid"],
   isolation: ["auto", "isolate"],
 } as const;
 
@@ -111,4 +116,5 @@ export const statusProperties = {
   stroke: color,
   textDecoration: ["none", "underline"],
   fill: { ...color, ...background, inherit: "inherit" },
+  borderColor: { ...color, transparent: "transparent" },
 } as const;

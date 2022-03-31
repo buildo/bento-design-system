@@ -154,7 +154,7 @@ createGlobalTheme(":root", bentoVars, {
     backgroundPrimaryInverse: colors.neutral90,
     backgroundSecondaryInverse: colors.neutral80,
     backgroundInteractive: colors.black,
-    backgroundInteractiveOverlay: "rgba(82, 94, 111, 0.1)",
+    backgroundInteractiveOverlay: "rgba(82, 94, 111, 0.2)",
     backgroundInformative: colors.informative05,
     backgroundPositive: colors.positive05,
     backgroundWarning: colors.warning05,
