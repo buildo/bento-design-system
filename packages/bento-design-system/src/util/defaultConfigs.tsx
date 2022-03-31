@@ -369,10 +369,6 @@ const tabsBaseConfig = {
   tabsAlignment: "left",
   spaceBetweenTabs: 0,
   internalSpacing: 8,
-  paddingX: {
-    medium: 40,
-    large: 40,
-  },
   paddingY: {
     medium: 8,
     large: 16,
@@ -384,22 +380,31 @@ const tabsBaseConfig = {
   uppercaseLabel: false,
   iconSize: 16,
   notificationSize: 8,
-  notificationColor: "interactive",
+  notificationColor: "foregroundInteractive",
 } as const;
 
 export const folderTabs: TabsConfig = {
   ...tabsBaseConfig,
   kind: "folder",
   radius: 4,
+  paddingX: {
+    medium: 40,
+    large: 40,
+  },
 };
 
 export const underlineTabs: TabsConfig = {
   ...tabsBaseConfig,
   kind: "underline",
+  paddingX: {
+    medium: 16,
+    large: 32,
+  },
   lineHeight: 2,
   lineColor: {
-    default: "brandPrimary",
+    default: "transparent",
     hover: "foregroundSecondaryInverse",
     focus: "foregroundSecondaryInverse",
+    active: "brandPrimary",
   },
 };

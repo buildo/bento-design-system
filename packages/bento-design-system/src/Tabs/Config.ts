@@ -22,8 +22,8 @@ type TabsKindConfig =
     }
   | {
       kind: "underline";
-      lineHeight: number;
-      lineColor: BentoSprinkles["color"];
+      lineHeight: BentoSprinkles["borderBottomWidth"];
+      lineColor: NonNullable<BentoSprinkles["borderColor"]>;
     };
 
 export type TabsConfig = TabsWidthConfig &
@@ -36,5 +36,5 @@ export type TabsConfig = TabsWidthConfig &
     uppercaseLabel: boolean;
     iconSize: IconProps["size"];
     notificationSize: IconProps["size"];
-    notificationColor: IconProps["fill"];
+    notificationColor: BentoSprinkles["fill"];
   };

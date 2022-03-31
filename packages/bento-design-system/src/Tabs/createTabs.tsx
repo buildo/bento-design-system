@@ -4,6 +4,7 @@ import { Children, IconProps, Label } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { tabRecipe } from "./Tabs.css";
 import { TabsConfig } from "./Config";
+import { normalizeStatusValue } from "../internal/sprinkles.css";
 
 export type TabsSize = "medium" | "large";
 
@@ -45,6 +46,15 @@ export function createTabs(config: TabsConfig) {
         paddingX={config.paddingX[size]}
         paddingY={config.paddingY[size]}
         position="relative"
+        borderColor={
+          config.kind === "underline"
+            ? active
+              ? normalizeStatusValue(config.lineColor).active
+              : config.lineColor
+            : undefined
+        }
+        borderBottomWidth={config.kind === "underline" ? config.lineHeight : undefined}
+        borderStyle="solid"
       >
         <Columns space={config.internalSpacing} alignY="center">
           {icon && (
