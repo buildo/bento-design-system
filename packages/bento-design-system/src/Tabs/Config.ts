@@ -36,5 +36,5 @@ export type TabsConfig = TabsWidthConfig &
     uppercaseLabel: boolean;
     iconSize: IconProps["size"];
     notificationSize: number;
-    notificationColor: BentoSprinkles["fill"];
+    notificationColor: BentoSprinkles["color"];
   };

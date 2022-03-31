@@ -1,5 +1,5 @@
 import { usePress } from "@react-aria/interactions";
-import { Box, Columns, Column, bentoSprinkles } from "../internal";
+import { Box, Columns, Column } from "../internal";
 import { Children, IconProps, Label } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { tabRecipe } from "./Tabs.css";
@@ -65,15 +65,15 @@ export function createTabs(config: TabsConfig) {
           </Label>
           {hasNotification && (
             <Column width="content">
-              <svg
-                className={bentoSprinkles({
-                  fill: config.notificationColor,
-                })}
-                width={config.notificationSize}
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Z" />
-              </svg>
+              <Box
+                borderRadius="circled"
+                color={config.notificationColor}
+                style={{
+                  width: config.notificationSize,
+                  height: config.notificationSize,
+                  background: "currentColor",
+                }}
+              ></Box>
             </Column>
           )}
         </Columns>
