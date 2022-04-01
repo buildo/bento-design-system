@@ -40,6 +40,7 @@ export * from "./Popover/Popover";
 export * from "./ProgressBar/createProgressBar";
 export * from "./SearchBar/createSearchBar";
 export * from "./Stepper/createStepper";
+export * from "./Slider/createSlider";
 export * from "./Switch/createSwitch";
 export * from "./Table/createTable";
 export * from "./Tabs/createTabs";

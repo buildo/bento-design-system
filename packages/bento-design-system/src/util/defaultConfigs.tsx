@@ -42,6 +42,7 @@ import { TabsConfig } from "../Tabs/Config";
 import { ToastConfig } from "../Toast/Config";
 import { ProgressBarConfig } from "../ProgressBar/Config";
 import { StepperConfig } from "../Stepper/Config";
+import { SliderConfig } from "../Slider/Config";
 
 export const actions: ActionsConfig = {
   buttonsAlignment: "right",
@@ -415,6 +416,13 @@ export const progressBar: ProgressBarConfig = {
   height: 8,
   radius: "circledX",
   discreteInternalSpacing: 8,
+};
+
+export const slider: SliderConfig = {
+  valueSize: "large",
+  labelsSize: "large",
+  internalSpacing: 24,
+  trailColor: "brandPrimary",
 };
 
 export const stepper: StepperConfig = {
