@@ -9,13 +9,13 @@ const { createStory, defaultExport } = createComponentStories({
 export default defaultExport;
 
 export const Continue = createStory({
-  discrete: false,
+  kind: "continuous",
   value: 55,
   maxValue: 100,
 });
 
 export const Discrete = createStory({
-  discrete: true,
+  kind: "discrete",
   value: 3,
   maxValue: 5,
 });
