@@ -7,7 +7,7 @@ import { barRecipe } from "./ProgressBar.css";
 
 type Props = {
   label?: LocalizedString;
-  discrete: boolean;
+  kind: "continuous" | "discrete";
   value: number;
   maxValue: number;
 };
@@ -33,7 +33,7 @@ export function createProgressBar(config: ProgressBarConfig) {
       ...props,
       label: props.label || defaultMessages.Loader.loadingMessage,
     });
-    return props.discrete ? (
+    return props.kind === "discrete" ? (
       <Columns {...progressBarProps} space={config.discreteInternalSpacing}>
         {Array.from({ length: props.maxValue }, (_, i) => i).map((step) => (
           <Bar key={step} discrete active={step < props.value} />

@@ -102,7 +102,7 @@ const background = {
 
 export const statusProperties = {
   color,
-  background,
+  background: { ...background, currentColor: "currentColor" },
   cursor: {
     pointer: "pointer",
     default: "default",
