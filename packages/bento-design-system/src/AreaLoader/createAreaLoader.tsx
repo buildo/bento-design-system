@@ -3,9 +3,10 @@ import { BentoSprinkles, bentoSprinkles, Box, Inline, Stack } from "../internal"
 import { container, dot, text } from "./AreaLoader.css";
 import { Body, LocalizedString } from "..";
 import { AreaLoaderConfig } from "./Config";
+import { BodyProps } from "../Typography/Body/Body";
 
 function visibilityAreaColorToBackground(
-  color: AreaLoaderConfig["visibilityAreaColor"]
+  color: AreaLoaderConfig["readabilityAreaColor"]
 ): BentoSprinkles["background"] {
   switch (color) {
     case "primary":
@@ -16,6 +17,15 @@ function visibilityAreaColorToBackground(
       return "backgroundPrimaryInverse";
     case "secondary-inverse":
       return "backgroundSecondaryInverse";
+  }
+}
+
+function messageColorToBodyColor(color: AreaLoaderConfig["messageColor"]): BodyProps["color"] {
+  switch (color) {
+    case "primary":
+      return "default";
+    case "primary-inverse":
+      return "primaryInverse";
   }
 }
 
@@ -46,14 +56,16 @@ export function createAreaLoader(config: AreaLoaderConfig) {
         className={clsx(
           container,
           bentoSprinkles({
-            background: config.overlay === "dark" ? "backgroundDarkScrim" : "backgroundLightScrim",
+            background:
+              config.scrimColor === "dark" ? "backgroundDarkScrim" : "backgroundLightScrim",
           })
         )}
       >
         <Box
           padding={80}
           className={bentoSprinkles({
-            background: visibilityAreaColorToBackground(config.visibilityAreaColor),
+            background: visibilityAreaColorToBackground(config.readabilityAreaColor),
+            borderRadius: config.readabilityAreaBorderRadius,
           })}
         >
           <Stack space={32}>
@@ -70,7 +82,12 @@ export function createAreaLoader(config: AreaLoaderConfig) {
             </Inline>
             {message && (
               <Box className={text}>
-                <Body size="medium">{message}</Body>
+                <Body
+                  size={config.messageSize}
+                  color={messageColorToBodyColor(config.messageColor)}
+                >
+                  {message}
+                </Body>
               </Box>
             )}
           </Stack>
