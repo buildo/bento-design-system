@@ -9,13 +9,7 @@ import { Box, Column, Columns, Stack } from "../internal";
 import { Label } from "../Typography/Label/Label";
 import { unsafeLocalizedString } from "../util/LocalizedString";
 import { SliderConfig } from "./Config";
-import {
-  slider,
-  thumbRecipe,
-  trackActive,
-  trackContainer,
-  trackInactiveRecipe,
-} from "./Slider.css";
+import { slider, thumbRecipe, trackActive, trackContainer, trackInactive } from "./Slider.css";
 
 type Props = {
   minValue: number;
@@ -23,6 +17,7 @@ type Props = {
   step?: number;
   disabled?: boolean;
   formatOptions?: Intl.NumberFormatOptions;
+  "aria-labelledby"?: string;
 } & (
   | {
       type: "single";
@@ -73,24 +68,23 @@ export function createSlider(config: SliderConfig) {
           </Column>
           <Box className={trackContainer} {...trackProps} ref={trackRef} color={undefined}>
             <Box
+              className={trackInactive}
+              disabled={props.disabled}
+              borderRadius={config.trailRadius}
+            />
+            <Box
               className={trackActive}
               color={config.trailColor}
               background="currentColor"
               disabled={props.disabled}
-            />
-            {props.type === "double" && (
-              <Box
-                className={trackInactiveRecipe({ side: "left" })}
-                style={{ width: `${state.getThumbPercent(0) * 100}%` }}
-                disabled={props.disabled}
-              />
-            )}
-            <Box
-              className={trackInactiveRecipe({ side: "right" })}
+              borderRadius={config.trailRadius}
               style={{
-                width: `${(1 - state.getThumbPercent(props.type === "double" ? 1 : 0)) * 100}%`,
+                left: props.type === "single" ? 0 : `${state.getThumbPercent(0) * 100}%`,
+                width:
+                  props.type === "single"
+                    ? `${state.getThumbPercent(0) * 100}%`
+                    : `${(state.getThumbPercent(1) - state.getThumbPercent(0)) * 100}%`,
               }}
-              disabled={props.disabled}
             />
             <Thumb
               index={0}
@@ -152,6 +146,7 @@ export function createSlider(config: SliderConfig) {
             {...thumbProps}
             color={undefined}
             disabled={props.disabled}
+            borderRadius={config.thumbRadius}
           >
             <VisuallyHidden>
               <input ref={inputRef} {...mergeProps(inputProps, focusProps)} />

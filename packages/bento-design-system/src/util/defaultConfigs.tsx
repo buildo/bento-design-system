@@ -423,6 +423,8 @@ export const slider: SliderConfig = {
   labelsSize: "large",
   internalSpacing: 24,
   trailColor: "brandPrimary",
+  trailRadius: "circledX",
+  thumbRadius: 8,
 };
 
 export const stepper: StepperConfig = {

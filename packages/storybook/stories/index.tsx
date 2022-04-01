@@ -54,12 +54,14 @@ export const {
   SelectField,
   TextField,
   ReadOnlyField,
+  SliderField,
 } = createFormFields(
   {
     field: defaultConfigs.field,
     input: defaultConfigs.input,
     selectionControl: defaultConfigs.selectionControl,
     dropdown: defaultConfigs.dropdown,
+    slider: defaultConfigs.slider,
   },
   { Tooltip }
 );

@@ -26,51 +26,37 @@ export const trackContainer = style([
 ]);
 
 export const trackActive = style([
-  { height: 8, top: trackOffsetY },
+  { top: trackOffsetY },
   bentoSprinkles({
-    color: "foregroundDisabled",
-    background: {
-      disabled: "currentColor",
+    height: 8,
+    color: {
+      disabled: "foregroundDisabled",
     },
     position: "absolute",
-    width: "full",
-    borderRadius: "circledX",
   }),
 ]);
 
-export const trackInactiveRecipe = strictRecipe({
-  base: [
-    { height: 8, top: trackOffsetY },
-    bentoSprinkles({
-      position: "absolute",
-      background: "backgroundOverlay",
-      borderRadius: "circledX",
-    }),
-  ],
-  variants: {
-    side: {
-      left: { left: 0 },
-      right: { right: 0 },
-    },
-  },
-});
+export const trackInactive = style([
+  { top: trackOffsetY },
+  bentoSprinkles({
+    height: 8,
+    position: "absolute",
+    background: "backgroundOverlay",
+    width: "full",
+  }),
+]);
 
 export const thumbRecipe = strictRecipe({
-  base: [
-    {
-      width: 24,
-      height: 24,
+  base: bentoSprinkles({
+    width: 24,
+    height: 24,
+    cursor: { default: "pointer", disabled: "notAllowed" },
+    background: "backgroundSecondary",
+    boxShadow: {
+      disabled: "outlineInputDisabled",
+      hover: "outlineInputHover",
     },
-    bentoSprinkles({
-      cursor: { default: "pointer", disabled: "notAllowed" },
-      background: "backgroundSecondary",
-      boxShadow: {
-        disabled: "outlineInputDisabled",
-        hover: "outlineInputHover",
-      },
-      borderRadius: 8,
-    }),
-  ],
+  }),
   variants: {
     isFocused: {
       true: bentoSprinkles({

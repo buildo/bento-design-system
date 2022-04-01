@@ -6,4 +6,6 @@ export type SliderConfig = {
   labelsSize: LabelProps["size"];
   internalSpacing: BentoSprinkles["gap"];
   trailColor: BentoSprinkles["color"];
+  trailRadius: BentoSprinkles["borderRadius"];
+  thumbRadius: BentoSprinkles["borderRadius"];
 };
