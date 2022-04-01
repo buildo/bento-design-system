@@ -32,6 +32,7 @@ import {
   createMenu,
   createIconButton,
   defaultConfigs,
+  createProgressBar,
 } from "@buildo/bento-design-system";
 
 import "@buildo/bento-design-system/lib/index.css";
@@ -133,3 +134,4 @@ export const Table = createTable(defaultConfigs.table, { Tooltip, Feedback });
 export const tableColumn = createTableColumns({ Button, ButtonLink, Chip, Link, IconButton });
 export const Navigation = createNavigation(defaultConfigs.navigation);
 export const Menu = createMenu(defaultConfigs.menu, { List });
+export const ProgressBar = createProgressBar(defaultConfigs.progressBar);
