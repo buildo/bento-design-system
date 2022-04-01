@@ -74,3 +74,4 @@ export type {
   CheckboxGroupFieldProps,
 } from "../CheckboxGroupField/createCheckboxGroupField";
 export type { NumberFieldProps } from "../NumberField/createNumberField";
+export type { SliderFieldProps } from "../SLiderField/createSliderField";
