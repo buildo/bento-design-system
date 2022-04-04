@@ -4,6 +4,7 @@ import { useSlider, useSliderThumb } from "@react-aria/slider";
 import { mergeProps } from "@react-aria/utils";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SliderState, useSliderState } from "@react-stately/slider";
+import { AriaLabelingProps, DOMProps } from "@react-types/shared";
 import { OutputHTMLAttributes, RefObject, useRef } from "react";
 import { Box, Column, Columns, Stack } from "../internal";
 import { Label } from "../Typography/Label/Label";
@@ -17,7 +18,7 @@ type Props = {
   step?: number;
   disabled?: boolean;
   formatOptions?: Intl.NumberFormatOptions;
-  "aria-labelledby"?: string;
+  fieldProps: AriaLabelingProps & DOMProps;
 } & (
   | {
       type: "single";
@@ -59,7 +60,7 @@ export function createSlider(config: SliderConfig) {
     );
 
     return (
-      <Box className={slider} {...groupProps} color={undefined}>
+      <Box className={slider} {...mergeProps(groupProps, props.fieldProps)} color={undefined}>
         <Columns space={24} alignY="center">
           <Column width="content">
             <Label size="large" color={props.disabled ? "disabled" : "secondary"}>

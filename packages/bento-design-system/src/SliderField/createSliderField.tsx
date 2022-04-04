@@ -28,7 +28,7 @@ export function createSliderField({
     const { labelProps, fieldProps } = useLabel(props);
     return (
       <Field {...props} labelProps={labelProps} assistiveTextProps={{}} errorMessageProps={{}}>
-        <Slider {...props} aria-labelledby={fieldProps["aria-labelledby"]} />
+        <Slider {...props} fieldProps={fieldProps} />
       </Field>
     );
   };
