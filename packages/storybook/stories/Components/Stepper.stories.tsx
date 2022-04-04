@@ -4,9 +4,6 @@ import { createComponentStories, formatMessage } from "../util";
 const { defaultExport, createStory } = createComponentStories({
   component: Stepper,
   args: {},
-  parameters: {
-    backgrounds: { default: "neutral10" },
-  },
 });
 
 export default defaultExport;
