@@ -40,7 +40,7 @@ import { sprinkles } from "./sprinkles.css";
 
 export * from "@buildo/bento-design-system";
 export const Box = createBentoBox(sprinkles);
-export const { Stack, Column, Columns, Inline, Inset, Bleed } = createLayoutComponents(Box);
+export const { Stack, Column, Columns, Inline, Inset, Bleed, Tiles } = createLayoutComponents(Box);
 export const Tooltip = createTooltip();
 export const {
   Field,
