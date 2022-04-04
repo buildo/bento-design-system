@@ -1,5 +1,4 @@
 export * from "./IconCheck";
-export * from "./IconPositive";
 export * from "./IconChevronDown";
 export * from "./IconChevronRight";
 export * from "./IconChevronUp";
@@ -9,6 +8,7 @@ export * from "./IconInformative";
 export * from "./IconMinus";
 export * from "./IconNegative";
 export * from "./IconPlaceholder";
+export * from "./IconPositive";
 export * from "./IconProps";
 export * from "./IconSearch";
 export * from "./IconUser";
