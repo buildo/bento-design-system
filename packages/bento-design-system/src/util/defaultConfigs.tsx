@@ -4,7 +4,7 @@ import { AvatarConfig } from "../Avatar/Config";
 import { BannerConfig } from "../Banner/Config";
 import { BreadcrumbConfig } from "../Breadcrumb/Config";
 import {
-  IconCheckCircleSolid,
+  IconPositive,
   IconChevronRight,
   IconClose,
   IconIdea,
@@ -41,6 +41,7 @@ import { TableConfig } from "../Table/Config";
 import { TabsConfig } from "../Tabs/Config";
 import { ToastConfig } from "../Toast/Config";
 import { ProgressBarConfig } from "../ProgressBar/Config";
+import { StepperConfig } from "../Stepper/Config";
 
 export const actions: ActionsConfig = {
   buttonsAlignment: "right",
@@ -71,7 +72,7 @@ export const banner: BannerConfig = {
   closeIcon: IconClose,
   kindIcons: {
     informative: IconInformative,
-    positive: IconCheckCircleSolid,
+    positive: IconPositive,
     warning: IconWarning,
     negative: IconNegative,
     secondary: IconIdea,
@@ -414,4 +415,13 @@ export const progressBar: ProgressBarConfig = {
   height: 8,
   radius: "circledX",
   discreteInternalSpacing: 8,
+};
+
+export const stepper: StepperConfig = {
+  spaceBetweenSteps: 40,
+  internalSpacing: 8,
+  labelSize: "large",
+  numberSize: "large",
+  labelUppercase: false,
+  doneIcon: IconPositive,
 };

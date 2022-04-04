@@ -21,6 +21,7 @@ import {
   createAvatar,
   createFormLayoutComponents,
   createSearchBar,
+  createStepper,
   createSwitch,
   createFeedback,
   IllustrationNegative,
@@ -135,3 +136,4 @@ export const tableColumn = createTableColumns({ Button, ButtonLink, Chip, Link, 
 export const Navigation = createNavigation(defaultConfigs.navigation);
 export const Menu = createMenu(defaultConfigs.menu, { List });
 export const ProgressBar = createProgressBar(defaultConfigs.progressBar);
+export const Stepper = createStepper(defaultConfigs.stepper);
