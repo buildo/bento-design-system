@@ -40,6 +40,7 @@ import { DropdownConfig } from "../SelectField/Config";
 import { TableConfig } from "../Table/Config";
 import { TabsConfig } from "../Tabs/Config";
 import { ToastConfig } from "../Toast/Config";
+import { ProgressBarConfig } from "../ProgressBar/Config";
 
 export const actions: ActionsConfig = {
   buttonsAlignment: "right",
@@ -407,4 +408,10 @@ export const underlineTabs: TabsConfig = {
     focus: "foregroundSecondaryInverse",
     active: "brandPrimary",
   },
+};
+
+export const progressBar: ProgressBarConfig = {
+  height: 8,
+  radius: "circledX",
+  discreteInternalSpacing: 8,
 };

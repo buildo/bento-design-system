@@ -68,10 +68,10 @@ export function createTabs(config: TabsConfig) {
               <Box
                 borderRadius="circled"
                 color={config.notificationColor}
+                background="currentColor"
                 style={{
                   width: config.notificationSize,
                   height: config.notificationSize,
-                  background: "currentColor",
                 }}
               ></Box>
             </Column>
