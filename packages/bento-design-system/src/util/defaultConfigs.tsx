@@ -40,11 +40,8 @@ import { DropdownConfig } from "../SelectField/Config";
 import { TableConfig } from "../Table/Config";
 import { TabsConfig } from "../Tabs/Config";
 import { ToastConfig } from "../Toast/Config";
-<<<<<<< HEAD
 import { ProgressBarConfig } from "../ProgressBar/Config";
-=======
 import { StepperConfig } from "../Stepper/Config";
->>>>>>> 49e19457 (implement Stepper)
 
 export const actions: ActionsConfig = {
   buttonsAlignment: "right",
@@ -418,7 +415,7 @@ export const progressBar: ProgressBarConfig = {
   height: 8,
   radius: "circledX",
   discreteInternalSpacing: 8,
-}
+};
 
 export const stepper: StepperConfig = {
   spaceBetweenSteps: 40,
