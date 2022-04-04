@@ -1,5 +1,5 @@
 export * from "./IconCheck";
-export * from "./IconCheckCircleSolid";
+export * from "./IconPositive";
 export * from "./IconChevronDown";
 export * from "./IconChevronRight";
 export * from "./IconChevronUp";
