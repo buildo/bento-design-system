@@ -1,7 +1,10 @@
-import { useLabel } from "@react-aria/label";
-import { FunctionComponent } from "react";
+import { useNumberFormatter } from "@react-aria/i18n";
+import { useSlider } from "@react-aria/slider";
+import { useSliderState } from "@react-stately/slider";
+import { useRef, FunctionComponent } from "react";
 import { FieldType } from "../Field/createField";
 import { FieldProps } from "../Field/FieldProps";
+import { useFormatOptions } from "../NumberInput/formatOptions";
 import { FormatProps } from "../NumberInput/FormatProps";
 import { SliderProps } from "../Slider/createSlider";
 
@@ -25,10 +28,43 @@ export function createSliderField({
   Slider: FunctionComponent<SliderProps>;
 }) {
   return function SliderField(props: Props) {
-    const { labelProps, fieldProps } = useLabel(props);
+    const trackRef = useRef<HTMLDivElement>(null);
+    const formatOptions = useFormatOptions(props);
+    const numberFormatter = useNumberFormatter(formatOptions);
+    const valueProps =
+      props.type === "double"
+        ? {
+            value: props.value,
+            onChange: (values: number[]) => props.onChange([values[0], values[1]]),
+          }
+        : {
+            value: [props.value],
+            onChange: (values: number[]) => props.onChange(values[0]),
+          };
+
+    const state = useSliderState({
+      ...props,
+      ...valueProps,
+      numberFormatter,
+    });
+
+    const { groupProps, trackProps, outputProps, labelProps } = useSlider(
+      { ...props, ...valueProps },
+      state,
+      trackRef
+    );
+
     return (
       <Field {...props} labelProps={labelProps} assistiveTextProps={{}} errorMessageProps={{}}>
-        <Slider {...props} fieldProps={fieldProps} />
+        <Slider
+          {...props}
+          trackRef={trackRef}
+          groupProps={groupProps}
+          trackProps={trackProps}
+          outputProps={outputProps}
+          state={state}
+          numberFormatter={numberFormatter}
+        />
       </Field>
     );
   };
