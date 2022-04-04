@@ -36,7 +36,7 @@ export default defaultExport;
 
 export const Single = createControlledStory(30, {
   type: "single",
-  assistiveText: "Assistive text",
+  assistiveText: formatMessage("Assistive text"),
 });
 
 export const Double = createControlledStory([30, 80], {
