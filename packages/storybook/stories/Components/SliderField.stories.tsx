@@ -7,10 +7,7 @@ const args = {
   name: "slider-field",
   minValue: 0,
   maxValue: 100,
-  kind: "currency",
-  currency: "EUR",
   label: formatMessage("Label"),
-  labels: [formatMessage("Min"), formatMessage("Max")],
   hint: formatMessage("Some hint that is very useful to you"),
 } as const;
 
