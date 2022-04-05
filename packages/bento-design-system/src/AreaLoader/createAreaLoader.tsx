@@ -5,7 +5,7 @@ import { Body, LocalizedString } from "..";
 import { AreaLoaderConfig } from "./Config";
 import { BodyProps } from "../Typography/Body/Body";
 
-function visibilityAreaColorToBackground(
+function readabilityAreaColorToBackground(
   color: AreaLoaderConfig["readabilityAreaColor"]
 ): BentoSprinkles["background"] {
   switch (color) {
@@ -64,7 +64,7 @@ export function createAreaLoader(config: AreaLoaderConfig) {
         <Box
           padding={80}
           className={bentoSprinkles({
-            background: visibilityAreaColorToBackground(config.readabilityAreaColor),
+            background: readabilityAreaColorToBackground(config.readabilityAreaColor),
             borderRadius: config.readabilityAreaBorderRadius,
           })}
         >
