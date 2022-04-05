@@ -24,6 +24,7 @@ import {
   createStepper,
   createSwitch,
   createFeedback,
+  createSlider,
   IllustrationNegative,
   IllustrationPositive,
   createBentoProvider,
@@ -43,6 +44,7 @@ export * from "@buildo/bento-design-system";
 export const Box = createBentoBox(sprinkles);
 export const { Stack, Column, Columns, Inline, Inset, Bleed, Tiles } = createLayoutComponents(Box);
 export const Tooltip = createTooltip();
+export const Slider = createSlider(defaultConfigs.slider);
 export const {
   Field,
   CheckboxField,
@@ -52,12 +54,14 @@ export const {
   SelectField,
   TextField,
   ReadOnlyField,
+  SliderField,
 } = createFormFields(
   {
     field: defaultConfigs.field,
     input: defaultConfigs.input,
     selectionControl: defaultConfigs.selectionControl,
     dropdown: defaultConfigs.dropdown,
+    slider: defaultConfigs.slider,
   },
   { Tooltip }
 );

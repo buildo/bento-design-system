@@ -16,6 +16,9 @@ import {
   SelectionControlGroupConfig,
 } from "./Config";
 import { DropdownConfig } from "../SelectField/Config";
+import { createSlider } from "../Slider/createSlider";
+import { SliderConfig } from "../Slider/Config";
+import { createSliderField } from "../SliderField/createSliderField";
 
 type FieldsConfig = {
   field: FieldConfig;
@@ -25,6 +28,7 @@ type FieldsConfig = {
     element: SelectionControlConfig;
   };
   dropdown: DropdownConfig;
+  slider: SliderConfig;
 };
 
 export function createFormFields(
@@ -44,6 +48,8 @@ export function createFormFields(
   const NumberField = createNumberField({ Field, NumberInput });
   const SelectField = createSelectField(config.input, config.dropdown, { Field });
   const ReadOnlyField = createReadOnlyField({ TextField });
+  const Slider = createSlider(config.slider);
+  const SliderField = createSliderField({ Slider, Field });
 
   return {
     CheckboxField,
@@ -54,6 +60,8 @@ export function createFormFields(
     SelectField,
     TextField,
     ReadOnlyField,
+    Slider,
+    SliderField,
   };
 }
 
@@ -66,3 +74,4 @@ export type {
   CheckboxGroupFieldProps,
 } from "../CheckboxGroupField/createCheckboxGroupField";
 export type { NumberFieldProps } from "../NumberField/createNumberField";
+export type { SliderFieldProps } from "../SliderField/createSliderField";
