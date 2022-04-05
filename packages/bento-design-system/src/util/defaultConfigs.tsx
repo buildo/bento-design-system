@@ -53,8 +53,11 @@ export const actions: ActionsConfig = {
 
 export const areaLoader: AreaLoaderConfig = {
   dots: [{ color: "brandPrimary" }, { color: "brandSecondary" }, { color: "brandTertiary" }],
-  overlay: "light",
-  visibilityAreaColor: "primary",
+  scrimColor: "light",
+  messageColor: "primary",
+  messageSize: "medium",
+  readabilityAreaColor: "primary",
+  readabilityAreaBorderRadius: undefined,
 };
 
 export const avatar: AvatarConfig = {
