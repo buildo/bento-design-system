@@ -5,7 +5,6 @@ import { createBentoComponents, createTabs, defaultConfigs } from "@buildo/bento
 import { sprinkles } from "./sprinkles.css";
 
 export * from "@buildo/bento-design-system";
-
 const FeedbackBackground = (
   <svg viewBox="0 0 440 240">
     <path
@@ -50,6 +49,7 @@ export const {
   Column,
   Columns,
   CustomModal,
+  DateField,
   DesignSystemProvider,
   DecorativeDivider,
   Disclosure,

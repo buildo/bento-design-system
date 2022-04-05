@@ -15,6 +15,7 @@ import {
   IconSearch,
   IconChevronUp,
   IconChevronDown,
+  IconChevronLeft,
   IconInfo,
   IconSpinner,
 } from "../Icons";
@@ -49,6 +50,7 @@ import { SliderConfig } from "../Slider/Config";
 import { TooltipConfig } from "../Tooltip/Config";
 import { InlineLoaderConfig } from "../InlineLoader/Config";
 import { DecorativeDividerConfig } from "../Divider/Config";
+import { DateFieldConfig } from "../DateField/Config";
 
 export const actions: ActionsConfig = {
   primaryActionButtonKind: "solid",
@@ -503,4 +505,18 @@ export const tooltip: TooltipConfig = {
   paddingY: 8,
   radius: 4,
   labelSize: "medium",
+};
+
+export const dateField: DateFieldConfig = {
+  radius: 8,
+  padding: 24,
+  elevation: "medium",
+  monthYearLabelSize: "large",
+  dayOfWeekLabelSize: "large",
+  previousMonthIcon: IconChevronLeft,
+  nextMonthIcon: IconChevronRight,
+  monthYearSelectIcons: {
+    open: IconChevronUp,
+    close: IconChevronDown,
+  },
 };

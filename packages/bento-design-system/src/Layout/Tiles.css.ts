@@ -8,6 +8,7 @@ const columnsTemplates = {
   4: "repeat(4, 1fr)",
   5: "repeat(5, 1fr)",
   6: "repeat(6, 1fr)",
+  7: "repeat(7, 1fr)",
 } as const;
 
 const makeColumnVariants = (breakpoint: Breakpoint) =>

@@ -49,6 +49,7 @@ import { createSwitch } from "./Switch/createSwitch";
 import { createUseComponentsShowcase } from "./createUseComponentsShowcase";
 import { createInlineLoader } from "./InlineLoader/InlineLoader";
 import { createDecorativeDivider } from "./Divider/Divider";
+import { createDateField } from "./DateField/createDateField";
 
 export function createBentoComponents<
   AtomsFn extends typeof bentoSprinkles,
@@ -146,6 +147,16 @@ export function createBentoComponents<
 
   const Menu = createMenu(merge(defaultConfigs.menu, config.menu ?? {}), { List });
 
+  const DateField = createDateField(
+    merge(defaultConfigs.dateField, config.dateField ?? {}),
+    merge(defaultConfigs.input, config.input ?? {}),
+    {
+      Field,
+      IconButton,
+      Menu,
+    }
+  );
+
   const { Modal, CustomModal } = createModal(merge(defaultConfigs.modal, config.modal ?? {}), {
     Actions,
     IconButton,
@@ -206,6 +217,7 @@ export function createBentoComponents<
     Columns,
     ContentBlock,
     CustomModal,
+    DateField,
     DecorativeDivider,
     DesignSystemProvider,
     Disclosure,
