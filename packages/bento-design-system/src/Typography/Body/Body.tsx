@@ -34,6 +34,7 @@ export function Body({
   as = "span",
 }: Props) {
   const textChildrenToChildren = useTextChildrenToChildren();
+  console.log(textChildrenToChildren(children));
   return (
     <Box
       as={as}

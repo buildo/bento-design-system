@@ -6,7 +6,9 @@ import {
   ForwardRefRenderFunction,
   useContext,
 } from "react";
+import { defaultConfigs } from "..";
 import { Box } from "../internal";
+import { LinkConfig } from "../Link/Config";
 
 export type LinkComponentProps = {
   href: string;
@@ -16,11 +18,12 @@ export const makeLinkComponent = (
   render: ForwardRefRenderFunction<HTMLAnchorElement, LinkComponentProps>
 ) => forwardRef(render);
 
-export type LinkComponent = ComponentType<LinkComponentProps>;
+export type LinkComponent = { component: ComponentType<LinkComponentProps>; config: LinkConfig };
 
-export const DefaultLinkComponent = makeLinkComponent((props, ref) => (
-  <Box as="a" ref={ref} {...props} />
-));
+export const DefaultLinkComponent = {
+  component: makeLinkComponent((props, ref) => <Box as="a" ref={ref} {...props} />),
+  config: defaultConfigs.link,
+};
 
 export const LinkComponentContext = createContext<LinkComponent>(DefaultLinkComponent);
 

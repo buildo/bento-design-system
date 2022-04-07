@@ -57,7 +57,7 @@ describe("textChildrenToChildren", () => {
 
   test("link", () => {
     const input = makeTextChildrenFromElements(
-      link(formatMessage("Link"), "https://www.google.com", "_blank")
+      link(formatMessage("Link"), { href: "https://www.google.com", target: "_blank" })
     );
     const result = toChildren(input);
     expect(result).toMatchInlineSnapshot(`
@@ -117,7 +117,7 @@ describe("textChildrenToChildren", () => {
       lineBreak,
       bold(formatMessage("Second")),
       formatMessage("line"),
-      link(formatMessage("Link"), "https://www.google.com", "_blank"),
+      link(formatMessage("Link"), { href: "https://www.google.com", target: "_blank" }),
     ]);
     const result = toChildren(input);
     expect(result).toMatchInlineSnapshot(`
