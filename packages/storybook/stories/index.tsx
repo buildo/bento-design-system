@@ -80,7 +80,7 @@ export const BentoProvider = createBentoProvider(ToastProvider);
 export const Card = createCard<24 | 32 | 40>(defaultConfigs.card);
 export const Link = createLink(defaultConfigs.link);
 export const Breadcrumb = createBreadcrumb(defaultConfigs.breadcrumb, { Link });
-export const Modal = createModal(defaultConfigs.modal, { Actions, IconButton });
+export const { Modal, CustomModal } = createModal(defaultConfigs.modal, { Actions, IconButton });
 export const Chip = createChip(
   {
     ...defaultConfigs.chip,
