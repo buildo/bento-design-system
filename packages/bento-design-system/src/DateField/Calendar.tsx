@@ -14,6 +14,7 @@ import { calendar, weekDay } from "./DateField.css";
 import { Day } from "./Day";
 
 export type CommonCalendarProps = {
+  inputRef: RefObject<HTMLInputElement>;
   focusedDate: Date | null;
   onDateFocus(date: Date): void;
   onDateSelect(date: Date): void;
@@ -28,7 +29,6 @@ export type CommonCalendarProps = {
 };
 
 type Props = CommonCalendarProps & {
-  inputRef: RefObject<HTMLInputElement>;
   type: "single" | "range";
   activeDate: MonthType;
   goToPreviousMonth: () => void;

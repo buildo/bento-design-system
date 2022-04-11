@@ -29,6 +29,7 @@ export const dayRecipe = strictRecipe({
       height: 40,
       alignItems: "center",
       justifyContent: "center",
+      outline: "none",
     }),
   ],
   variants: {
@@ -69,6 +70,10 @@ export const dayRecipe = strictRecipe({
       }),
       disabled: bentoSprinkles({
         color: "textDisabled",
+      }),
+      focused: bentoSprinkles({
+        background: { default: "backgroundOverlay", hover: "backgroundSecondary" },
+        color: "textPrimary",
       }),
     },
   },

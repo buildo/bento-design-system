@@ -1,6 +1,6 @@
 import { FieldProps } from "../Field/FieldProps";
 import { useTextField } from "@react-aria/textfield";
-import { FunctionComponent, useMemo, useRef, useState } from "react";
+import { FunctionComponent, useRef, useState } from "react";
 import { FieldType } from "../Field/createField";
 import { useDateFormatter } from "@react-aria/i18n";
 import { inputRecipe } from "../Field/Field.css";
@@ -18,7 +18,6 @@ import { createCalendar } from "./Calendar";
 import { Box } from "../internal";
 import { DateFieldConfig } from "./Config";
 import { InputConfig } from "../Field/Config";
-import debounce from "lodash.debounce";
 
 type SingleDateFieldProps = {
   type?: "single";
@@ -51,13 +50,12 @@ function parseDate(value: string): Date | null {
   return null;
 }
 
-function parseRange(value: string): [Date, Date] | null {
-  const dates = value.split("-").map(parseDate);
-
-  if (!!dates[0] && !!dates[1] && dates[0] <= dates[1]) {
-    return [dates[0], dates[1]];
+function parseRange(value: string): [Date | null, Date | null] {
+  const dates = value.split("-").map((d) => parseDate(d.trim()));
+  if (dates[0] && dates[1] && dates[0] > dates[1]) {
+    return [dates[0], null];
   }
-  return null;
+  return [dates[0], dates[1]];
 }
 
 export function createDateField(
@@ -84,23 +82,21 @@ export function createDateField(
     );
     const validationState = props.issues ? "invalid" : "valid";
 
-    function _handleInputChange(value: string) {
+    function handleInputChange(value: string) {
       if (props.type === "range") {
         const range = parseRange(value);
-        if (range) {
-          onDateSelect(range[0]);
-          props.onChange(range);
+        if (range[1]) {
+          onDateFocus(range[1]);
+        } else if (range[0]) {
+          onDateFocus(range[0]);
         }
       } else {
         const parsedDate = parseDate(value);
         if (parsedDate) {
-          onDateSelect(parsedDate);
-          props.onChange(parsedDate);
+          onDateFocus(parsedDate);
         }
       }
     }
-    // eslint-disable-next-line
-    const handleInputChange = useMemo(() => debounce(_handleInputChange, 200), [props.onChange]);
 
     const {
       goToDate,
@@ -187,6 +183,11 @@ export function createDateField(
             setFocusedInput("startDate");
           }}
           autoComplete="off"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && focusedDate) {
+              onDateSelect(focusedDate);
+            }
+          }}
         />
         {!!focusedInput && (
           <Calendar
