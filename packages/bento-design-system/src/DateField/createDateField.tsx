@@ -144,6 +144,7 @@ export function createDateField(
         type: "text",
         value: inputText,
         onChange: (value) => {
+          setFocusedInput("startDate");
           setInputText(value);
           handleInputChange(value);
         },
@@ -184,8 +185,12 @@ export function createDateField(
           }}
           autoComplete="off"
           onKeyDown={(e) => {
-            if (e.key === "Enter" && focusedDate) {
-              onDateSelect(focusedDate);
+            if (e.key === "Enter") {
+              if (!!focusedInput && focusedDate) {
+                onDateSelect(focusedDate);
+              } else {
+                setFocusedInput("startDate");
+              }
             }
           }}
         />
