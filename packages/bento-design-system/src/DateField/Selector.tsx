@@ -75,6 +75,7 @@ export function createSelector(
           </Box>
         )}
         items={options}
+        closeOnSelect
       />
     );
   };

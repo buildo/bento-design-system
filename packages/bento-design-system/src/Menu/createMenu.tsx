@@ -32,6 +32,8 @@ type Props = {
   placement?: ComponentProps<typeof Popover>["placement"];
   offset?: ComponentProps<typeof Popover>["offset"];
   dividers?: boolean;
+  maxHeight?: number;
+  closeOnSelect?: boolean;
 };
 
 export function createMenu(
@@ -43,7 +45,7 @@ export function createMenu(
   }
 ) {
   return function Menu({
-    items,
+    items: _items,
     header,
     trigger,
     initialIsOpen,
@@ -51,6 +53,8 @@ export function createMenu(
     offset,
     size,
     dividers,
+    maxHeight,
+    closeOnSelect,
   }: Props) {
     const triggerRef = useRef(null);
 
@@ -63,6 +67,22 @@ export function createMenu(
       { ...menuTriggerProps, elementType: "div" },
       triggerRef
     );
+
+    const items = closeOnSelect
+      ? _items.map((item) => {
+          if (item.onPress) {
+            const onPress = item.onPress;
+            return {
+              ...item,
+              onPress: () => {
+                onPress();
+                state.close();
+              },
+            };
+          }
+          return item;
+        })
+      : _items;
 
     return (
       <Box position="relative">
@@ -79,6 +99,7 @@ export function createMenu(
               {...menuProps}
               color={undefined}
               borderRadius={config.radius}
+              style={{ maxHeight }}
             >
               {header && (
                 <Box

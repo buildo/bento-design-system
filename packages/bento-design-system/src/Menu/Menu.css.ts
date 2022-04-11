@@ -7,6 +7,7 @@ export const menuRecipe = strictRecipe({
     style([
       {
         minWidth: 240,
+        overflowY: "auto",
       },
       bentoSprinkles({
         background: "backgroundPrimary",
