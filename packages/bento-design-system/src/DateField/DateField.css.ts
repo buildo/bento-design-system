@@ -78,3 +78,13 @@ export const dayRecipe = strictRecipe({
     },
   },
 });
+
+export const selector = bentoSprinkles({
+  paddingX: 16,
+  paddingY: 8,
+  background: {
+    default: "secondaryTransparentEnabledBackground",
+    focus: "secondaryTransparentFocusBackground",
+    hover: "secondaryTransparentHoverBackground",
+  },
+});

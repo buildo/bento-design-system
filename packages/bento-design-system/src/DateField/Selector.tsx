@@ -7,6 +7,7 @@ import { MenuProps } from "../Menu/createMenu";
 import { Label } from "../Typography/Label/Label";
 import { unsafeLocalizedString } from "../util/LocalizedString";
 import { DateFieldConfig } from "./Config";
+import { selector } from "./DateField.css";
 
 function getYears(activeDate: Date): Date[] {
   const currentYear = new Date().getFullYear();
@@ -59,7 +60,7 @@ export function createSelector(
       <Menu
         size="medium"
         trigger={(ref, triggerProps, { isOpen }) => (
-          <Box ref={ref} {...triggerProps} cursor="pointer" outline="none">
+          <Box ref={ref} {...triggerProps} cursor="pointer" outline="none" className={selector}>
             <Columns space={8} align="center" alignY="center">
               <Column width="content">
                 <Label size={config.monthYearLabelSize} color="secondary" uppercase>
