@@ -215,6 +215,7 @@ export function createDateField(
             selectActiveDate={goToDate}
             onClose={() => {
               setFocusedInput(null);
+              inputRef.current && inputRef.current.focus();
             }}
           />
         )}
