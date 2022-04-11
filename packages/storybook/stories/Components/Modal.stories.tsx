@@ -1,4 +1,4 @@
-import { Modal, Body, Placeholder, Stack } from "../";
+import { Modal, Body, Placeholder, Stack, CustomModal, Feedback, Inset } from "../";
 import { createComponentStories, formatMessage, textArgType } from "../util";
 import { action } from "@storybook/addon-actions";
 import { screen } from "@storybook/testing-library";
@@ -132,3 +132,21 @@ export const Large = createStory({
     onPress: action("Cancel"),
   },
 });
+
+export const Custom = () => {
+  return (
+    <CustomModal aria-label="Custom modal" isDestructive size="medium">
+      <Inset space={24}>
+        <Stack space={0} align="center">
+          <Feedback
+            size="medium"
+            status="negative"
+            title={formatMessage("Something went wrong")}
+            description={formatMessage("Wait a few minutes and retry")}
+            action={{ label: formatMessage("retry"), onPress: action("onPress") }}
+          />
+        </Stack>
+      </Inset>
+    </CustomModal>
+  );
+};
