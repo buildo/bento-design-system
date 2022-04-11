@@ -186,7 +186,7 @@ export function createDateField(
           autoComplete="off"
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              if (!!focusedInput && focusedDate) {
+              if (!!focusedInput && focusedDate && !isDateBlocked(focusedDate)) {
                 onDateSelect(focusedDate);
               } else {
                 setFocusedInput("startDate");

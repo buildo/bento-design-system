@@ -1,6 +1,8 @@
 import { useDay } from "@datepicker-react/hooks";
 import { useEffect, useRef } from "react";
 import { Box } from "../internal";
+import { Body } from "../Typography/Body/Body";
+import { unsafeLocalizedString } from "../util/LocalizedString";
 import { CommonCalendarProps } from "./Calendar";
 import { dayRecipe } from "./DateField.css";
 
@@ -94,7 +96,9 @@ export function Day(props: Props) {
 
   return (
     <Box className={dayRecipe({ style })} {...rest} onKeyDown={onKeyDown} ref={dayRef}>
-      {props.label}
+      <Body size="medium" color="inherit">
+        {unsafeLocalizedString(props.label)}
+      </Body>
     </Box>
   );
 }
