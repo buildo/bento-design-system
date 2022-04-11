@@ -116,10 +116,11 @@ export function createDateField(
       isEndDate,
     } = useDatepicker({
       onDatesChange: ({ startDate, endDate, focusedInput }) => {
-        if (props.type === "range" || focusedInput !== "endDate") {
-          setFocusedInput(focusedInput);
-        } else {
-          setFocusedInput(null);
+        const newFocusedInput =
+          props.type === "range" || focusedInput !== "endDate" ? focusedInput : null;
+        setFocusedInput(newFocusedInput);
+        if (!newFocusedInput && inputRef.current) {
+          inputRef.current.focus();
         }
         if (props.type === "range") {
           const newValue: [Date | null, Date | null] = [startDate, endDate];
