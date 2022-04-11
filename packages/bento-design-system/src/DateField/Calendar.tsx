@@ -96,7 +96,7 @@ export function createCalendar(
         color={undefined}
         ref={overlayRef}
       >
-        <Stack space={16}>
+        <Stack space={16} align="center">
           <CalendarHeader {...props}></CalendarHeader>
           <Tiles columns={7} space={0}>
             {weekdayLabels.map((d) => (

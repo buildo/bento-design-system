@@ -34,7 +34,7 @@ export function createCalendarHeader(
   }: Props) {
     return (
       <Box paddingBottom={16} style={{ paddingLeft: 12, paddingRight: 12 }} width="full">
-        <Columns space={24} alignY="center">
+        <Columns space={4} alignY="center">
           <Column width="content">
             <IconButton
               label={unsafeLocalizedString("Prev month")}
