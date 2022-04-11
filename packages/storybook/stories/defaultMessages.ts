@@ -1,8 +1,8 @@
 import { ComponentProps } from "react";
-import { BentoProvider } from ".";
+import { DesignSystemProvider } from ".";
 import { formatMessage } from "./util";
 
-export const defaultMessages: ComponentProps<typeof BentoProvider>["defaultMessages"] = {
+export const defaultMessages: ComponentProps<typeof DesignSystemProvider>["defaultMessages"] = {
   Chip: {
     dismissButtonLabel: formatMessage("Remove"),
   },

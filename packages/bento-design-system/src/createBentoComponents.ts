@@ -64,15 +64,15 @@ import merge from "ts-deepmerge";
 import { createSwitch } from "./Switch/createSwitch";
 
 export function createBentoComponents<
-  AtomsFn extends typeof bentoSprinkles = typeof bentoSprinkles,
+  AtomsFn extends typeof bentoSprinkles,
   ChipCustomColor extends string = never
 >(
-  sprinkles?: AtomsFn,
+  sprinkles: AtomsFn,
   config: Object.Partial<BentoConfig<AtomsFn, ChipCustomColor>, "deep"> = defaultConfigs
 ) {
-  const Box = createBentoBox(sprinkles ?? bentoSprinkles);
+  const Box = createBentoBox(sprinkles);
 
-  const { Bleed, Column, Columns, Inline, Inset, Stack } = createLayoutComponents(Box);
+  const { Bleed, Column, Columns, Inline, Inset, Stack, Tiles } = createLayoutComponents(Box);
 
   const AreaLoader = createAreaLoader(merge(defaultConfigs.areaLoader, config.areaLoader ?? {}));
 
@@ -270,6 +270,7 @@ export function createBentoComponents<
     Switch,
     Table,
     tableColumn,
+    Tiles,
     Title,
     Toast,
     ToastProvider,

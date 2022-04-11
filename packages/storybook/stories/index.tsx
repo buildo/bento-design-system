@@ -85,6 +85,7 @@ export const {
   Switch,
   Table,
   tableColumn,
+  Tiles,
   Title,
   Toast,
   ToastProvider,
