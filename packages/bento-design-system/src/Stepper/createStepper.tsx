@@ -14,6 +14,8 @@ type Props = {
 
 type StepStatus = "todo" | "inProgress" | "done";
 
+export type { Props as StepperProps };
+
 export function createStepper(config: StepperConfig) {
   return function Stepper({ currentStep, steps }: Props) {
     return (

@@ -33,6 +33,8 @@ type Props = {
   message?: LocalizedString;
 };
 
+export type { Props as AreaLoaderProps };
+
 export function createAreaLoader(config: AreaLoaderConfig) {
   /**
    *  `Loader` fills the parent container with an overlay and renders an animated indefinite loader

@@ -109,6 +109,7 @@ export const {
   IllustrationPositive,
   IllustrationNegative,
   IllustrationSearch,
+  useComponentsShowcase,
 } = createBentoComponents(sprinkles, {
   chip: {
     customColors: {

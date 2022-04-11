@@ -62,6 +62,7 @@ import { bentoSprinkles } from "./internal";
 import { createProgressBar } from "./ProgressBar/createProgressBar";
 import merge from "ts-deepmerge";
 import { createSwitch } from "./Switch/createSwitch";
+import { createUseComponentsShowcase } from "./createUseComponentsShowcase";
 
 export function createBentoComponents<
   AtomsFn extends typeof bentoSprinkles,
@@ -212,7 +213,7 @@ export function createBentoComponents<
     IllustrationSearch,
   };
 
-  return {
+  const components = {
     ...icons,
     ...illustrations,
     Actions,
@@ -274,5 +275,12 @@ export function createBentoComponents<
     ToastProvider,
     Tooltip,
     TextField,
+  };
+
+  const useComponentsShowcase = createUseComponentsShowcase(components);
+
+  return {
+    ...components,
+    useComponentsShowcase,
   };
 }

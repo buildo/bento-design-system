@@ -18,6 +18,8 @@ type Props = {
     | "pink";
 };
 
+export type { Props as AvatarProps };
+
 export function createAvatar(config: AvatarConfig) {
   return function Avatar({ color, name }: Props) {
     const initial = name?.trim()[0];
