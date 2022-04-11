@@ -83,6 +83,8 @@ export function Day(props: Props) {
     isFocused: props.isDateFocused(props.date),
   });
 
+  const isToday = props.date.getTime() === new Date().setHours(0, 0, 0, 0);
+
   useEffect(() => {
     if (
       dayRef.current &&
@@ -96,7 +98,7 @@ export function Day(props: Props) {
 
   return (
     <Box className={dayRecipe({ style })} {...rest} onKeyDown={onKeyDown} ref={dayRef}>
-      <Body size="medium" color="inherit">
+      <Body size="medium" color="inherit" weight={isToday ? "strong" : "default"}>
         {unsafeLocalizedString(props.label)}
       </Body>
     </Box>
