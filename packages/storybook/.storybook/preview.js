@@ -1,11 +1,11 @@
 import { defaultMessages } from "../stories/defaultMessages";
-import { BentoProvider } from "../stories/";
+import { DesignSystemProvider } from "../stories/";
 
 export const decorators = [
   (Story) => (
-    <BentoProvider dismissAfterMs={1000000} defaultMessages={defaultMessages}>
+    <DesignSystemProvider dismissAfterMs={1000000} defaultMessages={defaultMessages}>
       <Story />
-    </BentoProvider>
+    </DesignSystemProvider>
   ),
 ];
 

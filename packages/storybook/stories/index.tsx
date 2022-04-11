@@ -1,106 +1,17 @@
 import "./fonts.css";
-import {
-  createBanner,
-  createBentoBox,
-  createBreadcrumb,
-  createButtons,
-  createActions,
-  createCard,
-  createFormFields,
-  createLayoutComponents,
-  createLink,
-  createToast,
-  createModal,
-  createChip,
-  createListComponents,
-  createDisclosure,
-  createDisclosureGroup,
-  createTooltip,
-  createTabs,
-  createAreaLoader,
-  createAvatar,
-  createFormLayoutComponents,
-  createSearchBar,
-  createStepper,
-  createSwitch,
-  createFeedback,
-  createSlider,
-  IllustrationNegative,
-  IllustrationPositive,
-  createBentoProvider,
-  createTable,
-  createTableColumns,
-  createNavigation,
-  createMenu,
-  createIconButton,
-  defaultConfigs,
-  createProgressBar,
-} from "@buildo/bento-design-system";
-
+import { createBentoComponents } from "@buildo/bento-design-system";
 import "@buildo/bento-design-system/lib/index.css";
 import { sprinkles } from "./sprinkles.css";
 
-export * from "@buildo/bento-design-system";
-export const Box = createBentoBox(sprinkles);
-export const { Stack, Column, Columns, Inline, Inset, Bleed, Tiles } = createLayoutComponents(Box);
-export const Tooltip = createTooltip();
-export const Slider = createSlider(defaultConfigs.slider);
-export const {
-  Field,
-  CheckboxField,
-  CheckboxGroupField,
-  NumberField,
-  RadioGroupField,
-  SelectField,
-  TextField,
-  ReadOnlyField,
-  SliderField,
-} = createFormFields(
-  {
-    field: defaultConfigs.field,
-    input: defaultConfigs.input,
-    selectionControl: defaultConfigs.selectionControl,
-    dropdown: defaultConfigs.dropdown,
-    slider: defaultConfigs.slider,
-  },
-  { Tooltip }
-);
-export const { Button, ButtonLink } = createButtons(defaultConfigs.button);
-export const IconButton = createIconButton(defaultConfigs.iconButton);
-export const Banner = createBanner(defaultConfigs.banner, { Button, IconButton });
-export const Actions = createActions(defaultConfigs.actions, { Button, Banner });
-export const { Form, FormSection, FormRow } = createFormLayoutComponents(
-  defaultConfigs.formLayout,
-  {
-    Actions,
-  }
-);
-export const { Toast, ToastProvider } = createToast(defaultConfigs.toast, { Button, IconButton });
-export const BentoProvider = createBentoProvider(ToastProvider);
-export const Card = createCard<24 | 32 | 40>(defaultConfigs.card);
-export const Link = createLink(defaultConfigs.link);
-export const Breadcrumb = createBreadcrumb(defaultConfigs.breadcrumb, { Link });
-export const { Modal, CustomModal } = createModal(defaultConfigs.modal, { Actions, IconButton });
-export const Chip = createChip(
-  {
-    ...defaultConfigs.chip,
-    customColors: {
-      custom: "customColor1",
-    },
-  },
-  { Box, IconButton }
-);
-export const { List } = createListComponents(defaultConfigs.list);
-export const Disclosure = createDisclosure(defaultConfigs.disclosure);
-export const DisclosureGroup = createDisclosureGroup(defaultConfigs.disclosureGroup, {
-  Disclosure,
-});
-export const FolderTabs = createTabs(defaultConfigs.folderTabs);
-export const UnderlineTabs = createTabs(defaultConfigs.underlineTabs);
-export const AreaLoader = createAreaLoader(defaultConfigs.areaLoader);
-export const Avatar = createAvatar(defaultConfigs.avatar);
-export const SearchBar = createSearchBar(defaultConfigs.searchBar, { Field, IconButton });
-export const Switch = createSwitch(defaultConfigs.selectionControl.element, { Field });
+export {
+  unsafeLocalizedString,
+  alignToFlexAlignLookup,
+  alignYToFlexAlignLookup,
+  svgIllustrationProps,
+} from "@buildo/bento-design-system";
+
+export type { Omit, IconProps, IllustrationProps } from "@buildo/bento-design-system";
+
 const FeedbackBackground = (
   <svg viewBox="0 0 440 240">
     <path
@@ -126,18 +37,88 @@ const FeedbackBackground = (
     />
   </svg>
 );
-export const Feedback = createFeedback(
-  {
-    ...defaultConfigs.feedback,
-    background: FeedbackBackground,
-    negativeIllustration: IllustrationNegative,
-    positiveIllustration: IllustrationPositive,
+
+export const {
+  Actions,
+  AreaLoader,
+  Avatar,
+  Banner,
+  Bleed,
+  Body,
+  Breadcrumb,
+  Box,
+  Button,
+  ButtonLink,
+  Card,
+  CheckboxField,
+  CheckboxGroupField,
+  Chip,
+  Column,
+  Columns,
+  CustomModal,
+  DesignSystemProvider,
+  Disclosure,
+  DisclosureGroup,
+  Display,
+  Feedback,
+  Field,
+  FolderTabs,
+  Form,
+  FormRow,
+  FormSection,
+  Headline,
+  IconButton,
+  Inline,
+  InlineLoader,
+  Inset,
+  Label,
+  Link,
+  List,
+  ListItem,
+  Menu,
+  Modal,
+  Navigation,
+  NumberField,
+  Placeholder,
+  ProgressBar,
+  Popover,
+  SearchBar,
+  Stepper,
+  RadioGroupField,
+  ReadOnlyField,
+  SelectField,
+  SliderField,
+  Stack,
+  Switch,
+  Table,
+  tableColumn,
+  Title,
+  Toast,
+  ToastProvider,
+  Tooltip,
+  TextField,
+  UnderlineTabs,
+  IconIdea,
+  IconCheck,
+  IconChevronDown,
+  IconChevronRight,
+  IconChevronUp,
+  IconClose,
+  IconInformative,
+  IconMinus,
+  IconNegative,
+  IconPlaceholder,
+  IconPositive,
+  IconSearch,
+  IconUser,
+  IconWarning,
+} = createBentoComponents(sprinkles, {
+  chip: {
+    customColors: {
+      custom: "customColor1",
+    },
   },
-  { Button }
-);
-export const Table = createTable(defaultConfigs.table, { Tooltip, Feedback });
-export const tableColumn = createTableColumns({ Button, ButtonLink, Chip, Link, IconButton });
-export const Navigation = createNavigation(defaultConfigs.navigation);
-export const Menu = createMenu(defaultConfigs.menu, { List });
-export const ProgressBar = createProgressBar(defaultConfigs.progressBar);
-export const Stepper = createStepper(defaultConfigs.stepper);
+  feedback: {
+    background: FeedbackBackground,
+  },
+});
