@@ -3,14 +3,7 @@ import { createBentoComponents } from "@buildo/bento-design-system";
 import "@buildo/bento-design-system/lib/index.css";
 import { sprinkles } from "./sprinkles.css";
 
-export {
-  unsafeLocalizedString,
-  alignToFlexAlignLookup,
-  alignYToFlexAlignLookup,
-  svgIllustrationProps,
-} from "@buildo/bento-design-system";
-
-export type { Omit, IconProps, IllustrationProps } from "@buildo/bento-design-system";
+export * from "@buildo/bento-design-system";
 
 const FeedbackBackground = (
   <svg viewBox="0 0 440 240">
@@ -112,6 +105,10 @@ export const {
   IconSearch,
   IconUser,
   IconWarning,
+  IllustrationIdea,
+  IllustrationPositive,
+  IllustrationNegative,
+  IllustrationSearch,
 } = createBentoComponents(sprinkles, {
   chip: {
     customColors: {

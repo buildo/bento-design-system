@@ -52,6 +52,10 @@ import {
   Placeholder,
   Popover,
   InlineLoader,
+  IllustrationIdea,
+  IllustrationNegative,
+  IllustrationPositive,
+  IllustrationSearch,
 } from ".";
 import { BentoConfig } from "./BentoConfig";
 import { bentoSprinkles } from "./internal";
@@ -203,8 +207,16 @@ export function createBentoComponents<
     IconWarning,
   };
 
+  const illustrations = {
+    IllustrationIdea,
+    IllustrationPositive,
+    IllustrationNegative,
+    IllustrationSearch,
+  };
+
   return {
     ...icons,
+    ...illustrations,
     Actions,
     AreaLoader,
     Avatar,
