@@ -65,8 +65,7 @@ export type BentoConfig<
   dropdown: DropdownConfig;
   table: TableConfig;
   toast: ToastConfig;
-  folderTabs: TabsConfig;
-  underlineTabs: TabsConfig;
+  tabs: TabsConfig;
   progressBar: ProgressBarConfig;
   slider: SliderConfig;
   stepper: StepperConfig;

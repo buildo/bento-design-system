@@ -1,5 +1,5 @@
 import "./fonts.css";
-import { createBentoComponents } from "@buildo/bento-design-system";
+import { createBentoComponents, createTabs, defaultConfigs } from "@buildo/bento-design-system";
 import "@buildo/bento-design-system/lib/index.css";
 import { sprinkles } from "./sprinkles.css";
 
@@ -55,7 +55,6 @@ export const {
   Display,
   Feedback,
   Field,
-  FolderTabs,
   Form,
   FormRow,
   FormSection,
@@ -85,13 +84,13 @@ export const {
   Switch,
   Table,
   tableColumn,
+  Tabs: FolderTabs,
   Tiles,
   Title,
   Toast,
   ToastProvider,
   Tooltip,
   TextField,
-  UnderlineTabs,
   IconIdea,
   IconCheck,
   IconChevronDown,
@@ -120,3 +119,5 @@ export const {
     background: FeedbackBackground,
   },
 });
+
+export const UnderlineTabs = createTabs(defaultConfigs.underlineTabs);

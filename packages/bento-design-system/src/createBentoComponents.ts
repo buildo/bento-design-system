@@ -179,9 +179,7 @@ export function createBentoComponents<
   const Table = createTable(merge(defaultConfigs.table, config.table ?? {}), { Tooltip, Feedback });
   const tableColumn = createTableColumns({ Button, ButtonLink, IconButton, Chip, Link });
 
-  const FolderTabs = createTabs(merge(defaultConfigs.folderTabs, config.folderTabs ?? {}));
-
-  const UnderlineTabs = createTabs(merge(defaultConfigs.underlineTabs, config.underlineTabs ?? {}));
+  const Tabs = createTabs(merge(defaultConfigs.folderTabs, config.tabs ?? {}));
 
   const { Toast, ToastProvider } = createToast(merge(defaultConfigs.toast, config.toast ?? {}), {
     Button,
@@ -240,7 +238,6 @@ export function createBentoComponents<
     Display,
     Feedback,
     Field,
-    FolderTabs,
     Form,
     FormRow,
     FormSection,
@@ -270,12 +267,12 @@ export function createBentoComponents<
     Switch,
     Table,
     tableColumn,
+    Tabs,
     Tiles,
     Title,
     Toast,
     ToastProvider,
     Tooltip,
     TextField,
-    UnderlineTabs,
   };
 }
