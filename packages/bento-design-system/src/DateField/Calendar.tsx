@@ -82,7 +82,7 @@ export function createCalendar(
       targetRef: props.inputRef,
       overlayRef,
       placement: "bottom start",
-      offset: 10,
+      offset: 35,
       isOpen: true,
     });
 

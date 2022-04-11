@@ -10,6 +10,12 @@ export const calendar = [
   }),
 ];
 
+export const input = bentoSprinkles({
+  outline: "none",
+  background: "primaryTransparentEnabledBackground",
+  width: "full",
+});
+
 export const weekDay = [
   style({ display: "inline-flex" }),
   bentoSprinkles({
@@ -56,8 +62,8 @@ export const dayRecipe = strictRecipe({
         borderBottomRightRadius: 4,
       }),
       selectedRange: bentoSprinkles({
-        color: { default: "foregroundPrimaryInverse", hover: "textPrimary" },
-        background: { default: "backgroundInteractive", hover: "backgroundSecondary" },
+        color: "textPrimary",
+        background: { default: "backgroundInteractiveOverlay", hover: "backgroundSecondary" },
       }),
       selected: bentoSprinkles({
         color: { default: "foregroundPrimaryInverse", hover: "textPrimary" },
@@ -82,6 +88,7 @@ export const dayRecipe = strictRecipe({
 export const selector = bentoSprinkles({
   paddingX: 16,
   paddingY: 8,
+  borderRadius: 4,
   background: {
     default: "secondaryTransparentEnabledBackground",
     focus: "secondaryTransparentFocusBackground",
