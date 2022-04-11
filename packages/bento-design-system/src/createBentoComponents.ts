@@ -122,8 +122,7 @@ export function createBentoComponents<
     }
   );
 
-  // TODO(gabro): why doesn't Tooltip have a defaultConfig?
-  const Tooltip = createTooltip();
+  const Tooltip = createTooltip(merge(defaultConfigs.tooltip, config.tooltip ?? {}));
 
   const {
     CheckboxField,

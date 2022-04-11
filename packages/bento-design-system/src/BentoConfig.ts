@@ -31,6 +31,7 @@ import { StepperConfig } from "./Stepper/Config";
 import { TableConfig } from "./Table/Config";
 import { TabsConfig } from "./Tabs/Config";
 import { ToastConfig } from "./Toast/Config";
+import { TooltipConfig } from "./Tooltip/Config";
 
 export type BentoConfig<
   AtomsFn extends typeof bentoSprinkles,
@@ -69,4 +70,5 @@ export type BentoConfig<
   progressBar: ProgressBarConfig;
   slider: SliderConfig;
   stepper: StepperConfig;
+  tooltip: TooltipConfig;
 };

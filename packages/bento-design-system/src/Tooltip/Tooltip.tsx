@@ -1,11 +1,12 @@
-import { ComponentProps, HTMLAttributes, Ref, useRef } from "react";
+import { HTMLAttributes, Ref, useRef } from "react";
 import { Label, TextChildren } from "..";
-import { BentoSprinkles, Box, Inset } from "../internal";
+import { Box, Inset } from "../internal";
 import { useFloating, shift, autoPlacement, offset, arrow } from "@farzadsh/floating-ui-react-dom";
 import { useTooltipTriggerState } from "@react-stately/tooltip";
 import { useTooltipTrigger, useTooltip } from "@react-aria/tooltip";
 import { tooltip, arrow as arrowStyle } from "./Tooltip.css";
 import { createPortal } from "../util/createPortal";
+import { TooltipConfig } from "./Config";
 
 type Props = {
   content: TextChildren;
@@ -22,19 +23,7 @@ type Props = {
   ) => JSX.Element;
 };
 
-type TooltipConfig = {
-  padding: BentoSprinkles["padding"];
-  radius: BentoSprinkles["borderRadius"];
-  labelSize: ComponentProps<typeof Label>["size"];
-};
-
-export function createTooltip(
-  config: TooltipConfig = {
-    padding: 8,
-    radius: 4,
-    labelSize: "medium",
-  }
-) {
+export function createTooltip(config: TooltipConfig) {
   return function Tooltip(props: Props) {
     const arrowRef = useRef<HTMLElement | null>(null);
     const {
