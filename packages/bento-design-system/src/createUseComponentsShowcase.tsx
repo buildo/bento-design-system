@@ -32,6 +32,7 @@ import {
   StepperProps,
   TableProps,
   TabsProps,
+  createTableColumns,
 } from ".";
 import { IconIdea, IconCheck, IconSearch, IconUser, IconInformative } from "./Icons";
 import { Box, Stack, Inline } from "./internal";
@@ -136,6 +137,8 @@ export const createUseComponentsShowcase =
     SearchBar,
     SelectField,
     Stepper,
+    Table,
+    tableColumn,
     Tabs,
     TextField,
   }: {
@@ -145,7 +148,7 @@ export const createUseComponentsShowcase =
     Banner?: FunctionComponent<BannerProps>;
     Breadcrumb?: FunctionComponent<BreadcrumbProps>;
     Button?: FunctionComponent<ButtonProps>;
-    Card?: FunctionComponent<CardProps<24 | 32 | 40>>;
+    Card?: FunctionComponent<CardProps>;
     CheckboxField?: FunctionComponent<CheckboxFieldProps>;
     Chip?: FunctionComponent<ChipProps<string>>;
     DisclosureGroup?: FunctionComponent<DisclosureGroupProps>;
@@ -161,8 +164,8 @@ export const createUseComponentsShowcase =
     SearchBar?: FunctionComponent<SearchBarProps>;
     SelectField?: FunctionComponent<SelectFieldProps<string, false>>;
     Stepper?: FunctionComponent<StepperProps>;
-    // TODO(gabro): fix this any?
     Table?: FunctionComponent<TableProps<ReadonlyArray<any>>>;
+    tableColumn?: ReturnType<typeof createTableColumns>;
     Tabs?: FunctionComponent<TabsProps<string>>;
     TextField?: FunctionComponent<TextFieldProps>;
   }) =>
@@ -200,8 +203,8 @@ export const createUseComponentsShowcase =
     const [formState, setFormState] = useState({
       firstName: "",
       lastName: "",
-      status: undefined as "open" | "closed" | "pending" | undefined,
-      gender: undefined as "male" | "female" | "other" | undefined,
+      status: undefined as string | undefined,
+      gender: undefined as string | undefined,
       termsAndConditions: false,
     });
 
@@ -434,9 +437,7 @@ export const createUseComponentsShowcase =
                                 name="status"
                                 onBlur={action("onBlur")}
                                 value={formState.status}
-                                onChange={(status: "open" | "closed" | "pending" | undefined) =>
-                                  setFormState((s) => ({ ...s, status }))
-                                }
+                                onChange={(status) => setFormState((s) => ({ ...s, status }))}
                                 menuSize="large"
                                 label={formatMessage("Status")}
                                 placeholder={formatMessage("Choose an option")}
@@ -454,9 +455,7 @@ export const createUseComponentsShowcase =
                                 name="gender"
                                 onBlur={action("onBlur")}
                                 value={formState.gender}
-                                onChange={(gender: "male" | "female" | "other") =>
-                                  setFormState((s) => ({ ...s, gender }))
-                                }
+                                onChange={(gender) => setFormState((s) => ({ ...s, gender }))}
                                 label={formatMessage("Gender")}
                                 options={[
                                   { label: formatMessage("Male"), value: "male" },
@@ -609,53 +608,53 @@ export const createUseComponentsShowcase =
                 ],
               ],
             }),
-          //TODO(gabro)
-          // Table &&
-          //   componentShowcase({
-          //     title: 'Table',
-          //     Component: Table,
-          //     variants: [
-          //       [
-          //         {
-          //           columns: [
-          //             tableColumns.text({
-          //               headerLabel: formatMessage("Name"),
-          //               accessor: "name",
-          //               sticky: "left",
-          //             }),
-          //             tableColumns.number({
-          //               headerLabel: formatMessage("Experiments"),
-          //               accessor: "experiments",
-          //               valueFormatter: (value) => formatMessage(`${value}/100`),
-          //               align: "right",
-          //             }),
-          //             tableColumns.chip({
-          //               headerLabel: formatMessage("Status"),
-          //               accessor: "status",
-          //               align: "center",
-          //             }),
-          //           ],
-          //           data: [
-          //             {
-          //               name: "John Doe",
-          //               experiments: 100,
-          //               status: { label: formatMessage("done"), color: "green" },
-          //             },
-          //             {
-          //               name: "Jane Doe",
-          //               experiments: 20,
-          //               status: { label: formatMessage("running"), color: "blue" },
-          //             },
-          //             {
-          //               name: "Jane Doe",
-          //               experiments: 0,
-          //               status: { label: formatMessage("pending"), color: "yellow" },
-          //             },
-          //           ],
-          //         },
-          //       ],
-          //     ],
-          //   }),
+          Table &&
+            tableColumn &&
+            componentShowcase({
+              title: "Table",
+              Component: Table,
+              variants: [
+                [
+                  {
+                    columns: [
+                      tableColumn.text({
+                        headerLabel: formatMessage("Name"),
+                        accessor: "name",
+                        sticky: "left",
+                      }),
+                      tableColumn.number({
+                        headerLabel: formatMessage("Experiments"),
+                        accessor: "experiments",
+                        valueFormatter: (value) => formatMessage(`${value}/100`),
+                        align: "right",
+                      }),
+                      tableColumn.chip({
+                        headerLabel: formatMessage("Status"),
+                        accessor: "status",
+                        align: "center",
+                      }),
+                    ],
+                    data: [
+                      {
+                        name: "John Doe",
+                        experiments: 100,
+                        status: { label: formatMessage("done"), color: "green" },
+                      },
+                      {
+                        name: "Jane Doe",
+                        experiments: 20,
+                        status: { label: formatMessage("running"), color: "blue" },
+                      },
+                      {
+                        name: "Jane Doe",
+                        experiments: 0,
+                        status: { label: formatMessage("pending"), color: "yellow" },
+                      },
+                    ],
+                  },
+                ],
+              ],
+            }),
           Tabs &&
             componentShowcase({
               title: "Tabs",

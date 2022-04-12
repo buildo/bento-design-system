@@ -101,7 +101,7 @@ export function createBentoComponents<
 
   const Card = createCard(merge(defaultConfigs.card, config.card ?? {}));
 
-  // TODO(gabro): investigate as any here
+  // NOTE(gabro): as any here because merge chokes up on the ChipConfig generic
   const Chip = createChip(merge(defaultConfigs.chip, config.chip ?? {}) as any, {
     Box,
     IconButton,
