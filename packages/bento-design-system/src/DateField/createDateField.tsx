@@ -113,6 +113,12 @@ export function createDateField(
       }
     };
 
+    const onInputFocus = (input: "startDate" | "endDate") => () => {
+      if (!props.disabled) {
+        setFocusedInput(input);
+      }
+    };
+
     return (
       <Field
         {...props}
@@ -133,6 +139,7 @@ export function createDateField(
             }),
             dateFieldRecipe({ validation: validationState || "notSet", isFocused: !!focusedInput }),
           ]}
+          disabled={props.disabled}
         >
           <Columns space={4} alignY="center">
             <Input
@@ -145,7 +152,7 @@ export function createDateField(
               isDateBlocked={isDateBlocked}
               onDateSelect={onDateSelect}
               onDateClear={onDateClear}
-              onInputFocus={() => setFocusedInput("startDate")}
+              onInputFocus={onInputFocus("startDate")}
             />
             {props.type === "range" && (
               <>
@@ -162,7 +169,7 @@ export function createDateField(
                   isDateBlocked={isDateBlocked}
                   onDateSelect={onDateSelect}
                   onDateClear={onDateClear}
-                  onInputFocus={() => setFocusedInput("endDate")}
+                  onInputFocus={onInputFocus("endDate")}
                 />
               </>
             )}

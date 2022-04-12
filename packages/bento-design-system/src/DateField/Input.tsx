@@ -102,6 +102,7 @@ export function Input(props: Props) {
             color={undefined}
             width={undefined}
             height={undefined}
+            disabled={props.disabled}
           />
         );
       }}
