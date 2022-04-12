@@ -10,6 +10,38 @@ export const calendar = [
   }),
 ];
 
+export const dateFieldRecipe = strictRecipe({
+  variants: {
+    validation: {
+      valid: {},
+      invalid: {},
+    },
+    isFocused: {
+      true: {},
+    },
+  },
+  compoundVariants: [
+    {
+      variants: {
+        validation: "valid",
+        isFocused: true,
+      },
+      style: bentoSprinkles({
+        boxShadow: { default: "outlineInputFocus", hover: "outlineInputFocus" },
+      }),
+    },
+    {
+      variants: {
+        validation: "invalid",
+        isFocused: true,
+      },
+      style: bentoSprinkles({
+        boxShadow: { default: "outlineNegativeStrong", hover: "outlineNegativeStrong" },
+      }),
+    },
+  ],
+});
+
 export const input = bentoSprinkles({
   outline: "none",
   background: "primaryTransparentEnabledBackground",

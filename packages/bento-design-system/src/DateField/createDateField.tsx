@@ -19,6 +19,7 @@ import { InputConfig } from "../Field/Config";
 import { useField } from "@react-aria/label";
 import { Input } from "./Input";
 import { IconChevronRight } from "../Icons";
+import { dateFieldRecipe } from "./DateField.css";
 
 type SingleDateFieldProps = {
   type?: "single";
@@ -65,7 +66,7 @@ export function createDateField(
       isFirstOrLastSelectedDate,
       onDateFocus,
       onDateHover,
-      onDateSelect,
+      onDateSelect: _onDateSelect,
       isStartDate,
       isEndDate,
     } = useDatepicker({
@@ -90,6 +91,11 @@ export function createDateField(
       minBookingDate: props.minDate,
       maxBookingDate: props.maxDate,
     });
+
+    const onDateSelect = (date: Date) => {
+      _onDateSelect(date);
+      onDateFocus(date);
+    };
 
     const { labelProps, descriptionProps, errorMessageProps } = useField({
       ...props,
@@ -125,6 +131,7 @@ export function createDateField(
               weight: "default",
               size: inputConfig.fontSize,
             }),
+            dateFieldRecipe({ validation: validationState || "notSet", isFocused: !!focusedInput }),
           ]}
         >
           <Columns space={4} alignY="center">
@@ -182,6 +189,7 @@ export function createDateField(
             selectActiveDate={goToDate}
             onClose={() => {
               setFocusedInput(null);
+              onDateFocus((props.type === "range" ? props.value[0] : props.value) || new Date());
               startInputRef.current && startInputRef.current.focus();
             }}
           />

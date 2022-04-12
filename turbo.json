@@ -12,7 +12,9 @@
         "^build"
       ]
     },
-    "start": {},
+    "start": {
+      "outputs": []
+    },
     "prettier-check": {},
     "prettier-write": {},
     "lint-staged": {},

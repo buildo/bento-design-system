@@ -122,6 +122,9 @@ export function createBentoComponents<
 
   const Tooltip = createTooltip(merge(defaultConfigs.tooltip, config.tooltip ?? {}));
 
+  const { List, ListItem } = createListComponents(merge(defaultConfigs.list, config.list ?? {}));
+  const Menu = createMenu(merge(defaultConfigs.menu, config.menu ?? {}), { List });
+
   const {
     CheckboxField,
     CheckboxGroupField,
@@ -139,13 +142,10 @@ export function createBentoComponents<
       input: merge(defaultConfigs.input, config.input ?? {}),
       selectionControl: merge(defaultConfigs.selectionControl, config.selectionControl ?? {}),
       slider: merge(defaultConfigs.slider, config.slider ?? {}),
+      date: merge(defaultConfigs.dateField, config.dateField ?? {}),
     },
-    { Tooltip }
+    { Tooltip, IconButton, Menu }
   );
-
-  const { List, ListItem } = createListComponents(merge(defaultConfigs.list, config.list ?? {}));
-
-  const Menu = createMenu(merge(defaultConfigs.menu, config.menu ?? {}), { List });
 
   const DateField = createDateField(
     merge(defaultConfigs.dateField, config.dateField ?? {}),
