@@ -1,0 +1,73 @@
+import { ActionsConfig } from "./Actions/Config";
+import { AreaLoaderConfig } from "./AreaLoader/Config";
+import { AvatarConfig } from "./Avatar/Config";
+import { BannerConfig } from "./Banner/Config";
+import { BreadcrumbConfig } from "./Breadcrumb/Config";
+import { ButtonConfig } from "./Button/Config";
+import { CardConfig } from "./Card/Config";
+import { ChipConfig } from "./Chip/Config";
+import { DisclosureConfig } from "./Disclosure/Config";
+import { DisclosureGroupConfig } from "./DisclosureGroup/Config";
+import { FeedbackConfig } from "./Feedback/Config";
+import {
+  FieldConfig,
+  InputConfig,
+  SelectionControlConfig,
+  SelectionControlGroupConfig,
+} from "./Field/Config";
+import { FormLayoutConfig } from "./Form/Config";
+import { IconButtonConfig } from "./IconButton/Config";
+import { bentoSprinkles } from "./internal";
+import { LinkConfig } from "./Link/Config";
+import { ListConfig } from "./List/Config";
+import { MenuConfig } from "./Menu/Config";
+import { ModalConfig } from "./Modal/Config";
+import { NavigationConfig } from "./Navigation/Config";
+import { ProgressBarConfig } from "./ProgressBar/Config";
+import { SearchBarConfig } from "./SearchBar/Config";
+import { DropdownConfig } from "./SelectField/Config";
+import { SliderConfig } from "./Slider/Config";
+import { StepperConfig } from "./Stepper/Config";
+import { TableConfig } from "./Table/Config";
+import { TabsConfig } from "./Tabs/Config";
+import { ToastConfig } from "./Toast/Config";
+import { TooltipConfig } from "./Tooltip/Config";
+
+export type BentoConfig<
+  AtomsFn extends typeof bentoSprinkles,
+  ChipCustomColor extends string = never
+> = {
+  actions: ActionsConfig;
+  areaLoader: AreaLoaderConfig;
+  avatar: AvatarConfig;
+  banner: BannerConfig;
+  breadcrumb: BreadcrumbConfig;
+  button: ButtonConfig;
+  card: CardConfig;
+  chip: ChipConfig<AtomsFn, ChipCustomColor>;
+  disclosure: DisclosureConfig;
+  disclosureGroup: DisclosureGroupConfig;
+  feedback: FeedbackConfig;
+  field: FieldConfig;
+  input: InputConfig;
+  selectionControl: {
+    group: SelectionControlGroupConfig;
+    element: SelectionControlConfig;
+  };
+  formLayout: FormLayoutConfig;
+  iconButton: IconButtonConfig;
+  link: LinkConfig;
+  list: ListConfig;
+  menu: MenuConfig;
+  modal: ModalConfig;
+  navigation: NavigationConfig;
+  searchBar: SearchBarConfig;
+  dropdown: DropdownConfig;
+  table: TableConfig;
+  toast: ToastConfig;
+  tabs: TabsConfig;
+  progressBar: ProgressBarConfig;
+  slider: SliderConfig;
+  stepper: StepperConfig;
+  tooltip: TooltipConfig;
+};

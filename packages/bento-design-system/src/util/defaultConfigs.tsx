@@ -43,6 +43,7 @@ import { ToastConfig } from "../Toast/Config";
 import { ProgressBarConfig } from "../ProgressBar/Config";
 import { StepperConfig } from "../Stepper/Config";
 import { SliderConfig } from "../Slider/Config";
+import { TooltipConfig } from "../Tooltip/Config";
 
 export const actions: ActionsConfig = {
   buttonsAlignment: "right",
@@ -437,4 +438,10 @@ export const stepper: StepperConfig = {
   numberSize: "large",
   labelUppercase: false,
   doneIcon: IconPositive,
+};
+
+export const tooltip: TooltipConfig = {
+  padding: 8,
+  radius: 4,
+  labelSize: "medium",
 };

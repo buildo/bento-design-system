@@ -14,15 +14,13 @@ type PaddingKey =
   | "paddingTop"
   | "paddingBottom";
 
-type Props<Paddings extends InternalBoxProps["padding"]> = {
+type Props = {
   children: Children;
   elevation?: "small" | "medium" | "large";
-} & { [k in PaddingKey]?: 0 | Paddings };
+} & { [k in PaddingKey]?: 0 | InternalBoxProps["padding"] };
 
-export function createCard<Paddings extends InternalBoxProps["padding"] = 24 | 32 | 40>(
-  config: CardConfig
-) {
-  return function Card({ children, elevation, ...boxProps }: Props<Paddings>) {
+export function createCard(config: CardConfig) {
+  return function Card({ children, elevation, ...boxProps }: Props) {
     return (
       <Box
         borderRadius={config.radius}
