@@ -79,7 +79,6 @@ importers:
       file-loader: 6.2.0
       jest: 27.5.1
       lint-staged: 12.3.7
-      lodash.debounce: ^4.0.8
       mini-css-extract-plugin: 2.6.0
       playroom: 0.27.9
       postcss: ^8.4.12
@@ -145,7 +144,6 @@ importers:
       '@vanilla-extract/recipes': 0.2.4_@vanilla-extract+css@1.6.8
       '@vanilla-extract/sprinkles': 1.4.0_@vanilla-extract+css@1.6.8
       clsx: 1.1.1
-      lodash.debounce: 4.0.8
       react-cool-dimensions: 2.0.7_react@17.0.2
       react-input-mask: 2.0.4_react-dom@17.0.2+react@17.0.2
       react-keyed-flatten-children: 1.3.0_react@17.0.2
