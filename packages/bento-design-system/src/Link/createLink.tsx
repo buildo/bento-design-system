@@ -34,7 +34,7 @@ export function createLink(config: LinkConfig) {
       <Box
         {...linkProps}
         {...props}
-        as={LinkComponent}
+        as={LinkComponent.component}
         href={href}
         className={[link, extendedHitAreaRecipe({ axis: "y" }), resetStyles.element["a"]]}
         disabled={isDisabled}

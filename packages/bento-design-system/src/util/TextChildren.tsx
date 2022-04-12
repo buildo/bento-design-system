@@ -1,11 +1,16 @@
-import { HTMLAttributeAnchorTarget, isValidElement } from "react";
+import clsx from "clsx";
+import { ComponentType, HTMLAttributeAnchorTarget, isValidElement } from "react";
 import flattenChildren from "react-keyed-flatten-children";
+import { ButtonProps } from "../Button/createButton";
 import { Box } from "../internal/Box/Box";
 import { Children } from "./Children";
-import { LinkComponent, useLinkComponent } from "./link";
+import { LinkComponentProps, useLinkComponent } from "./link";
 import { LocalizedString } from "./LocalizedString";
 import { NonEmptyArray } from "./NonEmptyArray";
 import { splitBy } from "./splitBy";
+import { link as linkStyle } from "../Link/Link.css";
+import { LinkConfig } from "../Link/Config";
+import { bentoSprinkles } from "../internal";
 
 /** `TextChildren` is a DSL for building type-safe rich localized strings.
  *  It's the composition of strings that have been localized (`LocalizedString`) and other elements
@@ -51,31 +56,37 @@ export function bold(text: LocalizedString): LocalizedBold {
   return { type: "bold", text };
 }
 
-export function link(
-  text: LocalizedString,
-  href: string,
-  target?: HTMLAttributeAnchorTarget
-): LocalizedLink {
-  return { type: "link", text, href, target };
+export type LinkOptions =
+  | {
+      href: string;
+      target?: HTMLAttributeAnchorTarget;
+    }
+  | {
+      onClick: ButtonProps["onPress"];
+    };
+
+export function link(text: LocalizedString, options: LinkOptions): LocalizedLink {
+  return { type: "link", text, ...options };
 }
 
 export type LocalizedLink = {
   type: "link";
   text: LocalizedString;
-  href: string;
-  target?: HTMLAttributeAnchorTarget;
-};
+} & LinkOptions;
 
 export function makeTextChildrenFromElements(c: TextChildrenConcreteType) {
   return c as TextChildren;
 }
 
-function textChildrenToChildrenArray(
+export function textChildrenToChildrenArray(
   children: TextChildren,
-  LinkComponent: LinkComponent
+  LinkComponent: ComponentType<LinkComponentProps>,
+  linkConfig: LinkConfig
 ): Array<Children> {
   if (Array.isArray(children)) {
-    return children.flatMap((c) => textChildrenToChildrenArray(c as TextChildren, LinkComponent));
+    return children.flatMap((c) =>
+      textChildrenToChildrenArray(c as TextChildren, LinkComponent, linkConfig)
+    );
   } else if (typeof children === "string") {
     return [children];
   }
@@ -92,7 +103,12 @@ function textChildrenToChildrenArray(
       return [<br />];
     case "link":
       return [
-        <Box as={LinkComponent} href={children.href} target={children.target}>
+        <Box
+          as={LinkComponent}
+          className={clsx(linkStyle, bentoSprinkles({ fontWeight: "label" }))}
+          textDecoration={linkConfig.labelDecoration}
+          {...children}
+        >
           {children.text}
         </Box>,
       ];
@@ -100,11 +116,11 @@ function textChildrenToChildrenArray(
 }
 
 export function useTextChildrenToChildren() {
-  const LinkComponent = useLinkComponent();
+  const { component: LinkComponent, config: linkConfig } = useLinkComponent();
 
   return function textChildrenToChildren(children: TextChildren): Children {
     const lines = splitBy(
-      textChildrenToChildrenArray(children, LinkComponent),
+      textChildrenToChildrenArray(children, LinkComponent, linkConfig),
       (e) => isValidElement(e) && e.type === "br"
     );
 

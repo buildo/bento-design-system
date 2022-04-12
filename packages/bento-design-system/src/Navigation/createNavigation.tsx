@@ -79,7 +79,7 @@ export function createNavigation(config: NavigationConfig) {
       <Box
         tabIndex={active || disabled ? -1 : 0}
         className={[destinationRecipe({ active }), element.a]}
-        as={LinkComponent}
+        as={LinkComponent.component}
         {...linkProps}
         href={href}
         display="block"

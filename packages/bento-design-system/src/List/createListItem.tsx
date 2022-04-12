@@ -92,7 +92,7 @@ export function createListItem(config: ListItemConfig) {
       >
         <Box
           ref={linkRef}
-          as={props.href ? LinkComponent : "div"}
+          as={props.href ? LinkComponent.component : "div"}
           className={element.a}
           {...linkProps}
           href={props.href}

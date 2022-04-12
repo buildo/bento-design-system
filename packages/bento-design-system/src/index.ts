@@ -55,6 +55,7 @@ export * from "./Typography/Title/Title";
 export * from "./sprinkles";
 export * from "./util/Children";
 export * from "./util/LocalizedString";
+export * from "./util/NonEmptyArray";
 export * from "./util/Omit";
 export * from "./util/TextChildren";
 export * from "./util/align";
