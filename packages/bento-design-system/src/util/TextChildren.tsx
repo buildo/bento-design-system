@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { ComponentType, HTMLAttributeAnchorTarget, isValidElement } from "react";
 import flattenChildren from "react-keyed-flatten-children";
 import { ButtonProps } from "../Button/createButton";
@@ -9,6 +10,7 @@ import { NonEmptyArray } from "./NonEmptyArray";
 import { splitBy } from "./splitBy";
 import { link as linkStyle } from "../Link/Link.css";
 import { LinkConfig } from "../Link/Config";
+import { bentoSprinkles } from "../internal";
 
 /** `TextChildren` is a DSL for building type-safe rich localized strings.
  *  It's the composition of strings that have been localized (`LocalizedString`) and other elements
@@ -103,7 +105,7 @@ export function textChildrenToChildrenArray(
       return [
         <Box
           as={LinkComponent}
-          className={linkStyle}
+          className={clsx(linkStyle, bentoSprinkles({ fontWeight: "label" }))}
           textDecoration={linkConfig.labelDecoration}
           {...children}
         >
