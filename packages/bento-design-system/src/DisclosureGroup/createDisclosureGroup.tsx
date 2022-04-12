@@ -14,6 +14,8 @@ function isLeaf(item: NodeItem | LeafItem): item is LeafItem {
   return !("items" in item);
 }
 
+export type { Props as DisclosureGroupProps };
+
 export function createDisclosureGroup(
   config: DisclosureGroupConfig,
   {
