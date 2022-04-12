@@ -142,6 +142,7 @@ importers:
       react-table: 7.7.0_react@17.0.2
       react-use: 17.3.2_react-dom@17.0.2+react@17.0.2
       ts-deepmerge: 2.0.1
+      ts-toolbelt: 9.6.0
     devDependencies:
       '@babel/preset-env': 7.16.11
       '@babel/preset-react': 7.16.7
@@ -177,7 +178,6 @@ importers:
       style-loader: 3.3.1_webpack@5.71.0
       ts-jest: 27.1.4_9985e1834e803358b7be1e6ce5ca0eea
       ts-loader: 9.2.8_typescript@4.6.3+webpack@5.71.0
-      ts-toolbelt: 9.6.0
       tsup: 5.12.4_typescript@4.6.3
       typescript: 4.6.3
       webpack: 5.71.0_webpack-cli@4.9.2
@@ -17819,7 +17819,7 @@ packages:
 
   /ts-toolbelt/9.6.0:
     resolution: {integrity: sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w==}
-    dev: true
+    dev: false
 
   /tsconfig-paths/3.14.0:
     resolution: {integrity: sha512-cg/1jAZoL57R39+wiw4u/SCC6Ic9Q5NqjBOb+9xISedOYurfog9ZNmKJSxAnb2m/5Bq4lE9lhUcau33Ml8DM0g==}
