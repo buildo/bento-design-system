@@ -1,9 +1,10 @@
 import { useTextField } from "@react-aria/textfield";
-import { RefObject, useEffect, useState } from "react";
+import { InputHTMLAttributes, RefObject, useEffect, useState } from "react";
 import { Box } from "../internal";
 import { input } from "./DateField.css";
 import { getInputValue as _getInputValue, parseDate as _parseDate } from "@datepicker-react/hooks";
 import { useDateFormatter } from "@react-aria/i18n";
+import InputMask from "react-input-mask";
 
 type Props = {
   for: "startDate" | "endDate";
@@ -33,6 +34,10 @@ export function Input(props: Props) {
   function setCurrentValue() {
     return setValue(_getInputValue(props.currentDate, (date) => dateFormatter.format(date), ""));
   }
+  const onFocus = () => {
+    props.inputRef.current && props.inputRef.current.select();
+    props.onInputFocus();
+  };
   const { inputProps } = useTextField(
     {
       ...props,
@@ -48,27 +53,9 @@ export function Input(props: Props) {
         }
       },
       isDisabled: props.disabled,
-    },
-    props.inputRef
-  );
-
-  useEffect(() => {
-    setCurrentValue();
-  }, [props.currentDate]);
-
-  return (
-    <Box
-      as="input"
-      type="text"
-      className={input}
-      ref={props.inputRef}
-      {...inputProps}
-      color={undefined}
-      width={undefined}
-      height={undefined}
-      onClick={props.onInputFocus}
-      autoComplete="off"
-      onKeyDown={(e) => {
+      onBlur: setCurrentValue,
+      onFocus,
+      onKeyDown: (e) => {
         if (e.key === "Enter") {
           if (props.inFocus) {
             const date = parseDate(value);
@@ -85,12 +72,39 @@ export function Input(props: Props) {
             props.onInputFocus();
           }
         }
-      }}
+      },
+      autoComplete: "off",
+    },
+    props.inputRef
+  );
+
+  useEffect(() => {
+    setCurrentValue();
+  }, [props.currentDate]);
+
+  return (
+    <InputMask
+      {...inputProps}
+      onFocus={onFocus}
       onBlur={setCurrentValue}
-      onFocus={() => {
-        props.inputRef.current && props.inputRef.current.select();
-        props.onInputFocus();
+      mask="99/99/9999"
+      maskChar=""
+    >
+      {(inputProps: InputHTMLAttributes<HTMLInputElement>) => {
+        return (
+          <Box
+            as="input"
+            type="text"
+            className={input}
+            ref={props.inputRef}
+            onClick={props.onInputFocus}
+            {...inputProps}
+            color={undefined}
+            width={undefined}
+            height={undefined}
+          />
+        );
       }}
-    />
+    </InputMask>
   );
 }

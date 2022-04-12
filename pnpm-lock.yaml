@@ -61,6 +61,7 @@ importers:
       '@types/jest': 27.4.1
       '@types/lodash.debounce': ^4.0.6
       '@types/react': 17.0.44
+      '@types/react-input-mask': 2.0.5
       '@types/react-table': 7.7.10
       '@vanilla-extract/babel-plugin': 1.1.5
       '@vanilla-extract/css': 1.6.8
@@ -80,13 +81,13 @@ importers:
       lint-staged: 12.3.7
       lodash.debounce: ^4.0.8
       mini-css-extract-plugin: 2.6.0
-      moment: ^2.29.2
       playroom: 0.27.9
       postcss: ^8.4.12
       prettier: 2.6.2
       react: 17.0.2
       react-cool-dimensions: ^2.0.7
       react-dom: 17.0.2
+      react-input-mask: ^2.0.4
       react-keyed-flatten-children: ^1.3.0
       react-select: ^5.2.2
       react-table: ^7.7.0
@@ -145,8 +146,8 @@ importers:
       '@vanilla-extract/sprinkles': 1.4.0_@vanilla-extract+css@1.6.8
       clsx: 1.1.1
       lodash.debounce: 4.0.8
-      moment: 2.29.3
       react-cool-dimensions: 2.0.7_react@17.0.2
+      react-input-mask: 2.0.4_react-dom@17.0.2+react@17.0.2
       react-keyed-flatten-children: 1.3.0_react@17.0.2
       react-select: 5.2.2_b49bddbe4b905ced4713cb857cca91fa
       react-table: 7.7.0_react@17.0.2
@@ -165,6 +166,7 @@ importers:
       '@types/jest': 27.4.1
       '@types/lodash.debounce': 4.0.7
       '@types/react': 17.0.44
+      '@types/react-input-mask': 2.0.5
       '@types/react-table': 7.7.10
       '@vanilla-extract/babel-plugin': 1.1.5
       '@vanilla-extract/css': 1.6.8
@@ -9560,6 +9562,12 @@ packages:
     dependencies:
       '@types/react': 17.0.44
 
+  /@types/react-input-mask/2.0.5:
+    resolution: {integrity: sha512-4wPehO42dCk2sMrAGGT/xIfUG5GVdmzyGalweW5EvJARNXgtoxQ9HnkgSkXlVKR3oLVIHlT/vXk/DUXV+WSPyw==}
+    dependencies:
+      '@types/react': 17.0.44
+    dev: true
+
   /@types/react-router-config/5.0.6:
     resolution: {integrity: sha512-db1mx37a1EJDf1XeX8jJN7R3PZABmJQXR8r28yUjVMFSjkmnQo6X6pOEEmNl+Tp2gYQOGPdYbFIipBtdElZ3Yg==}
     dependencies:
@@ -17951,10 +17959,6 @@ packages:
     hasBin: true
     dev: true
 
-  /moment/2.29.3:
-    resolution: {integrity: sha512-c6YRvhEo//6T2Jz/vVtYzqBzwvPT95JBQ+smCytzf7c50oMZRsR/a4w88aD34I+/QVSfnoAnSBFPJHItlOMJVw==}
-    dev: false
-
   /move-concurrently/1.0.1:
     resolution: {integrity: sha1-viwAX9oy4LKa8fBdfEszIUxwH5I=}
     dependencies:
@@ -19925,6 +19929,18 @@ packages:
       react-dom: 17.0.2_react@17.0.2
       react-fast-compare: 3.2.0
       shallowequal: 1.1.0
+
+  /react-input-mask/2.0.4_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-1hwzMr/aO9tXfiroiVCx5EtKohKwLk/NT8QlJXHQ4N+yJJFyUuMT+zfTpLBwX/lK3PkuMlievIffncpMZ3HGRQ==}
+    peerDependencies:
+      react: '>=0.14.0'
+      react-dom: '>=0.14.0'
+    dependencies:
+      invariant: 2.2.4
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      warning: 4.0.3
+    dev: false
 
   /react-inspector/5.1.1_react@17.0.2:
     resolution: {integrity: sha512-GURDaYzoLbW8pMGXwYPDBIv6nqei4kK7LPRZ9q9HCZF54wqXz/dnylBp/kfE9XmekBhHvLDdcYeyIwSrvtOiWg==}
@@ -22874,7 +22890,6 @@ packages:
     resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
     dependencies:
       loose-envify: 1.4.0
-    dev: true
 
   /watchpack-chokidar2/2.0.1:
     resolution: {integrity: sha512-nCFfBIPKr5Sh61s4LPpy1Wtfi0HE8isJ3d2Yb5/Ppw2P2B/3eVSEBjKfN0fmHJSK14+31KwMKmcrzs2GM4P0Ww==}
