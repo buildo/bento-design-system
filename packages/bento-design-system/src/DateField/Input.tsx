@@ -14,6 +14,7 @@ type Props = {
   onInputFocus: () => void;
   focusDate: (date: Date) => void;
   disabled: boolean;
+  readOnly: boolean;
   isDateBlocked: (date: Date) => boolean;
   onDateSelect: (date: Date) => void;
   onDateClear: () => void;
@@ -35,8 +36,10 @@ export function Input(props: Props) {
     return setValue(_getInputValue(props.currentDate, (date) => dateFormatter.format(date), ""));
   }
   const onFocus = () => {
-    props.inputRef.current && props.inputRef.current.select();
-    props.onInputFocus();
+    if (!props.readOnly) {
+      props.inputRef.current && props.inputRef.current.select();
+      props.onInputFocus();
+    }
   };
   const { inputProps } = useTextField(
     {
@@ -53,6 +56,7 @@ export function Input(props: Props) {
         }
       },
       isDisabled: props.disabled,
+      isReadOnly: props.readOnly,
       onBlur: setCurrentValue,
       onFocus,
       onKeyDown: (e) => {
@@ -90,19 +94,24 @@ export function Input(props: Props) {
       mask="99/99/9999"
       maskChar=""
     >
-      {(inputProps: InputHTMLAttributes<HTMLInputElement>) => {
+      {(maskedInputProps: InputHTMLAttributes<HTMLInputElement>) => {
+        const { onFocus, onBlur, ...rest } = inputProps;
         return (
           <Box
             as="input"
             type="text"
             className={input}
             ref={props.inputRef}
-            onClick={props.onInputFocus}
-            {...inputProps}
+            onClick={() => {
+              if (!props.disabled && !props.readOnly) {
+                props.onInputFocus();
+              }
+            }}
+            {...rest}
+            {...maskedInputProps}
             color={undefined}
             width={undefined}
             height={undefined}
-            disabled={props.disabled}
           />
         );
       }}

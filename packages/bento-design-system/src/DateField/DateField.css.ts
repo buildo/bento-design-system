@@ -15,6 +15,7 @@ export const dateFieldRecipe = strictRecipe({
     validation: {
       valid: {},
       invalid: {},
+      notSet: {},
     },
     isFocused: {
       true: {},

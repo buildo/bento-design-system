@@ -22,6 +22,14 @@ const value = new Date("2022-02-04T09:25:00.000Z");
 
 export const SingleDate = createControlledStory(value, {});
 
+export const Disabled = createControlledStory(null, {
+  disabled: true,
+});
+
+export const ReadOnly = createControlledStory(value, {
+  readOnly: true,
+});
+
 export const Range = createControlledStory([value, value], {
   type: "range",
 });

@@ -20,6 +20,7 @@ import { useField } from "@react-aria/label";
 import { Input } from "./Input";
 import { IconChevronRight } from "../Icons";
 import { dateFieldRecipe } from "./DateField.css";
+import clsx from "clsx";
 
 type SingleDateFieldProps = {
   type?: "single";
@@ -30,6 +31,7 @@ type RangeDateFieldProps = {
 type Props = (SingleDateFieldProps | RangeDateFieldProps) & {
   minDate?: UseDatepickerProps["minBookingDate"];
   maxDate?: UseDatepickerProps["maxBookingDate"];
+  readOnly?: boolean;
 };
 
 export function createDateField(
@@ -51,7 +53,7 @@ export function createDateField(
     const startInputRef = useRef<HTMLInputElement>(null);
     const endInputRef = useRef<HTMLInputElement>(null);
     const [focusedInput, setFocusedInput] = useState<FocusedInput>(null);
-    const validationState = props.issues ? "invalid" : "valid";
+    const validationState = props.readOnly ? "notSet" : props.issues ? "invalid" : "valid";
 
     const {
       goToDate,
@@ -130,7 +132,7 @@ export function createDateField(
           borderRadius={inputConfig.radius}
           paddingX={inputConfig.paddingX}
           paddingY={inputConfig.paddingY}
-          className={[
+          className={clsx(
             inputRecipe({ validation: validationState || "notSet" }),
             bodyRecipe({
               color: props.disabled ? "disabled" : "default",
@@ -138,7 +140,10 @@ export function createDateField(
               size: inputConfig.fontSize,
             }),
             dateFieldRecipe({ validation: validationState || "notSet", isFocused: !!focusedInput }),
-          ]}
+            {
+              readOnly: props.readOnly,
+            }
+          )}
           disabled={props.disabled}
         >
           <Columns space={4} alignY="center">
@@ -147,6 +152,7 @@ export function createDateField(
               currentDate={props.type === "range" ? props.value[0] : props.value}
               inputRef={startInputRef}
               disabled={props.disabled || false}
+              readOnly={props.readOnly || false}
               focusDate={onDateFocus}
               inFocus={focusedInput === "startDate"}
               isDateBlocked={isDateBlocked}
@@ -164,6 +170,7 @@ export function createDateField(
                   currentDate={props.value[1]}
                   inputRef={endInputRef}
                   disabled={props.disabled || false}
+                  readOnly={props.readOnly || false}
                   focusDate={onDateFocus}
                   inFocus={focusedInput === "endDate"}
                   isDateBlocked={isDateBlocked}
