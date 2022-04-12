@@ -93,7 +93,8 @@ export function createBentoComponents<
     Banner,
   });
 
-  const Link = createLink(merge(defaultConfigs.link, config.link ?? {}));
+  const linkConfig = merge(defaultConfigs.link, config.link ?? {});
+  const Link = createLink(linkConfig);
 
   const Breadcrumb = createBreadcrumb(merge(defaultConfigs.breadcrumb, config.breadcrumb ?? {}), {
     Link,
@@ -187,7 +188,7 @@ export function createBentoComponents<
     IconButton,
   });
 
-  const DesignSystemProvider = createBentoProvider(ToastProvider);
+  const DesignSystemProvider = createBentoProvider(ToastProvider, linkConfig);
 
   const icons = {
     IconIdea,

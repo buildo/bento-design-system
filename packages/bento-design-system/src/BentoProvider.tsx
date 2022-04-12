@@ -34,13 +34,15 @@ type Props = {
   linkConfig?: LinkConfig;
 } & DefaultMessages;
 
-export function createBentoProvider(ToastProvider: FunctionComponent<ToastProviderProps>) {
+export function createBentoProvider(
+  ToastProvider: FunctionComponent<ToastProviderProps>,
+  linkConfig?: LinkConfig
+) {
   return function BentoProvider({
     children,
     toastDismissAfterMs = 5000,
     defaultMessages,
     linkComponent,
-    linkConfig,
   }: Props) {
     const linkComponentFromContext = useContext(LinkComponentContext);
 
