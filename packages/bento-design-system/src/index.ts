@@ -82,6 +82,9 @@ export * from "./util/useDefaultMessages";
 
 export { icons, illustrations };
 
+export type { BentoConfig } from "./BentoConfig";
 export { defaultConfigs };
 
 export { createBentoComponents } from "./createBentoComponents";
+
+export { createUseComponentsShowcase } from "./createUseComponentsShowcase";
