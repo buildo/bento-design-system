@@ -9,7 +9,7 @@ const { defaultExport, createStory } = createComponentStories({
 
 export default defaultExport;
 
-export const linear = createStory({
+export const Linear = createStory({
   items: [
     {
       title: formatMessage("Title"),
@@ -27,30 +27,37 @@ export const linear = createStory({
   ],
 });
 
-export const nested = createStory({
-  items: [
-    {
-      title: formatMessage("Title"),
-      initialIsOpen: true,
-      items: [
-        {
-          title: formatMessage("Title"),
-          children: <Placeholder />,
-          initialIsOpen: true,
-        },
-        {
-          title: formatMessage("Title"),
-          children: <Placeholder />,
-        },
-      ],
-    },
-    {
-      title: formatMessage("Title"),
-      children: <Placeholder />,
-    },
-    {
-      title: formatMessage("Title"),
-      children: <Placeholder />,
-    },
-  ],
+const nestedItems = [
+  {
+    title: formatMessage("Title"),
+    initialIsOpen: true,
+    items: [
+      {
+        title: formatMessage("Title"),
+        children: <Placeholder />,
+        initialIsOpen: true,
+      },
+      {
+        title: formatMessage("Title"),
+        children: <Placeholder />,
+      },
+    ],
+  },
+  {
+    title: formatMessage("Title"),
+    children: <Placeholder />,
+  },
+  {
+    title: formatMessage("Title"),
+    children: <Placeholder />,
+  },
+];
+
+export const Nested = createStory({
+  items: nestedItems,
+});
+
+export const LeadingIcon = createStory({
+  items: nestedItems,
+  iconPosition: "leading",
 });

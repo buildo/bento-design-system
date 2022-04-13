@@ -22,6 +22,8 @@ export const Level1 = createStory({});
 
 export const Level2 = createStory({ level: 2 });
 
+export const LeadingIcon = createStory({ iconPosition: "leading" });
+
 export const InCard = createStory({ level: 2 });
 InCard.decorators = [
   (Story: Story) => (
