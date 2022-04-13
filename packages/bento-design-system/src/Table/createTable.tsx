@@ -25,7 +25,6 @@ import {
   ButtonProps,
   ChipProps,
   FeedbackProps,
-  LinkProps,
 } from "..";
 import { Box, Column, Columns } from "../internal";
 import {
@@ -50,7 +49,7 @@ import {
   createButtonLinkColumn,
   createChipColumn,
   createIconButtonColumn,
-  createLinkColumn,
+  linkColumn,
   iconColumn,
   labelColumn,
   numberColumn,
@@ -440,18 +439,15 @@ export function createTableColumns<CustomChipColor extends string>({
   ButtonLink,
   IconButton,
   Chip,
-  Link,
 }: {
   Button: FunctionComponent<ButtonProps>;
   ButtonLink: FunctionComponent<ButtonLinkProps>;
   Chip: FunctionComponent<ChipProps<CustomChipColor>>;
-  Link: FunctionComponent<LinkProps>;
   IconButton: FunctionComponent<IconButtonProps>;
 }) {
   const buttonColumn = createButtonColumn(Button);
   const buttonLinkColumn = createButtonLinkColumn(ButtonLink);
   const chipColumn = createChipColumn(Chip);
-  const linkColumn = createLinkColumn(Link);
   const iconButtonColumn = createIconButtonColumn(IconButton);
   return {
     custom: column,

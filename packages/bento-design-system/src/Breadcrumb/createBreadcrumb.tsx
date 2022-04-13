@@ -1,7 +1,9 @@
 import { useBreadcrumbItem, useBreadcrumbs } from "@react-aria/breadcrumbs";
-import { useRef, Fragment, FunctionComponent } from "react";
-import { Body, LinkProps, LocalizedString } from "../";
+import { useRef, Fragment } from "react";
+import { Body, LocalizedString } from "../";
 import { Box, Inline } from "../internal";
+import { Label } from "../Typography/Label/Label";
+import { link, makeTextChildrenFromElements } from "../util/TextChildren";
 import { BreadcrumbConfig } from "./Config";
 
 type LastItem = {
@@ -14,15 +16,8 @@ type Props = {
   items: [...Item[], LastItem];
 };
 
-export function createBreadcrumb(
-  config: BreadcrumbConfig,
-  {
-    Link,
-  }: {
-    Link: FunctionComponent<LinkProps>;
-  }
-) {
-  const BreadcrumbItem = createBreadcrumbItem(Link);
+export function createBreadcrumb(config: BreadcrumbConfig) {
+  const BreadcrumbItem = createBreadcrumbItem();
   const Separator = config.separator;
   return function Breadcrumb(props: Props) {
     const children = (
@@ -54,7 +49,7 @@ export function createBreadcrumb(
 }
 
 type BreadcrumbItemProps = LastItem & Partial<Item> & { isCurrent: boolean };
-function createBreadcrumbItem(Link: FunctionComponent<LinkProps>) {
+function createBreadcrumbItem() {
   return function BreadcrumbItem({ isCurrent, label, href = "" }: BreadcrumbItemProps) {
     const ref = useRef(null);
     const {
@@ -68,13 +63,7 @@ function createBreadcrumbItem(Link: FunctionComponent<LinkProps>) {
             {label}
           </Body>
         ) : (
-          <Link
-            label={label}
-            href={href}
-            title={label}
-            // NOTE(gabro): we need the cast due to a minor inconsistency in the callback type of FocusEventHandler
-            {...itemProps}
-          />
+          <Label size="medium">{makeTextChildrenFromElements(link(label, { href }))}</Label>
         )}
       </Box>
     );

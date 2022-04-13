@@ -28,7 +28,6 @@ export * from "./Illustrations";
 export * from "./Illustrations/svgIllustrationProps";
 export * from "./InlineLoader/InlineLoader";
 export * from "./Layout/createLayoutComponents";
-export * from "./Link/createLink";
 export * from "./List/createListComponents";
 export * from "./Menu/createMenu";
 export * from "./Modal/createModal";

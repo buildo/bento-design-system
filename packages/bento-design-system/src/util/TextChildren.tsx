@@ -10,7 +10,7 @@ import { NonEmptyArray } from "./NonEmptyArray";
 import { splitBy } from "./splitBy";
 import { linkRecipe } from "../Link/Link.css";
 import { LinkConfig } from "../Link/Config";
-import { LinkProps } from "../Link/createLink";
+import { Omit } from "./Omit";
 
 /** `TextChildren` is a DSL for building type-safe rich localized strings.
  *  It's the composition of strings that have been localized (`LocalizedString`) and other elements
@@ -56,26 +56,28 @@ export function bold(text: LocalizedString): LocalizedBold {
   return { type: "bold", text };
 }
 
-export type LinkOptions =
+export type LinkOptions = (
   | {
       href: string;
       target?: HTMLAttributeAnchorTarget;
     }
   | {
       onClick: ButtonProps["onPress"];
-    };
+    }
+) & {
+  kind: "default" | "inverse";
+  disabled?: boolean;
+};
 
 export function link(
   text: LocalizedString,
-  options: LinkOptions,
-  kind: LinkProps["kind"] = "default"
+  { kind = "default", ...options }: Omit<LinkOptions, "kind"> & { kind?: LinkOptions["kind"] }
 ): LocalizedLink {
   return { type: "link", text, kind, ...options };
 }
 
 export type LocalizedLink = {
   type: "link";
-  kind: "default" | "inverse";
   text: LocalizedString;
 } & LinkOptions;
 
