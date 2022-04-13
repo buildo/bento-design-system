@@ -17,7 +17,6 @@ type Props = {
 };
 
 export function createBreadcrumb(config: BreadcrumbConfig) {
-  const BreadcrumbItem = createBreadcrumbItem();
   const Separator = config.separator;
   return function Breadcrumb(props: Props) {
     const children = (
@@ -49,25 +48,23 @@ export function createBreadcrumb(config: BreadcrumbConfig) {
 }
 
 type BreadcrumbItemProps = LastItem & Partial<Item> & { isCurrent: boolean };
-function createBreadcrumbItem() {
-  return function BreadcrumbItem({ isCurrent, label, href = "" }: BreadcrumbItemProps) {
-    const ref = useRef(null);
-    const {
-      itemProps: { color, ...itemProps },
-    } = useBreadcrumbItem({ children: label, isCurrent, elementType: "div" }, ref);
+function BreadcrumbItem({ isCurrent, label, href = "" }: BreadcrumbItemProps) {
+  const ref = useRef(null);
+  const {
+    itemProps: { color, ...itemProps },
+  } = useBreadcrumbItem({ children: label, isCurrent, elementType: "div" }, ref);
 
-    return (
-      <Box as="li" ref={ref}>
-        {isCurrent ? (
-          <Body size="medium" {...itemProps}>
-            {label}
-          </Body>
-        ) : (
-          <Label size="medium">{makeTextChildrenFromElements(link(label, { href }))}</Label>
-        )}
-      </Box>
-    );
-  };
+  return (
+    <Box as="li" ref={ref}>
+      {isCurrent ? (
+        <Body size="medium" {...itemProps}>
+          {label}
+        </Body>
+      ) : (
+        <Label size="medium">{makeTextChildrenFromElements(link(label, { href }))}</Label>
+      )}
+    </Box>
+  );
 }
 
 export type { Props as BreadcrumbProps };
