@@ -64,7 +64,6 @@ export const {
   InlineLoader,
   Inset,
   Label,
-  Link,
   List,
   ListItem,
   Menu,
