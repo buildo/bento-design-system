@@ -6,4 +6,5 @@ export type DropdownConfig = {
   radius: BentoSprinkles["borderRadius"];
   list: ListConfig;
   menuPaddingY: BentoSprinkles["paddingY"];
+  defaultMenuSize: "medium" | "large";
 };

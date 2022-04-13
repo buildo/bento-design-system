@@ -354,6 +354,7 @@ export const dropdown: DropdownConfig = {
       },
     },
   },
+  defaultMenuSize: "medium",
 };
 
 export const table: TableConfig = {
