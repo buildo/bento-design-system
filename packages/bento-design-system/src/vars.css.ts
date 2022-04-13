@@ -168,6 +168,10 @@ export const vars = createThemeContract({
     linkHover: null,
     linkFocus: null,
     linkDisabled: null,
+    linkEnabledInverse: null,
+    linkHoverInverse: null,
+    linkFocusInverse: null,
+    linkDisabledInverse: null,
   },
   outlineColor: {
     outlineInteractive: null,
