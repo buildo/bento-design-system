@@ -61,7 +61,7 @@ function BreadcrumbItem({ isCurrent, label, href = "" }: BreadcrumbItemProps) {
           {label}
         </Body>
       ) : (
-        <Label size="medium">{makeTextChildrenFromElements(link(label, { href }))}</Label>
+        <Label size="large">{makeTextChildrenFromElements(link(label, { href }))}</Label>
       )}
     </Box>
   );
