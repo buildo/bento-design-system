@@ -69,7 +69,7 @@ export function createSelectField(
       isMulti,
       noOptionsMessage,
       autoFocus,
-      menuSize = "medium",
+      menuSize = dropdownConfig.defaultMenuSize,
     } = props;
 
     const validationState = issues ? "invalid" : "valid";
