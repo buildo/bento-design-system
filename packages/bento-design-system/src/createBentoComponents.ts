@@ -18,7 +18,6 @@ import {
   createFormLayoutComponents,
   createIconButton,
   createLayoutComponents,
-  createLink,
   createListComponents,
   createMenu,
   createModal,
@@ -94,7 +93,6 @@ export function createBentoComponents<
   });
 
   const linkConfig = merge(defaultConfigs.link, config.link ?? {});
-  const Link = createLink(linkConfig);
 
   const Breadcrumb = createBreadcrumb(merge(defaultConfigs.breadcrumb, config.breadcrumb ?? {}));
 
