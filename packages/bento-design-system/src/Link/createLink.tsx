@@ -1,6 +1,6 @@
 import { AnchorHTMLAttributes, useRef } from "react";
 import { useLinkComponent } from "../util/link";
-import { LocalizedString } from "..";
+import { Label, LocalizedString } from "..";
 import { Box } from "../internal";
 import { useLink } from "@react-aria/link";
 import * as resetStyles from "../reset.css";
@@ -53,7 +53,9 @@ export function createLink(config: LinkConfig) {
         display="inline-block"
         textDecoration={config.textDecoration}
       >
-        {label}
+        <Label as="span" size="medium">
+          {label}
+        </Label>
       </Box>
     );
   };
