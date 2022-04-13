@@ -8,9 +8,9 @@ import { LinkComponentProps, useLinkComponent } from "./link";
 import { LocalizedString } from "./LocalizedString";
 import { NonEmptyArray } from "./NonEmptyArray";
 import { splitBy } from "./splitBy";
-import { link as linkStyle } from "../Link/Link.css";
+import { linkRecipe } from "../Link/Link.css";
 import { LinkConfig } from "../Link/Config";
-import { bentoSprinkles } from "../internal";
+import { LinkProps } from "../Link/createLink";
 
 /** `TextChildren` is a DSL for building type-safe rich localized strings.
  *  It's the composition of strings that have been localized (`LocalizedString`) and other elements
@@ -65,12 +65,17 @@ export type LinkOptions =
       onClick: ButtonProps["onPress"];
     };
 
-export function link(text: LocalizedString, options: LinkOptions): LocalizedLink {
-  return { type: "link", text, ...options };
+export function link(
+  text: LocalizedString,
+  options: LinkOptions,
+  kind: LinkProps["kind"] = "default"
+): LocalizedLink {
+  return { type: "link", text, kind, ...options };
 }
 
 export type LocalizedLink = {
   type: "link";
+  kind: "default" | "inverse";
   text: LocalizedString;
 } & LinkOptions;
 
@@ -105,8 +110,8 @@ export function textChildrenToChildrenArray(
       return [
         <Box
           as={LinkComponent}
-          className={clsx(linkStyle, bentoSprinkles({ fontWeight: "label" }))}
-          textDecoration={linkConfig.labelDecoration}
+          className={clsx(linkRecipe({ kind: children.kind }))}
+          textDecoration={linkConfig.textDecoration}
           {...children}
         >
           {children.text}

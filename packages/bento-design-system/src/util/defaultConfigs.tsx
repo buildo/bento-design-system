@@ -237,8 +237,7 @@ export const iconButton: IconButtonConfig = {
 };
 
 export const link: LinkConfig = {
-  labelSize: "large",
-  labelDecoration: {
+  textDecoration: {
     default: "none",
     active: "none",
     hover: "underline",

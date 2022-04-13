@@ -19,3 +19,11 @@ export const Default = createStory({});
 export const Disabled = createStory({
   isDisabled: true,
 });
+export const Inverse = createStory({
+  kind: "inverse",
+});
+Inverse.parameters = {
+  backgrounds: {
+    default: "dark",
+  },
+};

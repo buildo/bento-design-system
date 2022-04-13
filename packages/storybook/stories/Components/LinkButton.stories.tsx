@@ -4,7 +4,14 @@ import { createComponentStories, formatMessage } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Body,
-  args: {},
+  args: {
+    size: "medium",
+    children: makeTextChildrenFromElements(
+      link(formatMessage("I look like a link, but I'm actually a button!"), {
+        onClick: action("onClick"),
+      })
+    ),
+  },
   parameters: {
     // NOTE(gabro): this is to avoid Storybook erroring when trying to parse the DSL
     // See https://github.com/storybookjs/storybook/issues/11543#issuecomment-684130442
@@ -14,11 +21,25 @@ const { defaultExport, createStory } = createComponentStories({
 
 export default defaultExport;
 
-export const LinkButton = createStory({
-  size: "medium",
+export const LinkButton = createStory({});
+
+export const LinkButtonInverse = createStory({
   children: makeTextChildrenFromElements(
-    link(formatMessage("I look like a link, but I'm actually a button!"), {
-      onClick: action("onClick"),
-    })
+    link(
+      formatMessage("I look like a link, but I'm actually a button!"),
+      {
+        onClick: action("onClick"),
+      },
+      "inverse"
+    )
   ),
+});
+LinkButtonInverse.parameters = {
+  backgrounds: {
+    default: "dark",
+  },
+};
+
+export const LinkButtonStrong = createStory({
+  weight: "strong",
 });

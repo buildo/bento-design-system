@@ -1,14 +1,15 @@
 import { AnchorHTMLAttributes, useRef } from "react";
 import { useLinkComponent } from "../util/link";
-import { Label, LocalizedString } from "..";
+import { LocalizedString } from "..";
 import { Box } from "../internal";
 import { useLink } from "@react-aria/link";
 import * as resetStyles from "../reset.css";
-import { link } from "./Link.css";
+import { linkRecipe } from "./Link.css";
 import { extendedHitAreaRecipe } from "../util/extendedHitArea.css";
 import { LinkConfig } from "./Config";
 
 type Props = {
+  kind?: "default" | "inverse";
   href: string;
   label: LocalizedString;
   isDisabled?: boolean;
@@ -16,7 +17,14 @@ type Props = {
 } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "color">;
 
 export function createLink(config: LinkConfig) {
-  return function Link({ href, isDisabled, label, active = false, ...props }: Props) {
+  return function Link({
+    href,
+    isDisabled,
+    label,
+    active = false,
+    kind = "default",
+    ...props
+  }: Props) {
     const LinkComponent = useLinkComponent();
     const ref = useRef<HTMLAnchorElement>(null);
     const {
@@ -36,14 +44,16 @@ export function createLink(config: LinkConfig) {
         {...props}
         as={LinkComponent.component}
         href={href}
-        className={[link, extendedHitAreaRecipe({ axis: "y" }), resetStyles.element["a"]]}
+        className={[
+          linkRecipe({ kind }),
+          extendedHitAreaRecipe({ axis: "y" }),
+          resetStyles.element["a"],
+        ]}
         disabled={isDisabled}
         display="inline-block"
-        textDecoration={config.labelDecoration}
+        textDecoration={config.textDecoration}
       >
-        <Label as="span" size={config.labelSize}>
-          {label}
-        </Label>
+        {label}
       </Box>
     );
   };
