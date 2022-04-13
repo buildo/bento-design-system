@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { ComponentType, HTMLAttributeAnchorTarget, isValidElement } from "react";
 import flattenChildren from "react-keyed-flatten-children";
 import { ButtonProps } from "../Button/createButton";
@@ -112,7 +111,7 @@ export function textChildrenToChildrenArray(
       return [
         <Box
           as={LinkComponent}
-          className={clsx(linkRecipe({ kind: children.kind }))}
+          className={linkRecipe({ kind: children.kind })}
           textDecoration={linkConfig.textDecoration}
           {...children}
         >

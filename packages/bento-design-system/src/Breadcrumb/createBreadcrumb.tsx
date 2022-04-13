@@ -2,7 +2,6 @@ import { useBreadcrumbItem, useBreadcrumbs } from "@react-aria/breadcrumbs";
 import { useRef, Fragment } from "react";
 import { Body, LocalizedString } from "../";
 import { Box, Inline } from "../internal";
-import { Label } from "../Typography/Label/Label";
 import { link, makeTextChildrenFromElements } from "../util/TextChildren";
 import { BreadcrumbConfig } from "./Config";
 
@@ -18,6 +17,21 @@ type Props = {
 
 export function createBreadcrumb(config: BreadcrumbConfig) {
   const Separator = config.separator;
+  type BreadcrumbItemProps = LastItem & Partial<Item> & { isCurrent: boolean };
+  function BreadcrumbItem({ isCurrent, label, href = "" }: BreadcrumbItemProps) {
+    const ref = useRef(null);
+    const {
+      itemProps: { color, ...itemProps },
+    } = useBreadcrumbItem({ children: label, isCurrent, elementType: "div" }, ref);
+
+    return (
+      <Box as="li" ref={ref}>
+        <Body size={config.fontSize} {...itemProps}>
+          {isCurrent ? label : makeTextChildrenFromElements(link(label, { href }))}
+        </Body>
+      </Box>
+    );
+  }
   return function Breadcrumb(props: Props) {
     const children = (
       <Box as="ol">
@@ -45,26 +59,6 @@ export function createBreadcrumb(config: BreadcrumbConfig) {
       </Box>
     );
   };
-}
-
-type BreadcrumbItemProps = LastItem & Partial<Item> & { isCurrent: boolean };
-function BreadcrumbItem({ isCurrent, label, href = "" }: BreadcrumbItemProps) {
-  const ref = useRef(null);
-  const {
-    itemProps: { color, ...itemProps },
-  } = useBreadcrumbItem({ children: label, isCurrent, elementType: "div" }, ref);
-
-  return (
-    <Box as="li" ref={ref}>
-      {isCurrent ? (
-        <Body size="medium" {...itemProps}>
-          {label}
-        </Body>
-      ) : (
-        <Label size="large">{makeTextChildrenFromElements(link(label, { href }))}</Label>
-      )}
-    </Box>
-  );
 }
 
 export type { Props as BreadcrumbProps };

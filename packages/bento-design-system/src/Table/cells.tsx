@@ -92,9 +92,9 @@ export function LinkCell({
 }: CellProps<{}, { href: string; label: LocalizedString; isDisabled?: boolean }>) {
   return (
     <Box padding={16} textAlign={align}>
-      <Label size="large">
+      <Body size="medium">
         {makeTextChildrenFromElements(link(label, { href, disabled: isDisabled }))}
-      </Label>
+      </Body>
     </Box>
   );
 }
