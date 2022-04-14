@@ -1,7 +1,8 @@
 import { useBreadcrumbItem, useBreadcrumbs } from "@react-aria/breadcrumbs";
-import { useRef, Fragment, FunctionComponent } from "react";
-import { Body, LinkProps, LocalizedString } from "../";
+import { useRef, Fragment } from "react";
+import { Body, LocalizedString } from "../";
 import { Box, Inline } from "../internal";
+import { link, makeTextChildrenFromElements } from "../util/TextChildren";
 import { BreadcrumbConfig } from "./Config";
 
 type LastItem = {
@@ -14,16 +15,23 @@ type Props = {
   items: [...Item[], LastItem];
 };
 
-export function createBreadcrumb(
-  config: BreadcrumbConfig,
-  {
-    Link,
-  }: {
-    Link: FunctionComponent<LinkProps>;
-  }
-) {
-  const BreadcrumbItem = createBreadcrumbItem(Link);
+export function createBreadcrumb(config: BreadcrumbConfig) {
   const Separator = config.separator;
+  type BreadcrumbItemProps = LastItem & Partial<Item> & { isCurrent: boolean };
+  function BreadcrumbItem({ isCurrent, label, href = "" }: BreadcrumbItemProps) {
+    const ref = useRef(null);
+    const {
+      itemProps: { color, ...itemProps },
+    } = useBreadcrumbItem({ children: label, isCurrent, elementType: "div" }, ref);
+
+    return (
+      <Box as="li" ref={ref}>
+        <Body size={config.fontSize} {...itemProps}>
+          {isCurrent ? label : makeTextChildrenFromElements(link(label, { href }))}
+        </Body>
+      </Box>
+    );
+  }
   return function Breadcrumb(props: Props) {
     const children = (
       <Box as="ol">
@@ -48,34 +56,6 @@ export function createBreadcrumb(
     return (
       <Box as="nav" {...navProps} color={undefined}>
         {children}
-      </Box>
-    );
-  };
-}
-
-type BreadcrumbItemProps = LastItem & Partial<Item> & { isCurrent: boolean };
-function createBreadcrumbItem(Link: FunctionComponent<LinkProps>) {
-  return function BreadcrumbItem({ isCurrent, label, href = "" }: BreadcrumbItemProps) {
-    const ref = useRef(null);
-    const {
-      itemProps: { color, ...itemProps },
-    } = useBreadcrumbItem({ children: label, isCurrent, elementType: "div" }, ref);
-
-    return (
-      <Box as="li" ref={ref}>
-        {isCurrent ? (
-          <Body size="medium" {...itemProps}>
-            {label}
-          </Body>
-        ) : (
-          <Link
-            label={label}
-            href={href}
-            title={label}
-            // NOTE(gabro): we need the cast due to a minor inconsistency in the callback type of FocusEventHandler
-            {...itemProps}
-          />
-        )}
       </Box>
     );
   };

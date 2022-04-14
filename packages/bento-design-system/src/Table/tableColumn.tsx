@@ -1,6 +1,6 @@
 import { CellProps, Column as Column_, Row as Row_ } from "react-table";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import { LocalizedString, Children, Body, ButtonProps, ChipProps, IconProps, LinkProps } from "..";
+import { LocalizedString, Children, Body, ButtonProps, ChipProps, IconProps } from "..";
 import { Box } from "../internal";
 import { Column } from "./types";
 import { FunctionComponent } from "react";
@@ -10,7 +10,7 @@ import {
   createButtonLinkCell,
   createChipCell,
   createIconButtonCell,
-  createLinkCell,
+  LinkCell,
   IconCell,
   LabelCell,
   TextCell,
@@ -198,15 +198,12 @@ export function labelColumn<A extends string>(options: ColumnOptionsBase<A>) {
   });
 }
 
-export function createLinkColumn(Link: FunctionComponent<LinkProps>) {
-  const LinkCell = createLinkCell(Link);
-  return function buttonColumn<A extends string>(options: ColumnOptionsBase<A>) {
-    return column({
-      ...options,
-      Cell: LinkCell,
-      sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
-    });
-  };
+export function linkColumn<A extends string>(options: ColumnOptionsBase<A>) {
+  return column({
+    ...options,
+    Cell: LinkCell,
+    sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
+  });
 }
 
 export function iconColumn<A extends string>(options: ColumnOptionsBase<A>) {

@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { ComponentType, HTMLAttributeAnchorTarget, isValidElement } from "react";
 import flattenChildren from "react-keyed-flatten-children";
 import { ButtonProps } from "../Button/createButton";
@@ -8,9 +7,9 @@ import { LinkComponentProps, useLinkComponent } from "./link";
 import { LocalizedString } from "./LocalizedString";
 import { NonEmptyArray } from "./NonEmptyArray";
 import { splitBy } from "./splitBy";
-import { link as linkStyle } from "../Link/Link.css";
+import { linkRecipe } from "../Link/Link.css";
 import { LinkConfig } from "../Link/Config";
-import { bentoSprinkles } from "../internal";
+import { Omit } from "./Omit";
 
 /** `TextChildren` is a DSL for building type-safe rich localized strings.
  *  It's the composition of strings that have been localized (`LocalizedString`) and other elements
@@ -56,17 +55,24 @@ export function bold(text: LocalizedString): LocalizedBold {
   return { type: "bold", text };
 }
 
-export type LinkOptions =
+export type LinkOptions = (
   | {
       href: string;
       target?: HTMLAttributeAnchorTarget;
     }
   | {
       onClick: ButtonProps["onPress"];
-    };
+    }
+) & {
+  kind: "default" | "inverse";
+  disabled?: boolean;
+};
 
-export function link(text: LocalizedString, options: LinkOptions): LocalizedLink {
-  return { type: "link", text, ...options };
+export function link(
+  text: LocalizedString,
+  { kind = "default", ...options }: Omit<LinkOptions, "kind"> & { kind?: LinkOptions["kind"] }
+): LocalizedLink {
+  return { type: "link", text, kind, ...options };
 }
 
 export type LocalizedLink = {
@@ -105,8 +111,8 @@ export function textChildrenToChildrenArray(
       return [
         <Box
           as={LinkComponent}
-          className={clsx(linkStyle, bentoSprinkles({ fontWeight: "label" }))}
-          textDecoration={linkConfig.labelDecoration}
+          className={linkRecipe({ kind: children.kind })}
+          textDecoration={linkConfig.textDecoration}
           {...children}
         >
           {children.text}

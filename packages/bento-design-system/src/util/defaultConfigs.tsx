@@ -85,6 +85,7 @@ export const banner: BannerConfig = {
 };
 
 export const breadcrumb: BreadcrumbConfig = {
+  fontSize: "medium",
   separator: IconChevronRight,
   separatorSize: 8,
   space: 16,
@@ -239,8 +240,7 @@ export const iconButton: IconButtonConfig = {
 };
 
 export const link: LinkConfig = {
-  labelSize: "large",
-  labelDecoration: {
+  textDecoration: {
     default: "none",
     active: "none",
     hover: "underline",

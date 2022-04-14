@@ -69,8 +69,9 @@ describe("textChildrenToChildren", () => {
               "render": [Function],
             }
           }
-          className="Link__fmzr140 sprinkles_cursor_pointer_default__oc4xkuvq sprinkles_cursor_notAllowed_disabled__oc4xkuw4 sprinkles_outline_none_default__oc4xkuys sprinkles_color_linkEnabled_default__oc4xkuk7 sprinkles_color_linkHover_hover__oc4xkukd sprinkles_color_linkFocus_focus__oc4xkukj sprinkles_color_linkDisabled_disabled__oc4xkukq sprinkles_fontWeight_label__oc4xkuy"
+          className="Link__fmzr140 sprinkles_cursor_pointer_default__oc4xkuwa sprinkles_cursor_notAllowed_disabled__oc4xkuwo sprinkles_outline_none_default__oc4xkuzc Link_kind_default__fmzr143 Link__fmzr141 sprinkles_color_linkEnabled_default__oc4xkuk7 sprinkles_color_linkHover_hover__oc4xkukd sprinkles_color_linkFocus_focus__oc4xkukj sprinkles_color_linkDisabled_disabled__oc4xkukq"
           href="https://www.google.com"
+          kind="default"
           target="_blank"
           text="Link"
           textDecoration={
@@ -156,8 +157,9 @@ describe("textChildrenToChildren", () => {
               "render": [Function],
             }
           }
-          className="Link__fmzr140 sprinkles_cursor_pointer_default__oc4xkuvq sprinkles_cursor_notAllowed_disabled__oc4xkuw4 sprinkles_outline_none_default__oc4xkuys sprinkles_color_linkEnabled_default__oc4xkuk7 sprinkles_color_linkHover_hover__oc4xkukd sprinkles_color_linkFocus_focus__oc4xkukj sprinkles_color_linkDisabled_disabled__oc4xkukq sprinkles_fontWeight_label__oc4xkuy"
+          className="Link__fmzr140 sprinkles_cursor_pointer_default__oc4xkuwa sprinkles_cursor_notAllowed_disabled__oc4xkuwo sprinkles_outline_none_default__oc4xkuzc Link_kind_default__fmzr143 Link__fmzr141 sprinkles_color_linkEnabled_default__oc4xkuk7 sprinkles_color_linkHover_hover__oc4xkukd sprinkles_color_linkFocus_focus__oc4xkukj sprinkles_color_linkDisabled_disabled__oc4xkukq"
           href="https://www.google.com"
+          kind="default"
           target="_blank"
           text="Link"
           textDecoration={

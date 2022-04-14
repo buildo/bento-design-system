@@ -18,7 +18,6 @@ import {
   createFormLayoutComponents,
   createIconButton,
   createLayoutComponents,
-  createLink,
   createListComponents,
   createMenu,
   createModal,
@@ -94,11 +93,8 @@ export function createBentoComponents<
   });
 
   const linkConfig = merge(defaultConfigs.link, config.link ?? {});
-  const Link = createLink(linkConfig);
 
-  const Breadcrumb = createBreadcrumb(merge(defaultConfigs.breadcrumb, config.breadcrumb ?? {}), {
-    Link,
-  });
+  const Breadcrumb = createBreadcrumb(merge(defaultConfigs.breadcrumb, config.breadcrumb ?? {}));
 
   const Card = createCard(merge(defaultConfigs.card, config.card ?? {}));
 
@@ -179,7 +175,7 @@ export function createBentoComponents<
   );
 
   const Table = createTable(merge(defaultConfigs.table, config.table ?? {}), { Tooltip, Feedback });
-  const tableColumn = createTableColumns({ Button, ButtonLink, IconButton, Chip, Link });
+  const tableColumn = createTableColumns({ Button, ButtonLink, IconButton, Chip });
 
   const Tabs = createTabs(merge(defaultConfigs.folderTabs, config.tabs ?? {}));
 
@@ -249,7 +245,6 @@ export function createBentoComponents<
     InlineLoader,
     Inset,
     Label,
-    Link,
     List,
     ListItem,
     Menu,

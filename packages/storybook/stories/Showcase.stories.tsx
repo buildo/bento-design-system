@@ -6,3 +6,6 @@ export default {};
 export const Showcase = () => {
   return useComponentsShowcase({ action });
 };
+Showcase.parameters = {
+  chromatic: { pauseAnimationAtEnd: true },
+};
