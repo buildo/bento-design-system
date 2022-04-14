@@ -31,7 +31,9 @@ export const unconditionalProperties = {
     1: "1px",
     2: "2px",
   },
-  borderStyle: ["solid"],
+  borderStyle: {
+    solid: "solid",
+  },
   isolation: ["auto", "isolate"],
 } as const;
 
@@ -109,9 +111,14 @@ export const statusProperties = {
     notAllowed: "not-allowed",
   },
   boxShadow: { ...vars.boxShadow, none: "none", inherit: "inset 0px 0px 0px 1px" },
-  outline: ["none"],
-  outlineStyle: ["solid"],
-  outlineWidth: { 1: "1px" },
+  outline: {
+    none: "none",
+  },
+  outlineStyle: {
+    solid: "solid",
+    dashed: "dashed",
+  },
+  outlineWidth: { 1: "1px", 2: "2px" },
   outlineColor: vars.outlineColor,
   stroke: color,
   textDecoration: ["none", "underline"],
