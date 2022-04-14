@@ -13,3 +13,8 @@ categories:
   - title: "🧹 Chores"
     labels:
       - "chore"
+version-resolver:
+  major:
+    labels:
+      - 'breaking'
+  default: patch
