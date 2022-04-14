@@ -25,11 +25,6 @@ const fill = {
   ...customVars.color,
 };
 
-const outlineStyle = {
-  ...bentoStatusProperties.outline,
-  overline: "overline",
-};
-
 export const unconditionalProperties = {
   ...bentoUnconditionalProperties,
   fontFamily: {
@@ -53,5 +48,4 @@ export const statusProperties = {
   color,
   fill,
   stroke: color,
-  outlineStyle,
 };
