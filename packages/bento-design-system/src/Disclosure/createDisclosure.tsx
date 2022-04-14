@@ -33,7 +33,7 @@ export function createDisclosure(config: DisclosureConfig) {
     level = 1,
     children,
     initialIsOpen,
-    iconPosition = "trailing",
+    iconPosition = config.defaultIconPosition,
   }: Props) {
     const [internalIsOpen, setInternalIsOpen] = useState(isOpen ?? initialIsOpen);
     const open = internalIsOpen ?? isOpen;

@@ -25,7 +25,7 @@ export function createDisclosureGroup(
     Disclosure: FunctionComponent<DisclosureProps>;
   }
 ) {
-  return function DisclosureGroup({ items, iconPosition = "trailing" }: Props) {
+  return function DisclosureGroup({ items, iconPosition = config.defaultIconPosition }: Props) {
     const hasNestedItems = items.some((i) => !isLeaf(i));
     return (
       <Stack

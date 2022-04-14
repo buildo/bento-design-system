@@ -135,12 +135,14 @@ export const disclosure: DisclosureConfig = {
     1: "medium",
     2: "small",
   },
+  defaultIconPosition: "trailing",
 };
 
 export const disclosureGroup: DisclosureGroupConfig = {
   groupSpacing: 40,
   disclosureSpacing: 24,
   dividers: true,
+  defaultIconPosition: "trailing",
 };
 
 export const feedback: FeedbackConfig = {
