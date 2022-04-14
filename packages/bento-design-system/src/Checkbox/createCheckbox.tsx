@@ -1,7 +1,7 @@
 import { mergeProps } from "@react-aria/utils";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { Box, Columns, Column } from "../internal";
-import { Body, TextChildren } from "../";
+import { Body, Children } from "../";
 import { useFocusRing } from "@react-aria/focus";
 import { checkboxRecipe, fieldContainer } from "./Checkbox.css";
 import { vars } from "../vars.css";
@@ -43,7 +43,7 @@ function CheckboxMark({ isDisabled }: { isDisabled: boolean }) {
 
 type Props = {
   option: {
-    label: TextChildren;
+    label: Children;
     isSelected: boolean;
     isDisabled?: boolean;
   };

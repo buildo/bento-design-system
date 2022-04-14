@@ -18,7 +18,6 @@ import {
 import { FormLayoutConfig } from "./Form/Config";
 import { IconButtonConfig } from "./IconButton/Config";
 import { bentoSprinkles } from "./internal";
-import { LinkConfig } from "./Link/Config";
 import { ListConfig } from "./List/Config";
 import { MenuConfig } from "./Menu/Config";
 import { ModalConfig } from "./Modal/Config";
@@ -56,7 +55,6 @@ export type BentoConfig<
   };
   formLayout: FormLayoutConfig;
   iconButton: IconButtonConfig;
-  link: LinkConfig;
   list: ListConfig;
   menu: MenuConfig;
   modal: ModalConfig;

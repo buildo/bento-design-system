@@ -1,4 +1,4 @@
-import { TextChildren, useTextChildrenToChildren } from "../../";
+import { Children } from "../../util/Children";
 import { BoxProps } from "../../Box/createBentoBox";
 import { Box, bentoSprinkles } from "../../internal";
 import { labelRecipe } from "./Label.css";
@@ -14,7 +14,7 @@ type Color =
   | "disabled";
 
 export type LabelProps = {
-  children: TextChildren;
+  children: Children;
   size: Size;
   color?: Color;
   align?: Align;
@@ -32,10 +32,9 @@ export function Label({
   uppercase = false,
   ...boxProps
 }: LabelProps) {
-  const textChildrenToChildren = useTextChildrenToChildren();
   return (
     <Box {...boxProps} className={labelRecipe({ size, color, uppercase })} textAlign={align}>
-      {textChildrenToChildren(children)}
+      {children}
     </Box>
   );
 }

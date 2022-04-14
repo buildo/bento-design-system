@@ -1,8 +1,7 @@
 import { useBreadcrumbItem, useBreadcrumbs } from "@react-aria/breadcrumbs";
 import { useRef, Fragment } from "react";
-import { Body, LocalizedString } from "../";
+import { Body, Link, LocalizedString } from "../";
 import { Box, Inline } from "../internal";
-import { link, makeTextChildrenFromElements } from "../util/TextChildren";
 import { BreadcrumbConfig } from "./Config";
 
 type LastItem = {
@@ -27,7 +26,7 @@ export function createBreadcrumb(config: BreadcrumbConfig) {
     return (
       <Box as="li" ref={ref}>
         <Body size={config.fontSize} {...itemProps}>
-          {isCurrent ? label : makeTextChildrenFromElements(link(label, { href }))}
+          {isCurrent ? label : <Link href={href} label={label} />}
         </Body>
       </Box>
     );

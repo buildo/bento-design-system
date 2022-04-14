@@ -1,10 +1,10 @@
-import { Body, Children, LocalizedString, TextChildren, Title } from "..";
+import { Body, Children, LocalizedString, Title } from "..";
 import { Stack } from "../internal";
 import { FormSectionConfig } from "./Config";
 
 type Props = {
   title?: LocalizedString;
-  description?: TextChildren;
+  description?: Children;
   children: Children;
 };
 

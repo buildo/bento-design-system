@@ -1,80 +1,72 @@
 import { action } from "@storybook/addon-actions";
-import { Body, Label, link, makeTextChildrenFromElements } from "..";
+import React from "react";
+import { Body, Label, Link } from "..";
 import { createComponentStories, formatMessage } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
-  component: Body,
+  component: Link,
   args: {
-    size: "medium",
+    label: formatMessage("I'm a link"),
   },
-  parameters: {
-    // NOTE(gabro): this is to avoid Storybook erroring when trying to parse the DSL
-    // See https://github.com/storybookjs/storybook/issues/11543#issuecomment-684130442
-    docs: { source: { type: "code" } },
-  },
+  decorators: [
+    (Story: React.FC) => (
+      <Body size="medium">
+        <Story />
+      </Body>
+    ),
+  ],
 });
 
 export default defaultExport;
 
-export const Link = createStory({
-  children: makeTextChildrenFromElements(
-    link(formatMessage("I'm a link"), {
-      href: "http://www.example.com",
-      target: "_blank",
-    })
-  ),
+export const link = createStory({
+  href: "http://www.example.com",
+  target: "_blank",
 });
 
 export const Strong = createStory({
-  weight: "strong",
-  children: makeTextChildrenFromElements(
-    link(formatMessage("I'm a link"), {
-      href: "http://www.example.com",
-      target: "_blank",
-    })
-  ),
+  href: "http://www.example.com",
+  target: "_blank",
 });
+Strong.decorators = [
+  (Story: React.FC) => (
+    <Body size="medium" weight="strong">
+      <Story />
+    </Body>
+  ),
+];
 
-export const Inverse = createStory({
-  children: makeTextChildrenFromElements(
-    link(formatMessage("I'm a link"), {
-      href: "http://www.example.com",
-      target: "_blank",
-      kind: "inverse",
-    })
-  ),
-});
-Inverse.parameters = {
-  backgrounds: {
-    default: "dark",
+export const Inverse = createStory(
+  {
+    href: "http://www.example.com",
+    target: "_blank",
+    kind: "inverse",
   },
-};
+  {
+    backgrounds: { default: "dark" },
+  }
+);
 
 export const Disabled = createStory({
-  children: makeTextChildrenFromElements(
-    link(formatMessage("I'm a link"), {
-      href: "http://www.example.com",
-      target: "_blank",
-      disabled: true,
-    })
-  ),
+  href: "http://www.example.com",
+  target: "_blank",
+  isDisabled: true,
 });
 
 export const LinkButton = createStory({
-  children: makeTextChildrenFromElements(
-    link(formatMessage("I look like a link, but I'm actually a button!"), {
-      onClick: action("onClick"),
-    })
-  ),
+  href: "http://www.example.com",
+  target: "_blank",
+  onClick: action("onClick"),
 });
 
-export const InLabel = () => (
-  <Label size="large">
-    {makeTextChildrenFromElements(
-      link(formatMessage("I'm a link inside a Label"), {
-        href: "http://www.example.com",
-        target: "_blank",
-      })
-    )}
-  </Label>
-);
+export const InLabel = createStory({
+  href: "http://www.example.com",
+  target: "_blank",
+});
+InLabel.decorators = [
+  (Story: React.FC) => (
+    <Label size="large">
+      <Story />
+    </Label>
+  ),
+];

@@ -1,5 +1,5 @@
 import { LocalizedString } from "../util/LocalizedString";
-import { Title, Body, TextChildren, ButtonProps } from "..";
+import { Title, Body, ButtonProps, Children } from "..";
 import { Columns, Column, Box, Stack, Inline } from "../internal";
 import { bannerRecipe } from "./Banner.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
@@ -31,11 +31,11 @@ type Props = {
   (
     | {
         title: LocalizedString;
-        description?: TextChildren;
+        description?: Children;
       }
     | {
         title?: LocalizedString;
-        description: TextChildren;
+        description: Children;
       }
   );
 
