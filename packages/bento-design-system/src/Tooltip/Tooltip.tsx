@@ -1,5 +1,5 @@
 import { HTMLAttributes, Ref, useRef } from "react";
-import { Label, TextChildren } from "..";
+import { Label, Children } from "..";
 import { Box, Inset } from "../internal";
 import { useFloating, shift, autoPlacement, offset, arrow } from "@farzadsh/floating-ui-react-dom";
 import { useTooltipTriggerState } from "@react-stately/tooltip";
@@ -9,7 +9,7 @@ import { createPortal } from "../util/createPortal";
 import { TooltipConfig } from "./Config";
 
 type Props = {
-  content: TextChildren;
+  content: Children;
   /**
    * The trigger element that will be used to open the menu.
    * It must accept a `ref` prop and other accessibility props to ensure the menu is properly

@@ -1,6 +1,6 @@
 import { BoxProps } from "../../Box/createBentoBox";
 import { Box, bentoSprinkles } from "../../internal";
-import { TextChildren, useTextChildrenToChildren } from "../../util/TextChildren";
+import { Children } from "../../util/Children";
 import { bodyRecipe } from "./Body.css";
 
 type Size = "small" | "medium" | "large";
@@ -17,7 +17,7 @@ type Color =
 
 type Props = {
   id?: string;
-  children: TextChildren;
+  children: Children;
   size: Size;
   weight?: "default" | "strong";
   color?: Color;
@@ -33,7 +33,6 @@ export function Body({
   align,
   as = "span",
 }: Props) {
-  const textChildrenToChildren = useTextChildrenToChildren();
   return (
     <Box
       as={as}
@@ -41,7 +40,7 @@ export function Body({
       textAlign={align}
       fontFamily="default"
     >
-      {textChildrenToChildren(children)}
+      {children}
     </Box>
   );
 }

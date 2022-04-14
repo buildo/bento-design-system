@@ -16,7 +16,7 @@ import {
   NoticeProps,
   MenuListProps,
 } from "react-select/dist/declarations/src/components/Menu";
-import { Body, IconChevronDown, TextChildren, Children, IconCheck, IconProps } from "..";
+import { Body, IconChevronDown, Children, IconCheck, IconProps } from "..";
 import { Box, Columns, Column, Inline, Inset, bentoSprinkles } from "../internal";
 import { singleValue, placeholder, menu, control } from "./SelectField.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
@@ -194,7 +194,7 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
       <Inset space={16}>
         <Inline space={0} align="center" alignY="center">
           <Body size="medium" color="secondary">
-            {props.children as TextChildren}
+            {props.children as Children}
           </Body>
         </Inline>
       </Inset>

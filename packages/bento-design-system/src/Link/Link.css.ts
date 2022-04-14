@@ -8,6 +8,13 @@ export const linkRecipe = strictRecipe({
       disabled: "notAllowed",
     },
     outline: "none",
+    textDecoration: {
+      default: "underline",
+      active: "none",
+      hover: "underline",
+      focus: "underline",
+      disabled: "underline",
+    },
   }),
   variants: {
     kind: {

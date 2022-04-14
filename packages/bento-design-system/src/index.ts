@@ -28,6 +28,7 @@ export * from "./Illustrations";
 export * from "./Illustrations/svgIllustrationProps";
 export * from "./InlineLoader/InlineLoader";
 export * from "./Layout/createLayoutComponents";
+export * from "./Link/Link";
 export * from "./List/createListComponents";
 export * from "./Menu/createMenu";
 export * from "./Modal/createModal";
@@ -56,7 +57,6 @@ export * from "./util/Children";
 export * from "./util/LocalizedString";
 export * from "./util/NonEmptyArray";
 export * from "./util/Omit";
-export * from "./util/TextChildren";
 export * from "./util/align";
 
 export { bodyRecipe } from "./Typography/Body/Body.css";

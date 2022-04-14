@@ -47,7 +47,7 @@ export function createButtonLink(config: ButtonConfig) {
       <Box
         {...linkProps}
         {...props}
-        as={LinkComponent.component}
+        as={LinkComponent}
         href={href}
         target={target}
         className={[buttonRecipe({ kind, hierarchy, size, active }), element.a]}

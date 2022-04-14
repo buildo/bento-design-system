@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Body, ButtonProps, Children, Display, LocalizedString, TextChildren } from "..";
+import { Body, ButtonProps, Children, Display, LocalizedString } from "..";
 import { Box, Stack } from "../internal";
 import { feedbackStyle } from "./Feedback.css";
 import { IllustrationProps } from "../Illustrations/IllustrationProps";
@@ -12,7 +12,7 @@ export type FeedbackSize = "medium" | "large";
 
 type Props = {
   title: LocalizedString;
-  description?: TextChildren;
+  description?: Children;
   action?: Pick<ButtonProps, "label" | "onPress">;
   background?: boolean;
   size: FeedbackSize;

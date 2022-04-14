@@ -1,5 +1,5 @@
 import { LocalizedString } from "../util/LocalizedString";
-import { TextChildren } from "../util/TextChildren";
+import { Children } from "../util/Children";
 import { NonEmptyArray } from "../util/NonEmptyArray";
 
 export type FieldProps<V, VO = V> = {
@@ -9,7 +9,7 @@ export type FieldProps<V, VO = V> = {
   onBlur: () => unknown;
   label: LocalizedString;
   hint?: LocalizedString;
-  issues?: NonEmptyArray<TextChildren>;
+  issues?: NonEmptyArray<Children>;
   disabled?: boolean;
-  assistiveText?: TextChildren;
+  assistiveText?: Children;
 };

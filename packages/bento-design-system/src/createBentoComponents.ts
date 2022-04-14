@@ -55,6 +55,7 @@ import {
   IllustrationNegative,
   IllustrationPositive,
   IllustrationSearch,
+  Link,
 } from ".";
 import { BentoConfig } from "./BentoConfig";
 import { bentoSprinkles } from "./internal";
@@ -91,8 +92,6 @@ export function createBentoComponents<
     Button,
     Banner,
   });
-
-  const linkConfig = merge(defaultConfigs.link, config.link ?? {});
 
   const Breadcrumb = createBreadcrumb(merge(defaultConfigs.breadcrumb, config.breadcrumb ?? {}));
 
@@ -184,7 +183,7 @@ export function createBentoComponents<
     IconButton,
   });
 
-  const DesignSystemProvider = createBentoProvider(ToastProvider, linkConfig);
+  const DesignSystemProvider = createBentoProvider(ToastProvider);
 
   const icons = {
     IconIdea,
@@ -245,6 +244,7 @@ export function createBentoComponents<
     InlineLoader,
     Inset,
     Label,
+    Link,
     List,
     ListItem,
     Menu,

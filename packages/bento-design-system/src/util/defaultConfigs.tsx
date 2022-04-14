@@ -30,7 +30,6 @@ import {
 } from "../Field/Config";
 import { FormLayoutConfig } from "../Form/Config";
 import { IconButtonConfig } from "../IconButton/Config";
-import { LinkConfig } from "../Link/Config";
 import { ListConfig } from "../List/Config";
 import { MenuConfig } from "../Menu/Config";
 import { ModalConfig } from "../Modal/Config";
@@ -236,16 +235,6 @@ export const iconButton: IconButtonConfig = {
     12: 8,
     16: 16,
     24: 16,
-  },
-};
-
-export const link: LinkConfig = {
-  textDecoration: {
-    default: "none",
-    active: "none",
-    hover: "underline",
-    focus: "underline",
-    disabled: "none",
   },
 };
 

@@ -7,7 +7,6 @@ import {
   ContentBlock,
   Display,
   LocalizedString,
-  TextChildren,
 } from "..";
 
 import { Box, Stack } from "../internal";
@@ -16,7 +15,7 @@ import { FormConfig } from "./Config";
 type Props = {
   children: Children;
   title?: LocalizedString;
-  description?: TextChildren;
+  description?: Children;
   submitButton?: Omit<ButtonProps, "kind" | "hierarchy">;
   secondaryButton?: Omit<ButtonProps, "kind" | "hierarchy">;
   error?: LocalizedString;

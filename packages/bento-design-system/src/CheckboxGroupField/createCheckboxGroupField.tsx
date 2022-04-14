@@ -1,22 +1,22 @@
 import { useCheckboxGroup, useCheckboxGroupItem } from "@react-aria/checkbox";
 import { useRef } from "react";
 import { FieldType } from "../Field/createField";
-import { TextChildren } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { createCheckbox } from "../Checkbox/createCheckbox";
 import { useField } from "@react-aria/label";
 import { CheckboxGroupState, useCheckboxGroupState } from "@react-stately/checkbox";
 import { Box, Inline, Inset, Stack } from "../internal";
 import { SelectionControlConfig, SelectionControlGroupConfig } from "../Field/Config";
+import { Children } from "../util/Children";
 
 export type CheckboxOption = {
   value: string;
-  label: TextChildren;
+  label: Children;
   isDisabled?: boolean;
 };
 
 type Props = FieldProps<string[]> & {
-  label: TextChildren;
+  label: Children;
   options: Array<CheckboxOption>;
   orientation?: "vertical" | "horizontal";
 };

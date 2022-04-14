@@ -2,14 +2,14 @@ import { useCheckbox } from "@react-aria/checkbox";
 import { useToggleState } from "@react-stately/toggle";
 import { useRef } from "react";
 import { FieldType } from "../Field/createField";
-import { TextChildren } from "..";
+import { Children } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { createCheckbox } from "../Checkbox/createCheckbox";
 import { useField } from "@react-aria/label";
 import { SelectionControlConfig } from "../Field/Config";
 
 type Props = Omit<FieldProps<boolean>, "assistiveText"> & {
-  label: TextChildren;
+  label: Children;
 };
 
 export function createCheckboxField(

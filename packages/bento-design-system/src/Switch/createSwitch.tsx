@@ -6,14 +6,14 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { useToggleState } from "@react-stately/toggle";
 import { useRef } from "react";
 import { FieldType } from "../Field/createField";
-import { Body, TextChildren } from "..";
+import { Body, Children } from "..";
 import { Box, Column, Columns } from "../internal";
 import { FieldProps } from "../Field/FieldProps";
 import { switchContainer, switchOuterRecipe, switchInnerRecipe } from "./Switch.css";
 import { SelectionControlConfig } from "../Field/Config";
 
 type Props = Omit<FieldProps<boolean>, "assistiveText"> & {
-  label: TextChildren;
+  label: Children;
 };
 
 export function createSwitch(config: SelectionControlConfig, { Field }: { Field: FieldType }) {

@@ -1,10 +1,9 @@
-import { FunctionComponent } from "react";
+import { ComponentProps, FunctionComponent } from "react";
 import { CellProps } from "react-table";
 import { ButtonLinkProps } from "../Button/ButtonLink";
-import { LocalizedString, Body, ButtonProps, ChipProps, IconProps, Label } from "..";
+import { LocalizedString, Body, ButtonProps, ChipProps, IconProps, Label, Link } from "..";
 import { Inline, Inset, Box } from "../internal";
 import { IconButtonProps } from "../IconButton/createIconButton";
-import { link, makeTextChildrenFromElements } from "../util/TextChildren";
 
 export function createButtonCell(Button: FunctionComponent<ButtonProps>) {
   return function ButtonCell({
@@ -86,14 +85,11 @@ export function LabelCell({ value, column: { align } }: CellProps<{}, LocalizedS
   );
 }
 
-export function LinkCell({
-  value: { label, href, isDisabled },
-  column: { align },
-}: CellProps<{}, { href: string; label: LocalizedString; isDisabled?: boolean }>) {
+export function LinkCell({ value, column: { align } }: CellProps<{}, ComponentProps<typeof Link>>) {
   return (
     <Box padding={16} textAlign={align}>
       <Body size="medium">
-        {makeTextChildrenFromElements(link(label, { href, disabled: isDisabled }))}
+        <Link {...value} />
       </Body>
     </Box>
   );
