@@ -11,6 +11,7 @@ type Props = {
   title: LocalizedString;
   level?: 1 | 2;
   children: Children;
+  iconPosition?: "leading" | "trailing";
 } & (
   | {
       isOpen: boolean;
@@ -32,6 +33,7 @@ export function createDisclosure(config: DisclosureConfig) {
     level = 1,
     children,
     initialIsOpen,
+    iconPosition = config.defaultIconPosition,
   }: Props) {
     const [internalIsOpen, setInternalIsOpen] = useState(isOpen ?? initialIsOpen);
     const open = internalIsOpen ?? isOpen;
@@ -60,7 +62,11 @@ export function createDisclosure(config: DisclosureConfig) {
           aria-expanded={open}
           aria-controls={contentId}
         >
-          <Columns space={config.internalSpacing} alignY="center">
+          <Columns
+            space={config.internalSpacing}
+            alignY="center"
+            reverse={iconPosition === "trailing"}
+          >
             <Column width="content">
               <Icon size={16} color={level === 1 ? "primary" : "secondary"} />
             </Column>
