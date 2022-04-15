@@ -12,5 +12,6 @@ export * from "./IconPlaceholder";
 export * from "./IconPositive";
 export * from "./IconProps";
 export * from "./IconSearch";
+export * from "./IconSpinner";
 export * from "./IconUser";
 export * from "./IconWarning";
