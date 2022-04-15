@@ -32,6 +32,7 @@ type Props = {
   initialIsOpen?: boolean;
   placement?: ComponentProps<typeof Popover>["placement"];
   offset?: ComponentProps<typeof Popover>["offset"];
+  dividers?: boolean;
 };
 
 export function createMenu(
@@ -42,7 +43,16 @@ export function createMenu(
     List: FunctionComponent<ListProps>;
   }
 ) {
-  return function Menu({ items, header, trigger, initialIsOpen, placement, offset, size }: Props) {
+  return function Menu({
+    items,
+    header,
+    trigger,
+    initialIsOpen,
+    placement,
+    offset,
+    size,
+    dividers,
+  }: Props) {
     const triggerRef = useRef(null);
 
     const state = useMenuTriggerState({
@@ -81,7 +91,7 @@ export function createMenu(
                 </Box>
               )}
               <Inset spaceY={config.paddingY}>
-                <List items={items} size={size} />
+                <List items={items} size={size} dividers={dividers} />
               </Inset>
             </Box>
           </Popover>
