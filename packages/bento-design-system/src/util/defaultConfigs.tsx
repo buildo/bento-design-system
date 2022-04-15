@@ -16,6 +16,7 @@ import {
   IconChevronUp,
   IconChevronDown,
   IconInfo,
+  IconProps,
 } from "../Icons";
 import { ButtonConfig } from "../Button/Config";
 import { CardConfig } from "../Card/Config";
@@ -46,6 +47,9 @@ import { ProgressBarConfig } from "../ProgressBar/Config";
 import { StepperConfig } from "../Stepper/Config";
 import { SliderConfig } from "../Slider/Config";
 import { TooltipConfig } from "../Tooltip/Config";
+import { InlineLoaderConfig } from "../InlineLoader/Config";
+import { vars } from "../vars.css";
+import { svgIconProps } from "../Icons/svgIconProps";
 
 export const actions: ActionsConfig = {
   primaryActionButtonKind: "solid",
@@ -209,6 +213,16 @@ export const field: FieldConfig = {
     icon: IconInfo,
     iconSize: 12,
   },
+};
+
+export const inlineLoader: InlineLoaderConfig = {
+  messageSize: "medium",
+  spinnerIcon: ({ size }: IconProps) => (
+    <svg {...svgIconProps({ size })} fill={vars.foregroundColor.foregroundSecondary}>
+      <path d="M8 1.5A6.5 6.5 0 0 0 1.5 8 .75.75 0 1 1 0 8a8 8 0 1 1 8 8 .75.75 0 1 1 0-1.5 6.5 6.5 0 1 0 0-13Z" />
+    </svg>
+  ),
+  spinnerIconSize: 16,
 };
 
 export const input: InputConfig = {

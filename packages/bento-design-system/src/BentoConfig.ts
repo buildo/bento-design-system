@@ -17,6 +17,7 @@ import {
 } from "./Field/Config";
 import { FormLayoutConfig } from "./Form/Config";
 import { IconButtonConfig } from "./IconButton/Config";
+import { InlineLoaderConfig } from "./InlineLoader/Config";
 import { bentoSprinkles } from "./internal";
 import { ListConfig } from "./List/Config";
 import { MenuConfig } from "./Menu/Config";
@@ -55,6 +56,7 @@ export type BentoConfig<
   };
   formLayout: FormLayoutConfig;
   iconButton: IconButtonConfig;
+  inlineLoader: InlineLoaderConfig;
   list: ListConfig;
   menu: MenuConfig;
   modal: ModalConfig;

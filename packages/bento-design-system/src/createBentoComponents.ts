@@ -50,7 +50,6 @@ import {
   Title,
   Placeholder,
   Popover,
-  InlineLoader,
   IllustrationIdea,
   IllustrationNegative,
   IllustrationPositive,
@@ -63,6 +62,7 @@ import { createProgressBar } from "./ProgressBar/createProgressBar";
 import merge from "ts-deepmerge";
 import { createSwitch } from "./Switch/createSwitch";
 import { createUseComponentsShowcase } from "./createUseComponentsShowcase";
+import { createInlineLoader } from "./InlineLoader/InlineLoader";
 
 export function createBentoComponents<
   AtomsFn extends typeof bentoSprinkles,
@@ -76,6 +76,10 @@ export function createBentoComponents<
   const { Bleed, Column, Columns, Inline, Inset, Stack, Tiles } = createLayoutComponents(Box);
 
   const AreaLoader = createAreaLoader(merge(defaultConfigs.areaLoader, config.areaLoader ?? {}));
+
+  const InlineLoader = createInlineLoader(
+    merge(defaultConfigs.inlineLoader, config.inlineLoader ?? {})
+  );
 
   const Avatar = createAvatar(merge(defaultConfigs.avatar, config.avatar ?? {}));
 
@@ -91,6 +95,7 @@ export function createBentoComponents<
   const Actions = createActions(merge(defaultConfigs.actions, config.actions ?? {}), {
     Button,
     Banner,
+    InlineLoader,
   });
 
   const Breadcrumb = createBreadcrumb(merge(defaultConfigs.breadcrumb, config.breadcrumb ?? {}));

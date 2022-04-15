@@ -1,8 +1,9 @@
 import { FunctionComponent, useState } from "react";
-import { BannerProps, InlineLoader, LocalizedString } from "../";
+import { BannerProps, LocalizedString } from "../";
 import { Column, Columns, Inline } from "../internal";
 import { ButtonProps } from "../Button/createButton";
 import { ActionsConfig } from "./Config";
+import { InlineLoaderProps } from "../InlineLoader/InlineLoader";
 
 type ActionProps = Omit<ButtonProps, "kind" | "size" | "hierarchy">;
 export type ActionsProps = {
@@ -20,9 +21,11 @@ export function createActions(
   {
     Button,
     Banner,
+    InlineLoader,
   }: {
     Button: FunctionComponent<ButtonProps>;
     Banner: FunctionComponent<BannerProps>;
+    InlineLoader: FunctionComponent<InlineLoaderProps>;
   }
 ) {
   return function Actions({
