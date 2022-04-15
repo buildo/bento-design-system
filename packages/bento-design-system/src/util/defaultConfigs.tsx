@@ -78,13 +78,21 @@ export const banner: BannerConfig = {
   descriptionSize: "small",
   radius: 8,
   closeIcon: IconClose,
-  kindIcons: {
+  closeIconSize: 12,
+  semanticIcons: {
     informative: IconInformative,
     positive: IconPositive,
     warning: IconWarning,
     negative: IconNegative,
     secondary: IconIdea,
   },
+  semanticIconSize: {
+    withoutTitle: 16,
+    withTitle: 24,
+  },
+  outline: false,
+  buttonKind: "transparent",
+  buttonSize: "small",
 };
 
 export const breadcrumb: BreadcrumbConfig = {

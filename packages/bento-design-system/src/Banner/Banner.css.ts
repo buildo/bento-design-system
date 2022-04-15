@@ -20,5 +20,43 @@ export const bannerRecipe = strictRecipe({
         background: "backgroundSecondary",
       }),
     },
+    hasOutline: { true: {} },
   },
+  compoundVariants: [
+    {
+      variants: {
+        kind: "informative",
+        hasOutline: true,
+      },
+      style: bentoSprinkles({ boxShadow: "outlineInformative" }),
+    },
+    {
+      variants: {
+        kind: "positive",
+        hasOutline: true,
+      },
+      style: bentoSprinkles({ boxShadow: "outlinePositive" }),
+    },
+    {
+      variants: {
+        kind: "warning",
+        hasOutline: true,
+      },
+      style: bentoSprinkles({ boxShadow: "outlineWarning" }),
+    },
+    {
+      variants: {
+        kind: "negative",
+        hasOutline: true,
+      },
+      style: bentoSprinkles({ boxShadow: "outlineNegative" }),
+    },
+    {
+      variants: {
+        kind: "secondary",
+        hasOutline: true,
+      },
+      style: bentoSprinkles({ boxShadow: "outlineDecorative" }),
+    },
+  ],
 });

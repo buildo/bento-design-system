@@ -51,14 +51,20 @@ export function createBanner(
 ) {
   return function Banner({ title, description, kind, action, ...dismissProps }: Props) {
     const isWithoutTitle = title === undefined;
-    const iconSize = isWithoutTitle ? 16 : 24;
+    const iconSize = isWithoutTitle
+      ? config.semanticIconSize.withoutTitle
+      : config.semanticIconSize.withTitle;
     const iconProps = { size: iconSize, color: kind } as const;
-    const Icon = config.kindIcons[kind];
+    const Icon = config.semanticIcons[kind];
 
     const { defaultMessages } = useDefaultMessages();
 
     return (
-      <Box padding={config.padding} borderRadius={config.radius} className={bannerRecipe({ kind })}>
+      <Box
+        padding={config.padding}
+        borderRadius={config.radius}
+        className={bannerRecipe({ kind, hasOutline: config.outline })}
+      >
         <Stack space={4}>
           <Columns space={16} align="left" alignY={title && description ? "top" : "center"}>
             <Column width="content">
@@ -81,7 +87,7 @@ export function createBanner(
                     dismissProps.dismissButtonLabel ?? defaultMessages.Banner.dismissButtonLabel
                   }
                   onPress={dismissProps.onDismiss}
-                  size={12}
+                  size={config.closeIconSize}
                   kind="transparent"
                   hierarchy="secondary"
                   icon={config.closeIcon}
@@ -94,9 +100,9 @@ export function createBanner(
               <Button
                 onPress={action.onPress}
                 label={action.label}
-                kind="transparent"
+                kind={config.buttonKind}
                 hierarchy="secondary"
-                size="medium"
+                size={config.buttonSize}
               />
             </Inline>
           )}
