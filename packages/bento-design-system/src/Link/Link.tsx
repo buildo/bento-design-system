@@ -11,17 +11,9 @@ type Props = {
   isDisabled?: boolean;
   active?: boolean;
   kind?: "default" | "inverse";
-} & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "color"> &
-  (
-    | {
-        label: LocalizedString;
-        children?: never;
-      }
-    | {
-        label?: never;
-        children: Children;
-      }
-  );
+  label?: LocalizedString;
+  children?: Children;
+} & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "color">;
 
 export function Link({
   href,
