@@ -68,6 +68,8 @@ export const avatar: AvatarConfig = {
   radius: "circled",
   labelSize: "large",
   icon: IconUser,
+  iconSize: 16,
+  outline: "none",
 };
 
 export const banner: BannerConfig = {

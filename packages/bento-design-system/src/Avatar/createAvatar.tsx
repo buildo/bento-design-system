@@ -33,11 +33,12 @@ export function createAvatar(config: AvatarConfig) {
           width={config.width}
           height={config.height}
           borderRadius={config.radius}
+          boxShadow={config.outline}
         >
           {initial ? (
             <Label size={config.labelSize}>{unsafeLocalizedString(initial)}</Label>
           ) : (
-            <config.icon size={16} color="primary" />
+            <config.icon size={config.iconSize} color="primary" />
           )}
         </Box>
       </Box>
