@@ -126,7 +126,7 @@ export const button: ButtonConfig = {
 };
 
 export const card: CardConfig = {
-  radius: 8,
+  defaultRadius: 8,
 };
 
 export const chip: ChipConfig<typeof bentoSprinkles, string> = {
