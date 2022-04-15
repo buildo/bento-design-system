@@ -1,6 +1,6 @@
 import { AnchorHTMLAttributes, useRef } from "react";
 import { useLinkComponent } from "../util/link";
-import { LocalizedString } from "..";
+import { Children, LocalizedString } from "..";
 import { Box } from "../internal";
 import { useLink } from "@react-aria/link";
 import * as resetStyles from "../reset.css";
@@ -8,16 +8,26 @@ import { linkRecipe } from "./Link.css";
 import { extendedHitAreaRecipe } from "../util/extendedHitArea.css";
 
 type Props = {
-  label: LocalizedString;
   isDisabled?: boolean;
   active?: boolean;
   kind?: "default" | "inverse";
-} & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "color">;
+} & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "color"> &
+  (
+    | {
+        label: LocalizedString;
+        children?: never;
+      }
+    | {
+        label?: never;
+        children: Children;
+      }
+  );
 
 export function Link({
   href,
   isDisabled,
   label,
+  children,
   active = false,
   kind = "default",
   ...props
@@ -51,7 +61,7 @@ export function Link({
       disabled={isDisabled}
       display="inline-block"
     >
-      {label}
+      {label ?? children}
     </Box>
   );
 }
