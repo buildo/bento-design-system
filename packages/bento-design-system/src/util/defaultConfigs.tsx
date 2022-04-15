@@ -492,7 +492,8 @@ export const stepper: StepperConfig = {
 };
 
 export const tooltip: TooltipConfig = {
-  padding: 8,
+  paddingX: 16,
+  paddingY: 8,
   radius: 4,
   labelSize: "medium",
 };
