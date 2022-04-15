@@ -31,6 +31,11 @@ export const labelRecipe = strictRecipe({
         fill: "textSecondaryInverse",
       }),
       disabled: bentoSprinkles({ color: "textDisabled", fill: "textDisabled" }),
+      positive: bentoSprinkles({ color: "textPositive", fill: "textPositive" }),
+      warning: bentoSprinkles({ color: "textWarning", fill: "textWarning" }),
+      informative: bentoSprinkles({ color: "textInformative", fill: "textInformative" }),
+      negative: bentoSprinkles({ color: "textNegative", fill: "textNegative" }),
+      inherit: { color: "inherit", fill: "inherit" },
     },
     uppercase: {
       false: {},
