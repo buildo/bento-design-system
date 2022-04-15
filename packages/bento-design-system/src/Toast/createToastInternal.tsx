@@ -24,19 +24,24 @@ export function createToastInternal(
       <Box
         as="aside"
         aria-live="polite"
-        className={toastRecipe({ kind })}
+        className={toastRecipe({ kind, hasOutline: config.outline, elevation: config.elevation })}
         borderRadius={config.radius}
         paddingY={config.paddingY}
         paddingX={config.paddingX}
       >
-        <Columns space={16} alignY="center">
+        <Columns space={config.internalSpacing} alignY="center">
           <Body size={config.messageSize} color={kind === "secondary" ? "default" : kind}>
             {message}
           </Body>
           {action && (
             <Column width="content">
               <Bleed spaceY={config.smallButtonPaddingY}>
-                <Button size="small" kind="transparent" hierarchy="secondary" {...action} />
+                <Button
+                  size={config.buttonSize}
+                  kind={config.buttonKind}
+                  hierarchy="secondary"
+                  {...action}
+                />
               </Bleed>
             </Column>
           )}
