@@ -139,6 +139,7 @@ export const chip: ChipConfig<typeof bentoSprinkles, string> = {
   spacingAfterIcon: 4,
   spacingAfterLabel: 8,
   customColors: {},
+  radius: "circledX",
 };
 
 export const disclosure: DisclosureConfig = {
