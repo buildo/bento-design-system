@@ -21,10 +21,12 @@ export type FieldConfig = {
 };
 
 export type InputConfig = {
+  internalSpacing: BentoSprinkles["gap"];
   paddingX: BentoSprinkles["paddingX"];
   paddingY: BentoSprinkles["paddingY"];
   radius: BentoSprinkles["borderRadius"];
   fontSize: BodyProps["size"];
+  iconSize: IconProps["size"];
 };
 
 export type SelectionControlGroupConfig = {

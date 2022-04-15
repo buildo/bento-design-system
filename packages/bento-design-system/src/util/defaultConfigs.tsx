@@ -224,6 +224,8 @@ export const input: InputConfig = {
   paddingX: 16,
   paddingY: 16,
   fontSize: "large",
+  internalSpacing: 16,
+  iconSize: 16,
 };
 
 export const selectionControl: {
@@ -365,7 +367,9 @@ export const navigation: NavigationConfig = {
 export const searchBar: SearchBarConfig = {
   ...input,
   clearIcon: IconClose,
+  clearIconSize: 12,
   searchIcon: IconSearch,
+  searchIconSize: 16,
 };
 
 export const dropdown: DropdownConfig = {

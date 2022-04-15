@@ -58,7 +58,7 @@ export function createSearchBar(
         <IconButton
           label={props.clearButtonLabel ?? defaultMessages.SearchBar.clearButtonLabel}
           onPress={() => props.onChange("")}
-          size={16}
+          size={config.clearIconSize}
           icon={config.clearIcon}
           kind="transparent"
           hierarchy="secondary"
@@ -79,12 +79,13 @@ export function createSearchBar(
             display="flex"
             justifyContent="center"
             alignItems="center"
-            paddingX={config.paddingX}
+            paddingLeft={config.paddingX}
+            paddingRight={config.internalSpacing}
             top={0}
             bottom={0}
             left={0}
           >
-            <config.searchIcon size={16} />
+            <config.searchIcon size={config.searchIconSize} />
           </Box>
           <Box
             as="input"
@@ -111,7 +112,6 @@ export function createSearchBar(
               paddingRight: rightAccessoryWidth,
             }}
             borderRadius={config.radius}
-            paddingX={config.paddingX}
             paddingY={config.paddingY}
           />
           {rightAccessoryContent && (
@@ -121,7 +121,8 @@ export function createSearchBar(
               display="flex"
               justifyContent="center"
               alignItems="center"
-              paddingX={config.paddingX}
+              paddingLeft={config.internalSpacing}
+              paddingRight={config.paddingX}
               top={0}
               bottom={0}
               right={0}
