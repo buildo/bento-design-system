@@ -20,7 +20,7 @@ type Props = {
   submitButton?: Omit<ButtonProps, "kind" | "hierarchy">;
   secondaryButton?: Omit<ButtonProps, "kind" | "hierarchy">;
   error?: LocalizedString;
-  actionsSize: ButtonProps["size"];
+  actionsSize?: ButtonProps["size"];
 };
 
 export function createForm(
