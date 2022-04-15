@@ -304,8 +304,8 @@ export const menu: MenuConfig = {
   paddingY: 8,
   radius: 8,
   elevation: "medium",
-  headerPaddingX: 24,
-  headerPaddingY: 24,
+  headerPaddingX: 16,
+  headerPaddingY: 16,
   defaultOffset: 4,
 };
 
@@ -315,6 +315,12 @@ export const modal: ModalConfig = {
   titleSize: "large",
   closeIcon: IconClose,
   closeIconSize: 16,
+  width: {
+    small: 400,
+    medium: 560,
+    large: 720,
+  },
+  elevation: "large",
 };
 
 export const navigation: NavigationConfig = {

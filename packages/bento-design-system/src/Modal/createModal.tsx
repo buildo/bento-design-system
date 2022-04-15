@@ -12,6 +12,7 @@ import { IconButtonProps } from "../IconButton/createIconButton";
 import { createPortal } from "../util/createPortal";
 import { ModalConfig } from "./Config";
 
+export type ModalSize = "small" | "medium" | "large";
 type Props = {
   title: LocalizedString;
   children: Children;
@@ -22,7 +23,7 @@ type Props = {
   isDestructive?: boolean;
   loadingMessage?: ActionsProps["loadingMessage"];
   error?: ActionsProps["error"];
-  size?: "small" | "medium" | "large";
+  size?: ModalSize;
 };
 
 type CustomModalProps = Pick<Props, "children" | "isDestructive" | "size"> & {
@@ -60,12 +61,13 @@ export function createModal(
         <ModalContext.Provider value={true}>
           <FocusScope contain restoreFocus autoFocus>
             <Box
-              className={modalRecipe({ size: props.size ?? "medium" })}
+              className={modalRecipe({ elevation: config.elevation })}
               {...overlayProps}
               {...modalProps}
               {...dialogProps}
               color={undefined}
               borderRadius={config.radius}
+              style={{ width: config.width[props.size || "medium"] }}
             >
               {props.children}
             </Box>
