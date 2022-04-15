@@ -47,7 +47,7 @@ type Props = Kind &
   LeftItem &
   RightItem & {
     disabled?: boolean;
-    size?: ListSize;
+    size: ListSize;
     isFocused?: boolean;
     ignoreTabIndex?: boolean;
   } & (
@@ -100,7 +100,7 @@ export function createListItem(config: ListItemConfig) {
           display="block"
           tabIndex={interactive && !props.ignoreTabIndex ? linkProps.tabIndex : undefined}
         >
-          <Inset spaceX={config.paddingX} spaceY={config.paddingY[props.size ?? "medium"]}>
+          <Inset spaceX={config.paddingX[props.size]} spaceY={config.paddingY[props.size]}>
             <Columns space={config.internalSpacing} alignY="center">
               {renderLeft(props)}
               {renderContent(props)}

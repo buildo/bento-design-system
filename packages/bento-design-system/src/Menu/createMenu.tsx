@@ -7,12 +7,11 @@ import { useMenuTriggerState, MenuTriggerState } from "@react-stately/menu";
 import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
 import { ListProps } from "../List/createListComponents";
-import { ListItemProps } from "../List/createListItem";
 import { MenuConfig } from "./Config";
 
 type Props = {
   size: ListProps["size"];
-  items: Array<ListItemProps>;
+  items: ListProps["items"];
   /**
    * Optional static content that is displayed before the menu items.
    */

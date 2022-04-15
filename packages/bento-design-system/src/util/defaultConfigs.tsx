@@ -270,7 +270,10 @@ export const iconButton: IconButtonConfig = {
 
 export const list: ListConfig = {
   item: {
-    paddingX: 16,
+    paddingX: {
+      medium: 16,
+      large: 16,
+    },
     paddingY: {
       medium: 8,
       large: 16,
@@ -357,7 +360,10 @@ export const dropdown: DropdownConfig = {
   menuPaddingY: 8,
   list: {
     item: {
-      paddingX: 16,
+      paddingX: {
+        medium: 16,
+        large: 16,
+      },
       paddingY: {
         medium: 8,
         large: 16,

@@ -10,7 +10,7 @@ type ListItemSizeConfig<T> = {
 };
 
 export type ListItemConfig = {
-  paddingX: BentoSprinkles["paddingX"];
+  paddingX: ListItemSizeConfig<BentoSprinkles["paddingX"]>;
   paddingY: ListItemSizeConfig<BentoSprinkles["paddingY"]>;
   fontSize: {
     firstLine: BodyProps["size"];
