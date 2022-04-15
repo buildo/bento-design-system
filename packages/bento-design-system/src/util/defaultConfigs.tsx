@@ -160,7 +160,6 @@ export const disclosure: DisclosureConfig = {
 export const disclosureGroup: DisclosureGroupConfig = {
   groupSpacing: 40,
   disclosureSpacing: 24,
-  dividers: true,
   defaultIconPosition: "trailing",
 };
 
