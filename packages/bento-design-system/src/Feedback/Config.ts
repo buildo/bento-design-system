@@ -25,4 +25,5 @@ export type FeedbackConfig = {
     kind: ButtonProps["kind"];
     size: ButtonProps["size"];
   }>;
+  maxWidth: SizeConfig<number>;
 };

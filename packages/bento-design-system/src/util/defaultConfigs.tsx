@@ -191,6 +191,10 @@ export const feedback: FeedbackConfig = {
       size: "large",
     },
   },
+  maxWidth: {
+    medium: 280,
+    large: 440,
+  },
 };
 
 export const field: FieldConfig = {
