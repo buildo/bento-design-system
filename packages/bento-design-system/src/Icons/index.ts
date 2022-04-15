@@ -4,6 +4,7 @@ export * from "./IconChevronRight";
 export * from "./IconChevronUp";
 export * from "./IconClose";
 export * from "./IconIdea";
+export * from "./IconInfo";
 export * from "./IconInformative";
 export * from "./IconMinus";
 export * from "./IconNegative";

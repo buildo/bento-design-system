@@ -15,6 +15,7 @@ import {
   IconSearch,
   IconChevronUp,
   IconChevronDown,
+  IconInfo,
 } from "../Icons";
 import { ButtonConfig } from "../Button/Config";
 import { CardConfig } from "../Card/Config";
@@ -198,12 +199,16 @@ export const feedback: FeedbackConfig = {
 };
 
 export const field: FieldConfig = {
-  label: { size: "small" },
+  label: { size: "small", color: "secondary" },
   assistiveText: {
     size: "small",
     paddingLeft: 16,
   },
   internalSpacing: 4,
+  tip: {
+    icon: IconInfo,
+    iconSize: 12,
+  },
 };
 
 export const input: InputConfig = {
