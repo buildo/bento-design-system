@@ -13,6 +13,8 @@ import {
   IconUser,
   IconWarning,
   IconSearch,
+  IconChevronUp,
+  IconChevronDown,
 } from "../Icons";
 import { ButtonConfig } from "../Button/Config";
 import { CardConfig } from "../Card/Config";
@@ -149,6 +151,10 @@ export const disclosure: DisclosureConfig = {
     2: "small",
   },
   defaultIconPosition: "trailing",
+  icons: {
+    open: IconChevronUp,
+    closed: IconChevronDown,
+  },
 };
 
 export const disclosureGroup: DisclosureGroupConfig = {

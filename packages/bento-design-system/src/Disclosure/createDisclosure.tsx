@@ -47,7 +47,7 @@ export function createDisclosure(config: DisclosureConfig) {
       isFocusVisible,
     } = useFocusRing();
 
-    const Icon = open ? IconChevronUp : IconChevronDown;
+    const Icon = open ? config.icons.open : config.icons.closed;
 
     return (
       <Stack space={16}>
