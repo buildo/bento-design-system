@@ -13,7 +13,8 @@ type Color =
   | "positive"
   | "informative"
   | "warning"
-  | "primaryInverse";
+  | "primaryInverse"
+  | "inherit";
 
 type Props = {
   id?: string;

@@ -11,7 +11,12 @@ type Color =
   | "primaryInverse"
   | "secondary"
   | "secondaryInverse"
-  | "disabled";
+  | "disabled"
+  | "negative"
+  | "positive"
+  | "informative"
+  | "warning"
+  | "inherit";
 
 export type LabelProps = {
   children: Children;
