@@ -1,6 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import React from "react";
-import { Body, Label, Link } from "..";
+import { Body, Box, Label, Link } from "..";
 import { createComponentStories, formatMessage } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
@@ -70,3 +70,19 @@ InLabel.decorators = [
     </Label>
   ),
 ];
+
+export const ComplexChildren = createStory({
+  href: "http://www.example.com",
+  target: "_blank",
+  label: undefined,
+  children: (
+    <Box
+      background={"backgroundPositive"}
+      padding={40}
+      borderRadius={16}
+      boxShadow="outlinePositive"
+    >
+      <Body size="large">{formatMessage("The entire box is a link!")}</Body>
+    </Box>
+  ),
+});
