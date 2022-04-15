@@ -233,11 +233,14 @@ export const selectionControl: {
 
 export const formLayout: FormLayoutConfig = {
   form: {
-    headerTitleSize: "small",
+    headerTitle: {
+      kind: "display",
+      size: "small",
+    },
     headerDescriptionSize: "medium",
     formSpacing: 40,
     headerSpacing: 16,
-    actionsSize: "large",
+    defaultActionsSize: "large",
   },
   section: {
     sectionTitleSize: "large",

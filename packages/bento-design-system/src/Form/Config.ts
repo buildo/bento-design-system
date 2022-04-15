@@ -2,14 +2,17 @@ import { ActionsProps } from "../Actions/createActions";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";
 import { DisplayProps } from "../Typography/Display/Display";
+import { HeadlineProps } from "../Typography/Headline/Headline";
 import { TitleProps } from "../Typography/Title/Title";
 
 export type FormConfig = {
-  headerTitleSize: DisplayProps["size"];
+  headerTitle:
+    | { kind: "display"; size: DisplayProps["size"] }
+    | { kind: "headline"; size: HeadlineProps["size"] };
   headerDescriptionSize: BodyProps["size"];
   formSpacing: BentoSprinkles["gap"];
   headerSpacing: BentoSprinkles["gap"];
-  actionsSize: ActionsProps["size"];
+  defaultActionsSize: ActionsProps["size"];
 };
 
 export type FormRowConfig = {

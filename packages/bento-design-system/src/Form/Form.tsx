@@ -10,6 +10,7 @@ import {
 } from "..";
 
 import { Box, Stack } from "../internal";
+import { Headline } from "../Typography/Headline/Headline";
 import { FormConfig } from "./Config";
 
 type Props = {
@@ -19,6 +20,7 @@ type Props = {
   submitButton?: Omit<ButtonProps, "kind" | "hierarchy">;
   secondaryButton?: Omit<ButtonProps, "kind" | "hierarchy">;
   error?: LocalizedString;
+  actionsSize: ButtonProps["size"];
 };
 
 export function createForm(
@@ -36,6 +38,7 @@ export function createForm(
     submitButton,
     secondaryButton,
     error,
+    actionsSize = config.defaultActionsSize,
   }: Props) {
     return (
       <Box as="form" onSubmit={(e) => e.preventDefault()}>
@@ -43,14 +46,19 @@ export function createForm(
           <Stack space={config.formSpacing}>
             {(title || description) && (
               <Stack space={config.headerSpacing}>
-                {title && <Display size={config.headerTitleSize}>{title}</Display>}
+                {title &&
+                  (config.headerTitle.kind === "display" ? (
+                    <Display size={config.headerTitle.size}>{title}</Display>
+                  ) : (
+                    <Headline size={config.headerTitle.size}>{title}</Headline>
+                  ))}
                 {description && <Body size={config.headerDescriptionSize}>{description}</Body>}
               </Stack>
             )}
             {children}
             {(submitButton || secondaryButton) && (
               <Actions
-                size={config.actionsSize}
+                size={actionsSize}
                 primaryAction={submitButton}
                 secondaryAction={secondaryButton}
                 error={error}
