@@ -38,7 +38,7 @@ export function createActions(
       <Button
         key="primary"
         {...primaryAction}
-        kind="solid"
+        kind={config.primaryActionButtonKind}
         hierarchy={primaryAction.isDestructive ? "danger" : "primary"}
         size={size}
         onPress={() => {
@@ -51,7 +51,7 @@ export function createActions(
       <Button
         key="secondary"
         {...secondaryAction}
-        kind="transparent"
+        kind={config.secondaryActionButtonKind}
         hierarchy="secondary"
         size={size}
       />

@@ -45,6 +45,8 @@ import { SliderConfig } from "../Slider/Config";
 import { TooltipConfig } from "../Tooltip/Config";
 
 export const actions: ActionsConfig = {
+  primaryActionButtonKind: "solid",
+  secondaryActionButtonKind: "transparent",
   buttonsAlignment: "right",
   primaryPosition: "right",
   spaceBetweenButtons: 16,
