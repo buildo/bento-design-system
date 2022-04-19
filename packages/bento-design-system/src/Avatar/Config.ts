@@ -9,4 +9,9 @@ export type AvatarConfig = {
   radius: BentoSprinkles["borderRadius"];
   labelSize: ComponentProps<typeof Label>["size"];
   icon: FunctionComponent<IconProps>;
+  iconSize: IconProps["size"];
+  outline: Extract<
+    BentoSprinkles["boxShadow"],
+    "none" | "outlineInteractive" | "outlineDecorative" | "outlineContainer"
+  >;
 };

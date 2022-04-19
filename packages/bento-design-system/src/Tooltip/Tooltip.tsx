@@ -75,7 +75,7 @@ export function createTooltip(config: TooltipConfig) {
               {...tooltipProps}
               color={undefined}
             >
-              <Inset space={config.padding}>
+              <Inset spaceX={config.paddingX} spaceY={config.paddingY}>
                 <Label size={config.labelSize} color="primaryInverse">
                   {props.content}
                 </Label>

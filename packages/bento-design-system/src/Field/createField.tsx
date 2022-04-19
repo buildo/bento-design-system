@@ -4,7 +4,7 @@ import { Label } from "../Typography/Label/Label";
 import { Stack, Box, Columns, Column } from "../internal";
 import { Children } from "../util/Children";
 import { FieldProps } from "./FieldProps";
-import { IconInformative, TooltipProps } from "..";
+import { TooltipProps } from "..";
 import { FieldConfig } from "./Config";
 
 type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "hint"> & {
@@ -58,7 +58,7 @@ export function createField(
                   as={labelElement}
                   {...labelProps}
                   size={config.label.size}
-                  color={disabled ? "disabled" : "secondary"}
+                  color={disabled ? "disabled" : config.label.color}
                 >
                   {label}
                 </Label>
@@ -68,7 +68,10 @@ export function createField(
                   <Tooltip
                     trigger={(ref, props) => (
                       <Box display="inline-block" ref={ref} {...props}>
-                        <IconInformative size={12} color={disabled ? "disabled" : "interactive"} />
+                        {config.tip.icon({
+                          size: config.tip.iconSize,
+                          color: disabled ? "disabled" : "interactive",
+                        })}
                       </Box>
                     )}
                     content={hint}

@@ -16,4 +16,5 @@ export type ChipConfig<AtomsFn extends typeof bentoSprinkles, CustomColor extend
   customColors: {
     [k in CustomColor]: BoxProps<AtomsFn>["background"];
   };
+  radius: BentoSprinkles["borderRadius"];
 };

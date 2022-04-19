@@ -1,6 +1,7 @@
 import { createComponentStories, formatMessage } from "../util";
 import { Body, Card, Stack, Title } from "../";
 import { vars } from "@buildo/bento-design-system/lib/vars.css";
+import { unconditionalProperties } from "@buildo/bento-design-system";
 
 const elevationType = {
   options: Object.keys(vars.boxShadow)
@@ -28,6 +29,14 @@ const paddingType = {
   },
 };
 
+const borderRadiusType = {
+  options: [
+    ...Object.keys(unconditionalProperties.borderRadius).filter((key) => key !== "circled"),
+    undefined,
+  ],
+  control: { type: "select" },
+};
+
 const { defaultExport, createStory } = createComponentStories({
   component: Card,
   args: {
@@ -36,6 +45,7 @@ const { defaultExport, createStory } = createComponentStories({
     paddingTop: 40,
     paddingBottom: 40,
     elevation: "small",
+    borderRadius: 8,
   },
   argTypes: {
     paddingLeft: paddingType,
@@ -46,6 +56,7 @@ const { defaultExport, createStory } = createComponentStories({
     paddingX: paddingType,
     paddingY: paddingType,
     elevation: elevationType,
+    borderRadius: borderRadiusType,
   },
 });
 

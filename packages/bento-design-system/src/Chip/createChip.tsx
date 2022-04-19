@@ -70,6 +70,7 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
           paddingY={config.paddingY}
           className={chip}
           background={colorsMapping[color]}
+          borderRadius={config.radius}
         >
           <Columns space={config.spacingAfterLabel} align="center" alignY="center">
             <Columns space={config.spacingAfterIcon} alignY="center">

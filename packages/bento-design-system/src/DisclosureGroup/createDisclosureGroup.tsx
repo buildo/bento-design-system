@@ -9,6 +9,7 @@ type NodeItem = Omit<LeafItem, "children"> & { items: Array<LeafItem> };
 type Props = {
   iconPosition?: DisclosureProps["iconPosition"];
   items: Array<NodeItem | LeafItem>;
+  dividers?: boolean;
 };
 
 function isLeaf(item: NodeItem | LeafItem): item is LeafItem {
@@ -25,12 +26,16 @@ export function createDisclosureGroup(
     Disclosure: FunctionComponent<DisclosureProps>;
   }
 ) {
-  return function DisclosureGroup({ items, iconPosition = config.defaultIconPosition }: Props) {
+  return function DisclosureGroup({
+    items,
+    iconPosition = config.defaultIconPosition,
+    dividers = true,
+  }: Props) {
     const hasNestedItems = items.some((i) => !isLeaf(i));
     return (
       <Stack
         space={hasNestedItems ? config.groupSpacing : config.disclosureSpacing}
-        dividers={config.dividers}
+        dividers={dividers}
       >
         {items.map((item, index) => {
           if (isLeaf(item)) {

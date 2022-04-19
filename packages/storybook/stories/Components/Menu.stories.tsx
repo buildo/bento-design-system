@@ -83,3 +83,18 @@ export const Large = createStory({
     </Box>
   ),
 });
+
+export const WithDividers = createStory({
+  dividers: true,
+  trigger: (ref, triggerProps, { toggle }) => (
+    <Box
+      ref={ref}
+      display="inline-block"
+      onClick={() => toggle()}
+      cursor="pointer"
+      {...triggerProps}
+    >
+      <Avatar color="violet" />
+    </Box>
+  ),
+});

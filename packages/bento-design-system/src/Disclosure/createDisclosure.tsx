@@ -1,7 +1,7 @@
 import { usePress } from "@react-aria/interactions";
 import { useState } from "react";
 import { extendedHitAreaRecipe } from "../util/extendedHitArea.css";
-import { Children, IconChevronDown, IconChevronUp, LocalizedString, Title } from "..";
+import { Children, LocalizedString, Title } from "..";
 import { Box, Columns, Column, Stack } from "../internal";
 import { useId } from "@react-aria/utils";
 import { useFocusRing } from "@react-aria/focus";
@@ -47,7 +47,7 @@ export function createDisclosure(config: DisclosureConfig) {
       isFocusVisible,
     } = useFocusRing();
 
-    const Icon = open ? IconChevronUp : IconChevronDown;
+    const Icon = open ? config.icons.open : config.icons.closed;
 
     return (
       <Stack space={16}>

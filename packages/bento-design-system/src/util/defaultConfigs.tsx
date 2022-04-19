@@ -13,6 +13,10 @@ import {
   IconUser,
   IconWarning,
   IconSearch,
+  IconChevronUp,
+  IconChevronDown,
+  IconInfo,
+  IconSpinner,
 } from "../Icons";
 import { ButtonConfig } from "../Button/Config";
 import { CardConfig } from "../Card/Config";
@@ -43,8 +47,11 @@ import { ProgressBarConfig } from "../ProgressBar/Config";
 import { StepperConfig } from "../Stepper/Config";
 import { SliderConfig } from "../Slider/Config";
 import { TooltipConfig } from "../Tooltip/Config";
+import { InlineLoaderConfig } from "../InlineLoader/Config";
 
 export const actions: ActionsConfig = {
+  primaryActionButtonKind: "solid",
+  secondaryActionButtonKind: "transparent",
   buttonsAlignment: "right",
   primaryPosition: "right",
   spaceBetweenButtons: 16,
@@ -66,6 +73,8 @@ export const avatar: AvatarConfig = {
   radius: "circled",
   labelSize: "large",
   icon: IconUser,
+  iconSize: 16,
+  outline: "none",
 };
 
 export const banner: BannerConfig = {
@@ -74,13 +83,21 @@ export const banner: BannerConfig = {
   descriptionSize: "small",
   radius: 8,
   closeIcon: IconClose,
-  kindIcons: {
+  closeIconSize: 12,
+  semanticIcons: {
     informative: IconInformative,
     positive: IconPositive,
     warning: IconWarning,
     negative: IconNegative,
     secondary: IconIdea,
   },
+  semanticIconSize: {
+    withoutTitle: 16,
+    withTitle: 24,
+  },
+  outline: false,
+  buttonKind: "transparent",
+  buttonSize: "small",
 };
 
 export const breadcrumb: BreadcrumbConfig = {
@@ -114,7 +131,7 @@ export const button: ButtonConfig = {
 };
 
 export const card: CardConfig = {
-  radius: 8,
+  defaultRadius: 8,
 };
 
 export const chip: ChipConfig<typeof bentoSprinkles, string> = {
@@ -127,6 +144,7 @@ export const chip: ChipConfig<typeof bentoSprinkles, string> = {
   spacingAfterIcon: 4,
   spacingAfterLabel: 8,
   customColors: {},
+  radius: "circledX",
 };
 
 export const disclosure: DisclosureConfig = {
@@ -136,12 +154,15 @@ export const disclosure: DisclosureConfig = {
     2: "small",
   },
   defaultIconPosition: "trailing",
+  icons: {
+    open: IconChevronUp,
+    closed: IconChevronDown,
+  },
 };
 
 export const disclosureGroup: DisclosureGroupConfig = {
   groupSpacing: 40,
   disclosureSpacing: 24,
-  dividers: true,
   defaultIconPosition: "trailing",
 };
 
@@ -173,15 +194,29 @@ export const feedback: FeedbackConfig = {
       size: "large",
     },
   },
+  maxWidth: {
+    medium: 280,
+    large: 440,
+  },
 };
 
 export const field: FieldConfig = {
-  label: { size: "small" },
+  label: { size: "small", color: "secondary" },
   assistiveText: {
     size: "small",
     paddingLeft: 16,
   },
   internalSpacing: 4,
+  tip: {
+    icon: IconInfo,
+    iconSize: 12,
+  },
+};
+
+export const inlineLoader: InlineLoaderConfig = {
+  messageSize: "medium",
+  spinnerIcon: IconSpinner,
+  spinnerIconSize: 16,
 };
 
 export const input: InputConfig = {
@@ -189,6 +224,8 @@ export const input: InputConfig = {
   paddingX: 16,
   paddingY: 16,
   fontSize: "large",
+  internalSpacing: 16,
+  iconSize: 16,
 };
 
 export const selectionControl: {
@@ -211,11 +248,14 @@ export const selectionControl: {
 
 export const formLayout: FormLayoutConfig = {
   form: {
-    headerTitleSize: "small",
+    headerTitle: {
+      kind: "display",
+      size: "small",
+    },
     headerDescriptionSize: "medium",
     formSpacing: 40,
     headerSpacing: 16,
-    actionsSize: "large",
+    defaultActionsSize: "large",
   },
   section: {
     sectionTitleSize: "large",
@@ -240,7 +280,10 @@ export const iconButton: IconButtonConfig = {
 
 export const list: ListConfig = {
   item: {
-    paddingX: 16,
+    paddingX: {
+      medium: 16,
+      large: 16,
+    },
     paddingY: {
       medium: 8,
       large: 16,
@@ -263,8 +306,8 @@ export const menu: MenuConfig = {
   paddingY: 8,
   radius: 8,
   elevation: "medium",
-  headerPaddingX: 24,
-  headerPaddingY: 24,
+  headerPaddingX: 16,
+  headerPaddingY: 16,
   defaultOffset: 4,
 };
 
@@ -274,6 +317,12 @@ export const modal: ModalConfig = {
   titleSize: "large",
   closeIcon: IconClose,
   closeIconSize: 16,
+  width: {
+    small: 400,
+    medium: 560,
+    large: 720,
+  },
+  elevation: "large",
 };
 
 export const navigation: NavigationConfig = {
@@ -318,7 +367,9 @@ export const navigation: NavigationConfig = {
 export const searchBar: SearchBarConfig = {
   ...input,
   clearIcon: IconClose,
+  clearIconSize: 12,
   searchIcon: IconSearch,
+  searchIconSize: 16,
 };
 
 export const dropdown: DropdownConfig = {
@@ -327,7 +378,10 @@ export const dropdown: DropdownConfig = {
   menuPaddingY: 8,
   list: {
     item: {
-      paddingX: 16,
+      paddingX: {
+        medium: 16,
+        large: 16,
+      },
       paddingY: {
         medium: 8,
         large: 16,
@@ -361,6 +415,11 @@ export const toast: ToastConfig = {
   closeIcon: IconClose,
   closeIconSize: 12,
   smallButtonPaddingY: button.paddingY.small,
+  outline: false,
+  internalSpacing: 16,
+  elevation: "none",
+  buttonKind: "transparent",
+  buttonSize: "small",
 };
 
 const tabsBaseConfig = {
@@ -433,7 +492,8 @@ export const stepper: StepperConfig = {
 };
 
 export const tooltip: TooltipConfig = {
-  padding: 8,
+  paddingX: 16,
+  paddingY: 8,
   radius: 4,
   labelSize: "medium",
 };

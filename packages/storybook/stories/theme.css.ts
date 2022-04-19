@@ -39,7 +39,7 @@ const colors = {
   positive05: "#DAFCE6",
   positive50: "#21C357",
   positive60: "#049B22",
-  positive70: "#078631",
+  positive70: "#016A1C",
   warning05: "#FFF2D2",
   warning40: "#F2A60D",
   warning50: "#D66F00",

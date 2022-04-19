@@ -20,9 +20,8 @@ export function createProgressBar(config: ProgressBarConfig) {
     return (
       <Box
         borderRadius={props.discrete ? config.radius : undefined}
-        height={config.height}
         className={barRecipe({ active: props.active ?? false })}
-        style={{ width: props.discrete ? undefined : `${props.width}%` }}
+        style={{ width: props.discrete ? undefined : `${props.width}%`, height: config.height }}
       />
     );
   }

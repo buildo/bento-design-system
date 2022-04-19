@@ -7,12 +7,11 @@ import { useMenuTriggerState, MenuTriggerState } from "@react-stately/menu";
 import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
 import { ListProps } from "../List/createListComponents";
-import { ListItemProps } from "../List/createListItem";
 import { MenuConfig } from "./Config";
 
 type Props = {
   size: ListProps["size"];
-  items: Array<ListItemProps>;
+  items: ListProps["items"];
   /**
    * Optional static content that is displayed before the menu items.
    */
@@ -32,6 +31,7 @@ type Props = {
   initialIsOpen?: boolean;
   placement?: ComponentProps<typeof Popover>["placement"];
   offset?: ComponentProps<typeof Popover>["offset"];
+  dividers?: boolean;
 };
 
 export function createMenu(
@@ -42,7 +42,16 @@ export function createMenu(
     List: FunctionComponent<ListProps>;
   }
 ) {
-  return function Menu({ items, header, trigger, initialIsOpen, placement, offset, size }: Props) {
+  return function Menu({
+    items,
+    header,
+    trigger,
+    initialIsOpen,
+    placement,
+    offset,
+    size,
+    dividers,
+  }: Props) {
     const triggerRef = useRef(null);
 
     const state = useMenuTriggerState({
@@ -81,7 +90,7 @@ export function createMenu(
                 </Box>
               )}
               <Inset spaceY={config.paddingY}>
-                <List items={items} size={size} />
+                <List items={items} size={size} dividers={dividers} />
               </Inset>
             </Box>
           </Popover>

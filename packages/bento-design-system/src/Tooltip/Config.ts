@@ -3,7 +3,8 @@ import { Label } from "..";
 import { BentoSprinkles } from "../internal";
 
 export type TooltipConfig = {
-  padding: BentoSprinkles["padding"];
+  paddingX: BentoSprinkles["paddingX"];
+  paddingY: BentoSprinkles["paddingY"];
   radius: BentoSprinkles["borderRadius"];
   labelSize: ComponentProps<typeof Label>["size"];
 };
