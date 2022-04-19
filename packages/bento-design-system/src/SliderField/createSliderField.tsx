@@ -22,6 +22,10 @@ type Props = (
   autoFocus?: boolean;
 } & FormatProps;
 
+function roundToStep(value: number, step: number) {
+  return Math.round(value / step) * step;
+}
+
 export function createSliderField({
   Field,
   Slider,
@@ -57,7 +61,8 @@ export function createSliderField({
             const maxValue = state.getThumbMaxValue(index);
             const value = percent * (maxValue - minValue) + minValue;
             const roundedValue =
-              Math.round((value - minValue) / props.dragStep!) * props.dragStep! + minValue;
+              roundToStep(roundToStep(value - minValue, props.dragStep!), props.step || 1) +
+              minValue;
             const clampedValue = clamp(roundedValue, minValue, maxValue);
             state.setThumbValue(index, clampedValue);
           },
