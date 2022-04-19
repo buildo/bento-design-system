@@ -32,30 +32,14 @@ import {
   defaultConfigs,
   Display,
   Headline,
-  IconCheck,
-  IconChevronDown,
-  IconChevronRight,
-  IconChevronUp,
-  IconClose,
-  IconIdea,
-  IconInformative,
-  IconMinus,
-  IconNegative,
-  IconPlaceholder,
-  IconPositive,
-  IconSearch,
-  IconUser,
-  IconWarning,
   Label,
   Title,
   Placeholder,
   Popover,
-  IllustrationIdea,
-  IllustrationNegative,
-  IllustrationPositive,
-  IllustrationSearch,
   Link,
 } from ".";
+import * as icons from "./Icons";
+import * as illustrations from "./Illustrations";
 import { BentoConfig } from "./BentoConfig";
 import { bentoSprinkles } from "./internal";
 import { createProgressBar } from "./ProgressBar/createProgressBar";
@@ -189,30 +173,6 @@ export function createBentoComponents<
   });
 
   const DesignSystemProvider = createBentoProvider(ToastProvider);
-
-  const icons = {
-    IconIdea,
-    IconCheck,
-    IconChevronDown,
-    IconChevronRight,
-    IconChevronUp,
-    IconClose,
-    IconInformative,
-    IconMinus,
-    IconNegative,
-    IconPlaceholder,
-    IconPositive,
-    IconSearch,
-    IconUser,
-    IconWarning,
-  };
-
-  const illustrations = {
-    IllustrationIdea,
-    IllustrationPositive,
-    IllustrationNegative,
-    IllustrationSearch,
-  };
 
   const components = {
     ...icons,
