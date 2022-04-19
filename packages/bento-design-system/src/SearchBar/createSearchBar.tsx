@@ -85,7 +85,7 @@ export function createSearchBar(
             bottom={0}
             left={0}
           >
-            <config.searchIcon size={config.searchIconSize} />
+            {config.searchIcon({ size: config.searchIconSize })}
           </Box>
           <Box
             as="input"

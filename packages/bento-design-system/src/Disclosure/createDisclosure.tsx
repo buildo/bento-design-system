@@ -47,7 +47,7 @@ export function createDisclosure(config: DisclosureConfig) {
       isFocusVisible,
     } = useFocusRing();
 
-    const Icon = open ? config.icons.open : config.icons.closed;
+    const icon = open ? config.icons.open : config.icons.closed;
 
     return (
       <Stack space={16}>
@@ -68,7 +68,7 @@ export function createDisclosure(config: DisclosureConfig) {
             reverse={iconPosition === "trailing"}
           >
             <Column width="content">
-              <Icon size={16} color={level === 1 ? "primary" : "secondary"} />
+              {icon({ size: 16, color: level === 1 ? "primary" : "secondary" })}
             </Column>
             <Title size={config.titleSize[level]}>{title}</Title>
           </Columns>

@@ -15,7 +15,6 @@ type Props = {
 };
 
 export function createBreadcrumb(config: BreadcrumbConfig) {
-  const Separator = config.separator;
   type BreadcrumbItemProps = LastItem & Partial<Item> & { isCurrent: boolean };
   function BreadcrumbItem({ isCurrent, label, href = "" }: BreadcrumbItemProps) {
     const ref = useRef(null);
@@ -42,7 +41,7 @@ export function createBreadcrumb(config: BreadcrumbConfig) {
                 <BreadcrumbItem isCurrent={isCurrent} {...item} />
                 {!isCurrent && (
                   <Box as="span" aria-hidden="true">
-                    <Separator size={config.separatorSize} />
+                    {config.separator({ size: config.separatorSize })}
                   </Box>
                 )}
               </Fragment>

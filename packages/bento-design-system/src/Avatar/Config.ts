@@ -1,14 +1,15 @@
-import { ComponentProps, FunctionComponent } from "react";
+import { ComponentProps } from "react";
 import { IconProps } from "../Icons";
 import { Label } from "../Typography/Label/Label";
 import { BentoSprinkles } from "../internal";
+import { Children } from "../util/Children";
 
 export type AvatarConfig = {
   width: BentoSprinkles["width"];
   height: BentoSprinkles["height"];
   radius: BentoSprinkles["borderRadius"];
   labelSize: ComponentProps<typeof Label>["size"];
-  icon: FunctionComponent<IconProps>;
+  icon: (props: IconProps) => Children;
   iconSize: IconProps["size"];
   outline: Extract<
     BentoSprinkles["boxShadow"],
