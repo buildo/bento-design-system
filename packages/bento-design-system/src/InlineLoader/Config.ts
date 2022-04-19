@@ -1,9 +1,9 @@
-import { FunctionComponent } from "react";
 import { IconProps } from "../Icons";
 import { BodyProps } from "../Typography/Body/Body";
+import { Children } from "../util/Children";
 
 export type InlineLoaderConfig = {
   messageSize: BodyProps["size"];
-  spinnerIcon: FunctionComponent<IconProps>;
+  spinnerIcon: (props: IconProps) => Children;
   spinnerIconSize: IconProps["size"];
 };

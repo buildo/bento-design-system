@@ -55,7 +55,7 @@ export function createBanner(
       ? config.semanticIconSize.withoutTitle
       : config.semanticIconSize.withTitle;
     const iconProps = { size: iconSize, color: kind } as const;
-    const Icon = config.semanticIcons[kind];
+    const icon = config.semanticIcons[kind];
 
     const { defaultMessages } = useDefaultMessages();
 
@@ -68,9 +68,7 @@ export function createBanner(
         <Stack space={4}>
           <Columns space={16} align="left" alignY={title && description ? "top" : "center"}>
             <Column width="content">
-              <Box>
-                <Icon {...iconProps} />
-              </Box>
+              <Box>{icon(iconProps)}</Box>
             </Column>
             <Stack align="left" space={4}>
               {title && (

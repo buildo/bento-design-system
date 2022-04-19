@@ -1,7 +1,7 @@
-import { FunctionComponent } from "react";
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { LabelProps } from "../Typography/Label/Label";
+import { Children } from "../util/Children";
 
 export type StepperConfig = {
   spaceBetweenSteps: BentoSprinkles["gap"];
@@ -9,5 +9,5 @@ export type StepperConfig = {
   labelSize: LabelProps["size"];
   numberSize: LabelProps["size"];
   labelUppercase: boolean;
-  doneIcon: FunctionComponent<IconProps>;
+  doneIcon: (props: IconProps) => Children;
 };
