@@ -52,6 +52,7 @@ type ComponentShowcase<
   variants: P[][];
   variantLineDecorator?: (C: JSX.Element) => JSX.Element;
   iframe?: boolean;
+  absolute?: boolean;
 };
 
 export function IFrame({
@@ -83,8 +84,9 @@ function componentShowcase<
   variants,
   variantLineDecorator: decorator,
   iframe = false,
+  absolute = false,
 }: ComponentShowcase<C, P>): JSX.Element {
-  const content = (
+  const _content = (
     <Box background="backgroundSecondary" padding={24} borderRadius={4}>
       <Stack space={16}>
         {variants.map((variantLine, index) => {
@@ -103,6 +105,14 @@ function componentShowcase<
         })}
       </Stack>
     </Box>
+  );
+
+  const content = absolute ? (
+    <Box position="relative" style={{ height: 400 }}>
+      {_content}
+    </Box>
+  ) : (
+    _content
   );
 
   return (
