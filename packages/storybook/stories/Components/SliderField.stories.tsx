@@ -54,3 +54,9 @@ export const CustomStep = createControlledStory(30, {
   type: "single",
   step: 0.5,
 });
+
+export const CustomDragStep = createControlledStory(30.5, {
+  type: "single",
+  step: 0.5,
+  dragStep: 5,
+});

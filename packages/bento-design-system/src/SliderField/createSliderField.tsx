@@ -1,5 +1,6 @@
 import { useNumberFormatter } from "@react-aria/i18n";
 import { useSlider } from "@react-aria/slider";
+import { clamp } from "@react-aria/utils";
 import { useSliderState } from "@react-stately/slider";
 import { useRef, FunctionComponent } from "react";
 import { FieldType } from "../Field/createField";
@@ -17,6 +18,7 @@ type Props = (
   minValue: number;
   maxValue: number;
   step?: number;
+  dragStep?: number;
   autoFocus?: boolean;
 } & FormatProps;
 
@@ -42,11 +44,25 @@ export function createSliderField({
             onChange: (values: number[]) => props.onChange(values[0]),
           };
 
-    const state = useSliderState({
+    const _state = useSliderState({
       ...props,
       ...valueProps,
       numberFormatter,
     });
+    const state = props.dragStep
+      ? {
+          ..._state,
+          setThumbPercent: (index: number, percent: number) => {
+            const minValue = state.getThumbMinValue(index);
+            const maxValue = state.getThumbMaxValue(index);
+            const value = percent * (maxValue - minValue) + minValue;
+            const roundedValue =
+              Math.round((value - minValue) / props.dragStep!) * props.dragStep! + minValue;
+            const clampedValue = clamp(roundedValue, minValue, maxValue);
+            state.setThumbValue(index, clampedValue);
+          },
+        }
+      : _state;
 
     const { groupProps, trackProps, outputProps, labelProps } = useSlider(
       { ...props, ...valueProps },
