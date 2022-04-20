@@ -18,7 +18,7 @@ import { DropdownConfig } from "./Config";
 
 export type SelectOption<A> = Omit<
   ListItemProps,
-  "trailingIcon" | "onPress" | "href" | "isFocused" | "ignoreTabIndex" | "size"
+  "trailingIcon" | "onPress" | "href" | "isFocused" | "ignoreTabIndex" | "size" | "isSelected"
 > & {
   value: A;
 };
