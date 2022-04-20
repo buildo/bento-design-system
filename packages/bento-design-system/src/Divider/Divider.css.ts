@@ -1,7 +1,16 @@
 import { style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal/sprinkles.css";
 
-export const divider = style([
+export const verticalDivider = style([
+  {
+    width: "1px",
+  },
+  bentoSprinkles({
+    height: "full",
+  }),
+]);
+
+export const horizontalDivider = style([
   {
     height: 1,
   },

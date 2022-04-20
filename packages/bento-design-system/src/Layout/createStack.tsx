@@ -1,7 +1,7 @@
 import { ComponentProps, Fragment } from "react";
 import flattenChildren from "react-keyed-flatten-children";
 import { BoxProps, BoxType } from "../Box/createBentoBox";
-import { Divider } from "../Divider/Divider";
+import { HorizontalDivider } from "../Divider/Divider";
 import { bentoSprinkles } from "../internal/sprinkles.css";
 import { ResponsiveAlign, alignToFlexAlign } from "../util/align";
 import { childKey } from "../util/childKey";
@@ -30,7 +30,7 @@ export function createStack<AtomsFn extends typeof bentoSprinkles>(Box: BoxType<
           if (dividers && index > 0) {
             return (
               <Fragment key={childKey(child, index)}>
-                <Divider />
+                <HorizontalDivider />
                 {child}
               </Fragment>
             );
