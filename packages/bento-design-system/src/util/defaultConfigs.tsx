@@ -48,6 +48,7 @@ import { StepperConfig } from "../Stepper/Config";
 import { SliderConfig } from "../Slider/Config";
 import { TooltipConfig } from "../Tooltip/Config";
 import { InlineLoaderConfig } from "../InlineLoader/Config";
+import { DecorativeDividerConfig } from "../Divider/Config";
 
 export const actions: ActionsConfig = {
   primaryActionButtonKind: "solid",
@@ -145,6 +146,12 @@ export const chip: ChipConfig<typeof bentoSprinkles, string> = {
   spacingAfterLabel: 8,
   customColors: {},
   radius: "circledX",
+};
+
+export const decorativeDivider: DecorativeDividerConfig<typeof bentoSprinkles> = {
+  height: 1,
+  radius: 0,
+  color: "outlineDecorative",
 };
 
 export const disclosure: DisclosureConfig = {

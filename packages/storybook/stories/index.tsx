@@ -50,6 +50,7 @@ export const {
   Columns,
   CustomModal,
   DesignSystemProvider,
+  DecorativeDivider,
   Disclosure,
   DisclosureGroup,
   Display,
@@ -114,6 +115,11 @@ export const {
     customColors: {
       custom: "customColor1",
     },
+  },
+  decorativeDivider: {
+    height: 3,
+    radius: "circledX",
+    color: "brandSecondary",
   },
   feedback: {
     background: FeedbackBackground,
