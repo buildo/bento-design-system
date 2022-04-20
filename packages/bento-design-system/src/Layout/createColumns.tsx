@@ -1,7 +1,6 @@
-import { Fragment, ReactChild, ReactElement } from "react";
+import { ReactChild, ReactElement } from "react";
 import flattenChildren from "react-keyed-flatten-children";
 import { BoxType, BoxProps } from "../Box/createBentoBox";
-import { Divider } from "../Divider/Divider";
 import {
   bentoSprinkles,
   normalizeResponsiveValue,
@@ -52,10 +51,9 @@ export function createColumns<AtomsFn extends typeof bentoSprinkles>(Box: BoxTyp
   type Props = {
     space: ResponsiveSpace;
     children: Children;
-    dividers?: boolean;
   } & CollapsibleAlignmentProps;
 
-  function Columns({ space, children, align, alignY, collapseBelow, reverse, dividers }: Props) {
+  function Columns({ space, children, align, alignY, collapseBelow, reverse }: Props) {
     return (
       <Box
         display="flex"
@@ -63,21 +61,10 @@ export function createColumns<AtomsFn extends typeof bentoSprinkles>(Box: BoxTyp
         {...responsiveCollapsibleAlignmentProps({ align, alignY, collapseBelow, reverse })}
       >
         {flattenChildren(children).map((child, index) => {
-          const column = isColumn(child) ? (
-            child
-          ) : (
-            <Column key={childKey(child, index)}>{child as Children}</Column>
-          );
-
-          if (dividers && index > 0) {
-            return (
-              <Fragment key={childKey(child, index)}>
-                <Divider orientation="vertical" />
-                {column}
-              </Fragment>
-            );
+          if (isColumn(child)) {
+            return child;
           }
-          return column;
+          return <Column key={childKey(child, index)}>{child as Children}</Column>;
         })}
       </Box>
     );
