@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.0.0-beta.14",
+    "@docusaurus/theme-classic": "^2.0.0-beta.18",
     "@tsconfig/docusaurus": "^1.0.4",
     "@vanilla-extract/sprinkles": "^1.4.0",
     "typescript": "^4.5.2"
