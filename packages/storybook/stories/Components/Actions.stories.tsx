@@ -1,6 +1,7 @@
 import { createComponentStories, formatMessage } from "../util";
 import { Actions } from "../";
 import { action } from "@storybook/addon-actions";
+import { componentShowcase } from "../../../bento-design-system/src/componentShowcase";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Actions,
@@ -81,3 +82,9 @@ export const AsyncPrimaryAction = createStory({
   },
   secondaryAction,
 });
+
+export const Showcase = () =>
+  componentShowcase({
+    Component: Actions,
+    variants: [[{ primaryAction, secondaryAction }]],
+  });

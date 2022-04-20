@@ -1,11 +1,4 @@
-import {
-  JSXElementConstructor,
-  ComponentProps,
-  FunctionComponent,
-  useState,
-  IframeHTMLAttributes,
-  useLayoutEffect,
-} from "react";
+import { FunctionComponent, IframeHTMLAttributes, useLayoutEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import {
   AreaLoaderProps,
@@ -34,26 +27,15 @@ import {
   TabsProps,
   createTableColumns,
 } from ".";
+import { componentShowcase } from "./componentShowcase";
 import { IconIdea, IconCheck, IconSearch, IconUser, IconInformative } from "./Icons";
-import { Box, Stack, Inline } from "./internal";
+import { Box, Stack } from "./internal";
 import { TextFieldProps } from "./TextField/createTextField";
 import { Body } from "./Typography/Body/Body";
 import { Title } from "./Typography/Title/Title";
 import { unsafeLocalizedString } from "./util/LocalizedString";
 
-const formatMessage = unsafeLocalizedString;
-
-type ComponentShowcase<
-  C extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
-  P extends ComponentProps<C>
-> = {
-  title: string;
-  Component: C;
-  variants: P[][];
-  variantLineDecorator?: (C: JSX.Element) => JSX.Element;
-  iframe?: boolean;
-  absolute?: boolean;
-};
+export const formatMessage = unsafeLocalizedString;
 
 export function IFrame({
   children,
@@ -72,54 +54,6 @@ export function IFrame({
     <iframe {...props} ref={setContentRef} style={{ border: "none" }}>
       {mountNode && createPortal(children, mountNode)}
     </iframe>
-  );
-}
-
-function componentShowcase<
-  C extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
-  P extends ComponentProps<C>
->({
-  title,
-  Component,
-  variants,
-  variantLineDecorator: decorator,
-  iframe = false,
-  absolute = false,
-}: ComponentShowcase<C, P>): JSX.Element {
-  const _content = (
-    <Box background="backgroundSecondary" padding={24} borderRadius={4}>
-      <Stack space={16}>
-        {variants.map((variantLine, index) => {
-          const line = (
-            <>
-              {variantLine.map((variant) => (
-                <Component {...variant} />
-              ))}
-            </>
-          );
-          return (
-            <Inline space={16} key={index}>
-              {decorator ? decorator(line) : line}
-            </Inline>
-          );
-        })}
-      </Stack>
-    </Box>
-  );
-
-  const content = absolute ? (
-    <Box position="relative" style={{ height: 400 }}>
-      {_content}
-    </Box>
-  ) : (
-    _content
-  );
-
-  return (
-    <Stack space={24}>
-      <Title size="large">{formatMessage(title)}</Title>
-      {iframe ? <IFrame height={400}>{content}</IFrame> : content}
-    </Stack>
   );
 }
 
