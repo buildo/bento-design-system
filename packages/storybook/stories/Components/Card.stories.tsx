@@ -1,7 +1,6 @@
 import { createComponentStories, formatMessage } from "../util";
 import { Body, Card, Stack, Title } from "../";
-import { vars } from "@buildo/bento-design-system/lib/vars.css";
-import { unconditionalProperties } from "@buildo/bento-design-system";
+import { unconditionalProperties, vars } from "@buildo/bento-design-system";
 
 const elevationType = {
   options: Object.keys(vars.boxShadow)

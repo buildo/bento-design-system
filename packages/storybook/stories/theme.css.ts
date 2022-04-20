@@ -1,5 +1,5 @@
 import { createGlobalTheme } from "@vanilla-extract/css";
-import { vars as bentoVars } from "@buildo/bento-design-system/lib/vars.css";
+import { vars as bentoVars } from "@buildo/bento-design-system";
 
 const remBaseSize = 16;
 const pixelToRem = (px: number) => `${px / remBaseSize}rem`;
