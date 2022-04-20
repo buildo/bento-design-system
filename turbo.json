@@ -16,6 +16,12 @@
     "eslint-check": {},
     "chromatic": {
       "dependsOn": ["^build"]
+    },
+    "website-start": {
+      "dependsOn": ["^build"]
+    },
+    "website-build": {
+      "dependsOn": ["^build"]
     }
   }
 }

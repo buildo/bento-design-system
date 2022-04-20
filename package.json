@@ -16,7 +16,9 @@
     "playroom-build": "pnpm run -r playroom-build",
     "lint-staged": "turbo run lint-staged --concurrency=1",
     "eslint-check": "turbo run eslint-check",
-    "chromatic": "turbo run chromatic"
+    "chromatic": "turbo run chromatic",
+    "website-start": "turbo run website-start",
+    "website-build": "turbo run website-build"
   },
   "devDependencies": {
     "husky": "7.0.4",
