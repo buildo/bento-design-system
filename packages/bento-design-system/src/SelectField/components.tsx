@@ -176,6 +176,7 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
           onPress={() => props.selectOption(props.data)}
           trailingIcon={props.isSelected ? IconCheck : undefined}
           isFocused={props.isFocused}
+          isSelected={props.isSelected}
           ignoreTabIndex
           target={undefined}
         />

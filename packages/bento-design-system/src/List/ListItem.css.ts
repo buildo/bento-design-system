@@ -17,5 +17,10 @@ export const listItemRecipe = strictRecipe({
         background: "primaryTransparentFocusBackground",
       }),
     },
+    selected: {
+      true: bentoSprinkles({
+        background: "backgroundInteractiveOverlay",
+      }),
+    },
   },
 });
