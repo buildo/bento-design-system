@@ -1,20 +1,24 @@
 import { style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal/sprinkles.css";
+import { strictRecipe } from "../util/strictRecipe";
 
-export const verticalDivider = style([
-  {
-    width: "1px",
-  },
-  bentoSprinkles({
-    height: "full",
+export const divider = strictRecipe({
+  base: bentoSprinkles({
+    background: "outlineDecorative",
   }),
-]);
-
-export const horizontalDivider = style([
-  {
-    height: 1,
+  variants: {
+    orientation: {
+      horizontal: style([
+        {
+          height: 1,
+        },
+        bentoSprinkles({ width: "full" }),
+      ]),
+      vertical: style([
+        {
+          width: 1,
+        },
+      ]),
+    },
   },
-  bentoSprinkles({
-    width: "full",
-  }),
-]);
+});

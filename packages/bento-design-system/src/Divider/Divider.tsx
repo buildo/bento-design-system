@@ -1,41 +1,12 @@
 import { useSeparator } from "@react-aria/separator";
 import { Box } from "../internal";
-import { verticalDivider, horizontalDivider } from "./Divider.css";
-
-export function VerticalDivider() {
-  const { separatorProps } = useSeparator({ orientation: "vertical" });
-
-  return (
-    <Box
-      {...separatorProps}
-      className={verticalDivider}
-      color={undefined}
-      background="outlineDecorative"
-    />
-  );
-}
-
-export function HorizontalDivider() {
-  const { separatorProps } = useSeparator({});
-
-  return (
-    <Box
-      {...separatorProps}
-      className={horizontalDivider}
-      color={undefined}
-      background="outlineDecorative"
-    />
-  );
-}
+import { divider } from "./Divider.css";
 
 type Props = {
-  kind: "horizontal" | "vertical";
+  orientation?: "horizontal" | "vertical";
 };
-export function Divider({ kind }: Props) {
-  switch (kind) {
-    case "horizontal":
-      return <HorizontalDivider />;
-    case "vertical":
-      return <VerticalDivider />;
-  }
+export function Divider({ orientation = "horizontal" }: Props) {
+  const { separatorProps } = useSeparator({ orientation });
+
+  return <Box {...separatorProps} className={divider({ orientation })} color={undefined} />;
 }
