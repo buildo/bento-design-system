@@ -48,26 +48,29 @@ export function createSliderField({
             onChange: (values: number[]) => props.onChange(values[0]),
           };
 
-    const _state = useSliderState({
+    const internalState = useSliderState({
       ...props,
       ...valueProps,
       numberFormatter,
     });
     const state = props.dragStep
       ? {
-          ..._state,
+          ...internalState,
           setThumbPercent: (index: number, percent: number) => {
             const minValue = state.getThumbMinValue(index);
             const maxValue = state.getThumbMaxValue(index);
             const value = percent * (maxValue - minValue) + minValue;
             const roundedValue =
+              // NOTE: we round up to the nearest dragStep first, and then to the nearest step.
+              // This is required in case a dragStep falls on values that are not allowed
+              // e.g. if the dragStep is not a multiple of the step
               roundToStep(roundToStep(value - minValue, props.dragStep!), props.step || 1) +
               minValue;
             const clampedValue = clamp(roundedValue, minValue, maxValue);
             state.setThumbValue(index, clampedValue);
           },
         }
-      : _state;
+      : internalState;
 
     const { groupProps, trackProps, outputProps, labelProps } = useSlider(
       { ...props, ...valueProps },
