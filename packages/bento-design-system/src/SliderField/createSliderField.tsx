@@ -1,5 +1,6 @@
 import { useNumberFormatter } from "@react-aria/i18n";
 import { useSlider } from "@react-aria/slider";
+import { clamp } from "@react-aria/utils";
 import { useSliderState } from "@react-stately/slider";
 import { useRef, FunctionComponent } from "react";
 import { FieldType } from "../Field/createField";
@@ -17,8 +18,13 @@ type Props = (
   minValue: number;
   maxValue: number;
   step?: number;
+  dragStep?: number;
   autoFocus?: boolean;
 } & FormatProps;
+
+function roundToStep(value: number, step: number) {
+  return Math.round(value / step) * step;
+}
 
 export function createSliderField({
   Field,
@@ -42,11 +48,29 @@ export function createSliderField({
             onChange: (values: number[]) => props.onChange(values[0]),
           };
 
-    const state = useSliderState({
+    const internalState = useSliderState({
       ...props,
       ...valueProps,
       numberFormatter,
     });
+    const state = props.dragStep
+      ? {
+          ...internalState,
+          setThumbPercent: (index: number, percent: number) => {
+            const minValue = state.getThumbMinValue(index);
+            const maxValue = state.getThumbMaxValue(index);
+            const value = percent * (maxValue - minValue) + minValue;
+            const roundedValue =
+              // NOTE: we round up to the nearest dragStep first, and then to the nearest step.
+              // This is required in case a dragStep falls on values that are not allowed
+              // e.g. if the dragStep is not a multiple of the step
+              roundToStep(roundToStep(value - minValue, props.dragStep!), props.step || 1) +
+              minValue;
+            const clampedValue = clamp(roundedValue, minValue, maxValue);
+            state.setThumbValue(index, clampedValue);
+          },
+        }
+      : internalState;
 
     const { groupProps, trackProps, outputProps, labelProps } = useSlider(
       { ...props, ...valueProps },
