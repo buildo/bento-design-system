@@ -127,8 +127,3 @@ export const responsiveReverse = createStory(
   },
   { viewport: { defaultViewport: "tablet" } }
 );
-
-export const withDividers = createStory({
-  dividers: true,
-  alignY: "stretch",
-});

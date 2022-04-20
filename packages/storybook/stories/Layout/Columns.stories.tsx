@@ -121,9 +121,3 @@ export const sticky = createStory(
   },
   { viewport: { defaultViewport: "mobile1" } }
 );
-
-export const withDividers = createStory({
-  alignY: "stretch",
-  dividers: true,
-  children: [<Placeholder height={200} />, <Placeholder height={200} />],
-});
