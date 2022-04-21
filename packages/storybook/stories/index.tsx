@@ -1,6 +1,7 @@
 import "./fonts.css";
 import { createBentoComponents, createTabs, defaultConfigs } from "@buildo/bento-design-system";
 import "@buildo/bento-design-system/lib/index.css";
+import "@buildo/bento-design-system/lib/defaultTheme.css";
 import { sprinkles } from "./sprinkles.css";
 
 export * from "@buildo/bento-design-system";
