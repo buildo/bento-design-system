@@ -4,7 +4,8 @@
     // NOTE(gabro): without this, atoms.ts does not compile.
     // This implements the fix suggested at https://github.com/microsoft/TypeScript/issues/29808#issuecomment-540292885
     "paths": {
-      "@vanilla-extract/private": ["node_modules/@vanilla-extract/private/"]
+      "@vanilla-extract/private": ["node_modules/@vanilla-extract/private/"],
+      "clsx": ["../bento-design-system/node_modules/clsx"]
     },
     "baseUrl": "."
   },

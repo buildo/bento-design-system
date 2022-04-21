@@ -1,0 +1,26 @@
+import { Canvas } from "@site/src/components/Canvas";
+import { PropTable } from "@site/src/components/PropTable";
+
+<>{props.children}</>
+
+### Example
+
+<>{props.examplePath && <Canvas path={props.examplePath} />}</>
+
+<>
+  {props.constructorName && (
+    <>
+      <h2>Config</h2>
+      <PropTable name={props.constructorName} />
+    </>
+  )}
+</>
+
+<>
+  {props.name && (
+    <>
+      <h2>Props</h2>
+      <PropTable name={props.name} />
+    </>
+  )}
+</>

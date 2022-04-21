@@ -37,6 +37,7 @@ import {
   Placeholder,
   Popover,
   Link,
+  ContentBlock,
 } from ".";
 import * as icons from "./Icons";
 import * as illustrations from "./Illustrations";
@@ -50,13 +51,13 @@ import { createInlineLoader } from "./InlineLoader/InlineLoader";
 import { createDecorativeDivider } from "./Divider/Divider";
 
 export function createBentoComponents<
-  AtomsFn extends typeof bentoSprinkles,
+  AtomsFn extends typeof bentoSprinkles = typeof bentoSprinkles,
   ChipCustomColor extends string = never
 >(
-  sprinkles: AtomsFn,
+  sprinkles?: AtomsFn,
   config: Object.Partial<BentoConfig<AtomsFn, ChipCustomColor>, "deep"> = defaultConfigs
 ) {
-  const Box = createBentoBox(sprinkles);
+  const Box = createBentoBox(sprinkles ?? bentoSprinkles);
 
   const { Bleed, Column, Columns, Inline, Inset, Stack, Tiles } = createLayoutComponents(Box);
 
@@ -199,6 +200,7 @@ export function createBentoComponents<
     Chip,
     Column,
     Columns,
+    ContentBlock,
     CustomModal,
     DecorativeDivider,
     DesignSystemProvider,

@@ -1,0 +1,186 @@
+import CodeBlock from "@theme/CodeBlock";
+import { Canvas } from "../../src/components/Canvas";
+
+# Layout guide
+
+Layout components enable the creation of composable layouts. The main guiding principle is that
+space between elements "belongs" to their container. In other works, components never define any
+space outside their own boundaries. This allows for precise control of the spacing and makes
+components truly re-usable in different spacing contexts.
+
+The design system provides a set of layout components, that can be arbitrarily nested inside each
+other to create complex layouts:
+
+- Stack
+- Inline
+- Columns
+- Inset
+- ContentBlock
+
+:::note Credits
+🙏 The design of Layout components is heavily inspired by the
+[Braid Design System](https://seek-oss.github.io/braid-design-system/foundations/layout/) and the
+[Rainbow Design System](https://github.com/rainbow-me/rainbow/tree/develop/src/design-system)
+:::
+
+## Spacing
+
+The design system defines a standard spacing scale which applies across all components. Valid values
+are:
+
+<SpacingScale />
+
+## Stack
+
+`Stack` is a layout component that arranges its children vertically.
+
+<Canvas path="Layout/StackBasic" />
+
+You can control the space between children with the `space` prop, which accepts finite set of values
+as defined by the spacing scale.
+
+`Stack` can also control the horizontal alignment of its children with the `align` prop:
+
+<Canvas path="Layout/StackAlign" />
+
+The `space` and the `align` props also supports defining their values depending on the breakpoint.
+For example, you can define different `align` values on desktop and on mobile:
+
+<Canvas path="Layout/StackAlignResponsive" />
+
+:::tip
+Try resizing the browser window to see how the alignment changes.
+:::
+
+:::info
+If you specify only some breakpoints, e.g. `mobile` and `desktop`, they will "inherit" from the breakpoint immediately "above". For example, if you specify `mobile` and `desktop`, the `tablet` breakpoint will inherit from the `desktop` value.
+:::
+
+`Stack` can also optionally render horizontal dividers in between its children using the `dividers`
+prop:
+
+<Canvas path="Layout/StackDividers" />
+
+## Inline
+
+`Inline` can be used to create horizontally flowing layouts, which wrap across multiple lines if
+necessary.
+
+<Canvas path="Layout/InlineBasic" />
+
+The spacing between children can be controlled with the `space` prop, which is also applied between
+rows.
+
+`Inline` can control the horizontal and vertical alignment of its children with the `align` and
+`alignY` props respectively.
+
+<Canvas path="Layout/InlineAlign" />
+
+Similarly to `Stack`, `space`, `align` and `alignY` can be defined depending on the breakpoint:
+
+<Canvas path="Layout/InlineAlignResponsive" />
+
+:::tip
+Try resizing the browser window to see how the alignment changes.
+:::
+
+`Inline` can also automatically collapse its children into a single column when the screen is below
+a certain breakpoint. This is achieved using the `collapseBelow` property.
+
+Here's an example of a layout where the children are collapsed and centered only on mobile:
+
+<Canvas path="Layout/InlineCollapseBelow" />
+
+`Inline` can also render its children in reverse dom order: this may be useful in case you want to
+preserve the DOM order for accessibility (e.g. tabbing using a keyboard respects DOM order) but
+reverse the elements visually. For this you can use the `reverse` prop:
+
+<Canvas path="Layout/InlineReverse" />
+
+The `reverse` prop is also responsive, so you can apply the reverse visual ordering only for certain
+breakpoints, if needed.
+
+## Columns
+
+`Columns` is used to create horizontal layouts with a larger degree of flexibility with respect to
+`Inline`.
+
+<Canvas path="Layout/ColumnsTwoColumn" />
+
+Columns share the space evenly by default, but it's possible to control the width of individual
+columns by using the `Column` component.
+
+For example, here's a three-column layout where the two side columns occupy 1/5 of the available
+space each and the central column takes up the remaining space:
+
+<Canvas path="Layout/ColumnsThreeColumn" />
+
+:::tip
+Using `Column` without any props is equivalent to just passing its children directly.
+:::
+
+Columns can also be sized according to their content, which is useful when you want a column to be
+as small as possible:
+
+<Canvas path="Layout/ColumnsContentSizedColumn" />
+
+Similarly to `Inline`, `Columns` can also control the horizontal and vertical alignment of columns:
+
+<Canvas path="Layout/ColumnsAlignY" />
+
+And again, `space`, `align` and `alignY` can be defined depending on the breakpoint and
+`collapseBelow` can be used to arrange columns vertically below a certain screen size:
+
+<Canvas path="Layout/ColumnsCollapseBelow" />
+
+`Columns` supports the same `reverse` property as `Inline`. This is particularly usefor for
+implementing layouts where you have columns that you want to collapse in reverse DOM order. Here's
+an example where the sidebar moves above the main content when collapsing below the desktop
+breakpoint:
+
+<Canvas path="Layout/ColumnsResponsiveReverse" />
+
+## Tiles
+
+Sometimes you may need to control the number of columns but also allow wrapping, to create grid-like
+layouts. This can't be achieved with `Inline` (becuase it doesn't control the number of columns),
+nor `Columns` (because it does not allow wrapping).
+
+In such cases, you can use the `Tiles` component, which lays out its children in a fixed number of
+columns, wrapping if necessary:
+
+<Canvas path="Layout/TilesThreeColumn" />
+
+The `column` and `space` props can be set responsively, so you can adapt the layout based on the
+active breakpoint. For example, here's how to render 4 columns on desktop, 2 on tablet and 1 on
+mobile:
+
+<Canvas path="Layout/TilesResponsive" />
+
+## Inset
+
+`Inset` is used to create a container with equal padding on each side:
+
+<Canvas path="Layout/InsetAllAxis" />
+
+Horizontal and vertical padding can be set independently using the `spaceX` and `spaceY` props:
+
+<Canvas path="Layout/InsetHorizontalAndVertical" />
+
+## ContentBlock
+
+All components span the entire width of their container by default. In some cases, though, you may
+want to cap their width: this is usually the case when working with page layouts or with long text
+paragraphs.
+
+In such cases, you can use `ContentBlock` to limit the `maxWidth` and optionally center the content
+in the parent container.
+
+For example, here's how to limit the width of long a paragraph of text to 700px, so that it stays
+readable:
+
+<Canvas path="Layout/ContentBlockAlignDefault" />
+
+Another example is capping the maxWidth of the entire page content, and centering it:
+
+<Canvas path="Layout/ContentBlockAlignCenter" />
