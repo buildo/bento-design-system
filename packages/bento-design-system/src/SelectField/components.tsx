@@ -59,8 +59,6 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
       <defaultComponents.ValueContainer
         {...props}
         className={bentoSprinkles({
-          paddingX: inputConfig.paddingX,
-          paddingY: inputConfig.paddingY,
           gap: 8,
         })}
       />

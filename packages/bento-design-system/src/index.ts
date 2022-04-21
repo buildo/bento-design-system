@@ -52,6 +52,7 @@ export * from "./Typography/Display/Display";
 export * from "./Typography/Headline/Headline";
 export * from "./Typography/Label/Label";
 export * from "./Typography/Title/Title";
+export { bentoSprinkles } from "./internal/sprinkles.css";
 export * from "./sprinkles";
 export * from "./util/Children";
 export * from "./util/LocalizedString";
