@@ -5,7 +5,6 @@ import { vars } from "../vars.css";
 
 export const control = strictRecipe({
   base: [
-    { padding: "0" },
     bentoSprinkles({
       background: {
         default: "backgroundPrimary",
