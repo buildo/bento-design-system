@@ -149,9 +149,9 @@ export const chip: ChipConfig<typeof bentoSprinkles, string> = {
 };
 
 export const decorativeDivider: DecorativeDividerConfig<typeof bentoSprinkles> = {
-  height: 1,
-  radius: 0,
-  color: "outlineDecorative",
+  height: 2,
+  radius: "circledX",
+  color: "brandSecondary",
 };
 
 export const disclosure: DisclosureConfig = {

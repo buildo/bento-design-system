@@ -116,11 +116,6 @@ export const {
       custom: "customColor1",
     },
   },
-  decorativeDivider: {
-    height: 3,
-    radius: "circledX",
-    color: "brandSecondary",
-  },
   feedback: {
     background: FeedbackBackground,
   },
