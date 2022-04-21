@@ -2,7 +2,7 @@ import { Parameters } from "@storybook/addons";
 import { ComponentStory } from "@storybook/react";
 import { JSXElementConstructor, ComponentProps, useState } from "react";
 import { unsafeLocalizedString, Omit, alignToFlexAlignLookup, alignYToFlexAlignLookup } from ".";
-import { vars } from "@buildo/bento-design-system/lib/vars.css";
+import { vars } from "@buildo/bento-design-system";
 
 export type Actions<Props> = {
   [k in keyof Props]-?: k extends `on${infer _}` ? k : never;

@@ -78,6 +78,7 @@ export * from "./util/conditions";
 export * from "./util/link";
 export * from "./util/strictRecipe";
 export * from "./util/useDefaultMessages";
+export * from "./vars.css";
 
 export { icons, illustrations };
 
