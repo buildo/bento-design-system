@@ -49,6 +49,7 @@ type Props = Kind &
     disabled?: boolean;
     size: ListSize;
     isFocused?: boolean;
+    isSelected?: boolean;
     ignoreTabIndex?: boolean;
   } & (
     | {
@@ -87,6 +88,7 @@ export function createListItem(config: ListItemConfig) {
         className={listItemRecipe({
           interactive,
           focused: !!props.isFocused,
+          selected: !!props.isSelected,
         })}
         disabled={props.disabled}
       >
