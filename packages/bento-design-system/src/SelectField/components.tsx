@@ -59,8 +59,6 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
       <defaultComponents.ValueContainer
         {...props}
         className={bentoSprinkles({
-          paddingX: inputConfig.paddingX,
-          paddingY: inputConfig.paddingY,
           gap: 8,
         })}
       />
@@ -109,7 +107,7 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
   }: DropdownIndicatorProps<A, IsMulti>) {
     if (isReadOnly) return null;
     return (
-      <Box paddingX={16}>
+      <Box paddingLeft={16}>
         <IconChevronDown size={16} color={isDisabled ? "disabled" : "default"} />
       </Box>
     );
