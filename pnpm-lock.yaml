@@ -212,6 +212,7 @@ importers:
       eslint-plugin-sort-export-all: 1.2.2
       lint-staged: 12.3.7
       lodash.orderby: 4.6.0
+      mini-css-extract-plugin: 2.6.0
       prettier: 2.6.2
       react: 17.0.2
       react-dom: 17.0.2
@@ -246,6 +247,7 @@ importers:
       eslint-plugin-sort-export-all: 1.2.2_eslint@8.12.0
       lint-staged: 12.3.7
       lodash.orderby: 4.6.0
+      mini-css-extract-plugin: 2.6.0
       prettier: 2.6.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -17137,6 +17139,15 @@ packages:
       webpack: 5.71.0
       webpack-sources: 1.4.3
     dev: false
+
+  /mini-css-extract-plugin/2.6.0:
+    resolution: {integrity: sha512-ndG8nxCEnAemsg4FSgS+yNyHKgkTB4nPKqCOgh65j3/30qqC5RaSQQXMm++Y6sb6E1zRSxPkztj9fqxhS1Eo6w==}
+    engines: {node: '>= 12.13.0'}
+    peerDependencies:
+      webpack: ^5.0.0
+    dependencies:
+      schema-utils: 4.0.0
+    dev: true
 
   /mini-css-extract-plugin/2.6.0_webpack@5.71.0:
     resolution: {integrity: sha512-ndG8nxCEnAemsg4FSgS+yNyHKgkTB4nPKqCOgh65j3/30qqC5RaSQQXMm++Y6sb6E1zRSxPkztj9fqxhS1Eo6w==}
