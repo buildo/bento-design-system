@@ -50,6 +50,7 @@ export const {
   Columns,
   CustomModal,
   DesignSystemProvider,
+  DecorativeDivider,
   Disclosure,
   DisclosureGroup,
   Display,

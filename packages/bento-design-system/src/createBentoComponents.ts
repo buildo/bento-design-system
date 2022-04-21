@@ -47,6 +47,7 @@ import merge from "ts-deepmerge";
 import { createSwitch } from "./Switch/createSwitch";
 import { createUseComponentsShowcase } from "./createUseComponentsShowcase";
 import { createInlineLoader } from "./InlineLoader/InlineLoader";
+import { createDecorativeDivider } from "./Divider/Divider";
 
 export function createBentoComponents<
   AtomsFn extends typeof bentoSprinkles,
@@ -63,6 +64,11 @@ export function createBentoComponents<
 
   const InlineLoader = createInlineLoader(
     merge(defaultConfigs.inlineLoader, config.inlineLoader ?? {})
+  );
+
+  const DecorativeDivider = createDecorativeDivider(
+    merge(defaultConfigs.decorativeDivider, config.decorativeDivider ?? {}),
+    { Box }
   );
 
   const Avatar = createAvatar(merge(defaultConfigs.avatar, config.avatar ?? {}));
@@ -194,6 +200,7 @@ export function createBentoComponents<
     Column,
     Columns,
     CustomModal,
+    DecorativeDivider,
     DesignSystemProvider,
     Disclosure,
     DisclosureGroup,

@@ -229,7 +229,7 @@ export const createUseComponentsShowcase =
               title: "AreaLoader",
               Component: AreaLoader,
               variants: [[{ message: formatMessage("Loading...") }]],
-              iframe: true,
+              absolute: true,
             }),
           Avatar &&
             componentShowcase({

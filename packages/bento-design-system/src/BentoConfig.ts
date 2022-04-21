@@ -8,6 +8,7 @@ import { CardConfig } from "./Card/Config";
 import { ChipConfig } from "./Chip/Config";
 import { DisclosureConfig } from "./Disclosure/Config";
 import { DisclosureGroupConfig } from "./DisclosureGroup/Config";
+import { DecorativeDividerConfig } from "./Divider/Config";
 import { FeedbackConfig } from "./Feedback/Config";
 import {
   FieldConfig,
@@ -45,6 +46,7 @@ export type BentoConfig<
   button: ButtonConfig;
   card: CardConfig;
   chip: ChipConfig<AtomsFn, ChipCustomColor>;
+  decorativeDivider: DecorativeDividerConfig<AtomsFn>;
   disclosure: DisclosureConfig;
   disclosureGroup: DisclosureGroupConfig;
   feedback: FeedbackConfig;
