@@ -38,11 +38,11 @@ import {
   Popover,
   Link,
   ContentBlock,
+  bentoSprinkles,
 } from ".";
 import * as icons from "./Icons";
 import * as illustrations from "./Illustrations";
 import { BentoConfig } from "./BentoConfig";
-import { bentoSprinkles } from "./internal";
 import { createProgressBar } from "./ProgressBar/createProgressBar";
 import merge from "ts-deepmerge";
 import { createSwitch } from "./Switch/createSwitch";
@@ -51,13 +51,13 @@ import { createInlineLoader } from "./InlineLoader/InlineLoader";
 import { createDecorativeDivider } from "./Divider/Divider";
 
 export function createBentoComponents<
-  AtomsFn extends typeof bentoSprinkles = typeof bentoSprinkles,
+  AtomsFn extends typeof bentoSprinkles,
   ChipCustomColor extends string = never
 >(
-  sprinkles?: AtomsFn,
+  sprinkles: AtomsFn,
   config: Object.Partial<BentoConfig<AtomsFn, ChipCustomColor>, "deep"> = defaultConfigs
 ) {
-  const Box = createBentoBox(sprinkles ?? bentoSprinkles);
+  const Box = createBentoBox(sprinkles);
 
   const { Bleed, Column, Columns, Inline, Inset, Stack, Tiles } = createLayoutComponents(Box);
 
