@@ -22,10 +22,6 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/buildo/bento-design-system/tree/main/docs/",
-          remarkPlugins: [[require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }]],
-        },
-        pages: {
-          remarkPlugins: [require("@docusaurus/remark-plugin-npm2yarn")],
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
