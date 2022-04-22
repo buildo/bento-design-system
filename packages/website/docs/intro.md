@@ -72,26 +72,3 @@ Done! Now you can add two scripts to your `package.json`:
 ```
 
 Ok, now that we got the build stuff out of the way, let's continue with more interesting things!
-
-```jsx live="true"
-function Clock(props) {
-  const [date, setDate] = useState(new Date());
-  useEffect(() => {
-    var timerID = setInterval(() => tick(), 1000);
-
-    return function cleanup() {
-      clearInterval(timerID);
-    };
-  });
-
-  function tick() {
-    setDate(new Date());
-  }
-
-  return (
-    <div>
-      <h2>It is {date.toLocaleTimeString()}.</h2>
-    </div>
-  );
-}
-```

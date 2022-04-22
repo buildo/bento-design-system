@@ -28,16 +28,11 @@ const config = {
         },
       },
     ],
-    // [
-    //   "docusaurus-preset-shiki-twoslash",
-    //   {
-    //     themes: ["min-light", "dracula"],
-    //     ignoreCodeblocksWithCodefenceMeta: ["live"],
-    //   },
-    // ],
   ],
   plugins: [
     // @ts-ignore
+    // NOTE(gabro): not sure why TS complains about a mismatch of types for ProvidePlugin
+    // but in practice this works...
     () => ({
       name: "webpack-config-plugin",
       configureWebpack(config) {
@@ -46,6 +41,7 @@ const config = {
             plugins: "append",
           },
           plugins: [
+            // These plugins are needed to make @babel/generate work in browser
             new ProvidePlugin({ process: "process/browser" }),
             new ProvidePlugin({
               Buffer: ["buffer", "Buffer"],
@@ -60,10 +56,7 @@ const config = {
         src: "../bento-design-system/src/**.{ts,tsx}",
         global: true,
         parserOptions: {
-          // pass parserOptions to react-docgen-typescript
-          // here is a good starting point which filters out all
-          // types from react
-          propFilter: (prop, component) => {
+          propFilter: (prop) => {
             if (prop.parent) {
               return !prop.parent.fileName.includes("@types/react");
             }
