@@ -12,15 +12,15 @@ Bento is configurable and extensible, and it's meant to be used as a foundation 
 
 ## Quick start
 
-The quickest way to start playing with Bento is by using the default configuration that is shipped with it.
+The quickest way to start playing with `Bento` is by using the default configuration that is shipped with it.
 
 Let's start by adding Bento to the project:
 
 <PackageManagerCommand
   command={{
-    pnpm: "add bento-design-system",
-    yarn: "add bento-design-system",
-    npm: "install bento-design-system",
+    pnpm: "add @buildo/bento-design-system",
+    yarn: "add @buildo/bento-design-system",
+    npm: "install @buildo/bento-design-system",
   }}
 />
 
@@ -34,7 +34,12 @@ import "@buildo/bento-design-system/lib/defaultTheme.css";
 Now we can create the Bento components and export them, so that we can import and use them whenever we need:
 
 ```ts
-export const { TextField, Button, ...DesignSystemProvider } = createBentoComponents();
+export const {
+  TextField,
+  Button,
+  ...,
+  DesignSystemProvider
+} = createBentoComponents();
 ```
 
 The `DesignSystemProvider`, returned along with the other components by `createBentoComponents`, provides a React context that is required for some components to work properly, so we need to wrap it around the project's root component.
