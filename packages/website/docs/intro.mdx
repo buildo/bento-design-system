@@ -2,6 +2,10 @@
 sidebar_position: 1
 ---
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import { PackageManagerCommand } from "@site/src/components/PackageManagerCommand";
+
 # Welcome to Bento Design System
 
 Bento Design System is an extensible Design System for React.
@@ -14,13 +18,13 @@ Bento is based and must be used together with [Vanilla Extract](https://vanilla-
 
 Start by installing Bento and Vanilla Extract:
 
-```bash
-# pnpm
-pnpm add bento-design-system @vanilla-extract/css @vanilla-extract/sprinkles @vanilla-extract/recipes
-
-# yarn
-yarn add bento-design-system @vanilla-extract/css @vanilla-extract/sprinkles @vanilla-extract/recipes
-```
+<PackageManagerCommand
+  command={{
+    pnpm: "add bento-design-system",
+    yarn: "add bento-design-system",
+    npm: "install bento-design-system",
+  }}
+/>
 
 ## Setting up Vanilla Extract
 
@@ -30,13 +34,13 @@ Vanilla Extract supports several popular bundlers, but for a design system packa
 
 Here's a possible setup using to get you started:
 
-```bash
-# pnpm
-pnpm add -D tsup @vanilla-extract/esbuild-plugin
-
-# yarn
-yarn add -D tsup @vanilla-extract/esbuild-plugin
-```
+<PackageManagerCommand
+  command={{
+    pnpm: "add -D tsup @vanilla-extract/esbuild-plugin",
+    yarn: "add -D tsup @vanilla-extract/esbuild-plugin",
+    npm: "install -D tsup @vanilla-extract/esbuild-plugin",
+  }}
+/>
 
 Create a file named `tsup.config.ts` in your project root:
 
