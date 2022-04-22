@@ -6,7 +6,7 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "start": "turbo run start",
+    "start": "turbo run start --filter !website",
     "prepare": "husky install",
     "prettier-check": "turbo run prettier-check",
     "prettier-write": "turbo run prettier-write",
@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "husky": "7.0.4",
-    "turbo": "1.1.10"
+    "turbo": "1.2.5"
   },
   "packageManager": "pnpm@6.32.4"
 }
