@@ -30,9 +30,6 @@ const config = {
     ],
   ],
   plugins: [
-    // @ts-ignore
-    // NOTE(gabro): not sure why TS complains about a mismatch of types for ProvidePlugin
-    // but in practice this works...
     () => ({
       name: "webpack-config-plugin",
       configureWebpack(config) {
