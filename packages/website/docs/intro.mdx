@@ -6,15 +6,13 @@ import { PackageManagerCommand } from "@site/src/components/PackageManagerComman
 
 # Welcome to Bento Design System
 
-Bento Design System is an extensible Design System for React.
+Bento is a configurable and extensible Design System for React.
 
-Bento is configurable and extensible, and it's meant to be used as a foundation for your project's Design System.
+It is s meant to be used as a foundation for your project's Design System.
 
 ## Quick start
 
-The quickest way to start playing with `Bento` is by using the default configuration that is shipped with it.
-
-Let's start by adding Bento to the project:
+First, add the Bento package to your project:
 
 <PackageManagerCommand
   command={{
@@ -24,34 +22,138 @@ Let's start by adding Bento to the project:
   }}
 />
 
-Then, let's import the Bento stylesheet and the default theme from the project's index:
+Then, let's import the Bento stylesheet. We are also going to import Bento's default theme, so that we can get started right away.
+(Don't worry, we will discuss later how to create your own custom theme):
 
-```ts
+```ts title="my-project/design-system/src/index.tsx"
 import "@buildo/bento-design-system/lib/index.css";
 import "@buildo/bento-design-system/lib/defaultTheme.css";
 ```
 
-Now we can create the Bento components and export them, so that we can import and use them whenever we need:
+Now we can use `createBentoComponents` to create and exports the components we need, for example
 
-```ts
+```tsx title="my-project/design-system/src/index.tsx"
+import "@buildo/bento-design-system/lib/index.css";
+import "@buildo/bento-design-system/lib/defaultTheme.css";
+
+// highlight-start
 export const {
-  TextField,
+  Banner,
   Button,
-  ...,
-  DesignSystemProvider
+  CheckboxField,
+  Chip,
+  RadioGroupField,
+  SelectField,
+  TextField,
+  Title,
+  DesignSystemProvider,
 } = createBentoComponents();
+// highlight-end
 ```
 
-The `DesignSystemProvider`, returned along with the other components by `createBentoComponents`, provides a React context that is required for some components to work properly, so we need to wrap it around the project's root component.
-When we do this, we must pass a `defaultMessages` object to it. This object contains a set of localized strings which are used by some components as default messages.
+The `DesignSystemProvider`, returned alongside the other components by `createBentoComponents`, is a React context provider that is required for some components to work.
+You need to wrap your entire application with it in order to use Bento components.
+
+`DesignSystemProvider` has a required `defaultMessages` parameter: this is used to provide standard localized messages for some components.
+
+<details>
+  <summary>Why using default messages?</summary>
+
+Bento components are entirely agnostic when it comes to localization: all components accept the
+text to be display to the user as props.
+
+Some specific props, however, are very repetitive and would be too tedious to pass them as props
+every time you use the component. Think of messages like `"No options"` when a `SelectField` or
+accessibility labels like "Close", which are used to describe actions on icons.
+
+Without the default messages, for example, you would need to pass `dismissButtonLabel` every time you use `Chip`:
 
 ```tsx
+<Chip label={label} color={color} dismissButtonLabel={dismissButtonLabel} />
+```
+
+whereas default messages allow Bento to make `dismissButtonLabel` optional, and let you override it only if needed:
+
+```tsx
+// This uses the default message for `dismissButtonLabel`
+<Chip label={label} color={color} />
+
+// This overrides the default message
+<Chip label={label} color={color} dismissButtonLabel={myCustomDismissLabel} />
+```
+
+</details>
+
+```tsx title="my-project/app/src/App.tsx"
+import { DesignSystemProvider, Title } from "design-system";
 import { defaultMessages } from "./defaultMessages";
 
 <DesignSystemProvider defaultMessages={defaultMessages}>
-  <App />
+  <Title size="large">Hello, World!</Title>
 </DesignSystemProvider>;
 ```
+
+<details>
+  <summary>Here's some sample default messages you can use to get started:</summary>
+
+```tsx title="my-project/app/src/defaultMessages.tsx"
+import { ComponentProps } from "react";
+import { DesignSystemProvider } from "design-system";
+
+// This is a mocked implementation of a localization function, to get you started.
+// In a real application it will be replaced by a real one, like `react-i18next` or `react-intl`.
+// Bento requires to cast the strings that are localized as `LocalizedString`: we will discuss this
+// shortly.
+const formatMessage = (x: string) => x as any;
+
+export const defaultMessages: ComponentProps<typeof DesignSystemProvider>["defaultMessages"] = {
+  Chip: {
+    dismissButtonLabel: formatMessage("Remove"),
+  },
+  Banner: {
+    dismissButtonLabel: formatMessage("Close"),
+  },
+  Modal: {
+    closeButtonLabel: formatMessage("Close"),
+  },
+  SelectField: {
+    noOptionsMessage: formatMessage("No options"),
+    multiOptionsSelected: (n) => {
+      const options = n > 1 ? "options" : "option";
+      return formatMessage(`${n} ${options} selected`);
+    },
+  },
+  SearchBar: {
+    clearButtonLabel: formatMessage("Clear"),
+  },
+  Table: {
+    noResultsTitle: formatMessage("No results found"),
+    noResultsDescription: formatMessage(
+      "Try adjusting your search filters to find what you're looking for."
+    ),
+    missingValue: formatMessage("-"),
+  },
+  Loader: {
+    loadingMessage: formatMessage("Loading..."),
+  },
+};
+```
+
+</details>
+
+:::note
+
+In the examples above, we are assuming your project will use a workspace containing (at least) two packages:
+
+- `design-system`
+- `app`
+
+where `app` depends on `design-system` locally (using the workspace feature by npm, pnpm or yarn).
+
+We recommend this approach as it clearly separates the concerns, but nothing prevents from
+co-locating design system and app components in the same project.
+
+:::
 
 ## Customization
 
