@@ -37,11 +37,12 @@ import {
   Placeholder,
   Popover,
   Link,
+  ContentBlock,
+  bentoSprinkles,
 } from ".";
 import * as icons from "./Icons";
 import * as illustrations from "./Illustrations";
 import { BentoConfig } from "./BentoConfig";
-import { bentoSprinkles } from "./internal";
 import { createProgressBar } from "./ProgressBar/createProgressBar";
 import merge from "ts-deepmerge";
 import { createSwitch } from "./Switch/createSwitch";
@@ -199,6 +200,7 @@ export function createBentoComponents<
     Chip,
     Column,
     Columns,
+    ContentBlock,
     CustomModal,
     DecorativeDivider,
     DesignSystemProvider,

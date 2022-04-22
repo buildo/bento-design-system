@@ -1,9 +1,11 @@
+@import "@buildo/bento-design-system/lib/index.css";
+@import "@buildo/bento-design-system/lib/defaultTheme.css";
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #25c2a0;
@@ -25,12 +27,4 @@
 
 html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="light"] .shiki.dracula {
-  display: none;
-}
-
-[data-theme="dark"] .shiki.min-light {
-  display: none;
 }

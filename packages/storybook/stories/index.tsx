@@ -1,4 +1,3 @@
-import "./fonts.css";
 import "@buildo/bento-design-system/lib/index.css";
 import "@buildo/bento-design-system/lib/defaultTheme.css";
 import "./theme.css";

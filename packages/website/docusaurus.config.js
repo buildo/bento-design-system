@@ -1,6 +1,7 @@
 // @ts-check
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const { ProvidePlugin } = require("webpack");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -11,9 +12,8 @@ const config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
-  organizationName: "buildo", // Usually your GitHub org/user name.
-  projectName: "bento-design-system", // Usually your repo name.
-
+  organizationName: "buildo",
+  projectName: "bento-design-system",
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -28,14 +28,42 @@ const config = {
         },
       },
     ],
+  ],
+  plugins: [
+    () => ({
+      name: "webpack-config-plugin",
+      configureWebpack(config) {
+        return {
+          mergeStrategy: {
+            plugins: "append",
+          },
+          plugins: [
+            // These plugins are needed to make @babel/generate work in browser
+            new ProvidePlugin({ process: "process/browser" }),
+            new ProvidePlugin({
+              Buffer: ["buffer", "Buffer"],
+            }),
+          ],
+        };
+      },
+    }),
     [
-      "docusaurus-preset-shiki-twoslash",
+      "docusaurus-plugin-react-docgen-typescript",
       {
-        themes: ["min-light", "dracula"],
+        src: "../bento-design-system/src/**.{ts,tsx}",
+        global: true,
+        parserOptions: {
+          propFilter: (prop) => {
+            if (prop.parent) {
+              return !prop.parent.fileName.includes("@types/react");
+            }
+
+            return true;
+          },
+        },
       },
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {

@@ -14,24 +14,39 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "lint-staged": "lint-staged",
+    "eslint-check": "eslint \"src/**/*.{js,ts,tsx}\"",
+    "prettier-check": "prettier --parser=typescript \"src/**/*.{ts,tsx}\" --check",
+    "prettier-write": "prettier --parser=typescript \"src/**/*.{ts,tsx}\" --write"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-beta.14",
-    "@docusaurus/preset-classic": "2.0.0-beta.14",
+    "@babel/generator": "^7.17.9",
+    "@babel/parser": "^7.17.9",
+    "@babel/traverse": "^7.17.9",
+    "@buildo/bento-design-system": "workspace:*",
+    "@docusaurus/core": "2.0.0-beta.18",
+    "@docusaurus/preset-classic": "2.0.0-beta.18",
     "@mdx-js/react": "^1.6.21",
     "clsx": "^1.1.1",
-    "docusaurus-preset-shiki-twoslash": "^1.1.33",
+    "docusaurus-plugin-react-docgen-typescript": "^0.1.0",
+    "prettier": "2.6.2",
     "prism-react-renderer": "^1.2.1",
     "react": "^17.0.1",
+    "react-docgen-typescript": "^2.2.2",
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.0.0-beta.14",
+    "@docusaurus/module-type-aliases": "2.0.0-beta.18",
     "@docusaurus/theme-classic": "^2.0.0-beta.18",
+    "@docusaurus/theme-live-codeblock": "^2.0.0-beta.18",
     "@tsconfig/docusaurus": "^1.0.4",
     "@vanilla-extract/sprinkles": "^1.4.0",
-    "typescript": "^4.5.2"
+    "eslint-config-react-app": "7.0.0",
+    "lint-staged": "12.3.7",
+    "raw-loader": "^4.0.2",
+    "typescript": "^4.5.2",
+    "webpack": "5.71.0"
   },
   "browserslist": {
     "production": [
