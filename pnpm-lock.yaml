@@ -267,9 +267,11 @@ importers:
       '@docusaurus/core': 2.0.0-beta.18
       '@docusaurus/module-type-aliases': 2.0.0-beta.18
       '@docusaurus/preset-classic': 2.0.0-beta.18
+      '@docusaurus/remark-plugin-npm2yarn': ^2.0.0-beta.18
       '@docusaurus/theme-classic': ^2.0.0-beta.18
       '@docusaurus/theme-live-codeblock': ^2.0.0-beta.18
       '@mdx-js/react': ^1.6.21
+      '@sapphire/docusaurus-plugin-npm2yarn2pnpm': ^1.0.3
       '@tsconfig/docusaurus': ^1.0.4
       '@vanilla-extract/sprinkles': ^1.4.0
       clsx: ^1.1.1
@@ -291,7 +293,9 @@ importers:
       '@buildo/bento-design-system': link:../bento-design-system
       '@docusaurus/core': 2.0.0-beta.18_28e7016540b0a32b5f8d7be755522ab7
       '@docusaurus/preset-classic': 2.0.0-beta.18_28e7016540b0a32b5f8d7be755522ab7
+      '@docusaurus/remark-plugin-npm2yarn': 2.0.0-beta.18
       '@mdx-js/react': 1.6.22_react@17.0.2
+      '@sapphire/docusaurus-plugin-npm2yarn2pnpm': 1.0.3
       clsx: 1.1.1
       docusaurus-plugin-react-docgen-typescript: 0.1.0_cf62c0672603fd708bf7c3b9e9dd14fe
       prettier: 2.6.2
@@ -4217,6 +4221,15 @@ packages:
       prop-types: 15.8.1
       react: 17.0.2
 
+  /@docusaurus/remark-plugin-npm2yarn/2.0.0-beta.18:
+    resolution: {integrity: sha512-GmlbPzB8ImH6ey0LhOTe5NOIY30TwVNXarpm63zG1HYEUOT/H8X8w2NQPlT6RyhH9FtDi4bKMzfEP4ImpJGgCQ==}
+    engines: {node: '>=14'}
+    dependencies:
+      npm-to-yarn: 1.0.1
+      tslib: 2.3.1
+      unist-util-visit: 2.0.3
+    dev: false
+
   /@docusaurus/theme-classic/2.0.0-beta.18_28e7016540b0a32b5f8d7be755522ab7:
     resolution: {integrity: sha512-WJWofvSGKC4Luidk0lyUwkLnO3DDynBBHwmt4QrV+aAVWWSOHUjA2mPOF6GLGuzkZd3KfL9EvAfsU0aGE1Hh5g==}
     engines: {node: '>=14'}
@@ -5872,6 +5885,13 @@ packages:
   /@rushstack/eslint-patch/1.1.0:
     resolution: {integrity: sha512-JLo+Y592QzIE+q7Dl2pMUtt4q8SKYI5jDrZxrozEQxnGVOyYE+GWK9eLkwTaeN9DDctlaRAQ3TBmzZ1qdLE30A==}
     dev: true
+
+  /@sapphire/docusaurus-plugin-npm2yarn2pnpm/1.0.3:
+    resolution: {integrity: sha512-PwsLT1b0RYIisCyPeShstRE38gNbKierhzGQvKPNBqhgisRJQzuIPTQfC59ldz8mA99gXLcJYV+bnHbaLi6b2w==}
+    engines: {node: '>=v16.6.0', npm: '>=7.0.0'}
+    dependencies:
+      npm-to-yarn: 1.0.1
+    dev: false
 
   /@sideway/address/4.1.4:
     resolution: {integrity: sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==}
@@ -11420,7 +11440,7 @@ packages:
       postcss-modules-values: 4.0.0_postcss@8.4.12
       postcss-value-parser: 4.2.0
       semver: 7.3.5
-      webpack: 5.71.0_webpack-cli@4.9.2
+      webpack: 5.71.0
 
   /css-minimizer-webpack-plugin/3.4.1_clean-css@5.2.4+webpack@5.71.0:
     resolution: {integrity: sha512-1u6D71zeIfgngN2XNRJefc/hY7Ybsxd74Jm4qngIXyUEk7fss3VUzuHxLAq/R8NAba4QU9OUSaMZlbpRc7bM4Q==}
@@ -13419,7 +13439,7 @@ packages:
     dependencies:
       loader-utils: 2.0.2
       schema-utils: 3.1.1
-      webpack: 5.71.0_webpack-cli@4.9.2
+      webpack: 5.71.0
 
   /file-system-cache/1.0.5:
     resolution: {integrity: sha1-hCWbNqK7uNPW6xAh0xMv/mTP/08=}
@@ -14424,7 +14444,7 @@ packages:
       lodash: 4.17.21
       pretty-error: 4.0.0
       tapable: 2.2.1
-      webpack: 5.71.0_webpack-cli@4.9.2
+      webpack: 5.71.0
 
   /htmlparser2/3.10.1:
     resolution: {integrity: sha512-IgieNijUMbkDovyoKObU1DUhm1iwNYE/fuifEoEHfd1oZKZDaONBSkal7Y01shxsM49R4XaMdGez3WnF9UfiCQ==}
@@ -16658,7 +16678,7 @@ packages:
       webpack: ^5.0.0
     dependencies:
       schema-utils: 4.0.0
-      webpack: 5.71.0_webpack-cli@4.9.2
+      webpack: 5.71.0
 
   /minimalistic-assert/1.0.1:
     resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}
@@ -17007,6 +17027,11 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       path-key: 3.1.1
+
+  /npm-to-yarn/1.0.1:
+    resolution: {integrity: sha512-bp8T8oNMfLW+N/fE0itFfSu7RReytwhqNd9skbkfHfzGYC+5CCdzS2HnaXz6JiG4AlK2eA0qlT6NJN1SoFvcWQ==}
+    engines: {node: '>=6.0.0'}
+    dev: false
 
   /npmlog/5.0.1:
     resolution: {integrity: sha512-AqZtDUWOMKs1G/8lwylVjrdYgqA4d9nu8hc+0gzRxlDb1I10+FHBGMXs6aiQHFdCUUlqH99MUMuLfzWDNDtfxw==}
@@ -20610,7 +20635,7 @@ packages:
       serialize-javascript: 6.0.0
       source-map: 0.6.1
       terser: 5.12.0
-      webpack: 5.71.0_webpack-cli@4.9.2
+      webpack: 5.71.0
 
   /terser/4.8.0:
     resolution: {integrity: sha512-EAPipTNeWsb/3wLPeup1tVPaXfIaU68xMnVdPafIL1TV05OhASArYyIfFvnvJCNrR2NIOvDVNNTFRa+Re2MWyw==}
@@ -21768,7 +21793,7 @@ packages:
       mime-types: 2.1.35
       range-parser: 1.2.1
       schema-utils: 4.0.0
-      webpack: 5.71.0_webpack-cli@4.9.2
+      webpack: 5.71.0
 
   /webpack-dev-server/4.7.4_webpack-cli@4.9.2+webpack@5.71.0:
     resolution: {integrity: sha512-nfdsb02Zi2qzkNmgtZjkrMOcXnYZ6FLKcQwpxT7MvmHKc+oTtDsBju8j+NMyAygZ9GW1jMEUpy3itHtqgEhe1A==}
