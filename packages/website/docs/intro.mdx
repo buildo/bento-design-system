@@ -8,11 +8,11 @@ import { PackageManagerCommand } from "@site/src/components/PackageManagerComman
 
 Bento is a configurable and extensible Design System for React.
 
-It is s meant to be used as a foundation for your project's Design System.
+It is meant to be used as a foundation for your project's Design System.
 
 ## Quick start
 
-First, add the Bento package to your project:
+Add the Bento package to your project:
 
 <PackageManagerCommand
   command={{
@@ -22,8 +22,10 @@ First, add the Bento package to your project:
   }}
 />
 
-Then, let's import the Bento stylesheet. We are also going to import Bento's default theme, so that we can get started right away.
-(Don't worry, we will discuss later how to create your own custom theme):
+Then, let's import the Bento stylesheet.
+
+We are also going to import Bento's default theme, so that we can get started right away
+(don't worry, we will soon discuss how to create your own custom theme):
 
 ```ts title="my-project/design-system/src/index.tsx"
 import "@buildo/bento-design-system/lib/index.css";
@@ -96,7 +98,7 @@ import { defaultMessages } from "./defaultMessages";
 <details>
   <summary>Here's some sample default messages you can use to get started:</summary>
 
-```tsx title="my-project/app/src/defaultMessages.tsx"
+```tsx title="my-project/app/src/defaultMessages.ts"
 import { ComponentProps } from "react";
 import { DesignSystemProvider } from "design-system";
 
@@ -150,7 +152,7 @@ In the examples above, we are assuming your project will use a workspace contain
 
 where `app` depends on `design-system` locally (using the workspace feature by npm, pnpm or yarn).
 
-We recommend this approach as it clearly separates the concerns, but nothing prevents from
+We recommend this approach as it clearly separates the concerns, but nothing prevents you from
 co-locating design system and app components in the same project.
 
 :::
