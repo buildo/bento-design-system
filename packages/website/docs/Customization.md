@@ -31,6 +31,7 @@ If your project is already set up to use [`Vanilla Extract`](./vanilla-extract),
 
 ```ts
 /* theme.css.ts */
+import { createGlobalTheme } from "@vanilla-extract/css";
 import { vars } from "@buildo/bento-design-system";
 
 createGlobalTheme(":root", vars, {
@@ -46,10 +47,12 @@ You can get a complete list of all the existing CSS variables by looking at the 
 :::
 
 :::tip
-You can also define different themes for you app (e.g. a dark and a light theme), by replacing `createGlobalTheme` with a list of calls to `createTheme`, each of them returning a className you can conditionally set on the top-most element of your app.
+You can also define different themes for you app (e.g. a dark and a light theme), by replacing `createGlobalTheme` with a set of calls to `createTheme`, each of them returning a className you can conditionally set on the top-most element of your app.
 
 ```ts
 /* theme.css.ts */
-const lightTheme = createTheme(vars, { ... });
-const darkTheme = createTheme(vars, { ... });
+import { createTheme } from "@vanilla-extract/css";
+
+export const lightTheme = createTheme(vars, { ... });
+export const darkTheme = createTheme(vars, { ... });
 ```
