@@ -10,14 +10,16 @@ type Props = {
   for: "startDate" | "endDate";
   currentDate: Date | null;
   inputRef: RefObject<HTMLInputElement>;
-  inFocus: boolean;
-  onInputFocus: () => void;
-  focusDate: (date: Date) => void;
+  isFocused: boolean;
+  onClick: () => void;
+  onFocus: () => void;
+  onBlur: () => void;
+  onChange: (date: Date) => void;
   disabled: boolean;
   readOnly: boolean;
-  isDateBlocked: (date: Date) => boolean;
   onDateSelect: (date: Date) => void;
   onDateClear: () => void;
+  isOpen: boolean;
 };
 
 function parseDate(value: string): Date | null {
@@ -38,9 +40,14 @@ export function Input(props: Props) {
   const onFocus = () => {
     if (!props.readOnly) {
       props.inputRef.current && props.inputRef.current.select();
-      props.onInputFocus();
+      props.onFocus();
     }
   };
+  const onBlur = () => {
+    props.onBlur();
+    setCurrentValue();
+  };
+
   const { inputProps } = useTextField(
     {
       ...props,
@@ -48,22 +55,22 @@ export function Input(props: Props) {
       type: "text",
       value,
       onChange: (value) => {
-        props.onInputFocus();
+        props.onClick();
         setValue(value);
         const newDate = parseDate(value);
         if (newDate) {
-          props.focusDate(newDate);
+          props.onChange(newDate);
         }
       },
       isDisabled: props.disabled,
       isReadOnly: props.readOnly,
-      onBlur: setCurrentValue,
+      onBlur,
       onFocus,
       onKeyDown: (e) => {
         if (e.key === "Enter") {
-          if (props.inFocus) {
+          if (props.isOpen) {
             const date = parseDate(value);
-            if (date && !props.isDateBlocked(date)) {
+            if (date) {
               props.onDateSelect(date);
             } else {
               if (value === "") {
@@ -73,7 +80,7 @@ export function Input(props: Props) {
               }
             }
           } else {
-            props.onInputFocus();
+            props.onClick();
           }
         }
       },
@@ -82,18 +89,10 @@ export function Input(props: Props) {
     props.inputRef
   );
 
-  useEffect(() => {
-    setCurrentValue();
-  }, [props.currentDate]);
+  useEffect(setCurrentValue, [props.currentDate]);
 
   return (
-    <InputMask
-      {...inputProps}
-      onFocus={onFocus}
-      onBlur={setCurrentValue}
-      mask="99/99/9999"
-      maskChar=""
-    >
+    <InputMask {...inputProps} mask="99/99/9999" maskChar="">
       {(maskedInputProps: InputHTMLAttributes<HTMLInputElement>) => {
         const { onFocus, onBlur, ...rest } = inputProps;
         return (
@@ -104,7 +103,7 @@ export function Input(props: Props) {
             ref={props.inputRef}
             onClick={() => {
               if (!props.disabled && !props.readOnly) {
-                props.onInputFocus();
+                props.onClick();
               }
             }}
             {...rest}

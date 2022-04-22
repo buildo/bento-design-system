@@ -5,13 +5,7 @@ import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { MenuProps } from "../Menu/createMenu";
-import {
-  FocusedInput,
-  useDatepicker,
-  getInputValue as _getInputValue,
-  parseDate as _parseDate,
-  UseDatepickerProps,
-} from "@datepicker-react/hooks";
+import { FocusedInput, useDatepicker, UseDatepickerProps } from "@datepicker-react/hooks";
 import { createCalendar } from "./Calendar";
 import { Box, Column, Columns } from "../internal";
 import { DateFieldConfig } from "./Config";
@@ -53,6 +47,8 @@ export function createDateField(
     const startInputRef = useRef<HTMLInputElement>(null);
     const endInputRef = useRef<HTMLInputElement>(null);
     const [focusedInput, setFocusedInput] = useState<FocusedInput>(null);
+    const [isFocused, setIsFocused] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const validationState = props.readOnly ? "notSet" : props.issues ? "invalid" : "valid";
 
     const {
@@ -68,20 +64,22 @@ export function createDateField(
       isFirstOrLastSelectedDate,
       onDateFocus,
       onDateHover,
-      onDateSelect: _onDateSelect,
+      onDateSelect,
       isStartDate,
       isEndDate,
     } = useDatepicker({
       onDatesChange: ({ startDate, endDate, focusedInput }) => {
         const newFocusedInput =
           props.type === "range" || focusedInput !== "endDate" ? focusedInput : null;
-        setFocusedInput(newFocusedInput);
+        if (newFocusedInput === null) {
+          setIsOpen(false);
+          startInputRef.current && startInputRef.current.focus();
+        }
         if (newFocusedInput === "endDate" && endInputRef.current) endInputRef.current.focus();
         if (newFocusedInput === "startDate" && startInputRef.current) startInputRef.current.focus();
 
         if (props.type === "range") {
-          const newValue: [Date | null, Date | null] = [startDate, endDate];
-          props.onChange(newValue);
+          props.onChange([startDate, endDate]);
         } else {
           props.onChange(startDate);
         }
@@ -94,9 +92,11 @@ export function createDateField(
       maxBookingDate: props.maxDate,
     });
 
-    const onDateSelect = (date: Date) => {
-      _onDateSelect(date);
-      onDateFocus(date);
+    const selectDate = (date: Date) => {
+      if (!isDateBlocked(date)) {
+        onDateSelect(date);
+        onDateFocus(date);
+      }
     };
 
     const { labelProps, descriptionProps, errorMessageProps } = useField({
@@ -115,9 +115,18 @@ export function createDateField(
       }
     };
 
-    const onInputFocus = (input: "startDate" | "endDate") => () => {
-      if (!props.disabled) {
+    const onInputFocus = (input: NonNullable<FocusedInput>) => () => {
+      if (!props.disabled && !props.readOnly) {
+        setIsFocused(true);
         setFocusedInput(input);
+      }
+    };
+
+    const onInputClick = (input: NonNullable<FocusedInput>) => () => {
+      if (!props.disabled && !props.readOnly) {
+        setIsFocused(true);
+        setFocusedInput(input);
+        setIsOpen(true);
       }
     };
 
@@ -139,7 +148,7 @@ export function createDateField(
               weight: "default",
               size: inputConfig.fontSize,
             }),
-            dateFieldRecipe({ validation: validationState || "notSet", isFocused: !!focusedInput }),
+            dateFieldRecipe({ validation: validationState || "notSet", isFocused }),
             {
               readOnly: props.readOnly,
             }
@@ -153,12 +162,14 @@ export function createDateField(
               inputRef={startInputRef}
               disabled={props.disabled || false}
               readOnly={props.readOnly || false}
-              focusDate={onDateFocus}
-              inFocus={focusedInput === "startDate"}
-              isDateBlocked={isDateBlocked}
-              onDateSelect={onDateSelect}
+              onChange={onDateFocus}
+              isFocused={focusedInput === "startDate"}
+              onDateSelect={selectDate}
               onDateClear={onDateClear}
-              onInputFocus={onInputFocus("startDate")}
+              onFocus={onInputFocus("startDate")}
+              onClick={onInputClick("startDate")}
+              onBlur={() => setIsFocused(false)}
+              isOpen={isOpen}
             />
             {props.type === "range" && (
               <>
@@ -171,18 +182,20 @@ export function createDateField(
                   inputRef={endInputRef}
                   disabled={props.disabled || false}
                   readOnly={props.readOnly || false}
-                  focusDate={onDateFocus}
-                  inFocus={focusedInput === "endDate"}
-                  isDateBlocked={isDateBlocked}
-                  onDateSelect={onDateSelect}
+                  onChange={onDateFocus}
+                  isFocused={focusedInput === "endDate"}
+                  onDateSelect={selectDate}
                   onDateClear={onDateClear}
-                  onInputFocus={onInputFocus("endDate")}
+                  onFocus={onInputFocus("endDate")}
+                  onClick={onInputClick("endDate")}
+                  onBlur={() => setIsFocused(false)}
+                  isOpen={isOpen}
                 />
               </>
             )}
           </Columns>
         </Box>
-        {!!focusedInput && (
+        {isOpen && (
           <Calendar
             inputRef={focusedInput === "startDate" ? startInputRef : endInputRef}
             type={props.type || "single"}
@@ -196,15 +209,14 @@ export function createDateField(
             isFirstOrLastSelectedDate={isFirstOrLastSelectedDate}
             onDateFocus={onDateFocus}
             onDateHover={onDateHover}
-            onDateSelect={onDateSelect}
+            onDateSelect={selectDate}
             activeDate={activeMonths[0]}
             goToNextMonth={goToNextMonths}
             goToPreviousMonth={goToPreviousMonths}
             selectActiveDate={goToDate}
             onClose={() => {
-              setFocusedInput(null);
+              setIsOpen(false);
               onDateFocus((props.type === "range" ? props.value[0] : props.value) || new Date());
-              startInputRef.current && startInputRef.current.focus();
             }}
           />
         )}
