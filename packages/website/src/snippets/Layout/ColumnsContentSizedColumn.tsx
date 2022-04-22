@@ -7,9 +7,7 @@ export default function ColumnsContentSizedColumn() {
       <Column width="content">
         <Placeholder height={200} label="I'm a content-sized column" />
       </Column>
-      <Column>
-        <Placeholder height={200} />
-      </Column>
+      <Placeholder height={200} />
     </Columns>
   );
 }

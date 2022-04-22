@@ -78,7 +78,6 @@ importers:
       lint-staged: 12.3.7
       mini-css-extract-plugin: 2.6.0
       playroom: 0.27.9
-      postcss: ^8.4.12
       prettier: 2.6.2
       react: 17.0.2
       react-cool-dimensions: ^2.0.7
@@ -172,8 +171,7 @@ importers:
       jest: 27.5.1
       lint-staged: 12.3.7
       mini-css-extract-plugin: 2.6.0_webpack@5.71.0
-      playroom: 0.27.9_7201cdb91d312ad52aaac06add97789a
-      postcss: 8.4.12
+      playroom: 0.27.9_3861b71ba6362a81d85ade527d1a29e6
       prettier: 2.6.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -613,7 +611,7 @@ packages:
       '@babel/compat-data': 7.17.7
       '@babel/core': 7.17.8
       '@babel/helper-validator-option': 7.16.7
-      browserslist: 4.20.2
+      browserslist: 4.20.0
       semver: 6.3.0
     dev: true
 
@@ -626,7 +624,7 @@ packages:
       '@babel/compat-data': 7.17.7
       '@babel/core': 7.17.9
       '@babel/helper-validator-option': 7.16.7
-      browserslist: 4.20.2
+      browserslist: 4.20.0
       semver: 6.3.0
 
   /@babel/helper-create-class-features-plugin/7.17.6:
@@ -9657,7 +9655,7 @@ packages:
     hasBin: true
     dev: true
 
-  /autoprefixer/10.4.2_postcss@8.4.12:
+  /autoprefixer/10.4.2:
     resolution: {integrity: sha512-9fOPpHKuDW1w/0EKfRmVnxTDt8166MAnLI3mgZ1JCnhNtYWxcJ6Ud5CO/AVOZi/AvFa8DY9RTy3h3+tFBlrrdQ==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -9669,7 +9667,6 @@ packages:
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
-      postcss: 8.4.12
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -10334,7 +10331,6 @@ packages:
       escalade: 3.1.1
       node-releases: 2.0.2
       picocolors: 1.0.0
-    dev: true
 
   /browserslist/4.20.2:
     resolution: {integrity: sha512-CQOBCqp/9pDvDbx3xfMi+86pr4KXIf2FDkTTdeuYw8OxS9t898LA1Khq57gtufFILXpfgsSx5woNgsBgvGjpsA==}
@@ -11421,7 +11417,7 @@ packages:
       postcss-modules-values: 4.0.0_postcss@8.4.12
       postcss-value-parser: 4.2.0
       semver: 7.3.5
-      webpack: 5.71.0
+      webpack: 5.71.0_webpack-cli@4.9.2
 
   /css-minimizer-webpack-plugin/3.4.1_clean-css@5.2.4+webpack@5.71.0:
     resolution: {integrity: sha512-1u6D71zeIfgngN2XNRJefc/hY7Ybsxd74Jm4qngIXyUEk7fss3VUzuHxLAq/R8NAba4QU9OUSaMZlbpRc7bM4Q==}
@@ -13420,7 +13416,7 @@ packages:
     dependencies:
       loader-utils: 2.0.2
       schema-utils: 3.1.1
-      webpack: 5.71.0
+      webpack: 5.71.0_webpack-cli@4.9.2
 
   /file-system-cache/1.0.5:
     resolution: {integrity: sha1-hCWbNqK7uNPW6xAh0xMv/mTP/08=}
@@ -14425,7 +14421,7 @@ packages:
       lodash: 4.17.21
       pretty-error: 4.0.0
       tapable: 2.2.1
-      webpack: 5.71.0
+      webpack: 5.71.0_webpack-cli@4.9.2
 
   /htmlparser2/3.10.1:
     resolution: {integrity: sha512-IgieNijUMbkDovyoKObU1DUhm1iwNYE/fuifEoEHfd1oZKZDaONBSkal7Y01shxsM49R4XaMdGez3WnF9UfiCQ==}
@@ -16659,7 +16655,7 @@ packages:
       webpack: ^5.0.0
     dependencies:
       schema-utils: 4.0.0
-      webpack: 5.71.0
+      webpack: 5.71.0_webpack-cli@4.9.2
 
   /minimalistic-assert/1.0.1:
     resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}
@@ -17608,7 +17604,7 @@ packages:
     dependencies:
       find-up: 3.0.0
 
-  /playroom/0.27.9_7201cdb91d312ad52aaac06add97789a:
+  /playroom/0.27.9_3861b71ba6362a81d85ade527d1a29e6:
     resolution: {integrity: sha512-eEwKLOhdfd27Z1a6hloolnrihZGTmsnKvLmq3KXLSPqBFvWAk/zDzCoolVYsbzjAK+S9VlGSfqw9hqErj53f+g==}
     hasBin: true
     peerDependencies:
@@ -17631,7 +17627,7 @@ packages:
       '@types/prettier': 2.4.4
       '@types/react': 17.0.44
       '@types/react-dom': 17.0.13
-      autoprefixer: 10.4.2_postcss@8.4.12
+      autoprefixer: 10.4.2
       babel-loader: 8.2.3_bb1d6ba6264b4355cd74ff79826974dc
       classnames: 2.3.1
       codemirror: 5.65.2
@@ -17656,7 +17652,7 @@ packages:
       lz-string: 1.4.4
       parse-prop-types: 0.3.0_prop-types@15.8.1
       portfinder: 1.0.28
-      postcss-loader: 5.3.0_postcss@8.4.12+webpack@5.71.0
+      postcss-loader: 5.3.0_webpack@5.71.0
       prettier: 2.6.2
       prop-types: 15.8.1
       query-string: 6.14.1
@@ -17822,7 +17818,7 @@ packages:
       webpack: 4.46.0
     dev: true
 
-  /postcss-loader/5.3.0_postcss@8.4.12+webpack@5.71.0:
+  /postcss-loader/5.3.0_webpack@5.71.0:
     resolution: {integrity: sha512-/+Z1RAmssdiSLgIZwnJHwBMnlABPgF7giYzTN2NOfr9D21IJZ4mQC1R2miwp80zno9M4zMD/umGI8cR+2EL5zw==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -17831,7 +17827,6 @@ packages:
     dependencies:
       cosmiconfig: 7.0.1
       klona: 2.0.5
-      postcss: 8.4.12
       semver: 7.3.5
       webpack: 5.71.0_webpack-cli@4.9.2
     dev: true
@@ -20611,7 +20606,7 @@ packages:
       serialize-javascript: 6.0.0
       source-map: 0.6.1
       terser: 5.12.0
-      webpack: 5.71.0
+      webpack: 5.71.0_webpack-cli@4.9.2
 
   /terser/4.8.0:
     resolution: {integrity: sha512-EAPipTNeWsb/3wLPeup1tVPaXfIaU68xMnVdPafIL1TV05OhASArYyIfFvnvJCNrR2NIOvDVNNTFRa+Re2MWyw==}
@@ -21769,7 +21764,7 @@ packages:
       mime-types: 2.1.35
       range-parser: 1.2.1
       schema-utils: 4.0.0
-      webpack: 5.71.0
+      webpack: 5.71.0_webpack-cli@4.9.2
 
   /webpack-dev-server/4.7.4_webpack-cli@4.9.2+webpack@5.71.0:
     resolution: {integrity: sha512-nfdsb02Zi2qzkNmgtZjkrMOcXnYZ6FLKcQwpxT7MvmHKc+oTtDsBju8j+NMyAygZ9GW1jMEUpy3itHtqgEhe1A==}

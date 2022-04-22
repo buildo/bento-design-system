@@ -7,9 +7,7 @@ export default function ColumnsThreeColumn() {
       <Column width="1/5">
         <Placeholder height={200} label="1/5" />
       </Column>
-      <Column>
-        <Placeholder height={200} />
-      </Column>
+      <Placeholder height={200} />
       <Column width="1/5">
         <Placeholder height={200} label="1/5" />
       </Column>
