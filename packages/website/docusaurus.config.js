@@ -6,12 +6,12 @@ const { ProvidePlugin } = require("webpack");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Bento Design System",
-  tagline: "A design system builder for buildo projects",
+  tagline: "An extensible and customizable Design System for React",
   url: "https://bento-design-system-ruddy.vercel.app/",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  favicon: "img/logo.svg",
   organizationName: "buildo",
   projectName: "bento-design-system",
   presets: [
