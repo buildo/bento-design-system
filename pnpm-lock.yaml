@@ -78,6 +78,7 @@ importers:
       lint-staged: 12.3.7
       mini-css-extract-plugin: 2.6.0
       playroom: 0.27.9
+      postcss: ^8.4.12
       prettier: 2.6.2
       react: 17.0.2
       react-cool-dimensions: ^2.0.7
@@ -171,7 +172,8 @@ importers:
       jest: 27.5.1
       lint-staged: 12.3.7
       mini-css-extract-plugin: 2.6.0_webpack@5.71.0
-      playroom: 0.27.9_3861b71ba6362a81d85ade527d1a29e6
+      playroom: 0.27.9_7201cdb91d312ad52aaac06add97789a
+      postcss: 8.4.12
       prettier: 2.6.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -9655,7 +9657,7 @@ packages:
     hasBin: true
     dev: true
 
-  /autoprefixer/10.4.2:
+  /autoprefixer/10.4.2_postcss@8.4.12:
     resolution: {integrity: sha512-9fOPpHKuDW1w/0EKfRmVnxTDt8166MAnLI3mgZ1JCnhNtYWxcJ6Ud5CO/AVOZi/AvFa8DY9RTy3h3+tFBlrrdQ==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -9667,6 +9669,7 @@ packages:
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
+      postcss: 8.4.12
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -17604,7 +17607,7 @@ packages:
     dependencies:
       find-up: 3.0.0
 
-  /playroom/0.27.9_3861b71ba6362a81d85ade527d1a29e6:
+  /playroom/0.27.9_7201cdb91d312ad52aaac06add97789a:
     resolution: {integrity: sha512-eEwKLOhdfd27Z1a6hloolnrihZGTmsnKvLmq3KXLSPqBFvWAk/zDzCoolVYsbzjAK+S9VlGSfqw9hqErj53f+g==}
     hasBin: true
     peerDependencies:
@@ -17627,7 +17630,7 @@ packages:
       '@types/prettier': 2.4.4
       '@types/react': 17.0.44
       '@types/react-dom': 17.0.13
-      autoprefixer: 10.4.2
+      autoprefixer: 10.4.2_postcss@8.4.12
       babel-loader: 8.2.3_bb1d6ba6264b4355cd74ff79826974dc
       classnames: 2.3.1
       codemirror: 5.65.2
@@ -17652,7 +17655,7 @@ packages:
       lz-string: 1.4.4
       parse-prop-types: 0.3.0_prop-types@15.8.1
       portfinder: 1.0.28
-      postcss-loader: 5.3.0_webpack@5.71.0
+      postcss-loader: 5.3.0_postcss@8.4.12+webpack@5.71.0
       prettier: 2.6.2
       prop-types: 15.8.1
       query-string: 6.14.1
@@ -17818,7 +17821,7 @@ packages:
       webpack: 4.46.0
     dev: true
 
-  /postcss-loader/5.3.0_webpack@5.71.0:
+  /postcss-loader/5.3.0_postcss@8.4.12+webpack@5.71.0:
     resolution: {integrity: sha512-/+Z1RAmssdiSLgIZwnJHwBMnlABPgF7giYzTN2NOfr9D21IJZ4mQC1R2miwp80zno9M4zMD/umGI8cR+2EL5zw==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -17827,6 +17830,7 @@ packages:
     dependencies:
       cosmiconfig: 7.0.1
       klona: 2.0.5
+      postcss: 8.4.12
       semver: 7.3.5
       webpack: 5.71.0_webpack-cli@4.9.2
     dev: true
