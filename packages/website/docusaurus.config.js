@@ -7,8 +7,8 @@ const { ProvidePlugin } = require("webpack");
 const config = {
   title: "Bento Design System",
   tagline: "A design system builder for buildo projects",
-  url: "https://buildo.github.io",
-  baseUrl: "/bento-design-system/",
+  url: "https://bento-design-system-ruddy.vercel.app/",
+  baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
