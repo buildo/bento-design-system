@@ -1,4 +1,4 @@
-import { createButtons, defaultConfigs } from "../../src";
+import { createButtons, defaultConfigs, Body } from "../../src";
 
 const { Button } = createButtons(defaultConfigs.button);
 
