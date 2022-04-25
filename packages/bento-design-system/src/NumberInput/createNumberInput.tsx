@@ -66,7 +66,7 @@ export function createNumberInput(config: InputConfig) {
           as="input"
           {...props.inputProps}
           ref={props.inputRef}
-          placeholder={props.placeholder}
+          placeholder={String(props.placeholder)}
           // NOTE(gabro): this is to please TS, since the inputProps type is very broad
           color={undefined}
           width="full"

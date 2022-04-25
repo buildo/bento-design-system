@@ -40,7 +40,7 @@ export function createIconButton(config: IconButtonConfig) {
       <Box
         as="button"
         {...buttonProps}
-        title={props.label}
+        title={String(props.label)}
         color={undefined}
         className={[
           buttonRecipe({

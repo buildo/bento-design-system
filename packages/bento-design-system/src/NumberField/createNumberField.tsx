@@ -26,7 +26,12 @@ export function createNumberField({
   return function NumberField(props: Props) {
     const { locale } = useLocale();
     const formatOptions = useFormatOptions(props);
-    const state = useNumberFieldState({ ...props, locale, formatOptions });
+    const state = useNumberFieldState({
+      ...props,
+      placeholder: String(props.placeholder),
+      locale,
+      formatOptions,
+    });
     const inputRef = useRef<HTMLInputElement>(null);
 
     const validationState = props.issues ? "invalid" : "valid";
@@ -34,6 +39,7 @@ export function createNumberField({
     const { labelProps, inputProps, descriptionProps, errorMessageProps } = useNumberField(
       {
         ...props,
+        placeholder: String(props.placeholder),
         errorMessage: props.issues,
         description: props.assistiveText,
         isDisabled: props.disabled,
