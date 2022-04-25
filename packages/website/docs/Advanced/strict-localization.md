@@ -34,23 +34,22 @@ declare module "@buildo/bento-design-system" {
 
 Now `LocalizedString` isn't just any string: it's a string which must be created "deliberately" by the developer. How can we create these strings? The simple answer is: via a cast! Aren't casts bad? Yes, they are when used indiscriminately, however the idea here is that we cast in a single place, where we do it safely, specifically in our localization function.
 
-Let's see an example: here's a dummy localization function that simply casts the given localization key:
+For example, here's a dummy localization function that simply casts the given localization key:
 
 ```ts title="my-project/app/src/utils/useFormatMessage.ts"
 import { LocalizedString } from "@buildo/bento-design-system";
 
-function useFormatMessage(): (key: string) => LocalizedString {
-  return (key) => key as unknown as LocalizedString;
+function formatMessage(key: string): LocalizedString {
+  return key as unknown as LocalizedString;
 }
 ```
 
 Let's test this:
 
 ```tsx title="my-project/app/src/components/MyComponent.tsx"
-import { useFormatMessage } from "../utils/useFormatMessage";
+import { formatMessage } from "../utils/formatMessage";
 
 function MyComponent() {
-  const formatMessage = useFormatMessage();
   return (
     <>
       // type error!
@@ -130,6 +129,6 @@ export const useTranslation = () => {
 
 ## `unsafeLocalizedString`
 
-For those rare cases in which you want to work around the type system, Bento also provides an `unsafeLocalizedString` function which turns any `string` or a `number` into a `LocalizedString`.
+For those rare cases in which you want to work around the type system, Bento also provides a `unsafeLocalizedString` function which turns any `string` or a `number` into a `LocalizedString`.
 
 This is equivalent to casting, but the `unsafe` prefix makes it clear that this is potentially dangerous and you should avoid it if possible (this is similar to `dangerouselySetInnerHTML` in React: you can use it but the name clearly indicates that it's not advised).
