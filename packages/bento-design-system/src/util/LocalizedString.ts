@@ -1,12 +1,8 @@
-interface ConfigurableTypes {
-  LocalizedString: string;
-}
+import { ConfiguredTypes } from "./ConfigurableTypes";
 
-export interface TypeOverrides {}
+export type LocalizedString = ConfiguredTypes["LocalizedString"];
 
-type ResolvedTypes = Omit<ConfigurableTypes, keyof TypeOverrides> & TypeOverrides;
-
-export type LocalizedString = ResolvedTypes["LocalizedString"];
+export type StrictLocalizedString = string & { readonly LocalizedString: "LocalizedString" };
 
 export function unsafeLocalizedString(n: number | string): LocalizedString {
   return String(n) as any;

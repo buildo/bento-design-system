@@ -27,14 +27,14 @@ import "@buildo/bento-design-system";
 
 declare module "@buildo/bento-design-system" {
   interface TypeOverrides {
-    LocalizedString: string & { readonly LocalizedString: "LocalizedString" };
+    LocalizedString: StrictLocalizedString;
   }
 }
 ```
 
-Now `LocalizedString` isn't just any string: it's a string which must also have a special "tag" attached to it.
+Now `LocalizedString` isn't just any string: it's a string which must be created "deliberately" by the developer. How can we create these strings? The simple answer is: via a cast! Aren't casts bad? Yes, they are when used indiscriminately, however the idea here is that we cast in a single place, where we do it safely, specifically in our localization function.
 
-The only thing that's left is to have our localization function produce these special strings. Here's a dummy one that just casts the given key:
+Let's see an example: here's a dummy localization function that simply casts the given localization key:
 
 ```ts title="my-project/app/src/utils/useFormatMessage.ts"
 import { LocalizedString } from "@buildo/bento-design-system";
@@ -69,7 +69,9 @@ function MyComponent() {
 
 Great! Now all Bento components will complain if we accidentally forget to localized a string that must be presented to the user 🎉
 
-In a real application, you will probably use a library like `react-intl` or `react-i18next`, so you will need to wrap their localization function such that it returns `LocalizedString` instead of `string`. Here's a couple of examples of how you could achieve it:
+## Integrating with localization libraries
+
+In the example above, we've seen a dummy localization function. In a real application you will likely use a library like `react-intl` or `react-i18next`, so you will need to wrap the localization function they provide such that it returns `LocalizedString` instead of `string`. Here's a couple of examples of how you could achieve it:
 
 <details>
   <summary><code>react-intl</code> + <code>LocalizedString</code></summary>
@@ -125,3 +127,9 @@ export const useTranslation = () => {
 ```
 
 </details>
+
+## `unsafeLocalizedString`
+
+For those rare cases in which you want to work around the type system, Bento also provides an `unsafeLocalizedString` function which turns any `string` or a `number` into a `LocalizedString`.
+
+This is equivalent to casting, but the `unsafe` prefix makes it clear that this is potentially dangerous and you should avoid it if possible (this is similar to `dangerouselySetInnerHTML` in React: you can use it but the name clearly indicates that it's not advised).

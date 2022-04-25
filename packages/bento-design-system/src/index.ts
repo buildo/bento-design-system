@@ -55,6 +55,7 @@ export * from "./Typography/Title/Title";
 export { bentoSprinkles } from "./internal/sprinkles.css";
 export * from "./sprinkles";
 export * from "./util/Children";
+export type { TypeOverrides } from "./util/ConfigurableTypes";
 export * from "./util/LocalizedString";
 export * from "./util/NonEmptyArray";
 export * from "./util/Omit";
