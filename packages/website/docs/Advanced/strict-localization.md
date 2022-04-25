@@ -6,7 +6,7 @@ Many Bento components accept strings that get presented to the user (either visu
 
 If you take a look at the source code, you'll notice these strings are typed as `LocalizedString`.
 
-`LocalizedString` is a special type that defaults to `string`, but it can be customized to make it more useful.
+`LocalizedString` is a special type that defaults to `string | number`, but it can be customized to make it more useful.
 
 Why would you want to customize it? One good reason is to avoid to accidentally render a non localized string. Let's see an example:
 
@@ -19,7 +19,7 @@ function MyComponent() {
 ```
 
 In the example above, we forgot to localize the Button's label.
-By default Bento won't complain about it, since `LocalizedString` is an alias for `string`.
+By default Bento won't complain about it, since `LocalizedString` is an alias for `string | number`.
 Let's fix this!
 
 ```ts title="my-project/app/src/bento.d.ts"

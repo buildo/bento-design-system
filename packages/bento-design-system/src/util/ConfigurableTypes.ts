@@ -1,7 +1,7 @@
 import { Object } from "ts-toolbelt";
 
 interface ConfigurableTypes {
-  LocalizedString: string;
+  LocalizedString: string | number;
 }
 
 /**
