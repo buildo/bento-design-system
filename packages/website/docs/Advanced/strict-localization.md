@@ -1,6 +1,7 @@
 ---
 title: Type-safe localization with LocalizedString
 ---
+
 Many Bento components accept strings that get presented to the user (either visually or via aria attributes).
 
 If you take a look at the source code, you'll notice these strings are typed as `LocalizedString`.
@@ -9,7 +10,7 @@ If you take a look at the source code, you'll notice these strings are typed as 
 
 Why would you want to customize it? One good reason is to avoid to accidentally render a non localized string. Let's see an example:
 
-```tsx
+```tsx title="my-project/app/src/components/MyComponent.tsx"
 function MyComponent() {
   return (
     <Button label="woops, not localized" onPress={() => {}} kind="solid" hierarchy="primary" />
@@ -18,10 +19,10 @@ function MyComponent() {
 ```
 
 In the example above, we forgot to localize the Button's label.
-By default Bento won't complain about it, since `LocalizedStrinng` is an alias for `string`.
+By default Bento won't complain about it, since `LocalizedString` is an alias for `string`.
 Let's fix this!
 
-```ts title="my-project/app/src/bento.d.ts
+```ts title="my-project/app/src/bento.d.ts"
 import "@buildo/bento-design-system";
 
 declare module "@buildo/bento-design-system" {
@@ -45,8 +46,8 @@ function useFormatMessage(): (key: string) => LocalizedString {
 
 Let's test this:
 
-```tsx
-import { useFormatMessage } from "./utils/useFormatMessage";
+```tsx title="my-project/app/src/components/MyComponent.tsx"
+import { useFormatMessage } from "../utils/useFormatMessage";
 
 function MyComponent() {
   const formatMessage = useFormatMessage();
