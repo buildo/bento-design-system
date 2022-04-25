@@ -1,0 +1,26 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  width: fit-content;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 8px 16px;
+  color: var(--ifm-color-secondary-contrast-foreground);
+  background-color: var(--ifm-color-secondary-contrast-background);
+}
+
+.card:hover {
+  filter: brightness(85%);
+}
+
+a:hover {
+  text-decoration: none;
+  color: currentColor;
+}
+
+.image {
+  width: 40px;
+  height: 40px;
+}
