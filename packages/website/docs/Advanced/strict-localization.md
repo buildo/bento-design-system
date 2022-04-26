@@ -1,0 +1,134 @@
+---
+title: Type-safe localization with LocalizedString
+---
+
+Many Bento components accept strings that get presented to the user (either visually or via aria attributes).
+
+If you take a look at the source code, you'll notice these strings are typed as `LocalizedString`.
+
+`LocalizedString` is a special type that defaults to `string | number`, but it can be customized to make it more useful.
+
+Why would you want to customize it? One good reason is to avoid to accidentally render a non localized string. Let's see an example:
+
+```tsx title="my-project/app/src/components/MyComponent.tsx"
+function MyComponent() {
+  return (
+    <Button label="woops, not localized" onPress={() => {}} kind="solid" hierarchy="primary" />
+  );
+}
+```
+
+In the example above, we forgot to localize the Button's label.
+By default Bento won't complain about it, since `LocalizedString` is an alias for `string | number`.
+Let's fix this!
+
+```ts title="my-project/app/src/bento.d.ts"
+import "@buildo/bento-design-system";
+
+declare module "@buildo/bento-design-system" {
+  interface TypeOverrides {
+    LocalizedString: StrictLocalizedString;
+  }
+}
+```
+
+Now `LocalizedString` isn't just any string: it's a string which must be created "deliberately" by the developer. How can we create these strings? The simple answer is: via a cast! Aren't casts bad? Yes, they are when used indiscriminately, however the idea here is that we cast in a single place, where we do it safely, specifically in our localization function.
+
+For example, here's a dummy localization function that simply casts the given localization key:
+
+```ts title="my-project/app/src/utils/useFormatMessage.ts"
+import { LocalizedString } from "@buildo/bento-design-system";
+
+function formatMessage(key: string): LocalizedString {
+  return key as unknown as LocalizedString;
+}
+```
+
+Let's test this:
+
+```tsx title="my-project/app/src/components/MyComponent.tsx"
+import { formatMessage } from "../utils/formatMessage";
+
+function MyComponent() {
+  return (
+    <>
+      // type error!
+      <Button label="woops, not localized" onPress={() => {}} kind="solid" hierarchy="primary" />
+      // ok!
+      <Button
+        label={formatMessage("MyComponent.buttonLabel")}
+        onPress={() => {}}
+        kind="solid"
+        hierarchy="primary"
+      />
+    </>
+  );
+}
+```
+
+Great! Now all Bento components will complain if we accidentally forget to localize a string that must be presented to the user 🎉
+
+## Integrating with localization libraries
+
+In the example above, we've seen a dummy localization function. In a real application you will likely use a library like `react-intl` or `react-i18next`, so you will need to wrap the localization function they provide such that it returns `LocalizedString` instead of `string`. Here's a couple of examples of how you could achieve it:
+
+<details>
+  <summary><code>react-intl</code> + <code>LocalizedString</code></summary>
+
+```ts title="my-project/app/src/utils/useFormatMessage.ts"
+import { useIntl } from "react-intl";
+import { PrimitiveType } from "intl-messageformat";
+import { LocalizedString } from "@buildo/bento-react-components";
+
+export function useFormatMessage(): (
+  id: string,
+  values?: Record<string, PrimitiveType>
+) => LocalizedString {
+  const intl = useIntl();
+
+  return (id, values) => {
+    return intl.formatMessage({ id }, values) as unknown as LocalizedString;
+  };
+}
+```
+
+</details>
+
+<details>
+  <summary><code>react-i18next</code> + <code>LocalizedString</code></summary>
+
+```ts title="my-project/app/src/utils/useTranslation.ts"
+import { StringMap, TOptions } from "i18next";
+import { useTranslation as nativeUseTranslation } from "react-i18next";
+import { LocalizedString } from "@buildo/bento-react-components";
+
+export const useTranslation = () => {
+  const { t, i18n } = nativeUseTranslation();
+
+  type i18nextParameters = Parameters<typeof t>;
+
+  interface TFunction {
+    (key: i18nextParameters[0], options?: TOptions<StringMap> | string): LocalizedString;
+    (
+      key: i18nextParameters[0],
+      defaultValue?: LocalizedString,
+      options?: TOptions<StringMap> | string
+    ): LocalizedString;
+  }
+
+  const translate: TFunction = (...args) => t(...(args as [any]));
+
+  return {
+    t: translate,
+    i18n,
+  };
+};
+```
+
+</details>
+
+## `unsafeLocalizedString`
+
+For those rare cases in which you want to work around the type system, Bento also provides a `unsafeLocalizedString` function which turns any `string` or a `number` into a `LocalizedString`.
+
+This is equivalent to casting, but the `unsafe` prefix makes it clear that this is potentially dangerous and you should avoid it if possible (this is similar to `dangerouselySetInnerHTML` in React: you can use it but the name clearly indicates that it's not advised).

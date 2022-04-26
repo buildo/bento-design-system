@@ -74,7 +74,7 @@ export function createButtonColumn(Button: FunctionComponent<ButtonProps>) {
     return column({
       ...options,
       Cell: ButtonCell,
-      sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
+      sortType: (a, b) => String(a?.label ?? "").localeCompare(String(b?.label ?? "")),
     });
   };
 }
@@ -85,7 +85,7 @@ export function createButtonLinkColumn(ButtonLink: FunctionComponent<ButtonLinkP
     return column({
       ...options,
       Cell: ButtonLinkCell,
-      sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
+      sortType: (a, b) => String(a?.label ?? "").localeCompare(String(b?.label ?? "")),
     });
   };
 }
@@ -98,7 +98,7 @@ export function createChipColumn<CustomColor extends string>(
     return column({
       ...options,
       Cell: ChipCell,
-      sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
+      sortType: (a, b) => String(a?.label ?? "").localeCompare(String(b?.label ?? "")),
     });
   };
 }
@@ -136,7 +136,7 @@ export function textWithIconColumn<A extends string>({
       };
       return <TextWithIconCell {...textWithIconCellProps} />;
     },
-    sortType: (a, b) => (a?.text ?? "").localeCompare(b?.text ?? ""),
+    sortType: (a, b) => String(a?.text ?? "").localeCompare(String(b?.text ?? "")),
   });
 }
 
@@ -202,7 +202,7 @@ export function linkColumn<A extends string>(options: ColumnOptionsBase<A>) {
   return column({
     ...options,
     Cell: LinkCell,
-    sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
+    sortType: (a, b) => String(a?.label ?? "").localeCompare(String(b?.label ?? "")),
   });
 }
 
@@ -210,7 +210,7 @@ export function iconColumn<A extends string>(options: ColumnOptionsBase<A>) {
   return column({
     ...options,
     Cell: IconCell,
-    sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
+    sortType: (a, b) => String(a?.label ?? "").localeCompare(String(b?.label ?? "")),
   });
 }
 
@@ -220,7 +220,7 @@ export function createIconButtonColumn(IconButton: FunctionComponent<IconButtonP
     return column({
       ...options,
       Cell: IconButtonCell,
-      sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
+      sortType: (a, b) => String(a?.label ?? "").localeCompare(String(b?.label ?? "")),
     });
   };
 }

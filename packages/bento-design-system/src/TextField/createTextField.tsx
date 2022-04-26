@@ -23,6 +23,7 @@ export function createTextField(config: InputConfig, { Field }: { Field: FieldTy
     const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
       {
         ...props,
+        placeholder: String(props.placeholder),
         errorMessage: props.issues,
         description: props.assistiveText,
         validationState,

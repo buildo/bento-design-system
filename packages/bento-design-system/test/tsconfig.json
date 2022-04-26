@@ -4,6 +4,11 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "noEmit": true,
-    "preserveSymlinks": true
+    "preserveSymlinks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@buildo/bento-design-system": ["../src"]
+    }
+
   }
 }
