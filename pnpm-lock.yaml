@@ -268,6 +268,7 @@ importers:
       '@docusaurus/module-type-aliases': 2.0.0-beta.18
       '@docusaurus/preset-classic': 2.0.0-beta.18
       '@docusaurus/theme-classic': ^2.0.0-beta.18
+      '@docusaurus/theme-common': ^2.0.0-beta.18
       '@docusaurus/theme-live-codeblock': ^2.0.0-beta.18
       '@mdx-js/react': ^1.6.21
       '@tsconfig/docusaurus': ^1.0.4
@@ -291,6 +292,7 @@ importers:
       '@buildo/bento-design-system': link:../bento-design-system
       '@docusaurus/core': 2.0.0-beta.18_28e7016540b0a32b5f8d7be755522ab7
       '@docusaurus/preset-classic': 2.0.0-beta.18_28e7016540b0a32b5f8d7be755522ab7
+      '@docusaurus/theme-common': 2.0.0-beta.18_28e7016540b0a32b5f8d7be755522ab7
       '@mdx-js/react': 1.6.22_react@17.0.2
       clsx: 1.1.1
       docusaurus-plugin-react-docgen-typescript: 0.1.0_cf62c0672603fd708bf7c3b9e9dd14fe
@@ -11463,7 +11465,7 @@ packages:
     dependencies:
       boolbase: 1.0.0
       css-what: 5.1.0
-      domhandler: 4.3.0
+      domhandler: 4.3.1
       domutils: 2.8.0
       nth-check: 2.0.1
 
@@ -11959,12 +11961,6 @@ packages:
     resolution: {integrity: sha512-JiK04h0Ht5u/80fdLMCEmV4zkNh2BcoMFBmZ/91WtYZ8qVXSKjiw7fXMgFPnHcSZgOo3XdinHvmnDUeMf5R4wA==}
     dependencies:
       domelementtype: 1.3.1
-
-  /domhandler/4.3.0:
-    resolution: {integrity: sha512-fC0aXNQXqKSFTr2wDNZDhsEYjCiYsDWl3D01kwt25hm1YIPyDGHvvi3rw+PLqHAl/m71MaiF7d5zvBr0p5UB2g==}
-    engines: {node: '>= 4'}
-    dependencies:
-      domelementtype: 2.2.0
 
   /domhandler/4.3.1:
     resolution: {integrity: sha512-GrwoxYN+uWlzO8uhUXRl0P+kHE4GtVPfYzVLcUxPL7KNdHKj66vvlhiweIHqYYXWlw+T8iLMp42Lm67ghw4WMQ==}

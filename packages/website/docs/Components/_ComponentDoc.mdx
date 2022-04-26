@@ -1,7 +1,14 @@
 import { Canvas } from "@site/src/components/Canvas";
 import { PropTable } from "@site/src/components/PropTable";
+import { ExternalLinkCard } from "@site/src/components/ExternalLinkCard";
 
 <>{props.children}</>
+
+<div style={{ display: "flex", gap: 24 }}>
+  {props.name && <ExternalLinkCard type="github" componentName={props.name} />}
+  {props.zeroheightSlug && <ExternalLinkCard type="zeroheight" slug={props.zeroheightSlug} />}
+  {props.storybookStoryId && <ExternalLinkCard type="storybook" storyId={props.storybookStoryId} />}
+</div>
 
 ### Example
 
