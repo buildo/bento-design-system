@@ -102,41 +102,33 @@ import { defaultMessages } from "./defaultMessages";
 import { ComponentProps } from "react";
 import { DesignSystemProvider } from "design-system";
 
-// This is a mocked implementation of a localization function, to get you started.
-// In a real application it will be replaced by a real one, like `react-i18next` or `react-intl`.
-// Bento requires to cast the strings that are localized as `LocalizedString`: we will discuss this
-// shortly.
-const formatMessage = (x: string) => x as any;
-
 export const defaultMessages: ComponentProps<typeof DesignSystemProvider>["defaultMessages"] = {
   Chip: {
-    dismissButtonLabel: formatMessage("Remove"),
+    dismissButtonLabel: "Remove",
   },
   Banner: {
-    dismissButtonLabel: formatMessage("Close"),
+    dismissButtonLabel: "Close",
   },
   Modal: {
-    closeButtonLabel: formatMessage("Close"),
+    closeButtonLabel: "Close",
   },
   SelectField: {
-    noOptionsMessage: formatMessage("No options"),
+    noOptionsMessage: "No options",
     multiOptionsSelected: (n) => {
       const options = n > 1 ? "options" : "option";
-      return formatMessage(`${n} ${options} selected`);
+      return `${n} ${options} selected`;
     },
   },
   SearchBar: {
-    clearButtonLabel: formatMessage("Clear"),
+    clearButtonLabel: "Clear",
   },
   Table: {
-    noResultsTitle: formatMessage("No results found"),
-    noResultsDescription: formatMessage(
-      "Try adjusting your search filters to find what you're looking for."
-    ),
-    missingValue: formatMessage("-"),
+    noResultsTitle: "No results found",
+    noResultsDescription: "Try adjusting your search filters to find what you're looking for."
+    missingValue: "-",
   },
   Loader: {
-    loadingMessage: formatMessage("Loading..."),
+    loadingMessage: "Loading...",
   },
 };
 ```
