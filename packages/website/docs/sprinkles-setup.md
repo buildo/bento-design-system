@@ -3,19 +3,19 @@
 Bento encourages you to use Atomic CSS (also known as Functional CSS, or Utility-first CSS) for your design system.
 Not to be confused with "Atomic design", Atomic CSS means favoring small, single-purpose classes that can be re-used across your project.
 
-:::note Find out more
-Here's a primer to Atomic CSS, if you want to dig deeper https://css-tricks.com/lets-define-exactly-atomic-css/
+:::info Find out more
+If you want to dig deeper check out this [introductory article to Atomic CSS](https://css-tricks.com/lets-define-exactly-atomic-css/).
 :::
 
-Atomic CSS has advantages, but it's very hard to do manually. That's why Vanilla Extract provides Sprinkles, a convenient and type-safe API to generate and use atomic CSS classes.
+Atomic CSS has advantages, but it's very hard to do manually. That's why Bento uses [Vanilla Extract's Sprinkles API](https://vanilla-extract.style/documentation/sprinkles-api/), a convenient and type-safe way to generate and use atomic CSS classes.
 
-The general idea of Sprinkles, is defining a set of known values (usually based on your Design System tokens) for a given CSS property, which can be then used to pre-generate the corresponding CSS classes at build time.
+The general idea of Sprinkles is defining a set of known values (usually based on your Design System tokens) for a given CSS property, which can be then used to pre-generate the corresponding CSS classes at build time.
 
 ### An example
 
 Suppose you know ahead of time that you are going to use blue (specifically `#0096FF`) and black as your foreground color. Here's how you can use Sprinkles to pre-generate the corresponding CSS classes:
 
-```twoslash include sprinkles
+```ts title="sprinkles.css.ts"
 import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
 
 const foregroundColors = {
@@ -32,10 +32,6 @@ const myProperties = defineProperties({
 export const sprinkles = createSprinkles(myProperties);
 ```
 
-```ts twoslash title="./sprinkles.css.ts"
-// @include: sprinkles
-```
-
 Since this is a `.css.ts` file, it will be processed by Vanilla Extract and it will produce something like these classes at build time (the names are simplified for the example sake):
 
 ```css
@@ -50,12 +46,7 @@ Since this is a `.css.ts` file, it will be processed by Vanilla Extract and it w
 
 You can now attach those classes to your design system components by using the `sprinkles` function:
 
-```tsx twoslash title="MyComponent.tsx"
-// @filename: sprinkles.css.ts
-// @include: sprinkles
-
-// @filename: MyComponent.tsx
-// ---cut---
+```tsx title="MyComponent.tsx"
 import * as React from "react";
 import { sprinkles } from "./sprinkles.css";
 
@@ -68,17 +59,13 @@ The `sprinkles` function returns a string which is the class name referring to t
 
 Also notice that `sprinkles` is type-safe: you can only use the correct values for the properties and TypeScript will catch any typos or other errors.
 
-```tsx twoslash title="MyComponent.tsx" {5}
-// @filename: sprinkles.css.ts
-// @include: sprinkles
-
-// @filename: MyComponent.tsx
-// ---cut---
+```tsx title="MyComponent.tsx"
 import * as React from "react";
 import { sprinkles } from "./sprinkles.css";
 
 export function MyComponent() {
-  return <div className={sprinkles({ color: "blue" })} />;
-  //                                   ^?
+  return <div className={sprinkles({ color: "bleu" })} />;
+  //                                        ^^^^^^
+  //                                        typo, caught by TypeScript
 }
 ```

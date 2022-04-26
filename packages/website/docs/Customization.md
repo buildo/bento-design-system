@@ -1,3 +1,5 @@
+import { Canvas } from "@site/src/components/Canvas";
+
 # Customization
 
 At this point, we got a set of components with a default configuration and theme.
@@ -13,27 +15,26 @@ You can configure the Bento components in different ways:
 Bento has been designed on top of a set of semantic design tokens which define the colors, typography and the general aspect of the Design System.
 Each token corresponds to a CSS variable whose value can be changed at your will.
 
-In the [quick start instructions](./intro#quick-start) we started importing two different stylesheets for our default app:
+In the [quick start instructions](./intro#quick-start) we imported two different stylesheets for our default app:
 
-- `index.css` contains the style for all the Bento components, which makes use of the aforementioned CSS variables and must always be imported when the library is used;
-- `defaultTheme.css` defines a default theme for the library, so it just assigns a default value to each of those variables.
+- `index.css` contains the style for all the Bento components and it references the theme CSS variables. This file must always be imported in your app.
+- `defaultTheme.css` defines a default theme for the library, i.e. it assigns a default value to each of those variables (this is the theme that is also used by the examples in the documentation).
 
-To customize the aspect of your own design system, you can either import the default theme and then override some of the default values using an additional stylesheet, or completely replace `defaultTheme.css` with your own stylesheet defining a value for each of the Bento variables.
+You can customize the theme in two ways:
 
-```ts title="my-project/design-system/src/index.tsx"
-import "@buildo/bento-design-system/lib/index.css";
-import "@buildo/bento-design-system/lib/defaultTheme.css";
-import "./themeOverrides.css";
-```
+- (recommended) using Vanilla Extract
+- using CSS variables directly
 
-```css title="my-project/design-system/src/themeOverrides.css"
-:root {
-  /* change the brand primary color */
-  --bento-brandColor-brandPrimary: green;
-}
-```
+### Customizing the theme using Vanilla Extract
 
-If your project is already set up to use [`Vanilla Extract`](./vanilla-extract), we strongly suggest to define your theme using the utilities it offers, so that you can leverage the type-safety TypeScript offers:
+Bento is written using [Vanilla Extract](https://vanilla-extract.style/), a CSS library which uses TypeScript to author styles.
+Using the `createTheme` or `createGlobalTheme` functions, you have a type-safe way of implementing a theme. Since theme is typed, TypeScript can check that you did not forget or misspell any of the variables, and that's why we highly recommend this approach.
+
+:::note
+We will assume you already set-up Vanilla Extract for you project following [its official documentation](https://vanilla-extract.style/documentation/setup/).
+:::
+
+For example, here's how to define a theme:
 
 ```ts title="my-project/design-system/src/theme.css.ts"
 import { createGlobalTheme } from "@vanilla-extract/css";
@@ -43,37 +44,107 @@ createGlobalTheme(":root", vars, {
   fontFamily: {
     default: "Arial",
   },
-  ...
+  // ...
 });
+```
+
+:::tip
+You may be wondering whether to use `createTheme` or `createGlobalTheme`.
+
+The short answer is: use `createGlobalTheme` if your app has only one theme, use `createTheme` otherwise.
+
+<details>
+<summary>Discover more</summary>
+
+`createGlobalTheme` will attach a set of variables to the given element (`:root` in the example above). This works fine if this the only theme of the application.
+
+Suppose you have a light and a dark theme instead: in this scenario you want to selectively apply one theme or the other based on some logic.
+Instead of directly attaching the variables to an element, `createTheme` gives you a class name instead, and it's your responsibility to apply it. For example:
+
+```ts title="my-project/design-system/src/theme.css.ts"
+import { createTheme } from "@vanilla-extract/css";
+import { vars } from "@buildo/bento-design-system";
+
+export const lightTheme = createTheme(vars, {
+  /*...*/
+});
+
+export const darkTheme = createTheme(vars, {
+  /*...*/
+});
+```
+
+And then in your app:
+
+```tsx title="my-project/app/src/components/App.tsx
+import { lightTheme, darkTheme } from "design-system";
+// Hypothetical utility for retrieving the user preferences
+import { useUserPreferences } from "../utils/useUserPreferences";
+
+export function App() {
+  const { colorScheme } = useUserPreferences();
+  return <div className={colorScheme === "dark" ? darkTheme : lightTheme}>Hello!</div>;
+}
+```
+
+</details>
+:::
+
+### Customizing the theme using plain CSS
+
+As we discussed, Bento's theme is a collection of CSS variables, which you can override using CSS.
+
+:::caution
+This option is available but not recommended, as it's easy to forget or misspell a variable without any warning.
+:::
+
+You can either import the default theme and then override some of the default values using an additional stylesheet, or completely replace `defaultTheme.css` with your own stylesheet defining a value for each of the Bento variables.
+
+```ts title="my-project/design-system/src/index.tsx"
+import "@buildo/bento-design-system/lib/index.css";
+import "./theme.css";
+```
+
+```css title="my-project/design-system/src/theme.css"
+/* Import this file if you want to start from the defaultTheme and only override some variables */
+@import "@buildo/bento-design-system/lib/defaultTheme.css";
+
+:root {
+  /* change the brand primary color */
+  --bento-brandColor-brandPrimary: green;
+  /* ... */
+}
 ```
 
 :::info
 You can get a complete list of all the existing CSS variables by looking at the [default theme](https://github.com/buildo/bento-design-system/blob/main/packages/bento-design-system/src/defaultTheme.css.ts).
 :::
 
-:::tip
-You can also define different themes for you app (e.g. a dark and a light theme), by replacing `createGlobalTheme` with a set of calls to `createTheme`, each of them returning a className you can conditionally set on the top-most element of your app.
-
-```ts title="my-project/design-system/src/theme.css.ts"
-import { createTheme } from "@vanilla-extract/css";
-
-export const lightTheme = createTheme(vars, { ... });
-export const darkTheme = createTheme(vars, { ... });
-```
-
-:::
-
 ## Configuration
 
 In addition to the design tokens, covering aspects related to the common design system "foundations", each component exposes an interface to configure its specific features and behaviors.
 
-Bento has been thought of as a design system **builder**, meaning that it allows a certain degree of flexibility in defining how your components should look like and behave (to adapt them to different scenarios), while remaining strict when it comes to using them in your application once configured.
+Bento has been conceived as a design system _builder_, meaning that it allows a certain degree of flexibility in defining how your components should look like and behave (to adapt them to different scenarios), while remaining strict when it comes to using them in your application once configured.
 
-This is why all the Bento components are exposed via a `createBentoComponents` constructor. This function allows you to build all the design system components, eventually overriding some of their default configurations.
+<details>
+<summary>Props vs Configuration?</summary>
 
-Let's say, for example, our designers decided the application we have to implement should have all the actions (e.g. the buttons at the end of a form) left-aligned, with the primary action on the left.
+We want Bento components to be customizable for each project, but we want them to be strict when using them in the application.
 
-We can force this by tweaking the `buttonsAlignment` and `primaryPosition` configurations for the `Actions` component:
+For instance, we want to customize the border radius of `TextField` for the project, but we don't want to allow this to be set whenever we're using `TextField`.
+
+So Bento is designed following this strategy:
+
+- The configuration is everything we want to customize for a project, and never think about again (e.g. the border radius of `TextField`).
+- Props are instead things we want to configure when we're using the component (e.g. the `placeholder` of a specific `TextField`).
+
+</details>
+
+This is why all the Bento components are exposed via a `createBentoComponents` constructor. This function allows you to build all the design system components, potentially overriding some of their default configurations.
+
+Let's say, for example, our designers decided all the actions (e.g. the buttons at the end of a form) should be left-aligned, with the primary action on the left.
+
+We can configure this by setting `buttonsAlignment` and `primaryPosition` for the `Actions` component:
 
 :::info
 Let's ignore the bentoSprinkles passed to createBentoComponents for now. We will see them in more details later.
@@ -90,13 +161,32 @@ export const { Actions, Modal } = createBentoComponents(bentoSprinkles, {
 });
 ```
 
-In this way, not only the `Actions` component we get from the builder will always respect the configuration we passed (without the need to specify the behavior every time we use it via props), but also any other component using `Actions` internally (like `Modal` for the actions in the footer) will follow the same configuration.
+:::info
+Don't worry about the `bentoSprinkles` parameter passed to `createBentoComponents` for now. We will discuss it in more details later on.
+:::
+
+This way, not only the `Actions` component we get from the builder will always respect the configuration we passed (without the need to specify the behavior every time we use it via props), but also any other component using `Actions` internally (like `Modal` for the actions in the footer) will follow the same configuration.
+
+If you need multiple variants of a component, you can invoke `createBentoComponents` more than once.
+For example, suppose you want two types of `Chip`, one pill-shaped and one square-shaped:
+
+```tsx title="my-project/design-system/src/index.tsx"
+import { createBentoComponents, bentoSprinkles } from "@buildo/bento-design-system";
+
+export const { Chip: SquaredChip } = createBentoComponents(bentoSprinkles, {
+  chip: { radius: 0 },
+});
+
+export const { Chip: PillChip } = createBentoComponents(bentoSprinkles, {
+  chip: { radius: "circledX" },
+});
+```
 
 <details>
   <summary>What if we need to use different configurations for a component, depending on where it's used?</summary>
   Let's say the left-aligned configuration for Actions from the previous example should affect all the usages in the app except for the modals.
 
-In this case, we can call `createBentoComponents` multiple times, to get different sets of components:
+Again, we can call `createBentoComponents` multiple times, to get different sets of components:
 
 ```tsx
 // both Actions and Form exported from here will use the left-aligned Actions
@@ -106,73 +196,68 @@ export const { Actions, Form } = createBentoComponents(bentoSprinkles, {
     primaryPosition: "left",
   },
 });
+
 // Modal, instead, will use the default Actions component,
 // since we're not overriding its configuration here
-export const { Modal } = createBentoComponents();
-```
-
-or even use more specific constructors Bento offers for every component:
-
-```tsx
-import { defaultConfigs } from "@buildo/bento-design-system";
-export const { Actions, Banner, Button, Form, IconButton, InlineLoader } = createBentoComponents({
-  actions: {
-    buttonsAlignment: "left",
-    primaryPosition: "left",
-  },
-});
-// We create a new Actions component with the default config, to be used only to construct the Modal component.
-// Note that the constructor for Actions requires a few other components used internally by Actions.
-// We can take them from the previous global constructor.
-const RightAlignedActions = createActions(defaultConfigs.actions, { Button, Banner, InlineLoader });
-export const Modal = createModal(defaultConfigs.modal, {
-  Actions: RightAlignedActions,
-  IconButton,
-});
+export const { Modal } = createBentoComponents(bentoSprinkles);
 ```
 
 </details>
 
 ## Atoms augmentation
 
-Bento has been built following the principles of [Atomic CSS](sprinkles-setup.md). For this reason, it defines a set of single-purpose CSS classes which, besides from being used internally, can be also used to build new project-specific components. In addition to this, Bento allows you to extend the set of atoms that are used to pre-generate these atomic classes, so that you can add even more design tokens and classes to meet your project's requirements. This process goes through the use of [Vanilla Extract](https://vanilla-extract.style/), a type-safe CSS preprocessor that generates CSS classes from TypeScript files and that's been used internally to create all the Bento components.
+Bento has been built following the principles of Atomic CSS. You can read more about it in the [dedicate section](./sprinkles-setup.md).
+
+This means Bento defines a set of "atomic properties", which correspond to single-purpose CSS classes. This classes, besides being used internally, can be also used to build new custom components for your project.
+
+In addition to this, Bento allows you to extend the default atomic properties to meet your project's requirements. This process uses the [Vanilla Extract](https://vanilla-extract.style/)'s Sprinkles API, which we mentioned above.
+
+In Vanilla Extract terminology, the atoms are called _sprinkles_.
+Bento defines its own sprinkles and it exposes them as `bentoSprinkles` (we've seen in the examples above).
+
+As discussed in the [Atomic CSS](./sprinkles-setup.md) documentation, `bentoSprinkles` is a function which returns a class name given a set of known properties.
+
+When we pass this function to `createBentoComponents` it will return - among the others - a `Box` component, which you can think as the JSX equivalent of a sprinkles function.
 
 :::info
-You can find the instructions to setup Vanilla-Extract for your project [here](./vanilla-extract.md)
+
+`Box` is the main building block of the design system. You can use it to build your own components without accessing `sprinkles` directly:
+
+<Canvas path="Customization/Box" />
+
+Think of `Box` as a drop-in replacement for `div` (even though you can customize the rendered HTML element using the `as` props) which also exposes the type-safe API of `sprinkles`.
+
 :::
 
-In vanilla-extract terminology, these atoms are called **Sprinkles**. By default, Bento is using a set of sprinkles containing all the design tokens that are defined internally by the library (i.e. the ones you can customize through theming), but it allows you to define your own, as long as they extend the default ones.
+The type of `Box` props is determined by the type of the sprinkles. Suppose now you want to add a new color token (`specialBackgroundColor`) to the set of possible background colors.
 
-Remember the `bentoSprinkles` we passed to the `createBentoComponents` function in the previous chapter? Those are the sprinkles Bento is defining and using by default. Passing the sprinkles to `createBentoComponents` allows us to receive back a `Box` and other layout components accepting the design tokens as props.
-
-:::info
-Think of Box as the main building block of your design system. You can use it to build more complex components.
-:::
-
-```tsx
-<Box as="div" color="brandPrimary">
-  This is a text in BrandPrimary color
-</Box>
-```
-
-In case you want to use custom design tokens in your project, you can build your own sprinkles function based on the Bento atoms, and pass it to `createBentoComponents` in place of the default `bentoSprinkles`.
-Let's say, for example, we want to add a new color token (`myForegroundColor`) to the set of possible foreground colors. To do so, we must extend the set of tokens accepted by the `color` CSS properties to include also the custom token.
+To do so, we must extend the set of tokens accepted by the `background` CSS properties to include also the custom token.
 
 First, let's define the new CSS variable for the custom token and assign the corresponding hex color value to it:
 
-```ts title="my-project/design-system/theme.css.ts"
+```ts title="my-project/design-system/src/theme.css.ts"
 import { createGlobalTheme } from "@vanilla-extract/css";
+import { vars } from "@buildo/bento-design-system";
 
+// The implementation of Bento's theme we've seen above
+createGlobalTheme(":root", vars, {
+  fontFamily: {
+    default: "Arial",
+  },
+  // ...
+});
+
+// our new custom variables
 export const customVars = createGlobalTheme(":root", {
   color: {
-    myForegroundColor: "#3C6FD6",
+    specialBackgroundColor: "#3C6FD6",
   },
 });
 ```
 
-Then, we must tell Bento this new token can be used as a value for the `color` CSS property, by extending the Bento `statusProperties`:
+Then, we must tell Bento this new token can be used as a value for the `color` CSS property, by extending Bento's `statusProperties`:
 
-```ts title="my-project/design-system/src/mySprinkles.css.ts"
+```ts title="my-project/design-system/src/sprinkles.css.ts"
 import {
   createDefineBentoSprinklesFn,
   unconditionalProperties,
@@ -191,7 +276,7 @@ const statusProperties = {
   },
 };
 
-export const { sprinkles: mySprinkles } = defineBentoSprinkles(
+export const { sprinkles } = defineBentoSprinkles(
   bentoUnconditionalProperties,
   bentoResponsiveProperties,
   statusProperties
@@ -199,7 +284,8 @@ export const { sprinkles: mySprinkles } = defineBentoSprinkles(
 ```
 
 <details>
- <summary>What are statusProperties?</summary>
+ <summary>What are <code>statusProperties</code>?</summary>
+
 Bento defines 3 different sets of properties: `unconditionalProperties`, `responsiveProperties` and `statusProperties`:
 
 - `unconditionalProperties` are CSS properties that don't depend on any condition;
@@ -208,27 +294,27 @@ Bento defines 3 different sets of properties: `unconditionalProperties`, `respon
 
 The `color` CSS property is part of the statusProperties, since we can specify a different foreground color based on the current status. For example, we can specify different colors for the default and hover state in this way:
 
-```ts
-<Box color={{
-  default: "brandPrimary",
-  hover: "primarySolidHoverForeground"
-}}>
-```
+<Canvas path="Customization/BoxStatusProperties" />
 
 </details>
 
-Finally, we must pass the new sprinkles to the `createBentoComponents`:
+Finally, we pass our new sprinkles to `createBentoComponents`:
 
 ```ts title="my-project/design-system/src/index.ts"
+import { createBentoComponents } from "@buildo/bento-design-system";
 import { mySprinkles } from "./mySprinkles.css";
 
-const { Box } = createBentoSprinkles(mySprinkles);
+export const { Box } = createBentoComponents(mySprinkles);
+```
+
+Now we can use `"specialBackgroundColor"` as a value for the `background` prop of `Box`:
+
+```tsx title="my-project/design-system/src/HelloWorld.tsx"
+import { Box } from ".";
 
 export function HelloWorld() {
-  return (
-    <Box as="div" color="myForegroundColor">
-      This is a text in MyForegroundColor
-    </Box>
-  );
+  return <Box background="specialBackgroundColor">The background is "specialBackgroundColor"</Box>;
 }
 ```
+
+Note that this is still checked by TypeScript: `background` now accepts all the values defined by Bento plus the custom token you just defined, and it will complain if you pass anything else to it.
