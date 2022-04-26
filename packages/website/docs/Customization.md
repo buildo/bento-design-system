@@ -1,3 +1,5 @@
+import { Canvas } from "@site/src/components/Canvas";
+
 # Customization
 
 At this point, we got a set of components with a default configuration and theme.
@@ -204,44 +206,58 @@ export const { Modal } = createBentoComponents(bentoSprinkles);
 
 ## Atoms augmentation
 
-Bento has been built following the principles of [Atomic CSS](sprinkles-setup.md). For this reason, it defines a set of single-purpose CSS classes which, besides from being used internally, can be also used to build new project-specific components. In addition to this, Bento allows you to extend the set of atoms that are used to pre-generate these atomic classes, so that you can add even more design tokens and classes to meet your project's requirements. This process goes through the use of [Vanilla Extract](https://vanilla-extract.style/), a type-safe CSS preprocessor that generates CSS classes from TypeScript files and that's been used internally to create all the Bento components.
+Bento has been built following the principles of Atomic CSS. You can read more about it in the [dedicate section](./sprinkles-setup.md).
+
+This means Bento defines a set of "atomic properties", which correspond to single-purpose CSS classes. This classes, besides being used internally, can be also used to build new custom components for your project.
+
+In addition to this, Bento allows you to extend the default atomic properties to meet your project's requirements. This process uses the [Vanilla Extract](https://vanilla-extract.style/)'s Sprinkles API, which we mentioned above.
+
+In Vanilla Extract terminology, the atoms are called _sprinkles_.
+Bento defines its own sprinkles and it exposes them as `bentoSprinkles` (we've seen in the examples above).
+
+As discussed in the [Atomic CSS](./sprinkles-setup.md) documentation, `bentoSprinkles` is a function which returns a class name given a set of known properties.
+
+When we pass this function to `createBentoComponents` it will return - among the others - a `Box` component, which you can think as the JSX equivalent of a sprinkles function.
 
 :::info
-You can find the instructions to setup Vanilla-Extract for your project [here](./vanilla-extract.md)
+
+`Box` is the main building block of the design system. You can use it to build your own components without accessing `sprinkles` directly:
+
+<Canvas path="Customization/Box" />
+
+Think of `Box` as a drop-in replacement for `div` (even though you can customize the rendered HTML element using the `as` props) which also exposes the type-safe API of `sprinkles`.
+
 :::
 
-In vanilla-extract terminology, these atoms are called **Sprinkles**. By default, Bento is using a set of sprinkles containing all the design tokens that are defined internally by the library (i.e. the ones you can customize through theming), but it allows you to define your own, as long as they extend the default ones.
+The type of `Box` props is determined by the type of the sprinkles. Suppose now you want to add a new color token (`specialBackgroundColor`) to the set of possible background colors.
 
-Remember the `bentoSprinkles` we passed to the `createBentoComponents` function in the previous chapter? Those are the sprinkles Bento is defining and using by default. Passing the sprinkles to `createBentoComponents` allows us to receive back a `Box` and other layout components accepting the design tokens as props.
-
-:::info
-Think of Box as the main building block of your design system. You can use it to build more complex components.
-:::
-
-```tsx
-<Box as="div" color="brandPrimary">
-  This is a text in BrandPrimary color
-</Box>
-```
-
-In case you want to use custom design tokens in your project, you can build your own sprinkles function based on the Bento atoms, and pass it to `createBentoComponents` in place of the default `bentoSprinkles`.
-Let's say, for example, we want to add a new color token (`myForegroundColor`) to the set of possible foreground colors. To do so, we must extend the set of tokens accepted by the `color` CSS properties to include also the custom token.
+To do so, we must extend the set of tokens accepted by the `background` CSS properties to include also the custom token.
 
 First, let's define the new CSS variable for the custom token and assign the corresponding hex color value to it:
 
-```ts title="my-project/design-system/theme.css.ts"
+```ts title="my-project/design-system/src/theme.css.ts"
 import { createGlobalTheme } from "@vanilla-extract/css";
+import { vars } from "@buildo/bento-design-system";
 
+// The implementation of Bento's theme we've seen above
+createGlobalTheme(":root", vars, {
+  fontFamily: {
+    default: "Arial",
+  },
+  // ...
+});
+
+// our new custom variables
 export const customVars = createGlobalTheme(":root", {
   color: {
-    myForegroundColor: "#3C6FD6",
+    specialBackgroundColor: "#3C6FD6",
   },
 });
 ```
 
-Then, we must tell Bento this new token can be used as a value for the `color` CSS property, by extending the Bento `statusProperties`:
+Then, we must tell Bento this new token can be used as a value for the `color` CSS property, by extending Bento's `statusProperties`:
 
-```ts title="my-project/design-system/src/mySprinkles.css.ts"
+```ts title="my-project/design-system/src/sprinkles.css.ts"
 import {
   createDefineBentoSprinklesFn,
   unconditionalProperties,
@@ -260,7 +276,7 @@ const statusProperties = {
   },
 };
 
-export const { sprinkles: mySprinkles } = defineBentoSprinkles(
+export const { sprinkles } = defineBentoSprinkles(
   bentoUnconditionalProperties,
   bentoResponsiveProperties,
   statusProperties
@@ -268,7 +284,8 @@ export const { sprinkles: mySprinkles } = defineBentoSprinkles(
 ```
 
 <details>
- <summary>What are statusProperties?</summary>
+ <summary>What are <code>statusProperties</code>?</summary>
+
 Bento defines 3 different sets of properties: `unconditionalProperties`, `responsiveProperties` and `statusProperties`:
 
 - `unconditionalProperties` are CSS properties that don't depend on any condition;
@@ -277,27 +294,27 @@ Bento defines 3 different sets of properties: `unconditionalProperties`, `respon
 
 The `color` CSS property is part of the statusProperties, since we can specify a different foreground color based on the current status. For example, we can specify different colors for the default and hover state in this way:
 
-```ts
-<Box color={{
-  default: "brandPrimary",
-  hover: "primarySolidHoverForeground"
-}}>
-```
+<Canvas path="Customization/BoxStatusProperties" />
 
 </details>
 
-Finally, we must pass the new sprinkles to the `createBentoComponents`:
+Finally, we pass our new sprinkles to `createBentoComponents`:
 
 ```ts title="my-project/design-system/src/index.ts"
+import { createBentoComponents } from "@buildo/bento-design-system";
 import { mySprinkles } from "./mySprinkles.css";
 
-const { Box } = createBentoSprinkles(mySprinkles);
+export const { Box } = createBentoComponents(mySprinkles);
+```
+
+Now we can use `"specialBackgroundColor"` as a value for the `background` prop of `Box`:
+
+```tsx title="my-project/design-system/src/HelloWorld.tsx"
+import { Box } from ".";
 
 export function HelloWorld() {
-  return (
-    <Box as="div" color="myForegroundColor">
-      This is a text in MyForegroundColor
-    </Box>
-  );
+  return <Box background="specialBackgroundColor">The background is "specialBackgroundColor"</Box>;
 }
 ```
+
+Note that this is still checked by TypeScript: `background` now accepts all the values defined by Bento plus the custom token you just defined, and it will complain if you pass anything else to it.
