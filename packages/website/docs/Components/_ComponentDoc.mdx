@@ -1,8 +1,10 @@
 import { Canvas } from "@site/src/components/Canvas";
 import { PropTable } from "@site/src/components/PropTable";
 import { ExternalLinkCard } from "@site/src/components/ExternalLinkCard";
+import { ComponentHeader } from "@site/src/components/ComponentHeader";
 
-<>{props.children}</>
+<>{props.constructorName && <ComponentHeader name={props.constructorName} />}</>
+<br />
 
 <div style={{ display: "flex", gap: 24 }}>
   {props.name && <ExternalLinkCard type="github" componentName={props.name} />}
