@@ -6,7 +6,8 @@ import { ExternalLinkCard } from "@site/src/components/ExternalLinkCard";
 
 <div style={{ display: "flex", gap: 24 }}>
   {props.name && <ExternalLinkCard type="github" componentName={props.name} />}
-  <ExternalLinkCard type="zeroheight" slug={props.zeroheightSlug} />
+  {props.zeroheightSlug && <ExternalLinkCard type="zeroheight" slug={props.zeroheightSlug} />}
+  {props.storybookStoryId && <ExternalLinkCard type="storybook" storyId={props.storybookStoryId} />}
 </div>
 
 ### Example

@@ -14,6 +14,10 @@ type Props = {
       type: "zeroheight";
       slug: string;
     }
+  | {
+      type: "storybook";
+      storyId: string;
+    }
 );
 
 export function ExternalLinkCard(props: Props) {
@@ -25,6 +29,8 @@ export function ExternalLinkCard(props: Props) {
         return `https://github.com/${config.organizationName}/${config.projectName}/tree/main/packages/bento-design-system/src/${props.componentName}`;
       case "zeroheight":
         return `https://zeroheight.com/1424b583b/p/${props.slug}`;
+      case "storybook":
+        return `https://storybook.bento.our.buildo.io/?path=/story/${props.storyId}`;
     }
   })();
 
@@ -39,6 +45,8 @@ export function ExternalLinkCard(props: Props) {
         }
       case "zeroheight":
         return "/img/zeroheight.png";
+      case "storybook":
+        return "/img/storybook.svg";
     }
   })();
 
@@ -48,6 +56,8 @@ export function ExternalLinkCard(props: Props) {
         return "GitHub";
       case "zeroheight":
         return "zeroheight";
+      case "storybook":
+        return "Storybook";
     }
   })();
 
