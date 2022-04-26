@@ -66,7 +66,7 @@ function MyComponent() {
 }
 ```
 
-Great! Now all Bento components will complain if we accidentally forget to localized a string that must be presented to the user 🎉
+Great! Now all Bento components will complain if we accidentally forget to localize a string that must be presented to the user 🎉
 
 ## Integrating with localization libraries
 
