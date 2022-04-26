@@ -7,8 +7,18 @@ import prettier from "prettier/standalone";
 import parserTypeScript from "prettier/parser-typescript";
 
 export function Canvas({ path }: { path: string }) {
-  const rawSource = require(`!!raw-loader!@site/src/snippets/${path}`).default;
-  const Component = require(`@site/src/snippets/${path}`).default;
+  let rawSource: string | null = null;
+  import(`!!raw-loader!@site/src/snippets/${path}`).then((s) => {
+    rawSource = s;
+  });
+  let Component: React.ComponentType | null = null;
+  import(`@site/src/snippets/${path}`).then((C) => {
+    Component = C;
+  });
+
+  if (!rawSource || !Component) {
+    return null;
+  }
 
   const ast = parse(rawSource, {
     sourceType: "module",
