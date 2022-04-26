@@ -10,12 +10,13 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: "Easy to Use",
+    title: "Make it your own",
     image: "/img/undraw_docusaurus_mountain.svg",
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and used to get your
-        website up and running quickly.
+        Bento is designed for customization and extensibility: create a custom theme and
+        configuration that matches your brand identity and extend the existing components using
+        Bento's powerful foundations.
       </>
     ),
   },
@@ -24,18 +25,18 @@ const FeatureList: FeatureItem[] = [
     image: "/img/undraw_docusaurus_tree.svg",
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go ahead and move your
-        docs into the <code>docs</code> directory.
+        Bento lets you focus on the business logic of your front-end app: implementing the correct
+        UI becomes a trivial task that won't distract your from more important concerns.
       </>
     ),
   },
   {
-    title: "Powered by React",
+    title: "Powered by TypeScript",
     image: "/img/undraw_docusaurus_react.svg",
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can be extended while
-        reusing the same header and footer.
+        Bento is built with TypeScript and for TypeScript users: whether you use the high-level
+        components, or you delve deep into the foundations the type-checker always has your back.
       </>
     ),
   },
