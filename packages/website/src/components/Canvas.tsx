@@ -6,16 +6,17 @@ import traverse from "@babel/traverse";
 import generate from "@babel/generator";
 import prettier from "prettier/standalone";
 import parserTypeScript from "prettier/parser-typescript";
+import { useEffect, useState, lazy, Suspense } from "react";
 
 export function Canvas({ path }: { path: string }) {
-  let rawSource = null as string | null;
-  import(`!!raw-loader!@site/src/snippets/${path}`).then((s) => {
-    rawSource = s;
-  });
-  let Component = null as React.ElementType | null;
-  import(`@site/src/snippets/${path}`).then((C) => {
-    Component = C;
-  });
+  const [rawSource, setRawSource] = useState<string | null>(null);
+  useEffect(() => {
+    import(`!!raw-loader!@site/src/snippets/${path}`)
+      .then(({ default: s }) => setRawSource(s))
+      .catch(console.error);
+  }, [path]);
+
+  const Component = lazy(() => import(`@site/src/snippets/${path}`));
 
   if (!rawSource || !Component) {
     return null;
@@ -44,11 +45,11 @@ export function Canvas({ path }: { path: string }) {
   }
 
   return (
-    <>
+    <Suspense fallback={<div>Loading example...</div>}>
       <div style={{ padding: 16, border: "1px solid slategray" }}>
         <Component />
       </div>
       {source && <CodeBlock language="jsx">{source}</CodeBlock>}
-    </>
+    </Suspense>
   );
 }
