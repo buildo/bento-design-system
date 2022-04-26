@@ -20,6 +20,9 @@ type Props = {
   icon?: (props: IconProps) => JSX.Element;
 } & AriaButtonProps<"button">;
 
+/**
+ * A button
+ */
 export function createButton(config: ButtonConfig) {
   return function Button(props: Props) {
     const ref = useRef<HTMLButtonElement>(null);
