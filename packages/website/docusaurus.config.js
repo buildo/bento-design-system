@@ -50,7 +50,7 @@ const config = {
     [
       "docusaurus-plugin-react-docgen-typescript",
       {
-        src: ["../bento-design-system/src/**.{ts,tsx}", "../storybook/stories/index.tsx"],
+        src: ["../bento-design-system/src/**/**.{ts,tsx}", "../storybook/stories/index.tsx"],
         global: true,
         parserOptions: {
           propFilter: (prop) => {
