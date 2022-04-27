@@ -1,0 +1,138 @@
+# Quick start
+
+Add the Bento package to your project:
+
+<PackageManagerCommand
+  command={{
+    pnpm: "add @buildo/bento-design-system",
+    yarn: "add @buildo/bento-design-system",
+    npm: "install @buildo/bento-design-system",
+  }}
+/>
+
+Then, let's import the Bento stylesheet.
+
+We are also going to import Bento's default theme, so that we can get started right away
+(don't worry, we will soon discuss how to create your own custom theme):
+
+```ts title="my-project/design-system/src/index.tsx"
+import "@buildo/bento-design-system/lib/index.css";
+import "@buildo/bento-design-system/lib/defaultTheme.css";
+```
+
+Now we can use `createBentoComponents` to create and exports the components we need, for example
+
+```tsx title="my-project/design-system/src/index.tsx"
+import "@buildo/bento-design-system/lib/index.css";
+import "@buildo/bento-design-system/lib/defaultTheme.css";
+
+// highlight-start
+export const {
+  Banner,
+  Button,
+  CheckboxField,
+  Chip,
+  RadioGroupField,
+  SelectField,
+  TextField,
+  Title,
+  DesignSystemProvider,
+} = createBentoComponents();
+// highlight-end
+```
+
+The `DesignSystemProvider`, returned alongside the other components by `createBentoComponents`, is a React context provider that is required for some components to work.
+You need to wrap your entire application with it in order to use Bento components.
+
+`DesignSystemProvider` has a required `defaultMessages` parameter: this is used to provide standard localized messages for some components.
+
+<details>
+  <summary>Why using default messages?</summary>
+
+Bento components are entirely agnostic when it comes to localization: all components accept the
+text to be display to the user as props.
+
+Some specific props, however, are very repetitive and would be too tedious to pass them as props
+every time you use the component. Think of messages like `"No options"` when a `SelectField` has no options to show or
+accessibility labels like "Close", which are used to describe actions on icons.
+
+Without the default messages, for example, you would need to pass `dismissButtonLabel` every time you use `Chip`:
+
+```tsx
+<Chip label={label} color={color} dismissButtonLabel={dismissButtonLabel} />
+```
+
+whereas default messages allow Bento to make `dismissButtonLabel` optional, and let you override it only if needed:
+
+```tsx
+// This uses the default message for `dismissButtonLabel`
+<Chip label={label} color={color} />
+
+// This overrides the default message
+<Chip label={label} color={color} dismissButtonLabel={myCustomDismissLabel} />
+```
+
+</details>
+
+```tsx title="my-project/app/src/App.tsx"
+import { DesignSystemProvider, Title } from "design-system";
+import { defaultMessages } from "./defaultMessages";
+
+<DesignSystemProvider defaultMessages={defaultMessages}>
+  <Title size="large">Hello, World!</Title>
+</DesignSystemProvider>;
+```
+
+<details>
+  <summary>Here's some sample default messages you can use to get started:</summary>
+
+```tsx title="my-project/app/src/defaultMessages.ts"
+import { ComponentProps } from "react";
+import { DesignSystemProvider } from "design-system";
+
+export const defaultMessages: ComponentProps<typeof DesignSystemProvider>["defaultMessages"] = {
+  Chip: {
+    dismissButtonLabel: "Remove",
+  },
+  Banner: {
+    dismissButtonLabel: "Close",
+  },
+  Modal: {
+    closeButtonLabel: "Close",
+  },
+  SelectField: {
+    noOptionsMessage: "No options",
+    multiOptionsSelected: (n) => {
+      const options = n > 1 ? "options" : "option";
+      return `${n} ${options} selected`;
+    },
+  },
+  SearchBar: {
+    clearButtonLabel: "Clear",
+  },
+  Table: {
+    noResultsTitle: "No results found",
+    noResultsDescription: "Try adjusting your search filters to find what you're looking for."
+    missingValue: "-",
+  },
+  Loader: {
+    loadingMessage: "Loading...",
+  },
+};
+```
+
+</details>
+
+:::note
+
+In the examples above, we are assuming your project will use a workspace containing (at least) two packages:
+
+- `design-system`
+- `app`
+
+where `app` depends on `design-system` locally (using the workspace feature by npm, pnpm or yarn).
+
+We recommend this approach as it clearly separates the concerns, but nothing prevents you from
+co-locating design system and app components in the same project.
+
+:::

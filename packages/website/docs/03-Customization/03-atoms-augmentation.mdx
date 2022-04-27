@@ -2,7 +2,7 @@ import { Canvas } from "@site/src/components/Canvas";
 
 # Atoms Augmentation
 
-Bento has been built following the principles of Atomic CSS. You can read more about it in the [dedicate section](../atomic-styles).
+Bento has been built following the principles of Atomic CSS. You can read more about it in the [dedicate section](../Getting%20Started/atomic-styles).
 
 This means Bento defines a set of "atomic properties", which correspond to single-purpose CSS classes. This classes, besides being used internally, can be also used to build new custom components for your project.
 
@@ -11,7 +11,7 @@ In addition to this, Bento allows you to extend the default atomic properties to
 In Vanilla Extract terminology, the atoms are called _sprinkles_.
 Bento defines its own sprinkles and it exposes them as `bentoSprinkles` (we've seen in the examples above).
 
-As discussed in the [Atomic CSS](../atomic-styles) documentation, `bentoSprinkles` is a function which returns a class name given a set of known properties.
+As discussed in the [Atomic CSS](../Getting%20Started/atomic-styles) documentation, `bentoSprinkles` is a function which returns a class name given a set of known properties.
 
 When we pass this function to `createBentoComponents` it will return - among the others - a `Box` component, which you can think as the JSX equivalent of a sprinkles function.
 
