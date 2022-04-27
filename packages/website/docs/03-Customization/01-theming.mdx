@@ -1,0 +1,109 @@
+# Theming
+
+Bento has been designed on top of a set of semantic design tokens which define the colors, typography and the general aspect of the Design System.
+Each token corresponds to a CSS variable whose value can be changed at your will.
+
+In the [quick start instructions](../Getting%20Started/quick-start) we imported two different stylesheets for our default app:
+
+- `index.css` contains the style for all the Bento components and it references the theme CSS variables. This file must always be imported in your app.
+- `defaultTheme.css` defines a default theme for the library, i.e. it assigns a default value to each of those variables (this is the theme that is also used by the examples in the documentation).
+
+You can customize the theme in two ways:
+
+- (recommended) using Vanilla Extract
+- using CSS variables directly
+
+### Customizing the theme using Vanilla Extract
+
+Bento is written using [Vanilla Extract](https://vanilla-extract.style/), a CSS library which uses TypeScript to author styles.
+Using the `createTheme` or `createGlobalTheme` functions, you have a type-safe way of implementing a theme. Since theme is typed, TypeScript can check that you did not forget or misspell any of the variables, and that's why we highly recommend this approach.
+
+:::note
+We will assume you already set-up Vanilla Extract for you project following [its official documentation](https://vanilla-extract.style/documentation/setup/).
+:::
+
+For example, here's how to define a theme:
+
+```ts title="my-project/design-system/src/theme.css.ts"
+import { createGlobalTheme } from "@vanilla-extract/css";
+import { vars } from "@buildo/bento-design-system";
+
+createGlobalTheme(":root", vars, {
+  fontFamily: {
+    default: "Arial",
+  },
+  // ...
+});
+```
+
+:::tip
+You may be wondering whether to use `createTheme` or `createGlobalTheme`.
+
+The short answer is: use `createGlobalTheme` if your app has only one theme, use `createTheme` otherwise.
+
+<details>
+<summary>Discover more</summary>
+
+`createGlobalTheme` will attach a set of variables to the given element (`:root` in the example above). This works fine if this the only theme of the application.
+
+Suppose you have a light and a dark theme instead: in this scenario you want to selectively apply one theme or the other based on some logic.
+Instead of directly attaching the variables to an element, `createTheme` gives you a class name instead, and it's your responsibility to apply it. For example:
+
+```ts title="my-project/design-system/src/theme.css.ts"
+import { createTheme } from "@vanilla-extract/css";
+import { vars } from "@buildo/bento-design-system";
+
+export const lightTheme = createTheme(vars, {
+  /*...*/
+});
+
+export const darkTheme = createTheme(vars, {
+  /*...*/
+});
+```
+
+And then in your app:
+
+```tsx title="my-project/app/src/components/App.tsx
+import { lightTheme, darkTheme } from "design-system";
+// Hypothetical utility for retrieving the user preferences
+import { useUserPreferences } from "../utils/useUserPreferences";
+
+export function App() {
+  const { colorScheme } = useUserPreferences();
+  return <div className={colorScheme === "dark" ? darkTheme : lightTheme}>Hello!</div>;
+}
+```
+
+</details>
+:::
+
+### Customizing the theme using plain CSS
+
+As we discussed, Bento's theme is a collection of CSS variables, which you can override using CSS.
+
+:::caution
+This option is available but not recommended, as it's easy to forget or misspell a variable without any warning.
+:::
+
+You can either import the default theme and then override some of the default values using an additional stylesheet, or completely replace `defaultTheme.css` with your own stylesheet defining a value for each of the Bento variables.
+
+```ts title="my-project/design-system/src/index.tsx"
+import "@buildo/bento-design-system/lib/index.css";
+import "./theme.css";
+```
+
+```css title="my-project/design-system/src/theme.css"
+/* Import this file if you want to start from the defaultTheme and only override some variables */
+@import "@buildo/bento-design-system/lib/defaultTheme.css";
+
+:root {
+  /* change the brand primary color */
+  --bento-brandColor-brandPrimary: green;
+  /* ... */
+}
+```
+
+:::info
+You can get a complete list of all the existing CSS variables by looking at the [default theme](https://github.com/buildo/bento-design-system/blob/main/packages/bento-design-system/src/defaultTheme.css.ts).
+:::
