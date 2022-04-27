@@ -1,0 +1,79 @@
+# Configuration
+
+In addition to the design tokens, covering aspects related to the common design system "foundations", each component exposes an interface to configure its specific features and behaviors.
+
+Bento has been conceived as a design system _builder_, meaning that it allows a certain degree of flexibility in defining how your components should look like and behave (to adapt them to different scenarios), while remaining strict when it comes to using them in your application once configured.
+
+<details>
+<summary>Props vs Configuration?</summary>
+
+We want Bento components to be customizable for each project, but we want them to be strict when using them in the application.
+
+For instance, we want to customize the border radius of `TextField` for the project, but we don't want to allow this to be set whenever we're using `TextField`.
+
+So Bento is designed following this strategy:
+
+- The configuration is everything we want to customize for a project, and never think about again (e.g. the border radius of `TextField`).
+- Props are instead things we want to configure when we're using the component (e.g. the `placeholder` of a specific `TextField`).
+
+</details>
+
+This is why all the Bento components are exposed via a `createBentoComponents` constructor. This function allows you to build all the design system components, potentially overriding some of their default configurations.
+
+Let's say, for example, our designers decided all the actions (e.g. the buttons at the end of a form) should be left-aligned, with the primary action on the left.
+
+We can configure this by setting `buttonsAlignment` and `primaryPosition` for the `Actions` component:
+
+```tsx title="my-project/design-system/src/index.tsx"
+import { createBentoComponents, bentoSprinkles } from "@buildo/bento-design-system";
+
+export const { Actions, Modal } = createBentoComponents(bentoSprinkles, {
+  actions: {
+    buttonsAlignment: "left",
+    primaryPosition: "left",
+  },
+});
+```
+
+:::info
+Don't worry about the `bentoSprinkles` parameter passed to `createBentoComponents` for now. We will discuss it in more details later on.
+:::
+
+This way, not only the `Actions` component we get from the builder will always respect the configuration we passed (without the need to specify the behavior every time we use it via props), but also any other component using `Actions` internally (like `Modal` for the actions in the footer) will follow the same configuration.
+
+If you need multiple variants of a component, you can invoke `createBentoComponents` more than once.
+For example, suppose you want two types of `Chip`, one pill-shaped and one square-shaped:
+
+```tsx title="my-project/design-system/src/index.tsx"
+import { createBentoComponents, bentoSprinkles } from "@buildo/bento-design-system";
+
+export const { Chip: SquaredChip } = createBentoComponents(bentoSprinkles, {
+  chip: { radius: 0 },
+});
+
+export const { Chip: PillChip } = createBentoComponents(bentoSprinkles, {
+  chip: { radius: "circledX" },
+});
+```
+
+<details>
+  <summary>What if we need to use different configurations for a component, depending on where it's used?</summary>
+  Let's say the left-aligned configuration for Actions from the previous example should affect all the usages in the app except for the modals.
+
+Again, we can call `createBentoComponents` multiple times, to get different sets of components:
+
+```tsx
+// both Actions and Form exported from here will use the left-aligned Actions
+export const { Actions, Form } = createBentoComponents(bentoSprinkles, {
+  actions: {
+    buttonsAlignment: "left",
+    primaryPosition: "left",
+  },
+});
+
+// Modal, instead, will use the default Actions component,
+// since we're not overriding its configuration here
+export const { Modal } = createBentoComponents(bentoSprinkles);
+```
+
+</details>
