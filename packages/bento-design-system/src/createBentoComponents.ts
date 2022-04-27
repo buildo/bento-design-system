@@ -169,7 +169,11 @@ export function createBentoComponents<
     { Field }
   );
 
-  const Table = createTable(merge(defaultConfigs.table, config.table ?? {}), { Tooltip, Feedback });
+  const Table = createTable(merge(defaultConfigs.table, config.table ?? {}), {
+    Tooltip,
+    Feedback,
+    IconButton,
+  });
   const tableColumn = createTableColumns({ Button, ButtonLink, IconButton, Chip });
 
   const Tabs = createTabs(merge(defaultConfigs.folderTabs, config.tabs ?? {}));

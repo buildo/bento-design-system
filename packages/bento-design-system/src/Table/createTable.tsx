@@ -110,9 +110,11 @@ export function createTable(
   {
     Tooltip,
     Feedback,
+    IconButton,
   }: {
     Tooltip: FunctionComponent<TooltipProps>;
     Feedback: FunctionComponent<FeedbackProps>;
+    IconButton: FunctionComponent<IconButtonProps>;
   }
 ) {
   return function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
@@ -336,14 +338,25 @@ export function createTable(
     })();
 
     const hint = column.hint ? (
-      <Tooltip
-        trigger={(ref, props) => (
-          <Box as="div" display="inline-block" ref={ref} {...props}>
-            <IconInformative size={16} color="interactive" />
-          </Box>
-        )}
-        content={column.hint}
-      />
+      typeof column.hint === "object" ? (
+        <IconButton
+          icon={IconInformative}
+          onPress={column.hint.onPress}
+          kind="transparent"
+          hierarchy="primary"
+          label=""
+          size={16}
+        />
+      ) : (
+        <Tooltip
+          trigger={(ref, props) => (
+            <Box as="div" display="inline-block" ref={ref} {...props}>
+              <IconInformative size={16} color="interactive" />
+            </Box>
+          )}
+          content={column.hint}
+        />
+      )
     ) : null;
 
     return (
