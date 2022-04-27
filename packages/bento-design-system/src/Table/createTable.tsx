@@ -18,7 +18,6 @@ import {
   LocalizedString,
   IconChevronDown,
   IconChevronUp,
-  IconInformative,
   IconMinus,
   unsafeLocalizedString,
   TooltipProps,
@@ -60,6 +59,7 @@ import {
 import { ButtonLinkProps } from "../Button/ButtonLink";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { TableConfig } from "./Config";
+import { IconHelp } from "../Icons";
 
 type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
   a: Row<RowType<C>>,
@@ -340,7 +340,7 @@ export function createTable(
     const hint = column.hint ? (
       typeof column.hint === "object" ? (
         <IconButton
-          icon={IconInformative}
+          icon={IconHelp}
           onPress={column.hint.onPress}
           kind="transparent"
           hierarchy="primary"
@@ -351,7 +351,7 @@ export function createTable(
         <Tooltip
           trigger={(ref, props) => (
             <Box as="div" display="inline-block" ref={ref} {...props}>
-              <IconInformative size={16} color="interactive" />
+              <IconHelp size={16} color="default" />
             </Box>
           )}
           content={column.hint}
