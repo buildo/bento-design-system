@@ -2,7 +2,6 @@ import * as React from "react";
 import useGlobalData from "@docusaurus/useGlobalData";
 
 export const PropTable = ({ name }) => {
-  console.log(useGlobalData()["docusaurus-plugin-react-docgen-typescript"].default as any);
   const props = (useGlobalData()["docusaurus-plugin-react-docgen-typescript"].default as any).find(
     (x) => x.displayName === name
   )?.props;
