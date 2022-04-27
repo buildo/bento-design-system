@@ -2,6 +2,8 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const { ProvidePlugin } = require("webpack");
+const { parseFiles } = require("@structured-types/api");
+const reactPlugin = require("@structured-types/react-plugin");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -47,22 +49,21 @@ const config = {
         };
       },
     }),
-    [
-      "docusaurus-plugin-react-docgen-typescript",
-      {
-        src: ["../bento-design-system/src/**/**.{ts,tsx}", "../storybook/stories/index.tsx"],
-        global: true,
-        parserOptions: {
-          propFilter: (prop) => {
-            if (prop.parent) {
-              return !prop.parent.fileName.includes("@types/react");
-            }
-
-            return true;
-          },
-        },
+    () => ({
+      name: "docusaurus-plugin-structured-types",
+      async loadContent() {
+        const content = await parseFiles(["../bento-design-system/src/index.ts"], {
+          collectHelpers: true,
+          scope: "all",
+          plugins: [reactPlugin],
+        });
+        return content;
       },
-    ],
+      async contentLoaded({ content, actions }) {
+        const { setGlobalData } = actions;
+        setGlobalData(content);
+      },
+    }),
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */

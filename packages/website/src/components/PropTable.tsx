@@ -1,10 +1,9 @@
 import * as React from "react";
 import useGlobalData from "@docusaurus/useGlobalData";
+import { useComponentProps } from "./useComponentMetadata";
 
 export const PropTable = ({ name }) => {
-  const props = (useGlobalData()["docusaurus-plugin-react-docgen-typescript"].default as any).find(
-    (x) => x.displayName === name
-  )?.props;
+  const props = useComponentProps(name);
 
   if (props) {
     return (
@@ -19,18 +18,18 @@ export const PropTable = ({ name }) => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(props).map((key) => {
+          {props.map((prop) => {
             return (
-              <tr key={key}>
+              <tr key={prop}>
                 <td>
-                  <code>{key}</code>
+                  <code>{prop.name}</code>
                 </td>
                 <td>
-                  <code>{props[key].type?.name}</code>
+                  <code>{prop.type}</code>
                 </td>
-                <td>{props[key].defaultValue && <code>{props[key].defaultValue.value}</code>}</td>
-                <td>{props[key].required ? "Yes" : "No"}</td>
-                <td>{props[key].description}</td>
+                <td>{prop.defaultValue && <code>{prop.defaultValue.value}</code>}</td>
+                <td>{prop.required ? "Yes" : "No"}</td>
+                <td>{prop.description}</td>
               </tr>
             );
           })}

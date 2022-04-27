@@ -271,6 +271,9 @@ importers:
       '@docusaurus/theme-common': ^2.0.0-beta.18
       '@docusaurus/theme-live-codeblock': ^2.0.0-beta.18
       '@mdx-js/react': ^1.6.21
+      '@structured-types/api': ^3.46.7
+      '@structured-types/api-docs': ^3.46.7
+      '@structured-types/react-plugin': ^3.46.7
       '@tsconfig/docusaurus': ^1.0.4
       '@vanilla-extract/sprinkles': ^1.4.0
       clsx: ^1.1.1
@@ -305,6 +308,9 @@ importers:
       '@docusaurus/module-type-aliases': 2.0.0-beta.18_react-dom@17.0.2+react@17.0.2
       '@docusaurus/theme-classic': 2.0.0-beta.18_28e7016540b0a32b5f8d7be755522ab7
       '@docusaurus/theme-live-codeblock': 2.0.0-beta.18_28e7016540b0a32b5f8d7be755522ab7
+      '@structured-types/api': 3.46.7_typescript@4.6.3
+      '@structured-types/api-docs': 3.46.7_typescript@4.6.3
+      '@structured-types/react-plugin': 3.46.7_react@17.0.2+typescript@4.6.3
       '@tsconfig/docusaurus': 1.0.5
       '@vanilla-extract/sprinkles': 1.4.0
       eslint-config-react-app: 7.0.0_typescript@4.6.3
@@ -4720,6 +4726,11 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
+  /@hutson/parse-repository-url/5.0.0:
+    resolution: {integrity: sha512-e5+YUKENATs1JgYHMzTr2MW/NDcXGfYFAuOQU8gJgF/kEh4EqKgfGrfLI67bMD4tbhZVlkigz/9YYwWcbOFthg==}
+    engines: {node: '>=10.13.0'}
+    dev: true
+
   /@internationalized/date/3.0.0-alpha.3:
     resolution: {integrity: sha512-lfUzsXEXNLSR5zmBlwBlNcawrJ8V+u9+JCyoTX76KAEuiHlKtk5wE7S0fMf1WllFHWdrENqy7LbN00FC3HhADQ==}
     dependencies:
@@ -7902,6 +7913,54 @@ packages:
       store2: 2.13.1
     transitivePeerDependencies:
       - '@types/react'
+    dev: true
+
+  /@structured-types/api-docs/3.46.7_typescript@4.6.3:
+    resolution: {integrity: sha512-cfjV0Hst9yOz8G9CYTCJQZZxsnD9vT4cmL+I91RByZcgJh9thMx23ReY/pvWdnTwDvdtue2q1q39XdE78CYXUw==}
+    peerDependencies:
+      typescript: ^4.0.0
+    dependencies:
+      '@hutson/parse-repository-url': 5.0.0
+      deepmerge: 4.2.2
+      hosted-git-info: 3.0.8
+      inherits: 2.0.4
+      js-string-escape: 1.0.1
+      micromatch: 4.0.5
+      object-hash: 2.2.0
+      path-browserify: 1.0.1
+      typescript: 4.6.3
+    dev: true
+
+  /@structured-types/api/3.46.7_typescript@4.6.3:
+    resolution: {integrity: sha512-NGWjvFTgaiDukXDBE0ttPZgzeDWzbW+riSmYWlkCHb3v5+Sl0Aw/zOSuGnhhKmtbqaPyETqO5CkYrFSUKSy4RA==}
+    peerDependencies:
+      typescript: ^4.0.0
+    dependencies:
+      '@structured-types/typescript-config': 3.40.5_typescript@4.6.3
+      deepmerge: 4.2.2
+      path-browserify: 1.0.1
+      typescript: 4.6.3
+    dev: true
+
+  /@structured-types/react-plugin/3.46.7_react@17.0.2+typescript@4.6.3:
+    resolution: {integrity: sha512-lVtqlgZ0UYzsb7/hRP5MEkcrjtKET76oJqis7p+4PwaRxqEF3mfNlGQTQbZS5DBnoSUGR4LiWs+lwS5qk40HCg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0
+      typescript: ^4.0.0
+    dependencies:
+      '@structured-types/api': 3.46.7_typescript@4.6.3
+      react: 17.0.2
+      typescript: 4.6.3
+    dev: true
+
+  /@structured-types/typescript-config/3.40.5_typescript@4.6.3:
+    resolution: {integrity: sha512-07h0uwQbDCe6puyeWfyMo8rEzHOzzbfv4GoJOaiuBCr2gweOStFnJcKf1BtME99e+oVkJQtwDNRct9ADbZC9cA==}
+    peerDependencies:
+      typescript: ^4.0.0
+    dependencies:
+      deepmerge: 4.2.2
+      path-browserify: 1.0.1
+      typescript: 4.6.3
     dev: true
 
   /@svgr/babel-plugin-add-jsx-attribute/6.0.0_@babel+core@7.17.9:
@@ -14335,6 +14394,13 @@ packages:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
     dev: true
 
+  /hosted-git-info/3.0.8:
+    resolution: {integrity: sha512-aXpmwoOhRBrw6X3j0h5RloK4x1OzsxMPyxqIHyNfSe2pypkVTZFpEiRoSipPEPlMrh0HW/XsjkJ5WgnCirpNUw==}
+    engines: {node: '>=10'}
+    dependencies:
+      lru-cache: 6.0.0
+    dev: true
+
   /hpack.js/2.1.6:
     resolution: {integrity: sha1-h3dMCUnlE/QuhFdbPEVoH63ioLI=}
     dependencies:
@@ -17050,6 +17116,11 @@ packages:
       copy-descriptor: 0.1.1
       define-property: 0.2.5
       kind-of: 3.2.2
+    dev: true
+
+  /object-hash/2.2.0:
+    resolution: {integrity: sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==}
+    engines: {node: '>= 6'}
     dev: true
 
   /object-inspect/1.12.0:
