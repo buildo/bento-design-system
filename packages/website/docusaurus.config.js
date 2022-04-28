@@ -55,11 +55,13 @@ const config = {
         parserOptions: {
           propFilter: (prop) => {
             if (prop.parent) {
-              return !prop.parent.fileName.includes("@types/react");
+              return !prop.parent.fileName.includes("node_modules");
             }
 
             return true;
           },
+          shouldExtractLiteralValuesFromEnum: true,
+          shouldRemoveUndefinedFromOptional: true,
         },
       },
     ],
