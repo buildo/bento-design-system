@@ -13,6 +13,7 @@ export const {
   Button,
   Card,
   CheckboxField,
+  Chip,
   Column,
   Columns,
   ContentBlock,
