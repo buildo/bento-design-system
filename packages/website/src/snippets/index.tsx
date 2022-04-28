@@ -18,6 +18,7 @@ export const {
   Columns,
   ContentBlock,
   DesignSystemProvider,
+  Disclosure,
   Form,
   FormSection,
   FormRow,
