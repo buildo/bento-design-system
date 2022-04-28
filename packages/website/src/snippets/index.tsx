@@ -27,6 +27,7 @@ export const {
   InlineLoader,
   Inset,
   List,
+  Menu,
   Placeholder,
   NumberField,
   RadioGroupField,
