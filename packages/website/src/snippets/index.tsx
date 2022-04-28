@@ -24,6 +24,7 @@ export const {
   FormSection,
   FormRow,
   Inline,
+  InlineLoader,
   Inset,
   Placeholder,
   NumberField,
