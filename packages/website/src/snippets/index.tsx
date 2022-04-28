@@ -32,6 +32,7 @@ export const {
   Navigation,
   Placeholder,
   NumberField,
+  ProgressBar,
   RadioGroupField,
   SliderField,
   Stack,
