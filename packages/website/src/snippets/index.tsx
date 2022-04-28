@@ -7,6 +7,7 @@ export const {
   AreaLoader,
   Avatar,
   Banner,
+  Breadcrumb,
   Body,
   Box,
   Button,
