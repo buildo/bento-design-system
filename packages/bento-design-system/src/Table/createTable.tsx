@@ -59,7 +59,7 @@ import {
 import { ButtonLinkProps } from "../Button/ButtonLink";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { TableConfig } from "./Config";
-import { IconHelp } from "../Icons";
+import { IconHelp, IconInfo } from "../Icons";
 
 type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
   a: Row<RowType<C>>,
@@ -351,7 +351,7 @@ export function createTable(
         <Tooltip
           trigger={(ref, props) => (
             <Box as="div" display="inline-block" ref={ref} {...props}>
-              <IconHelp size={16} color="default" />
+              <IconInfo size={12} color="default" />
             </Box>
           )}
           content={column.hint}
