@@ -37,6 +37,7 @@ export const {
   SearchBar,
   SliderField,
   Stack,
+  Stepper,
   TextField,
   Tiles,
   SelectField,
