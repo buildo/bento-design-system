@@ -3,6 +3,7 @@ import { createBentoComponents, bentoSprinkles } from "@buildo/bento-design-syst
 export * from "@buildo/bento-design-system";
 
 export const {
+  Actions,
   Body,
   Box,
   Button,
