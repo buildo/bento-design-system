@@ -1,10 +1,16 @@
 import * as React from "react";
-import useGlobalData from "@docusaurus/useGlobalData";
+import { useComponentProps } from "./useComponentMetadata";
+
+function getType(type: any): JSX.Element | null {
+  if (!type) return null;
+  if (type.name === "enum") {
+    return <code>{type.value.map((v) => v.value).join(" | ")}</code>;
+  }
+  return type.name;
+}
 
 export const PropTable = ({ name }) => {
-  const props = (useGlobalData()["docusaurus-plugin-react-docgen-typescript"].default as any).find(
-    (x) => x.displayName === name
-  )?.props;
+  const props = useComponentProps(name);
 
   if (props) {
     return (
@@ -26,7 +32,7 @@ export const PropTable = ({ name }) => {
                   <code>{key}</code>
                 </td>
                 <td>
-                  <code>{props[key].type?.name}</code>
+                  <code>{getType(props[key].type)}</code>
                 </td>
                 <td>{props[key].defaultValue && <code>{props[key].defaultValue.value}</code>}</td>
                 <td>{props[key].required ? "Yes" : "No"}</td>
