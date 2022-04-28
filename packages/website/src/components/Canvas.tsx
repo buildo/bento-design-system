@@ -7,6 +7,8 @@ import generate from "@babel/generator";
 import prettier from "prettier/standalone";
 import parserTypeScript from "prettier/parser-typescript";
 import { useEffect, useState, lazy, Suspense } from "react";
+import { DesignSystemProvider } from "../snippets";
+import { defaultMessages } from "../snippets/defaultMessages";
 
 export function Canvas({ path }: { path: string }) {
   const [rawSource, setRawSource] = useState<string | null>(null);
@@ -45,11 +47,13 @@ export function Canvas({ path }: { path: string }) {
   }
 
   return (
-    <Suspense fallback={<div>Loading example...</div>}>
-      <div style={{ padding: 16, border: "1px solid slategray" }}>
-        <Component />
-      </div>
-      {source && <CodeBlock language="jsx">{source}</CodeBlock>}
-    </Suspense>
+    <DesignSystemProvider defaultMessages={defaultMessages}>
+      <Suspense fallback={<div>Loading example...</div>}>
+        <div style={{ padding: 16, border: "1px solid slategray" }}>
+          <Component />
+        </div>
+        {source && <CodeBlock language="jsx">{source}</CodeBlock>}
+      </Suspense>
+    </DesignSystemProvider>
   );
 }
