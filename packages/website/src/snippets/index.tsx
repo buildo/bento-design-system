@@ -6,6 +6,7 @@ export const {
   Actions,
   AreaLoader,
   Avatar,
+  Banner,
   Body,
   Box,
   Button,
