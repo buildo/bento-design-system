@@ -41,6 +41,7 @@ export const {
   Switch,
   Table,
   tableColumn,
+  Tabs,
   TextField,
   Tiles,
   SelectField,
