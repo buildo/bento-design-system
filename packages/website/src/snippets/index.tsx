@@ -28,6 +28,7 @@ export const {
   Inset,
   List,
   Menu,
+  Modal,
   Placeholder,
   NumberField,
   RadioGroupField,
