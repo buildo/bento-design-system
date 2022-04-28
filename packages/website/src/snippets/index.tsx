@@ -19,6 +19,7 @@ export const {
   ContentBlock,
   DesignSystemProvider,
   Disclosure,
+  Feedback,
   Form,
   FormSection,
   FormRow,
