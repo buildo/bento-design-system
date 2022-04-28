@@ -29,6 +29,7 @@ export const {
   List,
   Menu,
   Modal,
+  Navigation,
   Placeholder,
   NumberField,
   RadioGroupField,
