@@ -44,5 +44,6 @@ export const {
   Tabs,
   TextField,
   Tiles,
+  Toast,
   SelectField,
 } = createBentoComponents(bentoSprinkles);
