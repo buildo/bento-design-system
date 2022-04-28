@@ -11,6 +11,7 @@ export const {
   Body,
   Box,
   Button,
+  Card,
   Column,
   Columns,
   ContentBlock,
