@@ -17,6 +17,12 @@
     "chromatic": {
       "dependsOn": ["^build"]
     },
+    "playroom-start": {
+      "dependsOn": ["build"]
+    },
+    "playroom-build": {
+      "dependsOn": ["build"]
+    },
     "website-start": {
       "dependsOn": ["^build"]
     },
