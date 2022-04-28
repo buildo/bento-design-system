@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Banner } from "..";
 
-export default function ButtonExample() {
+export default function BannerExample() {
   return (
     <Banner
       kind="informative"

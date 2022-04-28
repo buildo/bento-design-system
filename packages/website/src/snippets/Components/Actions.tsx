@@ -2,7 +2,7 @@ import * as React from "react";
 import { Actions } from "..";
 import { formatMessage } from "../formatMessage";
 
-export default function ButtonExample() {
+export default function ActionsExample() {
   return (
     <Actions
       size="medium"
