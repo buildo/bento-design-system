@@ -38,6 +38,7 @@ export const {
   SliderField,
   Stack,
   Stepper,
+  Switch,
   TextField,
   Tiles,
   SelectField,
