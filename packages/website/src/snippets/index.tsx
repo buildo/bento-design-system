@@ -34,6 +34,7 @@ export const {
   NumberField,
   ProgressBar,
   RadioGroupField,
+  SearchBar,
   SliderField,
   Stack,
   TextField,
