@@ -1,0 +1,58 @@
+import { Canvas } from "@site/src/components/Canvas";
+
+# Forms
+
+Creating forms can be done using the `Form`, `FormSection` and `FormRow` components.
+
+`Form` is a top-level container which renders a native `<form>` element and provides utilities for
+displaying a title and description, as well as managing the space between `FormSection`.
+
+`FormSection` helps in rendering sections of a form, which group together multiple form fields. It
+can optionally render a title and description.
+
+`FormRow` manages the horizontal layout of individual fields.
+
+All these components are implemented in terms of the lower level layout components (namely `Stack`
+and `Columns`) and can be freely mixed and matched to create complex layout as needed.
+
+Let's see a basic example:
+
+<Canvas path="Form/Basic" />
+
+This form has a single section with two fields.
+
+:::tip
+It's good practice use `FormSection` to group fields together - even in case of a single
+section - in order to achieve consistent layouts.
+:::
+
+Let's add a title and description to the form:
+
+<Canvas path="Form/BasicWithTitleAndDescription" />
+
+Forms are generally quite useless without a way of submitting them. The `Form` component provides a
+way of rendering a standard submit button:
+
+<Canvas path="Form/BasicWithSubmitButton" />
+
+In case we need to, we can also add a secondary button next to the submit button:
+
+<Canvas path="Form/BasicWithCancelButton" />
+
+Let's add a few more sections to the form, this time adding some titles and descriptions:
+
+<Canvas path="Form/MultipleSections" />
+
+The form looks good, but in some cases we may want to customize the width of single fields. By
+default, `FormRow` makes all fields in a row of the same width, filling the available space.
+
+This can be customized by wrapping a field in a `Column` component. For example, let's make the
+number take only 1/5 of the space, so that the street name has more room. Similarly, let's also make
+the city and the country narrower, to better convey the expected length of such fields:
+
+<Canvas path="Form/CustomFieldWidths" />
+
+This API may look familiar and it's not by coincidence. The `FormRow` component is a thin wrapper
+around the `Columns` layout component, which sets the default spacing between fields and the
+collapse behavior (try resizing the window and you'll see form rows automatically collapse on small
+screens).
