@@ -5,6 +5,7 @@ export * from "@buildo/bento-design-system";
 export const {
   Actions,
   AreaLoader,
+  Avatar,
   Body,
   Box,
   Button,
