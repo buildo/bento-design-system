@@ -39,6 +39,8 @@ export const {
   Stack,
   Stepper,
   Switch,
+  Table,
+  tableColumn,
   TextField,
   Tiles,
   SelectField,
