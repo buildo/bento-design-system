@@ -10,7 +10,6 @@ import {
 } from "..";
 import * as React from "react";
 import { ComponentProps, useState } from "react";
-import { formatMessage } from "../formatMessage";
 
 export const ExampleTextField = (
   props: Omit<
@@ -21,12 +20,12 @@ export const ExampleTextField = (
   const [value, onChange] = useState("");
   return (
     <TextField
-      placeholder={formatMessage("Insert a value")}
+      placeholder="Insert a value"
       value={value}
       onChange={onChange}
       onBlur={() => {}}
       name="textField"
-      hint={formatMessage("Some useful advice on how to fill this field")}
+      hint="Some useful advice on how to fill this field"
       {...props}
     />
   );
@@ -41,7 +40,7 @@ export const ExampleNumberField = (
   const [value, onChange] = useState<number | undefined>(undefined);
   return (
     <NumberField
-      placeholder={formatMessage("Insert a value")}
+      placeholder="Insert a value"
       value={value}
       onChange={onChange}
       onBlur={() => {}}
@@ -60,7 +59,7 @@ export const ExampleSelectField = <A extends {}>(
   const [value, onChange] = useState<A | undefined>(undefined);
   return (
     <SelectField
-      placeholder={formatMessage("Select a value")}
+      placeholder="Select a value"
       value={value}
       onChange={onChange}
       name="selectField"
