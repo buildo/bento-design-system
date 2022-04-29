@@ -217,6 +217,7 @@ importers:
       '@vanilla-extract/sprinkles': 1.4.0
       '@vanilla-extract/webpack-plugin': 2.1.7
       chromatic: 6.5.3
+      date-fns: ^2.28.0
       eslint: 8.12.0
       eslint-config-react-app: 7.0.0
       eslint-plugin-sort-export-all: 1.2.2
@@ -231,6 +232,7 @@ importers:
     dependencies:
       '@buildo/bento-design-system': link:../bento-design-system
       '@vanilla-extract/sprinkles': 1.4.0_@vanilla-extract+css@1.6.8
+      date-fns: 2.28.0
     devDependencies:
       '@babel/core': 7.17.10
       '@babel/preset-env': 7.17.10_@babel+core@7.17.10

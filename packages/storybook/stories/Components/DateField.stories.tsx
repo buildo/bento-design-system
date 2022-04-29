@@ -1,5 +1,6 @@
 import { createComponentStories, formatMessage, fieldArgTypes, textArgType } from "../util";
 import { DateField } from "../";
+import { startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfYear, endOfYear } from "date-fns";
 
 const { defaultExport, createControlledStory } = createComponentStories({
   component: DateField,
@@ -48,4 +49,39 @@ export const RangeWithMinMax = createControlledStory([null, null], {
   minDate: today,
   maxDate: inOneMonth,
   assistiveText: formatMessage("You can select a date between today and one month from now"),
+});
+
+export const SingleWithShortcuts = createControlledStory(null, {
+  shortcuts: [
+    {
+      label: formatMessage("Today"),
+      value: new Date(),
+    },
+    {
+      label: formatMessage("In a week"),
+      value: inOneWeek,
+    },
+    {
+      label: formatMessage("In a month"),
+      value: inOneMonth,
+    },
+  ],
+});
+
+export const RangeWithShortcuts = createControlledStory([null, null], {
+  type: "range",
+  shortcuts: [
+    {
+      label: formatMessage("This Week"),
+      value: [startOfWeek(today), endOfWeek(today)],
+    },
+    {
+      label: formatMessage("This Month"),
+      value: [startOfMonth(today), endOfMonth(today)],
+    },
+    {
+      label: formatMessage("This Year"),
+      value: [startOfYear(today), endOfYear(today)],
+    },
+  ],
 });

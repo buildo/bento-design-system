@@ -6,6 +6,7 @@ import { IconButtonProps } from "../IconButton/createIconButton";
 import { Box, Stack, Tiles } from "../internal";
 import { MenuProps } from "../Menu/createMenu";
 import { Label } from "../Typography/Label/Label";
+import { Children } from "../util/Children";
 import { createPortal } from "../util/createPortal";
 import { unsafeLocalizedString } from "../util/LocalizedString";
 import { createCalendarHeader } from "./CalendarHeader";
@@ -35,6 +36,7 @@ type Props = CommonCalendarProps & {
   goToNextMonth: () => void;
   selectActiveDate: (date: Date) => void;
   onClose: () => void;
+  shortcuts?: Children;
 };
 
 function boxShadowFromElevation(config: "none" | "small" | "medium" | "large") {
@@ -112,6 +114,7 @@ export function createCalendar(
               }
             })}
           </Tiles>
+          {props.shortcuts}
         </Stack>
       </Box>
     );

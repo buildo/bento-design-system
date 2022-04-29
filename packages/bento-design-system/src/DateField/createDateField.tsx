@@ -7,7 +7,7 @@ import { IconButtonProps } from "../IconButton/createIconButton";
 import { MenuProps } from "../Menu/createMenu";
 import { FocusedInput, useDatepicker, UseDatepickerProps } from "@datepicker-react/hooks";
 import { createCalendar } from "./Calendar";
-import { Box, Column, Columns } from "../internal";
+import { Box, Column, Columns, Inline } from "../internal";
 import { DateFieldConfig } from "./Config";
 import { InputConfig } from "../Field/Config";
 import { useField } from "@react-aria/label";
@@ -15,12 +15,20 @@ import { Input } from "./Input";
 import { IconMinus } from "../Icons";
 import { dateFieldRecipe } from "./DateField.css";
 import clsx from "clsx";
+import { LocalizedString } from "../util/LocalizedString";
+import { ButtonProps } from "../Button/createButton";
 
+export type ShortcutProps<Value> = {
+  label: LocalizedString;
+  value: Value;
+};
 type SingleDateFieldProps = {
   type?: "single";
+  shortcuts?: ShortcutProps<Date>[];
 } & FieldProps<Date | null>;
 type RangeDateFieldProps = {
   type: "range";
+  shortcuts?: ShortcutProps<[Date, Date]>[];
 } & FieldProps<[Date | null, Date | null]>;
 type Props = (SingleDateFieldProps | RangeDateFieldProps) & {
   minDate?: UseDatepickerProps["minBookingDate"];
@@ -35,10 +43,12 @@ export function createDateField(
     Field,
     IconButton,
     Menu,
+    Button,
   }: {
     Field: FieldType;
     IconButton: FunctionComponent<IconButtonProps>;
     Menu: FunctionComponent<MenuProps>;
+    Button: FunctionComponent<ButtonProps>;
   }
 ) {
   const Calendar = createCalendar(config, { Menu, IconButton });
@@ -130,6 +140,30 @@ export function createDateField(
       }
     };
 
+    const shortcuts = props.shortcuts && (
+      <Inline space={4}>
+        {props.shortcuts.map((shortcut) => (
+          <Button
+            kind="transparent"
+            hierarchy="secondary"
+            size="small"
+            label={shortcut.label}
+            onPress={() => {
+              if (props.type === "range") {
+                const value = shortcut.value as [Date, Date];
+                props.onChange(value);
+                onDateFocus(value[0]);
+              } else {
+                const value = shortcut.value as Date;
+                props.onChange(value);
+                onDateFocus(value);
+              }
+            }}
+          />
+        ))}
+      </Inline>
+    );
+
     return (
       <Field
         {...props}
@@ -218,6 +252,7 @@ export function createDateField(
               setIsOpen(false);
               onDateFocus((props.type === "range" ? props.value[0] : props.value) || new Date());
             }}
+            shortcuts={shortcuts}
           />
         )}
       </Field>

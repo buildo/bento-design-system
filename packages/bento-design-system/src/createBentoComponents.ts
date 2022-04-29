@@ -154,6 +154,7 @@ export function createBentoComponents<
       Field,
       IconButton,
       Menu,
+      Button,
     }
   );
 
