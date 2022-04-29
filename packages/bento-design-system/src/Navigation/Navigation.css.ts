@@ -12,6 +12,11 @@ export const destinationRecipe = strictRecipe({
   variants: {
     active: {
       false: bentoSprinkles({
+        color: {
+          default: "secondaryTransparentEnabledForeground",
+          hover: "secondaryTransparentHoverForeground",
+          focus: "secondaryTransparentFocusForeground",
+        },
         background: {
           default: "secondaryTransparentEnabledBackground",
           hover: "secondaryTransparentHoverBackground",
@@ -21,6 +26,7 @@ export const destinationRecipe = strictRecipe({
       }),
       true: bentoSprinkles({
         background: "secondaryTransparentEnabledBackground",
+        color: "textPrimary",
       }),
     },
   },
