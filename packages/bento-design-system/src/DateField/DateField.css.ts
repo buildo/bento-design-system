@@ -6,6 +6,7 @@ export const dayRadius = createVar();
 
 export const calendar = [
   bentoSprinkles({
+    background: "backgroundPrimary",
     position: "absolute",
     display: "flex",
     outline: "none",
