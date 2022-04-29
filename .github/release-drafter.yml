@@ -13,6 +13,9 @@ categories:
   - title: "🧹 Chores"
     labels:
       - "chore"
+  - title: " Documentation"
+    labels:
+      - "documentation"
 version-resolver:
   minor:
     labels:
