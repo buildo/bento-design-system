@@ -1,4 +1,5 @@
 import { MonthType, useMonth } from "@datepicker-react/hooks";
+import { useDateFormatter } from "@react-aria/i18n";
 import { useOverlay, useOverlayPosition } from "@react-aria/overlays";
 import { mergeProps } from "@react-aria/utils";
 import { FunctionComponent, RefObject, useRef } from "react";
@@ -66,11 +67,15 @@ export function createCalendar(
   const Day = createDay(config);
 
   return function Calendar(props: Props) {
+    const weekdayFormatter = useDateFormatter({
+      weekday: "narrow",
+    });
     const overlayRef = useRef(null);
 
     const { days, weekdayLabels } = useMonth({
       year: props.activeDate.year,
       month: props.activeDate.month,
+      weekdayLabelFormat: (date) => weekdayFormatter.format(date),
     });
 
     const { overlayProps } = useOverlay(
@@ -100,10 +105,10 @@ export function createCalendar(
         ref={overlayRef}
       >
         <Stack space={16} align="center">
-          <CalendarHeader {...props}></CalendarHeader>
+          <CalendarHeader {...props} />
           <Tiles columns={7} space={0}>
             {weekdayLabels.map((d) => (
-              <Box className={weekDay} key={d}>
+              <Box className={weekDay} width={config.dayWidth} height={config.dayHeight} key={d}>
                 <Label size={config.dayOfWeekLabelSize}>{unsafeLocalizedString(d)}</Label>
               </Box>
             ))}
