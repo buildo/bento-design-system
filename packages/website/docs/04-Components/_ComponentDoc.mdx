@@ -3,15 +3,16 @@ import { PropTable } from "@site/src/components/PropTable";
 import { ExternalLinkCard } from "@site/src/components/ExternalLinkCard";
 import { ComponentHeader } from "@site/src/components/ComponentHeader";
 
-<div style={{ display: "flex", gap: 24 }}>
+<div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
   {props.name && <ExternalLinkCard type="github" componentName={props.name} />}
   {props.zeroheightSlug && <ExternalLinkCard type="zeroheight" slug={props.zeroheightSlug} />}
   {props.storybookStoryId && <ExternalLinkCard type="storybook" storyId={props.storybookStoryId} />}
 </div>
 
-<br />
-<>{props.constructorName && <ComponentHeader name={props.constructorName} />}</>
-<br />
+<>
+  {props.constructorName && <ComponentHeader name={props.constructorName} />}
+  <br />
+</>
 
 ### Example
 
