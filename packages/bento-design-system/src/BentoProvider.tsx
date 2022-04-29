@@ -4,6 +4,7 @@ import { OverlayProvider } from "@react-aria/overlays";
 import { DefaultMessages, DefaultMessagesContext } from "./DefaultMessagesContext";
 import { LinkComponentContext, LinkComponentProps } from "./util/link";
 import { ComponentType, FunctionComponent, useContext } from "react";
+import { I18nProvider } from "@react-aria/i18n";
 
 type Props = {
   children?: Children;
@@ -30,6 +31,7 @@ type Props = {
    * Defaults to a regular `<a>` tag.
    */
   linkComponent?: ComponentType<LinkComponentProps>;
+  locale?: string;
 } & DefaultMessages;
 
 export function createBentoProvider(ToastProvider: FunctionComponent<ToastProviderProps>) {
@@ -38,17 +40,20 @@ export function createBentoProvider(ToastProvider: FunctionComponent<ToastProvid
     toastDismissAfterMs = 5000,
     defaultMessages,
     linkComponent,
+    locale,
   }: Props) {
     const linkComponentFromContext = useContext(LinkComponentContext);
 
     return (
-      <OverlayProvider>
-        <DefaultMessagesContext.Provider value={{ defaultMessages }}>
-          <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
-            <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
-          </LinkComponentContext.Provider>
-        </DefaultMessagesContext.Provider>
-      </OverlayProvider>
+      <I18nProvider locale={locale}>
+        <OverlayProvider>
+          <DefaultMessagesContext.Provider value={{ defaultMessages }}>
+            <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
+              <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
+            </LinkComponentContext.Provider>
+          </DefaultMessagesContext.Provider>
+        </OverlayProvider>
+      </I18nProvider>
     );
   };
 }
