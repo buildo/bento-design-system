@@ -59,7 +59,6 @@ importers:
       '@testing-library/react-hooks': 7.0.2
       '@testing-library/user-event': 13.5.0
       '@types/jest': 27.4.1
-      '@types/lodash.debounce': ^4.0.6
       '@types/react': 17.0.44
       '@types/react-input-mask': 2.0.5
       '@types/react-table': 7.7.10
@@ -162,7 +161,6 @@ importers:
       '@testing-library/react-hooks': 7.0.2_react-dom@17.0.2+react@17.0.2
       '@testing-library/user-event': 13.5.0_@testing-library+dom@8.12.0
       '@types/jest': 27.4.1
-      '@types/lodash.debounce': 4.0.7
       '@types/react': 17.0.44
       '@types/react-input-mask': 2.0.5
       '@types/react-table': 7.7.10
@@ -9476,12 +9474,6 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
-    dev: true
-
-  /@types/lodash.debounce/4.0.7:
-    resolution: {integrity: sha512-X1T4wMZ+gT000M2/91SYj0d/7JfeNZ9PeeOldSNoE/lunLeQXKvkmIumI29IaKMotU/ln/McOIvgzZcQ/3TrSA==}
-    dependencies:
-      '@types/lodash': 4.14.179
     dev: true
 
   /@types/lodash.orderby/4.6.6:
