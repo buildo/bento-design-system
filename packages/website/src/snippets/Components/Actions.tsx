@@ -1,23 +1,22 @@
 import * as React from "react";
 import { Actions } from "..";
-import { formatMessage } from "../formatMessage";
 
 export default function ActionsExample() {
   return (
     <Actions
       size="medium"
       primaryAction={{
-        label: formatMessage("Ok"),
+        label: "Ok",
         onPress: () =>
           new Promise((resolve) => {
             setTimeout(resolve, 1000);
           }),
       }}
       secondaryAction={{
-        label: formatMessage("Cancel"),
+        label: "Cancel",
         onPress: () => window.alert("Cancel"),
       }}
-      error={formatMessage("Something went wrong!")}
+      error="Something went wrong!"
     />
   );
 }

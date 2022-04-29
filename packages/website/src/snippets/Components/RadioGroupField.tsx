@@ -1,13 +1,12 @@
 import * as React from "react";
 import { RadioGroupField } from "..";
-import { formatMessage } from "../formatMessage";
 
 export default function RadioGroupFieldExample() {
   const [value, setValue] = React.useState<string | undefined>(undefined);
   return (
     <RadioGroupField
       orientation="vertical"
-      label={formatMessage("Your favourite color:")}
+      label="Your favourite color:"
       name="favourite-color"
       value={value}
       onChange={setValue}
@@ -15,15 +14,15 @@ export default function RadioGroupFieldExample() {
       options={[
         {
           value: "Green",
-          label: formatMessage("Green"),
+          label: "Green",
         },
         {
           value: "Blue",
-          label: formatMessage("Blue"),
+          label: "Blue",
         },
         {
           value: "Red",
-          label: formatMessage("Red"),
+          label: "Red",
         },
       ]}
     />

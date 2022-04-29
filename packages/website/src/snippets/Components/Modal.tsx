@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Body, Button, Modal } from "..";
-import { formatMessage } from "../formatMessage";
 
 export default function ModalExample() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -11,23 +10,23 @@ export default function ModalExample() {
         size="medium"
         kind="solid"
         hierarchy="primary"
-        label={formatMessage("Click me!")}
+        label="Click me!"
         onPress={() => setIsOpen(true)}
       />
       {isOpen && (
         <Modal
-          title={formatMessage("Modal")}
+          title="Modal"
           onClose={() => setIsOpen(false)}
           primaryAction={{
-            label: formatMessage("OK"),
+            label: "OK",
             onPress: () => setIsOpen(false),
           }}
           secondaryAction={{
-            label: formatMessage("Cancel"),
+            label: "Cancel",
             onPress: () => setIsOpen(false),
           }}
         >
-          <Body size="medium">{formatMessage("Content")}</Body>
+          <Body size="medium">Content</Body>
         </Modal>
       )}
     </>

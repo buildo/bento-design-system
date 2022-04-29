@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Avatar, Box, Menu } from "..";
-import { formatMessage } from "../formatMessage";
 
 export default function MenuExample() {
   return (
@@ -8,16 +7,16 @@ export default function MenuExample() {
       size="large"
       items={[
         {
-          label: formatMessage("Item 1"),
+          label: "Item 1",
           onPress: () => window.alert("Item 1"),
         },
         {
-          label: formatMessage("Item 2 (link)"),
+          label: "Item 2 (link)",
           href: "https://www.google.com",
           target: "_blank",
         },
         {
-          label: formatMessage("Item 3"),
+          label: "Item 3",
           onPress: () => {},
           disabled: true,
         },

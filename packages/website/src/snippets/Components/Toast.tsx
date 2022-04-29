@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Button, useToast } from "..";
-import { formatMessage } from "../formatMessage";
 
 export default function ToastExample() {
   const { showToast } = useToast();
@@ -8,11 +7,11 @@ export default function ToastExample() {
     <Button
       kind="solid"
       hierarchy="primary"
-      label={formatMessage("Click to show toast!")}
+      label="Click to show toast!"
       onPress={() =>
         showToast({
           kind: "informative",
-          message: formatMessage("Informative toast"),
+          message: "Informative toast",
           dismissable: true,
         })
       }
