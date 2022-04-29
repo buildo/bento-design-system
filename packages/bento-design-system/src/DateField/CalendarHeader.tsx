@@ -4,7 +4,6 @@ import { IconButtonProps } from "../IconButton/createIconButton";
 import { IconChevronLeft, IconChevronRight } from "../Icons";
 import { Box, Column, Columns } from "../internal";
 import { MenuProps } from "../Menu/createMenu";
-import { unsafeLocalizedString } from "../util/LocalizedString";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { DateFieldConfig } from "./Config";
 import { createSelector } from "./Selector";
