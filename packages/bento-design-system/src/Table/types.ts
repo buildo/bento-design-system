@@ -13,7 +13,7 @@ declare module "react-table" {
     align?: "left" | "right" | "center";
     sticky?: "left";
     gridWidth?: "fit-content" | "fill-available";
-    hint?: LocalizedString;
+    hint?: LocalizedString | { onPress: () => {} };
   }
 
   interface ColumnInstance<D extends object>

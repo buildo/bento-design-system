@@ -12,6 +12,7 @@ import {
 import { createComponentStories, formatMessage } from "../util";
 import orderBy from "lodash.orderby";
 import { IconClose } from "@buildo/bento-design-system";
+import { action } from "@storybook/addon-actions";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Table,
@@ -36,12 +37,14 @@ const exampleColumns = [
     headerLabel: formatMessage("Country"),
     accessor: "country",
     iconPosition: "right",
+    hint: formatMessage("This is a hint"),
   }),
   tableColumn.number({
     headerLabel: formatMessage("Applications"),
     accessor: "applications",
     valueFormatter: (value) => formatMessage(Intl.NumberFormat("en").format(value)),
     align: "right",
+    hint: { onPress: action("hint") },
   }),
   tableColumn.numberWithIcon({
     headerLabel: formatMessage("Value"),

@@ -18,7 +18,6 @@ import {
   LocalizedString,
   IconChevronDown,
   IconChevronUp,
-  IconInformative,
   IconMinus,
   unsafeLocalizedString,
   TooltipProps,
@@ -60,6 +59,7 @@ import {
 import { ButtonLinkProps } from "../Button/ButtonLink";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { TableConfig } from "./Config";
+import { IconHelp, IconInfo } from "../Icons";
 
 type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
   a: Row<RowType<C>>,
@@ -110,9 +110,11 @@ export function createTable(
   {
     Tooltip,
     Feedback,
+    IconButton,
   }: {
     Tooltip: FunctionComponent<TooltipProps>;
     Feedback: FunctionComponent<FeedbackProps>;
+    IconButton: FunctionComponent<IconButtonProps>;
   }
 ) {
   return function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
@@ -336,14 +338,25 @@ export function createTable(
     })();
 
     const hint = column.hint ? (
-      <Tooltip
-        trigger={(ref, props) => (
-          <Box as="div" display="inline-block" ref={ref} {...props}>
-            <IconInformative size={16} color="interactive" />
-          </Box>
-        )}
-        content={column.hint}
-      />
+      typeof column.hint === "object" ? (
+        <IconButton
+          icon={IconHelp}
+          onPress={column.hint.onPress}
+          kind="transparent"
+          hierarchy="primary"
+          label=""
+          size={16}
+        />
+      ) : (
+        <Tooltip
+          trigger={(ref, props) => (
+            <Box as="div" display="inline-block" ref={ref} {...props}>
+              <IconInfo size={12} color="default" />
+            </Box>
+          )}
+          content={column.hint}
+        />
+      )
     ) : null;
 
     return (

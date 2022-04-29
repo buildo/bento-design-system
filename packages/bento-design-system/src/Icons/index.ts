@@ -3,6 +3,7 @@ export * from "./IconChevronDown";
 export * from "./IconChevronRight";
 export * from "./IconChevronUp";
 export * from "./IconClose";
+export * from "./IconHelp";
 export * from "./IconIdea";
 export * from "./IconInfo";
 export * from "./IconInformative";
