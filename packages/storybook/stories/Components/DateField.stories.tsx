@@ -1,6 +1,17 @@
 import { createComponentStories, formatMessage, fieldArgTypes, textArgType } from "../util";
 import { DateField } from "../";
-import { startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfYear, endOfYear } from "date-fns";
+import {
+  startOfWeek,
+  endOfWeek,
+  startOfMonth,
+  endOfMonth,
+  startOfYear,
+  endOfYear,
+  addMonths,
+  startOfToday,
+  addWeeks,
+  addDays,
+} from "date-fns";
 
 const { defaultExport, createControlledStory } = createComponentStories({
   component: DateField,
@@ -19,7 +30,8 @@ const { defaultExport, createControlledStory } = createComponentStories({
 
 export default defaultExport;
 
-const value = new Date("2022-02-04T09:25:00.000Z");
+const today = startOfToday();
+const value = addDays(today, 2);
 
 export const SingleDate = createControlledStory(value, {});
 
@@ -35,15 +47,14 @@ export const Range = createControlledStory([value, value], {
   type: "range",
 });
 
-const today = new Date();
-const inOneWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+const inOneWeek = addWeeks(today, 1);
 export const SingleWithMinMax = createControlledStory(null, {
   minDate: today,
   maxDate: inOneWeek,
   assistiveText: formatMessage("You can select a date between today and one week from now"),
 });
 
-const inOneMonth = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000);
+const inOneMonth = addMonths(today, 1);
 export const RangeWithMinMax = createControlledStory([null, null], {
   type: "range",
   minDate: today,

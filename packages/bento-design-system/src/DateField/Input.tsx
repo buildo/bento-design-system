@@ -2,7 +2,7 @@ import { useTextField } from "@react-aria/textfield";
 import { InputHTMLAttributes, RefObject, useEffect, useState } from "react";
 import { Box } from "../internal";
 import { input } from "./DateField.css";
-import { getInputValue as _getInputValue, parseDate as _parseDate } from "@datepicker-react/hooks";
+import { getInputValue, parseDate as _parseDate } from "@datepicker-react/hooks";
 import { useDateFormatter } from "@react-aria/i18n";
 import InputMask from "react-input-mask";
 
@@ -22,9 +22,29 @@ type Props = {
   isOpen: boolean;
 };
 
-function parseDate(value: string): Date | null {
-  // TODO(vince): how do we get the right date format for parsing?
-  const parsedDate = _parseDate(value, "MM/dd/yyyy", new Date());
+function useDatePattern() {
+  const dateFormatter = useDateFormatter();
+  const parts: any[] = dateFormatter.formatToParts();
+
+  return parts
+    .map<string | undefined>((part) => {
+      switch (part.type) {
+        case "day":
+          return "dd";
+        case "month":
+          return "MM";
+        case "year":
+          return "yyyy";
+        default:
+          return undefined;
+      }
+    })
+    .filter((a) => !!a)
+    .join("/");
+}
+
+function parseDate(value: string, pattern: string): Date | null {
+  const parsedDate = _parseDate(value, pattern, new Date());
   if (!isNaN(parsedDate.getTime())) {
     return parsedDate;
   }
@@ -33,9 +53,11 @@ function parseDate(value: string): Date | null {
 
 export function Input(props: Props) {
   const dateFormatter = useDateFormatter({ day: "2-digit", month: "2-digit", year: "numeric" });
+  const datePattern = useDatePattern();
+  const dateMask = datePattern.replace(/[a-zA-Z]/g, "9");
   const [value, setValue] = useState("");
   function setCurrentValue() {
-    return setValue(_getInputValue(props.currentDate, (date) => dateFormatter.format(date), ""));
+    return setValue(getInputValue(props.currentDate, (date) => dateFormatter.format(date), ""));
   }
   const onFocus = () => {
     if (!props.readOnly) {
@@ -57,7 +79,7 @@ export function Input(props: Props) {
       onChange: (value) => {
         props.onClick();
         setValue(value);
-        const newDate = parseDate(value);
+        const newDate = parseDate(value, datePattern);
         if (newDate) {
           props.onChange(newDate);
         }
@@ -69,7 +91,7 @@ export function Input(props: Props) {
       onKeyDown: (e) => {
         if (e.key === "Enter") {
           if (props.isOpen) {
-            const date = parseDate(value);
+            const date = parseDate(value, datePattern);
             if (date) {
               props.onDateSelect(date);
             } else {
@@ -92,7 +114,7 @@ export function Input(props: Props) {
   useEffect(setCurrentValue, [props.currentDate]);
 
   return (
-    <InputMask {...inputProps} mask="99/99/9999" maskChar="">
+    <InputMask {...inputProps} mask={dateMask} maskChar="">
       {(maskedInputProps: InputHTMLAttributes<HTMLInputElement>) => {
         const { onFocus, onBlur, ...rest } = inputProps;
         return (
