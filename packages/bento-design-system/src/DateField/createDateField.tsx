@@ -12,7 +12,7 @@ import { DateFieldConfig } from "./Config";
 import { InputConfig } from "../Field/Config";
 import { useField } from "@react-aria/label";
 import { Input } from "./Input";
-import { IconChevronRight } from "../Icons";
+import { IconMinus } from "../Icons";
 import { dateFieldRecipe } from "./DateField.css";
 import clsx from "clsx";
 
@@ -155,7 +155,7 @@ export function createDateField(
           )}
           disabled={props.disabled}
         >
-          <Columns space={4} alignY="center">
+          <Columns space={16} alignY="center">
             <Input
               for="startDate"
               currentDate={props.type === "range" ? props.value[0] : props.value}
@@ -174,7 +174,7 @@ export function createDateField(
             {props.type === "range" && (
               <>
                 <Column width="content">
-                  <IconChevronRight size={12} />
+                  <IconMinus size={12} />
                 </Column>
                 <Input
                   for="endDate"
