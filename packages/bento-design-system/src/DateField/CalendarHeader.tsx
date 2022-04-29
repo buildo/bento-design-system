@@ -5,6 +5,7 @@ import { IconChevronLeft, IconChevronRight } from "../Icons";
 import { Box, Column, Columns } from "../internal";
 import { MenuProps } from "../Menu/createMenu";
 import { unsafeLocalizedString } from "../util/LocalizedString";
+import { useDefaultMessages } from "../util/useDefaultMessages";
 import { DateFieldConfig } from "./Config";
 import { createSelector } from "./Selector";
 
@@ -32,12 +33,13 @@ export function createCalendarHeader(
     selectActiveDate,
     activeDate,
   }: Props) {
+    const { defaultMessages } = useDefaultMessages();
     return (
       <Box paddingBottom={16} style={{ paddingLeft: 12, paddingRight: 12 }} width="full">
         <Columns space={4} alignY="center">
           <Column width="content">
             <IconButton
-              label={unsafeLocalizedString("Prev month")}
+              label={defaultMessages.DateField.previousMonthLabel}
               size={16}
               kind="transparent"
               hierarchy="secondary"
@@ -49,7 +51,7 @@ export function createCalendarHeader(
           <Selector datePart="year" activeMonth={activeDate} onSelect={selectActiveDate} />
           <Column width="content">
             <IconButton
-              label={unsafeLocalizedString("Next month")}
+              label={defaultMessages.DateField.nextMonthLabel}
               size={16}
               kind="transparent"
               hierarchy="secondary"

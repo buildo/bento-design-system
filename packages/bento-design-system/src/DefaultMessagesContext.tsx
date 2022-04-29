@@ -27,6 +27,10 @@ export type DefaultMessages = {
     Loader: {
       loadingMessage: LocalizedString;
     };
+    DateField: {
+      previousMonthLabel: LocalizedString;
+      nextMonthLabel: LocalizedString;
+    };
   };
 };
 

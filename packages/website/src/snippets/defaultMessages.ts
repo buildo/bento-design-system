@@ -29,4 +29,8 @@ export const defaultMessages: ComponentProps<typeof DesignSystemProvider>["defau
   Loader: {
     loadingMessage: "Loading...",
   },
+  DateField: {
+    previousMonthLabel: "Prev month",
+    nextMonthLabel: "Next month",
+  },
 };
