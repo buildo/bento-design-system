@@ -2,7 +2,7 @@ import { MonthType } from "@datepicker-react/hooks";
 import { useDateFormatter } from "@react-aria/i18n";
 import { FunctionComponent, useMemo } from "react";
 import { Box, Column, Columns } from "../internal";
-import { ListItemProps } from "../List/createListItem";
+import { ListProps } from "../List/createListComponents";
 import { MenuProps } from "../Menu/createMenu";
 import { Label } from "../Typography/Label/Label";
 import { unsafeLocalizedString } from "../util/LocalizedString";
@@ -44,11 +44,10 @@ export function createSelector(
         ? getMonths(props.activeMonth.date)
         : getYears(props.activeMonth.date);
 
-    const options: ListItemProps[] = useMemo(
+    const options: ListProps["items"] = useMemo(
       () =>
         values.map((value) => {
           return {
-            value: value,
             label: unsafeLocalizedString(formatter.format(value)),
             onPress: () => props.onSelect(value),
           };
