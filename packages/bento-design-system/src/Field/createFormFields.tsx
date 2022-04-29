@@ -23,6 +23,7 @@ import { DateFieldConfig } from "../DateField/Config";
 import { createDateField } from "../DateField/createDateField";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { MenuProps } from "../Menu/createMenu";
+import { ButtonProps } from "../Button/createButton";
 
 type FieldsConfig = {
   field: FieldConfig;
@@ -42,10 +43,12 @@ export function createFormFields(
     Tooltip,
     IconButton,
     Menu,
+    Button,
   }: {
     Tooltip: FunctionComponent<TooltipProps>;
     IconButton: FunctionComponent<IconButtonProps>;
     Menu: FunctionComponent<MenuProps>;
+    Button: FunctionComponent<ButtonProps>;
   }
 ) {
   const Field = createField(config.field, { Tooltip });
@@ -59,7 +62,7 @@ export function createFormFields(
   const ReadOnlyField = createReadOnlyField({ TextField });
   const Slider = createSlider(config.slider);
   const SliderField = createSliderField({ Slider, Field });
-  const DateField = createDateField(config.date, config.input, { Field, IconButton, Menu });
+  const DateField = createDateField(config.date, config.input, { Field, IconButton, Menu, Button });
 
   return {
     CheckboxField,
