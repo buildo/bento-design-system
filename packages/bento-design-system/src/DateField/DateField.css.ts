@@ -10,6 +10,7 @@ export const calendar = [
     position: "absolute",
     display: "flex",
     outline: "none",
+    overflowY: "auto",
   }),
 ];
 

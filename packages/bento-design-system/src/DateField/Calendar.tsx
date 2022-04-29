@@ -92,6 +92,7 @@ export function createCalendar(
       placement: "bottom start",
       offset: 35,
       isOpen: true,
+      shouldFlip: true,
     });
 
     return createPortal(
