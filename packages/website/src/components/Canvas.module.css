@@ -1,0 +1,41 @@
+.container {
+  margin-bottom: var(--ifm-leading);
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: right;
+  margin-top: 4px;
+}
+
+.actionButton {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  -webkit-appearance: button;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 8px 8px;
+  border-radius: 4px;
+  color: var(--ifm-font-color-secondary);
+}
+
+.actionButton:hover,
+.actionButton:focus {
+  background-color: var(--ifm-hover-overlay);
+}
+
+.preview {
+  padding: 16px;
+  border: 1px solid var(--ifm-color-secondary-dark);
+  border-radius: 4px 4px 0 0;
+}
+
+.codeBlock {
+  margin-bottom: 0px;
+}

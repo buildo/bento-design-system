@@ -9,8 +9,18 @@ import parserTypeScript from "prettier/parser-typescript";
 import { useEffect, useState, lazy, Suspense } from "react";
 import { DesignSystemProvider } from "../snippets";
 import { defaultMessages } from "../snippets/defaultMessages";
+import { createUrl } from "playroom/utils";
+import styles from "./Canvas.module.css";
 
-export function Canvas({ path }: { path: string }) {
+export function Canvas({
+  path,
+  initialShowSource = false,
+}: {
+  path: string;
+  initialShowSource: boolean;
+}) {
+  const [showSource, setShowSource] = useState(initialShowSource);
+
   const [rawSource, setRawSource] = useState<string | null>(null);
   useEffect(() => {
     import(`!!raw-loader!@site/src/snippets/${path}`)
@@ -49,11 +59,45 @@ export function Canvas({ path }: { path: string }) {
   return (
     <DesignSystemProvider defaultMessages={defaultMessages}>
       <Suspense fallback={<div>Loading example...</div>}>
-        <div style={{ padding: 16, border: "1px solid slategray" }}>
-          <Component />
+        <div className={styles.container}>
+          <div className={styles.preview}>
+            <Component />
+          </div>
+          {source && (
+            <div style={{ display: showSource ? "block" : "none" }}>
+              <CodeBlock language="jsx" className={styles.codeBlock}>
+                {source}
+              </CodeBlock>
+            </div>
+          )}
+          <div className={styles.actions}>
+            <ActionButton
+              onClick={() => setShowSource((s) => !s)}
+              label={showSource ? "▲ Hide code" : "▼ View code"}
+            />
+            {source && (
+              <ActionButton
+                onClick={() => {
+                  const url = createUrl({
+                    code: source!,
+                    baseUrl: "https://playroom.bento.buildo.io",
+                  });
+                  window.open(url, "_blank");
+                }}
+                label="▶️ Open in Playroom"
+              />
+            )}
+          </div>
         </div>
-        {source && <CodeBlock language="jsx">{source}</CodeBlock>}
       </Suspense>
     </DesignSystemProvider>
+  );
+}
+
+function ActionButton({ onClick, label }: { onClick: () => void; label: string }) {
+  return (
+    <button className={styles.actionButton} onClick={onClick}>
+      {label}
+    </button>
   );
 }
