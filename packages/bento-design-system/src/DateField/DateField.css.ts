@@ -1,6 +1,8 @@
-import { style } from "@vanilla-extract/css";
+import { createVar, style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
+
+export const dayRadius = createVar();
 
 export const calendar = [
   bentoSprinkles({
@@ -82,27 +84,39 @@ export const dayRecipe = strictRecipe({
           disabled: "textDisabled",
         },
       }),
-      selectedStart: bentoSprinkles({
-        color: { default: "foregroundPrimaryInverse", hover: "textPrimary" },
-        background: { default: "backgroundInteractive", hover: "backgroundSecondary" },
-        borderTopLeftRadius: 4,
-        borderBottomLeftRadius: 4,
-      }),
-      selectedEnd: bentoSprinkles({
-        color: { default: "foregroundPrimaryInverse", hover: "textPrimary" },
-        background: { default: "backgroundInteractive", hover: "backgroundSecondary" },
-        borderTopRightRadius: 4,
-        borderBottomRightRadius: 4,
-      }),
+      selectedStart: [
+        bentoSprinkles({
+          color: { default: "foregroundPrimaryInverse", hover: "textPrimary" },
+          background: { default: "backgroundInteractive", hover: "backgroundSecondary" },
+        }),
+        style({
+          borderTopLeftRadius: dayRadius,
+          borderBottomLeftRadius: dayRadius,
+        }),
+      ],
+      selectedEnd: [
+        bentoSprinkles({
+          color: { default: "foregroundPrimaryInverse", hover: "textPrimary" },
+          background: { default: "backgroundInteractive", hover: "backgroundSecondary" },
+        }),
+        style({
+          borderTopRightRadius: dayRadius,
+          borderBottomRightRadius: dayRadius,
+        }),
+      ],
       selectedRange: bentoSprinkles({
         color: "textPrimary",
         background: { default: "backgroundInteractiveOverlay", hover: "backgroundSecondary" },
       }),
-      selected: bentoSprinkles({
-        color: { default: "foregroundPrimaryInverse", hover: "textPrimary" },
-        background: { default: "backgroundInteractive", hover: "backgroundSecondary" },
-        borderRadius: 4,
-      }),
+      selected: [
+        bentoSprinkles({
+          color: { default: "foregroundPrimaryInverse", hover: "textPrimary" },
+          background: { default: "backgroundInteractive", hover: "backgroundSecondary" },
+        }),
+        style({
+          borderRadius: dayRadius,
+        }),
+      ],
       inHoverRange: bentoSprinkles({
         color: "textPrimary",
         background: "backgroundSecondary",

@@ -4,7 +4,9 @@ import { Box } from "../internal";
 import { Body } from "../Typography/Body/Body";
 import { unsafeLocalizedString } from "../util/LocalizedString";
 import { CommonCalendarProps } from "./Calendar";
-import { dayRecipe } from "./DateField.css";
+import { DateFieldConfig } from "./Config";
+import { dayRadius, dayRecipe } from "./DateField.css";
+import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 type Props = CommonCalendarProps & {
   date: Date;
@@ -50,57 +52,69 @@ function computeStyle(props: {
   }
 }
 
-export function Day(props: Props) {
-  const dayRef = useRef<HTMLElement>(null);
-  const ref = useRef<HTMLButtonElement | null>(null);
-  const {
-    disabledDate,
-    isWithinHoverRange,
-    isSelected,
-    isSelectedStartOrEnd,
-    onKeyDown: _onKeyDown,
-    ...rest
-  } = useDay({
-    ...props,
-    dayRef: ref,
-  });
+export function createDay(config: DateFieldConfig) {
+  return function Day(props: Props) {
+    const dayRef = useRef<HTMLElement>(null);
+    const ref = useRef<HTMLButtonElement | null>(null);
+    const {
+      disabledDate,
+      isWithinHoverRange,
+      isSelected,
+      isSelectedStartOrEnd,
+      onKeyDown: _onKeyDown,
+      ...rest
+    } = useDay({
+      ...props,
+      dayRef: ref,
+    });
 
-  function onKeyDown(e: React.KeyboardEvent<HTMLButtonElement>) {
-    if (e.key === "Enter") {
-      rest.onClick();
-    } else {
-      _onKeyDown(e);
+    function onKeyDown(e: React.KeyboardEvent<HTMLButtonElement>) {
+      if (e.key === "Enter") {
+        rest.onClick();
+      } else {
+        _onKeyDown(e);
+      }
     }
-  }
 
-  const style = computeStyle({
-    type: props.type,
-    isDisabled: disabledDate,
-    isStartDate: props.isStartDate(props.date),
-    isEndDate: props.isEndDate(props.date),
-    isInRange: isSelected,
-    isInHoverRange: isWithinHoverRange,
-    isFocused: props.isDateFocused(props.date),
-  });
+    const style = computeStyle({
+      type: props.type,
+      isDisabled: disabledDate,
+      isStartDate: props.isStartDate(props.date),
+      isEndDate: props.isEndDate(props.date),
+      isInRange: isSelected,
+      isInHoverRange: isWithinHoverRange,
+      isFocused: props.isDateFocused(props.date),
+    });
 
-  const isToday = props.date.getTime() === new Date().setHours(0, 0, 0, 0);
+    const isToday = props.date.getTime() === new Date().setHours(0, 0, 0, 0);
 
-  useEffect(() => {
-    if (
-      dayRef.current &&
-      props.inputRef.current &&
-      props.isDateFocused(props.date) &&
-      document.activeElement !== props.inputRef.current
-    ) {
-      dayRef.current.focus();
-    }
-  }, [props.isDateFocused(props.date)]);
+    useEffect(() => {
+      if (
+        dayRef.current &&
+        props.inputRef.current &&
+        props.isDateFocused(props.date) &&
+        document.activeElement !== props.inputRef.current
+      ) {
+        dayRef.current.focus();
+      }
+    }, [props.isDateFocused(props.date)]);
 
-  return (
-    <Box className={dayRecipe({ style })} {...rest} onKeyDown={onKeyDown} ref={dayRef}>
-      <Body size="medium" color="inherit" weight={isToday ? "strong" : "default"}>
-        {unsafeLocalizedString(props.label)}
-      </Body>
-    </Box>
-  );
+    return (
+      <Box
+        style={assignInlineVars({
+          [dayRadius]: `${config.dayRadius}px`,
+        })}
+        className={dayRecipe({ style })}
+        width={config.dayWidth}
+        height={config.dayHeight}
+        {...rest}
+        onKeyDown={onKeyDown}
+        ref={dayRef}
+      >
+        <Body size={config.daySize} color="inherit" weight={isToday ? "strong" : "default"}>
+          {unsafeLocalizedString(props.label)}
+        </Body>
+      </Box>
+    );
+  };
 }

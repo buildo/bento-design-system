@@ -12,7 +12,7 @@ import { unsafeLocalizedString } from "../util/LocalizedString";
 import { createCalendarHeader } from "./CalendarHeader";
 import { DateFieldConfig } from "./Config";
 import { calendar, weekDay } from "./DateField.css";
-import { Day } from "./Day";
+import { createDay } from "./Day";
 
 export type CommonCalendarProps = {
   inputRef: RefObject<HTMLInputElement>;
@@ -63,6 +63,7 @@ export function createCalendar(
   }
 ) {
   const CalendarHeader = createCalendarHeader(config, { Menu, IconButton });
+  const Day = createDay(config);
 
   return function Calendar(props: Props) {
     const overlayRef = useRef(null);

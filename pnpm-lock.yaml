@@ -64,6 +64,7 @@ importers:
       '@types/react-table': 7.7.10
       '@vanilla-extract/babel-plugin': 1.1.5
       '@vanilla-extract/css': 1.6.8
+      '@vanilla-extract/dynamic': ^2.0.2
       '@vanilla-extract/esbuild-plugin': 2.0.3
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/recipes': ^0.2.4
@@ -140,6 +141,7 @@ importers:
       '@react-types/overlays': 3.5.4_react@17.0.2
       '@react-types/radio': 3.1.5_react@17.0.2
       '@react-types/shared': 3.11.2_react@17.0.2
+      '@vanilla-extract/dynamic': 2.0.2
       '@vanilla-extract/recipes': 0.2.4_@vanilla-extract+css@1.6.8
       '@vanilla-extract/sprinkles': 1.4.0_@vanilla-extract+css@1.6.8
       clsx: 1.1.1
@@ -7088,7 +7090,7 @@ packages:
       error-stack-parser: 2.0.7
       string-width: 4.2.3
       strip-ansi: 6.0.1
-      webpack: 5.71.0_webpack-cli@4.9.2
+      webpack: 5.71.0
 
   /@storybook/addon-actions/6.4.20_b49bddbe4b905ced4713cb857cca91fa:
     resolution: {integrity: sha512-5kW4orA6rOHzrDSvGwGL+uevsK9OzJRXq36eje3hCj+E5TGE8hApi+PIIBXI8bIkeJ3zkAS5kjMFdOk+8moT0g==}
@@ -9971,6 +9973,12 @@ packages:
       outdent: 0.8.0
     dev: true
 
+  /@vanilla-extract/dynamic/2.0.2:
+    resolution: {integrity: sha512-U4nKaEQ8Kuz+exXEr51DUpyaOuzo24/S/k1YbDPQR06cYcNjQqvwFRnwWtZ+9ImocqM1wTKtzrdUgSTtLGIwAg==}
+    dependencies:
+      '@vanilla-extract/private': 1.0.3
+    dev: false
+
   /@vanilla-extract/esbuild-plugin/2.0.3:
     resolution: {integrity: sha512-FOUVNm5NF1kmUTUsclPXpOhGHQNBmIqPsu6uuqLKj+boNs/x2UWbxuo+Sa5GofpfWvblHeVpMXoarb2HgtK+pw==}
     dependencies:
@@ -9991,7 +9999,6 @@ packages:
 
   /@vanilla-extract/private/1.0.3:
     resolution: {integrity: sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==}
-    dev: true
 
   /@vanilla-extract/recipes/0.2.4_@vanilla-extract+css@1.6.8:
     resolution: {integrity: sha512-UwRR3IbxYmKOBSML8oze77T2ZuAGyCmIYqhzRW7kk+AmVNqPwtfDtnf3z6quf+E/B4an5g1TlSGJwHvq9QaVTQ==}
@@ -10942,7 +10949,7 @@ packages:
       loader-utils: 1.4.0
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.71.0_webpack-cli@4.9.2
+      webpack: 5.71.0
 
   /babel-loader/8.2.5_275cd36b2af07f510002b59f67306719:
     resolution: {integrity: sha512-OSiFfH89LrEMiWd4pLNqGz4CwJDtbs2ZVc+iGu2HrkRfPxId9F2anQj38IxWpmRfsUY0aBZYi1EFcd3mhtRMLQ==}
@@ -12635,7 +12642,7 @@ packages:
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
       semver: 7.3.5
-      webpack: 5.71.0_webpack-cli@4.9.2
+      webpack: 5.71.0
 
   /css-loader/6.7.1_webpack@5.71.0:
     resolution: {integrity: sha512-yB5CNFa14MbPJcomwNh3wLThtkZgcNyI2bNMRt8iE5Z8Vwl7f8vQXFAzn2HDOJvtDq2NTZBUGMSUNNyrv3/+cw==}
@@ -15641,7 +15648,7 @@ packages:
       lodash: 4.17.21
       pretty-error: 4.0.0
       tapable: 2.2.1
-      webpack: 5.71.0_webpack-cli@4.9.2
+      webpack: 5.71.0
 
   /htmlparser2/3.10.1:
     resolution: {integrity: sha512-IgieNijUMbkDovyoKObU1DUhm1iwNYE/fuifEoEHfd1oZKZDaONBSkal7Y01shxsM49R4XaMdGez3WnF9UfiCQ==}
@@ -17202,7 +17209,7 @@ packages:
     dependencies:
       klona: 2.0.5
       less: 4.1.2
-      webpack: 5.71.0_webpack-cli@4.9.2
+      webpack: 5.71.0
 
   /less-vars-loader/1.1.0:
     resolution: {integrity: sha1-LyJF2QQCJb/fVT+l4N3Y5HvKlbg=}
