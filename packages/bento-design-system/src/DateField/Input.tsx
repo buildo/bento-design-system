@@ -74,6 +74,7 @@ export function Input(props: Props) {
     {
       ...props,
       label: props.for,
+      placeholder: datePattern.toUpperCase(),
       type: "text",
       value,
       onChange: (value) => {
