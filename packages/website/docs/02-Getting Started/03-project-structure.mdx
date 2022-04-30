@@ -1,0 +1,176 @@
+# Recommended Project Structure
+
+So far we have seen how to add Bento to your project. In this section let's expand on what is a recommend project structure for your app.
+
+:::info
+
+This section is merely a recommendation and it's an optional part of the documentation.
+It's useful if you're starting from scratch and you are wondering how to best organize your project.
+
+Feel free to skip it if you already have a plan on how to structure the various modules of your application.
+
+:::
+
+## Overall organization
+
+When it comes to design system code, we recommend to split it from your application code.
+
+:::note
+We are going to use `pnpm` workspaces for these examples, but the structure with `npm` or `yarn` is almost identical.
+:::
+
+Something like:
+
+```
+my-project/
+├─ packages/
+│  ├─ design-system/
+│  ├─ app/
+├─ package.json
+├─ pnpm-workspace.yaml/
+```
+
+:::tip
+It's not mandatory to have the modules inside a `packages` directory, but we reckon it keeps things organized and it allows the use
+of wildcards for identifying workspace projects, which is convenient whenever you need to add or remove one:
+
+```yaml title="my-project/pnpm-workspace.yaml"
+packages:
+  - "packages/**"
+```
+
+:::
+
+The reason for splitting the design system code from the application code is that it clearly separates the concerns:
+
+- the design-system module should be focused on UI components and utilities
+- the app code should be focused on the business logic and it will use the UI components
+
+Having them as separate workspace projects is a good practice since it allows setting up different dependencies for each of them.
+
+For example, we recommend _not_ adding a i18n library (like `react-intl` or `react-i18next`) to the `design-system` project, so you
+will autoomatically make sure the UI components are parametric with respect to the localization aspects.
+
+Another example is _not_ setting up a styling library (like Vanilla Extract) in `app`: ideally, `app` should only use the design system components
+and in those rare cases in which this isn't true, plain CSS support (as it comes with tools like Create React App) should be enough.
+If you find yourself needing a lot of custom styling in `app`, then it's a good indication that something is wrong with your design system.
+
+## The `design-system` module
+
+The `design-system` module is a dependency of the `app` module. We recommend to treat this module as if it were a completely separate library that will be distributed on npm.
+Even if `app` will consume this module locally, this creates a more effective separation and it will ease the process of actually publishing the design system library
+in case you need to in the future.
+
+With that in mind, let's see how to set up the `design-system` module.
+
+### Setting up Vanilla Extract
+
+As we've discussed already, Vanilla Extract is the library Bento uses for styling. It's not strictly necessary for you to use Bento, but it makes things easier for a few reasons:
+
+- it allows you to define Bento themes for you project in a type-safe way (see [Theming](../Customization/theming))
+- it allows you to extend Bento design tokens, again in a type-safe way (see [Atoms augmentation](../Customization/atoms-augmentation))
+- it's in general a CSS library which is very suitable for writing UI components, thanks for to its powerful API (see for example the [Recipes API](https://vanilla-extract.style/documentation/recipes-api/))
+
+Since we want this module to be (potentially) distributed on npm, we want to bundle our code, including CSS files.
+
+Vanilla Extract supports several popular bundlers, but for a design system package we recommend using [tsup](https://tsup.egoist.sh/), which is based on esbuild and is especially well-suited for TypeScript libraries.
+
+Here's a setup you can use to get started:
+
+<PackageManagerCommand
+  command={{
+    pnpm: "add -D tsup @vanilla-extract/esbuild-plugin",
+    yarn: "add -D tsup @vanilla-extract/esbuild-plugin",
+    npm: "install -D tsup @vanilla-extract/esbuild-plugin",
+  }}
+/>
+
+Create a file named `tsup.config.ts` in your project root:
+
+```ts
+import { defineConfig } from "tsup";
+import { vanillaExtractPlugin } from "@vanilla-extract/esbuild-plugin";
+
+export default defineConfig({
+  entry: ["src/index.ts"],
+  outDir: "lib",
+  esbuildPlugins: [vanillaExtractPlugin()],
+  dts: true,
+  // See https://esbuild.github.io/content-types/#auto-import-for-jsx
+  inject: ["./jsxShim.ts"],
+});
+```
+
+And a file named `jsxShim.ts` in your project root:
+
+```ts
+// See https://esbuild.github.io/content-types/#auto-import-for-jsx
+import * as React from "react";
+export { React };
+```
+
+Done! Now you can add two scripts to your `package.json`:
+
+```json title="my-project/packages/design-system/package.json"
+"scripts": {
+  "build": "tsup --minify --clean",
+  "start": "tsup --watch",
+}
+```
+
+The final layout will look like:
+
+```
+my-project/
+├─ packages/
+│  ├─ design-system/
+│  │  ├─ src/
+│  │  │  ├─ index.tsx
+│  │  ├─ package.json
+│  │  ├─ tsup.config.ts
+│  │  ├─ jsxShim.ts
+│  ├─ app/
+├─ package.json
+├─ pnpm-workspaces.yaml
+```
+
+`packages/design-system/src/index.tsx` is where you configure and export Bento components, like we saw in [Quick Start](./Quick-Start).
+
+## Setting up Turborepo
+
+[Turborepo](https://turborepo.org/) is a build tool for monorepos, which eases the job of building and running packages inside your monorepo.
+
+It's **completely optional** and not required at all to work in the setup we've described so far, but it makes it a bit more practical to use and it helps a lot when your monorepo complexity grows
+to include more modules and scripts to run.
+
+You can install and setup Turborepo by following [the official documentation](https://turborepo.org/docs/getting-started).
+
+Here is a pipeline which works well in the setup we've seen so far:
+
+```json title="my-project/turbo.json"
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "baseBranch": "origin/main",
+  "pipeline": {
+    "start": {},
+    "build": {
+      "dependsOn": ["^build"]
+    }
+  }
+}
+```
+
+Finally, add some scripts to run Turborepo in your top-level `package.json`:
+
+```json title="my-project/package.json"
+"scripts": {
+  "start": "turbo run start",
+  "build": "turbo run build"
+}
+```
+
+This will ensure that when you run `start`, both your app and the design system will start in watch mode, so that any changes to the design system will be propagated to the app.
+Also, when you run `build`, the app will be built only after the design-system is built instead.
+
+This is a very basic setup, but Turborepo gives you a very straightforward way to express it and you already benefit from local caching (e.g. the design system won't be rebuilt if you only changed the app since your last build).
+Also, you are in a good position to accomodate more complex setups, if needed.
