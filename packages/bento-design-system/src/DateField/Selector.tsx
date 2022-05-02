@@ -49,9 +49,10 @@ export function createSelector(
           return {
             label: formatter.format(value),
             onPress: () => props.onSelect(value),
+            isSelected: value.getTime() === props.activeMonth.date.getTime(),
           };
         }),
-      [values]
+      [values, props.activeMonth]
     );
 
     return (
