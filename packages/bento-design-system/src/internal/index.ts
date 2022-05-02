@@ -6,4 +6,4 @@ import { Box } from "./Box/Box";
 export { bentoSprinkles } from "./sprinkles.css";
 export type { BentoSprinkles } from "./sprinkles.css";
 export * from "./Box/Box";
-export const { Column, Columns, Inline, Inset, Stack, Bleed } = createLayoutComponents(Box);
+export const { Column, Columns, Inline, Inset, Stack, Bleed, Tiles } = createLayoutComponents(Box);

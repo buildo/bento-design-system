@@ -12,7 +12,7 @@ export const inputRecipe = strictRecipe({
         "&:disabled::placeholder": {
           color: vars.textColor.textDisabled,
         },
-        "&:read-only": {
+        "input&:read-only, &.readOnly": {
           background: vars.backgroundColor.backgroundSecondary,
         },
       },

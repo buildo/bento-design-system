@@ -6,6 +6,7 @@ import { BreadcrumbConfig } from "./Breadcrumb/Config";
 import { ButtonConfig } from "./Button/Config";
 import { CardConfig } from "./Card/Config";
 import { ChipConfig } from "./Chip/Config";
+import { DateFieldConfig } from "./DateField/Config";
 import { DisclosureConfig } from "./Disclosure/Config";
 import { DisclosureGroupConfig } from "./DisclosureGroup/Config";
 import { DecorativeDividerConfig } from "./Divider/Config";
@@ -46,6 +47,7 @@ export type BentoConfig<
   button: ButtonConfig;
   card: CardConfig;
   chip: ChipConfig<AtomsFn, ChipCustomColor>;
+  dateField: DateFieldConfig;
   decorativeDivider: DecorativeDividerConfig<AtomsFn>;
   disclosure: DisclosureConfig;
   disclosureGroup: DisclosureGroupConfig;

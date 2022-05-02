@@ -31,4 +31,8 @@ export const defaultMessages: DefaultMessages["defaultMessages"] = {
   Loader: {
     loadingMessage: unsafeLocalizedString("Loading..."),
   },
+  DateField: {
+    nextMonthLabel: unsafeLocalizedString("Next month"),
+    previousMonthLabel: unsafeLocalizedString("Prev month"),
+  },
 };

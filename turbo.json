@@ -3,19 +3,27 @@
   "baseBranch": "origin/main",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "typecheck": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
-    "start": {},
+    "start": {
+      "outputs": []
+    },
     "prettier-check": {},
     "prettier-write": {},
     "lint-staged": {},
     "test": {},
     "eslint-check": {},
     "chromatic": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "playroom-start": {
       "dependsOn": ["build"]
@@ -24,10 +32,14 @@
       "dependsOn": ["build"]
     },
     "website-start": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "website-build": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     }
   }
 }

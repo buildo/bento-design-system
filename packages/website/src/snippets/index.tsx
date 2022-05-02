@@ -17,6 +17,7 @@ export const {
   Column,
   Columns,
   ContentBlock,
+  DateField,
   DesignSystemProvider,
   Disclosure,
   Feedback,

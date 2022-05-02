@@ -11,7 +11,7 @@ export function createTiles<AtomsFn extends typeof bentoSprinkles>(Box: BoxType<
 
   type Props = {
     space: ResponsiveSpace;
-    columns: RequiredResponsiveValue<1 | 2 | 3 | 4 | 5 | 6>;
+    columns: RequiredResponsiveValue<1 | 2 | 3 | 4 | 5 | 6 | 7>;
     children: Children;
     alignY?: ResponsiveAlignY;
   };
