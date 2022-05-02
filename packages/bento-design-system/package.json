@@ -85,7 +85,7 @@
     "ts-toolbelt": "^9.6.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.16.11",
+    "@babel/preset-env": "7.17.10",
     "@babel/preset-react": "7.16.7",
     "@react-types/button": "3.4.4",
     "@testing-library/dom": "8.12.0",
