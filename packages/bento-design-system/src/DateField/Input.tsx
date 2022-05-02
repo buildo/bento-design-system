@@ -57,7 +57,9 @@ export function Input(props: Props) {
   const dateMask = datePattern.replace(/[a-zA-Z]/g, "9");
   const [value, setValue] = useState("");
   function setCurrentValue() {
-    return setValue(getInputValue(props.currentDate, (date) => dateFormatter.format(date), ""));
+    return props.currentDate
+      ? setValue(getInputValue(props.currentDate, (date) => dateFormatter.format(date), ""))
+      : "";
   }
   const onFocus = () => {
     if (!props.readOnly) {

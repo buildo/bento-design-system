@@ -108,8 +108,13 @@ export function createCalendar(
         <Stack space={16} align="center">
           <CalendarHeader {...props} />
           <Tiles columns={7} space={0}>
-            {weekdayLabels.map((d) => (
-              <Box className={weekDay} width={config.dayWidth} height={config.dayHeight} key={d}>
+            {weekdayLabels.map((d, index) => (
+              <Box
+                className={weekDay}
+                width={config.dayWidth}
+                height={config.dayHeight}
+                key={`${d}-${index}`}
+              >
                 <Label size={config.dayOfWeekLabelSize}>{unsafeLocalizedString(d)}</Label>
               </Box>
             ))}
