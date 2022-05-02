@@ -59,7 +59,7 @@ export function Input(props: Props) {
   function setCurrentValue() {
     return props.currentDate
       ? setValue(getInputValue(props.currentDate, (date) => dateFormatter.format(date), ""))
-      : "";
+      : setValue("");
   }
   const onFocus = () => {
     if (!props.readOnly) {

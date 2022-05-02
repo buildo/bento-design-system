@@ -144,6 +144,7 @@ export function createDateField(
       <Inline space={4}>
         {props.shortcuts.map((shortcut) => (
           <Button
+            key={shortcut.label}
             kind="transparent"
             hierarchy="secondary"
             size="small"

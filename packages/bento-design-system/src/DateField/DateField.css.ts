@@ -52,8 +52,8 @@ export const input = bentoSprinkles({
 });
 
 export const weekDay = [
-  style({ display: "flex" }),
   bentoSprinkles({
+    display: "flex",
     width: 40,
     height: 40,
     alignItems: "center",
@@ -63,8 +63,8 @@ export const weekDay = [
 
 export const dayRecipe = strictRecipe({
   base: [
-    style({ display: "flex" }),
     bentoSprinkles({
+      display: "flex",
       cursor: "pointer",
       width: 40,
       height: 40,
