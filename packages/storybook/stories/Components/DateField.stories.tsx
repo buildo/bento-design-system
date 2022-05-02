@@ -31,7 +31,7 @@ const { defaultExport, createControlledStory } = createComponentStories({
 export default defaultExport;
 
 const today = startOfToday();
-const value = addDays(today, 2);
+const value = new Date(2022, 1, 4);
 
 export const SingleDate = createControlledStory(value, {});
 
@@ -43,7 +43,7 @@ export const ReadOnly = createControlledStory(value, {
   readOnly: true,
 });
 
-export const Range = createControlledStory([value, value], {
+export const Range = createControlledStory([value, addDays(value, 2)], {
   type: "range",
 });
 
