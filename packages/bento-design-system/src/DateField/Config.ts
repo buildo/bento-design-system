@@ -1,8 +1,8 @@
-import { FunctionComponent } from "react";
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";
 import { LabelProps } from "../Typography/Label/Label";
+import { Children } from "../util/Children";
 
 export type DateFieldConfig = {
   radius: BentoSprinkles["borderRadius"];
@@ -10,11 +10,11 @@ export type DateFieldConfig = {
   elevation: "none" | "small" | "medium" | "large";
   monthYearLabelSize: LabelProps["size"];
   dayOfWeekLabelSize: LabelProps["size"];
-  previousMonthIcon: FunctionComponent<IconProps>;
-  nextMonthIcon: FunctionComponent<IconProps>;
+  previousMonthIcon: (props: IconProps) => Children;
+  nextMonthIcon: (props: IconProps) => Children;
   monthYearSelectIcons: {
-    open: FunctionComponent<IconProps>;
-    close: FunctionComponent<IconProps>;
+    open: (props: IconProps) => Children;
+    close: (props: IconProps) => Children;
   };
   dayWidth: BentoSprinkles["width"];
   dayHeight: BentoSprinkles["height"];

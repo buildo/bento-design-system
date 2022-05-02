@@ -5,15 +5,14 @@ import { Box, Column, Columns } from "../internal";
 import { ListProps } from "../List/createListComponents";
 import { MenuProps } from "../Menu/createMenu";
 import { Label } from "../Typography/Label/Label";
-import { unsafeLocalizedString } from "../util/LocalizedString";
 import { DateFieldConfig } from "./Config";
 import { selector } from "./DateField.css";
 
 function getYears(activeDate: Date): Date[] {
-  const currentYear = new Date().getFullYear();
-  return [...Array(100).keys()].map((diff) => {
+  const firstYear = new Date().getFullYear() - 100;
+  return [...Array(200).keys()].map((diff) => {
     const yearDate = new Date(activeDate);
-    yearDate.setFullYear(currentYear - diff);
+    yearDate.setFullYear(firstYear + diff);
     return yearDate;
   });
 }
@@ -48,7 +47,7 @@ export function createSelector(
       () =>
         values.map((value) => {
           return {
-            label: unsafeLocalizedString(formatter.format(value)),
+            label: formatter.format(value),
             onPress: () => props.onSelect(value),
           };
         }),
@@ -63,7 +62,7 @@ export function createSelector(
             <Columns space={8} align="center" alignY="center">
               <Column width="content">
                 <Label size={config.monthYearLabelSize} color="secondary" uppercase>
-                  {unsafeLocalizedString(formatter.format(props.activeMonth.date))}
+                  {formatter.format(props.activeMonth.date)}
                 </Label>
               </Column>
               <Column width="content">

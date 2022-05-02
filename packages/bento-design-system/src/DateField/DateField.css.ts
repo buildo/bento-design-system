@@ -4,15 +4,13 @@ import { strictRecipe } from "../util/strictRecipe";
 
 export const dayRadius = createVar();
 
-export const calendar = [
-  bentoSprinkles({
-    background: "backgroundPrimary",
-    position: "absolute",
-    display: "flex",
-    outline: "none",
-    overflowY: "auto",
-  }),
-];
+export const calendar = bentoSprinkles({
+  background: "backgroundPrimary",
+  position: "absolute",
+  display: "flex",
+  outline: "none",
+  overflowY: "auto",
+});
 
 export const dateFieldRecipe = strictRecipe({
   variants: {
@@ -54,7 +52,7 @@ export const input = bentoSprinkles({
 });
 
 export const weekDay = [
-  style({ display: "inline-flex" }),
+  style({ display: "flex" }),
   bentoSprinkles({
     width: 40,
     height: 40,
@@ -65,7 +63,7 @@ export const weekDay = [
 
 export const dayRecipe = strictRecipe({
   base: [
-    style({ display: "inline-flex" }),
+    style({ display: "flex" }),
     bentoSprinkles({
       cursor: "pointer",
       width: 40,

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DateField } from "..";
 
-export default function ChipExample() {
+export default function DateFieldExample() {
   const [value, setValue] = React.useState<Date | null>(new Date());
   return (
     <DateField

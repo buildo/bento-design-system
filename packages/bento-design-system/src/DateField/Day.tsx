@@ -2,7 +2,6 @@ import { useDay } from "@datepicker-react/hooks";
 import { useEffect, useRef } from "react";
 import { Box } from "../internal";
 import { Body } from "../Typography/Body/Body";
-import { unsafeLocalizedString } from "../util/LocalizedString";
 import { CommonCalendarProps } from "./Calendar";
 import { DateFieldConfig } from "./Config";
 import { dayRadius, dayRecipe } from "./DateField.css";
@@ -112,7 +111,7 @@ export function createDay(config: DateFieldConfig) {
         ref={dayRef}
       >
         <Body size={config.daySize} color="inherit" weight={isToday ? "strong" : "default"}>
-          {unsafeLocalizedString(props.label)}
+          {props.label}
         </Body>
       </Box>
     );

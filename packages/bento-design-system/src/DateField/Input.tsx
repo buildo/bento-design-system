@@ -5,6 +5,7 @@ import { input } from "./DateField.css";
 import { getInputValue, parseDate as _parseDate } from "@datepicker-react/hooks";
 import { useDateFormatter } from "@react-aria/i18n";
 import InputMask from "react-input-mask";
+import { DateFormatter } from "@internationalized/date";
 
 type Props = {
   for: "startDate" | "endDate";
@@ -22,12 +23,11 @@ type Props = {
   isOpen: boolean;
 };
 
-function useDatePattern() {
-  const dateFormatter = useDateFormatter();
-  const parts: any[] = dateFormatter.formatToParts();
+function getDatePattern(dateFormatter: DateFormatter): string {
+  const parts = dateFormatter.formatToParts(new Date());
 
   return parts
-    .map<string | undefined>((part) => {
+    .map((part) => {
       switch (part.type) {
         case "day":
           return "dd";
@@ -53,7 +53,7 @@ function parseDate(value: string, pattern: string): Date | null {
 
 export function Input(props: Props) {
   const dateFormatter = useDateFormatter({ day: "2-digit", month: "2-digit", year: "numeric" });
-  const datePattern = useDatePattern();
+  const datePattern = getDatePattern(dateFormatter);
   const dateMask = datePattern.replace(/[a-zA-Z]/g, "9");
   const [value, setValue] = useState("");
   function setCurrentValue() {
