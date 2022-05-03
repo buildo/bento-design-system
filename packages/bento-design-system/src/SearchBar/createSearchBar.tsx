@@ -46,7 +46,6 @@ export function createSearchBar(
     const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
       {
         ...props,
-        placeholder: String(props.placeholder),
         isDisabled: props.disabled,
       },
       inputRef

@@ -87,7 +87,7 @@ export function createModal(
     const { defaultMessages } = useDefaultMessages();
 
     return (
-      <CustomModal {...props} aria-label={String(props.title)}>
+      <CustomModal {...props} aria-label={props.title}>
         <Inset space={config.padding}>
           <Columns space={16} alignY="top">
             <Title size={config.titleSize}>{props.title}</Title>

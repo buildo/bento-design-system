@@ -100,7 +100,7 @@ export function IconCell({
   column: { align },
 }: CellProps<{}, { icon: (props: IconProps) => JSX.Element; label: LocalizedString }>) {
   return (
-    <Box padding={16} textAlign={align} aria-label={String(value.label)}>
+    <Box padding={16} textAlign={align} aria-label={value.label}>
       {value.icon({ size: 16, color: "default" })}
     </Box>
   );
