@@ -4,6 +4,9 @@ template: |
   ## What’s Changed
   $CHANGES
 categories:
+  - title: "💥 Breaking changes"
+    labels:
+      - "documentation"
   - title: "🐞 Bug fixes"
     labels:
       - "bug"
@@ -13,7 +16,7 @@ categories:
   - title: "🧹 Chores"
     labels:
       - "chore"
-  - title: " Documentation"
+  - title: "📚 Documentation"
     labels:
       - "documentation"
 version-resolver:
