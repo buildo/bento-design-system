@@ -10,19 +10,23 @@ import { selector } from "./DateField.css";
 
 function getYears(activeDate: Date): Date[] {
   const firstYear = new Date().getFullYear() - 100;
-  return [...Array(200).keys()].map((diff) => {
-    const yearDate = new Date(activeDate);
-    yearDate.setFullYear(firstYear + diff);
-    return yearDate;
-  });
+  return Array(200)
+    .fill(0)
+    .map((_, diff) => {
+      const yearDate = new Date(activeDate);
+      yearDate.setFullYear(firstYear + diff);
+      return yearDate;
+    });
 }
 
 function getMonths(activeDate: Date): Date[] {
-  return [...Array(12).keys()].map((month) => {
-    const monthDate = new Date(activeDate);
-    monthDate.setMonth(month);
-    return monthDate;
-  });
+  return Array(12)
+    .fill(0)
+    .map((_, month) => {
+      const monthDate = new Date(activeDate);
+      monthDate.setMonth(month);
+      return monthDate;
+    });
 }
 
 export function createSelector(
