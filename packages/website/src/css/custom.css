@@ -27,6 +27,7 @@ html[data-theme='dark'] {
   --ifm-color-primary-lighter: white;
   --ifm-color-primary-lightest: white;
   --ifm-background-color: #1a212b;
+  --ifm-navbar-background-color: #1a212b;
 }
 
 .hero--primary {
