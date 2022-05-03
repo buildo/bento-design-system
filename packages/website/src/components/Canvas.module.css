@@ -34,6 +34,7 @@
   padding: 16px;
   border: 1px solid var(--ifm-color-secondary-dark);
   border-radius: 4px 4px 0 0;
+  background: white;
 }
 
 .codeBlock {

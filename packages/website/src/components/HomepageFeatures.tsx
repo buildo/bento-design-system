@@ -11,7 +11,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: "Make it your own",
-    image: "/img/undraw_docusaurus_mountain.svg",
+    image: "/img/Rice.svg",
     description: (
       <>
         Bento is designed for customization and extensibility: create a custom theme and
@@ -21,8 +21,8 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "Focus on What Matters",
-    image: "/img/undraw_docusaurus_tree.svg",
+    title: "Focus on what matters",
+    image: "/img/Salmon.svg",
     description: (
       <>
         Bento lets you focus on the business logic of your front-end app: implementing the correct
@@ -32,7 +32,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Powered by TypeScript",
-    image: "/img/undraw_docusaurus_react.svg",
+    image: "/img/Hoso.svg",
     description: (
       <>
         Bento is built with TypeScript and for TypeScript users: whether you use the high-level
@@ -45,7 +45,7 @@ const FeatureList: FeatureItem[] = [
 function Feature({ title, image, description }: FeatureItem) {
   return (
     <div className={clsx("col col--4")}>
-      <div className="text--center">
+      <div className="text--center padding-vert--md">
         <img className={styles.featureSvg} alt={title} src={image} />
       </div>
       <div className="text--center padding-horiz--md">
