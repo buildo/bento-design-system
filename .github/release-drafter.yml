@@ -6,7 +6,7 @@ template: |
 categories:
   - title: "💥 Breaking changes"
     labels:
-      - "documentation"
+      - "breaking"
   - title: "🐞 Bug fixes"
     labels:
       - "bug"
