@@ -1,7 +1,6 @@
 import { BentoSprinkles, Inset } from "../internal";
 import { Box } from "../internal/Box/Box";
 import { vars } from "../vars.css";
-import { unsafeLocalizedString } from "..";
 
 type Props = {
   height?: string | number;
@@ -21,7 +20,7 @@ export function Placeholder({ label, height = 120, width = "auto", background }:
       background={background}
     >
       {label ? (
-        <Inset space={8}>{unsafeLocalizedString(label)}</Inset>
+        <Inset space={8}>{label}</Inset>
       ) : (
         <svg style={{ position: "absolute", width: "100%", height: "100%" }}>
           <line

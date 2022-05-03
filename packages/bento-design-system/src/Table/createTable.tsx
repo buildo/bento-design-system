@@ -19,7 +19,6 @@ import {
   IconChevronDown,
   IconChevronUp,
   IconMinus,
-  unsafeLocalizedString,
   TooltipProps,
   ButtonProps,
   ChipProps,
@@ -296,7 +295,7 @@ export function createTable(
             return [
               <SectionHeader
                 key={row.groupByVal}
-                label={unsafeLocalizedString(row.groupByVal)}
+                label={row.groupByVal}
                 numberOfStickyColumns={stickyLeftColumnsIds.length}
               />,
               ...row.leafRows.map((row, index) => {

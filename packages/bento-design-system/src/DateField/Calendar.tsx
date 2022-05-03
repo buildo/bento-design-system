@@ -9,7 +9,6 @@ import { MenuProps } from "../Menu/createMenu";
 import { Label } from "../Typography/Label/Label";
 import { Children } from "../util/Children";
 import { createPortal } from "../util/createPortal";
-import { unsafeLocalizedString } from "../util/LocalizedString";
 import { createCalendarHeader } from "./CalendarHeader";
 import { DateFieldConfig } from "./Config";
 import { calendar, weekDay } from "./DateField.css";
@@ -115,7 +114,7 @@ export function createCalendar(
                 height={config.dayHeight}
                 key={`${d}-${index}`}
               >
-                <Label size={config.dayOfWeekLabelSize}>{unsafeLocalizedString(d)}</Label>
+                <Label size={config.dayOfWeekLabelSize}>{d}</Label>
               </Box>
             ))}
             {days.map((day, index) => {
