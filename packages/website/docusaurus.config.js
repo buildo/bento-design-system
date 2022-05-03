@@ -5,7 +5,7 @@ const { ProvidePlugin } = require("webpack");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Bento Design System",
+  title: "Bento DS",
   tagline: "An extensible and customizable Design System for React",
   url: "https://bento-design-system-ruddy.vercel.app/",
   baseUrl: "/",
@@ -70,9 +70,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
       navbar: {
-        title: "Bento Design System",
+        title: "Bento DS",
         logo: {
-          alt: "Bento Design System",
+          alt: "Bento DS",
           src: "img/logo.svg",
         },
         items: [
