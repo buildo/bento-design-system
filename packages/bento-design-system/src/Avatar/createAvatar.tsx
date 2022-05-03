@@ -1,4 +1,4 @@
-import { Label, unsafeLocalizedString } from "..";
+import { Label } from "..";
 import { avatarRecipe } from "./Avatar.css";
 import { Box } from "../internal";
 import { AvatarConfig } from "./Config";
@@ -36,7 +36,7 @@ export function createAvatar(config: AvatarConfig) {
           boxShadow={config.outline}
         >
           {initial ? (
-            <Label size={config.labelSize}>{unsafeLocalizedString(initial)}</Label>
+            <Label size={config.labelSize}>{initial}</Label>
           ) : (
             config.icon({
               size: config.iconSize,

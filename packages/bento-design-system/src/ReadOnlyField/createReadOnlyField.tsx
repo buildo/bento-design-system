@@ -1,6 +1,5 @@
 import { FunctionComponent } from "react";
 import { TextFieldProps } from "../TextField/createTextField";
-import { unsafeLocalizedString } from "../util/LocalizedString";
 
 type Props = Omit<
   TextFieldProps,
@@ -20,13 +19,7 @@ export function createReadOnlyField({
 }) {
   return function ReadOnlyField(props: Props) {
     return (
-      <TextField
-        {...props}
-        onChange={constVoid}
-        onBlur={constVoid}
-        placeholder={unsafeLocalizedString("")}
-        isReadOnly
-      />
+      <TextField {...props} onChange={constVoid} onBlur={constVoid} placeholder="" isReadOnly />
     );
   };
 }

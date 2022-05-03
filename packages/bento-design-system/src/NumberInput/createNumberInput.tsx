@@ -1,7 +1,7 @@
 import { useLocale } from "@react-aria/i18n";
 import { useMemo } from "react";
 import useDimensions from "react-cool-dimensions";
-import { Label, LocalizedString, unsafeLocalizedString } from "..";
+import { Label, LocalizedString } from "..";
 import { Box } from "../internal";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
@@ -36,7 +36,7 @@ export function createNumberInput(config: InputConfig) {
         })
           .formatToParts(0)
           .find(({ type }) => type === "currency")?.value;
-        return code ? unsafeLocalizedString(code) : undefined;
+        return code;
       } else {
         return undefined;
       }
@@ -53,7 +53,7 @@ export function createNumberInput(config: InputConfig) {
         case "currency":
           return currencyCode;
         case "percentage":
-          return unsafeLocalizedString("%");
+          return "%";
         case "decimal":
         case undefined:
           return undefined;

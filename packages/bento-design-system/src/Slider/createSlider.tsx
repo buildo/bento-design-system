@@ -6,7 +6,6 @@ import { SliderState } from "@react-stately/slider";
 import { OutputHTMLAttributes, RefObject, useRef } from "react";
 import { Box, Column, Columns, Stack } from "../internal";
 import { Label } from "../Typography/Label/Label";
-import { unsafeLocalizedString } from "../util/LocalizedString";
 import { SliderConfig } from "./Config";
 import { slider, thumbRecipe, trackActive, trackContainer, trackInactive } from "./Slider.css";
 
@@ -28,7 +27,7 @@ export function createSlider(config: SliderConfig) {
         <Columns space={24} alignY="center">
           <Column width="content">
             <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
-              {unsafeLocalizedString(props.numberFormatter.format(props.state.getThumbMinValue(0)))}
+              {props.numberFormatter.format(props.state.getThumbMinValue(0))}
             </Label>
           </Column>
           <Box
@@ -75,10 +74,8 @@ export function createSlider(config: SliderConfig) {
           </Box>
           <Column width="content">
             <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
-              {unsafeLocalizedString(
-                props.numberFormatter.format(
-                  props.state.getThumbMaxValue(props.type === "single" ? 0 : 1)
-                )
+              {props.numberFormatter.format(
+                props.state.getThumbMaxValue(props.type === "single" ? 0 : 1)
               )}
             </Label>
           </Column>
@@ -128,7 +125,7 @@ export function createSlider(config: SliderConfig) {
           </Box>
           <Box as="output" {...props.outputProps} color={undefined}>
             <Label size="large" color={props.disabled ? "disabled" : undefined}>
-              {unsafeLocalizedString(state.getThumbValueLabel(props.index))}
+              {state.getThumbValueLabel(props.index)}
             </Label>
           </Box>
         </Stack>
