@@ -83,6 +83,7 @@ type Props<C extends ReadonlyArray<ColumnType<string, {}, any>>> = {
   groupBy?: C[number]["accessor"];
   noResultsTitle?: LocalizedString;
   noResultsDescription?: LocalizedString;
+  defaultSorting?: Array<SortingRule<C>>;
 } & SortingProps<C>;
 
 /**
@@ -124,6 +125,7 @@ export function createTable(
     noResultsDescription,
     customSorting,
     onSort,
+    defaultSorting,
   }: Props<C>) {
     const customOrderByFn = useMemo(
       () =>
@@ -161,7 +163,7 @@ export function createTable(
         columns,
         data,
         initialState: {
-          sortBy: [],
+          sortBy: defaultSorting ?? [],
           groupBy: groupBy ? [groupBy] : [],
           hiddenColumns: groupBy ? [groupBy] : [],
         },
