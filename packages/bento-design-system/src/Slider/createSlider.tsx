@@ -120,7 +120,7 @@ export function createSlider(config: SliderConfig) {
           left: `${state.getThumbPercent(index) * 100}%`,
         }}
       >
-        <Stack space={8} align="center">
+        <Stack space={config.thumbInternalSpacing} align="center">
           <Box
             className={thumbRecipe({
               isFocused: isFocusVisible,

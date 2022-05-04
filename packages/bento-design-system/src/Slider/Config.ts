@@ -11,4 +11,5 @@ export type SliderConfig = {
   thumbWidth: NonNullable<Exclude<BentoSprinkles["width"], "full">>;
   thumbHeight: NonNullable<Exclude<BentoSprinkles["height"], "full">>;
   thumbRadius: BentoSprinkles["borderRadius"];
+  thumbInternalSpacing: BentoSprinkles["gap"];
 };

@@ -492,6 +492,7 @@ export const slider: SliderConfig = {
   thumbWidth: 24,
   thumbHeight: 24,
   thumbRadius: 8,
+  thumbInternalSpacing: 8,
 };
 
 export const stepper: StepperConfig = {
