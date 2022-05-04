@@ -18,6 +18,7 @@ type Props = {
   trackProps: React.HTMLAttributes<HTMLElement>;
   outputProps: OutputHTMLAttributes<HTMLOutputElement>;
   numberFormatter: Intl.NumberFormat;
+  hideThumbValue?: boolean;
 };
 
 export function createSlider(config: SliderConfig) {
@@ -68,6 +69,7 @@ export function createSlider(config: SliderConfig) {
               trackRef={props.trackRef}
               outputProps={props.outputProps}
               disabled={props.disabled}
+              showValue={!props.hideThumbValue}
             />
             {props.type === "double" && (
               <Thumb
@@ -76,6 +78,7 @@ export function createSlider(config: SliderConfig) {
                 trackRef={props.trackRef}
                 outputProps={props.outputProps}
                 disabled={props.disabled}
+                showValue={!props.hideThumbValue}
               />
             )}
           </Box>
@@ -97,6 +100,7 @@ export function createSlider(config: SliderConfig) {
     index: number;
     outputProps: OutputHTMLAttributes<HTMLOutputElement>;
     disabled?: boolean;
+    showValue: boolean;
   };
 
   function Thumb(props: ThumbProps) {
@@ -132,11 +136,13 @@ export function createSlider(config: SliderConfig) {
               <input ref={inputRef} {...mergeProps(inputProps, focusProps)} />
             </VisuallyHidden>
           </Box>
-          <Box as="output" {...props.outputProps} color={undefined}>
-            <Label size="large" color={props.disabled ? "disabled" : undefined}>
-              {state.getThumbValueLabel(props.index)}
-            </Label>
-          </Box>
+          {props.showValue && (
+            <Box as="output" {...props.outputProps} color={undefined}>
+              <Label size="large" color={props.disabled ? "disabled" : undefined}>
+                {state.getThumbValueLabel(props.index)}
+              </Label>
+            </Box>
+          )}
         </Stack>
       </Box>
     );
