@@ -83,24 +83,29 @@ export function createTabs(config: TabsConfig) {
 
   return function Tabs<A>({ size, value, tabs, onChange }: Props<A>) {
     return (
-      <Columns
-        space={config.spaceBetweenTabs}
-        align={config.tabsWidth === "fit-content" ? config.tabsAlignment : undefined}
-      >
-        {tabs.map((t) => (
-          <Column key={t.label} width={config.tabsWidth === "fit-content" ? "content" : undefined}>
-            <Tab
-              size={size}
-              label={t.label}
-              onPress={() => onChange(t.value)}
-              active={value === t.value}
-              disabled={t.disabled}
-              icon={t.icon}
-              hasNotification={t.hasNotification}
-            />
-          </Column>
-        ))}
-      </Columns>
+      <Box overflowX="auto">
+        <Columns
+          space={config.spaceBetweenTabs}
+          align={config.tabsWidth === "fit-content" ? config.tabsAlignment : undefined}
+        >
+          {tabs.map((t) => (
+            <Column
+              key={t.label}
+              width={config.tabsWidth === "fit-content" ? "content" : undefined}
+            >
+              <Tab
+                size={size}
+                label={t.label}
+                onPress={() => onChange(t.value)}
+                active={value === t.value}
+                disabled={t.disabled}
+                icon={t.icon}
+                hasNotification={t.hasNotification}
+              />
+            </Column>
+          ))}
+        </Columns>
+      </Box>
     );
   };
 }
