@@ -93,20 +93,20 @@ export function createField(
           )}
           {issues && (
             <Box paddingLeft={config.assistiveText.paddingLeft}>
-              <Columns space={4}>
-                <Column width="content">
-                  <IconNegative size={12} color="negative" />
-                </Column>
-                <Stack space={4}>
-                  {issues.map((errorMessage, index) => (
+              <Stack space={4}>
+                {issues.map((errorMessage, index) => (
+                  <Columns space={4} alignY="center">
+                    <Column width="content">
+                      <IconNegative size={12} color="negative" />
+                    </Column>
                     <Box {...errorMessageProps} color={undefined}>
                       <Body key={index} size={config.assistiveText.size} color="negative">
                         {errorMessage}
                       </Body>
                     </Box>
-                  ))}
-                </Stack>
-              </Columns>
+                  </Columns>
+                ))}
+              </Stack>
             </Box>
           )}
         </Stack>
