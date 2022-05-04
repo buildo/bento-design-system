@@ -1,0 +1,106 @@
+# Extending Bento
+
+Bento is extensible, meaning you can build custom components that perfectly blend in with the ones Bento provides out of the box.
+
+Let's see how to create custom components using the facilities provided by Bento.
+
+## Basic structure of a component
+
+When we create a new component, we usually start with a basic set of files:
+
+- a `MyComponent/MyComponent.tsx` file which defines the markup and the behavior;
+- a `MyComponent/MyComponent.css.ts` file which defines the style;
+
+## Authoring styles
+
+:::info
+This guide assumes you're familiar with how [styling in Bento](../Getting%20Started/atomic-styles) works.
+:::
+
+When writing styles for a component we have a few options to choose from. Here's how you should
+generally approach it:
+
+- if the component is very simple (a single unconditional object) you can use the `sprinkles`
+  function directly
+- if the component has variants (e.g. different sizes, statuses, etc.) you can use Vanilla Extract's
+  [Recipes API](https://vanilla-extract.style/documentation/recipes-api/) to
+  define such variants. Specifically, you should prefer Bento's `strictRecipe` utility which makes
+  the type-checking of recipes a bit stricter.
+
+:::note
+Vanilla Extract also provides a `styleVariants` function, but we generally prefer using the
+Recipes API which is more powerful and extensible.
+:::
+
+The `sprinkles` function can come directly from Bento (it's exported as `bentoSprinkles`) or it can be a custom one (see [Atoms Augmentation](../Customization/atoms-augmentation)).
+
+Normally, you should always start by using only the design tokens, aka invoking the `sprinkles`
+function. In some cases you may need a custom value for a property (for instance when resetting
+default css properties provided by a browser), in which case you can use mix the `style` and the
+`sprinkles` functions, for example:
+
+```ts
+export const myComponent = style([
+  sprinkles({ background: "backgroundPrimary", color: "foregroundPrimary", position: "absolute" }),
+  {
+    WebkitAppearance: "none",
+  },
+]);
+```
+
+As you can see `style` accepts an array of either a `Style` objects (see the
+[Styling API](https://vanilla-extract.style/documentation/styling-api/) of Vanilla Extract) or a
+classname (remember that the `sprinkles` function returns a generated classname).
+
+This is true also when using the Recipes API, here's a more realistic example:
+
+```ts
+export const myComponentRecipe = strictRecipe({
+  base: [
+    sprinkles({ background: "backgroundPrimary", color: "foregroundPrimary" }),
+    { WebkitAppearance: "none" },
+  ],
+  variants: {
+    size: {
+      small: sprinkles({ paddingY: 8 }),
+      medium: sprinkles({ paddingY: 16 }),
+    },
+  },
+});
+```
+
+Once you define a recipe, you then need specify which variant you want in the `.tsx` file, for
+example:
+
+```ts
+import { Box } from "..";
+
+type Props = {
+  size: "small" | "medium";
+};
+
+function MyComponent({ size }: Props) {
+  return <Box className={myComponentRecipe({ size })} />;
+```
+
+:::tip
+You may be tempted to derive the type of the `size` directly from the recipe variants.
+
+In our experience we've found that it's an approach that doesn't pay off: it only works in simple cases, it provides
+very little benefit, and it's annoying to refactor whenever you need more flexibility.
+
+For this reason, we recommend to define the props independently from the recipe, even when they match exactly, since
+it's more flexible and you still get proper type-checking.
+:::
+
+Notice the use of `Box` instead of `div` in the example above, which we are about to explain.
+
+### CSS reset via Box
+
+`Box` automatically provides sensible CSS reset for native elements.
+
+For instance, using `<Box as="ul">` will render a native `<ul>` element stripped of the default
+browser styles (such as `listStyle`, and `margin`, in the specific case).
+
+This means you should **always prefer** rendering native elements via `Box`, so that it's easier to
+provide custom styles for them.
