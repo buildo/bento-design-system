@@ -6,6 +6,7 @@ import { Children } from "../util/Children";
 import { FieldProps } from "./FieldProps";
 import { TooltipProps } from "..";
 import { FieldConfig } from "./Config";
+import { IconNegative } from "../Icons";
 
 type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "hint"> & {
   /** The field label rendered on screen. Can be omitted in case of fields that have a custom label, such as CheckboxField  */
@@ -92,15 +93,20 @@ export function createField(
           )}
           {issues && (
             <Box paddingLeft={config.assistiveText.paddingLeft}>
-              <Stack space={4}>
-                {issues.map((errorMessage, index) => (
-                  <Box {...errorMessageProps} color={undefined}>
-                    <Body key={index} size={config.assistiveText.size} color="negative">
-                      {errorMessage}
-                    </Body>
-                  </Box>
-                ))}
-              </Stack>
+              <Columns space={4}>
+                <Column width="content">
+                  <IconNegative size={12} color="negative" />
+                </Column>
+                <Stack space={4}>
+                  {issues.map((errorMessage, index) => (
+                    <Box {...errorMessageProps} color={undefined}>
+                      <Body key={index} size={config.assistiveText.size} color="negative">
+                        {errorMessage}
+                      </Body>
+                    </Box>
+                  ))}
+                </Stack>
+              </Columns>
             </Box>
           )}
         </Stack>
