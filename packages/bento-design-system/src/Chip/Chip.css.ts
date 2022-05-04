@@ -12,7 +12,7 @@ export const chip = bentoSprinkles({
 export const maxWidth = createVar();
 
 export const ellipsedLabel = style({
-  overflowY: "hidden",
+  overflow: "hidden",
   textOverflow: "ellipsis",
   whiteSpace: "nowrap",
   maxWidth: maxWidth,

@@ -76,7 +76,7 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
       maxCharacters != null ? (
         <Box
           as="span"
-          display="inline-block"
+          display="block"
           className={ellipsedLabel}
           title={_label}
           style={assignInlineVars({ [maxWidth]: `${maxCharacters}ch` })}
