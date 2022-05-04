@@ -33,6 +33,7 @@ type Props<CustomColor extends string> = {
   label: LocalizedString;
   color: DefaultColor | CustomColor;
   icon?: FunctionComponent<IconProps>;
+  maxWidth?: number;
 } & DismissProps;
 
 const defaultColorsMapping: Record<DefaultColor, BentoSprinkles["background"]> = {
@@ -60,11 +61,28 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
 ) {
   const colorsMapping = { ...defaultColorsMapping, ...config.customColors };
 
-  return function Chip({ color, label, icon, ...dismissProps }: Props<CustomColors>) {
+  return function Chip({ color, label, icon, maxWidth, ...dismissProps }: Props<CustomColors>) {
     const { defaultMessages } = useDefaultMessages();
 
+    const ellipsedLabel = maxWidth ? (
+      <Box
+        as="span"
+        style={{
+          display: "-webkit-box",
+          overflowY: "hidden",
+          textOverflow: "ellipsis",
+          WebkitLineClamp: 1,
+          WebkitBoxOrient: "vertical",
+        }}
+      >
+        {label}
+      </Box>
+    ) : (
+      label
+    );
+
     return (
-      <Box display="flex">
+      <Box display="flex" style={{ maxWidth }}>
         <Box
           paddingX={config.paddingX}
           paddingY={config.paddingY}
@@ -79,7 +97,8 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
                   {icon({ size: config.iconSize, color: "secondary" })}
                 </Column>
               )}
-              <Label size={config.labelSize}>{label}</Label>
+
+              <Label size={config.labelSize}>{ellipsedLabel}</Label>
             </Columns>
             {dismissProps.onDismiss && (
               <Column width="content">
