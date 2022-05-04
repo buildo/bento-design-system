@@ -60,3 +60,8 @@ export const CustomDragStep = createControlledStory(28, {
   step: 2,
   dragStep: 9,
 });
+
+export const WithoutThumbValue = createControlledStory([30, 80], {
+  type: "double",
+  hideThumbValue: true,
+});

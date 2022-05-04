@@ -18,6 +18,7 @@ type Props = {
   trackProps: React.HTMLAttributes<HTMLElement>;
   outputProps: OutputHTMLAttributes<HTMLOutputElement>;
   numberFormatter: Intl.NumberFormat;
+  hideThumbValue?: boolean;
 };
 
 export function createSlider(config: SliderConfig) {
@@ -32,6 +33,7 @@ export function createSlider(config: SliderConfig) {
           </Column>
           <Box
             className={trackContainer}
+            height={config.thumbHeight}
             {...props.trackProps}
             ref={props.trackRef}
             color={undefined}
@@ -40,6 +42,10 @@ export function createSlider(config: SliderConfig) {
               className={trackInactive}
               disabled={props.disabled}
               borderRadius={config.trailRadius}
+              style={{
+                height: config.trailHeight,
+                top: (config.thumbHeight - config.trailHeight) / 2,
+              }}
             />
             <Box
               className={trackActive}
@@ -48,6 +54,8 @@ export function createSlider(config: SliderConfig) {
               disabled={props.disabled}
               borderRadius={config.trailRadius}
               style={{
+                height: config.trailHeight,
+                top: (config.thumbHeight - config.trailHeight) / 2,
                 left: props.type === "single" ? 0 : `${props.state.getThumbPercent(0) * 100}%`,
                 width:
                   props.type === "single"
@@ -61,6 +69,7 @@ export function createSlider(config: SliderConfig) {
               trackRef={props.trackRef}
               outputProps={props.outputProps}
               disabled={props.disabled}
+              showValue={!props.hideThumbValue}
             />
             {props.type === "double" && (
               <Thumb
@@ -69,6 +78,7 @@ export function createSlider(config: SliderConfig) {
                 trackRef={props.trackRef}
                 outputProps={props.outputProps}
                 disabled={props.disabled}
+                showValue={!props.hideThumbValue}
               />
             )}
           </Box>
@@ -90,6 +100,7 @@ export function createSlider(config: SliderConfig) {
     index: number;
     outputProps: OutputHTMLAttributes<HTMLOutputElement>;
     disabled?: boolean;
+    showValue: boolean;
   };
 
   function Thumb(props: ThumbProps) {
@@ -101,6 +112,14 @@ export function createSlider(config: SliderConfig) {
     );
     const { focusProps, isFocusVisible } = useFocusRing();
 
+    const output = (
+      <Box as="output" {...props.outputProps} color={undefined}>
+        <Label size="large" color={props.disabled ? "disabled" : undefined}>
+          {state.getThumbValueLabel(props.index)}
+        </Label>
+      </Box>
+    );
+
     return (
       <Box
         position="absolute"
@@ -109,7 +128,7 @@ export function createSlider(config: SliderConfig) {
           left: `${state.getThumbPercent(index) * 100}%`,
         }}
       >
-        <Stack space={8} align="center">
+        <Stack space={config.thumbInternalSpacing} align="center">
           <Box
             className={thumbRecipe({
               isFocused: isFocusVisible,
@@ -118,16 +137,14 @@ export function createSlider(config: SliderConfig) {
             color={undefined}
             disabled={props.disabled}
             borderRadius={config.thumbRadius}
+            width={config.thumbWidth}
+            height={config.thumbHeight}
           >
             <VisuallyHidden>
               <input ref={inputRef} {...mergeProps(inputProps, focusProps)} />
             </VisuallyHidden>
           </Box>
-          <Box as="output" {...props.outputProps} color={undefined}>
-            <Label size="large" color={props.disabled ? "disabled" : undefined}>
-              {state.getThumbValueLabel(props.index)}
-            </Label>
-          </Box>
+          {props.showValue ? output : <VisuallyHidden>{output}</VisuallyHidden>}
         </Stack>
       </Box>
     );

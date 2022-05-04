@@ -7,5 +7,9 @@ export type SliderConfig = {
   internalSpacing: BentoSprinkles["gap"];
   trailColor: BentoSprinkles["color"];
   trailRadius: BentoSprinkles["borderRadius"];
+  trailHeight: number;
+  thumbWidth: NonNullable<Exclude<BentoSprinkles["width"], "full">>;
+  thumbHeight: NonNullable<Exclude<BentoSprinkles["height"], "full">>;
   thumbRadius: BentoSprinkles["borderRadius"];
+  thumbInternalSpacing: BentoSprinkles["gap"];
 };
