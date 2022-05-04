@@ -71,7 +71,8 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
     const { defaultMessages } = useDefaultMessages();
 
     const label = maxWidth ? (
-      <Box as="span" className={ellipsedLabel}>
+      // NOTE: without this display={undefined} we get a compile error. Not sure why :\
+      <Box display={undefined} as="span" className={ellipsedLabel} title={_label}>
         {_label}
       </Box>
     ) : (
