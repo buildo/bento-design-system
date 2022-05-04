@@ -112,6 +112,14 @@ export function createSlider(config: SliderConfig) {
     );
     const { focusProps, isFocusVisible } = useFocusRing();
 
+    const output = (
+      <Box as="output" {...props.outputProps} color={undefined}>
+        <Label size="large" color={props.disabled ? "disabled" : undefined}>
+          {state.getThumbValueLabel(props.index)}
+        </Label>
+      </Box>
+    );
+
     return (
       <Box
         position="absolute"
@@ -136,13 +144,7 @@ export function createSlider(config: SliderConfig) {
               <input ref={inputRef} {...mergeProps(inputProps, focusProps)} />
             </VisuallyHidden>
           </Box>
-          {props.showValue && (
-            <Box as="output" {...props.outputProps} color={undefined}>
-              <Label size="large" color={props.disabled ? "disabled" : undefined}>
-                {state.getThumbValueLabel(props.index)}
-              </Label>
-            </Box>
-          )}
+          {props.showValue ? output : <VisuallyHidden>{output}</VisuallyHidden>}
         </Stack>
       </Box>
     );
