@@ -33,3 +33,9 @@ export const WithIcon = createStory({
   color: "blue",
   icon: IconPlaceholder,
 });
+
+export const MaxWidth = createStory({
+  label: "Very very long label",
+  color: "blue",
+  maxCharacters: 10,
+});

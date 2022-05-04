@@ -2,10 +2,11 @@ import { FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
 import { Label, LocalizedString, BoxType } from "..";
 import { Column, Columns, BentoSprinkles, bentoSprinkles } from "../internal";
-import { chip } from "./Chip.css";
+import { chip, ellipsedLabel, maxWidth } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { ChipConfig } from "./Config";
+import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 type DismissProps =
   | {
@@ -33,6 +34,8 @@ type Props<CustomColor extends string> = {
   label: LocalizedString;
   color: DefaultColor | CustomColor;
   icon?: FunctionComponent<IconProps>;
+  /** Truncate and show ellipsis after a number of characters */
+  maxCharacters?: number;
 } & DismissProps;
 
 const defaultColorsMapping: Record<DefaultColor, BentoSprinkles["background"]> = {
@@ -60,8 +63,29 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
 ) {
   const colorsMapping = { ...defaultColorsMapping, ...config.customColors };
 
-  return function Chip({ color, label, icon, ...dismissProps }: Props<CustomColors>) {
+  return function Chip({
+    color,
+    label: _label,
+    icon,
+    maxCharacters,
+    ...dismissProps
+  }: Props<CustomColors>) {
     const { defaultMessages } = useDefaultMessages();
+
+    const label =
+      maxCharacters != null ? (
+        <Box
+          as="span"
+          display="block"
+          className={ellipsedLabel}
+          title={_label}
+          style={assignInlineVars({ [maxWidth]: `${maxCharacters}ch` })}
+        >
+          {_label}
+        </Box>
+      ) : (
+        _label
+      );
 
     return (
       <Box display="flex">
@@ -79,6 +103,7 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
                   {icon({ size: config.iconSize, color: "secondary" })}
                 </Column>
               )}
+
               <Label size={config.labelSize}>{label}</Label>
             </Columns>
             {dismissProps.onDismiss && (
