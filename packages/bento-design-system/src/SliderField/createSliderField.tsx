@@ -20,6 +20,7 @@ type Props = (
   step?: number;
   dragStep?: number;
   autoFocus?: boolean;
+  hideThumbLabel?: boolean;
 } & FormatProps;
 
 function roundToStep(value: number, step: number) {
