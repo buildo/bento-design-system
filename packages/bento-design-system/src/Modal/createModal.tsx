@@ -88,7 +88,7 @@ export function createModal(
 
     return (
       <CustomModal {...props} aria-label={props.title}>
-        <Inset space={config.padding}>
+        <Inset spaceX={config.paddingX} spaceY={config.paddingY}>
           <Columns space={16} alignY="top">
             <Title size={config.titleSize}>{props.title}</Title>
             <Column width="content">
@@ -104,10 +104,10 @@ export function createModal(
             </Column>
           </Columns>
         </Inset>
-        <Box className={modalBody} paddingX={config.padding}>
+        <Box className={modalBody} paddingX={config.paddingX}>
           {props.children}
         </Box>
-        <Inset space={config.padding}>
+        <Inset spaceX={config.paddingX} spaceY={config.paddingY}>
           <Actions
             primaryAction={
               props.primaryAction

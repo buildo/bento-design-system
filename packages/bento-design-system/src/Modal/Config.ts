@@ -6,7 +6,8 @@ import { Children } from "../util/Children";
 
 type SizeConfig<T> = { [k in ModalSize]: T };
 export type ModalConfig = {
-  padding: BentoSprinkles["padding"];
+  paddingX: BentoSprinkles["paddingX"];
+  paddingY: BentoSprinkles["paddingY"];
   radius: BentoSprinkles["borderRadius"];
   titleSize: TitleProps["size"];
   closeIcon: (props: IconProps) => Children;

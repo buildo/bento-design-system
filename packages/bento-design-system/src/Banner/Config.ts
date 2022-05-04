@@ -11,7 +11,8 @@ type KindConfig<T> = {
   [k in Kind]: T;
 };
 export type BannerConfig = {
-  padding: BentoSprinkles["padding"];
+  paddingX: BentoSprinkles["paddingX"];
+  paddingY: BentoSprinkles["paddingY"];
   radius: BentoSprinkles["borderRadius"];
   titleSize: ComponentProps<typeof Title>["size"];
   descriptionSize: ComponentProps<typeof Body>["size"];
