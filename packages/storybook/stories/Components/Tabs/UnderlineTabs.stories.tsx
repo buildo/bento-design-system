@@ -62,3 +62,50 @@ export const large = createControlledStory("tab1", {
     },
   ],
 });
+
+export const scrollable = createControlledStory(
+  "tab1",
+  {
+    size: "large",
+    tabs: [
+      {
+        label: formatMessage("Tab 1"),
+        value: "tab1",
+        icon: IconNegative,
+        hasNotification: true,
+      },
+      {
+        label: formatMessage("Tab 2"),
+        value: "tab2",
+        icon: IconNegative,
+        hasNotification: true,
+      },
+      {
+        label: formatMessage("Tab 3"),
+        value: "tab3",
+        disabled: true,
+        icon: IconNegative,
+        hasNotification: true,
+      },
+      {
+        label: formatMessage("Tab 4"),
+        value: "tab4",
+        icon: IconNegative,
+        hasNotification: true,
+      },
+      {
+        label: formatMessage("Tab 5"),
+        value: "tab5",
+        icon: IconInformative,
+        hasNotification: true,
+      },
+      {
+        label: formatMessage("Tab 6"),
+        value: "tab6",
+        icon: IconInformative,
+        hasNotification: true,
+      },
+    ],
+  },
+  { viewport: { defaultViewport: "tablet" } }
+);
