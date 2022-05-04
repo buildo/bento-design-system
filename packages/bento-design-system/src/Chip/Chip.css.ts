@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { createVar, style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal";
 
 export const chip = bentoSprinkles({
@@ -9,10 +9,11 @@ export const chip = bentoSprinkles({
   justifyContent: "center",
 });
 
+export const maxWidth = createVar();
+
 export const ellipsedLabel = style({
-  display: "-webkit-box",
   overflowY: "hidden",
   textOverflow: "ellipsis",
-  WebkitLineClamp: 1,
-  WebkitBoxOrient: "vertical",
+  whiteSpace: "nowrap",
+  maxWidth: maxWidth,
 });

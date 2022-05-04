@@ -2,10 +2,11 @@ import { FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
 import { Label, LocalizedString, BoxType } from "..";
 import { Column, Columns, BentoSprinkles, bentoSprinkles } from "../internal";
-import { chip, ellipsedLabel } from "./Chip.css";
+import { chip, ellipsedLabel, maxWidth } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { ChipConfig } from "./Config";
+import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 type DismissProps =
   | {
@@ -33,7 +34,8 @@ type Props<CustomColor extends string> = {
   label: LocalizedString;
   color: DefaultColor | CustomColor;
   icon?: FunctionComponent<IconProps>;
-  maxWidth?: number;
+  /** Truncate and show ellipsis after a number of characters */
+  maxCharacters?: number;
 } & DismissProps;
 
 const defaultColorsMapping: Record<DefaultColor, BentoSprinkles["background"]> = {
@@ -65,22 +67,28 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
     color,
     label: _label,
     icon,
-    maxWidth,
+    maxCharacters,
     ...dismissProps
   }: Props<CustomColors>) {
     const { defaultMessages } = useDefaultMessages();
 
-    const label = maxWidth ? (
-      // NOTE: without this display={undefined} we get a compile error. Not sure why :\
-      <Box display={undefined} as="span" className={ellipsedLabel} title={_label}>
-        {_label}
-      </Box>
-    ) : (
-      _label
-    );
+    const label =
+      maxCharacters != null ? (
+        <Box
+          as="span"
+          display="inline-block"
+          className={ellipsedLabel}
+          title={_label}
+          style={assignInlineVars({ [maxWidth]: `${maxCharacters}ch` })}
+        >
+          {_label}
+        </Box>
+      ) : (
+        _label
+      );
 
     return (
-      <Box display="flex" style={{ maxWidth }}>
+      <Box display="flex">
         <Box
           paddingX={config.paddingX}
           paddingY={config.paddingY}
