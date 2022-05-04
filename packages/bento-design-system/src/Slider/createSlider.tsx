@@ -32,6 +32,7 @@ export function createSlider(config: SliderConfig) {
           </Column>
           <Box
             className={trackContainer}
+            height={config.thumbHeight}
             {...props.trackProps}
             ref={props.trackRef}
             color={undefined}
@@ -40,6 +41,10 @@ export function createSlider(config: SliderConfig) {
               className={trackInactive}
               disabled={props.disabled}
               borderRadius={config.trailRadius}
+              style={{
+                height: config.trailHeight,
+                top: (config.thumbHeight - config.trailHeight) / 2,
+              }}
             />
             <Box
               className={trackActive}
@@ -48,6 +53,8 @@ export function createSlider(config: SliderConfig) {
               disabled={props.disabled}
               borderRadius={config.trailRadius}
               style={{
+                height: config.trailHeight,
+                top: (config.thumbHeight - config.trailHeight) / 2,
                 left: props.type === "single" ? 0 : `${props.state.getThumbPercent(0) * 100}%`,
                 width:
                   props.type === "single"
@@ -118,6 +125,8 @@ export function createSlider(config: SliderConfig) {
             color={undefined}
             disabled={props.disabled}
             borderRadius={config.thumbRadius}
+            width={config.thumbWidth}
+            height={config.thumbHeight}
           >
             <VisuallyHidden>
               <input ref={inputRef} {...mergeProps(inputProps, focusProps)} />

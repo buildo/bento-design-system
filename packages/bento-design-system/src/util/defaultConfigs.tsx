@@ -488,6 +488,9 @@ export const slider: SliderConfig = {
   internalSpacing: 24,
   trailColor: "brandPrimary",
   trailRadius: "circledX",
+  trailHeight: 8,
+  thumbWidth: 24,
+  thumbHeight: 24,
   thumbRadius: 8,
 };
 
