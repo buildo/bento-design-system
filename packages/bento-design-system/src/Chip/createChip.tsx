@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
 import { Label, LocalizedString, BoxType } from "..";
 import { Column, Columns, BentoSprinkles, bentoSprinkles } from "../internal";
-import { chip } from "./Chip.css";
+import { chip, ellipsedLabel } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { ChipConfig } from "./Config";
@@ -61,24 +61,21 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
 ) {
   const colorsMapping = { ...defaultColorsMapping, ...config.customColors };
 
-  return function Chip({ color, label, icon, maxWidth, ...dismissProps }: Props<CustomColors>) {
+  return function Chip({
+    color,
+    label: _label,
+    icon,
+    maxWidth,
+    ...dismissProps
+  }: Props<CustomColors>) {
     const { defaultMessages } = useDefaultMessages();
 
-    const ellipsedLabel = maxWidth ? (
-      <Box
-        as="span"
-        style={{
-          display: "-webkit-box",
-          overflowY: "hidden",
-          textOverflow: "ellipsis",
-          WebkitLineClamp: 1,
-          WebkitBoxOrient: "vertical",
-        }}
-      >
-        {label}
+    const label = maxWidth ? (
+      <Box as="span" className={ellipsedLabel}>
+        {_label}
       </Box>
     ) : (
-      label
+      _label
     );
 
     return (
@@ -98,7 +95,7 @@ export function createChip<AtomsFn extends typeof bentoSprinkles, CustomColors e
                 </Column>
               )}
 
-              <Label size={config.labelSize}>{ellipsedLabel}</Label>
+              <Label size={config.labelSize}>{label}</Label>
             </Columns>
             {dismissProps.onDismiss && (
               <Column width="content">
