@@ -390,7 +390,7 @@ export function createTable(
   }) {
     const sectionHeaderContent = (
       <Box className={sectionHeader}>
-        <Label as="span" size="small" color="primaryInverse">
+        <Label as="span" size="small" color="primary">
           {label}
         </Label>
       </Box>
@@ -410,13 +410,13 @@ export function createTable(
             gridColumn: `1 / ${numberOfStickyColumns > 0 ? numberOfStickyColumns + 1 : -1}`,
           }}
         >
-          <Box style={{ marginRight: 8 }} background="backgroundSecondaryInverse">
+          <Box style={{ marginRight: 8 }} background="backgroundInteractiveOverlay">
             {sectionHeaderContent}
           </Box>
         </Box>
         {numberOfStickyColumns > 0 && (
           <Box
-            background="backgroundSecondaryInverse"
+            background="backgroundInteractiveOverlay"
             style={{
               gridColumn: `${numberOfStickyColumns + 1} / -1`,
             }}
