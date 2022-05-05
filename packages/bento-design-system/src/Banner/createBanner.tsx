@@ -61,7 +61,8 @@ export function createBanner(
 
     return (
       <Box
-        padding={config.padding}
+        paddingX={config.paddingX}
+        paddingY={config.paddingY}
         borderRadius={config.radius}
         className={bannerRecipe({ kind, hasOutline: config.outline })}
       >

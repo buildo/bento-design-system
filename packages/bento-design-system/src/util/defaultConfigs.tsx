@@ -81,7 +81,8 @@ export const avatar: AvatarConfig = {
 };
 
 export const banner: BannerConfig = {
-  padding: 16,
+  paddingX: 16,
+  paddingY: 16,
   titleSize: "small",
   descriptionSize: "small",
   radius: 8,
@@ -321,7 +322,8 @@ export const menu: MenuConfig = {
 };
 
 export const modal: ModalConfig = {
-  padding: 24,
+  paddingX: 24,
+  paddingY: 24,
   radius: 8,
   titleSize: "large",
   closeIcon: IconClose,
