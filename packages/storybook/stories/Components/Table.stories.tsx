@@ -17,6 +17,7 @@ import { action } from "@storybook/addon-actions";
 const { defaultExport, createStory } = createComponentStories({
   component: Table,
   args: {},
+  parameters: { actions: { argTypesRegex: "" } },
 });
 
 export default defaultExport;
@@ -201,6 +202,7 @@ const exampleData = [
 export const Simple = createStory({
   columns: exampleColumns,
   data: exampleData,
+  initialSorting: [{ id: "name" }],
 });
 
 export const Empty = createStory({
