@@ -10,6 +10,10 @@
   overflow: hidden;
   background-image: url(/img/CoverLight.svg);
   background-size: cover;
+  /* NOTE(gabro): this is to fix a 1px offset to the left that appears on iOS
+   * The fix is loosely based on https: //stackoverflow.com/a/21456799/846273
+   */
+  background-attachment: local;
 }
 
 html[data-theme="dark"] .heroBanner {
