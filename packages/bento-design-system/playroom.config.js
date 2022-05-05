@@ -4,6 +4,7 @@ const { ESBuildMinifyPlugin } = require("esbuild-loader");
 
 module.exports = {
   components: "../storybook/stories/index.tsx",
+  typeScriptFiles: ["../storybook/stories/index.tsx"],
   outputPath: "./dist/playroom",
   title: "Bento 🍱",
   widths: [320, 425, 768, 1024, 1440, 2560],
