@@ -14,6 +14,7 @@ import { SelectionControlConfig } from "../Field/Config";
 
 type Props = Omit<FieldProps<boolean>, "assistiveText"> & {
   label: Children;
+  switchPosition?: "leading" | "trailing";
 };
 
 export function createSwitch(config: SelectionControlConfig, { Field }: { Field: FieldType }) {
@@ -45,7 +46,7 @@ export function createSwitch(config: SelectionControlConfig, { Field }: { Field:
           <VisuallyHidden>
             <input {...mergeProps(inputProps, fieldProps, focusProps)} ref={ref} />
           </VisuallyHidden>
-          <Columns space={config.controlLabelSpacing}>
+          <Columns space={config.controlLabelSpacing} reverse={props.switchPosition === "trailing"}>
             <Column width="content">
               <SwitchIndicator
                 value={props.value}
