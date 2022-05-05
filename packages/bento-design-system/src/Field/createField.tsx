@@ -71,7 +71,7 @@ export function createField(
                       <Box display="inline-block" ref={ref} {...props}>
                         {config.tip.icon({
                           size: config.tip.iconSize,
-                          color: disabled ? "disabled" : "interactive",
+                          color: disabled ? "disabled" : "secondary",
                         })}
                       </Box>
                     )}
