@@ -202,7 +202,7 @@ const exampleData = [
 export const Simple = createStory({
   columns: exampleColumns,
   data: exampleData,
-  defaultSorting: [{ id: "name" }],
+  initialSorting: [{ id: "name" }],
 });
 
 export const Empty = createStory({
