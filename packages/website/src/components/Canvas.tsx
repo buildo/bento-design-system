@@ -49,9 +49,7 @@ export function Canvas({
     },
   });
 
-  const componentSource = componentBodyAst ? generate(componentBodyAst).code : null;
-
-  const snippetSource = componentSource ? format(componentSource) : null;
+  const componentSource = componentBodyAst ? format(generate(componentBodyAst).code) : null;
 
   return (
     <DesignSystemProvider defaultMessages={defaultMessages}>
@@ -60,11 +58,11 @@ export function Canvas({
           <div className={styles.preview}>
             <Component />
           </div>
-          {snippetSource && (
+          {componentSource && (
             <>
               <div style={{ display: showSource ? "block" : "none" }}>
                 <CodeBlock language="jsx" className={styles.codeBlock}>
-                  {snippetSource}
+                  {componentSource}
                 </CodeBlock>
               </div>
               <div className={styles.actions}>
@@ -72,7 +70,7 @@ export function Canvas({
                   onClick={() => setShowSource((s) => !s)}
                   label={showSource ? "▲ Hide code" : "▼ View code"}
                 />
-                <OpenInPlayroom ast={ast} snippetSource={snippetSource} />
+                <OpenInPlayroom ast={ast} componentSource={componentSource} />
               </div>
             </>
           )}
@@ -100,7 +98,7 @@ function format(source: string): string {
     .replace(/;/g, "");
 }
 
-function OpenInPlayroom({ snippetSource, ast }: { snippetSource: string; ast: Node }) {
+function OpenInPlayroom({ componentSource, ast }: { componentSource: string; ast: Node }) {
   const useStateStatements = [] as VariableDeclaration[];
 
   traverse(ast, {
@@ -122,8 +120,8 @@ function OpenInPlayroom({ snippetSource, ast }: { snippetSource: string; ast: No
     },
   });
 
-  const playroomSource = snippetSource
-    ? generatePlayroomSource(snippetSource, useStateStatements)
+  const playroomSource = componentSource
+    ? generatePlayroomSource(componentSource, useStateStatements)
     : null;
 
   return playroomSource != null ? (
