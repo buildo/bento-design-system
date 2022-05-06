@@ -1,5 +1,6 @@
 import * as React from "react";
 import useGlobalData from "@docusaurus/useGlobalData";
+import ReactMarkdown from "react-markdown";
 
 export const ComponentHeader = ({ name }) => {
   const description = (
@@ -7,6 +8,6 @@ export const ComponentHeader = ({ name }) => {
   ).find((x) => x.displayName === name)?.description;
 
   if (description) {
-    return description;
+    return <ReactMarkdown>{description}</ReactMarkdown>;
   } else return null;
 };
