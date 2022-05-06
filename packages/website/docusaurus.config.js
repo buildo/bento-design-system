@@ -44,6 +44,13 @@ const config = {
               Buffer: ["buffer", "Buffer"],
             }),
           ],
+          resolve: {
+            // Necessary for @babel/standlone to work
+            fallback: {
+              path: false,
+              fs: false,
+            },
+          },
         };
       },
     }),

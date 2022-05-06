@@ -1,6 +1,7 @@
 import CodeBlock from "@theme/CodeBlock";
 import * as React from "react";
-import { Expression } from "@babel/types";
+import { Expression, VariableDeclaration } from "@babel/types";
+import { transform, registerPlugin } from "@babel/standalone";
 import { parse } from "@babel/parser";
 import traverse from "@babel/traverse";
 import generate from "@babel/generator";
@@ -11,6 +12,7 @@ import { DesignSystemProvider } from "../snippets";
 import { defaultMessages } from "../snippets/defaultMessages";
 import { createUrl } from "playroom/utils";
 import styles from "./Canvas.module.css";
+import babelPresetTypescript from "@babel/preset-typescript";
 
 export function Canvas({
   path,
@@ -39,22 +41,36 @@ export function Canvas({
     plugins: ["jsx", "typescript"],
   });
   let componentBodyAst: Expression | null | undefined = null;
+  const useStateStatements = [] as VariableDeclaration[];
   traverse(ast, {
     enter(path) {
       if (path.node.type === "ReturnStatement") {
         componentBodyAst = path.node.argument;
       }
+      if (path.node.type === "VariableDeclaration") {
+        const isUseStateDeclaration = path.node.declarations.some(
+          (d) =>
+            d.init?.type === "CallExpression" &&
+            d.init.callee.type === "MemberExpression" &&
+            d.init.callee.object.type === "Identifier" &&
+            d.init.callee.object.name === "React" &&
+            d.init.callee.property.type === "Identifier" &&
+            d.init.callee.property.name === "useState"
+        );
+        if (isUseStateDeclaration) {
+          useStateStatements.push(path.node);
+        }
+      }
     },
   });
 
-  let source: string | null = null;
-  if (componentBodyAst) {
-    source = prettier.format(generate(componentBodyAst).code, {
-      parser: "typescript",
-      plugins: [parserTypeScript],
-      jsxSingleQuote: false,
-    });
-  }
+  const componentSource = componentBodyAst ? generate(componentBodyAst).code : null;
+
+  const snippetSource = componentSource ? format(componentSource) : null;
+
+  const playroomSource = snippetSource
+    ? generatePlayroomSource(snippetSource, useStateStatements)
+    : null;
 
   return (
     <DesignSystemProvider defaultMessages={defaultMessages}>
@@ -63,10 +79,10 @@ export function Canvas({
           <div className={styles.preview}>
             <Component />
           </div>
-          {source && (
+          {snippetSource && (
             <div style={{ display: showSource ? "block" : "none" }}>
               <CodeBlock language="jsx" className={styles.codeBlock}>
-                {source}
+                {snippetSource}
               </CodeBlock>
             </div>
           )}
@@ -75,11 +91,11 @@ export function Canvas({
               onClick={() => setShowSource((s) => !s)}
               label={showSource ? "▲ Hide code" : "▼ View code"}
             />
-            {source && (
+            {playroomSource && (
               <ActionButton
                 onClick={() => {
                   const url = createUrl({
-                    code: source!,
+                    code: playroomSource,
                     baseUrl: "https://playroom.bento.buildo.io",
                   });
                   window.open(url, "_blank");
@@ -100,4 +116,44 @@ function ActionButton({ onClick, label }: { onClick: () => void; label: string }
       {label}
     </button>
   );
+}
+
+function format(source: string): string {
+  return prettier
+    .format(source, {
+      parser: "typescript",
+      plugins: [parserTypeScript],
+      jsxSingleQuote: false,
+    })
+    .replace(/;/g, "");
+}
+
+function generatePlayroomSource(
+  snippetSource: string,
+  useStateStatements: VariableDeclaration[]
+): string | null {
+  let tsSource: string;
+  if (useStateStatements.length > 0) {
+    const useStateDeclarationsSource = useStateStatements.map((s) => generate(s).code).join("\n");
+    tsSource = `
+      {(() => {
+        ${useStateDeclarationsSource};
+
+        return ${snippetSource};
+      })()}
+  `;
+  } else {
+    tsSource = snippetSource;
+  }
+
+  const jsSource = transform(tsSource, {
+    filename: "dummy.tsx",
+    presets: [babelPresetTypescript],
+  })?.code;
+
+  if (jsSource) {
+    return format(jsSource);
+  } else {
+    return null;
+  }
 }
