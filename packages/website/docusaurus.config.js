@@ -32,25 +32,30 @@ const config = {
   plugins: [
     () => ({
       name: "webpack-config-plugin",
-      configureWebpack(config) {
+      configureWebpack(_config, isServer) {
         return {
           mergeStrategy: {
             plugins: "append",
+            resolve: "append",
           },
-          plugins: [
-            // These plugins are needed to make @babel/generate work in browser
-            new ProvidePlugin({ process: "process/browser" }),
-            new ProvidePlugin({
-              Buffer: ["buffer", "Buffer"],
-            }),
-          ],
-          resolve: {
-            // Necessary for @babel/standlone to work
-            fallback: {
-              path: false,
-              fs: false,
-            },
-          },
+          plugins: isServer
+            ? undefined
+            : [
+                // These plugins are needed to make @babel/generate work in browser
+                new ProvidePlugin({ process: "process/browser" }),
+                new ProvidePlugin({
+                  Buffer: ["buffer", "Buffer"],
+                }),
+              ],
+          resolve: isServer
+            ? undefined
+            : {
+                // Necessary for @babel/standlone to work
+                fallback: {
+                  path: false,
+                  fs: false,
+                },
+              },
         };
       },
     }),

@@ -1,7 +1,7 @@
 import CodeBlock from "@theme/CodeBlock";
 import * as React from "react";
-import { Expression, VariableDeclaration } from "@babel/types";
-import { transform, registerPlugin } from "@babel/standalone";
+import { Expression, VariableDeclaration, Node } from "@babel/types";
+import { transform } from "@babel/standalone";
 import { parse } from "@babel/parser";
 import traverse from "@babel/traverse";
 import generate from "@babel/generator";
@@ -41,25 +41,10 @@ export function Canvas({
     plugins: ["jsx", "typescript"],
   });
   let componentBodyAst: Expression | null | undefined = null;
-  const useStateStatements = [] as VariableDeclaration[];
   traverse(ast, {
     enter(path) {
       if (path.node.type === "ReturnStatement") {
         componentBodyAst = path.node.argument;
-      }
-      if (path.node.type === "VariableDeclaration") {
-        const isUseStateDeclaration = path.node.declarations.some(
-          (d) =>
-            d.init?.type === "CallExpression" &&
-            d.init.callee.type === "MemberExpression" &&
-            d.init.callee.object.type === "Identifier" &&
-            d.init.callee.object.name === "React" &&
-            d.init.callee.property.type === "Identifier" &&
-            d.init.callee.property.name === "useState"
-        );
-        if (isUseStateDeclaration) {
-          useStateStatements.push(path.node);
-        }
       }
     },
   });
@@ -67,10 +52,6 @@ export function Canvas({
   const componentSource = componentBodyAst ? generate(componentBodyAst).code : null;
 
   const snippetSource = componentSource ? format(componentSource) : null;
-
-  const playroomSource = snippetSource
-    ? generatePlayroomSource(snippetSource, useStateStatements)
-    : null;
 
   return (
     <DesignSystemProvider defaultMessages={defaultMessages}>
@@ -80,30 +61,21 @@ export function Canvas({
             <Component />
           </div>
           {snippetSource && (
-            <div style={{ display: showSource ? "block" : "none" }}>
-              <CodeBlock language="jsx" className={styles.codeBlock}>
-                {snippetSource}
-              </CodeBlock>
-            </div>
+            <>
+              <div style={{ display: showSource ? "block" : "none" }}>
+                <CodeBlock language="jsx" className={styles.codeBlock}>
+                  {snippetSource}
+                </CodeBlock>
+              </div>
+              <div className={styles.actions}>
+                <ActionButton
+                  onClick={() => setShowSource((s) => !s)}
+                  label={showSource ? "▲ Hide code" : "▼ View code"}
+                />
+                <OpenInPlayroom ast={ast} snippetSource={snippetSource} />
+              </div>
+            </>
           )}
-          <div className={styles.actions}>
-            <ActionButton
-              onClick={() => setShowSource((s) => !s)}
-              label={showSource ? "▲ Hide code" : "▼ View code"}
-            />
-            {playroomSource && (
-              <ActionButton
-                onClick={() => {
-                  const url = createUrl({
-                    code: playroomSource,
-                    baseUrl: "https://playroom.bento.buildo.io",
-                  });
-                  window.open(url, "_blank");
-                }}
-                label="▶️ Open in Playroom"
-              />
-            )}
-          </div>
         </div>
       </Suspense>
     </DesignSystemProvider>
@@ -126,6 +98,46 @@ function format(source: string): string {
       jsxSingleQuote: false,
     })
     .replace(/;/g, "");
+}
+
+function OpenInPlayroom({ snippetSource, ast }: { snippetSource: string; ast: Node }) {
+  const useStateStatements = [] as VariableDeclaration[];
+
+  traverse(ast, {
+    enter(path) {
+      if (path.node.type === "VariableDeclaration") {
+        const isUseStateDeclaration = path.node.declarations.some(
+          (d) =>
+            d.init?.type === "CallExpression" &&
+            d.init.callee.type === "MemberExpression" &&
+            d.init.callee.object.type === "Identifier" &&
+            d.init.callee.object.name === "React" &&
+            d.init.callee.property.type === "Identifier" &&
+            d.init.callee.property.name === "useState"
+        );
+        if (isUseStateDeclaration) {
+          useStateStatements.push(path.node);
+        }
+      }
+    },
+  });
+
+  const playroomSource = snippetSource
+    ? generatePlayroomSource(snippetSource, useStateStatements)
+    : null;
+
+  return playroomSource != null ? (
+    <ActionButton
+      onClick={() => {
+        const url = createUrl({
+          code: playroomSource,
+          baseUrl: "https://playroom.bento.buildo.io",
+        });
+        window.open(url, "_blank");
+      }}
+      label="▶️ Open in Playroom"
+    />
+  ) : null;
 }
 
 function generatePlayroomSource(
