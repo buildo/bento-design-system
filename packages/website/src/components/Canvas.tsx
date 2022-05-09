@@ -1,6 +1,7 @@
 import CodeBlock from "@theme/CodeBlock";
 import * as React from "react";
-import { Expression } from "@babel/types";
+import { Expression, VariableDeclaration, Node } from "@babel/types";
+import { transform } from "@babel/standalone";
 import { parse } from "@babel/parser";
 import traverse from "@babel/traverse";
 import generate from "@babel/generator";
@@ -11,6 +12,7 @@ import { DesignSystemProvider } from "../snippets";
 import { defaultMessages } from "../snippets/defaultMessages";
 import { createUrl } from "playroom/utils";
 import styles from "./Canvas.module.css";
+import babelPresetTypescript from "@babel/preset-typescript";
 
 export function Canvas({
   path,
@@ -47,14 +49,7 @@ export function Canvas({
     },
   });
 
-  let source: string | null = null;
-  if (componentBodyAst) {
-    source = prettier.format(generate(componentBodyAst).code, {
-      parser: "typescript",
-      plugins: [parserTypeScript],
-      jsxSingleQuote: false,
-    });
-  }
+  const componentSource = componentBodyAst ? format(generate(componentBodyAst).code) : null;
 
   return (
     <DesignSystemProvider defaultMessages={defaultMessages}>
@@ -63,31 +58,22 @@ export function Canvas({
           <div className={styles.preview}>
             <Component />
           </div>
-          {source && (
-            <div style={{ display: showSource ? "block" : "none" }}>
-              <CodeBlock language="jsx" className={styles.codeBlock}>
-                {source}
-              </CodeBlock>
-            </div>
+          {componentSource && (
+            <>
+              <div style={{ display: showSource ? "block" : "none" }}>
+                <CodeBlock language="jsx" className={styles.codeBlock}>
+                  {componentSource}
+                </CodeBlock>
+              </div>
+              <div className={styles.actions}>
+                <ActionButton
+                  onClick={() => setShowSource((s) => !s)}
+                  label={showSource ? "▲ Hide code" : "▼ View code"}
+                />
+                <OpenInPlayroom ast={ast} componentSource={componentSource} />
+              </div>
+            </>
           )}
-          <div className={styles.actions}>
-            <ActionButton
-              onClick={() => setShowSource((s) => !s)}
-              label={showSource ? "▲ Hide code" : "▼ View code"}
-            />
-            {source && (
-              <ActionButton
-                onClick={() => {
-                  const url = createUrl({
-                    code: source!,
-                    baseUrl: "https://playroom.bento.buildo.io",
-                  });
-                  window.open(url, "_blank");
-                }}
-                label="▶️ Open in Playroom"
-              />
-            )}
-          </div>
         </div>
       </Suspense>
     </DesignSystemProvider>
@@ -100,4 +86,84 @@ function ActionButton({ onClick, label }: { onClick: () => void; label: string }
       {label}
     </button>
   );
+}
+
+function format(source: string): string {
+  return prettier
+    .format(source, {
+      parser: "typescript",
+      plugins: [parserTypeScript],
+      jsxSingleQuote: false,
+    })
+    .replace(/;/g, "");
+}
+
+function OpenInPlayroom({ componentSource, ast }: { componentSource: string; ast: Node }) {
+  const useStateStatements = [] as VariableDeclaration[];
+
+  traverse(ast, {
+    enter(path) {
+      if (path.node.type === "VariableDeclaration") {
+        const isUseStateDeclaration = path.node.declarations.some(
+          (d) =>
+            d.init?.type === "CallExpression" &&
+            d.init.callee.type === "MemberExpression" &&
+            d.init.callee.object.type === "Identifier" &&
+            d.init.callee.object.name === "React" &&
+            d.init.callee.property.type === "Identifier" &&
+            d.init.callee.property.name === "useState"
+        );
+        if (isUseStateDeclaration) {
+          useStateStatements.push(path.node);
+        }
+      }
+    },
+  });
+
+  const playroomSource = componentSource
+    ? generatePlayroomSource(componentSource, useStateStatements)
+    : null;
+
+  return playroomSource != null ? (
+    <ActionButton
+      onClick={() => {
+        const url = createUrl({
+          code: playroomSource,
+          baseUrl: "https://playroom.bento.buildo.io",
+        });
+        window.open(url, "_blank");
+      }}
+      label="▶️ Open in Playroom"
+    />
+  ) : null;
+}
+
+function generatePlayroomSource(
+  snippetSource: string,
+  useStateStatements: VariableDeclaration[]
+): string | null {
+  let tsSource: string;
+  if (useStateStatements.length > 0) {
+    const useStateDeclarationsSource = useStateStatements.map((s) => generate(s).code).join("\n");
+    tsSource = `
+      {(() => {
+        ${useStateDeclarationsSource};
+
+        return ${snippetSource};
+      })()}
+  `;
+  } else {
+    tsSource = snippetSource;
+  }
+
+  const jsSource = transform(tsSource, {
+    filename: "dummy.tsx",
+    presets: [babelPresetTypescript],
+  })?.code;
+
+  if (jsSource) {
+    return format(jsSource);
+  } else {
+    return null;
+  }
 }
