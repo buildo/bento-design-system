@@ -82,7 +82,7 @@ export function createContentWithSidebar<AtomsFn extends typeof bentoSprinkles>(
         };
       }
 
-      const { desktop, tablet, mobile } = sidebarWidth
+      const { wide, desktop, tablet, mobile } = sidebarWidth
         ? normalizeResponsiveValue(
             sidebarWidth as OptionalResponsiveValue<keyof typeof desktopWidths>
           )
