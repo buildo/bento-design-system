@@ -41,7 +41,7 @@ export function createContentWithSidebar<AtomsFn extends typeof bentoSprinkles>(
      */
     sidebarWidth: ComponentProps<typeof Column>["width"] | { custom: string | number };
     /**
-     * Horizontal space between the content and the sidebar. Defaults to no content.
+     * Horizontal space between the content and the sidebar. Defaults to no space.
      */
     space?: BoxProps<AtomsFn>["gap"];
     /**
