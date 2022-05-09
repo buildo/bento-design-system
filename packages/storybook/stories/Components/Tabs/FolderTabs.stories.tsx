@@ -1,5 +1,5 @@
 import { createComponentStories, formatMessage } from "../../util";
-import { IconInformative, IconNegative, FolderTabs } from "../..";
+import { IconInformative, IconNegative, FolderTabs, Chip } from "../..";
 
 const { defaultExport, createControlledStory } = createComponentStories({
   component: FolderTabs,
@@ -32,6 +32,13 @@ export const medium = createControlledStory("tab1", {
       value: "tab4",
       icon: IconInformative,
       hasNotification: true,
+      rightAccessory: <Chip color="blue" label={formatMessage("A")} />,
+    },
+    {
+      label: formatMessage("Tab 5"),
+      value: "tab5",
+      icon: IconInformative,
+      rightAccessory: <Chip color="blue" label={formatMessage("A")} />,
     },
   ],
 });

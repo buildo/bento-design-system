@@ -18,6 +18,7 @@ type Props<A> = {
     disabled?: boolean;
     icon?: (props: IconProps) => Children;
     hasNotification?: boolean;
+    rightAccessory?: Children;
   }>;
 };
 
@@ -30,8 +31,18 @@ export function createTabs(config: TabsConfig) {
     disabled?: boolean;
     icon?: (props: IconProps) => Children;
     hasNotification?: boolean;
+    rightAccessory?: Children;
   };
-  function Tab({ size, active, onPress, label, disabled, icon, hasNotification }: TabProps) {
+  function Tab({
+    size,
+    active,
+    onPress,
+    label,
+    disabled,
+    icon,
+    hasNotification,
+    rightAccessory,
+  }: TabProps) {
     const {
       pressProps: { color: ignored1, ...pressProps },
     } = usePress({ onPress, isDisabled: disabled });
@@ -60,9 +71,12 @@ export function createTabs(config: TabsConfig) {
           {icon && (
             <Column width="content">{icon({ size: config.iconSize, color: "inherit" })}</Column>
           )}
-          <Label size={config.labelSize[size]} uppercase={config.uppercaseLabel}>
-            {label}
-          </Label>
+          <Column width="content">
+            <Label size={config.labelSize[size]} uppercase={config.uppercaseLabel}>
+              {label}
+            </Label>
+          </Column>
+          {rightAccessory}
           {hasNotification && (
             <Column width="content">
               <Box
@@ -101,6 +115,7 @@ export function createTabs(config: TabsConfig) {
                 disabled={t.disabled}
                 icon={t.icon}
                 hasNotification={t.hasNotification}
+                rightAccessory={t.rightAccessory}
               />
             </Column>
           ))}
