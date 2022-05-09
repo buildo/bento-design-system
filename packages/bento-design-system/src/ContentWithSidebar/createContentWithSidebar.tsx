@@ -15,32 +15,35 @@ export function createContentWithSidebar<AtomsFn extends typeof bentoSprinkles>(
   type Props = {
     children: [Children, Children];
     space?: BoxProps<AtomsFn>["gap"];
-    sidebar: {
-      background?: BoxProps<AtomsFn>["background"];
-      width: ComponentProps<typeof Column>["width"] | { custom: string | number };
-      as?: BoxProps<AtomsFn>["as"];
-    };
-    content?: {
-      as?: BoxProps<AtomsFn>["as"];
-    };
+    sidebarBackground?: BoxProps<AtomsFn>["background"];
+    sidebarWidth?: ComponentProps<typeof Column>["width"] | { custom: string | number };
+    sidebarAs?: BoxProps<AtomsFn>["as"];
+    contentAs?: BoxProps<AtomsFn>["as"];
   };
 
-  return function ContentWithSidebar({ space, children, content, sidebar }: Props) {
+  return function ContentWithSidebar({
+    space,
+    children,
+    sidebarWidth,
+    sidebarBackground,
+    sidebarAs,
+    contentAs,
+  }: Props) {
     const sidebarProps = (() => {
-      if (typeof sidebar.width === "object" && "custom" in sidebar.width && sidebar.width.custom) {
+      if (typeof sidebarWidth === "object" && "custom" in sidebarWidth && sidebarWidth.custom) {
         return {
-          style: { width: sidebar.width.custom },
+          style: { width: sidebarWidth.custom },
         };
       }
 
-      const sidebarWidth = sidebar.width as OptionalResponsiveValue<keyof typeof desktopWidths>;
-
       const { desktop, tablet, mobile } = sidebarWidth
-        ? normalizeResponsiveValue(sidebarWidth)
+        ? normalizeResponsiveValue(
+            sidebarWidth as OptionalResponsiveValue<keyof typeof desktopWidths>
+          )
         : { desktop: undefined, tablet: undefined, mobile: undefined };
 
       const className =
-        sidebar.width == null
+        sidebarWidth == null
           ? fullWidth
           : [
               desktop && desktopWidths[desktop],
@@ -53,10 +56,10 @@ export function createContentWithSidebar<AtomsFn extends typeof bentoSprinkles>(
 
     return (
       <Box display="flex" height="full" gap={space}>
-        <Box as={content?.as ?? "main"} flex={1}>
+        <Box as={contentAs ?? "main"} flex={1}>
           {children[0]}
         </Box>
-        <Box as={content?.as ?? "aside"} background={sidebar.background} {...sidebarProps}>
+        <Box as={sidebarAs ?? "aside"} background={sidebarBackground} {...sidebarProps}>
           {children[1]}
         </Box>
       </Box>
