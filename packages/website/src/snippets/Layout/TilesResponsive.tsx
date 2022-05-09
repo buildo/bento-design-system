@@ -4,8 +4,8 @@ import { Columns, Placeholder, Tiles } from "..";
 export default function TilesResponsive() {
   return (
     <Tiles
-      space={{ mobile: 8, tablet: 16, desktop: 32 }}
-      columns={{ mobile: 1, tablet: 2, desktop: 4 }}
+      space={{ mobile: 8, tablet: 16, desktop: 32, wide: 32 }}
+      columns={{ mobile: 1, tablet: 2, desktop: 4, wide: 6 }}
     >
       <Placeholder />
       <Placeholder />

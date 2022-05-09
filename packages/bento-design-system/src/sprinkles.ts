@@ -31,7 +31,7 @@ export function createDefineBentoSprinklesFn() {
 
     const responsiveStyles = defineProperties({
       conditions: breakpoints,
-      defaultCondition: "desktop",
+      defaultCondition: "wide",
       properties: responsiveProperties,
       shorthands: {
         inset: ["top", "right", "bottom", "left"],

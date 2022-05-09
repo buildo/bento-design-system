@@ -92,7 +92,7 @@ export const responsiveReverse = createStory(
   {
     children: [
       <Placeholder background="brandPrimary" />,
-      <Column width={{ desktop: "content", tablet: "full", mobile: "full" }}>
+      <Column width={{ wide: "content", desktop: "content", tablet: "full", mobile: "full" }}>
         <Placeholder label="sidebar" background="brandSecondary" />
       </Column>,
     ],

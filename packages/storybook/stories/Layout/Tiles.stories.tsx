@@ -28,13 +28,15 @@ export const threeColumns = createStory({
 });
 
 export const responsive = createStory({
-  space: { mobile: 8, tablet: 16, desktop: 32 },
-  columns: { mobile: 1, tablet: 2, desktop: 4 },
+  space: { mobile: 8, tablet: 16, desktop: 32, wide: 32 },
+  columns: { mobile: 1, tablet: 2, desktop: 4, wide: 6 },
   children: [
     <Placeholder key={1} />,
     <Placeholder key={2} />,
     <Placeholder key={3} />,
     <Placeholder key={4} />,
+    <Placeholder key={5} />,
+    <Placeholder key={6} />,
   ],
 });
 

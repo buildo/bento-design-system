@@ -18,25 +18,28 @@ export function responsiveCollapsibleAlignmentProps({
   BentoSprinkles,
   "flexDirection" | "justifyContent" | "alignItems"
 > {
-  const [collapseMobile, collapseTablet] = (() => {
+  const [collapseMobile, collapseTablet, collapseDesktop] = (() => {
     switch (collapseBelow) {
+      case "wide":
+        return [true, true, true];
       case "desktop":
-        return [true, true];
+        return [true, true, false];
       case "tablet":
-        return [true, false];
+        return [true, false, false];
       case undefined:
-        return [false, false];
+        return [false, false, false];
     }
   })();
 
   const normalizedReverse = (() => {
     if (typeof reverse === "boolean") {
-      return { desktop: reverse, tablet: reverse, mobile: reverse };
+      return { wide: reverse, desktop: reverse, tablet: reverse, mobile: reverse };
     }
     return reverse || {};
   })();
 
   const {
+    wide: reverseWide,
     desktop: reverseDesktop,
     tablet: reverseTablet = reverseDesktop,
     mobile: reverseMobile = reverseTablet,
@@ -44,14 +47,16 @@ export function responsiveCollapsibleAlignmentProps({
 
   const normalizedAlign = normalizeResponsiveValue(alignToFlexAlign(align) || "flexStart");
   const {
-    desktop: justifyContentDesktop,
+    wide: justifyContentWide,
+    desktop: justifyContentDesktop = justifyContentWide,
     tablet: justifyContentTablet = justifyContentDesktop,
     mobile: justifyContentMobile = justifyContentTablet,
   } = normalizedAlign;
 
   const normalizedAlignY = normalizeResponsiveValue(alignYToFlexAlign(alignY) || "flexStart");
   const {
-    desktop: alignItemsDesktop,
+    wide: alignItemsWide,
+    desktop: alignItemsDesktop = alignItemsWide,
     tablet: alignItemsTablet = alignItemsDesktop,
     mobile: alignItemsMobile = alignItemsTablet,
   } = normalizedAlignY;
@@ -72,7 +77,14 @@ export function responsiveCollapsibleAlignmentProps({
         : reverseTablet
         ? "rowReverse"
         : "row",
-      desktop: reverseDesktop ? "rowReverse" : "row",
+      desktop: collapseDesktop
+        ? reverseDesktop
+          ? "columnReverse"
+          : "column"
+        : reverseDesktop
+        ? "rowReverse"
+        : "row",
+      wide: reverseWide ? "rowReverse" : "row",
     },
     justifyContent: {
       mobile: collapseMobile
@@ -89,12 +101,20 @@ export function responsiveCollapsibleAlignmentProps({
         : reverseTablet
         ? invertAlignment(justifyContentTablet)
         : justifyContentTablet,
-      desktop: reverseDesktop ? invertAlignment(justifyContentDesktop) : justifyContentDesktop,
+      desktop: collapseDesktop
+        ? alignItemsDesktop === "stretch"
+          ? undefined
+          : alignItemsDesktop
+        : reverseDesktop
+        ? invertAlignment(justifyContentDesktop)
+        : justifyContentDesktop,
+      wide: reverseWide ? invertAlignment(justifyContentWide) : justifyContentWide,
     },
     alignItems: {
       mobile: collapseMobile ? justifyContentMobile : alignItemsMobile,
       tablet: collapseTablet ? justifyContentTablet : alignItemsTablet,
-      desktop: alignItemsDesktop,
+      desktop: collapseDesktop ? justifyContentDesktop : alignItemsDesktop,
+      wide: alignItemsWide,
     },
   };
 }
