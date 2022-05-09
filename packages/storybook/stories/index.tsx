@@ -86,7 +86,7 @@ export const {
   Switch,
   Table,
   tableColumn,
-  Tabs: FolderTabs,
+  Tabs,
   Tiles,
   Title,
   Toast,
@@ -123,4 +123,5 @@ export const {
   },
 });
 
+export const FolderTabs = Tabs;
 export const UnderlineTabs = createTabs(defaultConfigs.underlineTabs);
