@@ -1,21 +1,26 @@
 import { Body, Box, ContentWithSidebar } from "..";
 import { createComponentStories, formatMessage } from "../util";
 
+const content = (
+  <Box display="flex" height="full" justifyContent="center" alignItems="center">
+    <Body key="main" size="large">
+      {formatMessage("Main content")}
+    </Body>
+  </Box>
+);
+
+const sidebar = (
+  <Box display="flex" height="full" justifyContent="center" alignItems="center">
+    <Body key="sidebar" size="large">
+      {formatMessage("Sidebar")}
+    </Body>
+  </Box>
+);
+
 const { defaultExport, createStory } = createComponentStories({
   component: ContentWithSidebar,
   args: {
-    children: [
-      <Box display="flex" height="full" justifyContent="center" alignItems="center">
-        <Body key="main" size="large">
-          {formatMessage("Main content")}
-        </Body>
-      </Box>,
-      <Box display="flex" height="full" justifyContent="center" alignItems="center">
-        <Body key="sidebar" size="large">
-          {formatMessage("Sidebar")}
-        </Body>
-      </Box>,
-    ],
+    children: [content, sidebar],
   },
   decorators: [
     (Story: React.ComponentType) => (
@@ -47,4 +52,5 @@ export const LeftSidebar = createStory({
   sidebarPosition: "left",
   sidebarWidth: "1/5",
   sidebarBackground: "backgroundOverlay",
+  children: [sidebar, content],
 });

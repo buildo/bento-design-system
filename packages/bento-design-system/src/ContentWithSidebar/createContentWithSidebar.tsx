@@ -68,10 +68,10 @@ export function createContentWithSidebar<AtomsFn extends typeof bentoSprinkles>(
     return (
       <Box display="flex" height="full" gap={space} flexDirection={flexDirection}>
         <Box as={contentAs ?? "main"} flex={1}>
-          {children[0]}
+          {sidebarPosition === "left" ? children[1] : children[0]}
         </Box>
         <Box as={sidebarAs ?? "aside"} background={sidebarBackground} {...sidebarProps}>
-          {children[1]}
+          {sidebarPosition === "left" ? children[0] : children[1]}
         </Box>
       </Box>
     );
