@@ -24,3 +24,7 @@ version-resolver:
     labels:
       - 'breaking'
   default: patch
+replacers:
+  - search: '@renovate'
+    replace: '@renovate-bot'
+
