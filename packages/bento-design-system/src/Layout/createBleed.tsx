@@ -22,6 +22,7 @@ export function createBleed<AtomsFn extends typeof bentoSprinkles>(Box: BoxType<
       return `negative${space}`;
     } else if (!!space) {
       return {
+        wide: space.wide ? `negative${space.wide}` : undefined,
         desktop: space.desktop ? `negative${space.desktop}` : undefined,
         tablet: space.tablet ? `negative${space.tablet}` : undefined,
         mobile: space.mobile ? `negative${space.mobile}` : undefined,

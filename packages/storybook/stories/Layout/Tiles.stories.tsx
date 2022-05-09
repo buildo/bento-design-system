@@ -28,8 +28,8 @@ export const threeColumns = createStory({
 });
 
 export const responsive = createStory({
-  space: { mobile: 8, tablet: 16, desktop: 32 },
-  columns: { mobile: 1, tablet: 2, desktop: 4 },
+  space: { mobile: 8, tablet: 16, desktop: 32, wide: 32 },
+  columns: { mobile: 1, tablet: 2, desktop: 4, wide: 4 },
   children: [
     <Placeholder key={1} />,
     <Placeholder key={2} />,

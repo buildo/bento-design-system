@@ -12,28 +12,29 @@ import {
   CollapsibleAlignmentProps,
   responsiveCollapsibleAlignmentProps,
 } from "../util/collapsible";
-import { desktopWidths, tabletWidths, mobileWidths, fullWidth } from "./Column.css";
+import { wideWidths, desktopWidths, tabletWidths, mobileWidths, fullWidth } from "./Column.css";
 
 export function createColumns<AtomsFn extends typeof bentoSprinkles>(Box: BoxType<AtomsFn>) {
   type ResponsiveSpace = BoxProps<AtomsFn>["gap"];
 
   type ColumnProps = {
     children: Children;
-    width?: OptionalResponsiveValue<keyof typeof desktopWidths>;
+    width?: OptionalResponsiveValue<keyof typeof wideWidths>;
     sticky?: {
       top: BoxProps<AtomsFn>["top"];
     };
   };
 
   function Column({ children, width, sticky }: ColumnProps) {
-    const { desktop, tablet, mobile } = width
+    const { wide, desktop, tablet, mobile } = width
       ? normalizeResponsiveValue(width)
-      : { desktop: undefined, tablet: undefined, mobile: undefined };
+      : { wide: undefined, desktop: undefined, tablet: undefined, mobile: undefined };
 
     const className =
       width == null
         ? fullWidth
         : [
+            wide && wideWidths[wide],
             desktop && desktopWidths[desktop],
             tablet && tabletWidths[tablet],
             mobile && mobileWidths[mobile],

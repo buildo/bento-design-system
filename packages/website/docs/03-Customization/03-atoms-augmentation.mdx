@@ -85,7 +85,7 @@ export const { sprinkles } = defineBentoSprinkles(
 Bento defines 3 different sets of properties: `unconditionalProperties`, `responsiveProperties` and `statusProperties`:
 
 - `unconditionalProperties` are CSS properties that don't depend on any condition;
-- `responsiveProperties` are CSS properties whose value can be set based on the current breakpoint (mobile, tablet, desktop);
+- `responsiveProperties` are CSS properties whose value can be set based on the current breakpoint (mobile, tablet, desktop, wide);
 - `statusProperties` are CSS properties that can be set per-status (default, hover, focus, active, disabled).
 
 The `background` CSS property is part of the statusProperties, since we can specify a different background color based on the current status. For example, we can specify different colors for the default and hover state in this way:

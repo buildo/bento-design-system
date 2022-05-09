@@ -1,6 +1,6 @@
 import flattenChildren from "react-keyed-flatten-children";
 import { Children } from "..";
-import { mobileColumns, tabletColumns, desktopColumns } from "./Tiles.css";
+import { mobileColumns, tabletColumns, desktopColumns, wideColumns } from "./Tiles.css";
 import { ResponsiveAlignY, alignYToFlexAlign } from "../util/align";
 import { bentoSprinkles } from "../internal";
 import { BoxProps, BoxType } from "../Box/createBentoBox";
@@ -16,8 +16,9 @@ export function createTiles<AtomsFn extends typeof bentoSprinkles>(Box: BoxType<
     alignY?: ResponsiveAlignY;
   };
   return function Tiles({ space, columns, alignY, children }: Props) {
-    const { desktop, tablet, mobile } = normalizeResponsiveValue(columns);
+    const { wide, desktop, tablet, mobile } = normalizeResponsiveValue(columns);
     const className = [
+      wide && wideColumns[wide],
       desktop && desktopColumns[desktop],
       tablet && tabletColumns[tablet],
       mobile && mobileColumns[mobile],

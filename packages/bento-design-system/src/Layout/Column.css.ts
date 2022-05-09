@@ -28,8 +28,9 @@ const widths = {
 const makeWidthVariants = (breakpoint: Breakpoint) =>
   styleVariants(widths, (widthStyle) => {
     switch (breakpoint) {
-      case "desktop":
+      case "wide":
         return widthStyle;
+      case "desktop":
       case "tablet":
       case "mobile":
         return {
@@ -40,6 +41,7 @@ const makeWidthVariants = (breakpoint: Breakpoint) =>
     }
   });
 
+export const wideWidths = makeWidthVariants("wide");
 export const desktopWidths = makeWidthVariants("desktop");
 export const tabletWidths = makeWidthVariants("tablet");
 export const mobileWidths = makeWidthVariants("mobile");

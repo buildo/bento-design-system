@@ -127,7 +127,7 @@ export function createActions(
                 error && <Banner kind="negative" description={error} />
               )}
             </Column>
-            <Inline space={0} align={{ desktop: "right", mobile: "left" }} alignY="center">
+            <Inline space={0} align={{ wide: "right", mobile: "left" }} alignY="center">
               {buttons[1]}
             </Inline>
           </Columns>

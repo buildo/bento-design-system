@@ -16,8 +16,9 @@ const makeColumnVariants = (breakpoint: Breakpoint) =>
     const styleRule: StyleRule = { gridTemplateColumns: columnTemplate };
 
     switch (breakpoint) {
-      case "desktop":
+      case "wide":
         return styleRule;
+      case "desktop":
       case "tablet":
       case "mobile":
         return {
@@ -28,6 +29,7 @@ const makeColumnVariants = (breakpoint: Breakpoint) =>
     }
   });
 
+export const wideColumns = makeColumnVariants("wide");
 export const desktopColumns = makeColumnVariants("desktop");
 export const tabletColumns = makeColumnVariants("tablet");
 export const mobileColumns = makeColumnVariants("mobile");
