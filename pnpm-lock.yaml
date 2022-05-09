@@ -212,7 +212,7 @@ importers:
       '@storybook/manager-webpack5': ^6.4.22
       '@storybook/react': 6.4.20
       '@storybook/testing-library': 0.0.11
-      '@types/lodash.orderby': 4.6.6
+      '@types/lodash.orderby': 4.6.7
       '@types/react': 17.0.44
       '@types/react-table': 7.7.10
       '@vanilla-extract/babel-plugin': 1.1.5
@@ -250,7 +250,7 @@ importers:
       '@storybook/manager-webpack5': 6.4.22_9cfb82b2f961b8ed667328788cc08cee
       '@storybook/react': 6.4.20_8291580c72d4e03b649110e96d56aecb
       '@storybook/testing-library': 0.0.11_react-dom@17.0.2+react@17.0.2
-      '@types/lodash.orderby': 4.6.6
+      '@types/lodash.orderby': 4.6.7
       '@types/react': 17.0.44
       '@types/react-table': 7.7.10
       '@vanilla-extract/babel-plugin': 1.1.5
@@ -9482,8 +9482,8 @@ packages:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
     dev: true
 
-  /@types/lodash.orderby/4.6.6:
-    resolution: {integrity: sha512-wQzu6xK+bSwhu45OeMI7fjywiIZiiaBzJB8W3fwnF1SJXHoOXRLutrSnVmq4yHPOM036qsy8lx9wHQcAbXNjJw==}
+  /@types/lodash.orderby/4.6.7:
+    resolution: {integrity: sha512-GaaUBTS4RTjL8gz1ZXkwAB/defpGMOWwCG9C4HL9g81i4wghIoVVESQCUa1xRsyUBqAb5JwLbSwvL0q36rK0sA==}
     dependencies:
       '@types/lodash': 4.14.179
     dev: true
@@ -21883,7 +21883,7 @@ packages:
       serialize-javascript: 6.0.0
       source-map: 0.6.1
       terser: 5.12.0
-      webpack: 5.71.0_webpack-cli@4.9.2
+      webpack: 5.71.0
 
   /terser/4.8.0:
     resolution: {integrity: sha512-EAPipTNeWsb/3wLPeup1tVPaXfIaU68xMnVdPafIL1TV05OhASArYyIfFvnvJCNrR2NIOvDVNNTFRa+Re2MWyw==}
