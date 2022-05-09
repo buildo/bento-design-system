@@ -46,7 +46,7 @@ export function createBentoProvider(ToastProvider: FunctionComponent<ToastProvid
 
     return (
       <I18nProvider locale={locale}>
-        <OverlayProvider>
+        <OverlayProvider style={{ height: "100%" }}>
           <DefaultMessagesContext.Provider value={{ defaultMessages }}>
             <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
               <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>

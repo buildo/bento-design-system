@@ -11,6 +11,7 @@ import {
   createButtons,
   createCard,
   createChip,
+  createContentWithSidebar,
   createDisclosure,
   createDisclosureGroup,
   createFeedback,
@@ -98,6 +99,8 @@ export function createBentoComponents<
     Box,
     IconButton,
   });
+
+  const ContentWithSidebar = createContentWithSidebar(Box);
 
   const Disclosure = createDisclosure(merge(defaultConfigs.disclosure, config.disclosure ?? {}));
 
@@ -206,6 +209,7 @@ export function createBentoComponents<
     Column,
     Columns,
     ContentBlock,
+    ContentWithSidebar,
     CustomModal,
     DateField,
     DecorativeDivider,
