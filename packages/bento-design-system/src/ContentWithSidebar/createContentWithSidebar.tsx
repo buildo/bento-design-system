@@ -19,6 +19,7 @@ export function createContentWithSidebar<AtomsFn extends typeof bentoSprinkles>(
     sidebarWidth?: ComponentProps<typeof Column>["width"] | { custom: string | number };
     sidebarAs?: BoxProps<AtomsFn>["as"];
     contentAs?: BoxProps<AtomsFn>["as"];
+    sidebarPosition: "right" | "left";
   };
 
   return function ContentWithSidebar({
@@ -26,6 +27,7 @@ export function createContentWithSidebar<AtomsFn extends typeof bentoSprinkles>(
     children,
     sidebarWidth,
     sidebarBackground,
+    sidebarPosition,
     sidebarAs,
     contentAs,
   }: Props) {
@@ -54,8 +56,17 @@ export function createContentWithSidebar<AtomsFn extends typeof bentoSprinkles>(
       return { className };
     })();
 
+    const flexDirection = (() => {
+      switch (sidebarPosition) {
+        case "right":
+          return "row";
+        case "left":
+          return "rowReverse";
+      }
+    })();
+
     return (
-      <Box display="flex" height="full" gap={space}>
+      <Box display="flex" height="full" gap={space} flexDirection={flexDirection}>
         <Box as={contentAs ?? "main"} flex={1}>
           {children[0]}
         </Box>
