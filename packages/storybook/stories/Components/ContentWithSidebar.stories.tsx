@@ -31,9 +31,17 @@ const { defaultExport, createStory } = createComponentStories({
 
 export default defaultExport;
 
-export const contentWithSidebar = createStory({
-  space: "80",
+export const StandardWidth = createStory({
   sidebar: {
-    width: 200,
+    width: "1/5",
+    background: "backgroundOverlay",
+  },
+});
+
+export const CustomWidth = createStory({
+  space: "16",
+  sidebar: {
+    width: { custom: 200 },
+    background: "backgroundOverlay",
   },
 });
