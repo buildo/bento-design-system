@@ -48,3 +48,7 @@ html[data-theme="dark"] .hero--primary {
 html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+html[data-theme="dark"] {
+  --docsearch-highlight-color: var(--docsearch-muted-color);
+}
