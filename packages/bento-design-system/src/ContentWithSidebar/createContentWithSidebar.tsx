@@ -4,7 +4,13 @@ import {
   normalizeResponsiveValue,
   OptionalResponsiveValue,
 } from "../internal/sprinkles.css";
-import { desktopWidths, tabletWidths, mobileWidths, fullWidth } from "../Layout/Column.css";
+import {
+  desktopWidths,
+  tabletWidths,
+  mobileWidths,
+  fullWidth,
+  wideWidths,
+} from "../Layout/Column.css";
 import { Children } from "../util/Children";
 import { Column } from "../internal";
 import { ComponentProps } from "react";
@@ -80,12 +86,13 @@ export function createContentWithSidebar<AtomsFn extends typeof bentoSprinkles>(
         ? normalizeResponsiveValue(
             sidebarWidth as OptionalResponsiveValue<keyof typeof desktopWidths>
           )
-        : { desktop: undefined, tablet: undefined, mobile: undefined };
+        : { wide: undefined, desktop: undefined, tablet: undefined, mobile: undefined };
 
       const className =
         sidebarWidth == null
           ? fullWidth
           : [
+              wide && wideWidths[wide],
               desktop && desktopWidths[desktop],
               tablet && tabletWidths[tablet],
               mobile && mobileWidths[mobile],
