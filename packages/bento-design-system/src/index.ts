@@ -15,6 +15,7 @@ export * from "./Button/createButtons";
 export * from "./Card/createCard";
 export * from "./Chip/createChip";
 export * from "./ContentBlock/ContentBlock";
+export * from "./ContentWithSidebar/createContentWithSidebar";
 export * from "./DateField/createDateField";
 export * from "./Disclosure/createDisclosure";
 export * from "./DisclosureGroup/createDisclosureGroup";

@@ -48,6 +48,7 @@ export const {
   Chip,
   Column,
   Columns,
+  ContentWithSidebar,
   CustomModal,
   DateField,
   DesignSystemProvider,

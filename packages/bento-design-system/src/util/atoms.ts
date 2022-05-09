@@ -62,6 +62,8 @@ export const responsiveProperties = {
     wrapReverse: "wrap-reverse",
   },
   flexShrink: [0],
+  flexGrow: [0, 1, 2],
+  flex: [0, 1, 2],
   width: {
     ...vars.space,
     full: "100%",
