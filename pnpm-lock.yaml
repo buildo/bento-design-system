@@ -50,7 +50,7 @@ importers:
       '@react-stately/slider': ^3.0.7
       '@react-stately/toggle': ^3.2.3
       '@react-stately/tooltip': ^3.0.7
-      '@react-types/button': 3.4.4
+      '@react-types/button': 3.4.5
       '@react-types/overlays': ^3.5.4
       '@react-types/radio': ^3.1.2
       '@react-types/shared': ^3.11.2
@@ -158,7 +158,7 @@ importers:
     devDependencies:
       '@babel/preset-env': 7.17.10
       '@babel/preset-react': 7.16.7
-      '@react-types/button': 3.4.4_react@17.0.2
+      '@react-types/button': 3.4.5_react@17.0.2
       '@testing-library/dom': 8.12.0
       '@testing-library/jest-dom': 5.16.4
       '@testing-library/react': 12.1.5_react-dom@17.0.2+react@17.0.2
@@ -6361,7 +6361,7 @@ packages:
       '@react-aria/interactions': 3.8.2_react@17.0.2
       '@react-aria/utils': 3.11.3_react@17.0.2
       '@react-stately/toggle': 3.2.6_react@17.0.2
-      '@react-types/button': 3.4.4_react@17.0.2
+      '@react-types/button': 3.4.5_react@17.0.2
       react: 17.0.2
     dev: false
 
@@ -6525,7 +6525,7 @@ packages:
       '@react-stately/collections': 3.3.7_react@17.0.2
       '@react-stately/menu': 3.2.6_react@17.0.2
       '@react-stately/tree': 3.2.3_react@17.0.2
-      '@react-types/button': 3.4.4_react@17.0.2
+      '@react-types/button': 3.4.5_react@17.0.2
       '@react-types/menu': 3.5.2_react@17.0.2
       '@react-types/shared': 3.11.2_react@17.0.2
       react: 17.0.2
@@ -6546,7 +6546,7 @@ packages:
       '@react-aria/textfield': 3.5.3_react@17.0.2
       '@react-aria/utils': 3.11.3_react@17.0.2
       '@react-stately/numberfield': 3.0.5_react@17.0.2
-      '@react-types/button': 3.4.4_react@17.0.2
+      '@react-types/button': 3.4.5_react@17.0.2
       '@react-types/numberfield': 3.1.3_react@17.0.2
       '@react-types/shared': 3.11.2_react@17.0.2
       '@react-types/textfield': 3.3.3_react@17.0.2
@@ -6566,7 +6566,7 @@ packages:
       '@react-aria/utils': 3.11.3_react@17.0.2
       '@react-aria/visually-hidden': 3.2.6_react@17.0.2
       '@react-stately/overlays': 3.1.6_react@17.0.2
-      '@react-types/button': 3.4.4_react@17.0.2
+      '@react-types/button': 3.4.5_react@17.0.2
       '@react-types/overlays': 3.5.4_react@17.0.2
       '@react-types/shared': 3.11.2_react@17.0.2
       dom-helpers: 3.4.0
@@ -6659,7 +6659,7 @@ packages:
       '@react-aria/i18n': 3.3.8_react@17.0.2
       '@react-aria/live-announcer': 3.0.4_react-dom@17.0.2+react@17.0.2
       '@react-aria/utils': 3.11.3_react@17.0.2
-      '@react-types/button': 3.4.4_react@17.0.2
+      '@react-types/button': 3.4.5_react@17.0.2
       '@react-types/shared': 3.11.2_react@17.0.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -6834,7 +6834,7 @@ packages:
       '@babel/runtime': 7.17.9
       '@react-stately/collections': 3.3.7_react@17.0.2
       '@react-stately/utils': 3.4.1_react@17.0.2
-      '@react-types/shared': 3.11.2_react@17.0.2
+      '@react-types/shared': 3.12.0_react@17.0.2
       react: 17.0.2
     dev: false
 
@@ -6906,12 +6906,12 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@react-types/button/3.4.4_react@17.0.2:
-    resolution: {integrity: sha512-PdHoNC2ezkzfneRdDTWJ8dOzL56MnLzjcDpnHRTbGFsWrwe+wAywls2ZJR6m411RyRim4A6+1UIKXga9AJ43uA==}
+  /@react-types/button/3.4.5_react@17.0.2:
+    resolution: {integrity: sha512-wqOw3LvqFRJl6lDhije7koTINWBv+LRBKAlGOri2ddw3VDqvm0/zu2ENDIP/XX0FtUzuffoc1U5YgxmBlXd7gQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1
     dependencies:
-      '@react-types/shared': 3.11.2_react@17.0.2
+      '@react-types/shared': 3.12.0_react@17.0.2
       react: 17.0.2
 
   /@react-types/checkbox/3.2.6_react@17.0.2:
@@ -7000,6 +7000,14 @@ packages:
 
   /@react-types/shared/3.11.2_react@17.0.2:
     resolution: {integrity: sha512-MIjjjkFi/DTzMVmeFJJrpc51eS/PLNzLZEv6o/QJPhQ9uOMElYqA790qAcG75u3tR0XGU2Vv9RyeOC7+ppw8/Q==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      react: 17.0.2
+    dev: false
+
+  /@react-types/shared/3.12.0_react@17.0.2:
+    resolution: {integrity: sha512-faGr9xOjtMlkQPfA1i36iUmWS/hpPPtxIwdAtBi6p7rCejmShMLFZ2YN4DxzbJUCVubF2S1+rMMIKuXG17DkEw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1
     dependencies:
