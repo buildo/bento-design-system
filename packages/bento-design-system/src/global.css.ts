@@ -7,3 +7,7 @@ globalStyle("#root", {
   // This assumes the root element is identified by #root, which is the case for regular CRA apps.
   isolation: "isolate",
 });
+
+globalStyle("html, body", {
+  margin: 0,
+});
