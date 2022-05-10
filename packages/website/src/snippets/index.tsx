@@ -46,6 +46,7 @@ export const {
   Tabs,
   TextField,
   Tiles,
+  Title,
   Toast,
   Tooltip,
   SelectField,
