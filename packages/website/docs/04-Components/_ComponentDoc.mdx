@@ -9,7 +9,14 @@ import { ComponentHeader } from "@site/src/components/ComponentHeader";
   {props.storybookStoryId && <ExternalLinkCard type="storybook" storyId={props.storybookStoryId} />}
 </div>
 
-{props.constructorName && <><br /><ComponentHeader name={props.constructorName} /></>}
+<>
+  {props.constructorName && (
+    <>
+      <br />
+      <ComponentHeader name={props.constructorName} />
+    </>
+  )}
+</>
 
 ### Example
 
