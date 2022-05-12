@@ -75,7 +75,14 @@ export function createActions(
             return errorBanner;
           case "hug":
             return (
-              <Inline space={0} align={config.primaryPosition}>
+              <Inline
+                space={0}
+                align={
+                  config.buttonsAlignment === "spaceBetween"
+                    ? config.primaryPosition
+                    : config.buttonsAlignment
+                }
+              >
                 <Banner kind="negative" description={error} />
               </Inline>
             );
