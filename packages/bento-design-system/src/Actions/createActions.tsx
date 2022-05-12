@@ -117,12 +117,12 @@ export function createActions(
             return (
               <Columns space={0} alignY="center">
                 <Column width="content">
-                  <Columns space={config.spaceBetweenButtons}>
-                    {buttons[0]}
+                  <Columns space={config.spaceBetweenButtons} alignY="center">
+                    <Column width="content">{buttons[0]}</Column>
                     {isLoading && <InlineLoader message={loadingMessage} />}
                   </Columns>
                 </Column>
-                <Inline space={0} align="right">
+                <Inline space={0} align="right" alignY="center">
                   {buttons[1]}
                 </Inline>
               </Columns>
@@ -132,9 +132,9 @@ export function createActions(
               <Columns space={0} alignY="center">
                 {buttons[0]}
                 <Column width="content">
-                  <Columns space={config.spaceBetweenButtons}>
+                  <Columns space={config.spaceBetweenButtons} alignY="center">
                     {isLoading && <InlineLoader message={loadingMessage} />}
-                    {buttons[1]}
+                    <Column width="content">{buttons[1]}</Column>
                   </Columns>
                 </Column>
               </Columns>
