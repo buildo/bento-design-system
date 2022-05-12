@@ -1,12 +1,12 @@
 import { FunctionComponent, useState } from "react";
 import { BannerProps, LocalizedString } from "../";
-import { Column, Columns, Inline } from "../internal";
+import { Column, Columns, Inline, Stack } from "../internal";
 import { ButtonProps } from "../Button/createButton";
 import { ActionsConfig } from "./Config";
 import { InlineLoaderProps } from "../InlineLoader/InlineLoader";
 
 type ActionProps = Omit<ButtonProps, "kind" | "size" | "hierarchy">;
-export type ActionsProps = {
+type Props = {
   size?: ButtonProps["size"];
   primaryAction?: ActionProps & {
     isDestructive?: boolean;
@@ -14,6 +14,7 @@ export type ActionsProps = {
   secondaryAction?: ActionProps;
   loadingMessage?: LocalizedString;
   error?: LocalizedString;
+  errorBannerResizing: "hug" | "fill";
 };
 
 export function createActions(
@@ -34,7 +35,8 @@ export function createActions(
     size = config.defaultSize,
     loadingMessage,
     error,
-  }: ActionsProps) {
+    errorBannerResizing,
+  }: Props) {
     const [isLoading, setIsLoading] = useState(false);
 
     const primaryActionButton = primaryAction && (
@@ -64,74 +66,83 @@ export function createActions(
         ? [primaryActionButton, secondaryActionButton]
         : [secondaryActionButton, primaryActionButton];
 
-    switch (config.buttonsAlignment) {
-      case "right":
-        return (
-          <Columns space={config.spaceBetweenButtons} alignY="center" collapseBelow="tablet">
-            {isLoading && (
-              <Column width="content">
-                <InlineLoader message={loadingMessage} />
-              </Column>
-            )}
-            {error && !isLoading && (
-              <Column width="1/2">
+    const errorBanner = !!error && !isLoading && <Banner kind="negative" description={error} />;
+
+    function renderErrorBanner() {
+      if (errorBanner) {
+        switch (errorBannerResizing) {
+          case "fill":
+            return errorBanner;
+          case "hug":
+            return (
+              <Inline space={0} align={config.primaryPosition}>
                 <Banner kind="negative" description={error} />
-              </Column>
-            )}
+              </Inline>
+            );
+        }
+      } else {
+        return null;
+      }
+    }
+
+    function renderButtonsWithLoading() {
+      switch (config.buttonsAlignment) {
+        case "right":
+          return (
+            <Inline align="right" alignY="center" space={config.spaceBetweenButtons}>
+              {isLoading && <InlineLoader message={loadingMessage} />}
+              {buttons}
+            </Inline>
+          );
+        case "left":
+          return (
             <Inline
-              space={config.spaceBetweenButtons}
-              align="right"
+              align={config.buttonsAlignment}
               alignY="center"
-              collapseBelow="tablet"
-              reverse={{ mobile: true }}
+              space={config.spaceBetweenButtons}
             >
               {buttons}
+              {isLoading && <InlineLoader message={loadingMessage} />}
             </Inline>
-          </Columns>
-        );
-      case "left":
-        return (
-          <Columns
-            space={config.spaceBetweenButtons}
-            alignY="center"
-            collapseBelow="tablet"
-            reverse={{ mobile: true }}
-          >
-            <Inline space={config.spaceBetweenButtons} alignY="center" collapseBelow="tablet">
-              {buttons}
-            </Inline>
-            {isLoading && (
-              <Column width="content">
-                <Inline space={0} align="right" alignY="center">
-                  <InlineLoader message={loadingMessage} />
+          );
+        case "spaceBetween":
+          if (config.primaryPosition === "left") {
+            return (
+              <Columns space={0} alignY="center">
+                <Column width="content">
+                  <Columns space={config.spaceBetweenButtons}>
+                    {buttons[0]}
+                    {isLoading && <InlineLoader message={loadingMessage} />}
+                  </Columns>
+                </Column>
+                <Inline space={0} align="right">
+                  {buttons[1]}
                 </Inline>
-              </Column>
-            )}
-            {error && !isLoading && (
-              <Column width="1/2">
-                <Banner kind="negative" description={error} />
-              </Column>
-            )}
-          </Columns>
-        );
-      case "spaceBetween":
-        return (
-          <Columns space={config.spaceBetweenButtons} alignY="center" collapseBelow="tablet">
-            {buttons[0]}
-            <Column width="content">
-              {isLoading ? (
-                <Inline space={0} align="center" alignY="center">
-                  <InlineLoader message={loadingMessage} />
-                </Inline>
-              ) : (
-                error && <Banner kind="negative" description={error} />
-              )}
-            </Column>
-            <Inline space={0} align={{ wide: "right", mobile: "left" }} alignY="center">
-              {buttons[1]}
-            </Inline>
-          </Columns>
-        );
+              </Columns>
+            );
+          } else {
+            return (
+              <Columns space={0} alignY="center">
+                {buttons[0]}
+                <Column width="content">
+                  <Columns space={config.spaceBetweenButtons}>
+                    {isLoading && <InlineLoader message={loadingMessage} />}
+                    {buttons[1]}
+                  </Columns>
+                </Column>
+              </Columns>
+            );
+          }
+      }
     }
+
+    return (
+      <Stack space={8}>
+        {renderErrorBanner()}
+        {renderButtonsWithLoading()}
+      </Stack>
+    );
   };
 }
+
+export type { Props as ActionsProps };
