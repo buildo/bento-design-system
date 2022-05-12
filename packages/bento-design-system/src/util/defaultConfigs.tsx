@@ -57,8 +57,8 @@ import { DateFieldConfig } from "../DateField/Config";
 export const actions: ActionsConfig = {
   primaryActionButtonKind: "solid",
   secondaryActionButtonKind: "transparent",
-  buttonsAlignment: "right",
-  primaryPosition: "right",
+  buttonsAlignment: "spaceBetween",
+  primaryPosition: "left",
   spaceBetweenButtons: 16,
   defaultSize: "medium",
 };
