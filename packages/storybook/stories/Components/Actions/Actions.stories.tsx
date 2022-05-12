@@ -1,5 +1,5 @@
-import { createComponentStories, formatMessage } from "../util";
-import { Actions } from "../";
+import { createComponentStories, formatMessage } from "../../util";
+import { Actions } from "../..";
 import { action } from "@storybook/addon-actions";
 
 const { defaultExport, createStory } = createComponentStories({
@@ -10,12 +10,23 @@ const { defaultExport, createStory } = createComponentStories({
   },
 });
 
-const primaryAction = {
+export const primaryAction = {
   label: formatMessage("Primary Action"),
   onPress: action("onPress"),
 };
 
-const secondaryAction = {
+export const asyncPrimaryAction = {
+  label: formatMessage("Primary Action"),
+  onPress: () =>
+    new Promise((resolve) =>
+      setTimeout(() => {
+        primaryAction.onPress();
+        resolve(null);
+      }, 3000)
+    ),
+};
+
+export const secondaryAction = {
   label: formatMessage("Secondary Action"),
   onPress: action("onPress"),
 };
@@ -76,15 +87,6 @@ export const TwoActionsLarge = createStory({
 });
 
 export const AsyncPrimaryAction = createStory({
-  primaryAction: {
-    ...primaryAction,
-    onPress: () =>
-      new Promise((resolve) =>
-        setTimeout(() => {
-          primaryAction.onPress();
-          resolve(null);
-        }, 3000)
-      ),
-  },
+  primaryAction: asyncPrimaryAction,
   secondaryAction,
 });
