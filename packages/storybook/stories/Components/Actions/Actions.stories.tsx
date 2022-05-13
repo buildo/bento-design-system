@@ -6,7 +6,6 @@ const { defaultExport, createStory } = createComponentStories({
   component: Actions,
   args: {
     size: "medium",
-    errorBannerResizing: "hug",
   },
 });
 
@@ -62,7 +61,7 @@ export const TwoActionsWithErrorHug = createStory({
 export const TwoActionsWithErrorFit = createStory({
   primaryAction,
   secondaryAction,
-  errorBannerResizing: "fill",
+  errorBannerWidth: "fill",
   error: formatMessage("Something went wrong"),
 });
 
