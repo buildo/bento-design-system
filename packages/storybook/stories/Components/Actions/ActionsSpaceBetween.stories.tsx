@@ -6,7 +6,6 @@ const { defaultExport, createStory } = createComponentStories({
   component: SpaceBetweenActions,
   args: {
     size: "medium",
-    errorBannerResizing: "hug",
   },
 });
 
@@ -15,13 +14,12 @@ export default defaultExport;
 export const FillError = createStory({
   primaryAction: asyncPrimaryAction,
   secondaryAction,
-  errorBannerResizing: "fill",
+  errorBannerWidth: "fill",
   error: formatMessage("Something went wrong"),
 });
 
-export const HugError = createStory({
+export const ContentWidthError = createStory({
   primaryAction: asyncPrimaryAction,
   secondaryAction,
-  errorBannerResizing: "hug",
   error: formatMessage("Something went wrong"),
 });
