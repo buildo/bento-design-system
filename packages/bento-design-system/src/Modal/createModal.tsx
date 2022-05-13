@@ -25,6 +25,7 @@ type Props = {
   isDestructive?: boolean;
   loadingMessage?: ActionsProps["loadingMessage"];
   error?: ActionsProps["error"];
+  errorBannerWidth?: ActionsProps["errorBannerWidth"];
   size?: ModalSize;
   kind?: ModalKind;
   autoFocus?: boolean;
@@ -132,6 +133,7 @@ export function createModal(
             size="large"
             loadingMessage={props.loadingMessage}
             error={props.error}
+            errorBannerWidth={props.errorBannerWidth || config.defaultErrorBannerWidth}
           />
         </Inset>
       </CustomModal>

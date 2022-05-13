@@ -61,6 +61,7 @@ export const actions: ActionsConfig = {
   primaryPosition: "right",
   spaceBetweenButtons: 16,
   defaultSize: "medium",
+  defaultErrorBannerWidth: "content",
 };
 
 export const areaLoader: AreaLoaderConfig = {
@@ -275,6 +276,7 @@ export const formLayout: FormLayoutConfig = {
     formSpacing: 40,
     headerSpacing: 16,
     defaultActionsSize: "large",
+    defaultErrorBannerWidth: "content",
   },
   section: {
     sectionTitleSize: "large",
@@ -349,6 +351,7 @@ export const modal: ModalConfig = {
     destructive: IconNegative,
   },
   titleIconSize: 24,
+  defaultErrorBannerWidth: "content",
 };
 
 export const navigation: NavigationConfig = {

@@ -13,6 +13,7 @@ export type FormConfig = {
   formSpacing: BentoSprinkles["gap"];
   headerSpacing: BentoSprinkles["gap"];
   defaultActionsSize: ActionsProps["size"];
+  defaultErrorBannerWidth: ActionsProps["errorBannerWidth"];
 };
 
 export type FormRowConfig = {
