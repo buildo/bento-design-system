@@ -7,6 +7,7 @@ const { defaultExport, createStory } = createComponentStories({
   args: {
     size: "medium",
   },
+  excludeStories: ["primaryAction", "secondaryAction", "asyncPrimaryAction"],
 });
 
 export const primaryAction = {
