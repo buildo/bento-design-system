@@ -14,7 +14,7 @@ type Props = {
   secondaryAction?: ActionProps;
   loadingMessage?: LocalizedString;
   error?: LocalizedString;
-  errorBannerResizing: "hug" | "fill";
+  errorBannerWidth?: "content" | "fill";
 };
 
 export function createActions(
@@ -35,7 +35,7 @@ export function createActions(
     size = config.defaultSize,
     loadingMessage,
     error,
-    errorBannerResizing,
+    errorBannerWidth = config.defaultErrorBannerWidth,
   }: Props) {
     const [isLoading, setIsLoading] = useState(false);
 
@@ -70,10 +70,10 @@ export function createActions(
 
     function renderErrorBanner() {
       if (errorBanner) {
-        switch (errorBannerResizing) {
+        switch (errorBannerWidth) {
           case "fill":
             return errorBanner;
-          case "hug":
+          case "content":
             return (
               <Inline
                 space={0}
