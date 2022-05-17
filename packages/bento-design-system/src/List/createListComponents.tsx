@@ -15,8 +15,8 @@ export function createListComponents(config: ListConfig) {
   function List({ items, ...props }: Props) {
     return (
       <InternalList {...props}>
-        {items.map((liProps) => (
-          <ListItem key={liProps.label} {...liProps} size={props.size} />
+        {items.map((liProps, i) => (
+          <ListItem key={liProps.key ?? i} {...liProps} size={props.size} />
         ))}
       </InternalList>
     );

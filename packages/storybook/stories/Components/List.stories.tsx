@@ -7,7 +7,9 @@ import {
   IconCheck,
   svgIllustrationProps,
   IllustrationProps,
+  Box,
 } from "../";
+import { Children } from "@buildo/bento-design-system";
 
 function Illustration(props: IllustrationProps) {
   return (
@@ -30,6 +32,14 @@ const label = formatMessage("List item");
 const labelLong = formatMessage(
   "Exceedingly long list item label that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so. Exceedingly long list item label that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so."
 );
+const labelRich = (
+  <>
+    Hello{" "}
+    <Box as="span" fontWeight="bodyStrong">
+      bold
+    </Box>
+  </>
+) as Children;
 const secondLine = formatMessage("description");
 const secondLineLong = formatMessage(
   "Exceedingly long list item descrption that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so. Exceedingly long list item description that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so."
@@ -47,6 +57,7 @@ export const SingleLine = createStory({
     { kind: "single-line", label, href },
     { kind: "single-line", label: labelLong, href },
     { kind: "single-line", label, href },
+    { kind: "single-line", label: labelRich, href },
   ],
 });
 
