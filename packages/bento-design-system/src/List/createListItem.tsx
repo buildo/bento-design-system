@@ -8,21 +8,22 @@ import { listItemRecipe } from "./ListItem.css";
 import { ListSize } from "./createListComponents";
 import { element } from "../reset.css";
 import { ListItemConfig } from "./Config";
+import { Children } from "../util/Children";
 
 type Kind =
   | {
       kind: "overline";
       overline: LocalizedString;
-      label: LocalizedString;
+      label: Children;
     }
   | {
       kind?: "single-line";
-      label: LocalizedString;
+      label: Children;
     }
   | {
       kind: "two-line";
-      label: LocalizedString;
-      secondLine: LocalizedString;
+      label: Children;
+      secondLine: Children;
     };
 
 type LeftItem =
@@ -51,6 +52,7 @@ type Props = Kind &
     isFocused?: boolean;
     isSelected?: boolean;
     ignoreTabIndex?: boolean;
+    key?: string | number;
   } & (
     | {
         onPress?: () => void;
