@@ -17,7 +17,7 @@ type StepStatus = "todo" | "inProgress" | "done";
 export type { Props as StepperProps };
 
 export function createStepper(config: StepperConfig) {
-  return function Stepper({ currentStep, steps }: Props) {
+  function Stepper({ currentStep, steps }: Props) {
     return (
       <Inline space={config.spaceBetweenSteps} alignY="center">
         {steps.map(({ label }, index) => {
@@ -27,7 +27,7 @@ export function createStepper(config: StepperConfig) {
         })}
       </Inline>
     );
-  };
+  }
 
   function Step({
     label,
@@ -61,4 +61,6 @@ export function createStepper(config: StepperConfig) {
       </Box>
     );
   }
+
+  return { Stepper, Step };
 }

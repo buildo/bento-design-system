@@ -166,7 +166,9 @@ export function createBentoComponents<
     IconButton,
   });
 
-  const Stepper = createStepper(merge(defaultConfigs.stepper, config.stepper ?? {}));
+  const { Stepper, Step: StepperStep } = createStepper(
+    merge(defaultConfigs.stepper, config.stepper ?? {})
+  );
 
   const Switch = createSwitch(
     merge(defaultConfigs.selectionControl.element, config.selectionControl?.element ?? {}),
@@ -240,6 +242,7 @@ export function createBentoComponents<
     Popover,
     SearchBar,
     Stepper,
+    StepperStep,
     RadioGroupField,
     ReadOnlyField,
     SelectField,
