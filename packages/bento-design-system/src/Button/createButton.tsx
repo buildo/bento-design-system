@@ -18,7 +18,7 @@ type Props = {
   isDisabled?: boolean;
   size?: ButtonSize;
   icon?: (props: IconProps) => JSX.Element;
-} & AriaButtonProps<"button">;
+} & Omit<AriaButtonProps<"button">, "onPress">;
 
 /**
  * A button
