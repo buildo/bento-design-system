@@ -12,7 +12,6 @@ import { ButtonConfig } from "./Config";
 export type ButtonSize = "small" | "medium" | "large";
 type Props = {
   label: LocalizedString;
-  onPress: () => void;
   kind: "solid" | "transparent" | "outline";
   hierarchy: "primary" | "secondary" | "danger";
   isDisabled?: boolean;
