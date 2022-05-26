@@ -78,6 +78,7 @@ export const {
   Popover,
   SearchBar,
   Stepper,
+  StepperStep,
   RadioGroupField,
   ReadOnlyField,
   SelectField,
