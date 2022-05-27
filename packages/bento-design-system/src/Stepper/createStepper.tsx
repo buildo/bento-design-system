@@ -1,10 +1,11 @@
 import { Box, Inline } from "../internal";
-import { Label, LocalizedString, unsafeLocalizedString } from "..";
+import { Label, unsafeLocalizedString } from "..";
 import { stepIconRecipe, stepRecipe } from "./Stepper.css";
 import { StepperConfig } from "./Config";
+import { Children } from "../util/Children";
 
 type Step = {
-  label: LocalizedString;
+  label: Children;
 };
 
 type Props = {
@@ -23,21 +24,13 @@ export function createStepper(config: StepperConfig) {
         {steps.map(({ label }, index) => {
           const status =
             index < currentStep ? "done" : index === currentStep ? "inProgress" : "todo";
-          return <Step label={label} index={index} status={status} key={label} />;
+          return <Step label={label} index={index} status={status} key={index} />;
         })}
       </Inline>
     );
   }
 
-  function Step({
-    label,
-    index,
-    status,
-  }: {
-    label: LocalizedString;
-    index: number;
-    status: StepStatus;
-  }) {
+  function Step({ label, index, status }: { label: Children; index: number; status: StepStatus }) {
     return (
       <Box className={stepRecipe({ status })}>
         <Inline space={config.internalSpacing} alignY="center">
