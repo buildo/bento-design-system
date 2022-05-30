@@ -6,6 +6,7 @@ import { Children } from "../util/Children";
 
 type Step = {
   label: Children;
+  key?: string | number;
 };
 
 type Props = {
@@ -21,10 +22,10 @@ export function createStepper(config: StepperConfig) {
   function Stepper({ currentStep, steps }: Props) {
     return (
       <Inline space={config.spaceBetweenSteps} alignY="center">
-        {steps.map(({ label }, index) => {
+        {steps.map(({ label, key }, index) => {
           const status =
             index < currentStep ? "done" : index === currentStep ? "inProgress" : "todo";
-          return <Step label={label} index={index} status={status} key={index} />;
+          return <Step label={label} index={index} status={status} key={key ?? index} />;
         })}
       </Inline>
     );
