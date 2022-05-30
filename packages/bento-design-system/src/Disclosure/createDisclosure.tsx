@@ -70,7 +70,9 @@ export function createDisclosure(config: DisclosureConfig) {
             <Column width="content">
               {icon({ size: 16, color: level === 1 ? "primary" : "secondary" })}
             </Column>
-            <Title size={config.titleSize[level]}>{title}</Title>
+            <Title size={config.titleSize[level]} color={level === 1 ? "default" : "secondary"}>
+              {title}
+            </Title>
           </Columns>
         </Box>
         <Box id={contentId} display={open ? undefined : "none"} aria-hidden={!open}>
