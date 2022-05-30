@@ -121,11 +121,13 @@ export function createCalendar(
               if (typeof day === "object") {
                 return <Day key={day.dayLabel} {...props} date={day.date} label={day.dayLabel} />;
               } else {
-                return <Box key={`empty-${index}`} width={40} height={40} />;
+                return (
+                  <Box key={`empty-${index}`} width={config.dayWidth} height={config.dayHeight} />
+                );
               }
             })}
           </Tiles>
-          {props.shortcuts}
+          <Box style={{ maxWidth: config.dayWidth * 7 }}>{props.shortcuts}</Box>
         </Stack>
       </Box>
     );
