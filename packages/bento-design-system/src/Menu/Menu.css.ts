@@ -11,9 +11,9 @@ export const menuRecipe = strictRecipe({
       },
       bentoSprinkles({
         background: "backgroundPrimary",
-        outlineStyle: "solid",
-        outlineColor: "outlineContainer",
-        outlineWidth: 1,
+        borderStyle: "solid",
+        borderColor: "outlineContainer",
+        borderWidth: 1,
         overflow: "hidden",
       }),
     ]),

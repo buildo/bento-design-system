@@ -4,9 +4,9 @@ import { strictRecipe } from "../util/strictRecipe";
 export const cardRecipe = strictRecipe({
   base: bentoSprinkles({
     background: "backgroundPrimary",
-    outlineColor: "outlineContainer",
-    outlineStyle: "solid",
-    outlineWidth: 1,
+    borderColor: "outlineContainer",
+    borderStyle: "solid",
+    borderWidth: 1,
     overflow: "hidden",
   }),
   variants: {
