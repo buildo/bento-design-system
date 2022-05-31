@@ -2,6 +2,10 @@ import { style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
 
+export const table = style({
+  gridAutoRows: "max-content",
+});
+
 export const lastLeftStickyColumn = bentoSprinkles({
   background: "backgroundPrimary",
   paddingRight: 8,
