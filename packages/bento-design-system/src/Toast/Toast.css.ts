@@ -17,8 +17,8 @@ export const toastRecipe = strictRecipe({
     },
     hasOutline: {
       true: {
-        outlineWidth: 1,
-        outlineStyle: "solid",
+        borderWidth: 1,
+        borderStyle: "solid",
       },
     },
     elevation: {
@@ -34,35 +34,35 @@ export const toastRecipe = strictRecipe({
         kind: "informative",
         hasOutline: true,
       },
-      style: bentoSprinkles({ outlineColor: "outlineInformative" }),
+      style: bentoSprinkles({ borderColor: "outlineInformative" }),
     },
     {
       variants: {
         kind: "positive",
         hasOutline: true,
       },
-      style: bentoSprinkles({ outlineColor: "outlinePositive" }),
+      style: bentoSprinkles({ borderColor: "outlinePositive" }),
     },
     {
       variants: {
         kind: "warning",
         hasOutline: true,
       },
-      style: bentoSprinkles({ outlineColor: "outlineWarning" }),
+      style: bentoSprinkles({ borderColor: "outlineWarning" }),
     },
     {
       variants: {
         kind: "negative",
         hasOutline: true,
       },
-      style: bentoSprinkles({ outlineColor: "outlineNegative" }),
+      style: bentoSprinkles({ borderColor: "outlineNegative" }),
     },
     {
       variants: {
         kind: "secondary",
         hasOutline: true,
       },
-      style: bentoSprinkles({ outlineColor: "outlineDecorative" }),
+      style: bentoSprinkles({ borderColor: "outlineDecorative" }),
     },
   ],
 });

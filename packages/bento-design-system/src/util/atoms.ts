@@ -126,4 +126,12 @@ export const statusProperties = {
   textDecoration: ["none", "underline"],
   fill: { ...color, ...background, inherit: "inherit" },
   borderColor: { ...color, transparent: "transparent" },
+  borderStyle: {
+    solid: "solid",
+    dashed: "dashed",
+  },
+  borderWidth: {
+    1: "1px",
+    2: "2px",
+  },
 } as const;
