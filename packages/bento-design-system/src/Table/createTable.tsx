@@ -31,6 +31,7 @@ import {
   lastLeftStickyColumn,
   sectionHeader,
   sectionHeaderContainer,
+  table,
 } from "./Table.css";
 import { Column as ColumnType, Row as RowType } from "./types";
 import {
@@ -279,6 +280,7 @@ export function createTable(
         {...getTableProps()}
         alignItems="stretch"
         overflow="auto"
+        className={table}
         style={{ ...getTableProps().style, gridTemplateColumns }}
       >
         {headerGroups.map((headerGroup) =>
