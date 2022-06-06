@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@buildo/bento-design-system": "workspace:*",
-    "@vanilla-extract/sprinkles": "1.4.0",
+    "@vanilla-extract/sprinkles": "1.4.1",
     "date-fns": "^2.28.0"
   },
   "devDependencies": {
