@@ -34,6 +34,11 @@ const exampleColumns = [
     headerLabel: formatMessage("Name"),
     accessor: "name",
   }),
+  tableColumn.text({
+    headerLabel: formatMessage("Extended address"),
+    accessor: "address",
+    width: { custom: 200 },
+  }),
   tableColumn.textWithIcon({
     headerLabel: formatMessage("Country"),
     accessor: "country",
@@ -87,6 +92,7 @@ const deleteAction = {
 const exampleData = [
   {
     name: formatMessage("Amazon"),
+    address: "Theodore Lowe Ap #867-859 Sit Rd. Azusa New York 39531",
     country: {
       icon: IconInformative,
       text: formatMessage("US"),
@@ -110,6 +116,7 @@ const exampleData = [
   },
   {
     name: formatMessage("Google"),
+    address: "Cecilia Chapman 711-2880 Nulla St.  Mankato Mississippi 96522",
     country: {
       icon: IconInformative,
       text: formatMessage("US"),
@@ -133,6 +140,7 @@ const exampleData = [
   },
   {
     name: formatMessage("Microsoft"),
+    address: "Iris Watson P.O. Box 283 8562 Fusce Rd.  Frederick Nebraska 20620",
     country: {
       icon: IconInformative,
       text: formatMessage("US"),
@@ -157,6 +165,7 @@ const exampleData = [
   },
   {
     name: formatMessage("buildo"),
+    address: "Celeste Slater 606-3727 Ullamcorper. Street Roseville NH 11523",
     country: {
       icon: null,
       text: formatMessage("IT"),
@@ -176,6 +185,7 @@ const exampleData = [
   },
   {
     name: formatMessage("Twitter"),
+    address: "Theodore Lowe Ap #867-859 Sit Rd. Azusa New York 39531",
     country: {
       icon: IconInformative,
       text: formatMessage("US"),

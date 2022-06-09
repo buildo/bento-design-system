@@ -12,7 +12,7 @@ declare module "react-table" {
   interface ColumnInterface<D extends object> extends UseSortByColumnOptions<D> {
     align?: "left" | "right" | "center";
     sticky?: "left";
-    gridWidth?: "fit-content" | "fill-available";
+    gridWidth?: GridWidth;
     hint?: LocalizedString | { onPress: () => void };
   }
 
@@ -35,3 +35,5 @@ type ColumnValueByAccessor<C, K extends string> = C extends Column<K, infer _D, 
 export type Row<Columns extends ReadonlyArray<Column<string, {}, any>>> = {
   [k in Columns[number]["accessor"]]?: ColumnValueByAccessor<Columns[number], k>;
 };
+
+export type GridWidth = "fit-content" | "fill-available" | { custom: string | number };

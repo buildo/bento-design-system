@@ -33,7 +33,7 @@ import {
   sectionHeaderContainer,
   table,
 } from "./Table.css";
-import { Column as ColumnType, Row as RowType } from "./types";
+import { Column as ColumnType, GridWidth, Row as RowType } from "./types";
 import {
   useLayoutEffect,
   useMemo,
@@ -60,6 +60,7 @@ import { ButtonLinkProps } from "../Button/ButtonLink";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { TableConfig } from "./Config";
 import { IconHelp, IconInfo } from "../Icons";
+import { match, P } from "ts-pattern";
 
 type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
   a: Row<RowType<C>>,
@@ -245,13 +246,13 @@ export function createTable(
       );
     }
 
-    function gridWidthStyle(gridWidth: "fit-content" | "fill-available"): string {
-      switch (gridWidth) {
-        case "fit-content":
-          return "max-content";
-        case "fill-available":
-          return "minmax(max-content, auto)";
-      }
+    function gridWidthStyle(gridWidth: GridWidth): string {
+      return match(gridWidth)
+        .with("fit-content", () => "max-content")
+        .with("fill-available", () => "minmax(max-content, auto")
+        .with({ custom: P.select(P.string) }, (width) => width)
+        .with({ custom: P.select(P.number) }, (width) => `${width}px`)
+        .exhaustive();
     }
 
     const gridTemplateColumns = columns
