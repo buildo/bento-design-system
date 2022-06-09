@@ -98,6 +98,7 @@ importers:
       ts-deepmerge: ^2.0.1
       ts-jest: 27.1.4
       ts-loader: 9.2.8
+      ts-pattern: ^4.0.3
       ts-toolbelt: ^9.6.0
       tsup: 5.12.4
       typescript: 4.6.3
@@ -154,6 +155,7 @@ importers:
       react-table: 7.7.0_react@17.0.2
       react-use: 17.3.2_react-dom@17.0.2+react@17.0.2
       ts-deepmerge: 2.0.1
+      ts-pattern: 4.0.3
       ts-toolbelt: 9.6.0
     devDependencies:
       '@babel/preset-env': 7.17.10
@@ -21253,7 +21255,7 @@ packages:
       serialize-javascript: 6.0.0
       source-map: 0.6.1
       terser: 5.12.0
-      webpack: 5.71.0
+      webpack: 5.71.0_webpack-cli@4.9.2
 
   /terser/4.8.0:
     resolution: {integrity: sha512-EAPipTNeWsb/3wLPeup1tVPaXfIaU68xMnVdPafIL1TV05OhASArYyIfFvnvJCNrR2NIOvDVNNTFRa+Re2MWyw==}
@@ -21510,6 +21512,10 @@ packages:
       typescript: 4.6.3
       webpack: 5.71.0_webpack-cli@4.9.2
     dev: true
+
+  /ts-pattern/4.0.3:
+    resolution: {integrity: sha512-OxQStbr1MKcYYz3YaXsFSBkMo3zjFODVkV8kaLfOak+sWSfx4B+jkOm/VoaWLhnMP+icnIcJ7ENYEnmpAv3jLg==}
+    dev: false
 
   /ts-pnp/1.2.0_typescript@4.6.3:
     resolution: {integrity: sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==}
