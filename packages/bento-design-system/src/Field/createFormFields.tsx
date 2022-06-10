@@ -58,7 +58,7 @@ export function createFormFields(
   const RadioGroupField = createRadioGroupField(config.selectionControl, { Field });
   const NumberInput = createNumberInput(config.input);
   const NumberField = createNumberField({ Field, NumberInput });
-  const SelectField = createSelectField(config.input, config.dropdown, { Field });
+  const SelectField = createSelectField(config.input, config.dropdown, { Field, Button });
   const ReadOnlyField = createReadOnlyField({ TextField });
   const Slider = createSlider(config.slider);
   const SliderField = createSliderField({ Slider, Field });

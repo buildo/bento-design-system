@@ -15,6 +15,8 @@ export type DefaultMessages = {
     SelectField: {
       noOptionsMessage: LocalizedString;
       multiOptionsSelected: (count: number) => LocalizedString;
+      selectAllButtonLabel: LocalizedString;
+      clearAllButtonLabel: LocalizedString;
     };
     SearchBar: {
       clearButtonLabel: LocalizedString;

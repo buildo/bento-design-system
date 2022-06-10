@@ -26,8 +26,14 @@ import { InternalList } from "../List/InternalList";
 import { createListItem } from "../List/createListItem";
 import { DropdownConfig } from "./Config";
 import { InputConfig } from "../Field/Config";
+import { ButtonProps } from "../Button/createButton";
+import { FunctionComponent } from "react";
 
-export function createComponents(inputConfig: InputConfig, dropdownConfig: DropdownConfig) {
+export function createComponents(
+  inputConfig: InputConfig,
+  dropdownConfig: DropdownConfig,
+  { Button }: { Button: FunctionComponent<ButtonProps> }
+) {
   const ListItem = createListItem(dropdownConfig.list.item);
 
   function Control<A, IsMulti extends boolean>({
@@ -157,6 +163,29 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
     return (
       <defaultComponents.MenuList {...props}>
         <Inset spaceY={dropdownConfig.menuPaddingY}>
+          {props.isMulti && props.selectProps.showMultiSelectBulkActions && (
+            <Inset space={8}>
+              <Inline space={0} align="right">
+                <Button
+                  kind="transparent"
+                  hierarchy="primary"
+                  label={
+                    props.hasValue
+                      ? props.selectProps.clearAllButtonLabel!
+                      : props.selectProps.selectAllButtonLabel!
+                  }
+                  onPress={() => {
+                    props.hasValue
+                      ? props.clearValue()
+                      : props.selectProps.onChange(props.selectProps.options as any, {
+                          action: "select-option",
+                          option: props.selectProps.options as any,
+                        });
+                  }}
+                />
+              </Inline>
+            </Inset>
+          )}
           <InternalList dividers>{props.children as unknown as Children}</InternalList>
         </Inset>
       </defaultComponents.MenuList>
