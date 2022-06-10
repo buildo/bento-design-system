@@ -60,7 +60,7 @@ import { ButtonLinkProps } from "../Button/ButtonLink";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { TableConfig } from "./Config";
 import { IconHelp, IconInfo } from "../Icons";
-import { match, P } from "ts-pattern";
+import { match, __ } from "ts-pattern";
 
 type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
   a: Row<RowType<C>>,
@@ -250,8 +250,8 @@ export function createTable(
       return match(gridWidth)
         .with("fit-content", () => "max-content")
         .with("fill-available", () => "minmax(max-content, auto")
-        .with({ custom: P.select(P.string) }, (width) => width)
-        .with({ custom: P.select(P.number) }, (width) => `${width}px`)
+        .with({ custom: __.string }, ({ custom: width }) => width)
+        .with({ custom: __.number }, ({ custom: width }) => `${width}px`)
         .exhaustive();
     }
 
