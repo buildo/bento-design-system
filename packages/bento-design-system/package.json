@@ -86,7 +86,7 @@
     "react-table": "^7.7.0",
     "react-use": "^17.3.2",
     "ts-deepmerge": "^2.0.1",
-    "ts-pattern": "^4.0.3",
+    "ts-pattern": "^3.3.5",
     "ts-toolbelt": "^9.6.0"
   },
   "devDependencies": {
