@@ -66,7 +66,7 @@ importers:
       '@vanilla-extract/babel-plugin': 1.1.6
       '@vanilla-extract/css': 1.6.8
       '@vanilla-extract/dynamic': ^2.0.2
-      '@vanilla-extract/esbuild-plugin': 2.0.3
+      '@vanilla-extract/esbuild-plugin': 2.1.0
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/recipes': ^0.2.4
       '@vanilla-extract/sprinkles': ^1.4.0
@@ -172,7 +172,7 @@ importers:
       '@types/react-table': 7.7.12
       '@vanilla-extract/babel-plugin': 1.1.6
       '@vanilla-extract/css': 1.6.8
-      '@vanilla-extract/esbuild-plugin': 2.0.3
+      '@vanilla-extract/esbuild-plugin': 2.1.0
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/webpack-plugin': 2.1.10_webpack@5.71.0
       css-loader: 6.7.1_webpack@5.71.0
@@ -8992,22 +8992,38 @@ packages:
       outdent: 0.8.0
     dev: true
 
+  /@vanilla-extract/css/1.7.2:
+    resolution: {integrity: sha512-wRsV9sSD4qN6+dbS1ywExw5kEU4Fk/UipNKFsGwwUsHLyuPKK8BaZUmzfyAQex6POHYQboYv6Ajbqpvhx2KhfQ==}
+    dependencies:
+      '@emotion/hash': 0.8.0
+      '@vanilla-extract/private': 1.0.3
+      chalk: 4.1.2
+      css-what: 5.1.0
+      cssesc: 3.0.0
+      csstype: 3.0.11
+      deep-object-diff: 1.1.7
+      deepmerge: 4.2.2
+      escape-string-regexp: 4.0.0
+      media-query-parser: 2.0.2
+      outdent: 0.8.0
+    dev: true
+
   /@vanilla-extract/dynamic/2.0.2:
     resolution: {integrity: sha512-U4nKaEQ8Kuz+exXEr51DUpyaOuzo24/S/k1YbDPQR06cYcNjQqvwFRnwWtZ+9ImocqM1wTKtzrdUgSTtLGIwAg==}
     dependencies:
       '@vanilla-extract/private': 1.0.3
     dev: false
 
-  /@vanilla-extract/esbuild-plugin/2.0.3:
-    resolution: {integrity: sha512-FOUVNm5NF1kmUTUsclPXpOhGHQNBmIqPsu6uuqLKj+boNs/x2UWbxuo+Sa5GofpfWvblHeVpMXoarb2HgtK+pw==}
+  /@vanilla-extract/esbuild-plugin/2.1.0:
+    resolution: {integrity: sha512-7d3nunHX9OziC5uPNdsQnKWntsTvUmJcEvEgwXEz4jroksDLWGbFghkWlWYzf2SlYxlh32wW1U38HkyDYuRkng==}
     dependencies:
-      '@vanilla-extract/integration': 3.0.1
+      '@vanilla-extract/integration': 5.0.0
     dev: true
 
-  /@vanilla-extract/integration/3.0.1:
-    resolution: {integrity: sha512-4G4WgkalVRIsJyDb/X08S0xcG2eDm1RJvqIgji0D7HvOSeyD+nvPEhbq8FAxs7MeVyyPDoCWsCKQvS3f9jz9UA==}
+  /@vanilla-extract/integration/4.0.1:
+    resolution: {integrity: sha512-s/P7FynY2/LWMCGVgHTXOpfy4pH0+cTCtTgEZEVvmf2ErX5ZSSsFe1i9MzODCYTDuvV2MWFg7oOspwx7i70h+A==}
     dependencies:
-      '@vanilla-extract/css': 1.6.8
+      '@vanilla-extract/css': 1.7.2
       esbuild: 0.11.23
       eval: 0.1.6
       find-up: 5.0.0
@@ -9016,10 +9032,10 @@ packages:
       outdent: 0.8.0
     dev: true
 
-  /@vanilla-extract/integration/4.0.1:
-    resolution: {integrity: sha512-s/P7FynY2/LWMCGVgHTXOpfy4pH0+cTCtTgEZEVvmf2ErX5ZSSsFe1i9MzODCYTDuvV2MWFg7oOspwx7i70h+A==}
+  /@vanilla-extract/integration/5.0.0:
+    resolution: {integrity: sha512-HwglsIxGYtV4IXFfyQ6GzZLFoaWaW+QkNx8UhXbgsCWUoPqpSbioukCOA+SuSuzsIcEZ3hkD0Y5ixITQNtnzjQ==}
     dependencies:
-      '@vanilla-extract/css': 1.6.8
+      '@vanilla-extract/css': 1.7.2
       esbuild: 0.11.23
       eval: 0.1.6
       find-up: 5.0.0
@@ -12802,7 +12818,7 @@ packages:
     resolution: {integrity: sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=}
 
   /escape-string-regexp/1.0.5:
-    resolution: {integrity: sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=}
+    resolution: {integrity: sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==}
     engines: {node: '>=0.8.0'}
 
   /escape-string-regexp/2.0.0:
@@ -16783,6 +16799,12 @@ packages:
   /mdurl/1.0.1:
     resolution: {integrity: sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=}
 
+  /media-query-parser/2.0.2:
+    resolution: {integrity: sha512-1N4qp+jE0pL5Xv4uEcwVUhIkwdUO3S/9gML90nqKA7v7FcOS5vUtatfzok9S9U1EJU8dHWlcv95WLnKmmxZI9w==}
+    dependencies:
+      '@babel/runtime': 7.17.9
+    dev: true
+
   /media-typer/0.3.0:
     resolution: {integrity: sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=}
     engines: {node: '>= 0.6'}
@@ -19963,7 +19985,7 @@ packages:
     engines: {node: '>=0.10.0'}
 
   /require-like/0.1.2:
-    resolution: {integrity: sha1-rW8wwTvs15cBDEaK+ndcDAprR/o=}
+    resolution: {integrity: sha512-oyrU88skkMtDdauHDuKVrgR+zuItqr6/c//FXzvmxRGMexSDc6hNvJInGW3LL46n+8b50RykrvwSUIIQH2LQ5A==}
 
   /requires-port/1.0.0:
     resolution: {integrity: sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=}
