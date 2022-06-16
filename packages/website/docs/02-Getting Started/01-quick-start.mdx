@@ -1,4 +1,6 @@
 import { PackageManagerCommand } from "@site/src/components/PackageManagerCommand";
+import defaultMessages from "!!raw-loader!@site/src/snippets/defaultMessages.ts";
+import CodeBlock from "@theme/CodeBlock";
 
 # Quick start
 
@@ -88,40 +90,9 @@ import { defaultMessages } from "./defaultMessages";
 <details>
   <summary>Here's some sample default messages you can use to get started:</summary>
 
-```tsx title="my-project/app/src/defaultMessages.ts"
-import { ComponentProps } from "react";
-import { DesignSystemProvider } from "design-system";
-
-export const defaultMessages: ComponentProps<typeof DesignSystemProvider>["defaultMessages"] = {
-  Chip: {
-    dismissButtonLabel: "Remove",
-  },
-  Banner: {
-    dismissButtonLabel: "Close",
-  },
-  Modal: {
-    closeButtonLabel: "Close",
-  },
-  SelectField: {
-    noOptionsMessage: "No options",
-    multiOptionsSelected: (n) => {
-      const options = n > 1 ? "options" : "option";
-      return `${n} ${options} selected`;
-    },
-  },
-  SearchBar: {
-    clearButtonLabel: "Clear",
-  },
-  Table: {
-    noResultsTitle: "No results found",
-    noResultsDescription: "Try adjusting your search filters to find what you're looking for.",
-    missingValue: "-",
-  },
-  Loader: {
-    loadingMessage: "Loading...",
-  },
-};
-```
+<CodeBlock language="tsx" title="my-project/app/src/defaultMessages.ts">
+  {defaultMessages}
+</CodeBlock>
 
 </details>
 
@@ -138,3 +109,7 @@ We recommend this approach as it clearly separates the concerns, but nothing pre
 co-locating design system and app components in the same project.
 
 :::
+
+```
+
+```
