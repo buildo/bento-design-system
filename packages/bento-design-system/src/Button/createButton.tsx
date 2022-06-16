@@ -30,7 +30,7 @@ export function createButton(config: ButtonConfig) {
     const {
       onKeyDown,
       onKeyUp,
-      // NOTE(gabro): `useButton` uses `usePress` internally, which behaves interplays strangely with
+      // NOTE(gabro): `useButton` uses `usePress` internally, which interplays strangely with
       // react-select, since they both manage the focus manually. This prop (which is not visible
       // via TypeScript) causes Button to bypass the onClick return by `usePress` (via `useButton`)
       // and turns "off" `onPointerDown` (which is where the focus managing happens in react-aria).
