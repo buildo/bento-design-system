@@ -159,7 +159,9 @@ export function createComponents(
     );
   }
 
-  function MenuList<A, IsMulti extends boolean>(props: MenuListProps<A, IsMulti>) {
+  function MenuList<A extends { disabled?: boolean }, IsMulti extends boolean>(
+    props: MenuListProps<A, IsMulti>
+  ) {
     return (
       <defaultComponents.MenuList {...props}>
         <Inset spaceY={dropdownConfig.menuPaddingY}>
@@ -175,11 +177,14 @@ export function createComponents(
                       : props.selectProps.selectAllButtonLabel!
                   }
                   onPress={() => {
+                    const nonDisabledOptions = (props.selectProps.options as A[]).filter(
+                      (o) => !o.disabled
+                    );
                     props.hasValue
                       ? props.clearValue()
-                      : props.selectProps.onChange(props.selectProps.options as any, {
+                      : props.selectProps.onChange(nonDisabledOptions as any, {
                           action: "select-option",
-                          option: props.selectProps.options as any,
+                          option: nonDisabledOptions as any,
                         });
                   }}
                   // @ts-expect-error
