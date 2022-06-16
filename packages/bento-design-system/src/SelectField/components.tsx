@@ -182,6 +182,9 @@ export function createComponents(
                           option: props.selectProps.options as any,
                         });
                   }}
+                  // @ts-expect-error
+                  // NOTE(gabro): see the note about this in createButton
+                  internal_unsafe__bypassUsePress
                 />
               </Inline>
             </Inset>
