@@ -4,9 +4,9 @@ import Select, {
   MultiValueProps,
   SingleValue as SingleValueT,
 } from "react-select";
-import { Body, ListSize, LocalizedString } from "..";
+import { Body, ButtonProps, ListSize, LocalizedString } from "..";
 import { useField } from "@react-aria/label";
-import { useEffect, useMemo } from "react";
+import { FunctionComponent, useEffect, useMemo } from "react";
 import { FieldProps } from "../Field/FieldProps";
 import { FieldType } from "../Field/createField";
 import { createComponents, styles } from "./components";
@@ -34,7 +34,12 @@ type Props<A, IsMulti extends boolean> = (IsMulti extends false
   autoFocus?: boolean;
   isReadOnly?: boolean;
 } & (IsMulti extends true
-    ? { multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString }
+    ? {
+        multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString;
+        showMultiSelectBulkActions?: boolean;
+        selectAllButtonLabel?: LocalizedString;
+        clearAllButtonLabel?: LocalizedString;
+      }
     : {});
 
 declare module "react-select/dist/declarations/src/Select" {
@@ -43,15 +48,18 @@ declare module "react-select/dist/declarations/src/Select" {
     validationState: "valid" | "invalid";
     multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString;
     isReadOnly?: boolean;
+    showMultiSelectBulkActions?: boolean;
+    selectAllButtonLabel?: LocalizedString;
+    clearAllButtonLabel?: LocalizedString;
   }
 }
 
 export function createSelectField(
   inputConfig: InputConfig,
   dropdownConfig: DropdownConfig,
-  { Field }: { Field: FieldType }
+  { Field, Button }: { Field: FieldType; Button: FunctionComponent<ButtonProps> }
 ) {
-  const selectComponents = createComponents(inputConfig, dropdownConfig);
+  const selectComponents = createComponents(inputConfig, dropdownConfig, { Button });
 
   return function SelectField<A, IsMulti extends boolean = false>(props: Props<A, IsMulti>) {
     const {
@@ -167,6 +175,21 @@ export function createSelectField(
           menuSize={menuSize}
           menuIsOpen={isReadOnly ? false : undefined}
           isSearchable={isReadOnly ? false : undefined}
+          showMultiSelectBulkActions={
+            isMulti ? (props as unknown as Props<A, true>).showMultiSelectBulkActions : false
+          }
+          clearAllButtonLabel={
+            isMulti
+              ? (props as unknown as Props<A, true>).clearAllButtonLabel ??
+                defaultMessages.SelectField.clearAllButtonLabel
+              : undefined
+          }
+          selectAllButtonLabel={
+            isMulti
+              ? (props as unknown as Props<A, true>).selectAllButtonLabel ??
+                defaultMessages.SelectField.selectAllButtonLabel
+              : undefined
+          }
         />
       </Field>
     );

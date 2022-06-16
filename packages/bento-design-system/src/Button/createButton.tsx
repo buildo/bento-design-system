@@ -27,7 +27,17 @@ export function createButton(config: ButtonConfig) {
   return function Button(props: Props) {
     const ref = useRef<HTMLButtonElement>(null);
     const { buttonProps } = useButton(props, ref);
-    const { onKeyDown, onKeyUp } = props;
+    const {
+      onKeyDown,
+      onKeyUp,
+      // NOTE(gabro): `useButton` uses `usePress` internally, which interplays strangely with
+      // react-select, since they both manage the focus manually. This prop (which is not visible
+      // via TypeScript) causes Button to bypass the onClick return by `usePress` (via `useButton`)
+      // and turns "off" `onPointerDown` (which is where the focus managing happens in react-aria).
+      //
+      // @ts-expect-error
+      internal_unsafe__bypassUsePress,
+    } = props;
 
     const size = props.size ?? config.defaultSize;
 
@@ -48,6 +58,8 @@ export function createButton(config: ButtonConfig) {
         paddingX={config.paddingX[size]}
         paddingY={config.paddingY[size]}
         borderRadius={config.radius}
+        onPointerDown={internal_unsafe__bypassUsePress ? undefined : buttonProps.onPointerDown}
+        onClick={internal_unsafe__bypassUsePress ? props.onPress : buttonProps.onClick}
       >
         <Columns space={config.internalSpacing} alignY="center">
           {props.icon && (

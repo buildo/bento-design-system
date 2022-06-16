@@ -26,8 +26,14 @@ import { InternalList } from "../List/InternalList";
 import { createListItem } from "../List/createListItem";
 import { DropdownConfig } from "./Config";
 import { InputConfig } from "../Field/Config";
+import { ButtonProps } from "../Button/createButton";
+import { FunctionComponent } from "react";
 
-export function createComponents(inputConfig: InputConfig, dropdownConfig: DropdownConfig) {
+export function createComponents(
+  inputConfig: InputConfig,
+  dropdownConfig: DropdownConfig,
+  { Button }: { Button: FunctionComponent<ButtonProps> }
+) {
   const ListItem = createListItem(dropdownConfig.list.item);
 
   function Control<A, IsMulti extends boolean>({
@@ -153,10 +159,41 @@ export function createComponents(inputConfig: InputConfig, dropdownConfig: Dropd
     );
   }
 
-  function MenuList<A, IsMulti extends boolean>(props: MenuListProps<A, IsMulti>) {
+  function MenuList<A extends { disabled?: boolean }, IsMulti extends boolean>(
+    props: MenuListProps<A, IsMulti>
+  ) {
     return (
       <defaultComponents.MenuList {...props}>
         <Inset spaceY={dropdownConfig.menuPaddingY}>
+          {props.isMulti && props.selectProps.showMultiSelectBulkActions && (
+            <Inset space={8}>
+              <Inline space={0} align="right">
+                <Button
+                  kind="transparent"
+                  hierarchy="primary"
+                  label={
+                    props.hasValue
+                      ? props.selectProps.clearAllButtonLabel!
+                      : props.selectProps.selectAllButtonLabel!
+                  }
+                  onPress={() => {
+                    const nonDisabledOptions = (props.selectProps.options as A[]).filter(
+                      (o) => !o.disabled
+                    );
+                    props.hasValue
+                      ? props.clearValue()
+                      : props.selectProps.onChange(nonDisabledOptions as any, {
+                          action: "select-option",
+                          option: nonDisabledOptions as any,
+                        });
+                  }}
+                  // @ts-expect-error
+                  // NOTE(gabro): see the note about this in createButton
+                  internal_unsafe__bypassUsePress
+                />
+              </Inline>
+            </Inset>
+          )}
           <InternalList dividers>{props.children as unknown as Children}</InternalList>
         </Inset>
       </defaultComponents.MenuList>

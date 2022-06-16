@@ -96,6 +96,7 @@ export const MultiSelectOneOptionSelected = createControlledStory([1], {
   isMulti: true,
   multiValueMessage: (numberOfSelectedOptions: number) =>
     formatMessage(`${numberOfSelectedOptions} options selected`),
+  showMultiSelectBulkActions: true,
 });
 
 export const MultiSelectMultipleOptionsSelected = createControlledStory([1, 2], {

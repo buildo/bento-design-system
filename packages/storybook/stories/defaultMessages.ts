@@ -18,6 +18,8 @@ export const defaultMessages: ComponentProps<typeof DesignSystemProvider>["defau
       const options = n > 1 ? "options" : "option";
       return formatMessage(`${n} ${options} selected`);
     },
+    selectAllButtonLabel: formatMessage("Select all"),
+    clearAllButtonLabel: formatMessage("Clear all"),
   },
   SearchBar: {
     clearButtonLabel: formatMessage("Clear"),
