@@ -249,7 +249,7 @@ export function createTable(
     function gridWidthStyle(gridWidth: GridWidth): string {
       return match(gridWidth)
         .with("fit-content", () => "max-content")
-        .with("fill-available", () => "minmax(max-content, auto")
+        .with("fill-available", () => "minmax(max-content, auto)")
         .with({ custom: __.string }, ({ custom: width }) => width)
         .with({ custom: __.number }, ({ custom: width }) => `${width}px`)
         .exhaustive();
