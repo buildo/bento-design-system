@@ -295,3 +295,20 @@ export const Grouped = createStory({
   data: exampleData,
   groupBy: "group",
 });
+
+export const WithFillColumn = createStory({
+  columns: [
+    tableColumn.text({
+      headerLabel: formatMessage("Name"),
+      accessor: "name",
+      width: "fill-available",
+    }),
+    tableColumn.textWithIcon({
+      headerLabel: formatMessage("Country"),
+      accessor: "country",
+      iconPosition: "right",
+      hint: formatMessage("This is a hint"),
+    }),
+  ] as const,
+  data: exampleData,
+});
