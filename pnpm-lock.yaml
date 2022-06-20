@@ -213,7 +213,7 @@ importers:
       '@storybook/builder-webpack5': ^6.4.22
       '@storybook/manager-webpack5': ^6.4.22
       '@storybook/react': 6.4.20
-      '@storybook/testing-library': 0.0.12
+      '@storybook/testing-library': 0.0.13
       '@types/lodash.orderby': 4.6.7
       '@types/react': 17.0.45
       '@types/react-table': 7.7.12
@@ -251,7 +251,7 @@ importers:
       '@storybook/builder-webpack5': 6.4.22_4a3e00e9524ced4aa8a66eaebb591616
       '@storybook/manager-webpack5': 6.4.22_4a3e00e9524ced4aa8a66eaebb591616
       '@storybook/react': 6.4.20_0ee18a985e9889d488f17ffb4292c0da
-      '@storybook/testing-library': 0.0.12_react-dom@17.0.2+react@17.0.2
+      '@storybook/testing-library': 0.0.13_react-dom@17.0.2+react@17.0.2
       '@types/lodash.orderby': 4.6.7
       '@types/react': 17.0.45
       '@types/react-table': 7.7.12
@@ -7904,8 +7904,8 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
-  /@storybook/testing-library/0.0.12_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-MU11qXTPfqwxLQRC19yDf9/79IQSrBHLIt0epU0/SJGEVnwl41L2lgE3ptdCEY8IYzYOjjUXmf+klSFfKXQ7/w==}
+  /@storybook/testing-library/0.0.13_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-vRMeIGer4EjJkTgI8sQyK9W431ekPWYCWL//OmSDJ64IT3h7FnW7Xg6p+eqM3oII98/O5pcya5049GxnjaPtxw==}
     dependencies:
       '@storybook/client-logger': 6.4.22
       '@storybook/instrumenter': 6.4.19_react-dom@17.0.2+react@17.0.2
