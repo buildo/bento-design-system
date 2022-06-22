@@ -1,0 +1,63 @@
+import { Canvas } from "../../src/components/Canvas";
+import CodeBlock from "@theme/CodeBlock";
+
+# Implement a TaskCard component
+
+In this section we will see an hands-on tutorial that will guide you step-by-step in the construction of a complex component using the bento DS foundations.
+
+The component we want to implement is a TaskCard, an card element containing all the information about the status of a generic task. The final design we want to achieve can be seen in the related Figma (**TODO**: add figma link)
+
+## The card element
+
+Let's start to define the style for the wrapping card element. As we can see in Figma, the card has a set of fixed style properties (elevation, borderRadius, background, ...), while the outline style changes based on the status of the task. Even if this is a quite trivial case, it's a good opportunity to see how the `recipe` API works.
+Let's create a Vanilla-Extract CSS file, naming it `TaskCard.css.ts`. In this file, we will implement the recipe for the wrapping card, specifying all the fixed properties as `base`, and defining three variants for the status property (inProgress | Blocked | Done):
+
+<CodeBlock language="typescript">
+  {`export const taskCardRecipe = strictRecipe({
+  base: bentoSprinkles({
+    boxShadow: "elevationSmall",
+    outlineStyle: "solid",
+    borderRadius: 4,
+    outlineWidth: 1,
+    background: "backgroundSecondary",
+    padding: 16
+  }),
+  variants: {
+    status: {
+      InProgress: bentoSprinkles({
+        outlineColor: "outlineContainer",
+      }),
+      Blocked: bentoSprinkles({
+        outlineWidth: 2,
+        outlineColor: "outlineNegative",
+      }),
+      Done: bentoSprinkles({
+        outlineColor: "outlinePositive",
+      }),
+    },
+  },
+});`}
+</CodeBlock>
+
+At this point, we can use the implemented recipe to derive the className to be assigned to our wrapping `Box` element:
+
+<Canvas path="Tutorials/TaskCardBox" />
+
+:::note
+In this case, we preferred to specify the card `padding` in the recipe itself. This is particularly convenient, since we already have a style recipe for the wrapping Box, but we could have achieved the same result with an `<Inset space={16}>` inside the Box, wrapping the Card content.
+:::
+
+## Implementing the layout
+
+Now we can proceed implementing the layout for the Card content. As we can see from Figma, the most external frame contains a set of three elements, stacked vertically and with a gap of 8px between them. Let's then use the `Stack` component to achieve this:
+
+<Canvas path="Tutorials/TaskCardStack" />
+
+## Implementing the Task header
+
+Let's focus on the top-most element of the Stack. As you can see in Figma, this is again a frame, but this time the children are arranged horizontally. More specifically, the box containing the title on the left is 16px away from another nested group of two horizontal elements, this time with a gap of 8px between them.
+
+This layout can be implemented with two nested `Columns` elements, the outer one with a `space={16}`, and the inner one with `space={8}`. Since the title and the right group must not split the available space equally, we will wrap the innermost `Columns` element in a `Column` with `width=content`, so that the rigth part will take only the space needed for the content, leaving the rest to the `Title` element. In the rightmost group, instead, the two elements (a `Button` and a `Chip`) can share the space equally, so we can avoid the `Column` element.
+Note also that we must pass `alignY='center'` to both the `Columns` components, so that all the elements will be correctly aligned vertically.
+
+<Canvas path="Tutorials/TaskCardHeader" />
