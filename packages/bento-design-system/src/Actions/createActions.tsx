@@ -1,9 +1,11 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent } from "react";
 import { BannerProps, LocalizedString } from "../";
 import { Column, Columns, Inline } from "../internal";
 import { ButtonProps } from "../Button/createButton";
 import { ActionsConfig } from "./Config";
 import { InlineLoaderProps } from "../InlineLoader/InlineLoader";
+import { actionsMachine } from "./actionsMachine";
+import { useMachine } from "@xstate/react";
 
 type ActionProps = Omit<ButtonProps, "kind" | "size" | "hierarchy">;
 export type ActionsProps = {
@@ -35,19 +37,22 @@ export function createActions(
     loadingMessage,
     error,
   }: ActionsProps) {
-    const [isLoading, setIsLoading] = useState(false);
+    const [state, send] = useMachine(actionsMachine, {
+      services: {
+        onPressCallback: () => Promise.resolve(primaryAction?.onPress()),
+      },
+    });
+    const isLoading = state.matches("loading");
 
     const primaryActionButton = primaryAction && (
       <Button
         key="primary"
         {...primaryAction}
+        label={primaryAction.label}
         kind={config.primaryActionButtonKind}
         hierarchy={primaryAction.isDestructive ? "danger" : "primary"}
         size={size}
-        onPress={() => {
-          setIsLoading(true);
-          Promise.resolve(primaryAction.onPress()).then(() => setIsLoading(false));
-        }}
+        onPress={() => send("onPress")}
       />
     );
     const secondaryActionButton = secondaryAction && (
