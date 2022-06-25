@@ -111,7 +111,7 @@ function OpenInPlayroom({ componentSource, ast }: { componentSource: string; ast
             d.init.callee.object.type === "Identifier" &&
             d.init.callee.object.name === "React" &&
             d.init.callee.property.type === "Identifier" &&
-            d.init.callee.property.name === "useState"
+            ["useState", "useReducer"].includes(d.init.callee.property.name)
         );
         if (isUseStateDeclaration) {
           useStateStatements.push(path.node);
