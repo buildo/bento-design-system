@@ -1,5 +1,5 @@
 import { FieldProps } from "../Field/FieldProps";
-import { FunctionComponent, useRef, useState } from "react";
+import { FunctionComponent, useEffect, useRef } from "react";
 import { FieldType } from "../Field/createField";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
@@ -17,6 +17,8 @@ import { dateFieldRecipe } from "./DateField.css";
 import clsx from "clsx";
 import { LocalizedString } from "../util/LocalizedString";
 import { ButtonProps } from "../Button/createButton";
+import { useMachine } from "@xstate/react";
+import { dateFieldMachine } from "./dateFieldMachine";
 
 export type ShortcutProps<Value> = {
   label: LocalizedString;
@@ -56,9 +58,21 @@ export function createDateField(
   return function DateField(props: Props) {
     const startInputRef = useRef<HTMLInputElement>(null);
     const endInputRef = useRef<HTMLInputElement>(null);
-    const [focusedInput, setFocusedInput] = useState<FocusedInput>(null);
-    const [isFocused, setIsFocused] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+    const [state, send] = useMachine(dateFieldMachine);
+
+    console.log(state.nextEvents);
+
+    useEffect(() => {
+      props.disabled ? send("setDisabled") : send("setActive");
+    }, [props.disabled, send]);
+
+    useEffect(() => {
+      !props.disabled && props.readOnly ? send("setReadonly") : send("setActive");
+    }, [props.readOnly, props.disabled, send]);
+
+    const focusedInput = state.context.focusedInput;
+    const isOpen = state.matches("active.datePickerMenu.open");
+    const isFocused = state.matches("active.focus.focused");
     const validationState = props.readOnly ? "notSet" : props.issues ? "invalid" : "valid";
 
     const {
@@ -82,7 +96,7 @@ export function createDateField(
         const newFocusedInput =
           props.type === "range" || focusedInput !== "endDate" ? focusedInput : null;
         if (newFocusedInput === null) {
-          setIsOpen(false);
+          send("closeDatePicker");
           startInputRef.current && startInputRef.current.focus();
         }
         if (newFocusedInput === "endDate" && endInputRef.current) endInputRef.current.focus();
@@ -127,16 +141,14 @@ export function createDateField(
 
     const onInputFocus = (input: NonNullable<FocusedInput>) => () => {
       if (!props.disabled && !props.readOnly) {
-        setIsFocused(true);
-        setFocusedInput(input);
+        send({ type: "setFocused", focusedInput: input });
       }
     };
 
     const onInputClick = (input: NonNullable<FocusedInput>) => () => {
       if (!props.disabled && !props.readOnly) {
-        setIsFocused(true);
-        setFocusedInput(input);
-        setIsOpen(true);
+        send({ type: "setFocused", focusedInput: input });
+        send("openDatePicker");
       }
     };
 
@@ -164,6 +176,8 @@ export function createDateField(
         ))}
       </Inline>
     );
+
+    console.log(focusedInput, isOpen);
 
     return (
       <Field
@@ -203,7 +217,7 @@ export function createDateField(
               onDateClear={onDateClear}
               onFocus={onInputFocus("startDate")}
               onClick={onInputClick("startDate")}
-              onBlur={() => setIsFocused(false)}
+              onBlur={() => send("setNotFocused")}
               isOpen={isOpen}
             />
             {props.type === "range" && (
@@ -223,7 +237,7 @@ export function createDateField(
                   onDateClear={onDateClear}
                   onFocus={onInputFocus("endDate")}
                   onClick={onInputClick("endDate")}
-                  onBlur={() => setIsFocused(false)}
+                  onBlur={() => send("setNotFocused")}
                   isOpen={isOpen}
                 />
               </>
@@ -250,7 +264,7 @@ export function createDateField(
             goToPreviousMonth={goToPreviousMonths}
             selectActiveDate={goToDate}
             onClose={() => {
-              setIsOpen(false);
+              send("closeDatePicker");
               onDateFocus((props.type === "range" ? props.value[0] : props.value) || new Date());
             }}
             shortcuts={shortcuts}
