@@ -71,6 +71,8 @@ importers:
       '@vanilla-extract/recipes': ^0.2.4
       '@vanilla-extract/sprinkles': ^1.4.0
       '@vanilla-extract/webpack-plugin': 2.1.10
+      '@xstate/cli': ^0.2.1
+      '@xstate/react': ^3.0.0
       clsx: ^1.1.1
       css-loader: 6.7.1
       esbuild-loader: 2.18.0
@@ -104,6 +106,7 @@ importers:
       typescript: 4.6.3
       webpack: 5.71.0
       webpack-cli: 4.9.2
+      xstate: ^4.32.1
     dependencies:
       '@datepicker-react/hooks': 2.8.4_react@17.0.2
       '@dessert-box/react': 0.2.0_react@17.0.2
@@ -147,6 +150,7 @@ importers:
       '@vanilla-extract/dynamic': 2.0.2
       '@vanilla-extract/recipes': 0.2.4_@vanilla-extract+css@1.6.8
       '@vanilla-extract/sprinkles': 1.4.0_@vanilla-extract+css@1.6.8
+      '@xstate/react': 3.0.0_83b3e746b3d7a44f199627017eaaa2a3
       clsx: 1.1.1
       react-cool-dimensions: 2.0.7_react@17.0.2
       react-input-mask: 2.0.4_react-dom@17.0.2+react@17.0.2
@@ -157,6 +161,7 @@ importers:
       ts-deepmerge: 2.0.1
       ts-pattern: 3.3.5
       ts-toolbelt: 9.6.0
+      xstate: 4.32.1
     devDependencies:
       '@babel/preset-env': 7.17.10
       '@babel/preset-react': 7.16.7
@@ -175,6 +180,7 @@ importers:
       '@vanilla-extract/esbuild-plugin': 2.1.0
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/webpack-plugin': 2.1.10_webpack@5.71.0
+      '@xstate/cli': 0.2.1_prettier@2.6.2
       css-loader: 6.7.1_webpack@5.71.0
       esbuild-loader: 2.18.0_webpack@5.71.0
       eslint: 8.12.0
@@ -9362,6 +9368,64 @@ packages:
 
   /@xobotyi/scrollbar-width/1.9.5:
     resolution: {integrity: sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==}
+
+  /@xstate/cli/0.2.1_prettier@2.6.2:
+    resolution: {integrity: sha512-DNX3webiPGinEJd50uB6j41q5NAOqoMHUIC1fsCaTL+JAWe+gvOT69MievNRJ0c56s/49Vf3bCGrCdHXt/5pGg==}
+    hasBin: true
+    dependencies:
+      '@babel/core': 7.17.10
+      '@xstate/machine-extractor': 0.7.0_15001db5b037039961d62c2a05888f31
+      '@xstate/tools-shared': 1.1.7_2dfca8538c180fbf774158d6771b53dc
+      chokidar: 3.5.3
+      commander: 8.3.0
+      xstate: 4.32.1
+    transitivePeerDependencies:
+      - prettier
+      - supports-color
+    dev: true
+
+  /@xstate/machine-extractor/0.7.0_15001db5b037039961d62c2a05888f31:
+    resolution: {integrity: sha512-dXHI/sWWWouN/yG687ZuRCP7Cm6XggFWSK1qWj3NohBTyhaYWSR7ojwP6OUK6e1cbiJqxmM9EDnE2Auf+Xlp+A==}
+    peerDependencies:
+      '@babel/core': ^7
+      xstate: ^4
+    dependencies:
+      '@babel/core': 7.17.10
+      xstate: 4.32.1
+    dev: true
+
+  /@xstate/react/3.0.0_83b3e746b3d7a44f199627017eaaa2a3:
+    resolution: {integrity: sha512-KHSCfwtb8gZ7QH2luihvmKYI+0lcdHQOmGNRUxUEs4zVgaJCyd8csCEmwPsudpliLdUmyxX2pzUBojFkINpotw==}
+    peerDependencies:
+      '@xstate/fsm': ^2.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      xstate: ^4.31.0
+    peerDependenciesMeta:
+      '@xstate/fsm':
+        optional: true
+      xstate:
+        optional: true
+    dependencies:
+      react: 17.0.2
+      use-isomorphic-layout-effect: 1.1.1_9506f604383c27787a7cb97c95a04323
+      use-sync-external-store: 1.2.0_react@17.0.2
+      xstate: 4.32.1
+    transitivePeerDependencies:
+      - '@types/react'
+    dev: false
+
+  /@xstate/tools-shared/1.1.7_2dfca8538c180fbf774158d6771b53dc:
+    resolution: {integrity: sha512-q+GzSHfhx9ld0UK9rqYz/QI+rE6oEP3M9FI5ybmXKOMZ6739YKzdY3iQAfYfLZP8/Y6xdfvcpSmOzfFQvjnpcw==}
+    peerDependencies:
+      prettier: ^2.3.1
+      xstate: ^4
+    dependencies:
+      '@xstate/machine-extractor': 0.7.0_15001db5b037039961d62c2a05888f31
+      prettier: 2.6.2
+      xstate: 4.32.1
+    transitivePeerDependencies:
+      - '@babel/core'
+    dev: true
 
   /@xtuc/ieee754/1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -21284,7 +21348,7 @@ packages:
       serialize-javascript: 6.0.0
       source-map: 0.6.1
       terser: 5.12.0
-      webpack: 5.71.0
+      webpack: 5.71.0_webpack-cli@4.9.2
 
   /terser/4.8.0:
     resolution: {integrity: sha512-EAPipTNeWsb/3wLPeup1tVPaXfIaU68xMnVdPafIL1TV05OhASArYyIfFvnvJCNrR2NIOvDVNNTFRa+Re2MWyw==}
@@ -22229,6 +22293,14 @@ packages:
       use-isomorphic-layout-effect: 1.1.1_react@17.0.2
     dev: false
 
+  /use-sync-external-store/1.2.0_react@17.0.2:
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 17.0.2
+    dev: false
+
   /use/3.1.1:
     resolution: {integrity: sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==}
     engines: {node: '>=0.10.0'}
@@ -23059,6 +23131,9 @@ packages:
     resolution: {integrity: sha1-Z/4HXFwk/vOfnWX197f+dRcZaPw=}
     engines: {node: '>=0.4.0'}
     dev: true
+
+  /xstate/4.32.1:
+    resolution: {integrity: sha512-QYUd+3GkXZ8i6qdixnOn28bL3EvA++LONYL/EMWwKlFSh/hiLndJ8YTnz77FDs+JUXcwU7NZJg7qoezoRHc4GQ==}
 
   /xtend/4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}

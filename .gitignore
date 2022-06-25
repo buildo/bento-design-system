@@ -115,3 +115,6 @@ dist
 
 # Storybook
 storybook-static
+
+# XState typegen
+*.typegen.ts

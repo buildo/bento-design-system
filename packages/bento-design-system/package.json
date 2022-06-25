@@ -18,7 +18,8 @@
     "lint-staged": "lint-staged",
     "playroom-start": "playroom start",
     "playroom-build": "playroom build",
-    "start": "tsup --watch"
+    "start": "tsup --watch",
+    "postinstall": "xstate typegen \"./src/**/*.ts?(x)\""
   },
   "repository": {
     "type": "git",
@@ -78,6 +79,7 @@
     "@vanilla-extract/dynamic": "^2.0.2",
     "@vanilla-extract/recipes": "^0.2.4",
     "@vanilla-extract/sprinkles": "^1.4.0",
+    "@xstate/react": "^3.0.0",
     "clsx": "^1.1.1",
     "react-cool-dimensions": "^2.0.7",
     "react-input-mask": "^2.0.4",
@@ -87,7 +89,8 @@
     "react-use": "^17.3.2",
     "ts-deepmerge": "^2.0.1",
     "ts-pattern": "^3.3.5",
-    "ts-toolbelt": "^9.6.0"
+    "ts-toolbelt": "^9.6.0",
+    "xstate": "^4.32.1"
   },
   "devDependencies": {
     "@babel/preset-env": "7.17.10",
@@ -107,6 +110,7 @@
     "@vanilla-extract/esbuild-plugin": "2.1.0",
     "@vanilla-extract/private": "1.0.3",
     "@vanilla-extract/webpack-plugin": "2.1.10",
+    "@xstate/cli": "^0.2.1",
     "css-loader": "6.7.1",
     "esbuild-loader": "2.18.0",
     "eslint": "8.12.0",
