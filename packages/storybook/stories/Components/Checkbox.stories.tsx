@@ -10,7 +10,7 @@ const { defaultExport, createControlledStory } = createComponentStories({
     label: textArgType,
   },
   decorators: [
-    (Story, args) => (
+    (Story) => (
       <Card>
         <Box background="softOrange" padding={24}>
           <Columns space={16}>
