@@ -1,7 +1,7 @@
 import { mergeProps } from "@react-aria/utils";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { Box, Columns, Column } from "../internal";
-import { Body, Children } from "../";
+import { Body, Children } from "..";
 import { useFocusRing } from "@react-aria/focus";
 import { checkboxRecipe, fieldContainer } from "./Checkbox.css";
 import { vars } from "../vars.css";
@@ -51,8 +51,8 @@ type Props = {
   inputProps: InputHTMLAttributes<HTMLInputElement>;
 };
 
-export function createCheckbox(config: SelectionControlConfig) {
-  return function Checkbox({ option, inputRef, inputProps }: Props) {
+export function createInternalCheckbox(config: SelectionControlConfig) {
+  return function InternalCheckbox({ option, inputRef, inputProps }: Props) {
     const { fieldProps, labelProps } = useLabel(option);
     const { isFocusVisible, focusProps } = useFocusRing();
     return (

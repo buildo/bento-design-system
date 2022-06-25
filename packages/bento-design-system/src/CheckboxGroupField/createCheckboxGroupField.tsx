@@ -2,7 +2,7 @@ import { useCheckboxGroup, useCheckboxGroupItem } from "@react-aria/checkbox";
 import { useRef } from "react";
 import { FieldType } from "../Field/createField";
 import { FieldProps } from "../Field/FieldProps";
-import { createCheckbox } from "../Checkbox/createCheckbox";
+import { createInternalCheckbox } from "../Checkbox/createInternalCheckbox";
 import { useField } from "@react-aria/label";
 import { CheckboxGroupState, useCheckboxGroupState } from "@react-stately/checkbox";
 import { Box, Inline, Inset, Stack } from "../internal";
@@ -28,7 +28,7 @@ export function createCheckboxGroupField(
   },
   { Field }: { Field: FieldType }
 ) {
-  const Checkbox = createCheckbox(config.element);
+  const Checkbox = createInternalCheckbox(config.element);
 
   function CheckboxItem({ state, option }: { state: CheckboxGroupState; option: CheckboxOption }) {
     const ref = useRef<HTMLInputElement>(null);
