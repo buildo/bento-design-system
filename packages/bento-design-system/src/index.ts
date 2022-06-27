@@ -13,6 +13,7 @@ export * from "./Box/createBentoBox";
 export * from "./Breadcrumb/createBreadcrumb";
 export * from "./Button/createButtons";
 export * from "./Card/createCard";
+export * from "./Checkbox/createCheckbox";
 export * from "./Chip/createChip";
 export * from "./ContentBlock/ContentBlock";
 export * from "./ContentWithSidebar/createContentWithSidebar";

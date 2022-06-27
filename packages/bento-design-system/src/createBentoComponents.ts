@@ -50,6 +50,7 @@ import { createSwitch } from "./Switch/createSwitch";
 import { createUseComponentsShowcase } from "./createUseComponentsShowcase";
 import { createInlineLoader } from "./InlineLoader/InlineLoader";
 import { createDecorativeDivider } from "./Divider/Divider";
+import { createCheckbox } from "./Checkbox/createCheckbox";
 
 export function createBentoComponents<
   AtomsFn extends typeof bentoSprinkles,
@@ -99,6 +100,10 @@ export function createBentoComponents<
     Box,
     IconButton,
   });
+
+  const Checkbox = createCheckbox(
+    merge(defaultConfigs.selectionControl.element, config.selectionControl?.element ?? {})
+  );
 
   const ContentWithSidebar = createContentWithSidebar(Box);
 
@@ -205,6 +210,7 @@ export function createBentoComponents<
     Button,
     ButtonLink,
     Card,
+    Checkbox,
     CheckboxField,
     CheckboxGroupField,
     Chip,

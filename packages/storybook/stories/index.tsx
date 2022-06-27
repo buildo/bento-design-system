@@ -43,6 +43,7 @@ export const {
   Button,
   ButtonLink,
   Card,
+  Checkbox,
   CheckboxField,
   CheckboxGroupField,
   Chip,

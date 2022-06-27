@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { FieldType } from "../Field/createField";
 import { Children } from "..";
 import { FieldProps } from "../Field/FieldProps";
-import { createCheckbox } from "../Checkbox/createCheckbox";
+import { createInternalCheckbox } from "../Checkbox/createInternalCheckbox";
 import { useField } from "@react-aria/label";
 import { SelectionControlConfig } from "../Field/Config";
 
@@ -16,7 +16,7 @@ export function createCheckboxField(
   config: SelectionControlConfig,
   { Field }: { Field: FieldType }
 ) {
-  const Checkbox = createCheckbox(config);
+  const Checkbox = createInternalCheckbox(config);
 
   return function CheckboxField(props: Props) {
     const checkboxProps = {
