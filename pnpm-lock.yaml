@@ -80,7 +80,7 @@ importers:
       file-loader: 6.2.0
       jest: 27.5.1
       lint-staged: 12.3.7
-      mini-css-extract-plugin: 2.6.0
+      mini-css-extract-plugin: 2.6.1
       playroom: 0.27.9
       postcss: ^8.4.12
       prettier: 2.6.2
@@ -183,7 +183,7 @@ importers:
       file-loader: 6.2.0_webpack@5.71.0
       jest: 27.5.1
       lint-staged: 12.3.7
-      mini-css-extract-plugin: 2.6.0_webpack@5.71.0
+      mini-css-extract-plugin: 2.6.1_webpack@5.71.0
       playroom: 0.27.9_7201cdb91d312ad52aaac06add97789a
       postcss: 8.4.12
       prettier: 2.6.2
@@ -229,7 +229,7 @@ importers:
       eslint-plugin-sort-export-all: 1.2.2
       lint-staged: 12.3.7
       lodash.orderby: 4.6.0
-      mini-css-extract-plugin: 2.6.0
+      mini-css-extract-plugin: 2.6.1
       prettier: 2.6.2
       react: 17.0.2
       react-dom: 17.0.2
@@ -265,7 +265,7 @@ importers:
       eslint-plugin-sort-export-all: 1.2.2_eslint@8.12.0
       lint-staged: 12.3.7
       lodash.orderby: 4.6.0
-      mini-css-extract-plugin: 2.6.0
+      mini-css-extract-plugin: 2.6.1
       prettier: 2.6.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -17115,15 +17115,6 @@ packages:
       react: 17.0.2
       tiny-warning: 1.0.3
 
-  /mini-css-extract-plugin/2.6.0:
-    resolution: {integrity: sha512-ndG8nxCEnAemsg4FSgS+yNyHKgkTB4nPKqCOgh65j3/30qqC5RaSQQXMm++Y6sb6E1zRSxPkztj9fqxhS1Eo6w==}
-    engines: {node: '>= 12.13.0'}
-    peerDependencies:
-      webpack: ^5.0.0
-    dependencies:
-      schema-utils: 4.0.0
-    dev: true
-
   /mini-css-extract-plugin/2.6.0_webpack@5.71.0:
     resolution: {integrity: sha512-ndG8nxCEnAemsg4FSgS+yNyHKgkTB4nPKqCOgh65j3/30qqC5RaSQQXMm++Y6sb6E1zRSxPkztj9fqxhS1Eo6w==}
     engines: {node: '>= 12.13.0'}
@@ -17131,7 +17122,26 @@ packages:
       webpack: ^5.0.0
     dependencies:
       schema-utils: 4.0.0
+      webpack: 5.71.0
+
+  /mini-css-extract-plugin/2.6.1:
+    resolution: {integrity: sha512-wd+SD57/K6DiV7jIR34P+s3uckTRuQvx0tKPcvjFlrEylk6P4mQ2KSWk1hblj1Kxaqok7LogKOieygXqBczNlg==}
+    engines: {node: '>= 12.13.0'}
+    peerDependencies:
+      webpack: ^5.0.0
+    dependencies:
+      schema-utils: 4.0.0
+    dev: true
+
+  /mini-css-extract-plugin/2.6.1_webpack@5.71.0:
+    resolution: {integrity: sha512-wd+SD57/K6DiV7jIR34P+s3uckTRuQvx0tKPcvjFlrEylk6P4mQ2KSWk1hblj1Kxaqok7LogKOieygXqBczNlg==}
+    engines: {node: '>= 12.13.0'}
+    peerDependencies:
+      webpack: ^5.0.0
+    dependencies:
+      schema-utils: 4.0.0
       webpack: 5.71.0_webpack-cli@4.9.2
+    dev: true
 
   /minimalistic-assert/1.0.1:
     resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}
