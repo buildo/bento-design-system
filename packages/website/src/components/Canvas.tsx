@@ -107,11 +107,12 @@ function OpenInPlayroom({ componentSource, ast }: { componentSource: string; ast
         const isUseStateDeclaration = path.node.declarations.some(
           (d) =>
             d.init?.type === "CallExpression" &&
-            d.init.callee.type === "MemberExpression" &&
-            d.init.callee.object.type === "Identifier" &&
-            d.init.callee.object.name === "React" &&
-            d.init.callee.property.type === "Identifier" &&
-            ["useState", "useReducer"].includes(d.init.callee.property.name)
+            ((d.init.callee.type === "MemberExpression" &&
+              d.init.callee.object.type === "Identifier" &&
+              d.init.callee.object.name === "React" &&
+              d.init.callee.property.type === "Identifier" &&
+              ["useState", "useReducer"].includes(d.init.callee.property.name)) ||
+              (d.init.callee.type === "Identifier" && d.init.callee.name === "useToast"))
         );
         if (isUseStateDeclaration) {
           useStateStatements.push(path.node);
