@@ -70,7 +70,7 @@ export const WithError = createStory({
 });
 
 export const Destructive = createStory({
-  isDestructive: true,
+  kind: "destructive",
   title: formatMessage("Delete item"),
   children: (
     <Body size="medium">{formatMessage("Are you sure you want to delete this item?")}</Body>
@@ -78,6 +78,22 @@ export const Destructive = createStory({
   primaryAction: {
     label: formatMessage("Delete"),
     onPress: action("Delete"),
+  },
+  secondaryAction: {
+    label: formatMessage("Cancel"),
+    onPress: action("Cancel"),
+  },
+});
+
+export const Warning = createStory({
+  title: formatMessage("Warning"),
+  kind: "warning",
+  children: (
+    <Body size="medium">{formatMessage("Are you sure you want to create this item?")}</Body>
+  ),
+  primaryAction: {
+    label: formatMessage("Create"),
+    onPress: action("Create"),
   },
   secondaryAction: {
     label: formatMessage("Cancel"),
@@ -122,6 +138,19 @@ export const Small = createStory({
 
 export const Large = createStory({
   size: "large",
+  children: [<Placeholder />],
+  primaryAction: {
+    label: formatMessage("Create"),
+    onPress: action("Create"),
+  },
+  secondaryAction: {
+    label: formatMessage("Cancel"),
+    onPress: action("Cancel"),
+  },
+});
+
+export const Wide = createStory({
+  size: "wide",
   children: [<Placeholder />],
   primaryAction: {
     label: formatMessage("Create"),
