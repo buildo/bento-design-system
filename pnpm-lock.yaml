@@ -70,7 +70,7 @@ importers:
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/recipes': ^0.2.4
       '@vanilla-extract/sprinkles': ^1.4.0
-      '@vanilla-extract/webpack-plugin': 2.1.10
+      '@vanilla-extract/webpack-plugin': 2.1.11
       clsx: ^1.1.1
       css-loader: 6.7.1
       esbuild-loader: 2.18.0
@@ -174,7 +174,7 @@ importers:
       '@vanilla-extract/css': 1.6.8
       '@vanilla-extract/esbuild-plugin': 2.1.0
       '@vanilla-extract/private': 1.0.3
-      '@vanilla-extract/webpack-plugin': 2.1.10_webpack@5.71.0
+      '@vanilla-extract/webpack-plugin': 2.1.11_webpack@5.71.0
       css-loader: 6.7.1_webpack@5.71.0
       esbuild-loader: 2.18.0_webpack@5.71.0
       eslint: 8.12.0
@@ -221,7 +221,7 @@ importers:
       '@vanilla-extract/css': 1.6.8
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/sprinkles': 1.4.1
-      '@vanilla-extract/webpack-plugin': 2.1.10
+      '@vanilla-extract/webpack-plugin': 2.1.11
       chromatic: 6.5.3
       date-fns: ^2.28.0
       eslint: 8.12.0
@@ -258,7 +258,7 @@ importers:
       '@vanilla-extract/babel-plugin': 1.1.7
       '@vanilla-extract/css': 1.6.8
       '@vanilla-extract/private': 1.0.3
-      '@vanilla-extract/webpack-plugin': 2.1.10
+      '@vanilla-extract/webpack-plugin': 2.1.11
       chromatic: 6.5.3
       eslint: 8.12.0
       eslint-config-react-app: 7.0.0_eslint@8.12.0+typescript@4.6.3
@@ -9027,18 +9027,6 @@ packages:
       '@vanilla-extract/integration': 5.0.0
     dev: true
 
-  /@vanilla-extract/integration/4.0.1:
-    resolution: {integrity: sha512-s/P7FynY2/LWMCGVgHTXOpfy4pH0+cTCtTgEZEVvmf2ErX5ZSSsFe1i9MzODCYTDuvV2MWFg7oOspwx7i70h+A==}
-    dependencies:
-      '@vanilla-extract/css': 1.7.2
-      esbuild: 0.11.23
-      eval: 0.1.6
-      find-up: 5.0.0
-      javascript-stringify: 2.1.0
-      lodash: 4.17.21
-      outdent: 0.8.0
-    dev: true
-
   /@vanilla-extract/integration/5.0.0:
     resolution: {integrity: sha512-HwglsIxGYtV4IXFfyQ6GzZLFoaWaW+QkNx8UhXbgsCWUoPqpSbioukCOA+SuSuzsIcEZ3hkD0Y5ixITQNtnzjQ==}
     dependencies:
@@ -9084,12 +9072,12 @@ packages:
       '@vanilla-extract/css': 1.6.8
     dev: false
 
-  /@vanilla-extract/webpack-plugin/2.1.10:
-    resolution: {integrity: sha512-QXjJQbUIyR2hEiz5TaRRAEdLF/1zWLGyc/jotAxugOyzcbCS4C6YvJcHSUoEayjqDbS+Chnj0kSbFC+pQSOjNA==}
+  /@vanilla-extract/webpack-plugin/2.1.11:
+    resolution: {integrity: sha512-jCm2TT1jSN/m0TZXYtByuHOsX+ZDimku1SJzvDWF1Eqs3f0If2W1zcd+gaXR6lSaVJ/1MSB/evmeutsT/D3MoA==}
     peerDependencies:
       webpack: ^4.30.0 || ^5.20.2
     dependencies:
-      '@vanilla-extract/integration': 4.0.1
+      '@vanilla-extract/integration': 5.0.0
       chalk: 4.1.2
       debug: 4.3.3
       loader-utils: 2.0.2
@@ -9097,12 +9085,12 @@ packages:
       - supports-color
     dev: true
 
-  /@vanilla-extract/webpack-plugin/2.1.10_webpack@5.71.0:
-    resolution: {integrity: sha512-QXjJQbUIyR2hEiz5TaRRAEdLF/1zWLGyc/jotAxugOyzcbCS4C6YvJcHSUoEayjqDbS+Chnj0kSbFC+pQSOjNA==}
+  /@vanilla-extract/webpack-plugin/2.1.11_webpack@5.71.0:
+    resolution: {integrity: sha512-jCm2TT1jSN/m0TZXYtByuHOsX+ZDimku1SJzvDWF1Eqs3f0If2W1zcd+gaXR6lSaVJ/1MSB/evmeutsT/D3MoA==}
     peerDependencies:
       webpack: ^4.30.0 || ^5.20.2
     dependencies:
-      '@vanilla-extract/integration': 4.0.1
+      '@vanilla-extract/integration': 5.0.0
       chalk: 4.1.2
       debug: 4.3.3
       loader-utils: 2.0.2
@@ -21080,7 +21068,7 @@ packages:
     dev: true
 
   /supports-color/2.0.0:
-    resolution: {integrity: sha1-U10EXOa2Nj+kARcIRimZXp3zJMc=}
+    resolution: {integrity: sha512-KKNVtd6pCYgPIKU4cp2733HWYCpplQhddZLBUryaAHou723x+FRzQ5Df824Fj+IyyuiQTRoub4SnIFfIcrp70g==}
     engines: {node: '>=0.8.0'}
     dev: true
 
