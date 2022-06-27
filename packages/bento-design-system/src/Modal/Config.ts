@@ -1,7 +1,7 @@
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { TitleProps } from "../Typography/Title/Title";
-import { ModalSize } from "./createModal";
+import { ModalKind, ModalSize } from "./createModal";
 import { Children } from "../util/Children";
 
 type SizeConfig<T> = { [k in ModalSize]: T };
@@ -14,4 +14,6 @@ export type ModalConfig = {
   closeIconSize: IconProps["size"];
   width: SizeConfig<number>;
   elevation: "none" | "small" | "medium" | "large";
+  titleIcon: { [k in Exclude<ModalKind, "normal">]: (props: IconProps) => Children };
+  titleIconSize: IconProps["size"];
 };

@@ -334,6 +334,11 @@ export const modal: ModalConfig = {
     large: 720,
   },
   elevation: "large",
+  titleIcon: {
+    warning: IconWarning,
+    destructive: IconNegative,
+  },
+  titleIconSize: 24,
 };
 
 export const navigation: NavigationConfig = {

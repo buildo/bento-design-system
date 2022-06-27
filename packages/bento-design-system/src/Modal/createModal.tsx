@@ -11,8 +11,10 @@ import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { createPortal } from "../util/createPortal";
 import { ModalConfig } from "./Config";
+import { match } from "ts-pattern";
 
 export type ModalSize = "small" | "medium" | "large";
+export type ModalKind = "normal" | "warning" | "destructive";
 type Props = {
   title: LocalizedString;
   children: Children;
@@ -20,10 +22,12 @@ type Props = {
   secondaryAction?: Omit<ButtonProps, "kind" | "hierarchy" | "size">;
   onClose: () => void;
   closeButtonLabel?: LocalizedString;
+  /** @deprecated use kind='destructive' instead */
   isDestructive?: boolean;
   loadingMessage?: ActionsProps["loadingMessage"];
   error?: ActionsProps["error"];
   size?: ModalSize;
+  kind?: ModalKind;
 };
 
 type CustomModalProps = Pick<Props, "children" | "isDestructive" | "size"> & {
@@ -86,11 +90,24 @@ export function createModal(
 
     const { defaultMessages } = useDefaultMessages();
 
+    const kind = props.kind == null && props.isDestructive ? "destructive" : props.kind ?? "normal";
+
+    const icon = match(kind)
+      .with("normal", () => null)
+      .with("warning", (k) => config.titleIcon[k]({ color: "warning", size: config.titleIconSize }))
+      .with("destructive", (k) =>
+        config.titleIcon[k]({ color: "negative", size: config.titleIconSize })
+      )
+      .exhaustive();
+
     return (
       <CustomModal {...props} aria-label={props.title}>
         <Inset spaceX={config.paddingX} spaceY={config.paddingY}>
           <Columns space={16} alignY="top">
-            <Title size={config.titleSize}>{props.title}</Title>
+            <Columns space={16} alignY="center">
+              {icon && <Column width="content">{icon}</Column>}
+              <Title size={config.titleSize}>{props.title}</Title>
+            </Columns>
             <Column width="content">
               <IconButton
                 icon={config.closeIcon}
@@ -111,7 +128,7 @@ export function createModal(
           <Actions
             primaryAction={
               props.primaryAction
-                ? { ...props.primaryAction, isDestructive: props.isDestructive }
+                ? { ...props.primaryAction, isDestructive: kind === "destructive" }
                 : undefined
             }
             secondaryAction={props.secondaryAction}
