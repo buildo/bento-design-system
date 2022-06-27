@@ -110,7 +110,7 @@
     "css-loader": "6.7.1",
     "esbuild-loader": "2.18.0",
     "eslint": "8.12.0",
-    "eslint-config-react-app": "7.0.0",
+    "eslint-config-react-app": "7.0.1",
     "eslint-plugin-sort-export-all": "1.2.2",
     "file-loader": "6.2.0",
     "jest": "27.5.1",
