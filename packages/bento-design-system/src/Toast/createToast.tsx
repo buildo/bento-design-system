@@ -12,6 +12,14 @@ type Props = {
   onDismiss?: () => void;
 };
 
+/**
+ * Toasts are used to show temporary bits of information to the user in a non-obtrusive way.
+ *
+ * Toasts are created using the `useToast` hook, which returns a `showToast` function, which is
+ * normally invoked inside an event handler.
+ *
+ * Toasts automatically disappear after a timeout, which can be configured globally in `BentoProvider`.
+ */
 export function createToast(
   config: ToastConfig,
   components: {
