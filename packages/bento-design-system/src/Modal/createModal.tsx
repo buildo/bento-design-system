@@ -13,7 +13,7 @@ import { createPortal } from "../util/createPortal";
 import { ModalConfig } from "./Config";
 import { match } from "ts-pattern";
 
-export type ModalSize = "small" | "medium" | "large";
+export type ModalSize = "small" | "medium" | "large" | "wide";
 export type ModalKind = "normal" | "warning" | "destructive";
 type Props = {
   title: LocalizedString;

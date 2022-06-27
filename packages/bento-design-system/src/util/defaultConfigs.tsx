@@ -332,6 +332,7 @@ export const modal: ModalConfig = {
     small: 400,
     medium: 560,
     large: 720,
+    wide: 1000,
   },
   elevation: "large",
   titleIcon: {

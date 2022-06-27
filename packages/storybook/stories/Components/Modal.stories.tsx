@@ -149,6 +149,19 @@ export const Large = createStory({
   },
 });
 
+export const Wide = createStory({
+  size: "wide",
+  children: [<Placeholder />],
+  primaryAction: {
+    label: formatMessage("Create"),
+    onPress: action("Create"),
+  },
+  secondaryAction: {
+    label: formatMessage("Cancel"),
+    onPress: action("Cancel"),
+  },
+});
+
 export const Custom = () => {
   return (
     <CustomModal aria-label="Custom modal" isDestructive size="medium">
