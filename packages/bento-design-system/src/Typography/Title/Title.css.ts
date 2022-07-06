@@ -20,6 +20,8 @@ export const titleRecipe = strictRecipe({
       warning: bentoSprinkles({ color: "textWarning" }),
       negative: bentoSprinkles({ color: "textNegative" }),
       secondary: bentoSprinkles({ color: "textSecondary" }),
+      primaryInverse: bentoSprinkles({ color: "textPrimaryInverse" }),
+      secondaryInverse: bentoSprinkles({ color: "textSecondaryInverse" }),
     },
   },
 });
