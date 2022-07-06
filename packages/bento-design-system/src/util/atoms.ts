@@ -94,6 +94,7 @@ const color = {
   ...vars.textColor,
   ...vars.interactiveForegroundColor,
   ...vars.outlineColor,
+  ...vars.dataVisualizationColor,
 };
 
 const background = {
