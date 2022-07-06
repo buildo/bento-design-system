@@ -363,6 +363,8 @@ export function createTable(
       )
     ) : null;
 
+    const hasHeaderContent = column.Header || hint || sortIcon;
+
     return (
       <Box className={lastLeftSticky && lastLeftStickyColumn} style={style}>
         <Box
@@ -370,15 +372,17 @@ export function createTable(
           {...column.getHeaderProps(column.getSortByToggleProps())}
           textAlign={column.align}
         >
-          <Columns space={8} alignY="center" align={column.align}>
-            {column.Header ? (
-              <Column width="content">
-                <Label size="large">{column.render("Header") as any}</Label>
-              </Column>
-            ) : null}
-            {hint && <Column width="content">{hint}</Column>}
-            {sortIcon && <Column width="content">{sortIcon({ size: 8 })}</Column>}
-          </Columns>
+          {hasHeaderContent && (
+            <Columns space={8} alignY="center" align={column.align}>
+              {column.Header ? (
+                <Column width="content">
+                  <Label size="large">{column.render("Header") as any}</Label>
+                </Column>
+              ) : null}
+              {hint && <Column width="content">{hint}</Column>}
+              {sortIcon && <Column width="content">{sortIcon({ size: 8 })}</Column>}
+            </Columns>
+          )}
         </Box>
       </Box>
     );
