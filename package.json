@@ -28,6 +28,11 @@
   "pnpm": {
     "overrides": {
       "@types/react": "^18"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "react": "18"
+      }
     }
   }
 }
