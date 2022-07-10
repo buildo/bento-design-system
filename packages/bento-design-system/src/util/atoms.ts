@@ -27,13 +27,6 @@ export const unconditionalProperties = {
   overflow: ["hidden", "visible", "auto"],
   overflowX: ["hidden", "visible", "auto"],
   overflowY: ["hidden", "visible", "auto"],
-  borderBottomWidth: {
-    1: "1px",
-    2: "2px",
-  },
-  borderStyle: {
-    solid: "solid",
-  },
   isolation: ["auto", "isolate"],
 } as const;
 
@@ -132,6 +125,10 @@ export const statusProperties = {
     dashed: "dashed",
   },
   borderWidth: {
+    1: "1px",
+    2: "2px",
+  },
+  borderBottomWidth: {
     1: "1px",
     2: "2px",
   },
