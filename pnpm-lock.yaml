@@ -83,7 +83,7 @@ importers:
       mini-css-extract-plugin: 2.6.1
       playroom: 0.27.9
       postcss: ^8.4.12
-      prettier: 2.6.2
+      prettier: 2.7.1
       react: 17.0.2
       react-cool-dimensions: ^2.0.7
       react-dom: 17.0.2
@@ -186,7 +186,7 @@ importers:
       mini-css-extract-plugin: 2.6.1_webpack@5.71.0
       playroom: 0.27.9_7201cdb91d312ad52aaac06add97789a
       postcss: 8.4.12
-      prettier: 2.6.2
+      prettier: 2.7.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       smooth-release: 8.0.9
@@ -230,7 +230,7 @@ importers:
       lint-staged: 12.3.7
       lodash.orderby: 4.6.0
       mini-css-extract-plugin: 2.6.1
-      prettier: 2.6.2
+      prettier: 2.7.1
       react: 17.0.2
       react-dom: 17.0.2
       storybook-addon-themes: 6.1.0
@@ -266,7 +266,7 @@ importers:
       lint-staged: 12.3.7
       lodash.orderby: 4.6.0
       mini-css-extract-plugin: 2.6.1
-      prettier: 2.6.2
+      prettier: 2.7.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       storybook-addon-themes: 6.1.0_6b79dcf651fa0d4fc8b46fa68013a7bf
@@ -297,7 +297,7 @@ importers:
       eslint-config-react-app: 7.0.1
       lint-staged: 12.3.7
       playroom: 0.27.9
-      prettier: 2.6.2
+      prettier: 2.7.1
       prism-react-renderer: ^1.2.1
       process: ^0.11.10
       raw-loader: ^4.0.2
@@ -323,7 +323,7 @@ importers:
       clsx: 1.1.1
       docusaurus-plugin-react-docgen-typescript: 0.1.0_cf62c0672603fd708bf7c3b9e9dd14fe
       playroom: 0.27.9_react-dom@17.0.2+react@17.0.2
-      prettier: 2.6.2
+      prettier: 2.7.1
       prism-react-renderer: 1.3.1_react@17.0.2
       process: 0.11.10
       react: 17.0.2
@@ -18179,7 +18179,7 @@ packages:
       parse-prop-types: 0.3.0_prop-types@15.8.1
       portfinder: 1.0.28
       postcss-loader: 5.3.0_postcss@8.4.12+webpack@5.71.0
-      prettier: 2.6.2
+      prettier: 2.7.1
       prop-types: 15.8.1
       query-string: 6.14.1
       re-resizable: 6.9.2_react-dom@17.0.2+react@17.0.2
@@ -18258,7 +18258,7 @@ packages:
       parse-prop-types: 0.3.0_prop-types@15.8.1
       portfinder: 1.0.28
       postcss-loader: 5.3.0_webpack@5.71.0
-      prettier: 2.6.2
+      prettier: 2.7.1
       prop-types: 15.8.1
       query-string: 6.14.1
       re-resizable: 6.9.2_react-dom@17.0.2+react@17.0.2
@@ -18811,8 +18811,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.6.2:
-    resolution: {integrity: sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==}
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
     engines: {node: '>=10.13.0'}
     hasBin: true
 
