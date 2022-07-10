@@ -1,0 +1,36 @@
+name: Bug report
+description: File a bug report
+title: ""
+labels: ["bug", "triage-needed"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the bug
+      description: Please describe the bug, ideally with steps on how to reproduce it and screenshots (if relevant)
+    validations:
+      required: true
+  - type: textarea
+    id: playroom
+    attributes:
+      label: Playroom reproduction
+      description: If possible, try reproducing the issue in [Playroom](https://playroom.bento.buildo.io) and share the link here
+      placeholder: https://playroom.bento.buildo.io/#?code=...
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version of bento shows the bug?
+    validation:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Chrome
+        - Safari
+        - Firefox
+        - Edge
+    
