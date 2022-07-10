@@ -1,4 +1,4 @@
-import { createBentoComponents, bentoSprinkles } from "@buildo/bento-design-system";
+import { createBentoComponents } from "@buildo/bento-design-system";
 
 export * from "@buildo/bento-design-system";
 
@@ -50,4 +50,4 @@ export const {
   Toast,
   Tooltip,
   SelectField,
-} = createBentoComponents(bentoSprinkles);
+} = createBentoComponents();

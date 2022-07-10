@@ -25,7 +25,9 @@ Think of `Box` as a drop-in replacement for `div` (even though you can customize
 
 :::
 
-The type of `Box` props is determined by the type of the sprinkles. Suppose now you want to add a new color token (`specialBackgroundColor`) to the set of possible background colors.
+The type of `Box` props is determined by the type of the sprinkles, and if you don't pass anything to `createBentoComponents` it will use a default set of sprinkles defined by Bento.
+
+Suppose now you want to add a new color token (`specialBackgroundColor`) to the set of possible background colors.
 
 To do so, we must extend the set of tokens accepted by the `background` CSS properties to include also the custom token.
 
