@@ -1,6 +1,6 @@
 name: Bug report
 description: File a bug report
-title: ""
+title: "Bug: "
 labels: ["bug", "triage-needed"]
 body:
   - type: textarea
@@ -21,7 +21,7 @@ body:
     attributes:
       label: Version
       description: What version of bento shows the bug?
-    validation:
+    validations:
       required: true
   - type: dropdown
     id: browsers
