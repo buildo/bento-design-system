@@ -27,8 +27,8 @@
     "@babel/standalone": "^7.18.8",
     "@babel/traverse": "^7.18.8",
     "@buildo/bento-design-system": "workspace:*",
-    "@docusaurus/core": "2.0.0-beta.18",
-    "@docusaurus/preset-classic": "2.0.0-beta.18",
+    "@docusaurus/core": "2.0.0-beta.22",
+    "@docusaurus/preset-classic": "2.0.0-beta.22",
     "@docusaurus/theme-common": "^2.0.0-beta.18",
     "@mdx-js/react": "1.6.21",
     "assert": "^2.0.0",
@@ -45,7 +45,7 @@
     "react-markdown": "^8.0.3"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.0.0-beta.18",
+    "@docusaurus/module-type-aliases": "2.0.0-beta.22",
     "@docusaurus/theme-classic": "^2.0.0-beta.18",
     "@docusaurus/theme-live-codeblock": "^2.0.0-beta.18",
     "@tsconfig/docusaurus": "^1.0.6",
