@@ -12,7 +12,7 @@ import { DesignSystemProvider } from "../snippets";
 import { defaultMessages } from "../snippets/defaultMessages";
 import { createUrl } from "playroom/utils";
 import styles from "./Canvas.module.css";
-import babelPresetTypescript from "@babel/preset-typescript";
+const babelPresetTypescript = require("@babel/preset-typescript");
 
 export function Canvas({
   path,

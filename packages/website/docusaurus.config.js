@@ -65,6 +65,7 @@ const config = {
         src: ["../bento-design-system/src/**/**.{ts,tsx}", "../storybook/stories/index.tsx"],
         global: true,
         parserOptions: {
+          // @ts-ignore
           propFilter: (prop) => {
             if (prop.parent) {
               return !prop.parent.fileName.includes("node_modules");
