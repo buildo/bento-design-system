@@ -4,12 +4,12 @@ import { useComponentProps } from "./useComponentMetadata";
 function getType(type: any): JSX.Element | null {
   if (!type) return null;
   if (type.name === "enum") {
-    return <code>{type.value.map((v) => v.value).join(" | ")}</code>;
+    return <code>{type.value.map((v: { value: string }) => v.value).join(" | ")}</code>;
   }
   return type.name;
 }
 
-export const PropTable = ({ name }) => {
+export const PropTable = ({ name }: { name: string }) => {
   const props = useComponentProps(name);
 
   if (props) {
