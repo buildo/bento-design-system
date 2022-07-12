@@ -303,5 +303,7 @@ function internalCreateBentoComponents<
   };
 }
 
-type R<SprinklesFn extends typeof bentoSprinkles, CustomChipColor extends string = never>
-   = ReturnType<typeof internalCreateBentoComponents<SprinklesFn, CustomChipColor>>;
+type R<
+  SprinklesFn extends typeof bentoSprinkles,
+  CustomChipColor extends string = never
+> = ReturnType<typeof internalCreateBentoComponents<SprinklesFn, CustomChipColor>>;
