@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@datepicker-react/hooks": "^2.8.4",
-    "@dessert-box/react": "^0.2.0",
+    "@dessert-box/react": "^0.4.0",
     "@farzadsh/floating-ui-core": "^0.4.1",
     "@farzadsh/floating-ui-dom": "^0.2.1",
     "@farzadsh/floating-ui-react-dom": "^0.4.4",
