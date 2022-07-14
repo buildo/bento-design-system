@@ -1,4 +1,4 @@
-name: Bug report
+name: Bug report (React library)
 description: File a bug report
 title: "Bug: "
 labels: ["bug", "triage-needed"]
