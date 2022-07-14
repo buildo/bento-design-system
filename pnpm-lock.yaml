@@ -1,5 +1,8 @@
 lockfileVersion: 5.3
 
+overrides:
+  '@types/react': ^18
+
 importers:
 
   .:
@@ -60,7 +63,7 @@ importers:
       '@testing-library/react-hooks': 8.0.1
       '@testing-library/user-event': 14.2.1
       '@types/jest': 28.1.5
-      '@types/react': ^18.0.15
+      '@types/react': ^18
       '@types/react-input-mask': 2.0.5
       '@types/react-table': 7.7.12
       '@vanilla-extract/babel-plugin': 1.1.7
@@ -217,7 +220,7 @@ importers:
       '@storybook/react': 6.5.9
       '@storybook/testing-library': 0.0.13
       '@types/lodash.orderby': 4.6.7
-      '@types/react': ^18.0.15
+      '@types/react': ^18
       '@types/react-table': 7.7.12
       '@vanilla-extract/babel-plugin': 1.1.7
       '@vanilla-extract/css': 1.7.2
@@ -4216,7 +4219,7 @@ packages:
       react-dom: '*'
     dependencies:
       '@docusaurus/types': 2.0.0-beta.21_react-dom@18.2.0+react@18.2.0
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
       '@types/react-router-config': 5.0.6
       '@types/react-router-dom': 5.3.3
       react: 18.2.0
@@ -8506,32 +8509,32 @@ packages:
   /@types/react-dom/17.0.17:
     resolution: {integrity: sha512-VjnqEmqGnasQKV0CWLevqMTXBYG9GbwuE6x3VetERLh0cq2LTptFE73MrQi2S7GkKXCf2GgwItB/melLnxfnsg==}
     dependencies:
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
 
   /@types/react-dom/18.0.6:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
     dev: true
 
   /@types/react-input-mask/2.0.5:
     resolution: {integrity: sha512-4wPehO42dCk2sMrAGGT/xIfUG5GVdmzyGalweW5EvJARNXgtoxQ9HnkgSkXlVKR3oLVIHlT/vXk/DUXV+WSPyw==}
     dependencies:
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
     dev: true
 
   /@types/react-router-config/5.0.6:
     resolution: {integrity: sha512-db1mx37a1EJDf1XeX8jJN7R3PZABmJQXR8r28yUjVMFSjkmnQo6X6pOEEmNl+Tp2gYQOGPdYbFIipBtdElZ3Yg==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
       '@types/react-router': 5.1.18
 
   /@types/react-router-dom/5.3.3:
     resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
       '@types/react-router': 5.1.18
 
   /@types/react-router/5.1.18:
@@ -8543,27 +8546,20 @@ packages:
   /@types/react-syntax-highlighter/11.0.5:
     resolution: {integrity: sha512-VIOi9i2Oj5XsmWWoB72p3KlZoEbdRAcechJa8Ztebw7bDl2YmR+odxIqhtJGp1q2EozHs02US+gzxJ9nuf56qg==}
     dependencies:
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
     dev: true
 
   /@types/react-table/7.7.12:
     resolution: {integrity: sha512-bRUent+NR/WwtDGwI/BqhZ8XnHghwHw0HUKeohzB5xN3K2qKWYE5w19e7GCuOkL1CXD9Gi1HFy7TIm2AvgWUHg==}
     dependencies:
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
     dev: true
 
   /@types/react-transition-group/4.4.5:
     resolution: {integrity: sha512-juKD/eiSM3/xZYzjuzH6ZwpP+/lejltmiS3QEzV/vmb/Q8+HfDmxu+Baga8UEMGBqV88Nbg4l2hY/K2DkyaLLA==}
     dependencies:
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
     dev: false
-
-  /@types/react/17.0.47:
-    resolution: {integrity: sha512-mk0BL8zBinf2ozNr3qPnlu1oyVTYq+4V7WA76RgxUAtf0Em/Wbid38KN6n4abEkvO4xMTBWmnP1FtQzgkEiJoA==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.2
-      csstype: 3.1.0
 
   /@types/react/18.0.15:
     resolution: {integrity: sha512-iz3BtLuIYH1uWdsv6wXYdhozhqj20oD4/Hk2DNXIn1kFsmp9x8d9QB6FnPhfkbhd2PgEONt9Q1x/ebkwjfFLow==}
@@ -18374,7 +18370,7 @@ packages:
       '@types/lodash': 4.14.182
       '@types/lz-string': 1.3.34
       '@types/prettier': 2.6.3
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
       '@types/react-dom': 17.0.17
       '@vanilla-extract/babel-plugin': 1.1.7
       '@vanilla-extract/css': 1.7.2
@@ -18453,7 +18449,7 @@ packages:
       '@types/lodash': 4.14.182
       '@types/lz-string': 1.3.34
       '@types/prettier': 2.6.3
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
       '@types/react-dom': 17.0.17
       '@vanilla-extract/babel-plugin': 1.1.7
       '@vanilla-extract/css': 1.7.2
