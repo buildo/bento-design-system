@@ -1,5 +1,5 @@
 import { useTextField } from "@react-aria/textfield";
-import { FunctionComponent, useRef } from "react";
+import { FunctionComponent, HTMLAttributes, useRef } from "react";
 import useDimensions from "react-cool-dimensions";
 import { LocalizedString } from "..";
 import { Box } from "../internal";
@@ -10,8 +10,9 @@ import { FieldType } from "../Field/createField";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { SearchBarConfig } from "./Config";
+import { O } from "ts-toolbelt";
 
-type Props = {
+type Props = O.AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "aria-labelledby">> & {
   value: string;
   onChange: (value: string) => unknown;
   onBlur?: () => unknown;

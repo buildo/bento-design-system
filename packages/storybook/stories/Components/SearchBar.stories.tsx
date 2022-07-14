@@ -4,6 +4,7 @@ import { createComponentStories, formatMessage, textArgType } from "../util";
 const { defaultExport, createControlledStory } = createComponentStories({
   component: SearchBar,
   args: {
+    "aria-label": formatMessage("Search for anything"),
     placeholder: formatMessage("Search for anything"),
   },
   argTypes: {
