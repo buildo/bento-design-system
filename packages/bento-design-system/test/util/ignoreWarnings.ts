@@ -1,10 +1,11 @@
-export function ignoreWarnings(regex: RegExp, body: () => void) {
+export async function ignoreWarnings<A>(regex: RegExp, body: () => Promise<A>): Promise<A> {
   const originalWarn = console.warn;
   console.warn = jest.fn((...args: any[]) => {
     if (!regex.test(args[0])) {
       originalWarn(...args);
     }
   });
-  body();
+  const result = await body();
   console.warn = originalWarn;
+  return result;
 }

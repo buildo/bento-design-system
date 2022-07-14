@@ -35,7 +35,7 @@ describe("useToast", () => {
     // No toast
     expect(container.querySelector("aside")).not.toBeInTheDocument();
 
-    user.click(screen.getByRole("button"));
+    await user.click(screen.getByRole("button"));
 
     // Toast should appear right away
     await waitFor(() => container.querySelector("aside"), { timeout: 1 });
