@@ -24,6 +24,7 @@ import { createDateField } from "../DateField/createDateField";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { MenuProps } from "../Menu/createMenu";
 import { ButtonProps } from "../Button/createButton";
+import { createTextArea } from "../TextArea/createTextArea";
 
 type FieldsConfig = {
   field: FieldConfig;
@@ -63,6 +64,7 @@ export function createFormFields(
   const Slider = createSlider(config.slider);
   const SliderField = createSliderField({ Slider, Field });
   const DateField = createDateField(config.date, config.input, { Field, IconButton, Menu, Button });
+  const TextArea = createTextArea(config.input, { Field });
 
   return {
     CheckboxField,
@@ -76,6 +78,7 @@ export function createFormFields(
     Slider,
     SliderField,
     DateField,
+    TextArea,
   };
 }
 
@@ -91,3 +94,4 @@ export type { NumberFieldProps } from "../NumberField/createNumberField";
 export type { SliderFieldProps } from "../SliderField/createSliderField";
 export type { CheckboxFieldProps } from "../CheckboxField/createCheckboxField";
 export type { DateFieldProps } from "../DateField/createDateField";
+export type { TextAreaProps } from "../TextArea/createTextArea";
