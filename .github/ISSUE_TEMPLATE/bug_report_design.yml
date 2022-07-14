@@ -1,0 +1,27 @@
+name: Bug report (Figma toolkit)
+description: File a bug report concerning the Figma toolkit
+title: "Bug: "
+labels: ["bug", "triage-needed"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the bug
+      description: Please describe the bug, ideally with steps on how to reproduce it and screenshots (if relevant)
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version of the Figma library shows the bug?
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Figma version
+      description: What version of Figma are you seeing the bug on?
+    validations:
+      required: true
+    
