@@ -86,6 +86,7 @@ jobs:
               See: $ATC_EXTERNAL_URL/builds/$BUILD_ID
 
   - name: pr
+    public: true
     plan:
       - get: bento
         resource: pr
