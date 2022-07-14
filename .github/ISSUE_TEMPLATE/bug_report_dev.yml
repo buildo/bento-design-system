@@ -1,5 +1,5 @@
 name: Bug report (React library)
-description: File a bug report
+description: File a bug report concerning the React library
 title: "Bug: "
 labels: ["bug", "triage-needed"]
 body:
@@ -20,7 +20,7 @@ body:
     id: version
     attributes:
       label: Version
-      description: What version of bento shows the bug?
+      description: What version of Bento shows the bug?
     validations:
       required: true
   - type: dropdown
