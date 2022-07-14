@@ -25,9 +25,9 @@ Let's say, for example, our designers decided all the actions (e.g. the buttons 
 We can configure this by setting `buttonsAlignment` and `primaryPosition` for the `Actions` component:
 
 ```tsx title="my-project/design-system/src/index.tsx"
-import { createBentoComponents, bentoSprinkles } from "@buildo/bento-design-system";
+import { createBentoComponents } from "@buildo/bento-design-system";
 
-export const { Actions, Modal } = createBentoComponents(bentoSprinkles, {
+export const { Actions, Modal } = createBentoComponents({
   actions: {
     buttonsAlignment: "left",
     primaryPosition: "left",
@@ -35,23 +35,19 @@ export const { Actions, Modal } = createBentoComponents(bentoSprinkles, {
 });
 ```
 
-:::info
-Don't worry about the `bentoSprinkles` parameter passed to `createBentoComponents` for now. We will discuss it in more details later on.
-:::
-
 This way, not only the `Actions` component we get from the builder will always respect the configuration we passed (without the need to specify the behavior every time we use it via props), but also any other component using `Actions` internally (like `Modal` for the actions in the footer) will follow the same configuration.
 
 If you need multiple variants of a component, you can invoke `createBentoComponents` more than once.
 For example, suppose you want two types of `Chip`, one pill-shaped and one square-shaped:
 
 ```tsx title="my-project/design-system/src/index.tsx"
-import { createBentoComponents, bentoSprinkles } from "@buildo/bento-design-system";
+import { createBentoComponents } from "@buildo/bento-design-system";
 
-export const { Chip: SquaredChip } = createBentoComponents(bentoSprinkles, {
+export const { Chip: SquaredChip } = createBentoComponents({
   chip: { radius: 0 },
 });
 
-export const { Chip: PillChip } = createBentoComponents(bentoSprinkles, {
+export const { Chip: PillChip } = createBentoComponents({
   chip: { radius: "circledX" },
 });
 ```
@@ -64,7 +60,7 @@ Again, we can call `createBentoComponents` multiple times, to get different sets
 
 ```tsx
 // both Actions and Form exported from here will use the left-aligned Actions
-export const { Actions, Form } = createBentoComponents(bentoSprinkles, {
+export const { Actions, Form } = createBentoComponents({
   actions: {
     buttonsAlignment: "left",
     primaryPosition: "left",
@@ -73,7 +69,7 @@ export const { Actions, Form } = createBentoComponents(bentoSprinkles, {
 
 // Modal, instead, will use the default Actions component,
 // since we're not overriding its configuration here
-export const { Modal } = createBentoComponents(bentoSprinkles);
+export const { Modal } = createBentoComponents();
 ```
 
 </details>
