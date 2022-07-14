@@ -21,7 +21,7 @@ describe("IconButton", () => {
       />
     );
     const iconButton = await screen.findByRole("button");
-    ignoreWarnings(/onClick is deprecated, please use onPress/, () =>
+    await ignoreWarnings(/onClick is deprecated, please use onPress/, () =>
       act(() => user.click(iconButton))
     );
     expect(onPress).toHaveBeenCalledTimes(1);
