@@ -1,5 +1,6 @@
+import { FunctionComponent } from "react";
 import { CellProps, Column as Column_ } from "react-table";
-import { Children, LocalizedString } from "..";
+import { LocalizedString } from "..";
 
 declare module "react-table" {
   interface TableOptions<D extends object>
@@ -25,7 +26,7 @@ declare module "react-table" {
 
 export type Column<A extends string, D extends object, V> = {
   accessor: A;
-  Cell: (props: CellProps<D, V>) => Children;
+  Cell: (props: CellProps<D, V>) => ReturnType<FunctionComponent>;
 } & Omit<Column_<D>, "accessor" | "Cell" | "width">;
 
 type ColumnValueByAccessor<C, K extends string> = C extends Column<K, infer _D, infer V>
