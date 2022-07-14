@@ -595,6 +595,7 @@ export const createUseComponentsShowcase =
                     placeholder: formatMessage("Search anything..."),
                     value: searchBarValue,
                     onChange: searchBarOnChange,
+                    "aria-label": "Search",
                   },
                 ],
               ],
