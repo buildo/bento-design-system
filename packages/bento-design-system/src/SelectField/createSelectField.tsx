@@ -33,6 +33,7 @@ type Props<A, IsMulti extends boolean> = (IsMulti extends false
   noOptionsMessage?: LocalizedString;
   autoFocus?: boolean;
   isReadOnly?: boolean;
+  searchable?: boolean;
 } & (IsMulti extends true
     ? {
         multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString;
@@ -78,6 +79,7 @@ export function createSelectField(
       noOptionsMessage,
       autoFocus,
       menuSize = dropdownConfig.defaultMenuSize,
+      searchable,
     } = props;
 
     const validationState = issues ? "invalid" : "valid";
@@ -174,7 +176,7 @@ export function createSelectField(
           hideSelectedOptions={false}
           menuSize={menuSize}
           menuIsOpen={isReadOnly ? false : undefined}
-          isSearchable={isReadOnly ? false : undefined}
+          isSearchable={isReadOnly ? false : searchable ?? true}
           showMultiSelectBulkActions={
             isMulti ? (props as unknown as Props<A, true>).showMultiSelectBulkActions : false
           }
