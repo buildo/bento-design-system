@@ -14,7 +14,7 @@ These guidelines apply to **both**: regardless of whether you work at buildo or 
 
 ## 🐛 Bug reports
 
-Bugs with the React library or the Figma toolkit must be reported by [**opening an issue**](https://github.com/buildo/bento-design-system/issues/new) on the GitHub repository (be sure to follow use the appropriate bug report template).
+Bugs with the React library or the Figma toolkit must be reported by [**opening an issue**](https://github.com/buildo/bento-design-system/issues/new) on the GitHub repository (be sure to use the appropriate bug report template).
 
 ## 💡 Feature requests
 
@@ -37,4 +37,4 @@ If you have a doubt on how to use Bento to create a design (whether you are a de
 
 By default, issues are worked on by the internal team at buildo.
 
-If you are interested in contributing a pull request, we recommend discussing your intention to do so in an issue, so that we can advise on how to proceed, and maximize the changes that your pull request gets merged.
+If you are interested in contributing a pull request, we recommend discussing your intention to do so in an issue, so that we can advise on how to proceed, and maximize the chances that your pull request gets merged.
