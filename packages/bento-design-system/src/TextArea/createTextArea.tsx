@@ -11,6 +11,7 @@ import { InputConfig } from "../Field/Config";
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;
   isReadOnly?: boolean;
+  rows?: number;
 };
 
 export function createTextArea(config: InputConfig, { Field }: { Field: FieldType }) {
@@ -48,6 +49,7 @@ export function createTextArea(config: InputConfig, { Field }: { Field: FieldTyp
           borderRadius={config.radius}
           paddingX={config.paddingX}
           paddingY={config.paddingY}
+          rows={props.rows}
           className={[
             inputRecipe({ validation: validationState || "notSet" }),
             bodyRecipe({
