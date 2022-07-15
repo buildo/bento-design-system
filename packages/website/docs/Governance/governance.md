@@ -20,7 +20,7 @@ Bugs with the React library or the Figma toolkit must be reported by [**opening 
 
 Feature requests can be proposed using GitHub discussions. If you have an idea on how Bento could improve, [create a new discussion here](https://github.com/buildo/bento-design-system/discussions/new) using the **Ideas category**.
 
-Feature requests may be about design, development or both and can include:
+Feature requests may be about design, development or both, and can include:
 
 - suggesting new components
 - adding features to existing components
@@ -31,7 +31,7 @@ When feature requests are accepted, they are moved to the issue tracker and get 
 
 ## 🙏 Support requests
 
-If you have a doubt on how to use Bento to create a design (whether you are a developer implemeting a design, or a designer using the Figma toolkit), please use the **Q&A category** on [GitHub discussions](https://github.com/buildo/bento-design-system/discussions/new).
+If you have a doubt on how to use Bento to create a design (whether you are a developer implementing a design, or a designer using the Figma toolkit), please use the **Q&A category** on [GitHub discussions](https://github.com/buildo/bento-design-system/discussions/new).
 
 ## 🤝 External contributions
 
