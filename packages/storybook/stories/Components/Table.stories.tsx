@@ -312,3 +312,11 @@ export const WithFillColumn = createStory({
   ] as const,
   data: exampleData,
 });
+
+export const StickyHeaders = createStory({
+  columns: exampleColumns,
+  data: exampleData,
+  initialSorting: [{ id: "name" }],
+  stickyHeaders: true,
+  height: { custom: 320 },
+});

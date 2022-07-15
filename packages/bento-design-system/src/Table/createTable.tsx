@@ -31,6 +31,7 @@ import {
   lastLeftStickyColumn,
   sectionHeader,
   sectionHeaderContainer,
+  stickyColumnHeader,
   table,
 } from "./Table.css";
 import { Column as ColumnType, GridWidth, Row as RowType } from "./types";
@@ -61,6 +62,7 @@ import { IconButtonProps } from "../IconButton/createIconButton";
 import { TableConfig } from "./Config";
 import { IconHelp, IconInfo } from "../Icons";
 import { match, __ } from "ts-pattern";
+import clsx from "clsx";
 
 type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
   a: Row<RowType<C>>,
@@ -86,6 +88,8 @@ type Props<C extends ReadonlyArray<ColumnType<string, {}, any>>> = {
   noResultsTitle?: LocalizedString;
   noResultsDescription?: LocalizedString;
   initialSorting?: Array<SortingRule<C>>;
+  stickyHeaders?: boolean;
+  height?: { custom: string | number };
 } & SortingProps<C>;
 
 /**
@@ -128,6 +132,8 @@ export function createTable(
     customSorting,
     onSort,
     initialSorting,
+    stickyHeaders,
+    height,
   }: Props<C>) {
     const customOrderByFn = useMemo(
       () =>
@@ -221,10 +227,21 @@ export function createTable(
               .reduce((acc, w) => acc + w, 0);
             return {
               ...styles,
-              [id]: { left: totalLeftWidth, zIndex: 1, position: "sticky" } as CSSProperties,
+              [id]: {
+                left: totalLeftWidth,
+                zIndex: zIndexes.leftStickyCell,
+                position: "sticky",
+              } as CSSProperties,
             };
           } else {
-            return { ...styles, [id]: { left: 0, zIndex: 1, position: "sticky" } as CSSProperties };
+            return {
+              ...styles,
+              [id]: {
+                left: 0,
+                zIndex: zIndexes.leftStickyCell,
+                position: "sticky",
+              } as CSSProperties,
+            };
           }
         }, {} as Record<string, CSSProperties>);
 
@@ -255,6 +272,14 @@ export function createTable(
         .exhaustive();
     }
 
+    function tableHeight(height: Props<C>["height"]): string | undefined {
+      return match(height)
+        .with({ custom: __.string }, ({ custom: width }) => width)
+        .with({ custom: __.number }, ({ custom: width }) => `${width}px`)
+        .with(__.nullish, () => undefined)
+        .exhaustive();
+    }
+
     const gridTemplateColumns = columns
       .filter(({ accessor }) => accessor !== groupBy)
       .map(({ gridWidth = "fit-content" }) => gridWidthStyle(gridWidth))
@@ -282,7 +307,7 @@ export function createTable(
         alignItems="stretch"
         overflow="auto"
         className={table}
-        style={{ ...getTableProps().style, gridTemplateColumns }}
+        style={{ ...getTableProps().style, gridTemplateColumns, height: tableHeight(height) }}
       >
         {headerGroups.map((headerGroup) =>
           headerGroup.headers.map((column, index) => (
@@ -291,6 +316,8 @@ export function createTable(
               key={column.id}
               style={stickyLeftColumnStyle[column.id]}
               lastLeftSticky={index === lastStickyColumnIndex}
+              stickyHeaders={stickyHeaders}
+              sticky={stickyLeftColumnsIds.includes(column.id)}
             />
           ))
         )}
@@ -321,10 +348,14 @@ export function createTable(
     column,
     style,
     lastLeftSticky,
+    stickyHeaders,
+    sticky,
   }: {
     column: ColumnInstance<D>;
     style: CSSProperties;
     lastLeftSticky: boolean;
+    stickyHeaders?: boolean;
+    sticky: boolean;
   }) {
     const sortIcon = ((): ((props: IconProps) => Children) | null => {
       if (!column.canSort) {
@@ -366,7 +397,13 @@ export function createTable(
     const hasHeaderContent = column.Header || hint || sortIcon;
 
     return (
-      <Box className={lastLeftSticky && lastLeftStickyColumn} style={style}>
+      <Box
+        className={clsx(
+          lastLeftSticky && lastLeftStickyColumn,
+          stickyHeaders && stickyColumnHeader
+        )}
+        style={{ ...style, zIndex: sticky ? zIndexes.leftStickyHeader : zIndexes.header }}
+      >
         <Box
           className={columnHeader}
           {...column.getHeaderProps(column.getSortByToggleProps())}
@@ -496,3 +533,9 @@ export type { Column, Row } from "./types";
 
 export type { ColumnOptionsBase } from "./tableColumn";
 export type { Props as TableProps };
+
+const zIndexes = {
+  header: 1,
+  leftStickyCell: 2,
+  leftStickyHeader: 3,
+};
