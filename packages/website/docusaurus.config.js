@@ -96,6 +96,12 @@ const config = {
             label: "Documentation",
           },
           {
+            type: "doc",
+            docId: "Governance/governance",
+            position: "left",
+            label: "Governance",
+          },
+          {
             href: "https://github.com/buildo/bento-design-system",
             label: "GitHub",
             position: "right",
