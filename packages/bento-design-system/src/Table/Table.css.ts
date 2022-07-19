@@ -4,6 +4,8 @@ import { strictRecipe } from "../util/strictRecipe";
 
 export const table = style({
   gridAutoRows: "max-content",
+  // NOTE(gabro): this is to avoid the internal z-indexes to "leak" out of the Table
+  isolation: "isolate",
 });
 
 export const lastLeftStickyColumn = bentoSprinkles({
@@ -20,6 +22,11 @@ export const columnHeader = bentoSprinkles({
   paddingX: 16,
   paddingY: 8,
   height: "full",
+});
+
+export const stickyColumnHeader = bentoSprinkles({
+  position: "sticky",
+  top: 0,
 });
 
 export const cellContainerRecipe = strictRecipe({
