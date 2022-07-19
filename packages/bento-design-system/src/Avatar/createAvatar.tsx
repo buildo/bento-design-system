@@ -1,7 +1,8 @@
 import { Label } from "..";
-import { avatarRecipe } from "./Avatar.css";
+import { avatarImage, avatarRecipe } from "./Avatar.css";
 import { Box } from "../internal";
 import { AvatarConfig } from "./Config";
+import { useEffect, useState } from "react";
 
 type Props = {
   name?: string;
@@ -16,13 +17,27 @@ type Props = {
     | "indigo"
     | "violet"
     | "pink";
+  imageSrc?: string;
 };
 
 export type { Props as AvatarProps };
 
 export function createAvatar(config: AvatarConfig) {
-  return function Avatar({ color, name }: Props) {
+  return function Avatar({ color, name, imageSrc }: Props) {
     const initial = name?.trim()[0];
+
+    const [imageAvailable, setImageAvailable] = useState<boolean | undefined>(undefined);
+
+    useEffect(() => {
+      setImageAvailable(undefined);
+    }, [imageSrc]);
+
+    const handleImageLoaded = () => {
+      setImageAvailable(true);
+    };
+    const handleImageErrored = () => {
+      setImageAvailable(false);
+    };
 
     return (
       <Box display="flex">
@@ -35,7 +50,16 @@ export function createAvatar(config: AvatarConfig) {
           borderRadius={config.radius}
           boxShadow={config.outline}
         >
-          {initial ? (
+          {imageSrc && imageAvailable !== false ? (
+            <Box
+              as="img"
+              display={imageAvailable ? "block" : "none"}
+              src={imageSrc}
+              className={avatarImage}
+              onLoad={handleImageLoaded}
+              onError={handleImageErrored}
+            />
+          ) : initial ? (
             <Label size={config.labelSize}>{initial}</Label>
           ) : (
             config.icon({
