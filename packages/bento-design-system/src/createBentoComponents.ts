@@ -171,6 +171,7 @@ function internalCreateBentoComponents<
     SelectField,
     SliderField,
     TextField,
+    TextArea,
     DateField,
   } = createFormFields(
     {
@@ -293,6 +294,7 @@ function internalCreateBentoComponents<
     ToastProvider,
     Tooltip,
     TextField,
+    TextArea,
   };
 
   const useComponentsShowcase = createUseComponentsShowcase(components);

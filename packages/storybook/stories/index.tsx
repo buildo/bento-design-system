@@ -95,6 +95,7 @@ export const {
   ToastProvider,
   Tooltip,
   TextField,
+  TextArea,
   IconIdea,
   IconCheck,
   IconChevronDown,
