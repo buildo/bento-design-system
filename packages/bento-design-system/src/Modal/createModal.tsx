@@ -28,9 +28,10 @@ type Props = {
   error?: ActionsProps["error"];
   size?: ModalSize;
   kind?: ModalKind;
+  autoFocus?: boolean;
 };
 
-type CustomModalProps = Pick<Props, "children" | "isDestructive" | "size"> & {
+type CustomModalProps = Pick<Props, "children" | "isDestructive" | "size" | "autoFocus"> & {
   ["aria-label"]: string;
 };
 
@@ -63,7 +64,7 @@ export function createModal(
     return createPortal(
       <Box className={underlay} {...underlayProps} color={undefined}>
         <ModalContext.Provider value={true}>
-          <FocusScope contain restoreFocus autoFocus>
+          <FocusScope contain restoreFocus autoFocus={props.autoFocus ?? true}>
             <Box
               className={modalRecipe({ elevation: config.elevation })}
               {...overlayProps}
