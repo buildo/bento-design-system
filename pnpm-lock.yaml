@@ -291,7 +291,7 @@ importers:
       '@docusaurus/theme-classic': 2.0.0-beta.21
       '@docusaurus/theme-common': 2.0.0-beta.21
       '@docusaurus/theme-live-codeblock': 2.0.0-beta.21
-      '@mdx-js/react': 1.6.21
+      '@mdx-js/react': 1.6.22
       '@tsconfig/docusaurus': 1.0.6
       '@types/babel__standalone': 7.1.4
       '@vanilla-extract/sprinkles': 1.4.1
@@ -322,7 +322,7 @@ importers:
       '@docusaurus/core': 2.0.0-beta.21_bc6f50cf0b6549c5ea71dd58c818affc
       '@docusaurus/preset-classic': 2.0.0-beta.21_bc6f50cf0b6549c5ea71dd58c818affc
       '@docusaurus/theme-common': 2.0.0-beta.21_bc6f50cf0b6549c5ea71dd58c818affc
-      '@mdx-js/react': 1.6.21_react@18.2.0
+      '@mdx-js/react': 1.6.22_react@18.2.0
       assert: 2.0.0
       buffer: 6.0.3
       clsx: 1.2.1
@@ -5399,14 +5399,6 @@ packages:
       unist-util-visit: 2.0.3
     transitivePeerDependencies:
       - supports-color
-
-  /@mdx-js/react/1.6.21_react@18.2.0:
-    resolution: {integrity: sha512-CgSNT9sq2LAlhEbVlPg7DwUQkypz+CWaWGcJbkgmp9WCAy6vW33CQ44UbKPiH3wet9o+UbXeQOqzZd041va83g==}
-    peerDependencies:
-      react: ^16.13.1 || ^17.0.0
-    dependencies:
-      react: 18.2.0
-    dev: false
 
   /@mdx-js/react/1.6.22_react@18.2.0:
     resolution: {integrity: sha512-TDoPum4SHdfPiGSAaRBw7ECyI8VaHpK8GJugbJIJuqyh6kzw9ZLJZW3HGL3NNrJGxcAixUvqROm+YuQOo5eXtg==}
