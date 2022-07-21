@@ -37,4 +37,8 @@ export const defaultMessages: DefaultMessages["defaultMessages"] = {
     nextMonthLabel: unsafeLocalizedString("Next month"),
     previousMonthLabel: unsafeLocalizedString("Prev month"),
   },
+  TextField: {
+    showPasswordLabel: unsafeLocalizedString("Show password"),
+    hidePasswordLabel: unsafeLocalizedString("Hide password"),
+  },
 };

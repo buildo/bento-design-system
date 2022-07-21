@@ -18,6 +18,8 @@ import {
   IconChevronLeft,
   IconInfo,
   IconSpinner,
+  IconEyeClosed,
+  IconEye,
 } from "../Icons";
 import { ButtonConfig } from "../Button/Config";
 import { CardConfig } from "../Card/Config";
@@ -240,6 +242,9 @@ export const input: InputConfig = {
   fontSize: "large",
   internalSpacing: 16,
   iconSize: 16,
+  passwordIconSize: 24,
+  passwordShowIcon: IconEye,
+  passwordHideIcon: IconEyeClosed,
 };
 
 export const selectionControl: {

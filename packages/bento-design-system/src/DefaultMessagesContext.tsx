@@ -33,6 +33,10 @@ export type DefaultMessages = {
       previousMonthLabel: LocalizedString;
       nextMonthLabel: LocalizedString;
     };
+    TextField: {
+      showPasswordLabel: LocalizedString;
+      hidePasswordLabel: LocalizedString;
+    };
   };
 };
 
