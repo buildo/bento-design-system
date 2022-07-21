@@ -121,7 +121,7 @@ export function createSelectField(
           autoFocus={autoFocus}
           value={
             isMulti
-              ? options.filter((o) => (value as readonly A[]).includes(o.value))
+              ? options.filter((o) => ((value ?? []) as readonly A[]).includes(o.value))
               : options.find((o) => o.value === value)
           }
           onChange={(o) => {
@@ -141,7 +141,7 @@ export function createSelectField(
             .sort((a, b) => {
               // In case of multi-select, we display the selected options first
               if (isMulti) {
-                const selectedValues = value as readonly A[];
+                const selectedValues = (value ?? []) as readonly A[];
                 const isSelected = (a: SelectOption<A>) => selectedValues.includes(a.value);
                 if (isSelected(a) && !isSelected(b)) {
                   return -1;
