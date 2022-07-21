@@ -31,7 +31,6 @@ type Props<A, IsMulti extends boolean> = (IsMulti extends false
   options: Array<SelectOption<A>>;
   isMulti?: IsMulti;
   noOptionsMessage?: LocalizedString;
-  autoFocus?: boolean;
   isReadOnly?: boolean;
   searchable?: boolean;
 } & (IsMulti extends true

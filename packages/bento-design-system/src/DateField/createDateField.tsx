@@ -56,9 +56,11 @@ export function createDateField(
   return function DateField(props: Props) {
     const startInputRef = useRef<HTMLInputElement>(null);
     const endInputRef = useRef<HTMLInputElement>(null);
-    const [focusedInput, setFocusedInput] = useState<FocusedInput>(null);
-    const [isFocused, setIsFocused] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+    const [focusedInput, setFocusedInput] = useState<FocusedInput>(
+      props.autoFocus ? "startDate" : null
+    );
+    const [isFocused, setIsFocused] = useState(props.autoFocus ?? false);
+    const [isOpen, setIsOpen] = useState(props.autoFocus ?? false);
     const validationState = props.readOnly ? "notSet" : props.issues ? "invalid" : "valid";
 
     const {

@@ -12,4 +12,5 @@ export type FieldProps<V, VO = V> = {
   issues?: NonEmptyArray<Children>;
   disabled?: boolean;
   assistiveText?: Children;
+  autoFocus?: boolean;
 };

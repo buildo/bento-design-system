@@ -19,7 +19,6 @@ type Props = (
   maxValue: number;
   step?: number;
   dragStep?: number;
-  autoFocus?: boolean;
   hideThumbValue?: boolean;
 } & FormatProps;
 

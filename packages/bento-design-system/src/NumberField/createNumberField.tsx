@@ -11,7 +11,6 @@ import { NumberInputProps } from "../NumberInput/createNumberInput";
 
 type Props = FieldProps<number | undefined, number> & {
   placeholder: LocalizedString;
-  autoFocus?: boolean;
   isReadOnly?: boolean;
 } & FormatProps &
   Pick<NumberFieldStateProps, "minValue" | "maxValue" | "step">;
