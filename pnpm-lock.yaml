@@ -291,7 +291,7 @@ importers:
       '@docusaurus/theme-classic': 2.0.0-beta.21
       '@docusaurus/theme-common': 2.0.0-beta.21
       '@docusaurus/theme-live-codeblock': 2.0.0-beta.21
-      '@mdx-js/react': 1.6.21
+      '@mdx-js/react': 1.6.22
       '@tsconfig/docusaurus': 1.0.6
       '@types/babel__standalone': 7.1.4
       '@vanilla-extract/sprinkles': 1.4.1
@@ -322,7 +322,7 @@ importers:
       '@docusaurus/core': 2.0.0-beta.21_bc6f50cf0b6549c5ea71dd58c818affc
       '@docusaurus/preset-classic': 2.0.0-beta.21_bc6f50cf0b6549c5ea71dd58c818affc
       '@docusaurus/theme-common': 2.0.0-beta.21_bc6f50cf0b6549c5ea71dd58c818affc
-      '@mdx-js/react': 1.6.21_react@18.2.0
+      '@mdx-js/react': 1.6.22_react@18.2.0
       assert: 2.0.0
       buffer: 6.0.3
       clsx: 1.2.1
@@ -5400,14 +5400,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@mdx-js/react/1.6.21_react@18.2.0:
-    resolution: {integrity: sha512-CgSNT9sq2LAlhEbVlPg7DwUQkypz+CWaWGcJbkgmp9WCAy6vW33CQ44UbKPiH3wet9o+UbXeQOqzZd041va83g==}
-    peerDependencies:
-      react: ^16.13.1 || ^17.0.0
-    dependencies:
-      react: 18.2.0
-    dev: false
-
   /@mdx-js/react/1.6.22_react@18.2.0:
     resolution: {integrity: sha512-TDoPum4SHdfPiGSAaRBw7ECyI8VaHpK8GJugbJIJuqyh6kzw9ZLJZW3HGL3NNrJGxcAixUvqROm+YuQOo5eXtg==}
     peerDependencies:
@@ -6298,7 +6290,7 @@ packages:
       error-stack-parser: 2.1.4
       string-width: 4.2.3
       strip-ansi: 6.0.1
-      webpack: 5.73.0
+      webpack: 5.73.0_webpack-cli@4.10.0
 
   /@storybook/addon-actions/6.5.9_react-dom@18.2.0+react@18.2.0:
     resolution: {integrity: sha512-wDYm3M1bN+zcYZV3Q24M03b/P8DDpvj1oSoY6VLlxDAi56h8qZB/voeIS2I6vWXOB79C5tbwljYNQO0GsufS0g==}
@@ -9929,7 +9921,7 @@ packages:
       loader-utils: 2.0.2
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.73.0
+      webpack: 5.73.0_webpack-cli@4.10.0
 
   /babel-loader/8.2.5_@babel+core@7.18.6:
     resolution: {integrity: sha512-OSiFfH89LrEMiWd4pLNqGz4CwJDtbs2ZVc+iGu2HrkRfPxId9F2anQj38IxWpmRfsUY0aBZYi1EFcd3mhtRMLQ==}
@@ -11557,7 +11549,7 @@ packages:
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
       semver: 7.3.7
-      webpack: 5.73.0
+      webpack: 5.73.0_webpack-cli@4.10.0
 
   /css-loader/6.7.1_webpack@5.73.0:
     resolution: {integrity: sha512-yB5CNFa14MbPJcomwNh3wLThtkZgcNyI2bNMRt8iE5Z8Vwl7f8vQXFAzn2HDOJvtDq2NTZBUGMSUNNyrv3/+cw==}
@@ -14880,7 +14872,7 @@ packages:
       lodash: 4.17.21
       pretty-error: 4.0.0
       tapable: 2.2.1
-      webpack: 5.73.0
+      webpack: 5.73.0_webpack-cli@4.10.0
 
   /htmlparser2/6.1.0:
     resolution: {integrity: sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==}
