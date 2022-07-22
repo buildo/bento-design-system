@@ -6,7 +6,6 @@ import { useDialog } from "@react-aria/dialog";
 import { FocusScope } from "@react-aria/focus";
 import { modalRecipe, underlay, modalBody } from "./Modal.css";
 import useKeyPressEvent from "react-use/lib/useKeyPressEvent";
-import { ModalContext } from "./ModalContext";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";
 import { createPortal } from "../util/createPortal";
@@ -63,21 +62,19 @@ export function createModal(
 
     return createPortal(
       <Box className={underlay} {...underlayProps} color={undefined}>
-        <ModalContext.Provider value={true}>
-          <FocusScope contain restoreFocus autoFocus={props.autoFocus ?? true}>
-            <Box
-              className={modalRecipe({ elevation: config.elevation })}
-              {...overlayProps}
-              {...modalProps}
-              {...dialogProps}
-              color={undefined}
-              borderRadius={config.radius}
-              style={{ width: config.width[props.size || "medium"] }}
-            >
-              {props.children}
-            </Box>
-          </FocusScope>
-        </ModalContext.Provider>
+        <FocusScope contain restoreFocus autoFocus={props.autoFocus ?? true}>
+          <Box
+            className={modalRecipe({ elevation: config.elevation })}
+            {...overlayProps}
+            {...modalProps}
+            {...dialogProps}
+            color={undefined}
+            borderRadius={config.radius}
+            style={{ width: config.width[props.size || "medium"] }}
+          >
+            {props.children}
+          </Box>
+        </FocusScope>
       </Box>
     );
   }
