@@ -168,6 +168,10 @@ export const disclosure: DisclosureConfig = {
     open: IconChevronUp,
     closed: IconChevronDown,
   },
+  iconSize: {
+    1: 16,
+    2: 16,
+  },
 };
 
 export const disclosureGroup: DisclosureGroupConfig = {

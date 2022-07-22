@@ -68,7 +68,7 @@ export function createDisclosure(config: DisclosureConfig) {
             reverse={iconPosition === "trailing"}
           >
             <Column width="content">
-              {icon({ size: 16, color: level === 1 ? "primary" : "secondary" })}
+              {icon({ size: config.iconSize[level], color: level === 1 ? "primary" : "secondary" })}
             </Column>
             <Title size={config.titleSize[level]} color={level === 1 ? "default" : "secondary"}>
               {title}

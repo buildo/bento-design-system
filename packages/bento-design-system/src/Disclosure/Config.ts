@@ -15,4 +15,8 @@ export type DisclosureConfig = {
     open: (props: IconProps) => Children;
     closed: (props: IconProps) => Children;
   };
+  iconSize: {
+    1: IconProps["size"];
+    2: IconProps["size"];
+  };
 };
