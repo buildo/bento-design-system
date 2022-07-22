@@ -12,6 +12,7 @@ export const outerRadioCircleRecipe = strictRecipe({
     width: 24,
     height: 24,
     borderRadius: "circled",
+    background: "backgroundPrimary",
   }),
   variants: {
     selected: {
