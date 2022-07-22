@@ -35,7 +35,6 @@ export * from "./Link/Link";
 export * from "./List/createListComponents";
 export * from "./Menu/createMenu";
 export * from "./Modal/createModal";
-export * from "./Modal/useModalContext";
 export * from "./Navigation/createNavigation";
 export * from "./NumberInput/createNumberInput";
 export * from "./Placeholder/Placeholder";
