@@ -227,7 +227,7 @@ importers:
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/sprinkles': 1.4.1
       '@vanilla-extract/webpack-plugin': 2.1.11
-      chromatic: 6.5.3
+      chromatic: 6.7.1
       date-fns: 2.28.0
       eslint: 8.19.0
       eslint-config-react-app: 7.0.1
@@ -264,7 +264,7 @@ importers:
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/webpack-plugin': 2.1.11
-      chromatic: 6.5.3
+      chromatic: 6.7.1
       eslint: 8.19.0
       eslint-config-react-app: 7.0.1_eslint@8.19.0+typescript@4.7.4
       eslint-plugin-sort-export-all: 1.2.2_eslint@8.19.0
@@ -12403,9 +12403,11 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /chromatic/6.5.3:
-    resolution: {integrity: sha512-6Wy2lsNaojY5wTvobE3WV5VrQ5oP7B8kal6zWGrxu9g7Qbenb2cTcQ5SYgQY7tzT0Ed0zeHVyQm4TMmKz+XfXA==}
+  /chromatic/6.7.1:
+    resolution: {integrity: sha512-iDVYnB24zPrMROvVBblIxlOaj5+vO1uDI0wRXObi5DVrkvCjDvHzsFfPwUoIHGiXE7f6tmw38ZZRI+LGarM9Ow==}
     hasBin: true
+    dependencies:
+      '@types/webpack-env': 1.17.0
     dev: true
 
   /chrome-trace-event/1.0.3:
