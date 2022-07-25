@@ -8,6 +8,7 @@ import {
   TextField,
   IconInformative,
   IconWarning,
+  NumberField,
 } from "../";
 import { createComponentStories, formatMessage } from "../util";
 import orderBy from "lodash.orderby";
@@ -272,27 +273,46 @@ export const WithFilter = (_args: Parameters<typeof createStory>[0]) => {
 export const WithControlledSorting = (_args: Parameters<typeof createStory>[0]) => {
   const [data, setData] = useState(exampleData);
 
-  const onSort: NonNullable<ComponentProps<typeof Table>["onSort"]> = useCallback((sortBy) => {
-    const newData = orderBy(
-      exampleData,
-      sortBy.map((a) => {
-        switch (a.id) {
-          case "country":
-            return "country.text";
-          case "status":
-            return "status.label";
-          case "value":
-            return "value.numericValue";
-          default:
-            return a.id;
-        }
-      }),
-      sortBy.map((a) => (a.desc ? "desc" : "asc"))
-    );
-    setData(newData);
-  }, []);
+  const [numberOfRows, setNumberOfRows] = useState(2);
 
-  return <Table columns={exampleColumns} data={data} onSort={onSort} />;
+  const onSort: NonNullable<ComponentProps<typeof Table>["onSort"]> = useCallback(
+    (sortBy) => {
+      const newData = orderBy(
+        exampleData,
+        sortBy.map((a) => {
+          switch (a.id) {
+            case "country":
+              return "country.text";
+            case "status":
+              return "status.label";
+            case "value":
+              return "value.numericValue";
+            default:
+              return a.id;
+          }
+        }),
+        sortBy.map((a) => (a.desc ? "desc" : "asc"))
+      ).slice(0, numberOfRows);
+      setData(newData);
+    },
+    [numberOfRows]
+  );
+
+  return (
+    <Stack space={40}>
+      <FormRow>
+        <NumberField
+          name="numberOfRows"
+          onBlur={() => {}}
+          label={formatMessage("Number of rows")}
+          placeholder={formatMessage("Number of rows")}
+          value={numberOfRows}
+          onChange={setNumberOfRows}
+        />
+      </FormRow>
+      <Table columns={exampleColumns} data={data} onSort={onSort} />
+    </Stack>
+  );
 };
 
 export const Grouped = createStory({
