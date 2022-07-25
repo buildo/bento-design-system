@@ -21,11 +21,11 @@
     "prettier-write": "prettier --parser=typescript \"src/**/*.{ts,tsx}\" --write"
   },
   "dependencies": {
-    "@babel/generator": "7.18.7",
-    "@babel/parser": "7.18.8",
+    "@babel/generator": "7.18.9",
+    "@babel/parser": "7.18.9",
     "@babel/preset-typescript": "7.18.6",
-    "@babel/standalone": "7.18.8",
-    "@babel/traverse": "7.18.8",
+    "@babel/standalone": "7.18.9",
+    "@babel/traverse": "7.18.9",
     "@buildo/bento-design-system": "workspace:*",
     "@docusaurus/core": "2.0.0-beta.21",
     "@docusaurus/preset-classic": "2.0.0-beta.21",
