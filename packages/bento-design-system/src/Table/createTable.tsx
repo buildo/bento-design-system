@@ -177,6 +177,7 @@ export function createTable(
         },
         orderByFn: customOrderByFn,
         manualSortBy: Boolean(onSort),
+        autoResetSortBy: false,
       },
       useGridLayout,
       useGroupBy,
