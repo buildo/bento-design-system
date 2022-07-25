@@ -275,7 +275,18 @@ export const WithControlledSorting = (_args: Parameters<typeof createStory>[0]) 
   const onSort: NonNullable<ComponentProps<typeof Table>["onSort"]> = useCallback((sortBy) => {
     const newData = orderBy(
       exampleData,
-      sortBy.map((a) => (a.id === "country" ? "country.text" : a.id)),
+      sortBy.map((a) => {
+        switch (a.id) {
+          case "country":
+            return "country.text";
+          case "status":
+            return "status.label";
+          case "value":
+            return "value.numericValue";
+          default:
+            return a.id;
+        }
+      }),
       sortBy.map((a) => (a.desc ? "desc" : "asc"))
     );
     setData(newData);
