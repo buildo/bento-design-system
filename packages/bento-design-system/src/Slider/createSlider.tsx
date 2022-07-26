@@ -19,6 +19,7 @@ type Props = {
   outputProps: OutputHTMLAttributes<HTMLOutputElement>;
   numberFormatter: Intl.NumberFormat;
   hideThumbValue?: boolean;
+  autoFocus?: boolean;
 };
 
 export function createSlider(config: SliderConfig) {
@@ -70,6 +71,7 @@ export function createSlider(config: SliderConfig) {
               outputProps={props.outputProps}
               disabled={props.disabled}
               showValue={!props.hideThumbValue}
+              autoFocus={props.autoFocus}
             />
             {props.type === "double" && (
               <Thumb
@@ -101,6 +103,7 @@ export function createSlider(config: SliderConfig) {
     outputProps: OutputHTMLAttributes<HTMLOutputElement>;
     disabled?: boolean;
     showValue: boolean;
+    autoFocus?: boolean;
   };
 
   function Thumb(props: ThumbProps) {
@@ -110,7 +113,7 @@ export function createSlider(config: SliderConfig) {
       { index, trackRef, inputRef, isDisabled: props.disabled },
       state
     );
-    const { focusProps, isFocusVisible } = useFocusRing();
+    const { focusProps, isFocusVisible } = useFocusRing({ autoFocus: props.autoFocus });
 
     const output = (
       <Box as="output" {...props.outputProps} color={undefined}>
@@ -139,6 +142,7 @@ export function createSlider(config: SliderConfig) {
             borderRadius={config.thumbRadius}
             width={config.thumbWidth}
             height={config.thumbHeight}
+            autoFocus={props.autoFocus}
           >
             <VisuallyHidden>
               <input ref={inputRef} {...mergeProps(inputProps, focusProps)} />

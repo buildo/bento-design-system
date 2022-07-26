@@ -13,6 +13,7 @@ export type CheckboxOption = {
   value: string;
   label: Children;
   isDisabled?: boolean;
+  autoFocus?: boolean;
 };
 
 type Props = FieldProps<string[]> & {
