@@ -6,6 +6,10 @@
   "files": [
     "lib"
   ],
+  "sideEffects": [
+    "*.css",
+    "*.css.ts"
+  ],
   "scripts": {
     "build": "tsup --minify --clean",
     "prepublishOnly": "pnpm build",
