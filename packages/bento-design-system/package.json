@@ -6,6 +6,7 @@
   "files": [
     "lib"
   ],
+  "sideEffects": false,
   "scripts": {
     "build": "tsup --minify --clean",
     "prepublishOnly": "pnpm build",
