@@ -4,6 +4,8 @@ import * as icons from "./Icons";
 import * as illustrations from "./Illustrations";
 import * as defaultConfigs from "./util/defaultConfigs";
 
+export * from "./util/LocalizedString";
+
 export * from "./Actions/createActions";
 export * from "./AreaLoader/createAreaLoader";
 export * from "./Avatar/createAvatar";
@@ -58,7 +60,6 @@ export { bentoSprinkles } from "./internal/sprinkles.css";
 export * from "./sprinkles";
 export * from "./util/Children";
 export type { TypeOverrides } from "./util/ConfigurableTypes";
-export * from "./util/LocalizedString";
 export * from "./util/NonEmptyArray";
 export * from "./util/Omit";
 export * from "./util/align";

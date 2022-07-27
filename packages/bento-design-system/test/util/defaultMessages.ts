@@ -17,8 +17,8 @@ export const defaultMessages: DefaultMessages["defaultMessages"] = {
       const options = n > 1 ? "options" : "option";
       return unsafeLocalizedString(`${n} ${options} selected`);
     },
-    selectAllButtonLabel: "Select all",
-    clearAllButtonLabel: "Clear all",
+    selectAllButtonLabel: unsafeLocalizedString("Select all"),
+    clearAllButtonLabel: unsafeLocalizedString("Clear all"),
   },
   SearchBar: {
     clearButtonLabel: unsafeLocalizedString("Clear"),
