@@ -53,9 +53,9 @@ import {
   iconColumn,
   labelColumn,
   numberColumn,
-  numberWithIconColumn,
   textColumn,
-  textWithIconColumn,
+  createTextWithIconColumn,
+  createNumberWithIconColumn,
 } from "./tableColumn";
 import { ButtonLinkProps } from "../Button/ButtonLink";
 import { IconButtonProps } from "../IconButton/createIconButton";
@@ -498,16 +498,20 @@ export function createTableColumns<CustomChipColor extends string>({
   ButtonLink,
   IconButton,
   Chip,
+  Tooltip,
 }: {
   Button: FunctionComponent<ButtonProps>;
   ButtonLink: FunctionComponent<ButtonLinkProps>;
   Chip: FunctionComponent<ChipProps<CustomChipColor>>;
   IconButton: FunctionComponent<IconButtonProps>;
+  Tooltip: FunctionComponent<TooltipProps>;
 }) {
   const buttonColumn = createButtonColumn(Button);
   const buttonLinkColumn = createButtonLinkColumn(ButtonLink);
   const chipColumn = createChipColumn(Chip);
   const iconButtonColumn = createIconButtonColumn(IconButton);
+  const textWithIconColumn = createTextWithIconColumn(Tooltip);
+  const numberWithIconColumn = createNumberWithIconColumn(Tooltip);
   return {
     custom: column,
     text: textColumn,

@@ -215,7 +215,7 @@ function internalCreateBentoComponents<
     Feedback,
     IconButton,
   });
-  const tableColumn = createTableColumns({ Button, ButtonLink, IconButton, Chip });
+  const tableColumn = createTableColumns({ Button, ButtonLink, IconButton, Chip, Tooltip });
 
   const Tabs = createTabs(merge(defaultConfigs.folderTabs, config.tabs ?? {}));
 

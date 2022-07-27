@@ -96,6 +96,7 @@ const exampleData = [
     country: {
       icon: IconInformative,
       text: formatMessage("US"),
+      tooltipContent: formatMessage("United States"),
     },
     button: {
       label: formatMessage("Row 1"),
@@ -120,6 +121,7 @@ const exampleData = [
     country: {
       icon: IconInformative,
       text: formatMessage("US"),
+      tooltipContent: formatMessage("United States"),
     },
     button: {
       label: formatMessage("Row 2"),
@@ -144,6 +146,7 @@ const exampleData = [
     country: {
       icon: IconInformative,
       text: formatMessage("US"),
+      tooltipContent: formatMessage("United States"),
     },
     button: {
       label: formatMessage("Row 3"),
@@ -189,6 +192,7 @@ const exampleData = [
     country: {
       icon: IconInformative,
       text: formatMessage("US"),
+      tooltipContent: formatMessage("United States"),
     },
     button: {
       label: formatMessage("Row 5"),

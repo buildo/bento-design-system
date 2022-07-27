@@ -1,7 +1,17 @@
 import { ComponentProps, FunctionComponent } from "react";
 import { CellProps } from "react-table";
 import { ButtonLinkProps } from "../Button/ButtonLink";
-import { LocalizedString, Body, ButtonProps, ChipProps, IconProps, Label, Link } from "..";
+import {
+  LocalizedString,
+  Body,
+  ButtonProps,
+  ChipProps,
+  IconProps,
+  Label,
+  Link,
+  TooltipProps,
+  Children,
+} from "..";
 import { Inline, Inset, Box } from "../internal";
 import { IconButtonProps } from "../IconButton/createIconButton";
 
@@ -39,25 +49,41 @@ export function TextCell({ value, column: { align } }: CellProps<{}, LocalizedSt
   );
 }
 
-export function TextWithIconCell({
-  value: { icon, iconPosition, text },
-  column: { align },
-}: CellProps<
-  {},
-  {
-    icon: FunctionComponent<IconProps> | null;
-    iconPosition: "left" | "right";
-    text: LocalizedString;
-  }
->) {
-  return (
-    <Inset space={16}>
-      <Inline space={8} alignY="center" align={align} reverse={iconPosition === "right"}>
-        {icon && icon({ size: 12 })}
-        <Body size="medium">{text}</Body>
-      </Inline>
-    </Inset>
-  );
+export function createTextWithIconCell(Tooltip: FunctionComponent<TooltipProps>) {
+  return function TextWithIconCell({
+    value: { icon, iconPosition, text, tooltipContent },
+    column: { align },
+  }: CellProps<
+    {},
+    {
+      icon: FunctionComponent<IconProps> | null;
+      iconPosition: "left" | "right";
+      text: LocalizedString;
+      tooltipContent?: Children;
+    }
+  >) {
+    const icon_ = icon && icon({ size: 12 });
+
+    return (
+      <Inset space={16}>
+        <Inline space={8} alignY="center" align={align} reverse={iconPosition === "right"}>
+          {tooltipContent ? (
+            <Tooltip
+              content={tooltipContent}
+              trigger={(ref, triggerProps) => (
+                <Box ref={ref} {...triggerProps}>
+                  {icon_}
+                </Box>
+              )}
+            />
+          ) : (
+            icon_
+          )}
+          <Body size="medium">{text}</Body>
+        </Inline>
+      </Inset>
+    );
+  };
 }
 
 export function createChipCell<CustomColor extends string>(
