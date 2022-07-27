@@ -21,6 +21,7 @@
     "prettier-write": "prettier --parser=typescript \"src/**/*.{ts,tsx}\" --write"
   },
   "dependencies": {
+    "@babel/core": "7.18.9",
     "@babel/generator": "7.18.9",
     "@babel/parser": "7.18.9",
     "@babel/preset-typescript": "7.18.6",
@@ -45,11 +46,17 @@
     "react-markdown": "8.0.3"
   },
   "devDependencies": {
+    "@babel/types": "^7.18.9",
     "@docusaurus/module-type-aliases": "2.0.0-beta.21",
     "@docusaurus/theme-classic": "2.0.0-beta.21",
     "@docusaurus/theme-live-codeblock": "2.0.0-beta.21",
+    "@docusaurus/types": "2.0.0-rc.1",
     "@tsconfig/docusaurus": "1.0.6",
+    "@types/babel__generator": "^7.6.4",
     "@types/babel__standalone": "7.1.4",
+    "@types/babel__traverse": "^7.17.1",
+    "@types/node": "^18.6.1",
+    "@types/react": "18.0.15",
     "@vanilla-extract/sprinkles": "1.4.1",
     "eslint-config-react-app": "7.0.1",
     "lint-staged": "13.0.3",
