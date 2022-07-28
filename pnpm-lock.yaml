@@ -69,7 +69,7 @@ importers:
       '@testing-library/user-event': 14.3.0
       '@types/jest': 28.1.6
       '@types/react': ^18
-      '@types/react-dom': ^18.0.6
+      '@types/react-dom': 18.0.6
       '@types/react-input-mask': 2.0.5
       '@types/react-table': 7.7.12
       '@vanilla-extract/babel-plugin': 1.1.7
@@ -297,7 +297,7 @@ importers:
       '@babel/preset-typescript': 7.18.6
       '@babel/standalone': 7.18.9
       '@babel/traverse': 7.18.9
-      '@babel/types': ^7.18.9
+      '@babel/types': 7.18.9
       '@buildo/bento-design-system': workspace:*
       '@docusaurus/core': 2.0.0-beta.21
       '@docusaurus/module-type-aliases': 2.0.0-beta.21
@@ -308,10 +308,10 @@ importers:
       '@docusaurus/types': 2.0.0-rc.1
       '@mdx-js/react': 1.6.22
       '@tsconfig/docusaurus': 1.0.6
-      '@types/babel__generator': ^7.6.4
+      '@types/babel__generator': 7.6.4
       '@types/babel__standalone': 7.1.4
-      '@types/babel__traverse': ^7.17.1
-      '@types/node': ^18.6.1
+      '@types/babel__traverse': 7.17.1
+      '@types/node': 18.6.2
       '@types/react': ^18
       '@vanilla-extract/sprinkles': 1.4.1
       assert: 2.0.0
@@ -365,7 +365,7 @@ importers:
       '@types/babel__generator': 7.6.4
       '@types/babel__standalone': 7.1.4
       '@types/babel__traverse': 7.17.1
-      '@types/node': 18.6.1
+      '@types/node': 18.6.2
       '@types/react': 18.0.15
       '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.2
       eslint-config-react-app: 7.0.1_yq4dc5uxx75izsf3ithpxol37y
@@ -7855,6 +7855,9 @@ packages:
   /@types/node/18.6.1:
     resolution: {integrity: sha512-z+2vB6yDt1fNwKOeGbckpmirO+VBDuQqecXkgeIqDlaOtmKn6hPR/viQ8cxCfqLU4fTlvM3+YjM367TukWdxpg==}
 
+  /@types/node/18.6.2:
+    resolution: {integrity: sha512-KcfkBq9H4PI6Vpu5B/KoPeuVDAbmi+2mDBqGPGUgoL7yXQtcWGu2vJWmmRkneWK3Rh0nIAX192Aa87AqKHYChQ==}
+
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
 
@@ -7961,7 +7964,7 @@ packages:
   /@types/sax/1.2.4:
     resolution: {integrity: sha512-pSAff4IAxJjfAXUG6tFkO7dsSbTmf8CtUpfhhZ5VhkRpC4628tJhh3+V6H1E+/Gs9piSzYKT5yzHO5M4GG9jkw==}
     dependencies:
-      '@types/node': 18.6.1
+      '@types/node': 18.6.2
     dev: false
 
   /@types/scheduler/0.16.2:
@@ -12821,7 +12824,7 @@ packages:
     resolution: {integrity: sha512-EzV94NYKoO09GLXGjXj9JIlXijVck4ONSr5wiCWDvhsvj5jxSrzTmRU/9C1DyB6uToszLs8aifA6NQ7lEQdvFw==}
     engines: {node: '>= 0.8'}
     dependencies:
-      '@types/node': 18.6.1
+      '@types/node': 18.6.2
       require-like: 0.1.2
 
   /event-emitter/0.3.5:
