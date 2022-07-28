@@ -76,12 +76,7 @@ export const ComplexChildren = createStory({
   target: "_blank",
   label: undefined,
   children: (
-    <Box
-      background={"backgroundPositive"}
-      padding={40}
-      borderRadius={16}
-      boxShadow="outlinePositive"
-    >
+    <Box background="backgroundPositive" padding={40} borderRadius={16} boxShadow="outlinePositive">
       <Body size="large">{formatMessage("The entire box is a link!")}</Body>
     </Box>
   ),

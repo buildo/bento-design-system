@@ -1,4 +1,4 @@
-import { unsafeLocalizedString } from "../../src";
+import { unsafeLocalizedString } from "../../src/util/LocalizedString";
 import { DefaultMessages } from "../../src/DefaultMessagesContext";
 
 export const defaultMessages: DefaultMessages["defaultMessages"] = {
