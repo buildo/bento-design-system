@@ -72,19 +72,16 @@ type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
 type SortingProps<C extends ReadonlyArray<ColumnType<string, {}, any>>> =
   | {
       /**
-       * `customSorting` is meant to be used to provide a custom sorting logic
-       * to the table. It supports cross-columns comparison.
+       * `customSorting` can be used to customize the sorting logic of the table. It supports cross-columns comparison.
        *
-       * The sorting is still performed by the table.
+       * The sorting is still performed by the table, in an uncontrolled fashion.
        *
        * This function must be memoized to avoid infinite re-renderings */
       customSorting?: never;
       /**
-       * `onSort` is meant to be used when the sorting and/or filtering is performed
-       * outside the table (for example by a backend service).
+       * `onSort` can be used to implement sorting in a controlled fashion. It's typical use case is when sorting and/or filtering is performed externally, for example by a backend service.
        *
-       * If `onSort` is provided, the table expects to receive all and only the rows
-       * to display as the `data` property and it will **not** apply any sorting on them.
+       * If `onSort` is provided the table won't perform any sorting on the rows given in input via the `data` property, as the caller is now in charge of performing the sorting.
        *
        * This function must be memoized to avoid infinite re-renderings */
       onSort?: (sortBy: Array<SortingRule<C>>) => void;
