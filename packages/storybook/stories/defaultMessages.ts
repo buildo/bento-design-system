@@ -38,4 +38,8 @@ export const defaultMessages: ComponentProps<typeof DesignSystemProvider>["defau
     previousMonthLabel: formatMessage("Prev month"),
     nextMonthLabel: formatMessage("Next month"),
   },
+  TextField: {
+    showPasswordLabel: formatMessage("Show password"),
+    hidePasswordLabel: formatMessage("Hide password"),
+  },
 };

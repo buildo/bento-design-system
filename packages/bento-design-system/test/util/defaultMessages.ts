@@ -1,4 +1,4 @@
-import { unsafeLocalizedString } from "../../src";
+import { unsafeLocalizedString } from "../../src/util/LocalizedString";
 import { DefaultMessages } from "../../src/DefaultMessagesContext";
 
 export const defaultMessages: DefaultMessages["defaultMessages"] = {
@@ -17,8 +17,8 @@ export const defaultMessages: DefaultMessages["defaultMessages"] = {
       const options = n > 1 ? "options" : "option";
       return unsafeLocalizedString(`${n} ${options} selected`);
     },
-    selectAllButtonLabel: "Select all",
-    clearAllButtonLabel: "Clear all",
+    selectAllButtonLabel: unsafeLocalizedString("Select all"),
+    clearAllButtonLabel: unsafeLocalizedString("Clear all"),
   },
   SearchBar: {
     clearButtonLabel: unsafeLocalizedString("Clear"),
@@ -36,5 +36,9 @@ export const defaultMessages: DefaultMessages["defaultMessages"] = {
   DateField: {
     nextMonthLabel: unsafeLocalizedString("Next month"),
     previousMonthLabel: unsafeLocalizedString("Prev month"),
+  },
+  TextField: {
+    showPasswordLabel: unsafeLocalizedString("Show password"),
+    hidePasswordLabel: unsafeLocalizedString("Hide password"),
   },
 };

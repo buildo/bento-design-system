@@ -6,6 +6,7 @@ export * from "./IconChevronUp";
 export * from "./IconClose";
 export * from "./IconEdit";
 export * from "./IconEye";
+export * from "./IconEyeClosed";
 export * from "./IconHelp";
 export * from "./IconIdea";
 export * from "./IconInfo";

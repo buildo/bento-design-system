@@ -53,7 +53,7 @@ export function createFormFields(
   }
 ) {
   const Field = createField(config.field, { Tooltip });
-  const TextField = createTextField(config.input, { Field });
+  const TextField = createTextField(config.input, { Field, IconButton });
   const CheckboxField = createCheckboxField(config.selectionControl.element, { Field });
   const CheckboxGroupField = createCheckboxGroupField(config.selectionControl, { Field });
   const RadioGroupField = createRadioGroupField(config.selectionControl, { Field });
