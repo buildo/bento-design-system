@@ -1,4 +1,4 @@
-import { useFocusRing } from "@react-aria/focus";
+import { FocusScope, useFocusRing } from "@react-aria/focus";
 import { useSliderThumb } from "@react-aria/slider";
 import { mergeProps } from "@react-aria/utils";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
@@ -25,74 +25,78 @@ type Props = {
 export function createSlider(config: SliderConfig) {
   return function Slider(props: Props) {
     return (
-      <Box className={slider} {...props.groupProps} color={undefined}>
-        <Columns space={24} alignY="center">
-          <Column width="content">
-            <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
-              {props.numberFormatter.format(props.state.getThumbMinValue(0))}
-            </Label>
-          </Column>
-          <Box
-            className={trackContainer}
-            height={config.thumbHeight}
-            {...props.trackProps}
-            ref={props.trackRef}
-            color={undefined}
-          >
+      <FocusScope autoFocus={props.autoFocus}>
+        <Box className={slider} {...props.groupProps} color={undefined}>
+          <Columns space={24} alignY="center">
+            <Column width="content">
+              <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
+                {props.numberFormatter.format(props.state.getThumbMinValue(0))}
+              </Label>
+            </Column>
             <Box
-              className={trackInactive}
-              disabled={props.disabled}
-              borderRadius={config.trailRadius}
-              style={{
-                height: config.trailHeight,
-                top: (config.thumbHeight - config.trailHeight) / 2,
-              }}
-            />
-            <Box
-              className={trackActive}
-              color={config.trailColor}
-              background="currentColor"
-              disabled={props.disabled}
-              borderRadius={config.trailRadius}
-              style={{
-                height: config.trailHeight,
-                top: (config.thumbHeight - config.trailHeight) / 2,
-                left: props.type === "single" ? 0 : `${props.state.getThumbPercent(0) * 100}%`,
-                width:
-                  props.type === "single"
-                    ? `${props.state.getThumbPercent(0) * 100}%`
-                    : `${(props.state.getThumbPercent(1) - props.state.getThumbPercent(0)) * 100}%`,
-              }}
-            />
-            <Thumb
-              index={0}
-              state={props.state}
-              trackRef={props.trackRef}
-              outputProps={props.outputProps}
-              disabled={props.disabled}
-              showValue={!props.hideThumbValue}
-              autoFocus={props.autoFocus}
-            />
-            {props.type === "double" && (
+              className={trackContainer}
+              height={config.thumbHeight}
+              {...props.trackProps}
+              ref={props.trackRef}
+              color={undefined}
+            >
+              <Box
+                className={trackInactive}
+                disabled={props.disabled}
+                borderRadius={config.trailRadius}
+                style={{
+                  height: config.trailHeight,
+                  top: (config.thumbHeight - config.trailHeight) / 2,
+                }}
+              />
+              <Box
+                className={trackActive}
+                color={config.trailColor}
+                background="currentColor"
+                disabled={props.disabled}
+                borderRadius={config.trailRadius}
+                style={{
+                  height: config.trailHeight,
+                  top: (config.thumbHeight - config.trailHeight) / 2,
+                  left: props.type === "single" ? 0 : `${props.state.getThumbPercent(0) * 100}%`,
+                  width:
+                    props.type === "single"
+                      ? `${props.state.getThumbPercent(0) * 100}%`
+                      : `${
+                          (props.state.getThumbPercent(1) - props.state.getThumbPercent(0)) * 100
+                        }%`,
+                }}
+              />
               <Thumb
-                index={1}
+                index={0}
                 state={props.state}
                 trackRef={props.trackRef}
                 outputProps={props.outputProps}
                 disabled={props.disabled}
                 showValue={!props.hideThumbValue}
+                autoFocus={props.autoFocus}
               />
-            )}
-          </Box>
-          <Column width="content">
-            <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
-              {props.numberFormatter.format(
-                props.state.getThumbMaxValue(props.type === "single" ? 0 : 1)
+              {props.type === "double" && (
+                <Thumb
+                  index={1}
+                  state={props.state}
+                  trackRef={props.trackRef}
+                  outputProps={props.outputProps}
+                  disabled={props.disabled}
+                  showValue={!props.hideThumbValue}
+                />
               )}
-            </Label>
-          </Column>
-        </Columns>
-      </Box>
+            </Box>
+            <Column width="content">
+              <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
+                {props.numberFormatter.format(
+                  props.state.getThumbMaxValue(props.type === "single" ? 0 : 1)
+                )}
+              </Label>
+            </Column>
+          </Columns>
+        </Box>
+      </FocusScope>
     );
   };
 
