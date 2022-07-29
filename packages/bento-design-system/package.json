@@ -61,7 +61,7 @@
     "@react-aria/overlays": "3.9.1",
     "@react-aria/progress": "3.2.1",
     "@react-aria/radio": "3.2.1",
-    "@react-aria/separator": "3.2.1",
+    "@react-aria/separator": "3.2.2",
     "@react-aria/slider": "3.1.1",
     "@react-aria/switch": "3.2.1",
     "@react-aria/textfield": "3.6.1",
