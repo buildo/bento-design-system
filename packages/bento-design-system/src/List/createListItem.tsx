@@ -70,9 +70,7 @@ export function createListItem(config: ListItemConfig) {
   return function ListItem(props: Props) {
     const linkRef = useRef<HTMLElement>(null);
 
-    const {
-      linkProps: { color, ...linkProps },
-    } = useLink(
+    const { linkProps } = useLink(
       {
         onPress: props.onPress,
         isDisabled: props.disabled,

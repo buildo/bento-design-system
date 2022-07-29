@@ -63,9 +63,7 @@ export function createNavigation(config: NavigationConfig) {
   }: DestinationProps) {
     const linkRef = useRef<HTMLElement>(null);
 
-    const {
-      linkProps: { color, ...linkProps },
-    } = useLink(
+    const { linkProps } = useLink(
       {
         isDisabled: disabled,
         elementType: "a",

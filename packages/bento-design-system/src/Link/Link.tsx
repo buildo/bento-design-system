@@ -26,9 +26,7 @@ export function Link({
 }: Props) {
   const LinkComponent = useLinkComponent();
   const ref = useRef<HTMLAnchorElement>(null);
-  const {
-    linkProps: { color: _discard, ...linkProps },
-  } = useLink(
+  const { linkProps } = useLink(
     {
       isDisabled,
       // NOTE(gabro): using anything other than 'a' so that we set the correct accessibility props
