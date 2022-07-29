@@ -44,7 +44,7 @@ export function createForm(
     autoFocus,
   }: Props) {
     return (
-      <FocusScope contain restoreFocus autoFocus={autoFocus}>
+      <FocusScope autoFocus={autoFocus}>
         <Box as="form" onSubmit={(e) => e.preventDefault()}>
           <ContentBlock maxWidth={700}>
             <Stack space={config.formSpacing}>
