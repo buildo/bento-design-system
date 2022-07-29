@@ -1,7 +1,10 @@
 {
-  "extends": [
-    "config:base",
-    "schedule:earlyMondays"
-  ],
-  "labels": ["dependencies"]
+  "extends": ["config:base", "schedule:earlyMondays"],
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["@react-aria", "@react-types", "@react-stately"],
+      "groupName": "react-aria monorepo"
+    }
+  ]
 }
