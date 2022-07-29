@@ -54,7 +54,7 @@ type Props = {
 export function createInternalCheckbox(config: SelectionControlConfig) {
   return function InternalCheckbox({ option, inputRef, inputProps }: Props) {
     const { fieldProps, labelProps } = useLabel(option);
-    const { isFocusVisible, focusProps } = useFocusRing();
+    const { isFocusVisible, focusProps } = useFocusRing({ autoFocus: inputProps.autoFocus });
     return (
       <Box
         as="label"

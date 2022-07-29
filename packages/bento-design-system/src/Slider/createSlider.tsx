@@ -1,4 +1,4 @@
-import { useFocusRing } from "@react-aria/focus";
+import { FocusScope, useFocusRing } from "@react-aria/focus";
 import { useSliderThumb } from "@react-aria/slider";
 import { mergeProps } from "@react-aria/utils";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
@@ -19,78 +19,84 @@ type Props = {
   outputProps: OutputHTMLAttributes<HTMLOutputElement>;
   numberFormatter: Intl.NumberFormat;
   hideThumbValue?: boolean;
+  autoFocus?: boolean;
 };
 
 export function createSlider(config: SliderConfig) {
   return function Slider(props: Props) {
     return (
-      <Box className={slider} {...props.groupProps} color={undefined}>
-        <Columns space={24} alignY="center">
-          <Column width="content">
-            <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
-              {props.numberFormatter.format(props.state.getThumbMinValue(0))}
-            </Label>
-          </Column>
-          <Box
-            className={trackContainer}
-            height={config.thumbHeight}
-            {...props.trackProps}
-            ref={props.trackRef}
-            color={undefined}
-          >
+      <FocusScope autoFocus={props.autoFocus}>
+        <Box className={slider} {...props.groupProps} color={undefined}>
+          <Columns space={24} alignY="center">
+            <Column width="content">
+              <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
+                {props.numberFormatter.format(props.state.getThumbMinValue(0))}
+              </Label>
+            </Column>
             <Box
-              className={trackInactive}
-              disabled={props.disabled}
-              borderRadius={config.trailRadius}
-              style={{
-                height: config.trailHeight,
-                top: (config.thumbHeight - config.trailHeight) / 2,
-              }}
-            />
-            <Box
-              className={trackActive}
-              color={config.trailColor}
-              background="currentColor"
-              disabled={props.disabled}
-              borderRadius={config.trailRadius}
-              style={{
-                height: config.trailHeight,
-                top: (config.thumbHeight - config.trailHeight) / 2,
-                left: props.type === "single" ? 0 : `${props.state.getThumbPercent(0) * 100}%`,
-                width:
-                  props.type === "single"
-                    ? `${props.state.getThumbPercent(0) * 100}%`
-                    : `${(props.state.getThumbPercent(1) - props.state.getThumbPercent(0)) * 100}%`,
-              }}
-            />
-            <Thumb
-              index={0}
-              state={props.state}
-              trackRef={props.trackRef}
-              outputProps={props.outputProps}
-              disabled={props.disabled}
-              showValue={!props.hideThumbValue}
-            />
-            {props.type === "double" && (
+              className={trackContainer}
+              height={config.thumbHeight}
+              {...props.trackProps}
+              ref={props.trackRef}
+              color={undefined}
+            >
+              <Box
+                className={trackInactive}
+                disabled={props.disabled}
+                borderRadius={config.trailRadius}
+                style={{
+                  height: config.trailHeight,
+                  top: (config.thumbHeight - config.trailHeight) / 2,
+                }}
+              />
+              <Box
+                className={trackActive}
+                color={config.trailColor}
+                background="currentColor"
+                disabled={props.disabled}
+                borderRadius={config.trailRadius}
+                style={{
+                  height: config.trailHeight,
+                  top: (config.thumbHeight - config.trailHeight) / 2,
+                  left: props.type === "single" ? 0 : `${props.state.getThumbPercent(0) * 100}%`,
+                  width:
+                    props.type === "single"
+                      ? `${props.state.getThumbPercent(0) * 100}%`
+                      : `${
+                          (props.state.getThumbPercent(1) - props.state.getThumbPercent(0)) * 100
+                        }%`,
+                }}
+              />
               <Thumb
-                index={1}
+                index={0}
                 state={props.state}
                 trackRef={props.trackRef}
                 outputProps={props.outputProps}
                 disabled={props.disabled}
                 showValue={!props.hideThumbValue}
+                autoFocus={props.autoFocus}
               />
-            )}
-          </Box>
-          <Column width="content">
-            <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
-              {props.numberFormatter.format(
-                props.state.getThumbMaxValue(props.type === "single" ? 0 : 1)
+              {props.type === "double" && (
+                <Thumb
+                  index={1}
+                  state={props.state}
+                  trackRef={props.trackRef}
+                  outputProps={props.outputProps}
+                  disabled={props.disabled}
+                  showValue={!props.hideThumbValue}
+                />
               )}
-            </Label>
-          </Column>
-        </Columns>
-      </Box>
+            </Box>
+            <Column width="content">
+              <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
+                {props.numberFormatter.format(
+                  props.state.getThumbMaxValue(props.type === "single" ? 0 : 1)
+                )}
+              </Label>
+            </Column>
+          </Columns>
+        </Box>
+      </FocusScope>
     );
   };
 
@@ -101,6 +107,7 @@ export function createSlider(config: SliderConfig) {
     outputProps: OutputHTMLAttributes<HTMLOutputElement>;
     disabled?: boolean;
     showValue: boolean;
+    autoFocus?: boolean;
   };
 
   function Thumb(props: ThumbProps) {
@@ -110,7 +117,7 @@ export function createSlider(config: SliderConfig) {
       { index, trackRef, inputRef, isDisabled: props.disabled },
       state
     );
-    const { focusProps, isFocusVisible } = useFocusRing();
+    const { focusProps, isFocusVisible } = useFocusRing({ autoFocus: props.autoFocus });
 
     const output = (
       <Box as="output" {...props.outputProps} color={undefined}>
@@ -139,6 +146,7 @@ export function createSlider(config: SliderConfig) {
             borderRadius={config.thumbRadius}
             width={config.thumbWidth}
             height={config.thumbHeight}
+            autoFocus={props.autoFocus}
           >
             <VisuallyHidden>
               <input ref={inputRef} {...mergeProps(inputProps, focusProps)} />

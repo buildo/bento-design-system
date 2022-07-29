@@ -8,11 +8,13 @@ import { CheckboxGroupState, useCheckboxGroupState } from "@react-stately/checkb
 import { Box, Inline, Inset, Stack } from "../internal";
 import { SelectionControlConfig, SelectionControlGroupConfig } from "../Field/Config";
 import { Children } from "../util/Children";
+import { FocusScope } from "@react-aria/focus";
 
 export type CheckboxOption = {
   value: string;
   label: Children;
   isDisabled?: boolean;
+  autoFocus?: boolean;
 };
 
 type Props = FieldProps<string[]> & {
@@ -63,23 +65,25 @@ export function createCheckboxGroupField(
     ));
 
     return (
-      <Box {...groupProps} aria-describedby={fieldProps["aria-describedby"]} color={undefined}>
-        <Field
-          {...props}
-          label={props.label}
-          labelProps={labelProps}
-          assistiveTextProps={descriptionProps}
-          errorMessageProps={errorMessageProps}
-        >
-          <Inset spaceY={config.group.paddingY}>
-            {(props.orientation || "vertical") === "vertical" ? (
-              <Stack space={config.group.internalSpacing.vertical}>{groupOptions}</Stack>
-            ) : (
-              <Inline space={config.group.internalSpacing.horizontal}>{groupOptions}</Inline>
-            )}
-          </Inset>
-        </Field>
-      </Box>
+      <FocusScope autoFocus={props.autoFocus}>
+        <Box {...groupProps} aria-describedby={fieldProps["aria-describedby"]} color={undefined}>
+          <Field
+            {...props}
+            label={props.label}
+            labelProps={labelProps}
+            assistiveTextProps={descriptionProps}
+            errorMessageProps={errorMessageProps}
+          >
+            <Inset spaceY={config.group.paddingY}>
+              {(props.orientation || "vertical") === "vertical" ? (
+                <Stack space={config.group.internalSpacing.vertical}>{groupOptions}</Stack>
+              ) : (
+                <Inline space={config.group.internalSpacing.horizontal}>{groupOptions}</Inline>
+              )}
+            </Inset>
+          </Field>
+        </Box>
+      </FocusScope>
     );
   };
 }

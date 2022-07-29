@@ -9,7 +9,7 @@ import { useField } from "@react-aria/label";
 import { radioOption } from "./RadioGroupField.css";
 import { useRef } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
-import { useFocusRing } from "@react-aria/focus";
+import { FocusScope, useFocusRing } from "@react-aria/focus";
 import { Radio } from "./Radio";
 import { SelectionControlConfig, SelectionControlGroupConfig } from "../Field/Config";
 
@@ -59,24 +59,26 @@ export function createRadioGroupField(
     ));
 
     return (
-      <Box {...radioGroupProps} color={undefined}>
-        <Field
-          {...props}
-          label={props.label}
-          labelProps={labelProps}
-          assistiveTextProps={descriptionProps}
-          errorMessageProps={errorMessageProps}
-          labelElement="span"
-        >
-          <Inset spaceY={config.group.paddingY}>
-            {(props.orientation || "vertical") === "vertical" ? (
-              <Stack space={config.group.internalSpacing.vertical}>{radioOptions}</Stack>
-            ) : (
-              <Inline space={config.group.internalSpacing.horizontal}>{radioOptions}</Inline>
-            )}
-          </Inset>
-        </Field>
-      </Box>
+      <FocusScope autoFocus={props.autoFocus}>
+        <Box {...radioGroupProps} color={undefined}>
+          <Field
+            {...props}
+            label={props.label}
+            labelProps={labelProps}
+            assistiveTextProps={descriptionProps}
+            errorMessageProps={errorMessageProps}
+            labelElement="span"
+          >
+            <Inset spaceY={config.group.paddingY}>
+              {(props.orientation || "vertical") === "vertical" ? (
+                <Stack space={config.group.internalSpacing.vertical}>{radioOptions}</Stack>
+              ) : (
+                <Inline space={config.group.internalSpacing.horizontal}>{radioOptions}</Inline>
+              )}
+            </Inset>
+          </Field>
+        </Box>
+      </FocusScope>
     );
   };
 

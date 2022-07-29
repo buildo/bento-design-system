@@ -19,6 +19,7 @@ type Props = O.AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "ar
   placeholder: LocalizedString;
   disabled?: boolean;
   clearButtonLabel?: LocalizedString;
+  autoFocus?: boolean;
 };
 
 export function createSearchBar(
