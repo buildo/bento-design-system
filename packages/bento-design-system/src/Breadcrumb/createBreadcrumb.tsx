@@ -18,9 +18,10 @@ export function createBreadcrumb(config: BreadcrumbConfig) {
   type BreadcrumbItemProps = LastItem & Partial<Item> & { isCurrent: boolean };
   function BreadcrumbItem({ isCurrent, label, href = "" }: BreadcrumbItemProps) {
     const ref = useRef(null);
-    const {
-      itemProps: { color, ...itemProps },
-    } = useBreadcrumbItem({ children: label, isCurrent, elementType: "div" }, ref);
+    const { itemProps } = useBreadcrumbItem(
+      { children: label, isCurrent, elementType: "div" },
+      ref
+    );
 
     return (
       <Box as="li" ref={ref}>
@@ -52,7 +53,7 @@ export function createBreadcrumb(config: BreadcrumbConfig) {
     );
     const { navProps } = useBreadcrumbs({ children });
     return (
-      <Box as="nav" {...navProps} color={undefined}>
+      <Box as="nav" {...navProps}>
         {children}
       </Box>
     );

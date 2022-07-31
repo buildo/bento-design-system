@@ -101,7 +101,6 @@ export function createCalendar(
         padding={config.padding}
         boxShadow={boxShadowFromElevation(config.elevation)}
         {...mergeProps(overlayProps, positionProps)}
-        color={undefined}
         ref={overlayRef}
       >
         <Stack space={16} align="center">

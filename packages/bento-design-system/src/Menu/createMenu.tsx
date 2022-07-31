@@ -97,7 +97,6 @@ export function createMenu(
             <Box
               className={menuRecipe({ elevation: config.elevation })}
               {...menuProps}
-              color={undefined}
               borderRadius={config.radius}
               style={{ maxHeight }}
             >

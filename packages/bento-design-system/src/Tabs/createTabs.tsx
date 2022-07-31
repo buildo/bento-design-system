@@ -43,9 +43,7 @@ export function createTabs(config: TabsConfig) {
     hasNotification,
     rightAccessory,
   }: TabProps) {
-    const {
-      pressProps: { color: ignored1, ...pressProps },
-    } = usePress({ onPress, isDisabled: disabled });
+    const { pressProps } = usePress({ onPress, isDisabled: disabled });
 
     return (
       <Box
