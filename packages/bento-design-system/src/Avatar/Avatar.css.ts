@@ -23,3 +23,7 @@ export const avatarRecipe = strictRecipe({
     },
   },
 });
+
+export const avatarImage = bentoSprinkles({
+  width: 24,
+});
