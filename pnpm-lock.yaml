@@ -239,7 +239,7 @@ importers:
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/sprinkles': 1.4.1
       '@vanilla-extract/webpack-plugin': 2.1.11
-      chromatic: 6.7.1
+      chromatic: 6.7.2
       date-fns: 2.29.1
       eslint: 8.20.0
       eslint-config-react-app: 7.0.1
@@ -276,7 +276,7 @@ importers:
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/webpack-plugin': 2.1.11_webpack@5.73.0
-      chromatic: 6.7.1
+      chromatic: 6.7.2
       eslint: 8.20.0
       eslint-config-react-app: 7.0.1_yq4dc5uxx75izsf3ithpxol37y
       eslint-plugin-sort-export-all: 1.2.2_eslint@8.20.0
@@ -10200,10 +10200,11 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /chromatic/6.7.1:
-    resolution: {integrity: sha512-iDVYnB24zPrMROvVBblIxlOaj5+vO1uDI0wRXObi5DVrkvCjDvHzsFfPwUoIHGiXE7f6tmw38ZZRI+LGarM9Ow==}
+  /chromatic/6.7.2:
+    resolution: {integrity: sha512-0CCAbZSPi+QMXyDtlBasxz0Htc0oM76IztQZn3xCP6IIT53RwxOiQ1++Zd/zCBEyC+UTodKQ/G4fUOX0Y1ERvw==}
     hasBin: true
     dependencies:
+      '@discoveryjs/json-ext': 0.5.7
       '@types/webpack-env': 1.17.0
     dev: true
 
