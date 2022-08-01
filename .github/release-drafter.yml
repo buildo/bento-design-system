@@ -27,4 +27,5 @@ version-resolver:
 replacers:
   - search: '@renovate'
     replace: '@renovate-bot'
-
+  - search: '/^#\d+: (.+)/'
+    replace: '$1'
