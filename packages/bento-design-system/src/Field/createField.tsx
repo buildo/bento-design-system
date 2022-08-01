@@ -1,4 +1,4 @@
-import { ElementType, FunctionComponent, HTMLAttributes, LabelHTMLAttributes } from "react";
+import { DOMAttributes, ElementType, FunctionComponent, LabelHTMLAttributes } from "react";
 import { Body } from "../Typography/Body/Body";
 import { Label } from "../Typography/Label/Label";
 import { Stack, Box, Columns, Column } from "../internal";
@@ -7,6 +7,7 @@ import { FieldProps } from "./FieldProps";
 import { TooltipProps } from "..";
 import { FieldConfig } from "./Config";
 import { IconNegative } from "../Icons";
+import { FocusableElement } from "@react-types/shared";
 
 type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "hint"> & {
   /** The field label rendered on screen. Can be omitted in case of fields that have a custom label, such as CheckboxField  */
@@ -18,9 +19,9 @@ type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "
   /** Props that gets spread on the label element, usually coming from a react-aria utility */
   labelProps?: LabelHTMLAttributes<HTMLLabelElement>;
   /** Props that gets spread on the assistiveText , usually coming from a react-aria utility (note: react-aria usually calls them descriptionProps) */
-  assistiveTextProps: HTMLAttributes<HTMLElement>;
+  assistiveTextProps: DOMAttributes<FocusableElement>;
   /** Props that gets spread on the errorMessage element , usually coming from a react-aria utility */
-  errorMessageProps: HTMLAttributes<HTMLElement>;
+  errorMessageProps: DOMAttributes<FocusableElement>;
   /** The field element */
   children: Children;
 };
@@ -84,7 +85,7 @@ export function createField(
           {children}
           {assistiveText && !issues && (
             <Box paddingLeft={config.assistiveText.paddingLeft}>
-              <Box {...assistiveTextProps} color={undefined}>
+              <Box {...assistiveTextProps}>
                 <Body size={config.assistiveText.size} color={disabled ? "disabled" : "secondary"}>
                   {assistiveText}
                 </Body>
@@ -99,7 +100,7 @@ export function createField(
                     <Column width="content">
                       <IconNegative size={12} color="negative" />
                     </Column>
-                    <Box {...errorMessageProps} color={undefined}>
+                    <Box {...errorMessageProps}>
                       <Body key={index} size={config.assistiveText.size} color="negative">
                         {errorMessage}
                       </Body>

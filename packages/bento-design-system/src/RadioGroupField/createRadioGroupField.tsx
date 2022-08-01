@@ -60,7 +60,7 @@ export function createRadioGroupField(
 
     return (
       <FocusScope autoFocus={props.autoFocus}>
-        <Box {...radioGroupProps} color={undefined}>
+        <Box {...radioGroupProps}>
           <Field
             {...props}
             label={props.label}

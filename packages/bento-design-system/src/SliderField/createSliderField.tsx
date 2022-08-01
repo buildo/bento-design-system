@@ -2,6 +2,7 @@ import { useNumberFormatter } from "@react-aria/i18n";
 import { useSlider } from "@react-aria/slider";
 import { clamp } from "@react-aria/utils";
 import { useSliderState } from "@react-stately/slider";
+import { ValueBase } from "@react-types/shared";
 import { useRef, FunctionComponent } from "react";
 import { FieldType } from "../Field/createField";
 import { FieldProps } from "../Field/FieldProps";
@@ -37,19 +38,23 @@ export function createSliderField({
     const trackRef = useRef<HTMLDivElement>(null);
     const formatOptions = useFormatOptions(props);
     const numberFormatter = useNumberFormatter(formatOptions);
-    const valueProps =
-      props.type === "double"
-        ? {
-            value: props.value,
-            onChange: (values: number[]) => props.onChange([values[0], values[1]]),
-          }
-        : {
-            value: [props.value],
-            onChange: (values: number[]) => props.onChange(values[0]),
-          };
 
-    const internalState = useSliderState({
-      ...props,
+    const valueProps: ValueBase<number | number[]> = {
+      value: props.value,
+      onChange: (values: number | number[]) => {
+        if (typeof values === "number" && props.type === "single") {
+          props.onChange(values);
+        }
+        if (Array.isArray(values) && props.type === "double") {
+          props.onChange(values as [number, number]);
+        }
+      },
+    };
+
+    const { value, onChange, ...internalProps } = props;
+
+    const internalState = useSliderState<number | number[]>({
+      ...internalProps,
       ...valueProps,
       numberFormatter,
     });
@@ -73,7 +78,7 @@ export function createSliderField({
       : internalState;
 
     const { groupProps, trackProps, outputProps, labelProps } = useSlider(
-      { ...props, ...valueProps },
+      { ...internalProps, ...valueProps },
       state,
       trackRef
     );

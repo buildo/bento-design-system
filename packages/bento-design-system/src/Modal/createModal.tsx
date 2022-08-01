@@ -61,14 +61,13 @@ export function createModal(
     );
 
     return createPortal(
-      <Box className={underlay} {...underlayProps} color={undefined}>
+      <Box className={underlay} {...underlayProps}>
         <FocusScope contain restoreFocus autoFocus={props.autoFocus ?? true}>
           <Box
             className={modalRecipe({ elevation: config.elevation })}
             {...overlayProps}
             {...modalProps}
             {...dialogProps}
-            color={undefined}
             borderRadius={config.radius}
             style={{ width: config.width[props.size || "medium"] }}
           >

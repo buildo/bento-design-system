@@ -1,6 +1,6 @@
 import { useLocale } from "@react-aria/i18n";
 import { useNumberField } from "@react-aria/numberfield";
-import { NumberFieldStateProps, useNumberFieldState } from "@react-stately/numberfield";
+import { NumberFieldStateOptions, useNumberFieldState } from "@react-stately/numberfield";
 import { FunctionComponent, useRef } from "react";
 import { LocalizedString } from "..";
 import { FieldProps } from "../Field/FieldProps";
@@ -13,7 +13,7 @@ type Props = FieldProps<number | undefined, number> & {
   placeholder: LocalizedString;
   isReadOnly?: boolean;
 } & FormatProps &
-  Pick<NumberFieldStateProps, "minValue" | "maxValue" | "step">;
+  Pick<NumberFieldStateOptions, "minValue" | "maxValue" | "step">;
 
 export function createNumberField({
   Field,

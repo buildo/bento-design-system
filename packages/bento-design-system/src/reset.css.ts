@@ -1,4 +1,3 @@
-import { IntrinsicHTMLElements } from "@react-aria/textfield";
 import { style } from "@vanilla-extract/css";
 
 export const base = style({
@@ -48,7 +47,7 @@ const a = style({
   color: "inherit",
 });
 
-export const element: Partial<Record<keyof IntrinsicHTMLElements, string>> = {
+export const element: Partial<Record<keyof JSX.IntrinsicElements, string>> = {
   a,
   button,
   div,

@@ -66,7 +66,7 @@ export function createCheckboxGroupField(
 
     return (
       <FocusScope autoFocus={props.autoFocus}>
-        <Box {...groupProps} aria-describedby={fieldProps["aria-describedby"]} color={undefined}>
+        <Box {...groupProps} aria-describedby={fieldProps["aria-describedby"]}>
           <Field
             {...props}
             label={props.label}

@@ -39,13 +39,7 @@ export function createProgressBar(config: ProgressBarConfig) {
         ))}
       </Columns>
     ) : (
-      <Box
-        {...progressBarProps}
-        display="flex"
-        borderRadius={config.radius}
-        overflow="hidden"
-        color={undefined}
-      >
+      <Box {...progressBarProps} display="flex" borderRadius={config.radius} overflow="hidden">
         <Bar active width={(props.value / props.maxValue) * 100} />
         <Bar width={((props.maxValue - props.value) / props.maxValue) * 100} />
       </Box>

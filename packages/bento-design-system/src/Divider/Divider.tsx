@@ -10,7 +10,7 @@ type Props = {
 export function Divider({ orientation = "horizontal" }: Props) {
   const { separatorProps } = useSeparator({ orientation });
 
-  return <Box {...separatorProps} className={divider({ orientation })} color={undefined} />;
+  return <Box {...separatorProps} className={divider({ orientation })} />;
 }
 
 export function createDecorativeDivider<AtomsFn extends typeof bentoSprinkles>(

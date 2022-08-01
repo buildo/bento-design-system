@@ -3,7 +3,8 @@ import { useSliderThumb } from "@react-aria/slider";
 import { mergeProps } from "@react-aria/utils";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SliderState } from "@react-stately/slider";
-import { OutputHTMLAttributes, RefObject, useRef } from "react";
+import { FocusableElement } from "@react-types/shared";
+import { DOMAttributes, OutputHTMLAttributes, RefObject, useRef } from "react";
 import { Box, Column, Columns, Stack } from "../internal";
 import { Label } from "../Typography/Label/Label";
 import { SliderConfig } from "./Config";
@@ -14,8 +15,8 @@ type Props = {
   disabled?: boolean;
   trackRef: RefObject<HTMLDivElement>;
   state: SliderState;
-  groupProps: React.HTMLAttributes<HTMLElement>;
-  trackProps: React.HTMLAttributes<HTMLElement>;
+  groupProps: DOMAttributes<FocusableElement>;
+  trackProps: DOMAttributes<FocusableElement>;
   outputProps: OutputHTMLAttributes<HTMLOutputElement>;
   numberFormatter: Intl.NumberFormat;
   hideThumbValue?: boolean;
@@ -26,7 +27,7 @@ export function createSlider(config: SliderConfig) {
   return function Slider(props: Props) {
     return (
       <FocusScope autoFocus={props.autoFocus}>
-        <Box className={slider} {...props.groupProps} color={undefined}>
+        <Box className={slider} {...props.groupProps}>
           <Columns space={24} alignY="center">
             <Column width="content">
               <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
@@ -113,10 +114,10 @@ export function createSlider(config: SliderConfig) {
   function Thumb(props: ThumbProps) {
     const { state, trackRef, index } = props;
     const inputRef = useRef<HTMLInputElement>(null);
-    const { thumbProps, inputProps } = useSliderThumb(
-      { index, trackRef, inputRef, isDisabled: props.disabled },
-      state
-    );
+    const {
+      thumbProps: { style, ...thumbProps },
+      inputProps,
+    } = useSliderThumb({ index, trackRef, inputRef, isDisabled: props.disabled }, state);
     const { focusProps, isFocusVisible } = useFocusRing({ autoFocus: props.autoFocus });
 
     const output = (

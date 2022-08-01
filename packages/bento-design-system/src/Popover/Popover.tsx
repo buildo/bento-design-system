@@ -68,7 +68,6 @@ export function Popover({
           outline="none"
           {...mergeProps(overlayProps, dialogProps, modalProps, positionProps)}
           ref={overlayRef}
-          color={undefined}
         >
           {children}
         </Box>
