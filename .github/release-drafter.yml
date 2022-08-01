@@ -27,5 +27,6 @@ version-resolver:
 replacers:
   - search: '@renovate'
     replace: '@renovate-bot'
+  # NOTE(gabro): this is to remove the redundant issue number added by hophop in the PR title
   - search: '/\* #\d+: (.+)/g'
-    replace: '$1'
+    replace: '* $1'
