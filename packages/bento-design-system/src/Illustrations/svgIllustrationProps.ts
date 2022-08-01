@@ -22,5 +22,6 @@ function outlineColor(color: (IllustrationProps & { style: "outline" })["color"]
 }
 
 function sizeToDimensions(size: IllustrationProps["size"]): { width: number; height: number } {
-  return { width: size, height: size };
+  const s = typeof size === "object" ? size.custom : size;
+  return { width: s, height: s };
 }
