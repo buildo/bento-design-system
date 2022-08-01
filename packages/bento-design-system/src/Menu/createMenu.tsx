@@ -1,4 +1,4 @@
-import { ComponentProps, FunctionComponent, Ref, useRef } from "react";
+import { ComponentProps, DOMAttributes, FunctionComponent, Ref, useRef } from "react";
 import { Children, Popover } from "..";
 import { Box, Inset } from "../internal";
 import { menuRecipe } from "./Menu.css";
@@ -96,7 +96,8 @@ export function createMenu(
           >
             <Box
               className={menuRecipe({ elevation: config.elevation })}
-              {...menuProps}
+              // NOTE(gabro): the type of `autoFocus` does not match otherwise
+              {...(menuProps as DOMAttributes<HTMLDivElement>)}
               borderRadius={config.radius}
               style={{ maxHeight }}
             >

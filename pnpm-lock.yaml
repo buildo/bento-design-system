@@ -54,8 +54,10 @@ importers:
       '@react-stately/slider': 3.2.0
       '@react-stately/toggle': 3.4.0
       '@react-stately/tooltip': 3.2.0
+      '@react-types/breadcrumbs': ^3.4.2
       '@react-types/button': 3.6.0
       '@react-types/link': 3.3.2
+      '@react-types/menu': ^3.7.0
       '@react-types/numberfield': 3.3.2
       '@react-types/overlays': 3.6.2
       '@react-types/radio': 3.2.2
@@ -171,8 +173,10 @@ importers:
       '@babel/preset-env': 7.18.9_@babel+core@7.18.9
       '@babel/preset-react': 7.18.6_@babel+core@7.18.9
       '@babel/preset-typescript': 7.18.6_@babel+core@7.18.9
+      '@react-types/breadcrumbs': 3.4.2_react@18.2.0
       '@react-types/button': 3.6.0_react@18.2.0
       '@react-types/link': 3.3.2_react@18.2.0
+      '@react-types/menu': 3.7.0_react@18.2.0
       '@react-types/numberfield': 3.3.2_react@18.2.0
       '@react-types/slider': 3.2.0_react@18.2.0
       '@react-types/textfield': 3.5.2_react@18.2.0
@@ -5336,7 +5340,6 @@ packages:
       '@react-types/link': 3.3.2_react@18.2.0
       '@react-types/shared': 3.14.0_react@18.2.0
       react: 18.2.0
-    dev: false
 
   /@react-types/button/3.6.0_react@18.2.0:
     resolution: {integrity: sha512-ijCi07TkLmwU3Qtn8IzKJi1nugZj8Ln0+w2OZPRJS/tRFv48qgNsOXum54W5i9W0yg/I7VQiPjm+YsQS51g7gA==}
@@ -5391,7 +5394,6 @@ packages:
       '@react-types/overlays': 3.6.2_react@18.2.0
       '@react-types/shared': 3.14.0_react@18.2.0
       react: 18.2.0
-    dev: false
 
   /@react-types/numberfield/3.3.2_react@18.2.0:
     resolution: {integrity: sha512-+vWiOqDFidQHvAiOKnLjMgxtDobxyN02Sb+47dSoyuEo3bSxXvBbAMkukD35yseBqfqP2FRzxQ3R3s4mWI8SWw==}
@@ -5408,7 +5410,6 @@ packages:
     dependencies:
       '@react-types/shared': 3.14.0_react@18.2.0
       react: 18.2.0
-    dev: false
 
   /@react-types/progress/3.2.2_react@18.2.0:
     resolution: {integrity: sha512-bCt5kubeIrjU+NRODJjarBqynKaIEwfo14ndX/6z9eXsYiGpH9o08bdIk0gS249y7ExtOSUzdRn1s92DOYVmjQ==}

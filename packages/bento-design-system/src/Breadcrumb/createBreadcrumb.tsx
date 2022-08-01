@@ -51,7 +51,7 @@ export function createBreadcrumb(config: BreadcrumbConfig) {
         </Inline>
       </Box>
     );
-    const { navProps } = useBreadcrumbs({ children });
+    const { navProps } = useBreadcrumbs({});
     return (
       <Box as="nav" {...navProps}>
         {children}
