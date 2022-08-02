@@ -20,9 +20,9 @@ importers:
       '@babel/preset-typescript': 7.18.6
       '@datepicker-react/hooks': ^2.8.4
       '@dessert-box/react': ^0.4.0
-      '@floating-ui/core': ^1.0.0
-      '@floating-ui/dom': ^1.0.0
-      '@floating-ui/react-dom': ^1.0.0
+      '@floating-ui/core': 1.0.0
+      '@floating-ui/dom': 1.0.0
+      '@floating-ui/react-dom': 1.0.0
       '@fontsource/ibm-plex-sans': ^4.5.11
       '@internationalized/date': ^3.0.0
       '@react-aria/breadcrumbs': 3.3.0
@@ -8136,7 +8136,7 @@ packages:
       chalk: 4.1.2
       debug: 4.3.3
       loader-utils: 2.0.2
-      webpack: 5.73.0
+      webpack: 5.73.0_3cfszzcgtcfxduka5ky5rqk2t4
     transitivePeerDependencies:
       - supports-color
 
@@ -10666,7 +10666,7 @@ packages:
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
       semver: 7.3.7
-      webpack: 5.73.0
+      webpack: 5.73.0_3cfszzcgtcfxduka5ky5rqk2t4
 
   /css-loader/6.7.1_webpack@5.73.0:
     resolution: {integrity: sha512-yB5CNFa14MbPJcomwNh3wLThtkZgcNyI2bNMRt8iE5Z8Vwl7f8vQXFAzn2HDOJvtDq2NTZBUGMSUNNyrv3/+cw==}
@@ -14034,7 +14034,7 @@ packages:
       lodash: 4.17.21
       pretty-error: 4.0.0
       tapable: 2.2.1
-      webpack: 5.73.0
+      webpack: 5.73.0_3cfszzcgtcfxduka5ky5rqk2t4
 
   /htmlparser2/6.1.0:
     resolution: {integrity: sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==}
@@ -16509,7 +16509,7 @@ packages:
       webpack: ^5.0.0
     dependencies:
       schema-utils: 4.0.0
-      webpack: 5.73.0
+      webpack: 5.73.0_3cfszzcgtcfxduka5ky5rqk2t4
 
   /minimalistic-assert/1.0.1:
     resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}

@@ -39,9 +39,9 @@
   "dependencies": {
     "@datepicker-react/hooks": "^2.8.4",
     "@dessert-box/react": "^0.4.0",
-    "@floating-ui/core": "^1.0.0",
-    "@floating-ui/dom": "^1.0.0",
-    "@floating-ui/react-dom": "^1.0.0",
+    "@floating-ui/core": "1.0.0",
+    "@floating-ui/dom": "1.0.0",
+    "@floating-ui/react-dom": "1.0.0",
     "@fontsource/ibm-plex-sans": "^4.5.11",
     "@internationalized/date": "^3.0.0",
     "@react-aria/breadcrumbs": "3.3.0",
