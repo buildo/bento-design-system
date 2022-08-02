@@ -1,7 +1,7 @@
 import { HTMLAttributes, Ref, useRef } from "react";
 import { Label, Children } from "..";
 import { Box, Inset } from "../internal";
-import { useFloating, shift, autoPlacement, offset, arrow } from "@farzadsh/floating-ui-react-dom";
+import { useFloating, shift, autoPlacement, offset, arrow } from "@floating-ui/react-dom";
 import { useTooltipTriggerState } from "@react-stately/tooltip";
 import { useTooltipTrigger, useTooltip } from "@react-aria/tooltip";
 import { tooltip, arrow as arrowStyle } from "./Tooltip.css";
