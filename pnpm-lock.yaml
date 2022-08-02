@@ -20,9 +20,9 @@ importers:
       '@babel/preset-typescript': 7.18.6
       '@datepicker-react/hooks': ^2.8.4
       '@dessert-box/react': ^0.4.0
-      '@farzadsh/floating-ui-core': ^0.4.1
-      '@farzadsh/floating-ui-dom': ^0.2.1
-      '@farzadsh/floating-ui-react-dom': ^0.4.4
+      '@floating-ui/core': 1.0.0
+      '@floating-ui/dom': 1.0.0
+      '@floating-ui/react-dom': 1.0.0
       '@fontsource/ibm-plex-sans': ^4.5.11
       '@internationalized/date': ^3.0.0
       '@react-aria/breadcrumbs': 3.3.0
@@ -119,9 +119,9 @@ importers:
     dependencies:
       '@datepicker-react/hooks': 2.8.4_react@18.2.0
       '@dessert-box/react': 0.4.0_react@18.2.0
-      '@farzadsh/floating-ui-core': 0.4.1
-      '@farzadsh/floating-ui-dom': 0.2.1
-      '@farzadsh/floating-ui-react-dom': 0.4.4_bb2bxwco6ptpubzwpazr52qf6i
+      '@floating-ui/core': 1.0.0
+      '@floating-ui/dom': 1.0.0
+      '@floating-ui/react-dom': 1.0.0_biqbaboplfbrettd7655fr4n2y
       '@fontsource/ibm-plex-sans': 4.5.11
       '@internationalized/date': 3.0.0
       '@react-aria/breadcrumbs': 3.3.0_react@18.2.0
@@ -4235,29 +4235,25 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@farzadsh/floating-ui-core/0.4.1:
-    resolution: {integrity: sha512-rEgpRpTrbcC/2U03JtmjVY+w3Uv6pbPOnibKUlRwC6TTqogjJRr3Cb2oHriqpo5Iab3/Lbxh+jH2WWz+hL3Sag==}
+  /@floating-ui/core/1.0.0:
+    resolution: {integrity: sha512-sm3nW0hHAxTv3gRDdCH8rNVQxijF+qPFo5gAeXCErRjKC7Qc28lIQ3R9Vd7Gw+KgwfA7RhRydDFuGeI0peGq7A==}
     dev: false
 
-  /@farzadsh/floating-ui-dom/0.2.1:
-    resolution: {integrity: sha512-ZxqgdAPHCN9M0kbnpEjzCGkhi27RcI6i3PpgMuULyWvnhSvP9Fr/nPH17Lfp78BH7g+FyRa8QgMyVWyTjqa6lw==}
+  /@floating-ui/dom/1.0.0:
+    resolution: {integrity: sha512-PMqJvY5Fae8HVQgUqM+lidprS6p9LSvB0AUhCdYKqr3YCaV+WaWCeVNBtXPRY2YIdrgcsL2+vd5F07FxgihHUw==}
     dependencies:
-      '@farzadsh/floating-ui-core': 0.4.1
+      '@floating-ui/core': 1.0.0
     dev: false
 
-  /@farzadsh/floating-ui-react-dom/0.4.4_bb2bxwco6ptpubzwpazr52qf6i:
-    resolution: {integrity: sha512-VDFGL2oVwbxLDy4BbT6MMyr5GoGa3Uml1YphuHHwXhYVw/GfZnHRwVYaghtapQs/LErvQyOX7QxNN7AREUUd+g==}
+  /@floating-ui/react-dom/1.0.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-uiOalFKPG937UCLm42RxjESTWUVpbbatvlphQAU6bsv+ence6IoVG8JOUZcy8eW81NkU+Idiwvx10WFLmR4MIg==}
     peerDependencies:
       react: '>=16.8.0 || 18'
       react-dom: '>=16.8.0 || 18'
     dependencies:
-      '@farzadsh/floating-ui-core': 0.4.1
-      '@farzadsh/floating-ui-dom': 0.2.1
+      '@floating-ui/dom': 1.0.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      use-isomorphic-layout-effect: 1.1.1_3hx2ussxxho4jajbwrd6gq34qe
-    transitivePeerDependencies:
-      - '@types/react'
     dev: false
 
   /@fontsource/ibm-plex-sans/4.5.11:
@@ -21796,6 +21792,7 @@ packages:
     dependencies:
       '@types/react': 18.0.15
       react: 18.2.0
+    dev: true
 
   /use-isomorphic-layout-effect/1.1.2_3hx2ussxxho4jajbwrd6gq34qe:
     resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
