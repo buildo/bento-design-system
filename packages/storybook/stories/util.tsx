@@ -15,6 +15,7 @@ type ComponentMeta<C extends JSXElementConstructor<any>, D extends Partial<Compo
   decorators?: Array<(story: ComponentStory<C>, args: D) => ComponentStory<C>>;
   parameters?: Record<string, unknown>;
   subcomponents?: Record<string, JSXElementConstructor<any>>;
+  excludeStories?: string | Array<string>;
 };
 
 export function createComponentStories<

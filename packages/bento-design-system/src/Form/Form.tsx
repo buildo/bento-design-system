@@ -21,6 +21,7 @@ type Props = {
   submitButton?: Omit<ButtonProps, "kind" | "hierarchy">;
   secondaryButton?: Omit<ButtonProps, "kind" | "hierarchy">;
   error?: LocalizedString;
+  errorBannerWidth?: ActionsProps["errorBannerWidth"];
   actionsSize?: ButtonProps["size"];
   autoFocus?: boolean;
 };
@@ -40,6 +41,7 @@ export function createForm(
     submitButton,
     secondaryButton,
     error,
+    errorBannerWidth = config.defaultErrorBannerWidth,
     actionsSize = config.defaultActionsSize,
     autoFocus,
   }: Props) {
@@ -66,6 +68,7 @@ export function createForm(
                   primaryAction={submitButton}
                   secondaryAction={secondaryButton}
                   error={error}
+                  errorBannerWidth={errorBannerWidth}
                 />
               )}
             </Stack>

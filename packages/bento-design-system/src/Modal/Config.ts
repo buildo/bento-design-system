@@ -3,6 +3,7 @@ import { BentoSprinkles } from "../internal";
 import { TitleProps } from "../Typography/Title/Title";
 import { ModalKind, ModalSize } from "./createModal";
 import { Children } from "../util/Children";
+import { ActionsProps } from "../Actions/createActions";
 
 type SizeConfig<T> = { [k in ModalSize]: T };
 export type ModalConfig = {
@@ -16,4 +17,5 @@ export type ModalConfig = {
   elevation: "none" | "small" | "medium" | "large";
   titleIcon: { [k in Exclude<ModalKind, "normal">]: (props: IconProps) => Children };
   titleIconSize: IconProps["size"];
+  defaultErrorBannerWidth: NonNullable<ActionsProps["errorBannerWidth"]>;
 };
