@@ -1,5 +1,5 @@
 import { useCheckboxGroup, useCheckboxGroupItem } from "@react-aria/checkbox";
-import { useRef } from "react";
+import { ComponentProps, useRef } from "react";
 import { FieldType } from "../Field/createField";
 import { FieldProps } from "../Field/FieldProps";
 import { createInternalCheckbox } from "../Checkbox/createInternalCheckbox";
@@ -74,8 +74,13 @@ export function createCheckboxGroupField(
             assistiveTextProps={descriptionProps}
             errorMessageProps={errorMessageProps}
           >
-            <Inset spaceY={config.group.paddingY}>
-              {(props.orientation || "vertical") === "vertical" ? (
+            <Inset
+              spaceY={
+                ((config.group.internalSpacing[props.orientation ?? "vertical"] as number) /
+                  2) as ComponentProps<typeof Inset>["spaceY"]
+              }
+            >
+              {(props.orientation ?? "vertical") === "vertical" ? (
                 <Stack space={config.group.internalSpacing.vertical}>{groupOptions}</Stack>
               ) : (
                 <Inline space={config.group.internalSpacing.horizontal}>{groupOptions}</Inline>

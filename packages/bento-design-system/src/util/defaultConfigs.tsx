@@ -253,7 +253,6 @@ export const selectionControl: {
   element: SelectionControlConfig;
 } = {
   group: {
-    paddingY: 8,
     internalSpacing: {
       horizontal: 24,
       vertical: 16,

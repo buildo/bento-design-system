@@ -33,7 +33,6 @@ export type InputConfig = {
 };
 
 export type SelectionControlGroupConfig = {
-  paddingY: BentoSprinkles["gap"];
   internalSpacing: {
     horizontal: BentoSprinkles["gap"];
     vertical: BentoSprinkles["gap"];
