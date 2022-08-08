@@ -64,7 +64,7 @@ importers:
       '@react-types/shared': 3.14.0
       '@react-types/slider': 3.2.0
       '@react-types/textfield': 3.5.2
-      '@testing-library/dom': 8.16.0
+      '@testing-library/dom': 8.16.1
       '@testing-library/jest-dom': 5.16.4
       '@testing-library/react': 13.3.0
       '@testing-library/react-hooks': 8.0.1
@@ -180,11 +180,11 @@ importers:
       '@react-types/numberfield': 3.3.2_react@18.2.0
       '@react-types/slider': 3.2.0_react@18.2.0
       '@react-types/textfield': 3.5.2_react@18.2.0
-      '@testing-library/dom': 8.16.0
+      '@testing-library/dom': 8.16.1
       '@testing-library/jest-dom': 5.16.4
       '@testing-library/react': 13.3.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/react-hooks': 8.0.1_bb2bxwco6ptpubzwpazr52qf6i
-      '@testing-library/user-event': 14.3.0_gwcpuyfvwbszhlmedmugzivgzu
+      '@testing-library/user-event': 14.3.0_znfriv3ismgf3ybh2woqwlpfea
       '@types/jest': 28.1.6
       '@types/react': 18.0.15
       '@types/react-dom': 18.0.6
@@ -7346,12 +7346,12 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/dom/8.16.0:
-    resolution: {integrity: sha512-uxF4zmnLHHDlmW4l+0WDjcgLVwCvH+OVLpD8Dfp+Bjfz85prwxWGbwXgJdLtkgjD0qfOzkJF9SmA6YZPsMYX4w==}
+  /@testing-library/dom/8.16.1:
+    resolution: {integrity: sha512-XEV2mBxgv6DKjL3+U3WEUzBgT2CjYksoXGlLrrJXYP8OvRfGkBonvelkorazpFlp8tkEecO06r43vN4DIEyegQ==}
     engines: {node: '>=12'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/runtime': 7.18.6
+      '@babel/runtime': 7.18.9
       '@types/aria-query': 4.2.2
       aria-query: 5.0.0
       chalk: 4.1.2
@@ -7406,7 +7406,7 @@ packages:
       react-dom: ^18.0.0 || 18
     dependencies:
       '@babel/runtime': 7.18.6
-      '@testing-library/dom': 8.16.0
+      '@testing-library/dom': 8.16.1
       '@types/react-dom': 18.0.6
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -7422,13 +7422,13 @@ packages:
       '@testing-library/dom': 8.12.0
     dev: true
 
-  /@testing-library/user-event/14.3.0_gwcpuyfvwbszhlmedmugzivgzu:
+  /@testing-library/user-event/14.3.0_znfriv3ismgf3ybh2woqwlpfea:
     resolution: {integrity: sha512-P02xtBBa8yMaLhK8CzJCIns8rqwnF6FxhR9zs810flHOBXUYCFjLd8Io1rQrAkQRWEmW2PGdZIEdMxf/KLsqFA==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
     dependencies:
-      '@testing-library/dom': 8.16.0
+      '@testing-library/dom': 8.16.1
     dev: true
 
   /@tootallnate/once/2.0.0:
@@ -15252,7 +15252,7 @@ packages:
       chalk: 4.1.2
       jest-diff: 28.1.1
       jest-get-type: 28.0.2
-      pretty-format: 28.1.1
+      pretty-format: 28.1.3
     dev: true
 
   /jest-matcher-utils/28.1.3:
