@@ -1,5 +1,5 @@
 import { Body, LocalizedString } from "..";
-import { Box, Column, Columns, Inline, Inset, Stack } from "../internal";
+import { Box, Column, Columns, Inline, Stack } from "../internal";
 import { FieldProps } from "../Field/FieldProps";
 import { FieldType } from "../Field/createField";
 import { RadioGroupState, useRadioGroupState } from "@react-stately/radio";
@@ -58,6 +58,8 @@ export function createRadioGroupField(
       />
     ));
 
+    const paddingY = (config.group.internalSpacing.vertical as number) / 2;
+
     return (
       <FocusScope autoFocus={props.autoFocus}>
         <Box {...radioGroupProps}>
@@ -69,13 +71,18 @@ export function createRadioGroupField(
             errorMessageProps={errorMessageProps}
             labelElement="span"
           >
-            <Inset spaceY={config.group.paddingY}>
-              {(props.orientation || "vertical") === "vertical" ? (
+            <Box
+              style={{
+                paddingTop: paddingY,
+                paddingBottom: paddingY,
+              }}
+            >
+              {(props.orientation ?? "vertical") === "vertical" ? (
                 <Stack space={config.group.internalSpacing.vertical}>{radioOptions}</Stack>
               ) : (
                 <Inline space={config.group.internalSpacing.horizontal}>{radioOptions}</Inline>
               )}
-            </Inset>
+            </Box>
           </Field>
         </Box>
       </FocusScope>

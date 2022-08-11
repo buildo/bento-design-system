@@ -5,7 +5,7 @@ import { FieldProps } from "../Field/FieldProps";
 import { createInternalCheckbox } from "../Checkbox/createInternalCheckbox";
 import { useField } from "@react-aria/label";
 import { CheckboxGroupState, useCheckboxGroupState } from "@react-stately/checkbox";
-import { Box, Inline, Inset, Stack } from "../internal";
+import { Box, Inline, Stack } from "../internal";
 import { SelectionControlConfig, SelectionControlGroupConfig } from "../Field/Config";
 import { Children } from "../util/Children";
 import { FocusScope } from "@react-aria/focus";
@@ -64,6 +64,8 @@ export function createCheckboxGroupField(
       <CheckboxItem key={option.value} state={state} option={option} />
     ));
 
+    const paddingY = (config.group.internalSpacing.vertical as number) / 2;
+
     return (
       <FocusScope autoFocus={props.autoFocus}>
         <Box {...groupProps} aria-describedby={fieldProps["aria-describedby"]}>
@@ -74,13 +76,18 @@ export function createCheckboxGroupField(
             assistiveTextProps={descriptionProps}
             errorMessageProps={errorMessageProps}
           >
-            <Inset spaceY={config.group.paddingY}>
-              {(props.orientation || "vertical") === "vertical" ? (
+            <Box
+              style={{
+                paddingTop: paddingY,
+                paddingBottom: paddingY,
+              }}
+            >
+              {(props.orientation ?? "vertical") === "vertical" ? (
                 <Stack space={config.group.internalSpacing.vertical}>{groupOptions}</Stack>
               ) : (
                 <Inline space={config.group.internalSpacing.horizontal}>{groupOptions}</Inline>
               )}
-            </Inset>
+            </Box>
           </Field>
         </Box>
       </FocusScope>
