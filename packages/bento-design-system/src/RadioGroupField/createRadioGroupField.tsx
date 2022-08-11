@@ -58,7 +58,7 @@ export function createRadioGroupField(
       />
     ));
 
-    const paddingY = (config.group.internalSpacing[props.orientation ?? "vertical"] as number) / 2;
+    const paddingY = (config.group.internalSpacing.vertical as number) / 2;
 
     return (
       <FocusScope autoFocus={props.autoFocus}>
