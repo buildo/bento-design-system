@@ -23,8 +23,8 @@ type Props = {
 /**
  * A button
  */
-export function createButton(config: ButtonConfig) {
-  return function Button(props: Props) {
+  export function Button(props: Props) {
+    const config = useBentoConfig()
     const ref = useRef<HTMLButtonElement>(null);
     const { buttonProps } = useButton(props, ref);
     const {
@@ -77,6 +77,5 @@ export function createButton(config: ButtonConfig) {
       </Box>
     );
   };
-}
 
 export type { Props as ButtonProps };
