@@ -3,7 +3,7 @@ import { Object } from "ts-toolbelt";
 
 interface ConfigurableTypes {
   LocalizedString: string;
-  SprinklesFn: typeof bentoSprinkles
+  SprinklesFn: typeof bentoSprinkles;
 }
 
 /**

@@ -1,10 +1,15 @@
-import { Children } from ".";
+import { BentoConfig, Children } from ".";
 import { ToastProviderProps } from "./Toast/createToastProvider";
 import { OverlayProvider } from "@react-aria/overlays";
 import { DefaultMessages, DefaultMessagesContext } from "./DefaultMessagesContext";
 import { LinkComponentContext, LinkComponentProps } from "./util/link";
 import { ComponentType, FunctionComponent, useContext } from "react";
 import { I18nProvider } from "@react-aria/i18n";
+import { Object } from "ts-toolbelt";
+import { SprinklesFn } from "./util/SprinklesFn";
+import { BentoConfigContext } from "./BentoConfigProvider";
+import * as defaultConfigs from "./util/defaultConfigs";
+import merge from "ts-deepmerge";
 
 type Props = {
   children?: Children;
@@ -32,6 +37,8 @@ type Props = {
    */
   linkComponent?: ComponentType<LinkComponentProps>;
   locale?: string;
+  config?: Object.Partial<BentoConfig, "deep">;
+  sprinkles?: SprinklesFn;
 } & DefaultMessages;
 
 export function createBentoProvider(ToastProvider: FunctionComponent<ToastProviderProps>) {
@@ -41,6 +48,7 @@ export function createBentoProvider(ToastProvider: FunctionComponent<ToastProvid
     defaultMessages,
     linkComponent,
     locale,
+    config = defaultConfigs,
   }: Props) {
     const linkComponentFromContext = useContext(LinkComponentContext);
 
@@ -48,9 +56,11 @@ export function createBentoProvider(ToastProvider: FunctionComponent<ToastProvid
       <I18nProvider locale={locale}>
         <OverlayProvider style={{ height: "100%" }}>
           <DefaultMessagesContext.Provider value={{ defaultMessages }}>
-            <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
-              <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
-            </LinkComponentContext.Provider>
+            <BentoConfigContext.Provider value={merge(defaultConfigs, config)}>
+              <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
+                <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
+              </LinkComponentContext.Provider>
+            </BentoConfigContext.Provider>
           </DefaultMessagesContext.Provider>
         </OverlayProvider>
       </I18nProvider>

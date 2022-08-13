@@ -51,43 +51,35 @@ import { createUseComponentsShowcase } from "./createUseComponentsShowcase";
 import { createInlineLoader } from "./InlineLoader/InlineLoader";
 import { createDecorativeDivider } from "./Divider/Divider";
 import { createCheckbox } from "./Checkbox/createCheckbox";
+import { SprinklesFn } from "./util/SprinklesFn";
 
-type PartialConfig<
-  SprinklesFn extends typeof bentoSprinkles,
-  ChipCustomColor extends string = never
-> = Object.Partial<BentoConfig<SprinklesFn, ChipCustomColor>, "deep">;
+type PartialConfig = Object.Partial<BentoConfig, "deep">;
 
-export function createBentoComponents(): R<typeof bentoSprinkles>;
+export function createBentoComponents(): R;
 
 export function createBentoComponents<ChipCustomColor extends string = never>(
-  config: PartialConfig<typeof bentoSprinkles, ChipCustomColor>
-): R<typeof bentoSprinkles>;
+  config: PartialConfig
+): R;
 
 export function createBentoComponents<
   SprinklesFn extends typeof bentoSprinkles,
   ChipCustomColor extends string = never
->(
-  sprinkles: SprinklesFn,
-  config?: PartialConfig<SprinklesFn, ChipCustomColor>
-): R<SprinklesFn, ChipCustomColor>;
+>(sprinkles: SprinklesFn, config?: PartialConfig): R;
 
-export function createBentoComponents<
-  SprinklesFn extends typeof bentoSprinkles,
-  ChipCustomColor extends string = never
->(
-  sprinkles?: SprinklesFn | PartialConfig<SprinklesFn, ChipCustomColor>,
-  config: PartialConfig<SprinklesFn, ChipCustomColor> = defaultConfigs
-): R<SprinklesFn, ChipCustomColor> {
+export function createBentoComponents<SprinklesFn extends typeof bentoSprinkles>(
+  sprinkles?: SprinklesFn | PartialConfig,
+  config: PartialConfig = defaultConfigs
+): R {
   if (typeof sprinkles === "function") {
     return internalCreateBentoComponents(sprinkles, config);
   }
   return internalCreateBentoComponents(bentoSprinkles, config);
 }
 
-function internalCreateBentoComponents<
-  SprinklesFn extends typeof bentoSprinkles,
-  ChipCustomColor extends string = never
->(sprinkles: SprinklesFn, config: PartialConfig<SprinklesFn, ChipCustomColor> = defaultConfigs) {
+function internalCreateBentoComponents(
+  sprinkles: SprinklesFn,
+  config: PartialConfig = defaultConfigs
+) {
   const Box = createBentoBox(sprinkles);
 
   const { Bleed, Column, Columns, Inline, Inset, Stack, Tiles } = createLayoutComponents(Box);
@@ -305,7 +297,4 @@ function internalCreateBentoComponents<
   };
 }
 
-type R<
-  SprinklesFn extends typeof bentoSprinkles,
-  CustomChipColor extends string = never
-> = ReturnType<typeof internalCreateBentoComponents<SprinklesFn, CustomChipColor>>;
+type R = ReturnType<typeof internalCreateBentoComponents>;

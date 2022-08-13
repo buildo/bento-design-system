@@ -15,9 +15,7 @@ type HTMLProperties = Omit<
   "as" | "color" | "height" | "width" | "className"
 >;
 
-export type BoxType = React.ForwardRefExoticComponent<
-  BoxProps & React.RefAttributes<HTMLElement>
->;
+export type BoxType = React.ForwardRefExoticComponent<BoxProps & React.RefAttributes<HTMLElement>>;
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
   ({ as: element, className, style, ...props }: BoxProps, ref) => {

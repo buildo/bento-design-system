@@ -495,6 +495,8 @@ export const underlineTabs: TabsConfig = {
   },
 };
 
+export const tabs: TabsConfig = folderTabs;
+
 export const progressBar: ProgressBarConfig = {
   height: 8,
   radius: "circledX",

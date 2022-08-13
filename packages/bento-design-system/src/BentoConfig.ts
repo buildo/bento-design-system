@@ -20,7 +20,6 @@ import {
 import { FormLayoutConfig } from "./Form/Config";
 import { IconButtonConfig } from "./IconButton/Config";
 import { InlineLoaderConfig } from "./InlineLoader/Config";
-import { bentoSprinkles } from "./internal";
 import { ListConfig } from "./List/Config";
 import { MenuConfig } from "./Menu/Config";
 import { ModalConfig } from "./Modal/Config";
@@ -34,11 +33,10 @@ import { TableConfig } from "./Table/Config";
 import { TabsConfig } from "./Tabs/Config";
 import { ToastConfig } from "./Toast/Config";
 import { TooltipConfig } from "./Tooltip/Config";
+import { SprinklesFn } from "./util/SprinklesFn";
 
-export type BentoConfig<
-  AtomsFn extends typeof bentoSprinkles,
-  ChipCustomColor extends string = never
-> = {
+// TODO(gabro): remove generic here
+export type BentoConfig<ChipCustomColor extends string = never> = {
   actions: ActionsConfig;
   areaLoader: AreaLoaderConfig;
   avatar: AvatarConfig;
@@ -46,9 +44,9 @@ export type BentoConfig<
   breadcrumb: BreadcrumbConfig;
   button: ButtonConfig;
   card: CardConfig;
-  chip: ChipConfig<AtomsFn, ChipCustomColor>;
+  chip: ChipConfig<SprinklesFn, ChipCustomColor>;
   dateField: DateFieldConfig;
-  decorativeDivider: DecorativeDividerConfig<AtomsFn>;
+  decorativeDivider: DecorativeDividerConfig<SprinklesFn>;
   disclosure: DisclosureConfig;
   disclosureGroup: DisclosureGroupConfig;
   feedback: FeedbackConfig;
