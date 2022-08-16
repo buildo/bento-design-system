@@ -1,11 +1,10 @@
 import { MonthType } from "@datepicker-react/hooks";
 import { useDateFormatter } from "@react-aria/i18n";
-import { FunctionComponent, useMemo } from "react";
-import { Box, Column, Columns } from "..";
+import { useMemo } from "react";
+import { Box, Column, Columns, Menu } from "..";
+import { useBentoConfig } from "../BentoConfigProvider";
 import { ListProps } from "../List/List";
-import { MenuProps } from "../Menu/Menu";
 import { Label } from "../Typography/Label/Label";
-import { DateFieldConfig } from "./Config";
 import { selector } from "./DateField.css";
 
 function getYears(activeDate: Date): Date[] {
@@ -29,58 +28,54 @@ function getMonths(activeDate: Date): Date[] {
     });
 }
 
-export function createSelector(
-  config: DateFieldConfig,
-  { Menu }: { Menu: FunctionComponent<MenuProps> }
-) {
-  return function Selector(props: {
-    datePart: "month" | "year";
-    activeMonth: MonthType;
-    onSelect: (date: Date) => void;
-  }) {
-    const formatter = useDateFormatter(
-      props.datePart === "month" ? { month: "long" } : { year: "numeric" }
-    );
+export function Selector(props: {
+  datePart: "month" | "year";
+  activeMonth: MonthType;
+  onSelect: (date: Date) => void;
+}) {
+  const config = useBentoConfig().dateField;
+  const formatter = useDateFormatter(
+    props.datePart === "month" ? { month: "long" } : { year: "numeric" }
+  );
 
-    const values =
-      props.datePart === "month"
-        ? getMonths(props.activeMonth.date)
-        : getYears(props.activeMonth.date);
+  const values =
+    props.datePart === "month"
+      ? getMonths(props.activeMonth.date)
+      : getYears(props.activeMonth.date);
 
-    const options: ListProps["items"] = useMemo(
-      () =>
-        values.map((value) => {
-          return {
-            label: formatter.format(value),
-            onPress: () => props.onSelect(value),
-            isSelected: value.getTime() === props.activeMonth.date.getTime(),
-          };
-        }),
-      [values, props.activeMonth]
-    );
+  const options: ListProps["items"] = useMemo(
+    () =>
+      values.map((value) => {
+        return {
+          label: formatter.format(value),
+          onPress: () => props.onSelect(value),
+          isSelected: value.getTime() === props.activeMonth.date.getTime(),
+        };
+      }),
+    [values, props.activeMonth]
+  );
 
-    return (
-      <Menu
-        size="medium"
-        trigger={(ref, triggerProps, { isOpen }) => (
-          <Box ref={ref} {...triggerProps} cursor="pointer" outline="none" className={selector}>
-            <Columns space={8} align="center" alignY="center">
-              <Column width="content">
-                <Label size={config.monthYearLabelSize} color="secondary" uppercase>
-                  {formatter.format(props.activeMonth.date)}
-                </Label>
-              </Column>
-              <Column width="content">
-                {isOpen
-                  ? config.monthYearSelectIcons.open({ size: 12 })
-                  : config.monthYearSelectIcons.close({ size: 12 })}
-              </Column>
-            </Columns>
-          </Box>
-        )}
-        items={options}
-        closeOnSelect
-      />
-    );
-  };
+  return (
+    <Menu
+      size="medium"
+      trigger={(ref, triggerProps, { isOpen }) => (
+        <Box ref={ref} {...triggerProps} cursor="pointer" outline="none" className={selector}>
+          <Columns space={8} align="center" alignY="center">
+            <Column width="content">
+              <Label size={config.monthYearLabelSize} color="secondary" uppercase>
+                {formatter.format(props.activeMonth.date)}
+              </Label>
+            </Column>
+            <Column width="content">
+              {isOpen
+                ? config.monthYearSelectIcons.open({ size: 12 })
+                : config.monthYearSelectIcons.close({ size: 12 })}
+            </Column>
+          </Columns>
+        </Box>
+      )}
+      items={options}
+      closeOnSelect
+    />
+  );
 }

@@ -20,7 +20,7 @@ import { createSlider } from "../Slider/createSlider";
 import { SliderConfig } from "../Slider/Config";
 import { createSliderField } from "../SliderField/createSliderField";
 import { DateFieldConfig } from "../DateField/Config";
-import { createDateField } from "../DateField/createDateField";
+import { createDateField } from "../DateField/DateField";
 import { IconButtonProps } from "../IconButton/IconButton";
 import { MenuProps } from "../Menu/Menu";
 import { ButtonProps } from "../Button/Button";
@@ -93,5 +93,5 @@ export type {
 export type { NumberFieldProps } from "../NumberField/createNumberField";
 export type { SliderFieldProps } from "../SliderField/createSliderField";
 export type { CheckboxFieldProps } from "../CheckboxField/CheckboxField";
-export type { DateFieldProps } from "../DateField/createDateField";
+export type { DateFieldProps } from "../DateField/DateField";
 export type { TextAreaProps } from "../TextArea/createTextArea";

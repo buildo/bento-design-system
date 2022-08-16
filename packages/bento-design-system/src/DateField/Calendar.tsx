@@ -2,17 +2,15 @@ import { MonthType, useMonth } from "@datepicker-react/hooks";
 import { useDateFormatter } from "@react-aria/i18n";
 import { useOverlay, useOverlayPosition } from "@react-aria/overlays";
 import { mergeProps } from "@react-aria/utils";
-import { FunctionComponent, RefObject, useRef } from "react";
-import { IconButtonProps } from "../IconButton/IconButton";
+import { RefObject, useRef } from "react";
 import { Box, Stack, Tiles } from "..";
-import { MenuProps } from "../Menu/Menu";
 import { Label } from "../Typography/Label/Label";
 import { Children } from "../util/Children";
 import { createPortal } from "../util/createPortal";
-import { createCalendarHeader } from "./CalendarHeader";
-import { DateFieldConfig } from "./Config";
+import { CalendarHeader } from "./CalendarHeader";
 import { calendar, weekDay } from "./DateField.css";
-import { createDay } from "./Day";
+import { Day } from "./Day";
+import { useBentoConfig } from "../BentoConfigProvider";
 
 export type CommonCalendarProps = {
   inputRef: RefObject<HTMLInputElement>;
@@ -52,83 +50,70 @@ function boxShadowFromElevation(config: "none" | "small" | "medium" | "large") {
   }
 }
 
-export function createCalendar(
-  config: DateFieldConfig,
-  {
-    Menu,
-    IconButton,
-  }: {
-    Menu: FunctionComponent<MenuProps>;
-    IconButton: FunctionComponent<IconButtonProps>;
-  }
-) {
-  const CalendarHeader = createCalendarHeader(config, { Menu, IconButton });
-  const Day = createDay(config);
+export function Calendar(props: Props) {
+  const config = useBentoConfig().dateField;
+  const weekdayFormatter = useDateFormatter({
+    weekday: "narrow",
+  });
+  const overlayRef = useRef(null);
 
-  return function Calendar(props: Props) {
-    const weekdayFormatter = useDateFormatter({
-      weekday: "narrow",
-    });
-    const overlayRef = useRef(null);
+  const { days, weekdayLabels } = useMonth({
+    year: props.activeDate.year,
+    month: props.activeDate.month,
+    weekdayLabelFormat: (date) => weekdayFormatter.format(date),
+  });
 
-    const { days, weekdayLabels } = useMonth({
-      year: props.activeDate.year,
-      month: props.activeDate.month,
-      weekdayLabelFormat: (date) => weekdayFormatter.format(date),
-    });
-
-    const { overlayProps } = useOverlay(
-      {
-        isOpen: true,
-        isDismissable: true,
-        onClose: props.onClose,
-      },
-      overlayRef
-    );
-    const { overlayProps: positionProps } = useOverlayPosition({
-      targetRef: props.inputRef,
-      overlayRef,
-      placement: "bottom start",
-      offset: 35,
+  const { overlayProps } = useOverlay(
+    {
       isOpen: true,
-      shouldFlip: true,
-    });
+      isDismissable: true,
+      onClose: props.onClose,
+    },
+    overlayRef
+  );
+  const { overlayProps: positionProps } = useOverlayPosition({
+    targetRef: props.inputRef,
+    overlayRef,
+    placement: "bottom start",
+    offset: 35,
+    isOpen: true,
+    shouldFlip: true,
+  });
 
-    return createPortal(
-      <Box
-        className={calendar}
-        borderRadius={config.radius}
-        padding={config.padding}
-        boxShadow={boxShadowFromElevation(config.elevation)}
-        {...mergeProps(overlayProps, positionProps)}
-        ref={overlayRef}
-      >
-        <Stack space={16} align="center">
-          <CalendarHeader {...props} />
-          <Tiles columns={7} space={0}>
-            {weekdayLabels.map((d, index) => (
-              <Box
-                className={weekDay}
-                width={config.dayWidth}
-                height={config.dayHeight}
-                key={`${d}-${index}`}
-              >
-                <Label size={config.dayOfWeekLabelSize}>{d}</Label>
-              </Box>
-            ))}
-            {days.map((day, index) => {
-              if (typeof day === "object") {
-                return <Day key={day.dayLabel} {...props} date={day.date} label={day.dayLabel} />;
-              } else {
-                return (
-                  <Box key={`empty-${index}`} width={config.dayWidth} height={config.dayHeight} />
-                );
-              }
-            })}
-          </Tiles>
-          <Box style={{ maxWidth: config.dayWidth * 7 }}>{props.shortcuts}</Box>
-        </Stack>
-      </Box>
-    );
-  };
+  return createPortal(
+    <Box
+      className={calendar}
+      borderRadius={config.radius}
+      padding={config.padding}
+      boxShadow={boxShadowFromElevation(config.elevation)}
+      {...mergeProps(overlayProps, positionProps)}
+      ref={overlayRef}
+    >
+      <Stack space={16} align="center">
+        <CalendarHeader {...props} />
+        <Tiles columns={7} space={0}>
+          {weekdayLabels.map((d, index) => (
+            <Box
+              className={weekDay}
+              width={config.dayWidth}
+              height={config.dayHeight}
+              key={`${d}-${index}`}
+            >
+              <Label size={config.dayOfWeekLabelSize}>{d}</Label>
+            </Box>
+          ))}
+          {days.map((day, index) => {
+            if (typeof day === "object") {
+              return <Day key={day.dayLabel} {...props} date={day.date} label={day.dayLabel} />;
+            } else {
+              return (
+                <Box key={`empty-${index}`} width={config.dayWidth} height={config.dayHeight} />
+              );
+            }
+          })}
+        </Tiles>
+        <Box style={{ maxWidth: config.dayWidth * 7 }}>{props.shortcuts}</Box>
+      </Stack>
+    </Box>
+  );
 }

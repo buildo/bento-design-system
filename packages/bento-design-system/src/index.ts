@@ -18,7 +18,7 @@ export * from "./Checkbox/Checkbox";
 export * from "./Chip/Chip";
 export * from "./ContentBlock/ContentBlock";
 export * from "./ContentWithSidebar/ContentWithSidebar";
-export * from "./DateField/createDateField";
+export * from "./DateField/DateField";
 export * from "./Disclosure/createDisclosure";
 export * from "./DisclosureGroup/createDisclosureGroup";
 export * from "./Divider/Divider";
