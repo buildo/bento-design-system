@@ -53,7 +53,7 @@ import * as illustrations from "./Illustrations";
 import { BentoConfig } from "./BentoConfig";
 import { createProgressBar } from "./ProgressBar/ProgressBar";
 import merge from "ts-deepmerge";
-import { createSwitch } from "./Switch/createSwitch";
+import { createSwitch } from "./Switch/Switch";
 import { createUseComponentsShowcase } from "./createUseComponentsShowcase";
 import { createInlineLoader } from "./InlineLoader/InlineLoader";
 import { createDecorativeDivider } from "./Divider/Divider";

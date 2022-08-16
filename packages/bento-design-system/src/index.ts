@@ -51,7 +51,7 @@ export * from "./ProgressBar/ProgressBar";
 export * from "./SearchBar/SearchBar";
 export * from "./Slider/Slider";
 export * from "./Stepper/Stepper";
-export * from "./Switch/createSwitch";
+export * from "./Switch/Switch";
 export * from "./Table/createTable";
 export * from "./Tabs/createTabs";
 export * from "./Toast/createToast";
