@@ -52,7 +52,7 @@ export * from "./SearchBar/SearchBar";
 export * from "./Slider/Slider";
 export * from "./Stepper/Stepper";
 export * from "./Switch/Switch";
-export * from "./Table/createTable";
+export * from "./Table/Table";
 export * from "./Tabs/createTabs";
 export * from "./Toast/createToast";
 export * from "./Toast/useToast";
