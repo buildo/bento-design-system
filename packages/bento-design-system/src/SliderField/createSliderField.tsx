@@ -8,7 +8,7 @@ import { FieldType } from "../Field/Field";
 import { FieldProps } from "../Field/FieldProps";
 import { useFormatOptions } from "../NumberInput/formatOptions";
 import { FormatProps } from "../NumberInput/FormatProps";
-import { SliderProps } from "../Slider/createSlider";
+import { SliderProps } from "../Slider/Slider";
 
 type Props = (
   | ({ type: "single" } & FieldProps<number>)

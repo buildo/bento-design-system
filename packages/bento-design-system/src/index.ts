@@ -49,7 +49,7 @@ export * from "./Placeholder/Placeholder";
 export * from "./Popover/Popover";
 export * from "./ProgressBar/ProgressBar";
 export * from "./SearchBar/SearchBar";
-export * from "./Slider/createSlider";
+export * from "./Slider/Slider";
 export * from "./Stepper/createStepper";
 export * from "./Switch/createSwitch";
 export * from "./Table/createTable";

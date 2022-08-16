@@ -16,7 +16,7 @@ import {
   SelectionControlGroupConfig,
 } from "./Config";
 import { DropdownConfig } from "../SelectField/Config";
-import { createSlider } from "../Slider/createSlider";
+import { createSlider } from "../Slider/Slider";
 import { SliderConfig } from "../Slider/Config";
 import { createSliderField } from "../SliderField/createSliderField";
 import { DateFieldConfig } from "../DateField/Config";
