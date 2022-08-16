@@ -6,7 +6,7 @@ import * as defaultConfigs from "./util/defaultConfigs";
 
 export * from "./Actions/Actions";
 export * from "./AreaLoader/AreaLoader";
-export * from "./Avatar/createAvatar";
+export * from "./Avatar/Avatar";
 export * from "./Banner/Banner";
 export * from "./BentoProvider";
 export * from "./Box/Box";
