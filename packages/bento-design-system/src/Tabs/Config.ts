@@ -1,7 +1,7 @@
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { LabelProps } from "../Typography/Label/Label";
-import { TabsSize } from "./createTabs";
+import { TabsSize } from "./Tabs";
 
 type SizeConfig<T> = Record<TabsSize, T>;
 

@@ -53,7 +53,7 @@ export * from "./Slider/Slider";
 export * from "./Stepper/Stepper";
 export * from "./Switch/Switch";
 export * from "./Table/Table";
-export * from "./Tabs/createTabs";
+export * from "./Tabs/Tabs";
 export * from "./Toast/createToast";
 export * from "./Toast/useToast";
 export * from "./Tooltip/Tooltip";
