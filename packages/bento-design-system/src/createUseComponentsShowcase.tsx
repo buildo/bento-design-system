@@ -38,7 +38,7 @@ import {
   Stack,
 } from ".";
 import { IconIdea, IconCheck, IconSearch, IconUser, IconInformative } from "./Icons";
-import { TextFieldProps } from "./TextField/createTextField";
+import { TextFieldProps } from "./TextField/TextField";
 import { Body } from "./Typography/Body/Body";
 import { Title } from "./Typography/Title/Title";
 import { unsafeLocalizedString } from "./util/LocalizedString";

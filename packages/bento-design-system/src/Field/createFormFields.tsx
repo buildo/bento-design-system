@@ -1,5 +1,5 @@
 import { createField } from "./Field";
-import { createTextField } from "../TextField/createTextField";
+import { createTextField } from "../TextField/TextField";
 import { createRadioGroupField } from "../RadioGroupField/RadioGroupField";
 import { createNumberInput } from "../NumberInput/NumberInput";
 import { createNumberField } from "../NumberField/NumberField";
@@ -8,7 +8,7 @@ import { createCheckboxField } from "../CheckboxField/CheckboxField";
 import { createCheckboxGroupField } from "../CheckboxGroupField/CheckboxGroupField";
 import { FunctionComponent } from "react";
 import { TooltipProps } from "..";
-import { createReadOnlyField } from "../ReadOnlyField/createReadOnlyField";
+import { createReadOnlyField } from "../ReadOnlyField/ReadOnlyField";
 import {
   FieldConfig,
   InputConfig,
@@ -82,8 +82,8 @@ export function createFormFields(
   };
 }
 
-export type { TextFieldProps } from "../TextField/createTextField";
-export type { ReadOnlyFieldProps } from "../ReadOnlyField/createReadOnlyField";
+export type { TextFieldProps } from "../TextField/TextField";
+export type { ReadOnlyFieldProps } from "../ReadOnlyField/ReadOnlyField";
 export type { SelectOption, SelectFieldProps } from "../SelectField/createSelectField";
 export type { RadioOption, RadioGroupFieldProps } from "../RadioGroupField/RadioGroupField";
 export type {
