@@ -1,6 +1,4 @@
-import { LocalizedString } from "../../";
-import { BoxProps } from "../../Box/createBentoBox";
-import { bentoSprinkles, Box } from "../../internal";
+import { LocalizedString, BoxProps, Box } from "../..";
 import { titleRecipe } from "./Title.css";
 
 type Size = "small" | "medium" | "large";
@@ -20,7 +18,7 @@ type Props = {
   size: Size;
   color?: Color;
   align?: Align;
-} & Pick<BoxProps<typeof bentoSprinkles>, "as">;
+} & Pick<BoxProps, "as">;
 
 export function Title({ children, size, align, color = "default", ...boxProps }: Props) {
   return (

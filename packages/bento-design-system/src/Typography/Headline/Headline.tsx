@@ -1,6 +1,5 @@
-import { LocalizedString } from "../../";
+import { LocalizedString, Box } from "../..";
 import { headlineRecipe } from "./Headline.css";
-import { Box } from "../../internal";
 
 type Size = "small" | "medium" | "large";
 type Align = "left" | "center" | "right";

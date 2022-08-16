@@ -1,5 +1,4 @@
-import { LocalizedString } from "../../";
-import { Box } from "../../internal";
+import { LocalizedString, Box } from "../..";
 import { displayRecipe } from "./Display.css";
 
 type Size = "small" | "medium" | "large";
