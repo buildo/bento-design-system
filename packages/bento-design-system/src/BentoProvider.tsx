@@ -1,9 +1,9 @@
 import { BentoConfig, bentoSprinkles, Children } from ".";
-import { ToastProviderProps } from "./Toast/ToastProvider";
+import { ToastProvider } from "./Toast/ToastProvider";
 import { OverlayProvider } from "@react-aria/overlays";
 import { DefaultMessages, DefaultMessagesContext } from "./DefaultMessagesContext";
 import { LinkComponentContext, LinkComponentProps } from "./util/link";
-import { ComponentType, FunctionComponent, useContext } from "react";
+import { ComponentType, useContext } from "react";
 import { I18nProvider } from "@react-aria/i18n";
 import { Object } from "ts-toolbelt";
 import { BentoConfigContext } from "./BentoConfigProvider";
@@ -38,19 +38,18 @@ type Props = {
    */
   linkComponent?: ComponentType<LinkComponentProps>;
   locale?: string;
-  config?: Object.Partial<BentoConfig, "deep">;
-  sprinkles?: SprinklesFn;
 } & DefaultMessages;
 
-export function createBentoProvider(ToastProvider: FunctionComponent<ToastProviderProps>) {
+export function createBentoProvider(
+  config: Object.Partial<BentoConfig, "deep"> = {},
+  sprinkles: SprinklesFn = bentoSprinkles
+) {
   return function BentoProvider({
     children,
     toastDismissAfterMs = 5000,
     defaultMessages,
     linkComponent,
     locale,
-    config = defaultConfigs,
-    sprinkles = bentoSprinkles,
   }: Props) {
     const linkComponentFromContext = useContext(LinkComponentContext);
 

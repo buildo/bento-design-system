@@ -463,7 +463,7 @@ function CellContainer({
   );
 }
 
-export * as tableColumns from "./tableColumn";
+export * as tableColumn from "./tableColumn";
 
 export type {
   CellProps as TableCellProps,

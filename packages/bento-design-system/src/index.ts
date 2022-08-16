@@ -103,6 +103,6 @@ export { defaultConfigs };
 
 export { createBentoComponents } from "./createBentoComponents";
 
-export { createUseComponentsShowcase } from "./createUseComponentsShowcase";
+export { useComponentsShowcase } from "./useComponentsShowcase";
 
 export type { ClassValue } from "clsx";

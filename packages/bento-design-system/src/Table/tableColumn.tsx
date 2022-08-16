@@ -24,7 +24,7 @@ export type ColumnOptionsBase<A> = {
   width?: Column_<{}>["gridWidth"];
 } & Omit<Column_<{}>, "accessor" | "Header" | "Cell" | "sortType" | "width" | "gridWidth">;
 
-export function column<A extends string, V, D extends Record<string, unknown>>({
+export function custom<A extends string, V, D extends Record<string, unknown>>({
   headerLabel,
   sortType,
   missingValue,
@@ -65,44 +65,44 @@ export function column<A extends string, V, D extends Record<string, unknown>>({
   return column;
 }
 
-export function buttonColumn<A extends string>(options: ColumnOptionsBase<A>) {
-  return column({
+export function button<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
     ...options,
     Cell: ButtonCell,
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
 }
 
-export function buttonLinkColumn<A extends string>(options: ColumnOptionsBase<A>) {
-  return column({
+export function buttonLink<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
     ...options,
     Cell: ButtonLinkCell,
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
 }
 
-export function chipColumn<A extends string>(options: ColumnOptionsBase<A>) {
-  return column({
+export function chip<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
     ...options,
     Cell: ChipCell,
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
 }
 
-export function textColumn<A extends string>(options: ColumnOptionsBase<A>) {
-  return column({
+export function text<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
     ...options,
     Cell: TextCell,
   });
 }
 
-export function textWithIconColumn<A extends string>({
+export function textWithIcon<A extends string>({
   iconPosition,
   ...options
 }: ColumnOptionsBase<A> & {
   iconPosition: "left" | "right";
 }) {
-  return column({
+  return custom({
     ...options,
     Cell: ({
       value: _value,
@@ -127,13 +127,13 @@ export function textWithIconColumn<A extends string>({
   });
 }
 
-export function numberColumn<A extends string>({
+export function number<A extends string>({
   valueFormatter,
   ...options
 }: ColumnOptionsBase<A> & {
   valueFormatter: (n: number) => LocalizedString;
 }) {
-  return column({
+  return custom({
     ...options,
     Cell: ({ value: numericValue, ...props }: CellProps<{}, number>) => {
       const value = valueFormatter(numericValue);
@@ -148,13 +148,13 @@ export function numberColumn<A extends string>({
   });
 }
 
-export function numberWithIconColumn<A extends string>({
+export function numberWithIcon<A extends string>({
   valueFormatter,
   ...options
 }: ColumnOptionsBase<A> & {
   valueFormatter: (n: number) => LocalizedString;
 }) {
-  return column({
+  return custom({
     ...options,
     Cell: ({
       value: { numericValue, icon, tooltipContent },
@@ -184,31 +184,31 @@ export function numberWithIconColumn<A extends string>({
   });
 }
 
-export function labelColumn<A extends string>(options: ColumnOptionsBase<A>) {
-  return column({
+export function label<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
     ...options,
     Cell: LabelCell,
   });
 }
 
-export function linkColumn<A extends string>(options: ColumnOptionsBase<A>) {
-  return column({
+export function link<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
     ...options,
     Cell: LinkCell,
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
 }
 
-export function iconColumn<A extends string>(options: ColumnOptionsBase<A>) {
-  return column({
+export function icon<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
     ...options,
     Cell: IconCell,
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
 }
 
-export function iconButtonColumn<A extends string>(options: ColumnOptionsBase<A>) {
-  return column({
+export function iconButton<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
     ...options,
     Cell: IconButtonCell,
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),

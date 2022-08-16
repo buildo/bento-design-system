@@ -24,13 +24,13 @@ export function Stepper({ currentStep, steps }: Props) {
     <Inline space={config.spaceBetweenSteps} alignY="center">
       {steps.map(({ label, key }, index) => {
         const status = index < currentStep ? "done" : index === currentStep ? "inProgress" : "todo";
-        return <Step label={label} index={index} status={status} key={key ?? index} />;
+        return <StepperStep label={label} index={index} status={status} key={key ?? index} />;
       })}
     </Inline>
   );
 }
 
-export function Step({
+export function StepperStep({
   label,
   index,
   status,

@@ -1,0 +1,608 @@
+import {
+  JSXElementConstructor,
+  ComponentProps,
+  useState,
+  IframeHTMLAttributes,
+  useLayoutEffect,
+} from "react";
+import { createPortal } from "react-dom";
+import {
+  Box,
+  Inline,
+  Stack,
+  Actions,
+  AreaLoader,
+  Avatar,
+  Banner,
+  Breadcrumb,
+  Button,
+  Card,
+  Chip,
+  DisclosureGroup,
+  Feedback,
+  Form,
+  FormRow,
+  FormSection,
+  IconButton,
+  List,
+  Navigation,
+  ProgressBar,
+  SearchBar,
+  Stepper,
+  Table,
+  tableColumn,
+  Tabs,
+} from ".";
+import { CheckboxField } from "./CheckboxField/CheckboxField";
+import { IconIdea, IconCheck, IconSearch, IconUser, IconInformative } from "./Icons";
+import { RadioGroupField } from "./RadioGroupField/RadioGroupField";
+import { SelectField } from "./SelectField/SelectField";
+import { TextField } from "./TextField/TextField";
+import { Body } from "./Typography/Body/Body";
+import { Title } from "./Typography/Title/Title";
+import { unsafeLocalizedString } from "./util/LocalizedString";
+
+const formatMessage = unsafeLocalizedString;
+
+type ComponentShowcase<
+  C extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
+  P extends ComponentProps<C>
+> = {
+  title: string;
+  Component: C;
+  variants: P[][];
+  variantLineDecorator?: (C: JSX.Element) => JSX.Element;
+  iframe?: boolean;
+  absolute?: boolean;
+};
+
+export function IFrame({
+  children,
+  ...props
+}: { children: JSX.Element } & IframeHTMLAttributes<HTMLIFrameElement>) {
+  const [contentRef, setContentRef] = useState<HTMLIFrameElement | null>(null);
+  const mountNode = contentRef?.contentWindow?.document?.body;
+
+  useLayoutEffect(() => {
+    const nodes = [...document.head.querySelectorAll("*")].map((x) => x.cloneNode(true));
+    contentRef?.contentWindow?.document?.head?.append(...nodes);
+  }, [contentRef]);
+
+  return (
+    // eslint-disable-next-line jsx-a11y/iframe-has-title
+    <iframe {...props} ref={setContentRef} style={{ border: "none" }}>
+      {mountNode && createPortal(children, mountNode)}
+    </iframe>
+  );
+}
+
+function componentShowcase<
+  C extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
+  P extends ComponentProps<C>
+>({
+  title,
+  Component,
+  variants,
+  variantLineDecorator: decorator,
+  iframe = false,
+  absolute = false,
+}: ComponentShowcase<C, P>): JSX.Element {
+  const _content = (
+    <Box background="backgroundSecondary" padding={24} borderRadius={4}>
+      <Stack space={16}>
+        {variants.map((variantLine, index) => {
+          const line = (
+            <>
+              {variantLine.map((variant) => (
+                <Component {...variant} />
+              ))}
+            </>
+          );
+          return (
+            <Inline space={16} key={index}>
+              {decorator ? decorator(line) : line}
+            </Inline>
+          );
+        })}
+      </Stack>
+    </Box>
+  );
+
+  const content = absolute ? (
+    <Box position="relative" style={{ height: 400 }}>
+      {_content}
+    </Box>
+  ) : (
+    _content
+  );
+
+  return (
+    <Stack space={24}>
+      <Title size="large">{formatMessage(title)}</Title>
+      {iframe ? <IFrame height={400}>{content}</IFrame> : content}
+    </Stack>
+  );
+}
+
+export function useComponentsShowcase({ action }: { action: (s: string) => () => void }) {
+  const buttonSharedProps = {
+    label: formatMessage("Button"),
+    onPress: action("onPress"),
+  } as const;
+
+  const iconButtonSharedProps = {
+    label: formatMessage("Icon Button"),
+    onPress: action("onPress"),
+    icon: IconIdea,
+    size: 16,
+  } as const;
+
+  const bannerSharedProps = {
+    title: formatMessage("Title"),
+    description: formatMessage("A description of what's going on"),
+    action: {
+      label: formatMessage("Action"),
+      onPress: action("onPress"),
+    },
+    dismissButtonLabel: formatMessage("Dismiss"),
+    onDismiss: action("onDismiss"),
+  } as const;
+
+  const feedbackSharedProps = {
+    title: formatMessage("Title"),
+    status: "positive",
+    description: formatMessage("Description"),
+    action: { label: formatMessage("Action"), onPress: action("onPress") },
+  } as const;
+
+  const [formState, setFormState] = useState({
+    firstName: "",
+    lastName: "",
+    status: undefined as string | undefined,
+    gender: undefined as string | undefined,
+    termsAndConditions: false,
+  });
+
+  const [searchBarValue, searchBarOnChange] = useState("");
+  const [tabValue, tabOnChange] = useState("tab1");
+
+  return (
+    <Stack space={24} dividers>
+      {[
+        componentShowcase({
+          title: "AreaLoader",
+          Component: AreaLoader,
+          variants: [[{ message: formatMessage("Loading...") }]],
+          absolute: true,
+        }),
+        componentShowcase({
+          title: "Avatar",
+          Component: Avatar,
+          variants: [[{ name: "Cellply", color: "blue" }, { color: "green" }]],
+        }),
+        componentShowcase({
+          title: "Actions",
+          Component: Actions,
+          variants: [
+            [
+              {
+                primaryAction: { label: formatMessage("Primary"), onPress: action("onPress") },
+                secondaryAction: {
+                  label: formatMessage("Secondary"),
+                  onPress: action("onPress"),
+                },
+              },
+            ],
+          ],
+        }),
+        componentShowcase({
+          title: "Banner",
+          Component: Banner,
+          variants: [
+            [
+              { ...bannerSharedProps, kind: "informative" },
+              { ...bannerSharedProps, kind: "negative" },
+              { ...bannerSharedProps, kind: "warning" },
+              { ...bannerSharedProps, kind: "secondary" },
+            ],
+          ],
+        }),
+        componentShowcase({
+          title: "Breadcrumb",
+          Component: Breadcrumb,
+          variants: [
+            [
+              {
+                items: [
+                  { label: formatMessage("Root"), href: "" },
+                  { label: formatMessage("1st level"), href: "" },
+                  { label: formatMessage("2nd level"), href: "" },
+                  { label: formatMessage("3rd level"), href: "" },
+                  { label: formatMessage("Current page") },
+                ],
+              },
+            ],
+          ],
+        }),
+        componentShowcase({
+          title: "Button",
+          Component: Button,
+          variants: [
+            [
+              { ...buttonSharedProps, kind: "solid", hierarchy: "primary" },
+              { ...buttonSharedProps, kind: "solid", hierarchy: "secondary" },
+              { ...buttonSharedProps, kind: "solid", hierarchy: "danger" },
+            ],
+            [
+              { ...buttonSharedProps, kind: "outline", hierarchy: "primary" },
+              { ...buttonSharedProps, kind: "outline", hierarchy: "secondary" },
+              { ...buttonSharedProps, kind: "outline", hierarchy: "danger" },
+            ],
+            [
+              { ...buttonSharedProps, kind: "transparent", hierarchy: "primary" },
+              { ...buttonSharedProps, kind: "transparent", hierarchy: "secondary" },
+              { ...buttonSharedProps, kind: "transparent", hierarchy: "danger" },
+            ],
+          ],
+        }),
+        componentShowcase({
+          title: "Card",
+          Component: Card,
+          variants: [
+            [
+              {
+                elevation: "medium",
+                padding: 24,
+                children: (
+                  <Stack space={8}>
+                    <Title size="medium">{formatMessage("Experiment name")}</Title>
+                    <Body size="large">{formatMessage("Experiment description")}</Body>
+                  </Stack>
+                ),
+              },
+            ],
+          ],
+        }),
+        componentShowcase({
+          title: "Chip",
+          Component: Chip,
+          variants: [
+            [
+              { color: "green", label: formatMessage("Chip") },
+              { color: "green", label: formatMessage("Chip"), icon: IconCheck },
+              {
+                color: "green",
+                label: formatMessage("Chip"),
+                icon: IconCheck,
+                onDismiss: action("onDismiss"),
+              },
+            ],
+          ],
+        }),
+        componentShowcase({
+          title: "DisclosureGroup",
+          Component: DisclosureGroup,
+          variants: [
+            [
+              {
+                items: [
+                  {
+                    title: formatMessage("Section 1"),
+                    initialIsOpen: true,
+                    children: (
+                      <Body size="large">{formatMessage("Content of the first section")}</Body>
+                    ),
+                  },
+                  {
+                    title: formatMessage("Section 2"),
+                    children: (
+                      <Body size="large">{formatMessage("Content of the second section")}</Body>
+                    ),
+                  },
+                  {
+                    title: formatMessage("Section 3"),
+                    initialIsOpen: true,
+                    items: [
+                      {
+                        title: formatMessage("Subsection 3.1"),
+                        children: (
+                          <Body size="large">
+                            {formatMessage("Content of the first subsection")}
+                          </Body>
+                        ),
+                        initialIsOpen: true,
+                      },
+                      {
+                        title: formatMessage("Subsection 3.2"),
+                        children: (
+                          <Body size="large">
+                            {formatMessage("Content of the second subsection")}
+                          </Body>
+                        ),
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          ],
+        }),
+        componentShowcase({
+          title: "Feedback",
+          Component: Feedback,
+          variants: [
+            [
+              { ...feedbackSharedProps, size: "large" },
+              { ...feedbackSharedProps, size: "medium" },
+            ],
+          ],
+        }),
+        componentShowcase({
+          title: "Form",
+          Component: Form,
+          variants: [
+            [
+              {
+                title: formatMessage("Form title"),
+                description: formatMessage("Form description"),
+                submitButton: { label: formatMessage("Submit"), onPress: action("Submit") },
+                secondaryButton: { label: formatMessage("Cancel"), onPress: action("Cancel") },
+                children: (
+                  <>
+                    <FormSection
+                      title={formatMessage("Section title")}
+                      description={formatMessage("Section description")}
+                    >
+                      <FormRow>
+                        <TextField
+                          name="firstName"
+                          onBlur={action("onBlur")}
+                          value={formState.firstName}
+                          onChange={(firstName) => setFormState((s) => ({ ...s, firstName }))}
+                          label={formatMessage("First Name")}
+                          placeholder={formatMessage("Insert the first name")}
+                        />
+                        <TextField
+                          name="lastName"
+                          onBlur={action("onBlur")}
+                          value={formState.lastName}
+                          onChange={(lastName) => setFormState((s) => ({ ...s, lastName }))}
+                          label={formatMessage("Last Name")}
+                          placeholder={formatMessage("Insert the last name")}
+                        />
+                      </FormRow>
+                      <FormRow>
+                        <SelectField
+                          name="status"
+                          onBlur={action("onBlur")}
+                          value={formState.status}
+                          onChange={(status) => setFormState((s) => ({ ...s, status }))}
+                          menuSize="large"
+                          label={formatMessage("Status")}
+                          placeholder={formatMessage("Choose an option")}
+                          options={[
+                            { label: formatMessage("Open"), value: "open" },
+                            { label: formatMessage("Closed"), value: "closed" },
+                            { label: formatMessage("Pending"), value: "pending" },
+                          ]}
+                        />
+                      </FormRow>
+                      <FormRow>
+                        <RadioGroupField
+                          name="gender"
+                          onBlur={action("onBlur")}
+                          value={formState.gender}
+                          onChange={(gender) => setFormState((s) => ({ ...s, gender }))}
+                          label={formatMessage("Gender")}
+                          options={[
+                            { label: formatMessage("Male"), value: "male" },
+                            { label: formatMessage("Female"), value: "female" },
+                            { label: formatMessage("Other"), value: "other" },
+                          ]}
+                        />
+                      </FormRow>
+                      <FormRow>
+                        <CheckboxField
+                          name="termsAndConditions"
+                          onBlur={action("onBlur")}
+                          value={formState.termsAndConditions}
+                          onChange={(termsAndConditions: boolean) =>
+                            setFormState((s) => ({ ...s, termsAndConditions }))
+                          }
+                          label={formatMessage("I have read the terms and conditions")}
+                        />
+                      </FormRow>
+                    </FormSection>
+                  </>
+                ),
+              },
+            ],
+          ],
+        }),
+        componentShowcase({
+          title: "IconButton",
+          Component: IconButton,
+          variants: [
+            [
+              { ...iconButtonSharedProps, kind: "solid", hierarchy: "primary" },
+              { ...iconButtonSharedProps, kind: "solid", hierarchy: "secondary" },
+              { ...iconButtonSharedProps, kind: "solid", hierarchy: "danger" },
+            ],
+            [
+              { ...iconButtonSharedProps, kind: "transparent", hierarchy: "primary" },
+              { ...iconButtonSharedProps, kind: "transparent", hierarchy: "secondary" },
+              { ...iconButtonSharedProps, kind: "transparent", hierarchy: "danger" },
+            ],
+          ],
+        }),
+        componentShowcase({
+          title: "List",
+          Component: List,
+          variants: [
+            [
+              {
+                size: "large",
+                items: [
+                  {
+                    kind: "single-line",
+                    label: formatMessage("Item 1 - Single line"),
+                    icon: IconIdea,
+                    trailingIcon: IconCheck,
+                  },
+                  {
+                    kind: "two-line",
+                    label: formatMessage("Item 2 - Two lines"),
+                    secondLine: formatMessage("Second line"),
+                    trailingIcon: IconCheck,
+                  },
+                  {
+                    kind: "overline",
+                    label: formatMessage("Item 3 - Overline"),
+                    overline: formatMessage("Overline"),
+                    icon: IconIdea,
+                  },
+                ],
+              },
+            ],
+          ],
+        }),
+        componentShowcase({
+          title: "Navigation",
+          Component: Navigation,
+          variants: [
+            [
+              {
+                kind: "none",
+                size: "medium",
+                destinations: [
+                  { href: "", label: formatMessage("Home"), active: true },
+                  { href: "", label: formatMessage("Experiments") },
+                  { href: "", label: formatMessage("Users") },
+                  { href: "", label: formatMessage("Profile") },
+                ],
+              },
+            ],
+            [
+              {
+                kind: "icon",
+                size: "large",
+                destinations: [
+                  { href: "", label: formatMessage("Home"), active: true, icon: IconIdea },
+                  { href: "", label: formatMessage("Experiments"), icon: IconSearch },
+                  { href: "", label: formatMessage("Users"), icon: IconUser },
+                  { href: "", label: formatMessage("Profile"), icon: IconInformative },
+                ],
+              },
+            ],
+          ],
+        }),
+        componentShowcase({
+          title: "ProgressBar",
+          Component: ProgressBar,
+          variants: [
+            [{ kind: "continuous", value: 10, maxValue: 10 }],
+            [{ kind: "discrete", value: 3, maxValue: 5 }],
+          ],
+          variantLineDecorator: (C) => <Box width="full">{C}</Box>,
+        }),
+        componentShowcase({
+          title: "SearchBar",
+          Component: SearchBar,
+          variants: [
+            [
+              {
+                placeholder: formatMessage("Search anything..."),
+                value: searchBarValue,
+                onChange: searchBarOnChange,
+                "aria-label": "Search",
+              },
+            ],
+          ],
+        }),
+        componentShowcase({
+          title: "Stepper",
+          Component: Stepper,
+          variants: [
+            [
+              {
+                currentStep: 2,
+                steps: [
+                  { label: formatMessage("Step 1") },
+                  { label: formatMessage("Step 2") },
+                  { label: formatMessage("Step 3") },
+                  { label: formatMessage("Step 4") },
+                  { label: formatMessage("Step 5") },
+                ],
+              },
+            ],
+          ],
+        }),
+        tableColumn &&
+          componentShowcase({
+            title: "Table",
+            Component: Table,
+            variants: [
+              [
+                {
+                  columns: [
+                    tableColumn.text({
+                      headerLabel: formatMessage("Name"),
+                      accessor: "name",
+                      sticky: "left",
+                    }),
+                    tableColumn.number({
+                      headerLabel: formatMessage("Experiments"),
+                      accessor: "experiments",
+                      valueFormatter: (value) => formatMessage(`${value}/100`),
+                      align: "right",
+                    }),
+                    tableColumn.chip({
+                      headerLabel: formatMessage("Status"),
+                      accessor: "status",
+                      align: "center",
+                    }),
+                  ],
+                  data: [
+                    {
+                      name: "John Doe",
+                      experiments: 100,
+                      status: { label: formatMessage("done"), color: "green" },
+                    },
+                    {
+                      name: "Jane Doe",
+                      experiments: 20,
+                      status: { label: formatMessage("running"), color: "blue" },
+                    },
+                    {
+                      name: "Jane Doe",
+                      experiments: 0,
+                      status: { label: formatMessage("pending"), color: "yellow" },
+                    },
+                  ],
+                },
+              ],
+            ],
+          }),
+        componentShowcase({
+          title: "Tabs",
+          Component: Tabs,
+          variants: [
+            [
+              {
+                value: tabValue,
+                onChange: tabOnChange as any,
+                size: "medium",
+                tabs: [
+                  { label: formatMessage("Tab 1"), value: "tab1" },
+                  { label: formatMessage("Tab 2"), value: "tab2" },
+                  { label: formatMessage("Tab 3"), value: "tab3" },
+                  { label: formatMessage("Tab 4"), value: "tab4" },
+                ],
+              },
+            ],
+          ],
+        }),
+      ].filter(Boolean)}
+    </Stack>
+  );
+}
