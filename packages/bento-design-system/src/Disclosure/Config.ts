@@ -2,7 +2,7 @@ import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { TitleProps } from "../Typography/Title/Title";
 import { Children } from "../util/Children";
-import { DisclosureProps } from "./createDisclosure";
+import { DisclosureProps } from "./Disclosure";
 
 export type DisclosureConfig = {
   internalSpacing: BentoSprinkles["gap"];

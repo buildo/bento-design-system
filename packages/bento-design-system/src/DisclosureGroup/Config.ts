@@ -1,4 +1,4 @@
-import { DisclosureProps } from "../Disclosure/createDisclosure";
+import { DisclosureProps } from "../Disclosure/Disclosure";
 import { BentoSprinkles } from "../internal";
 
 export type DisclosureGroupConfig = {
