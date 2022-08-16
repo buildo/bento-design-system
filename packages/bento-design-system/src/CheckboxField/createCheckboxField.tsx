@@ -1,7 +1,7 @@
 import { useCheckbox } from "@react-aria/checkbox";
 import { useToggleState } from "@react-stately/toggle";
 import { useRef } from "react";
-import { FieldType } from "../Field/createField";
+import { FieldType } from "../Field/Field";
 import { Children } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { InternalCheckbox } from "../Checkbox/InternalCheckbox";

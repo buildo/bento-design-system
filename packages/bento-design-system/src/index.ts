@@ -23,7 +23,7 @@ export * from "./Disclosure/createDisclosure";
 export * from "./DisclosureGroup/createDisclosureGroup";
 export * from "./Divider/Divider";
 export * from "./Feedback/createFeedback";
-export * from "./Field/createFormFields";
+export * from "./Field/Field";
 export * from "./Form/createFormLayoutComponents";
 export * from "./IconButton/IconButton";
 export * from "./Icons";

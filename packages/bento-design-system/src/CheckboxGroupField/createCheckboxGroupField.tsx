@@ -1,6 +1,6 @@
 import { useCheckboxGroup, useCheckboxGroupItem } from "@react-aria/checkbox";
 import { useRef } from "react";
-import { FieldType } from "../Field/createField";
+import { FieldType } from "../Field/Field";
 import { FieldProps } from "../Field/FieldProps";
 import { createInternalCheckbox } from "../Checkbox/InternalCheckbox";
 import { useField } from "@react-aria/label";
