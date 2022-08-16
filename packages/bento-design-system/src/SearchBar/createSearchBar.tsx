@@ -7,7 +7,7 @@ import { bodyRecipe } from "../Typography/Body/Body.css";
 import { input } from "./SearchBar.css";
 import { FieldType } from "../Field/createField";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import { IconButtonProps } from "../IconButton/createIconButton";
+import { IconButtonProps } from "../IconButton/IconButton";
 import { SearchBarConfig } from "./Config";
 import { O } from "ts-toolbelt";
 

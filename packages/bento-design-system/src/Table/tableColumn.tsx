@@ -24,7 +24,7 @@ import {
   LabelCell,
   TextCell,
 } from "./cells";
-import { IconButtonProps } from "../IconButton/createIconButton";
+import { IconButtonProps } from "../IconButton/IconButton";
 
 export type { CellProps } from "react-table";
 

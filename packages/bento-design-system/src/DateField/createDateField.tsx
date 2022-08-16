@@ -3,7 +3,7 @@ import { FunctionComponent, useRef, useState } from "react";
 import { FieldType } from "../Field/createField";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
-import { IconButtonProps } from "../IconButton/createIconButton";
+import { IconButtonProps } from "../IconButton/IconButton";
 import { MenuProps } from "../Menu/createMenu";
 import { FocusedInput, useDatepicker, UseDatepickerProps } from "@datepicker-react/hooks";
 import { createCalendar } from "./Calendar";

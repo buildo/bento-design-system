@@ -4,7 +4,7 @@ import { Label, LocalizedString, BoxType, Columns, Column } from "..";
 import { BentoSprinkles, bentoSprinkles } from "../internal";
 import { chip, ellipsedLabel, maxWidth } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import { IconButtonProps } from "../IconButton/createIconButton";
+import { IconButtonProps } from "../IconButton/IconButton";
 import { ChipConfig } from "./Config";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 

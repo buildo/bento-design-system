@@ -3,7 +3,7 @@ import { useDateFormatter } from "@react-aria/i18n";
 import { useOverlay, useOverlayPosition } from "@react-aria/overlays";
 import { mergeProps } from "@react-aria/utils";
 import { FunctionComponent, RefObject, useRef } from "react";
-import { IconButtonProps } from "../IconButton/createIconButton";
+import { IconButtonProps } from "../IconButton/IconButton";
 import { Box, Stack, Tiles } from "..";
 import { MenuProps } from "../Menu/createMenu";
 import { Label } from "../Typography/Label/Label";

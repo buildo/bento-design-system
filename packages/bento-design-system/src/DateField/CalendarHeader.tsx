@@ -1,6 +1,6 @@
 import { MonthType } from "@datepicker-react/hooks";
 import { FunctionComponent } from "react";
-import { IconButtonProps } from "../IconButton/createIconButton";
+import { IconButtonProps } from "../IconButton/IconButton";
 import { IconChevronLeft, IconChevronRight } from "../Icons";
 import { Box, Column, Columns } from "../internal";
 import { MenuProps } from "../Menu/createMenu";

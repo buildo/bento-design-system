@@ -15,7 +15,7 @@ import {
   Inset,
   Box,
 } from "..";
-import { IconButtonProps } from "../IconButton/createIconButton";
+import { IconButtonProps } from "../IconButton/IconButton";
 
 export function createButtonCell(Button: FunctionComponent<ButtonProps>) {
   return function ButtonCell({

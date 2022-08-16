@@ -58,7 +58,7 @@ import {
   createNumberWithIconColumn,
 } from "./tableColumn";
 import { ButtonLinkProps } from "../Button/ButtonLink";
-import { IconButtonProps } from "../IconButton/createIconButton";
+import { IconButtonProps } from "../IconButton/IconButton";
 import { TableConfig } from "./Config";
 import { IconHelp, IconInfo } from "../Icons";
 import { match, __ } from "ts-pattern";

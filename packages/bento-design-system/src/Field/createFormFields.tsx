@@ -21,7 +21,7 @@ import { SliderConfig } from "../Slider/Config";
 import { createSliderField } from "../SliderField/createSliderField";
 import { DateFieldConfig } from "../DateField/Config";
 import { createDateField } from "../DateField/createDateField";
-import { IconButtonProps } from "../IconButton/createIconButton";
+import { IconButtonProps } from "../IconButton/IconButton";
 import { MenuProps } from "../Menu/createMenu";
 import { ButtonProps } from "../Button/Button";
 import { createTextArea } from "../TextArea/createTextArea";

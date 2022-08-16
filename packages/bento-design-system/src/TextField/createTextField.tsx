@@ -8,7 +8,7 @@ import { bodyRecipe } from "../Typography/Body/Body.css";
 import { FieldType } from "../Field/createField";
 import { InputConfig } from "../Field/Config";
 import useDimensions from "react-cool-dimensions";
-import { IconButtonProps } from "../IconButton/createIconButton";
+import { IconButtonProps } from "../IconButton/IconButton";
 import { defaultMessages } from "../../test/util/defaultMessages";
 
 type Props = FieldProps<string> & {

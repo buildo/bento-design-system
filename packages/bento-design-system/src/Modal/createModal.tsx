@@ -16,7 +16,7 @@ import { FocusScope } from "@react-aria/focus";
 import { modalRecipe, underlay, modalBody } from "./Modal.css";
 import useKeyPressEvent from "react-use/lib/useKeyPressEvent";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import { IconButtonProps } from "../IconButton/createIconButton";
+import { IconButtonProps } from "../IconButton/IconButton";
 import { createPortal } from "../util/createPortal";
 import { ModalConfig } from "./Config";
 import { match } from "ts-pattern";
