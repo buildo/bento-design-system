@@ -3,7 +3,7 @@ import { Title } from "../Typography/Title/Title";
 import { BentoSprinkles } from "../internal";
 import { Body } from "../Typography/Body/Body";
 import { IconProps } from "../Icons";
-import { Kind } from "./createBanner";
+import { Kind } from "./Banner";
 import { ButtonProps } from "../Button/Button";
 import { Children } from "../util/Children";
 

@@ -7,7 +7,7 @@ import * as defaultConfigs from "./util/defaultConfigs";
 export * from "./Actions/createActions";
 export * from "./AreaLoader/createAreaLoader";
 export * from "./Avatar/createAvatar";
-export * from "./Banner/createBanner";
+export * from "./Banner/Banner";
 export * from "./BentoProvider";
 export * from "./Box/Box";
 export * from "./Breadcrumb/createBreadcrumb";
