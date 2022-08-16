@@ -50,7 +50,7 @@ export * from "./Popover/Popover";
 export * from "./ProgressBar/ProgressBar";
 export * from "./SearchBar/SearchBar";
 export * from "./Slider/Slider";
-export * from "./Stepper/createStepper";
+export * from "./Stepper/Stepper";
 export * from "./Switch/createSwitch";
 export * from "./Table/createTable";
 export * from "./Tabs/createTabs";
