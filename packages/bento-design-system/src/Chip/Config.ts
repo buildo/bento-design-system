@@ -1,10 +1,10 @@
-import { BoxProps } from "../Box/createBentoBox";
 import { IconProps } from "../Icons";
-import { BentoSprinkles, bentoSprinkles } from "../internal";
+import { BentoSprinkles } from "../internal";
 import { LabelProps } from "../Typography/Label/Label";
 import { Children } from "../util/Children";
+import { ConfiguredTypes } from "../util/ConfigurableTypes";
 
-export type ChipConfig<AtomsFn extends typeof bentoSprinkles, CustomColor extends string> = {
+export type ChipConfig = {
   paddingX: BentoSprinkles["paddingX"];
   paddingY: BentoSprinkles["paddingY"];
   labelSize: LabelProps["size"];
@@ -14,7 +14,7 @@ export type ChipConfig<AtomsFn extends typeof bentoSprinkles, CustomColor extend
   spacingAfterIcon: BentoSprinkles["gap"];
   spacingAfterLabel: BentoSprinkles["gap"];
   customColors: {
-    [k in CustomColor]: BoxProps<AtomsFn>["background"];
+    [k in ConfiguredTypes["ChipCustomColors"] & string]: BentoSprinkles["background"];
   };
   radius: BentoSprinkles["borderRadius"];
 };

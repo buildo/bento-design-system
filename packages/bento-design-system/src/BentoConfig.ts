@@ -35,8 +35,7 @@ import { ToastConfig } from "./Toast/Config";
 import { TooltipConfig } from "./Tooltip/Config";
 import { SprinklesFn } from "./util/SprinklesFn";
 
-// TODO(gabro): remove generic here
-export type BentoConfig<ChipCustomColor extends string = never> = {
+export type BentoConfig = {
   actions: ActionsConfig;
   areaLoader: AreaLoaderConfig;
   avatar: AvatarConfig;
@@ -44,7 +43,7 @@ export type BentoConfig<ChipCustomColor extends string = never> = {
   breadcrumb: BreadcrumbConfig;
   button: ButtonConfig;
   card: CardConfig;
-  chip: ChipConfig<SprinklesFn, ChipCustomColor>;
+  chip: ChipConfig;
   dateField: DateFieldConfig;
   decorativeDivider: DecorativeDividerConfig<SprinklesFn>;
   disclosure: DisclosureConfig;
