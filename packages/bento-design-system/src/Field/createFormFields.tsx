@@ -24,7 +24,7 @@ import { createDateField } from "../DateField/DateField";
 import { IconButtonProps } from "../IconButton/IconButton";
 import { MenuProps } from "../Menu/Menu";
 import { ButtonProps } from "../Button/Button";
-import { createTextArea } from "../TextArea/createTextArea";
+import { createTextArea } from "../TextArea/TextArea";
 
 type FieldsConfig = {
   field: FieldConfig;
@@ -94,4 +94,4 @@ export type { NumberFieldProps } from "../NumberField/NumberField";
 export type { SliderFieldProps } from "../SliderField/SliderField";
 export type { CheckboxFieldProps } from "../CheckboxField/CheckboxField";
 export type { DateFieldProps } from "../DateField/DateField";
-export type { TextAreaProps } from "../TextArea/createTextArea";
+export type { TextAreaProps } from "../TextArea/TextArea";
