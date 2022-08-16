@@ -17,7 +17,7 @@ export * from "./Card/Card";
 export * from "./Checkbox/Checkbox";
 export * from "./Chip/Chip";
 export * from "./ContentBlock/ContentBlock";
-export * from "./ContentWithSidebar/createContentWithSidebar";
+export * from "./ContentWithSidebar/ContentWithSidebar";
 export * from "./DateField/createDateField";
 export * from "./Disclosure/createDisclosure";
 export * from "./DisclosureGroup/createDisclosureGroup";
