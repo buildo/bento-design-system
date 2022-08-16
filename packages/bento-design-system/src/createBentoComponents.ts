@@ -5,7 +5,6 @@ import {
   createAreaLoader,
   createAvatar,
   createBanner,
-  createBentoBox,
   createBentoProvider,
   createBreadcrumb,
   createButtons,
@@ -40,6 +39,7 @@ import {
   Link,
   ContentBlock,
   bentoSprinkles,
+  Box,
 } from ".";
 import * as icons from "./Icons";
 import * as illustrations from "./Illustrations";
@@ -77,11 +77,9 @@ export function createBentoComponents<SprinklesFn extends typeof bentoSprinkles>
 }
 
 function internalCreateBentoComponents(
-  sprinkles: SprinklesFn,
+  _sprinkles: SprinklesFn,
   config: PartialConfig = defaultConfigs
 ) {
-  const Box = createBentoBox(sprinkles);
-
   const { Bleed, Column, Columns, Inline, Inset, Stack, Tiles } = createLayoutComponents(Box);
 
   const AreaLoader = createAreaLoader(merge(defaultConfigs.areaLoader, config.areaLoader ?? {}));

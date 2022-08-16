@@ -9,7 +9,7 @@ export * from "./AreaLoader/createAreaLoader";
 export * from "./Avatar/createAvatar";
 export * from "./Banner/createBanner";
 export * from "./BentoProvider";
-export * from "./Box/createBentoBox";
+export * from "./Box/Box";
 export * from "./Breadcrumb/createBreadcrumb";
 export * from "./Button/createButtons";
 export * from "./Card/createCard";
