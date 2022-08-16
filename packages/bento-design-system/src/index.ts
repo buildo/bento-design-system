@@ -48,7 +48,7 @@ export * from "./NumberInput/NumberInput";
 export * from "./Placeholder/Placeholder";
 export * from "./Popover/Popover";
 export * from "./ProgressBar/ProgressBar";
-export * from "./SearchBar/createSearchBar";
+export * from "./SearchBar/SearchBar";
 export * from "./Slider/createSlider";
 export * from "./Stepper/createStepper";
 export * from "./Switch/createSwitch";
