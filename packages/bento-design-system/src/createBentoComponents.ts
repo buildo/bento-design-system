@@ -57,7 +57,7 @@ import { createSwitch } from "./Switch/createSwitch";
 import { createUseComponentsShowcase } from "./createUseComponentsShowcase";
 import { createInlineLoader } from "./InlineLoader/InlineLoader";
 import { createDecorativeDivider } from "./Divider/Divider";
-import { createCheckbox } from "./Checkbox/createCheckbox";
+import { createCheckbox } from "./Checkbox/Checkbox";
 import { SprinklesFn } from "./util/SprinklesFn";
 
 type PartialConfig = Object.Partial<BentoConfig, "deep">;

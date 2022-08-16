@@ -6,7 +6,7 @@ import { checkboxRecipe, fieldContainer } from "./Checkbox.css";
 import { vars } from "../vars.css";
 import { useLabel } from "@react-aria/label";
 import { InputHTMLAttributes, Ref } from "react";
-import { SelectionControlConfig } from "../Field/Config";
+import { useBentoConfig } from "../BentoConfigProvider";
 
 type CheckboxUIProps = {
   value: boolean;
@@ -50,41 +50,40 @@ type Props = {
   inputProps: InputHTMLAttributes<HTMLInputElement>;
 };
 
-export function createInternalCheckbox(config: SelectionControlConfig) {
-  return function InternalCheckbox({ option, inputRef, inputProps }: Props) {
-    const { fieldProps, labelProps } = useLabel(option);
-    const { isFocusVisible, focusProps } = useFocusRing({ autoFocus: inputProps.autoFocus });
-    return (
-      <Box
-        as="label"
-        disabled={option.isDisabled}
-        {...labelProps}
-        {...focusProps}
-        color={undefined}
-        cursor={{ default: "pointer", disabled: "notAllowed" }}
-        paddingBottom={4}
-        className={fieldContainer}
-      >
-        <VisuallyHidden>
-          <input {...mergeProps(inputProps, fieldProps, focusProps)} ref={inputRef} />
-        </VisuallyHidden>
-        <Columns space={config.controlLabelSpacing}>
-          <Column width="content">
-            <CheckboxUI
-              value={option.isSelected}
-              isFocusVisible={isFocusVisible}
-              isDisabled={option.isDisabled ?? false}
-            />
-          </Column>
-          <Box style={{ paddingTop: config.labelPaddingTop }}>
-            <Body size={config.labelSize} color={option.isDisabled ? "disabled" : "default"}>
-              {option.label}
-            </Body>
-          </Box>
-        </Columns>
-      </Box>
-    );
-  };
+export function InternalCheckbox({ option, inputRef, inputProps }: Props) {
+  const config = useBentoConfig().selectionControl.element;
+  const { fieldProps, labelProps } = useLabel(option);
+  const { isFocusVisible, focusProps } = useFocusRing({ autoFocus: inputProps.autoFocus });
+  return (
+    <Box
+      as="label"
+      disabled={option.isDisabled}
+      {...labelProps}
+      {...focusProps}
+      color={undefined}
+      cursor={{ default: "pointer", disabled: "notAllowed" }}
+      paddingBottom={4}
+      className={fieldContainer}
+    >
+      <VisuallyHidden>
+        <input {...mergeProps(inputProps, fieldProps, focusProps)} ref={inputRef} />
+      </VisuallyHidden>
+      <Columns space={config.controlLabelSpacing}>
+        <Column width="content">
+          <CheckboxUI
+            value={option.isSelected}
+            isFocusVisible={isFocusVisible}
+            isDisabled={option.isDisabled ?? false}
+          />
+        </Column>
+        <Box style={{ paddingTop: config.labelPaddingTop }}>
+          <Body size={config.labelSize} color={option.isDisabled ? "disabled" : "default"}>
+            {option.label}
+          </Body>
+        </Box>
+      </Columns>
+    </Box>
+  );
 }
 
 export type { Props as CheckboxProps };

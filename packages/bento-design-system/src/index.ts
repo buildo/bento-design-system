@@ -14,7 +14,7 @@ export * from "./Breadcrumb/Breadcrumb";
 export * from "./Button/Button";
 export * from "./Button/ButtonLink";
 export * from "./Card/Card";
-export * from "./Checkbox/createCheckbox";
+export * from "./Checkbox/Checkbox";
 export * from "./Chip/createChip";
 export * from "./ContentBlock/ContentBlock";
 export * from "./ContentWithSidebar/createContentWithSidebar";
