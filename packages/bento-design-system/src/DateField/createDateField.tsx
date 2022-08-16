@@ -4,7 +4,7 @@ import { FieldType } from "../Field/createField";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { IconButtonProps } from "../IconButton/IconButton";
-import { MenuProps } from "../Menu/createMenu";
+import { MenuProps } from "../Menu/Menu";
 import { FocusedInput, useDatepicker, UseDatepickerProps } from "@datepicker-react/hooks";
 import { createCalendar } from "./Calendar";
 import { Box, Column, Columns, Inline } from "..";

@@ -39,7 +39,7 @@ export * from "./Layout/Stack";
 export * from "./Layout/Tiles";
 export * from "./Link/Link";
 export * from "./List/List";
-export * from "./Menu/createMenu";
+export * from "./Menu/Menu";
 export * from "./Modal/createModal";
 export * from "./Navigation/createNavigation";
 export * from "./NumberInput/createNumberInput";

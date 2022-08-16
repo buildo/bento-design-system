@@ -22,7 +22,7 @@ import { createSliderField } from "../SliderField/createSliderField";
 import { DateFieldConfig } from "../DateField/Config";
 import { createDateField } from "../DateField/createDateField";
 import { IconButtonProps } from "../IconButton/IconButton";
-import { MenuProps } from "../Menu/createMenu";
+import { MenuProps } from "../Menu/Menu";
 import { ButtonProps } from "../Button/Button";
 import { createTextArea } from "../TextArea/createTextArea";
 

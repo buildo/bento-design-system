@@ -5,7 +5,7 @@ import { mergeProps } from "@react-aria/utils";
 import { FunctionComponent, RefObject, useRef } from "react";
 import { IconButtonProps } from "../IconButton/IconButton";
 import { Box, Stack, Tiles } from "..";
-import { MenuProps } from "../Menu/createMenu";
+import { MenuProps } from "../Menu/Menu";
 import { Label } from "../Typography/Label/Label";
 import { Children } from "../util/Children";
 import { createPortal } from "../util/createPortal";
