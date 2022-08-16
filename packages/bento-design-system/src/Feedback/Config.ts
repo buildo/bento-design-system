@@ -5,7 +5,7 @@ import { DisplayProps } from "../Typography/Display/Display";
 import { HeadlineProps } from "../Typography/Headline/Headline";
 import { TitleProps } from "../Typography/Title/Title";
 import { Children } from "../util/Children";
-import { FeedbackSize } from "./createFeedback";
+import { FeedbackSize } from "./Feedback";
 
 type SizeConfig<T> = Record<FeedbackSize, T>;
 export type FeedbackConfig = {
