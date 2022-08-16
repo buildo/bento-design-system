@@ -1,4 +1,4 @@
-import { Body, ButtonProps, Children, Display, LocalizedString, Box, Stack } from "..";
+import { Body, ButtonProps, Children, Display, LocalizedString, Box, Stack, Button } from "..";
 import { IllustrationProps } from "../Illustrations/IllustrationProps";
 import { Title } from "../Typography/Title/Title";
 import { Headline } from "../Typography/Headline/Headline";

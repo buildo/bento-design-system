@@ -1,8 +1,7 @@
-import { BoxProps } from "../Box/createBentoBox";
-import { bentoSprinkles, BentoSprinkles } from "../internal";
+import { BentoSprinkles } from "../internal";
 
-export type DecorativeDividerConfig<AtomsFn extends typeof bentoSprinkles> = {
+export type DecorativeDividerConfig = {
   height: number;
   radius: 0 | Extract<BentoSprinkles["borderRadius"], "circledX">;
-  color: BoxProps<AtomsFn>["color"];
+  color: BentoSprinkles["color"];
 };

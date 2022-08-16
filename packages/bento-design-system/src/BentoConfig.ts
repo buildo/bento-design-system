@@ -33,7 +33,6 @@ import { TableConfig } from "./Table/Config";
 import { TabsConfig } from "./Tabs/Config";
 import { ToastConfig } from "./Toast/Config";
 import { TooltipConfig } from "./Tooltip/Config";
-import { SprinklesFn } from "./util/SprinklesFn";
 
 export type BentoConfig = {
   actions: ActionsConfig;
@@ -45,7 +44,7 @@ export type BentoConfig = {
   card: CardConfig;
   chip: ChipConfig;
   dateField: DateFieldConfig;
-  decorativeDivider: DecorativeDividerConfig<SprinklesFn>;
+  decorativeDivider: DecorativeDividerConfig;
   disclosure: DisclosureConfig;
   disclosureGroup: DisclosureGroupConfig;
   feedback: FeedbackConfig;
