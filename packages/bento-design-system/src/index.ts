@@ -78,7 +78,7 @@ export { headlineRecipe } from "./Typography/Headline/Headline.css";
 export { displayRecipe } from "./Typography/Display/Display.css";
 export { inputRecipe } from "./Field/Field.css";
 
-export type { SelectFieldProps } from "./SelectField/createSelectField";
+export type { SelectFieldProps } from "./SelectField/SelectField";
 export type { FieldProps } from "./Field/FieldProps";
 export type { IconButtonProps } from "./IconButton/IconButton";
 export type { FormProps } from "./Form/Form";

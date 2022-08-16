@@ -3,7 +3,7 @@ import { createTextField } from "../TextField/TextField";
 import { createRadioGroupField } from "../RadioGroupField/RadioGroupField";
 import { createNumberInput } from "../NumberInput/NumberInput";
 import { createNumberField } from "../NumberField/NumberField";
-import { createSelectField } from "../SelectField/createSelectField";
+import { createSelectField } from "../SelectField/SelectField";
 import { createCheckboxField } from "../CheckboxField/CheckboxField";
 import { createCheckboxGroupField } from "../CheckboxGroupField/CheckboxGroupField";
 import { FunctionComponent } from "react";
@@ -84,7 +84,7 @@ export function createFormFields(
 
 export type { TextFieldProps } from "../TextField/TextField";
 export type { ReadOnlyFieldProps } from "../ReadOnlyField/ReadOnlyField";
-export type { SelectOption, SelectFieldProps } from "../SelectField/createSelectField";
+export type { SelectOption, SelectFieldProps } from "../SelectField/SelectField";
 export type { RadioOption, RadioGroupFieldProps } from "../RadioGroupField/RadioGroupField";
 export type {
   CheckboxOption,
