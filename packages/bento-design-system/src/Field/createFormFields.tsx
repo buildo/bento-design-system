@@ -1,6 +1,6 @@
 import { createField } from "./Field";
 import { createTextField } from "../TextField/createTextField";
-import { createRadioGroupField } from "../RadioGroupField/createRadioGroupField";
+import { createRadioGroupField } from "../RadioGroupField/RadioGroupField";
 import { createNumberInput } from "../NumberInput/NumberInput";
 import { createNumberField } from "../NumberField/NumberField";
 import { createSelectField } from "../SelectField/createSelectField";
@@ -85,7 +85,7 @@ export function createFormFields(
 export type { TextFieldProps } from "../TextField/createTextField";
 export type { ReadOnlyFieldProps } from "../ReadOnlyField/createReadOnlyField";
 export type { SelectOption, SelectFieldProps } from "../SelectField/createSelectField";
-export type { RadioOption, RadioGroupFieldProps } from "../RadioGroupField/createRadioGroupField";
+export type { RadioOption, RadioGroupFieldProps } from "../RadioGroupField/RadioGroupField";
 export type {
   CheckboxOption,
   CheckboxGroupFieldProps,
