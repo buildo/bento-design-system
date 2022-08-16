@@ -1,11 +1,11 @@
-import { createField } from "./createField";
+import { createField } from "./Field";
 import { createTextField } from "../TextField/createTextField";
 import { createRadioGroupField } from "../RadioGroupField/createRadioGroupField";
 import { createNumberInput } from "../NumberInput/createNumberInput";
 import { createNumberField } from "../NumberField/createNumberField";
 import { createSelectField } from "../SelectField/createSelectField";
-import { createCheckboxField } from "../CheckboxField/createCheckboxField";
-import { createCheckboxGroupField } from "../CheckboxGroupField/createCheckboxGroupField";
+import { createCheckboxField } from "../CheckboxField/CheckboxField";
+import { createCheckboxGroupField } from "../CheckboxGroupField/CheckboxGroupField";
 import { FunctionComponent } from "react";
 import { TooltipProps } from "..";
 import { createReadOnlyField } from "../ReadOnlyField/createReadOnlyField";
@@ -89,9 +89,9 @@ export type { RadioOption, RadioGroupFieldProps } from "../RadioGroupField/creat
 export type {
   CheckboxOption,
   CheckboxGroupFieldProps,
-} from "../CheckboxGroupField/createCheckboxGroupField";
+} from "../CheckboxGroupField/CheckboxGroupField";
 export type { NumberFieldProps } from "../NumberField/createNumberField";
 export type { SliderFieldProps } from "../SliderField/createSliderField";
-export type { CheckboxFieldProps } from "../CheckboxField/createCheckboxField";
+export type { CheckboxFieldProps } from "../CheckboxField/CheckboxField";
 export type { DateFieldProps } from "../DateField/createDateField";
 export type { TextAreaProps } from "../TextArea/createTextArea";
