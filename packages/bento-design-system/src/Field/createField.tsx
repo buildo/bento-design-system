@@ -1,10 +1,9 @@
 import { DOMAttributes, ElementType, FunctionComponent, LabelHTMLAttributes } from "react";
 import { Body } from "../Typography/Body/Body";
 import { Label } from "../Typography/Label/Label";
-import { Stack, Box, Columns, Column } from "../internal";
+import { Stack, Box, Columns, Column, TooltipProps } from "..";
 import { Children } from "../util/Children";
 import { FieldProps } from "./FieldProps";
-import { TooltipProps } from "..";
 import { FieldConfig } from "./Config";
 import { IconNegative } from "../Icons";
 import { FocusableElement } from "@react-types/shared";

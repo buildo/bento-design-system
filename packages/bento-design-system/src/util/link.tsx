@@ -6,7 +6,7 @@ import {
   ForwardRefRenderFunction,
   useContext,
 } from "react";
-import { Box } from "../internal";
+import { Box } from "..";
 
 export type LinkComponentProps = {
   href: string;

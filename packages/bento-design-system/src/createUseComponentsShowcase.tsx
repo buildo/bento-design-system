@@ -33,9 +33,11 @@ import {
   TableProps,
   TabsProps,
   createTableColumns,
+  Box,
+  Inline,
+  Stack,
 } from ".";
 import { IconIdea, IconCheck, IconSearch, IconUser, IconInformative } from "./Icons";
-import { Box, Stack, Inline } from "./internal";
 import { TextFieldProps } from "./TextField/createTextField";
 import { Body } from "./Typography/Body/Body";
 import { Title } from "./Typography/Title/Title";

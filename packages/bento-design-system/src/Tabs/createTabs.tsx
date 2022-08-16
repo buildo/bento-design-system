@@ -1,6 +1,5 @@
 import { usePress } from "@react-aria/interactions";
-import { Box, Columns, Column } from "../internal";
-import { Children, IconProps, Label } from "..";
+import { Box, Columns, Column, Children, IconProps, Label } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { tabRecipe } from "./Tabs.css";
 import { TabsConfig } from "./Config";

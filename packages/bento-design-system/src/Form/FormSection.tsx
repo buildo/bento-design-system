@@ -1,5 +1,4 @@
-import { Body, Children, LocalizedString, Title } from "..";
-import { Stack } from "../internal";
+import { Body, Children, LocalizedString, Title, Stack } from "..";
 import { FormSectionConfig } from "./Config";
 
 type Props = {

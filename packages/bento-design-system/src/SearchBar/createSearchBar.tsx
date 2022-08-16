@@ -1,8 +1,7 @@
 import { useTextField } from "@react-aria/textfield";
 import { FunctionComponent, HTMLAttributes, useRef } from "react";
 import useDimensions from "react-cool-dimensions";
-import { LocalizedString } from "..";
-import { Box } from "../internal";
+import { LocalizedString, Box } from "..";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { input } from "./SearchBar.css";

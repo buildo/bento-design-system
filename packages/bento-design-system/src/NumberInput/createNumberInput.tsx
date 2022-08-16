@@ -1,8 +1,7 @@
 import { useLocale } from "@react-aria/i18n";
 import { useMemo } from "react";
 import useDimensions from "react-cool-dimensions";
-import { Label, LocalizedString } from "..";
-import { Box } from "../internal";
+import { Label, LocalizedString, Box } from "..";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { FormatProps } from "./FormatProps";

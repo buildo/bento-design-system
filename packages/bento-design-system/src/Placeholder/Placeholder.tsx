@@ -1,6 +1,7 @@
-import { BentoSprinkles, Inset } from "../internal";
-import { Box } from "../internal/Box/Box";
+import { Inset } from "../Layout/Inset";
+import { Box } from "../Box/Box";
 import { vars } from "../vars.css";
+import { BentoSprinkles } from "../internal";
 
 type Props = {
   height?: string | number;

@@ -1,5 +1,4 @@
-import { Box, Inline } from "../internal";
-import { Label, unsafeLocalizedString } from "..";
+import { Box, Inline, Label, unsafeLocalizedString } from "..";
 import { stepIconRecipe, stepRecipe } from "./Stepper.css";
 import { StepperConfig } from "./Config";
 import { Children } from "../util/Children";

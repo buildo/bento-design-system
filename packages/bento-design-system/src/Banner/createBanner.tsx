@@ -1,6 +1,5 @@
 import { LocalizedString } from "../util/LocalizedString";
-import { Title, Body, ButtonProps, Children } from "..";
-import { Columns, Column, Box, Stack, Inline } from "../internal";
+import { Title, Body, ButtonProps, Children, Columns, Column, Box, Stack, Inline } from "..";
 import { bannerRecipe } from "./Banner.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";

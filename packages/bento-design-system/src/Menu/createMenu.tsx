@@ -1,6 +1,5 @@
 import { ComponentProps, DOMAttributes, FunctionComponent, Ref, useRef } from "react";
-import { Children, Popover } from "..";
-import { Box, Inset } from "../internal";
+import { Children, Popover, Box, Inset } from "..";
 import { menuRecipe } from "./Menu.css";
 import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState, MenuTriggerState } from "@react-stately/menu";

@@ -7,9 +7,10 @@ import {
   ContentBlock,
   Display,
   LocalizedString,
+  Box,
+  Stack,
 } from "..";
 
-import { Box, Stack } from "../internal";
 import { Headline } from "../Typography/Headline/Headline";
 import { FormConfig } from "./Config";
 import { FocusScope } from "@react-aria/focus";

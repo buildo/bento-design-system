@@ -1,6 +1,5 @@
 import { FunctionComponent } from "react";
-import { DisclosureProps } from "..";
-import { Box, Stack } from "../internal";
+import { DisclosureProps, Box, Stack } from "..";
 import { Omit } from "../util/Omit";
 import { DisclosureGroupConfig } from "./Config";
 

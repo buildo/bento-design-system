@@ -1,8 +1,6 @@
 import { ComponentProps } from "react";
 import { Box } from "../Box/Box";
-import { SprinklesFn } from "../util/SprinklesFn";
-
-type ResponsiveSpace = Parameters<SprinklesFn>[0]["gap"];
+import { ResponsiveSpace } from "../internal";
 
 type InsetProps = {
   children: ComponentProps<typeof Box>["children"];

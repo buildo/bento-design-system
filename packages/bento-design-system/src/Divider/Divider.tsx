@@ -1,6 +1,6 @@
 import { useSeparator } from "@react-aria/separator";
-import { BoxType } from "../Box/createBentoBox";
-import { bentoSprinkles, Box } from "../internal";
+import { BoxType, Box } from "../Box/Box";
+import { bentoSprinkles } from "../internal";
 import { DecorativeDividerConfig } from "./Config";
 import { divider } from "./Divider.css";
 

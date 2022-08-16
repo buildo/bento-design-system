@@ -1,5 +1,4 @@
-import { Children } from "..";
-import { Columns } from "../internal";
+import { Children, Columns } from "..";
 import { FormRowConfig } from "./Config";
 
 type Props = {

@@ -1,5 +1,4 @@
-import { Body, LocalizedString } from "..";
-import { Box, Column, Columns, Inline, Stack } from "../internal";
+import { Body, LocalizedString, Box, Column, Columns, Inline, Stack } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { FieldType } from "../Field/createField";
 import { RadioGroupState, useRadioGroupState } from "@react-stately/radio";

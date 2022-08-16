@@ -1,6 +1,15 @@
 import { FunctionComponent } from "react";
-import { Bleed, Box, Column, Columns } from "../internal";
-import { Body, ButtonProps, IconButtonProps, ToastProps, useDefaultMessages } from "..";
+import {
+  Bleed,
+  Box,
+  Column,
+  Columns,
+  Body,
+  ButtonProps,
+  IconButtonProps,
+  ToastProps,
+  useDefaultMessages,
+} from "..";
 import { toastRecipe } from "./Toast.css";
 import { ToastConfig } from "./Config";
 

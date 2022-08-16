@@ -1,5 +1,4 @@
-import { Box, Columns, Column } from "../internal";
-import { IconProps, IllustrationProps, Label, useLinkComponent } from "..";
+import { Box, Columns, Column, IconProps, IllustrationProps, Label, useLinkComponent } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { destinationRecipe } from "./Navigation.css";
 import { AnchorHTMLAttributes, useRef } from "react";

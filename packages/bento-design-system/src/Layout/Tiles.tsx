@@ -3,10 +3,8 @@ import { Children } from "..";
 import { mobileColumns, tabletColumns, desktopColumns, wideColumns } from "./Tiles.css";
 import { ResponsiveAlignY, alignYToFlexAlign } from "../util/align";
 import { normalizeResponsiveValue, RequiredResponsiveValue } from "../internal/sprinkles.css";
-import { SprinklesFn } from "../util/SprinklesFn";
 import { Box } from "../Box/Box";
-
-type ResponsiveSpace = Parameters<SprinklesFn>[0]["gap"];
+import { ResponsiveSpace } from "../internal";
 
 type Props = {
   space: ResponsiveSpace;

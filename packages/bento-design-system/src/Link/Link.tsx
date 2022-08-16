@@ -1,7 +1,6 @@
 import { AnchorHTMLAttributes, useRef } from "react";
 import { useLinkComponent } from "../util/link";
-import { Children, LocalizedString } from "..";
-import { Box } from "../internal";
+import { Children, LocalizedString, Box } from "..";
 import { useLink } from "@react-aria/link";
 import * as resetStyles from "../reset.css";
 import { linkRecipe } from "./Link.css";

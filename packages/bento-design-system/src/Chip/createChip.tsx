@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
-import { Label, LocalizedString, BoxType } from "..";
-import { Column, Columns, BentoSprinkles, bentoSprinkles } from "../internal";
+import { Label, LocalizedString, BoxType, Columns, Column } from "..";
+import { BentoSprinkles, bentoSprinkles } from "../internal";
 import { chip, ellipsedLabel, maxWidth } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/createIconButton";

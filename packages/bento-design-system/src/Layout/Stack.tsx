@@ -5,8 +5,7 @@ import { ResponsiveAlign, alignToFlexAlign } from "../util/align";
 import { childKey } from "../util/childKey";
 import { Children } from "../util/Children";
 import { Box, BoxProps } from "../Box/Box";
-
-type ResponsiveSpace = BoxProps["gap"];
+import { ResponsiveSpace } from "../internal";
 
 type StackProps = {
   space: ResponsiveSpace;

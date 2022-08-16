@@ -1,7 +1,7 @@
 // NOTE(gabro): these are type-level tests, using @ts-expect-error to check that we get an error
 // where expected
 
-import { Box } from "../src/internal/Box/Box";
+import { Box } from "../src/Box/Box";
 import {
   createFeedback,
   createTable,

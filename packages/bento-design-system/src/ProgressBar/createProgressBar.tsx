@@ -1,5 +1,5 @@
 import { useProgressBar } from "@react-aria/progress";
-import { Box, Columns } from "../internal";
+import { Box, Columns } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { ProgressBarConfig } from "./Config";

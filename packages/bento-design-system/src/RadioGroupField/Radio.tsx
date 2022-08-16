@@ -1,5 +1,5 @@
 import { innerRadioCircle, outerRadioCircleRecipe } from "./Radio.css";
-import { Box } from "../internal";
+import { Box } from "..";
 
 export function Radio({ selected, focused }: { selected: boolean; focused: boolean }) {
   // NOTE(gabro): we can't draw svg strokes "inside" the container, so instead of modelling the radio

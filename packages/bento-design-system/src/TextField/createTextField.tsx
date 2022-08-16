@@ -1,6 +1,6 @@
 import { useTextField } from "@react-aria/textfield";
 import { FunctionComponent, useRef, useState } from "react";
-import { Box } from "../internal";
+import { Box } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { inputRecipe } from "../Field/Field.css";
 import { FieldProps } from "../Field/FieldProps";

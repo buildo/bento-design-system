@@ -1,8 +1,6 @@
 import { Children } from "..";
-import { SprinklesFn } from "../util/SprinklesFn";
 import { Box } from "../Box/Box";
-
-type ResponsiveSpace = Parameters<SprinklesFn>[0]["gap"];
+import { BentoSprinkles, ResponsiveSpace } from "../internal";
 
 type BleedProps = {
   children: Children;
@@ -15,7 +13,7 @@ type BleedProps = {
   spaceBottom?: ResponsiveSpace;
 };
 
-type ResponsiveNegativeSpace = Parameters<SprinklesFn>[0]["margin"];
+type ResponsiveNegativeSpace = BentoSprinkles["margin"];
 
 function negateSpace(space: ResponsiveSpace | undefined): ResponsiveNegativeSpace | undefined {
   if (typeof space === "number") {

@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import { BentoSprinkles, bentoSprinkles, Box, Inline, Stack } from "../internal";
+import { bentoSprinkles, Box, Inline, Stack, Body, LocalizedString } from "..";
 import { container, dot, text } from "./AreaLoader.css";
-import { Body, LocalizedString } from "..";
+import { BentoSprinkles } from "../internal";
 import { AreaLoaderConfig } from "./Config";
 import { BodyProps } from "../Typography/Body/Body";
 

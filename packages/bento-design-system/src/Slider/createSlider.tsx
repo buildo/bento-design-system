@@ -5,7 +5,7 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SliderState } from "@react-stately/slider";
 import { FocusableElement } from "@react-types/shared";
 import { DOMAttributes, OutputHTMLAttributes, RefObject, useRef } from "react";
-import { Box, Column, Columns, Stack } from "../internal";
+import { Box, Column, Columns, Stack } from "..";
 import { Label } from "../Typography/Label/Label";
 import { SliderConfig } from "./Config";
 import { slider, thumbRecipe, trackActive, trackContainer, trackInactive } from "./Slider.css";

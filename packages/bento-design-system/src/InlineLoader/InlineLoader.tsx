@@ -1,5 +1,4 @@
-import { Box, Inline } from "../internal";
-import { Body, LocalizedString } from "..";
+import { Box, Inline, Body, LocalizedString } from "..";
 import { icon } from "./InlineLoader.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { InlineLoaderConfig } from "./Config";

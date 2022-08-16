@@ -1,6 +1,6 @@
 import { useButton } from "@react-aria/button";
 import { useRef } from "react";
-import { Box } from "../internal";
+import { Box } from "..";
 import { Children } from "../util/Children";
 import { IconProps } from "../Icons/IconProps";
 import { iconButtonRecipe } from "./IconButton.css";

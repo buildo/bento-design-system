@@ -1,7 +1,6 @@
 import { useBreadcrumbItem, useBreadcrumbs } from "@react-aria/breadcrumbs";
 import { useRef, Fragment } from "react";
-import { Body, Link, LocalizedString } from "../";
-import { Box, Inline } from "../internal";
+import { Body, Link, LocalizedString, Box, Inline } from "..";
 import { BreadcrumbConfig } from "./Config";
 
 type LastItem = {

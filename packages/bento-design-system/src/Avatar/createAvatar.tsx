@@ -1,6 +1,5 @@
-import { Label } from "..";
+import { Label, Box } from "..";
 import { avatarRecipe } from "./Avatar.css";
-import { Box } from "../internal";
 import { AvatarConfig } from "./Config";
 
 type Props = {

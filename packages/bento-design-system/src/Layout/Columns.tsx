@@ -1,6 +1,7 @@
 import { ReactChild, ReactElement } from "react";
 import flattenChildren from "react-keyed-flatten-children";
 import { BoxProps, Box } from "../Box/Box";
+import { ResponsiveSpace } from "../internal";
 import { normalizeResponsiveValue, OptionalResponsiveValue } from "../internal/sprinkles.css";
 import { childKey } from "../util/childKey";
 import { Children } from "../util/Children";
@@ -9,8 +10,6 @@ import {
   responsiveCollapsibleAlignmentProps,
 } from "../util/collapsible";
 import { wideWidths, desktopWidths, tabletWidths, mobileWidths, fullWidth } from "./Column.css";
-
-type ResponsiveSpace = BoxProps["gap"];
 
 type ColumnProps = {
   children: Children;

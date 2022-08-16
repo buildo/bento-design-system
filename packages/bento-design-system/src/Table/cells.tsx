@@ -11,8 +11,10 @@ import {
   Link,
   TooltipProps,
   Children,
+  Inline,
+  Inset,
+  Box,
 } from "..";
-import { Inline, Inset, Box } from "../internal";
 import { IconButtonProps } from "../IconButton/createIconButton";
 
 export function createButtonCell(Button: FunctionComponent<ButtonProps>) {

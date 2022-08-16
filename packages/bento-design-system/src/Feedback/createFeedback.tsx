@@ -1,6 +1,5 @@
 import { FunctionComponent } from "react";
-import { Body, ButtonProps, Children, Display, LocalizedString } from "..";
-import { Box, Stack } from "../internal";
+import { Body, ButtonProps, Children, Display, LocalizedString, Box, Stack } from "..";
 import { IllustrationProps } from "../Illustrations/IllustrationProps";
 import { Title } from "../Typography/Title/Title";
 import { Headline } from "../Typography/Headline/Headline";

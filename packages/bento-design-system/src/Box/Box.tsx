@@ -3,14 +3,14 @@ import * as resetStyles from "../reset.css";
 import { forwardRef, createElement } from "react";
 import clsx, { ClassValue } from "clsx";
 import { bentoSprinkles } from "../internal/sprinkles.css";
-import { SprinklesFn } from "../util/SprinklesFn";
 import { useSprinkles } from "../SprinklesContext";
+import { BentoSprinkles } from "../internal";
 
 export type BoxProps = {
   as?: React.ElementType;
   className?: ClassValue;
 } & HTMLProperties &
-  Parameters<SprinklesFn>[0];
+  BentoSprinkles;
 
 type HTMLProperties = Omit<
   React.AllHTMLAttributes<HTMLElement>,

@@ -1,6 +1,5 @@
-import { Box } from "../internal";
+import { Box, ToastProps } from "..";
 import { container } from "./ToastContainer.css";
-import { ToastProps } from "..";
 import { FunctionComponent } from "react";
 
 export function createToastContainer(Toast: FunctionComponent<ToastProps>) {

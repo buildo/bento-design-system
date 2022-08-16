@@ -1,6 +1,6 @@
 import { useDay } from "@datepicker-react/hooks";
 import { useEffect, useRef } from "react";
-import { Box } from "../internal";
+import { Box } from "..";
 import { Body } from "../Typography/Body/Body";
 import { CommonCalendarProps } from "./Calendar";
 import { DateFieldConfig } from "./Config";

@@ -1,12 +1,11 @@
 import flattenChildren from "react-keyed-flatten-children";
 import { BoxProps, Box } from "../Box/Box";
+import { ResponsiveSpace } from "../internal";
 import { Children } from "../util/Children";
 import {
   CollapsibleAlignmentProps,
   responsiveCollapsibleAlignmentProps,
 } from "../util/collapsible";
-
-type ResponsiveSpace = BoxProps["gap"];
 
 type InlineProps = {
   space: ResponsiveSpace;

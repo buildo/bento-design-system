@@ -8,8 +8,8 @@ import {
   ChipProps,
   IconProps,
   TooltipProps,
+  Box,
 } from "..";
-import { Box } from "../internal";
 import { Column } from "./types";
 import { FunctionComponent } from "react";
 import { ButtonLinkProps } from "../Button/ButtonLink";

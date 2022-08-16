@@ -1,6 +1,5 @@
 import { FunctionComponent, useState } from "react";
-import { BannerProps, LocalizedString } from "../";
-import { Column, Columns, Inline, Stack } from "../internal";
+import { BannerProps, LocalizedString, Column, Columns, Inline, Stack } from "..";
 import { ButtonProps } from "../Button/createButton";
 import { ActionsConfig } from "./Config";
 import { InlineLoaderProps } from "../InlineLoader/InlineLoader";

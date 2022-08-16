@@ -1,6 +1,5 @@
 import { HTMLAttributes, Ref, useRef } from "react";
-import { Label, Children } from "..";
-import { Box, Inset } from "../internal";
+import { Label, Children, Box, Inset } from "..";
 import { useFloating, shift, autoPlacement, offset, arrow } from "@floating-ui/react-dom";
 import { useTooltipTriggerState } from "@react-stately/tooltip";
 import { useTooltipTrigger, useTooltip } from "@react-aria/tooltip";

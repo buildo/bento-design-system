@@ -4,7 +4,7 @@ import { useOverlay, useOverlayPosition } from "@react-aria/overlays";
 import { mergeProps } from "@react-aria/utils";
 import { FunctionComponent, RefObject, useRef } from "react";
 import { IconButtonProps } from "../IconButton/createIconButton";
-import { Box, Stack, Tiles } from "../internal";
+import { Box, Stack, Tiles } from "..";
 import { MenuProps } from "../Menu/createMenu";
 import { Label } from "../Typography/Label/Label";
 import { Children } from "../util/Children";

@@ -1,7 +1,16 @@
 import { useLink } from "@react-aria/link";
 import { AnchorHTMLAttributes, useRef } from "react";
-import { Body, Label, LocalizedString, useLinkComponent } from "..";
-import { Box, Columns, Column, Inset, Stack } from "../internal";
+import {
+  Body,
+  Label,
+  LocalizedString,
+  useLinkComponent,
+  Box,
+  Columns,
+  Column,
+  Inset,
+  Stack,
+} from "..";
 import { IconProps } from "../Icons/IconProps";
 import { IllustrationProps } from "../Illustrations/IllustrationProps";
 import { listItemRecipe } from "./ListItem.css";

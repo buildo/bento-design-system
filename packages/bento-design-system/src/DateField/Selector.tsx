@@ -1,7 +1,7 @@
 import { MonthType } from "@datepicker-react/hooks";
 import { useDateFormatter } from "@react-aria/i18n";
 import { FunctionComponent, useMemo } from "react";
-import { Box, Column, Columns } from "../internal";
+import { Box, Column, Columns } from "..";
 import { ListProps } from "../List/createListComponents";
 import { MenuProps } from "../Menu/createMenu";
 import { Label } from "../Typography/Label/Label";

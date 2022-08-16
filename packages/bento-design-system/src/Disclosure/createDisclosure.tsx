@@ -1,8 +1,7 @@
 import { usePress } from "@react-aria/interactions";
 import { useState } from "react";
 import { extendedHitAreaRecipe } from "../util/extendedHitArea.css";
-import { Children, LocalizedString, Title } from "..";
-import { Box, Columns, Column, Stack } from "../internal";
+import { Children, LocalizedString, Title, Box, Columns, Column, Stack } from "..";
 import { useId } from "@react-aria/utils";
 import { useFocusRing } from "@react-aria/focus";
 import { DisclosureConfig } from "./Config";

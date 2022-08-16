@@ -1,6 +1,5 @@
 import { RequiredResponsiveValue } from "../internal/sprinkles.css";
-import { Children } from "..";
-import { Box } from "../internal";
+import { Children, Box } from "..";
 import { contentBlockRecipe } from "./ContentBlock.css";
 
 type Props = {

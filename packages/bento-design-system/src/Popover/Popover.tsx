@@ -3,8 +3,7 @@ import { FocusScope } from "@react-aria/focus";
 import { OverlayContainer, useModal, useOverlay, useOverlayPosition } from "@react-aria/overlays";
 import { mergeProps } from "@react-aria/utils";
 import { RefObject, useRef } from "react";
-import { Box } from "../internal";
-import { Children } from "..";
+import { Box, Children } from "..";
 import { Placement } from "@react-types/overlays";
 
 type Props = {

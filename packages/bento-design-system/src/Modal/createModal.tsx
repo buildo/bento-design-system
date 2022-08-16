@@ -1,6 +1,15 @@
 import { FunctionComponent, useRef } from "react";
-import { ActionsProps, ButtonProps, Children, LocalizedString, Title } from "..";
-import { Box, Column, Columns, Inset } from "../internal";
+import {
+  ActionsProps,
+  ButtonProps,
+  Children,
+  LocalizedString,
+  Title,
+  Box,
+  Column,
+  Columns,
+  Inset,
+} from "..";
 import { useOverlay, usePreventScroll, useModal } from "@react-aria/overlays";
 import { useDialog } from "@react-aria/dialog";
 import { FocusScope } from "@react-aria/focus";
