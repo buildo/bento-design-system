@@ -1,4 +1,4 @@
-import { ButtonProps } from "../Button/createButton";
+import { ButtonProps } from "../Button/Button";
 import { IllustrationProps } from "../Illustrations";
 import { BodyProps } from "../Typography/Body/Body";
 import { DisplayProps } from "../Typography/Display/Display";

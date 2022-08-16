@@ -16,8 +16,19 @@ import {
   NoticeProps,
   MenuListProps,
 } from "react-select/dist/declarations/src/components/Menu";
-import { Body, IconChevronDown, Children, IconCheck, IconProps } from "..";
-import { Box, Columns, Column, Inline, Inset, bentoSprinkles } from "../internal";
+import {
+  Body,
+  IconChevronDown,
+  Children,
+  IconCheck,
+  IconProps,
+  Box,
+  Columns,
+  Column,
+  Inline,
+  Inset,
+  bentoSprinkles,
+} from "..";
 import { singleValue, placeholder, menu, control } from "./SelectField.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import clsx from "clsx";
@@ -26,7 +37,7 @@ import { InternalList } from "../List/InternalList";
 import { createListItem } from "../List/createListItem";
 import { DropdownConfig } from "./Config";
 import { InputConfig } from "../Field/Config";
-import { ButtonProps } from "../Button/createButton";
+import { ButtonProps } from "../Button/Button";
 import { FunctionComponent } from "react";
 
 export function createComponents(

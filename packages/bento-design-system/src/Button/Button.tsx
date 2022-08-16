@@ -1,12 +1,12 @@
 import { LocalizedString } from "../util/LocalizedString";
-import { Box } from "../internal/Box/Box";
+import { Box } from "../Box/Box";
 import { buttonRecipe } from "./Button.css";
 import { useRef } from "react";
 import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
 import { Label } from "../Typography/Label/Label";
-import { Column, Columns } from "../internal";
-import { IconProps } from "../";
+import { Column, Columns } from "../Layout/Columns";
+import { IconProps } from "..";
 import { useBentoConfig } from "../BentoConfigProvider";
 
 export type ButtonSize = "small" | "medium" | "large";

@@ -16,7 +16,7 @@ import { IconMinus } from "../Icons";
 import { dateFieldRecipe } from "./DateField.css";
 import clsx from "clsx";
 import { LocalizedString } from "../util/LocalizedString";
-import { ButtonProps } from "../Button/createButton";
+import { ButtonProps } from "../Button/Button";
 
 export type ShortcutProps<Value> = {
   label: LocalizedString;

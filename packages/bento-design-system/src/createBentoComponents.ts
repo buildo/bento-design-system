@@ -7,7 +7,6 @@ import {
   createBanner,
   createBentoProvider,
   createBreadcrumb,
-  createButtons,
   createCard,
   createChip,
   createContentWithSidebar,
@@ -46,6 +45,8 @@ import {
   Inset,
   Tiles,
   Stack,
+  Button,
+  ButtonLink,
 } from ".";
 import * as icons from "./Icons";
 import * as illustrations from "./Illustrations";
@@ -98,8 +99,6 @@ function internalCreateBentoComponents(
   );
 
   const Avatar = createAvatar(merge(defaultConfigs.avatar, config.avatar ?? {}));
-
-  const { Button, ButtonLink } = createButtons(merge(defaultConfigs.button, config.button ?? {}));
 
   const IconButton = createIconButton(merge(defaultConfigs.iconButton, config.iconButton ?? {}));
 

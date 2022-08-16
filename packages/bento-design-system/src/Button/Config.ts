@@ -1,7 +1,7 @@
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { LabelProps } from "../Typography/Label/Label";
-import { ButtonSize } from "./createButton";
+import { ButtonSize } from "./Button";
 
 type SizeConfig<T> = {
   [k in ButtonSize]: T;
