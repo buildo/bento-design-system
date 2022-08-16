@@ -544,7 +544,7 @@ export type {
   Row as TableRow,
 } from "react-table";
 
-export type { Column, Row } from "./types";
+export type { Column as ColumnType, Row as RowType } from "./types";
 
 export type { ColumnOptionsBase } from "./tableColumn";
 export type { Props as TableProps };

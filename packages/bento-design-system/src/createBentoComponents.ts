@@ -17,7 +17,6 @@ import {
   createFormFields,
   createFormLayoutComponents,
   createIconButton,
-  createLayoutComponents,
   createListComponents,
   createMenu,
   createModal,
@@ -40,6 +39,13 @@ import {
   ContentBlock,
   bentoSprinkles,
   Box,
+  Bleed,
+  Column,
+  Columns,
+  Inline,
+  Inset,
+  Tiles,
+  Stack,
 } from ".";
 import * as icons from "./Icons";
 import * as illustrations from "./Illustrations";
@@ -80,8 +86,6 @@ function internalCreateBentoComponents(
   _sprinkles: SprinklesFn,
   config: PartialConfig = defaultConfigs
 ) {
-  const { Bleed, Column, Columns, Inline, Inset, Stack, Tiles } = createLayoutComponents(Box);
-
   const AreaLoader = createAreaLoader(merge(defaultConfigs.areaLoader, config.areaLoader ?? {}));
 
   const InlineLoader = createInlineLoader(
