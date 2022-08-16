@@ -14,3 +14,5 @@ const constVoid = () => {};
 export function ReadOnlyField(props: Props) {
   return <TextField {...props} onChange={constVoid} onBlur={constVoid} placeholder="" isReadOnly />;
 }
+
+export type { Props as ReadOnlyFieldProps };
