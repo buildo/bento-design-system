@@ -51,7 +51,7 @@ import {
 import * as icons from "./Icons";
 import * as illustrations from "./Illustrations";
 import { BentoConfig } from "./BentoConfig";
-import { createProgressBar } from "./ProgressBar/createProgressBar";
+import { createProgressBar } from "./ProgressBar/ProgressBar";
 import merge from "ts-deepmerge";
 import { createSwitch } from "./Switch/createSwitch";
 import { createUseComponentsShowcase } from "./createUseComponentsShowcase";
