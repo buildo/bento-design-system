@@ -3,7 +3,7 @@ import { BentoSprinkles } from "../internal";
 import { TitleProps } from "../Typography/Title/Title";
 import { ModalKind, ModalSize } from "./createModal";
 import { Children } from "../util/Children";
-import { ActionsProps } from "../Actions/createActions";
+import { ActionsProps } from "../Actions/Actions";
 
 type SizeConfig<T> = { [k in ModalSize]: T };
 export type ModalConfig = {

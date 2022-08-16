@@ -1,4 +1,4 @@
-import { ActionsProps } from "../Actions/createActions";
+import { ActionsProps } from "../Actions/Actions";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";
 import { DisplayProps } from "../Typography/Display/Display";

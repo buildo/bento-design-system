@@ -4,7 +4,7 @@ import * as icons from "./Icons";
 import * as illustrations from "./Illustrations";
 import * as defaultConfigs from "./util/defaultConfigs";
 
-export * from "./Actions/createActions";
+export * from "./Actions/Actions";
 export * from "./AreaLoader/createAreaLoader";
 export * from "./Avatar/createAvatar";
 export * from "./Banner/Banner";

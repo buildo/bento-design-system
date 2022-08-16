@@ -1,7 +1,6 @@
-import { SprinklesFn } from "@vanilla-extract/sprinkles/dist/declarations/src/createSprinkles";
-import { ButtonProps } from "../Button/createButtons";
+import { ButtonProps } from "../Button/Button";
 import { BentoSprinkles } from "../internal";
-import { ActionsProps } from "./createActions";
+import { ActionsProps } from "./Actions";
 
 export type ActionsConfig = {
   primaryActionButtonKind: ButtonProps["kind"];
