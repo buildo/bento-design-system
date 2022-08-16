@@ -376,8 +376,9 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                           name="status"
                           onBlur={action("onBlur")}
                           value={formState.status}
-                          onChange={(status) => setFormState((s) => ({ ...s, status }))}
-                          menuSize="large"
+                          onChange={(status: string | undefined) =>
+                            setFormState((s) => ({ ...s, status }))
+                          }
                           label={formatMessage("Status")}
                           placeholder={formatMessage("Choose an option")}
                           options={[
