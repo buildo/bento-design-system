@@ -18,7 +18,7 @@ import {
 import { DropdownConfig } from "../SelectField/Config";
 import { createSlider } from "../Slider/Slider";
 import { SliderConfig } from "../Slider/Config";
-import { createSliderField } from "../SliderField/createSliderField";
+import { createSliderField } from "../SliderField/SliderField";
 import { DateFieldConfig } from "../DateField/Config";
 import { createDateField } from "../DateField/DateField";
 import { IconButtonProps } from "../IconButton/IconButton";
@@ -91,7 +91,7 @@ export type {
   CheckboxGroupFieldProps,
 } from "../CheckboxGroupField/CheckboxGroupField";
 export type { NumberFieldProps } from "../NumberField/NumberField";
-export type { SliderFieldProps } from "../SliderField/createSliderField";
+export type { SliderFieldProps } from "../SliderField/SliderField";
 export type { CheckboxFieldProps } from "../CheckboxField/CheckboxField";
 export type { DateFieldProps } from "../DateField/DateField";
 export type { TextAreaProps } from "../TextArea/createTextArea";
