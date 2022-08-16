@@ -3,6 +3,8 @@ import * as resetStyles from "../reset.css";
 import { forwardRef, createElement } from "react";
 import clsx, { ClassValue } from "clsx";
 import { bentoSprinkles } from "../internal/sprinkles.css";
+import { SprinklesFn } from "../util/SprinklesFn";
+import { useSprinkles } from "../SprinklesContext";
 
 export type BoxProps = {
   as?: React.ElementType;
@@ -19,8 +21,8 @@ export type BoxType = React.ForwardRefExoticComponent<BoxProps & React.RefAttrib
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
   ({ as: element, className, style, ...props }: BoxProps, ref) => {
-    // TODO(gabro): support custom sprinkles via context here
-    const { atomProps, customProps, otherProps } = extractAtomsFromProps(props, bentoSprinkles);
+    const sprinkles = useSprinkles();
+    const { atomProps, customProps, otherProps } = extractAtomsFromProps(props, sprinkles);
 
     const el = typeof element === "string" ? element : "div";
     const elementReset = resetStyles.element[el as keyof typeof resetStyles.element];

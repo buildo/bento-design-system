@@ -1,4 +1,4 @@
-import { BentoConfig, Children } from ".";
+import { BentoConfig, bentoSprinkles, Children } from ".";
 import { ToastProviderProps } from "./Toast/createToastProvider";
 import { OverlayProvider } from "@react-aria/overlays";
 import { DefaultMessages, DefaultMessagesContext } from "./DefaultMessagesContext";
@@ -6,10 +6,11 @@ import { LinkComponentContext, LinkComponentProps } from "./util/link";
 import { ComponentType, FunctionComponent, useContext } from "react";
 import { I18nProvider } from "@react-aria/i18n";
 import { Object } from "ts-toolbelt";
-import { SprinklesFn } from "./util/SprinklesFn";
 import { BentoConfigContext } from "./BentoConfigProvider";
 import * as defaultConfigs from "./util/defaultConfigs";
 import merge from "ts-deepmerge";
+import { SprinklesFn } from "./util/SprinklesFn";
+import { SprinklesContext } from "./SprinklesContext";
 
 type Props = {
   children?: Children;
@@ -49,6 +50,7 @@ export function createBentoProvider(ToastProvider: FunctionComponent<ToastProvid
     linkComponent,
     locale,
     config = defaultConfigs,
+    sprinkles = bentoSprinkles,
   }: Props) {
     const linkComponentFromContext = useContext(LinkComponentContext);
 
@@ -57,9 +59,11 @@ export function createBentoProvider(ToastProvider: FunctionComponent<ToastProvid
         <OverlayProvider style={{ height: "100%" }}>
           <DefaultMessagesContext.Provider value={{ defaultMessages }}>
             <BentoConfigContext.Provider value={merge(defaultConfigs, config)}>
-              <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
-                <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
-              </LinkComponentContext.Provider>
+              <SprinklesContext.Provider value={sprinkles}>
+                <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
+                  <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
+                </LinkComponentContext.Provider>
+              </SprinklesContext.Provider>
             </BentoConfigContext.Provider>
           </DefaultMessagesContext.Provider>
         </OverlayProvider>
