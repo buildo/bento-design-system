@@ -5,7 +5,7 @@ import { LocalizedString, Box } from "..";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { input } from "./SearchBar.css";
-import { FieldType } from "../Field/createField";
+import { FieldType } from "../Field/Field";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButtonProps } from "../IconButton/IconButton";
 import { SearchBarConfig } from "./Config";

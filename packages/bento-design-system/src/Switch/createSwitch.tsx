@@ -5,7 +5,7 @@ import { mergeProps } from "@react-aria/utils";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { useToggleState } from "@react-stately/toggle";
 import { useRef } from "react";
-import { FieldType } from "../Field/createField";
+import { FieldType } from "../Field/Field";
 import { Body, Children, Box, Column, Columns } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { switchContainer, switchOuterRecipe, switchInnerRecipe } from "./Switch.css";

@@ -4,7 +4,7 @@ import { clamp } from "@react-aria/utils";
 import { useSliderState } from "@react-stately/slider";
 import { ValueBase } from "@react-types/shared";
 import { useRef, FunctionComponent } from "react";
-import { FieldType } from "../Field/createField";
+import { FieldType } from "../Field/Field";
 import { FieldProps } from "../Field/FieldProps";
 import { useFormatOptions } from "../NumberInput/formatOptions";
 import { FormatProps } from "../NumberInput/FormatProps";

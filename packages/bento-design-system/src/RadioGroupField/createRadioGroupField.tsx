@@ -1,6 +1,6 @@
 import { Body, LocalizedString, Box, Column, Columns, Inline, Stack } from "..";
 import { FieldProps } from "../Field/FieldProps";
-import { FieldType } from "../Field/createField";
+import { FieldType } from "../Field/Field";
 import { RadioGroupState, useRadioGroupState } from "@react-stately/radio";
 import { useRadioGroup, useRadio } from "@react-aria/radio";
 import { AriaRadioGroupProps } from "@react-types/radio";
