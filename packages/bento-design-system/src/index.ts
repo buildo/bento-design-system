@@ -10,7 +10,7 @@ export * from "./Avatar/Avatar";
 export * from "./Banner/Banner";
 export * from "./BentoProvider";
 export * from "./Box/Box";
-export * from "./Breadcrumb/createBreadcrumb";
+export * from "./Breadcrumb/Breadcrumb";
 export * from "./Button/Button";
 export * from "./Button/ButtonLink";
 export * from "./Card/createCard";
