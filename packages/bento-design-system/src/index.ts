@@ -43,7 +43,7 @@ export * from "./Link/Link";
 export * from "./List/List";
 export * from "./Menu/Menu";
 export * from "./Modal/Modal";
-export * from "./Navigation/createNavigation";
+export * from "./Navigation/Navigation";
 export * from "./NumberInput/createNumberInput";
 export * from "./Placeholder/Placeholder";
 export * from "./Popover/Popover";
