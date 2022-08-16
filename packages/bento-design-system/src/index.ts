@@ -42,7 +42,7 @@ export * from "./Layout/Tiles";
 export * from "./Link/Link";
 export * from "./List/List";
 export * from "./Menu/Menu";
-export * from "./Modal/createModal";
+export * from "./Modal/Modal";
 export * from "./Navigation/createNavigation";
 export * from "./NumberInput/createNumberInput";
 export * from "./Placeholder/Placeholder";
