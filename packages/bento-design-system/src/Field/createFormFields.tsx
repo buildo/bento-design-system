@@ -1,8 +1,8 @@
 import { createField } from "./Field";
 import { createTextField } from "../TextField/createTextField";
 import { createRadioGroupField } from "../RadioGroupField/createRadioGroupField";
-import { createNumberInput } from "../NumberInput/createNumberInput";
-import { createNumberField } from "../NumberField/createNumberField";
+import { createNumberInput } from "../NumberInput/NumberInput";
+import { createNumberField } from "../NumberField/NumberField";
 import { createSelectField } from "../SelectField/createSelectField";
 import { createCheckboxField } from "../CheckboxField/CheckboxField";
 import { createCheckboxGroupField } from "../CheckboxGroupField/CheckboxGroupField";
@@ -90,7 +90,7 @@ export type {
   CheckboxOption,
   CheckboxGroupFieldProps,
 } from "../CheckboxGroupField/CheckboxGroupField";
-export type { NumberFieldProps } from "../NumberField/createNumberField";
+export type { NumberFieldProps } from "../NumberField/NumberField";
 export type { SliderFieldProps } from "../SliderField/createSliderField";
 export type { CheckboxFieldProps } from "../CheckboxField/CheckboxField";
 export type { DateFieldProps } from "../DateField/DateField";

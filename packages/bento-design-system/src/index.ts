@@ -44,7 +44,7 @@ export * from "./List/List";
 export * from "./Menu/Menu";
 export * from "./Modal/Modal";
 export * from "./Navigation/Navigation";
-export * from "./NumberInput/createNumberInput";
+export * from "./NumberInput/NumberInput";
 export * from "./Placeholder/Placeholder";
 export * from "./Popover/Popover";
 export * from "./ProgressBar/createProgressBar";
