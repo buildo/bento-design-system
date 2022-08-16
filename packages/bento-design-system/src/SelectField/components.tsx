@@ -34,7 +34,7 @@ import { bodyRecipe } from "../Typography/Body/Body.css";
 import clsx from "clsx";
 import { SelectOption } from "./createSelectField";
 import { InternalList } from "../List/InternalList";
-import { createListItem } from "../List/createListItem";
+import { createListItem } from "../List/ListItem";
 import { DropdownConfig } from "./Config";
 import { InputConfig } from "../Field/Config";
 import { ButtonProps } from "../Button/Button";

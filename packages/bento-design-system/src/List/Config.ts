@@ -3,7 +3,7 @@ import { IllustrationProps } from "../Illustrations";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";
 import { LabelProps } from "../Typography/Label/Label";
-import { ListSize } from "./createListComponents";
+import { ListSize } from "./List";
 
 type ListItemSizeConfig<T> = {
   [k in ListSize]: T;

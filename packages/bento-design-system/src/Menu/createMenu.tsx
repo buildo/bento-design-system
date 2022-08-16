@@ -5,7 +5,7 @@ import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState, MenuTriggerState } from "@react-stately/menu";
 import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
-import { ListProps } from "../List/createListComponents";
+import { ListProps } from "../List/List";
 import { MenuConfig } from "./Config";
 
 type Props = {

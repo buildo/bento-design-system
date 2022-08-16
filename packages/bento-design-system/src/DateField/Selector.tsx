@@ -2,7 +2,7 @@ import { MonthType } from "@datepicker-react/hooks";
 import { useDateFormatter } from "@react-aria/i18n";
 import { FunctionComponent, useMemo } from "react";
 import { Box, Column, Columns } from "..";
-import { ListProps } from "../List/createListComponents";
+import { ListProps } from "../List/List";
 import { MenuProps } from "../Menu/createMenu";
 import { Label } from "../Typography/Label/Label";
 import { DateFieldConfig } from "./Config";
