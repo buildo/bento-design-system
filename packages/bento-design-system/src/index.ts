@@ -65,7 +65,12 @@ export * from "./TextArea/TextArea";
 export { bentoSprinkles } from "./internal/sprinkles.css";
 export * from "./TextField/TextField";
 export * from "./Toast/Toast";
-export type { TypeOverrides } from "./util/ConfigurableTypes";
+export type {
+  TypeOverrides,
+  LocalizedString,
+  ChipCustomColors as CustomChipColors,
+  SprinklesFn,
+} from "./util/ConfigurableTypes";
 export * from "./Toast/ToastProvider";
 export * from "./Toast/useToast";
 export * from "./Tooltip/Tooltip";
@@ -76,6 +81,7 @@ export * from "./Typography/Label/Label";
 export * from "./Typography/Title/Title";
 export * from "./sprinkles";
 export * from "./util/Children";
+export * from "./util/ConfigurableTypes";
 export * from "./util/LocalizedString";
 export * from "./util/NonEmptyArray";
 export * from "./util/Omit";

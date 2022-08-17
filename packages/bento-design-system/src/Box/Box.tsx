@@ -3,23 +3,32 @@ import * as resetStyles from "../reset.css";
 import { forwardRef, createElement } from "react";
 import clsx, { ClassValue } from "clsx";
 import { useSprinkles } from "../SprinklesContext";
-import { BentoSprinkles } from "../internal";
-
-export type BoxProps = {
-  as?: React.ElementType;
-  className?: ClassValue;
-} & HTMLProperties &
-  BentoSprinkles;
+import { SprinklesFn } from "../util/SprinklesFn";
 
 type HTMLProperties = Omit<
   React.AllHTMLAttributes<HTMLElement>,
   "as" | "color" | "height" | "width" | "className"
 >;
 
-export type BoxType = React.ForwardRefExoticComponent<BoxProps & React.RefAttributes<HTMLElement>>;
+type Props = Parameters<SprinklesFn>[0] &
+  HTMLProperties & {
+    as?: React.ElementType;
+    className?: ClassValue;
+  };
 
-export const Box = forwardRef<HTMLElement, BoxProps>(
-  ({ as: element, className, style, ...props }: BoxProps, ref) => {
+export type { Props as BoxProps };
+
+export type BoxType = React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLElement>>;
+
+// NOTE(gabro): it's important that we annotate Box here, because otherwise tsc will inline Props
+// in the .d.ts output, making it impossible to override the SprinklesFn type (see ConfigurableTypes.ts).
+// Adding an explicit type annotation here, makes it so the type isn't inlined and it still directly references
+// SprinklesFn.
+//
+// Another caveat is that BoxType must be exported, otherwise tsc will inline it anyway to avoid
+// referencing an internal type.
+export const Box: BoxType = forwardRef<HTMLElement, Props>(
+  ({ as: element, className, style, ...props }: Props, ref) => {
     const sprinkles = useSprinkles();
     const { atomProps, customProps, otherProps } = extractAtomsFromProps(props, sprinkles);
 

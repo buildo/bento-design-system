@@ -1,12 +1,11 @@
 import { FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
-import { Label, LocalizedString, Columns, Column, Box, IconButton } from "..";
+import { Label, LocalizedString, Columns, Column, Box, IconButton, ChipCustomColors } from "..";
 import { BentoSprinkles } from "../internal";
 import { chip, ellipsedLabel, maxWidth } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { useBentoConfig } from "../BentoConfigContext";
-import { ConfiguredTypes } from "../util/ConfigurableTypes";
 
 type DismissProps =
   | {
@@ -32,7 +31,7 @@ type DefaultColor =
 
 type Props = {
   label: LocalizedString;
-  color: DefaultColor | ConfiguredTypes["ChipCustomColors"];
+  color: DefaultColor | ChipCustomColors;
   icon?: FunctionComponent<IconProps>;
   /** Truncate and show ellipsis after a number of characters */
   maxCharacters?: number;

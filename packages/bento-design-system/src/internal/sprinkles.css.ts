@@ -9,8 +9,6 @@ import { createDefineBentoSprinklesFn } from "../sprinkles";
 const defineBentoSprinkles = createDefineBentoSprinklesFn();
 export const { sprinkles: bentoSprinkles, responsiveStyles, statusStyles } = defineBentoSprinkles();
 
-export type BentoSprinkles = Parameters<typeof bentoSprinkles>[0];
-
 export const mapResponsiveValue = createMapValueFn(responsiveStyles);
 export const normalizeResponsiveValue = createNormalizeValueFn(responsiveStyles);
 export type OptionalResponsiveValue<Value extends string | number> = ConditionalValue<

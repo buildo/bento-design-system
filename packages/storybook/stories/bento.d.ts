@@ -5,6 +5,6 @@ declare module "@buildo/bento-design-system" {
   interface TypeOverrides {
     LocalizedString: StrictLocalizedString;
     SprinklesFn: typeof sprinkles;
-    CustomChipColors: "custom";
+    ChipCustomColors: "custom";
   }
 }

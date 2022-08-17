@@ -1,4 +1,5 @@
-import { normalizeResponsiveValue, BentoSprinkles } from "../internal/sprinkles.css";
+import { BentoSprinkles } from "../internal";
+import { normalizeResponsiveValue } from "../internal/sprinkles.css";
 import { alignToFlexAlign, alignYToFlexAlign, ResponsiveAlign, ResponsiveAlignY } from "./align";
 import { Breakpoint } from "./breakpoints";
 
