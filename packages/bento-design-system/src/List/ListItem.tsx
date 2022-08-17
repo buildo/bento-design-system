@@ -18,6 +18,7 @@ import { ListSize } from "./List";
 import { element } from "../reset.css";
 import { Children } from "../util/Children";
 import { useBentoConfig } from "../BentoConfigContext";
+import { ListItemConfig } from "./Config";
 
 type Kind =
   | {
@@ -113,9 +114,9 @@ export function ListItem(props: Props) {
       >
         <Inset spaceX={config.paddingX[props.size]} spaceY={config.paddingY[props.size]}>
           <Columns space={config.internalSpacing} alignY="center">
-            <Left {...props} />
-            <Content {...props} />
-            <Right {...props} />
+            {renderLeft(props, config)}
+            {renderContent(props)}
+            {renderRight(props, config)}
           </Columns>
         </Inset>
       </Box>
@@ -123,8 +124,7 @@ export function ListItem(props: Props) {
   );
 }
 
-function Left(props: Props) {
-  const config = useBentoConfig().list.item;
+function renderLeft(props: Props, config: ListItemConfig) {
   if (props.illustration) {
     return (
       <Column width="content">
@@ -151,8 +151,7 @@ function Left(props: Props) {
   return null;
 }
 
-function Right(props: Props) {
-  const config = useBentoConfig().list.item;
+function renderRight(props: Props, config: ListItemConfig) {
   if (props.trailingIcon) {
     return (
       <Column width="content">
@@ -167,7 +166,7 @@ function Right(props: Props) {
   return null;
 }
 
-function Content(props: Props) {
+function renderContent(props: Props) {
   switch (props.kind) {
     case "single-line":
     case undefined:
