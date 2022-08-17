@@ -1,10 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
-import { createIconButton, IconClose, unsafeLocalizedString, defaultConfigs } from "../src";
+import { IconClose, unsafeLocalizedString, IconButton } from "../src";
 import { act } from "react-dom/test-utils";
 import { ignoreWarnings } from "./util/ignoreWarnings";
-
-const IconButton = createIconButton(defaultConfigs.iconButton);
 
 describe("IconButton", () => {
   test("onPress fires once", async () => {

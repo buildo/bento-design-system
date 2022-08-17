@@ -1,4 +1,5 @@
-import { bentoSprinkles, Children, PartialBentoConfig } from ".";
+import { Children, PartialBentoConfig } from ".";
+import { bentoSprinkles } from "./internal";
 import { ToastProvider } from "./Toast/ToastProvider";
 import { OverlayProvider } from "@react-aria/overlays";
 import { DefaultMessages, DefaultMessagesContext } from "./DefaultMessagesContext";
