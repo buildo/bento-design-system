@@ -70,3 +70,5 @@ export function createBentoProvider(
     );
   };
 }
+
+export const BentoProvider = createBentoProvider();
