@@ -1,11 +1,10 @@
-import { BentoConfig, bentoSprinkles, Children } from ".";
+import { bentoSprinkles, Children, PartialBentoConfig } from ".";
 import { ToastProvider } from "./Toast/ToastProvider";
 import { OverlayProvider } from "@react-aria/overlays";
 import { DefaultMessages, DefaultMessagesContext } from "./DefaultMessagesContext";
 import { LinkComponentContext, LinkComponentProps } from "./util/link";
 import { ComponentType, useContext } from "react";
 import { I18nProvider } from "@react-aria/i18n";
-import { Object } from "ts-toolbelt";
 import { BentoConfigProvider } from "./BentoConfigContext";
 import { SprinklesFn } from "./util/SprinklesFn";
 import { SprinklesContext } from "./SprinklesContext";
@@ -36,10 +35,12 @@ type Props = {
    */
   linkComponent?: ComponentType<LinkComponentProps>;
   locale?: string;
+  config?: PartialBentoConfig;
+  sprinkles?: SprinklesFn;
 } & DefaultMessages;
 
 export function createBentoProvider(
-  config: Object.Partial<BentoConfig, "deep"> = {},
+  config: PartialBentoConfig = {},
   sprinkles: SprinklesFn = bentoSprinkles
 ) {
   return function BentoProvider({
@@ -48,6 +49,7 @@ export function createBentoProvider(
     defaultMessages,
     linkComponent,
     locale,
+    ...props
   }: Props) {
     const linkComponentFromContext = useContext(LinkComponentContext);
 
@@ -55,8 +57,8 @@ export function createBentoProvider(
       <I18nProvider locale={locale}>
         <OverlayProvider style={{ height: "100%" }}>
           <DefaultMessagesContext.Provider value={{ defaultMessages }}>
-            <BentoConfigProvider value={config}>
-              <SprinklesContext.Provider value={sprinkles}>
+            <BentoConfigProvider value={props.config ?? config}>
+              <SprinklesContext.Provider value={props.sprinkles ?? sprinkles}>
                 <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
                   <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
                 </LinkComponentContext.Provider>
