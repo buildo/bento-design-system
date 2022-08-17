@@ -4,7 +4,7 @@ import { container, dot, text } from "./AreaLoader.css";
 import { BentoSprinkles } from "../internal";
 import { AreaLoaderConfig } from "./Config";
 import { BodyProps } from "../Typography/Body/Body";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 function readabilityAreaColorToBackground(
   color: AreaLoaderConfig["readabilityAreaColor"]

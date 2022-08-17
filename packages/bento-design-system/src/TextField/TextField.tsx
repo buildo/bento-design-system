@@ -7,7 +7,7 @@ import { FieldProps } from "../Field/FieldProps";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import useDimensions from "react-cool-dimensions";
 import { defaultMessages } from "../../test/util/defaultMessages";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;

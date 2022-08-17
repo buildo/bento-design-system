@@ -2,10 +2,9 @@ import "@buildo/bento-design-system/lib/index.css";
 import "@buildo/bento-design-system/lib/defaultTheme.css";
 import "./theme.css";
 import {
-  createActions,
   createBentoComponents,
-  createTabs,
   defaultConfigs,
+  withBentoConfig,
 } from "@buildo/bento-design-system";
 import { sprinkles } from "./sprinkles.css";
 
@@ -132,20 +131,24 @@ export const {
 });
 
 export const FolderTabs = Tabs;
-export const UnderlineTabs = createTabs(defaultConfigs.underlineTabs);
+export const UnderlineTabs = withBentoConfig({ tabs: defaultConfigs.underlineTabs }, Tabs);
 export const RightActions = Actions;
-export const LeftActions = createActions(
+export const LeftActions = withBentoConfig(
   {
-    ...defaultConfigs.actions,
-    buttonsAlignment: "left",
-    primaryPosition: "left",
+    actions: {
+      ...defaultConfigs.actions,
+      buttonsAlignment: "left",
+      primaryPosition: "left",
+    },
   },
-  { Button, Banner, InlineLoader }
+  Actions
 );
-export const SpaceBetweenActions = createActions(
+export const SpaceBetweenActions = withBentoConfig(
   {
-    ...defaultConfigs.actions,
-    buttonsAlignment: "spaceBetween",
+    actions: {
+      ...defaultConfigs.actions,
+      buttonsAlignment: "spaceBetween",
+    },
   },
-  { Button, Banner, InlineLoader }
+  Actions
 );

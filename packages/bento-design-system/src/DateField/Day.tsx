@@ -5,7 +5,7 @@ import { Body } from "../Typography/Body/Body";
 import { CommonCalendarProps } from "./Calendar";
 import { dayRadius, dayRecipe } from "./DateField.css";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = CommonCalendarProps & {
   date: Date;

@@ -5,7 +5,7 @@ import { LocalizedString } from "../util/LocalizedString";
 import { inputRecipe } from "../Field/Field.css";
 import { FieldProps } from "../Field/FieldProps";
 import { bodyRecipe } from "../Typography/Body/Body.css";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;

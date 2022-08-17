@@ -1,7 +1,7 @@
 import { useBreadcrumbItem, useBreadcrumbs } from "@react-aria/breadcrumbs";
 import { useRef, Fragment } from "react";
 import { Body, Link, LocalizedString, Box, Inline } from "..";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type LastItem = {
   label: LocalizedString;

@@ -13,7 +13,7 @@ import * as selectComponents from "./components";
 import { ListItemProps } from "../List/ListItem";
 import { Omit } from "../util/Omit";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 export type SelectOption<A> = Omit<
   ListItemProps,

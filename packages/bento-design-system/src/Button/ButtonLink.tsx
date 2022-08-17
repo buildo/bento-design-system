@@ -6,7 +6,7 @@ import { Label, Box, Column, Columns } from "..";
 import { useLink } from "@react-aria/link";
 import { element } from "../reset.css";
 import { IconProps } from "../Icons";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = {
   href: string;

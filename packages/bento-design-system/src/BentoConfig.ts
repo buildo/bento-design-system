@@ -33,6 +33,7 @@ import { TableConfig } from "./Table/Config";
 import { TabsConfig } from "./Tabs/Config";
 import { ToastConfig } from "./Toast/Config";
 import { TooltipConfig } from "./Tooltip/Config";
+import { Object } from "ts-toolbelt";
 
 export type BentoConfig = {
   actions: ActionsConfig;
@@ -71,3 +72,5 @@ export type BentoConfig = {
   stepper: StepperConfig;
   tooltip: TooltipConfig;
 };
+
+export type PartialBentoConfig = Object.Partial<BentoConfig, "deep">;

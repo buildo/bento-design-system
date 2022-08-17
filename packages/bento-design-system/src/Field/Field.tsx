@@ -6,7 +6,7 @@ import { Children } from "../util/Children";
 import { FieldProps } from "./FieldProps";
 import { IconNegative } from "../Icons";
 import { FocusableElement } from "@react-types/shared";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "hint"> & {
   /** The field label rendered on screen. Can be omitted in case of fields that have a custom label, such as CheckboxField  */

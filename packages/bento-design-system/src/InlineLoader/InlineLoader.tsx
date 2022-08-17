@@ -1,7 +1,7 @@
 import { Box, Inline, Body, LocalizedString } from "..";
 import { icon } from "./InlineLoader.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = {
   message?: LocalizedString;

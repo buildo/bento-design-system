@@ -4,7 +4,7 @@ import { destinationRecipe } from "./Navigation.css";
 import { AnchorHTMLAttributes, useRef } from "react";
 import { useLink } from "@react-aria/link";
 import { element } from "../reset.css";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 export type NavigationSize = "medium" | "large";
 

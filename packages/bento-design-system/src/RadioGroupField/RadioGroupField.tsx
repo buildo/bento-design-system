@@ -9,7 +9,7 @@ import { useRef } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { FocusScope, useFocusRing } from "@react-aria/focus";
 import { Radio } from "./Radio";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 export type RadioOption<A> = {
   value: A;

@@ -5,7 +5,7 @@ import { useTooltipTriggerState } from "@react-stately/tooltip";
 import { useTooltipTrigger, useTooltip } from "@react-aria/tooltip";
 import { tooltip, arrow as arrowStyle } from "./Tooltip.css";
 import { createPortal } from "../util/createPortal";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = {
   content: Children;

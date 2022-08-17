@@ -3,7 +3,7 @@ import { Box, Columns, Column, Children, IconProps, Label } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { tabRecipe } from "./Tabs.css";
 import { normalizeStatusValue } from "../internal/sprinkles.css";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 export type TabsSize = "medium" | "large";
 

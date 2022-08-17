@@ -36,7 +36,7 @@ import clsx from "clsx";
 import { SelectOption } from "./SelectField";
 import { InternalList } from "../List/InternalList";
 import { ListItem } from "../List/ListItem";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 export function Control<A, IsMulti extends boolean>({
   selectProps: { validationState: validation, isDisabled, isReadOnly = false },

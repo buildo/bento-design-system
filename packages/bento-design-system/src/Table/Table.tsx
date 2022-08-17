@@ -40,7 +40,7 @@ import { useLayoutEffect, useMemo, useState, CSSProperties, useEffect } from "re
 import { IconHelp, IconInfo } from "../Icons";
 import { match, __ } from "ts-pattern";
 import clsx from "clsx";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
   a: Row<RowType<C>>,

@@ -1,7 +1,7 @@
 import { BentoSprinkles } from "../internal";
 import { Box, Children } from "..";
 import { cardRecipe } from "./Card.css";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type PaddingKey =
   | "padding"

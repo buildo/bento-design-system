@@ -14,7 +14,7 @@ import {
 } from "..";
 import { bannerRecipe } from "./Banner.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 export type Kind = "informative" | "positive" | "warning" | "negative" | "secondary";
 

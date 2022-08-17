@@ -11,7 +11,7 @@ import { IconMinus } from "../Icons";
 import { dateFieldRecipe } from "./DateField.css";
 import clsx from "clsx";
 import { LocalizedString } from "../util/LocalizedString";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 export type ShortcutProps<Value> = {
   label: LocalizedString;

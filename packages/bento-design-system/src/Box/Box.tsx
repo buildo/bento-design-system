@@ -2,7 +2,6 @@ import { extractAtomsFromProps } from "@dessert-box/core";
 import * as resetStyles from "../reset.css";
 import { forwardRef, createElement } from "react";
 import clsx, { ClassValue } from "clsx";
-import { bentoSprinkles } from "../internal/sprinkles.css";
 import { useSprinkles } from "../SprinklesContext";
 import { BentoSprinkles } from "../internal";
 
@@ -31,7 +30,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       ref,
       style: { ...style, ...customProps },
       ...otherProps,
-      className: clsx(resetStyles.base, elementReset, className, bentoSprinkles(atomProps)),
+      className: clsx(resetStyles.base, elementReset, className, sprinkles(atomProps)),
     });
   }
 );

@@ -6,7 +6,7 @@ import { SliderState } from "@react-stately/slider";
 import { FocusableElement } from "@react-types/shared";
 import { DOMAttributes, OutputHTMLAttributes, RefObject, useRef } from "react";
 import { Box, Column, Columns, Stack } from "..";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 import { Label } from "../Typography/Label/Label";
 import { slider, thumbRecipe, trackActive, trackContainer, trackInactive } from "./Slider.css";
 

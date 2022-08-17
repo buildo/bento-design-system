@@ -5,7 +5,7 @@ import { BentoSprinkles } from "../internal";
 import { chip, ellipsedLabel, maxWidth } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 import { ConfiguredTypes } from "../util/ConfigurableTypes";
 
 type DismissProps =

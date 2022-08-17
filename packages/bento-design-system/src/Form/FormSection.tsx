@@ -1,5 +1,5 @@
 import { Body, Children, LocalizedString, Title, Stack } from "..";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = {
   title?: LocalizedString;

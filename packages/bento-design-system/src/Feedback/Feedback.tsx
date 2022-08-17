@@ -3,7 +3,7 @@ import { IllustrationProps } from "../Illustrations/IllustrationProps";
 import { Title } from "../Typography/Title/Title";
 import { Headline } from "../Typography/Headline/Headline";
 import { FeedbackConfig } from "./Config";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Status = "positive" | "negative";
 export type FeedbackSize = "medium" | "large";

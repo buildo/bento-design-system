@@ -1,7 +1,7 @@
 import { Box, Inline, Label, unsafeLocalizedString } from "..";
 import { stepIconRecipe, stepRecipe } from "./Stepper.css";
 import { Children } from "../util/Children";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Step = {
   label: Children;

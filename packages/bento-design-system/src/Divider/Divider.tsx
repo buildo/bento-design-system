@@ -1,5 +1,5 @@
 import { useSeparator } from "@react-aria/separator";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 import { Box } from "../Box/Box";
 import { divider } from "./Divider.css";
 

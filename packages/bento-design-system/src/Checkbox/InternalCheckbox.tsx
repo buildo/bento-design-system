@@ -6,7 +6,7 @@ import { checkboxRecipe, fieldContainer } from "./Checkbox.css";
 import { vars } from "../vars.css";
 import { useLabel } from "@react-aria/label";
 import { InputHTMLAttributes, Ref } from "react";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type CheckboxUIProps = {
   value: boolean;

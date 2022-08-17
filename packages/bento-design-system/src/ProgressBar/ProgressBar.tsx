@@ -1,6 +1,6 @@
 import { useProgressBar } from "@react-aria/progress";
 import { Box, Columns } from "..";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 import { LocalizedString } from "../util/LocalizedString";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { barRecipe } from "./ProgressBar.css";

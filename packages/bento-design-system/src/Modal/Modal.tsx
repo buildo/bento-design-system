@@ -20,7 +20,7 @@ import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButton } from "../IconButton/IconButton";
 import { createPortal } from "../util/createPortal";
 import { match } from "ts-pattern";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 export type ModalSize = "small" | "medium" | "large" | "wide";
 export type ModalKind = "normal" | "warning" | "destructive";

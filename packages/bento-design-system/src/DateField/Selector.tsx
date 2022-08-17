@@ -2,7 +2,7 @@ import { MonthType } from "@datepicker-react/hooks";
 import { useDateFormatter } from "@react-aria/i18n";
 import { useMemo } from "react";
 import { Box, Column, Columns, Menu } from "..";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 import { ListProps } from "../List/List";
 import { Label } from "../Typography/Label/Label";
 import { selector } from "./DateField.css";

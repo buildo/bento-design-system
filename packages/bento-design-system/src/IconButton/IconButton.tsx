@@ -6,7 +6,7 @@ import { IconProps } from "../Icons/IconProps";
 import { iconButtonRecipe } from "./IconButton.css";
 import { buttonRecipe } from "../Button/Button.css";
 import { LocalizedString } from "../util/LocalizedString";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = {
   kind: "solid" | "transparent";

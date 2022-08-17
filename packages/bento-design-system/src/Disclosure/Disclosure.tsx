@@ -4,7 +4,7 @@ import { extendedHitAreaRecipe } from "../util/extendedHitArea.css";
 import { Children, LocalizedString, Title, Box, Columns, Column, Stack } from "..";
 import { useId } from "@react-aria/utils";
 import { useFocusRing } from "@react-aria/focus";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = {
   title: LocalizedString;

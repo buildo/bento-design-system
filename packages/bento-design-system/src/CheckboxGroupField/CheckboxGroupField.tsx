@@ -7,7 +7,7 @@ import { CheckboxGroupState, useCheckboxGroupState } from "@react-stately/checkb
 import { Box, Inline, Stack, Field } from "..";
 import { Children } from "../util/Children";
 import { FocusScope } from "@react-aria/focus";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 export type CheckboxOption = {
   value: string;

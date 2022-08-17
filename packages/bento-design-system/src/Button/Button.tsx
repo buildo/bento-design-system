@@ -7,7 +7,7 @@ import { useButton } from "@react-aria/button";
 import { Label } from "../Typography/Label/Label";
 import { Column, Columns } from "../Layout/Columns";
 import { IconProps } from "..";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 export type ButtonSize = "small" | "medium" | "large";
 type Props = {

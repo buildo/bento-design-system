@@ -10,7 +10,7 @@ import { createPortal } from "../util/createPortal";
 import { CalendarHeader } from "./CalendarHeader";
 import { calendar, weekDay } from "./DateField.css";
 import { Day } from "./Day";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 export type CommonCalendarProps = {
   inputRef: RefObject<HTMLInputElement>;

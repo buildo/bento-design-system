@@ -1,5 +1,5 @@
 import { Label, Box } from "..";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 import { avatarRecipe } from "./Avatar.css";
 
 type Props = {

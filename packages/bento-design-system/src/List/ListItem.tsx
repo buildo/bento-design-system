@@ -17,7 +17,7 @@ import { listItemRecipe } from "./ListItem.css";
 import { ListSize } from "./List";
 import { element } from "../reset.css";
 import { Children } from "../util/Children";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Kind =
   | {

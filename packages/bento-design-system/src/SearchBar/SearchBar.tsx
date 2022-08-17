@@ -7,7 +7,7 @@ import { bodyRecipe } from "../Typography/Body/Body.css";
 import { input } from "./SearchBar.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { O } from "ts-toolbelt";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = O.AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "aria-labelledby">> & {
   value: string;

@@ -8,7 +8,7 @@ import { useRef } from "react";
 import { Body, Children, Box, Column, Columns, Field } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { switchContainer, switchOuterRecipe, switchInnerRecipe } from "./Switch.css";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = Omit<FieldProps<boolean>, "assistiveText"> & {
   label: Children;

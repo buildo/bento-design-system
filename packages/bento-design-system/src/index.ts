@@ -80,6 +80,15 @@ export * from "./util/LocalizedString";
 export * from "./util/NonEmptyArray";
 export * from "./util/Omit";
 export * from "./util/align";
+export * from "./util/atoms";
+export * from "./util/breakpoints";
+export * from "./util/conditions";
+export * from "./util/link";
+export * from "./util/strictRecipe";
+export * from "./util/useDefaultMessages";
+export * from "./util/withBentoConfig";
+
+export { icons, illustrations };
 
 export { bodyRecipe } from "./Typography/Body/Body.css";
 export { labelRecipe } from "./Typography/Label/Label.css";
@@ -87,20 +96,9 @@ export { titleRecipe } from "./Typography/Title/Title.css";
 export { headlineRecipe } from "./Typography/Headline/Headline.css";
 export { displayRecipe } from "./Typography/Display/Display.css";
 export { inputRecipe } from "./Field/Field.css";
-
-export * from "./util/atoms";
-export * from "./util/breakpoints";
-
-export * from "./util/conditions";
-
-export * from "./util/link";
-export * from "./util/strictRecipe";
-export * from "./util/useDefaultMessages";
 export * from "./vars.css";
 
-export { icons, illustrations };
-
-export type { BentoConfig } from "./BentoConfig";
+export type { BentoConfig, PartialBentoConfig } from "./BentoConfig";
 export { defaultConfigs };
 
 export { createBentoComponents } from "./createBentoComponents";

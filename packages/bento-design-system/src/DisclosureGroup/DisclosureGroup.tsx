@@ -1,5 +1,5 @@
 import { DisclosureProps, Box, Stack, Disclosure } from "..";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 import { Omit } from "../util/Omit";
 
 type LeafItem = Omit<DisclosureProps, "level" | "iconPosition">;

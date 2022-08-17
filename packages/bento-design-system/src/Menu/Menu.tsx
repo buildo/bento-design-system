@@ -5,7 +5,7 @@ import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState, MenuTriggerState } from "@react-stately/menu";
 import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = {
   size: ListProps["size"];

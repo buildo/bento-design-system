@@ -1,5 +1,5 @@
 import { Children, Columns } from "..";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = {
   children: Children;

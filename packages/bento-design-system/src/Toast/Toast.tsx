@@ -11,7 +11,7 @@ import {
   ButtonProps,
 } from "..";
 import { toastRecipe } from "./Toast.css";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = {
   kind: "informative" | "positive" | "warning" | "negative" | "secondary";

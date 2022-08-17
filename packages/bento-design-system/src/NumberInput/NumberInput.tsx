@@ -5,7 +5,7 @@ import { Label, LocalizedString, Box } from "..";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { FormatProps } from "./FormatProps";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = {
   inputProps: React.InputHTMLAttributes<HTMLInputElement>;

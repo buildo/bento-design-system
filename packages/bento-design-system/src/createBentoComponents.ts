@@ -1,4 +1,3 @@
-import { List, Object } from "ts-toolbelt";
 import {
   Body,
   defaultConfigs,
@@ -58,10 +57,11 @@ import {
   tableColumn,
   StepperStep,
   useComponentsShowcase,
+  List,
 } from ".";
 import * as icons from "./Icons";
 import * as illustrations from "./Illustrations";
-import { BentoConfig } from "./BentoConfig";
+import { PartialBentoConfig } from "./BentoConfig";
 import { SprinklesFn } from "./util/SprinklesFn";
 import { CheckboxField } from "./CheckboxField/CheckboxField";
 import { CheckboxGroupField } from "./CheckboxGroupField/CheckboxGroupField";
@@ -74,22 +74,20 @@ import { SliderField } from "./SliderField/SliderField";
 import { TextArea } from "./TextArea/TextArea";
 import { TextField } from "./TextField/TextField";
 
-type PartialConfig = Object.Partial<BentoConfig, "deep">;
-
 export function createBentoComponents(): R;
 
 export function createBentoComponents<ChipCustomColor extends string = never>(
-  config: PartialConfig
+  config: PartialBentoConfig
 ): R;
 
 export function createBentoComponents<
   SprinklesFn extends typeof bentoSprinkles,
   ChipCustomColor extends string = never
->(sprinkles: SprinklesFn, config?: PartialConfig): R;
+>(sprinkles: SprinklesFn, config?: PartialBentoConfig): R;
 
 export function createBentoComponents<SprinklesFn extends typeof bentoSprinkles>(
-  sprinkles?: SprinklesFn | PartialConfig,
-  config: PartialConfig = defaultConfigs
+  sprinkles?: SprinklesFn | PartialBentoConfig,
+  config: PartialBentoConfig = defaultConfigs
 ): R {
   if (typeof sprinkles === "function") {
     return internalCreateBentoComponents(sprinkles, config);
@@ -99,7 +97,7 @@ export function createBentoComponents<SprinklesFn extends typeof bentoSprinkles>
 
 function internalCreateBentoComponents(
   sprinkles: SprinklesFn,
-  config: PartialConfig = defaultConfigs
+  config: PartialBentoConfig = defaultConfigs
 ) {
   const DesignSystemProvider = createBentoProvider(config, sprinkles);
 

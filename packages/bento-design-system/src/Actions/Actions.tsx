@@ -10,7 +10,7 @@ import {
   Banner,
   InlineLoader,
 } from "..";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type ActionProps = Omit<ButtonProps, "kind" | "size" | "hierarchy">;
 type Props = {

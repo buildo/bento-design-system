@@ -13,7 +13,7 @@ import {
 
 import { Headline } from "../Typography/Headline/Headline";
 import { FocusScope } from "@react-aria/focus";
-import { useBentoConfig } from "../BentoConfigProvider";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = {
   children: Children;

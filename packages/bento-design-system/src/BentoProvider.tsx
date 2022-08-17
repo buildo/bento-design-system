@@ -6,9 +6,7 @@ import { LinkComponentContext, LinkComponentProps } from "./util/link";
 import { ComponentType, useContext } from "react";
 import { I18nProvider } from "@react-aria/i18n";
 import { Object } from "ts-toolbelt";
-import { BentoConfigContext } from "./BentoConfigProvider";
-import * as defaultConfigs from "./util/defaultConfigs";
-import merge from "ts-deepmerge";
+import { BentoConfigProvider } from "./BentoConfigContext";
 import { SprinklesFn } from "./util/SprinklesFn";
 import { SprinklesContext } from "./SprinklesContext";
 
@@ -57,13 +55,13 @@ export function createBentoProvider(
       <I18nProvider locale={locale}>
         <OverlayProvider style={{ height: "100%" }}>
           <DefaultMessagesContext.Provider value={{ defaultMessages }}>
-            <BentoConfigContext.Provider value={merge(defaultConfigs, config)}>
+            <BentoConfigProvider value={config}>
               <SprinklesContext.Provider value={sprinkles}>
                 <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
                   <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
                 </LinkComponentContext.Provider>
               </SprinklesContext.Provider>
-            </BentoConfigContext.Provider>
+            </BentoConfigProvider>
           </DefaultMessagesContext.Provider>
         </OverlayProvider>
       </I18nProvider>

@@ -1,26 +1,7 @@
 // NOTE(gabro): these are type-level tests, using @ts-expect-error to check that we get an error
 // where expected
 
-import { Box } from "../src/Box/Box";
-import {
-  createFeedback,
-  createTable,
-  createTooltip,
-  unsafeLocalizedString,
-  createTableColumns,
-  createButtons,
-  createChip,
-  defaultChipConfig,
-  createLink,
-} from "../src";
-
-const { Button, ButtonLink } = createButtons();
-const Chip = createChip(Box, defaultChipConfig);
-const Tooltip = createTooltip();
-const Feedback = createFeedback(Button);
-const Table = createTable(Tooltip, Feedback);
-const Link = createLink();
-const tableColumn = createTableColumns(Button, ButtonLink, Chip, Link);
+import { Table, tableColumn, unsafeLocalizedString } from "../src";
 
 const columns = [
   tableColumn.number({
