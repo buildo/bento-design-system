@@ -329,6 +329,7 @@ export const menu: MenuConfig = {
   headerPaddingX: 16,
   headerPaddingY: 16,
   defaultOffset: 4,
+  subMenuIcon: IconChevronRight,
 };
 
 export const modal: ModalConfig = {

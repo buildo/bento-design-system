@@ -1,5 +1,5 @@
 import { useLink } from "@react-aria/link";
-import { AnchorHTMLAttributes, useRef } from "react";
+import { AnchorHTMLAttributes, forwardRef, RefObject, useRef } from "react";
 import {
   Body,
   Label,
@@ -19,6 +19,7 @@ import { element } from "../reset.css";
 import { Children } from "../util/Children";
 import { useBentoConfig } from "../BentoConfigContext";
 import { ListItemConfig } from "./Config";
+import { Omit } from "../util/Omit";
 
 type Kind =
   | {
@@ -54,29 +55,31 @@ type RightItem = {
   trailingIcon?: (props: IconProps) => JSX.Element;
 };
 
-type Props = Kind &
-  LeftItem &
-  RightItem & {
-    disabled?: boolean;
-    size: ListSize;
-    isFocused?: boolean;
-    isSelected?: boolean;
-    ignoreTabIndex?: boolean;
-    key?: string | number;
-  } & (
-    | {
-        onPress?: () => void;
-        href?: never;
-        target?: never;
-      }
-    | {
-        href?: string;
-        target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
-        onPress?: never;
-      }
-  );
+type CommonProps = {
+  disabled?: boolean;
+  size: ListSize;
+  isFocused?: boolean;
+  isSelected?: boolean;
+  ignoreTabIndex?: boolean;
+  key?: string | number;
+  ref?: RefObject<HTMLElement>;
+} & (
+  | {
+      onPress?: () => void;
+      href?: never;
+      target?: never;
+    }
+  | {
+      href?: string;
+      target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
+      onPress?: never;
+    }
+);
 
-export function ListItem(props: Props) {
+type ListItemProps = Kind & LeftItem & RightItem & CommonProps;
+type Props = Omit<ListItemProps, "ref">;
+
+export const ListItem = forwardRef<HTMLElement, Props>((props, ref) => {
   const config = useBentoConfig().list.item;
   const linkRef = useRef<HTMLElement>(null);
 
@@ -94,6 +97,7 @@ export function ListItem(props: Props) {
 
   return (
     <Box
+      ref={ref}
       as="li"
       className={listItemRecipe({
         interactive,
@@ -122,7 +126,7 @@ export function ListItem(props: Props) {
       </Box>
     </Box>
   );
-}
+});
 
 function renderLeft(props: Props, config: ListItemConfig) {
   if (props.illustration) {
@@ -219,4 +223,4 @@ function Overline(props: Props & { kind: "overline" }) {
   );
 }
 
-export type { Props as ListItemProps };
+export type { ListItemProps };
