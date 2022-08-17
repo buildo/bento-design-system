@@ -74,17 +74,21 @@ import { SliderField } from "./SliderField/SliderField";
 import { TextArea } from "./TextArea/TextArea";
 import { TextField } from "./TextField/TextField";
 
+/** @deprecated Import components directly from "@buildo/bento-design-system" instead */
 export function createBentoComponents(): R;
 
+/** @deprecated Import components directly from "@buildo/bento-design-system" instead */
 export function createBentoComponents<ChipCustomColor extends string = never>(
   config: PartialBentoConfig
 ): R;
 
+/** @deprecated Import components directly from "@buildo/bento-design-system" instead */
 export function createBentoComponents<
   SprinklesFn extends typeof bentoSprinkles,
   ChipCustomColor extends string = never
 >(sprinkles: SprinklesFn, config?: PartialBentoConfig): R;
 
+/** @deprecated Import components directly from "@buildo/bento-design-system" instead */
 export function createBentoComponents<SprinklesFn extends typeof bentoSprinkles>(
   sprinkles?: SprinklesFn | PartialBentoConfig,
   config: PartialBentoConfig = defaultConfigs
