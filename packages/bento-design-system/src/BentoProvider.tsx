@@ -7,7 +7,7 @@ import { LinkComponentContext, LinkComponentProps } from "./util/link";
 import { ComponentType, useContext } from "react";
 import { I18nProvider } from "@react-aria/i18n";
 import { BentoConfigProvider } from "./BentoConfigContext";
-import { SprinklesFn } from "./util/SprinklesFn";
+import { SprinklesFn } from "./util/ConfigurableTypes";
 import { SprinklesContext } from "./SprinklesContext";
 
 type Props = {

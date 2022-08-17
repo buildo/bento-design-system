@@ -3,7 +3,7 @@ import * as resetStyles from "../reset.css";
 import { forwardRef, createElement } from "react";
 import clsx, { ClassValue } from "clsx";
 import { useSprinkles } from "../SprinklesContext";
-import { SprinklesFn } from "../util/SprinklesFn";
+import { SprinklesFn } from "../util/ConfigurableTypes";
 
 type HTMLProperties = Omit<
   React.AllHTMLAttributes<HTMLElement>,

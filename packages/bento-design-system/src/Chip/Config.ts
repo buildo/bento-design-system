@@ -2,7 +2,7 @@ import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { LabelProps } from "../Typography/Label/Label";
 import { Children } from "../util/Children";
-import { ConfiguredTypes } from "../util/ConfigurableTypes";
+import { ChipCustomColors } from "../util/ConfigurableTypes";
 
 export type ChipConfig = {
   paddingX: BentoSprinkles["paddingX"];
@@ -14,7 +14,7 @@ export type ChipConfig = {
   spacingAfterIcon: BentoSprinkles["gap"];
   spacingAfterLabel: BentoSprinkles["gap"];
   customColors: {
-    [k in ConfiguredTypes["ChipCustomColors"] & string]: BentoSprinkles["background"];
+    [k in ChipCustomColors]: BentoSprinkles["background"];
   };
   radius: BentoSprinkles["borderRadius"];
 };
