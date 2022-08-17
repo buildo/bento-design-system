@@ -73,3 +73,5 @@ export function createBentoProvider(
 }
 
 export const BentoProvider = createBentoProvider();
+
+export const DesignSystemProvider = BentoProvider;

@@ -136,7 +136,25 @@ my-project/
 ├─ pnpm-workspaces.yaml
 ```
 
-`packages/design-system/src/index.tsx` is where you configure and export Bento components, like we saw in [Quick Start](./Quick-Start).
+`packages/design-system/src/index.tsx` is where you configure and export Bento components.
+
+Your `index.ts` will look something like this:
+
+```tsx title="my-project/packages/design-system/src/index.tsx"
+import { createBentoProvider } from "@bento/buildo-design-system";
+
+// Export the Bento components you want to use in your app
+export { Button, Card, Title /*...*/ } from "@bento/buildo-design-system";
+
+// Export any other custom component
+export * from "./components/MyCustomComponent/MyCustomComponent";
+
+// You can use the createBentoProvider facility to create a BentoProvider with
+// your custom config and sprinkles (see the section about Customization to learn about these)
+export const BentoProvider = createBentoProvider(config, sprinkles);
+```
+
+, like we saw in [Quick Start](./Quick-Start).
 
 ## Setting up Turborepo
 

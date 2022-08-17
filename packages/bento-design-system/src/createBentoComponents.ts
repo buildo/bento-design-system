@@ -131,6 +131,7 @@ function internalCreateBentoComponents(
     DateField,
     DecorativeDivider,
     DesignSystemProvider,
+    BentoProvider: DesignSystemProvider,
     Disclosure,
     DisclosureGroup,
     Display,
