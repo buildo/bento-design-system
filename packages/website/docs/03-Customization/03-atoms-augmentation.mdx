@@ -104,7 +104,7 @@ import { mySprinkles } from "./mySprinkles.css";
 
 const config: PartialBentoConfig = {}; // empty config, just for the sake of the example
 
-export const { Box } = createBentoProvider(config, mySprinkles);
+export const BentoProvider = createBentoProvider(config, mySprinkles);
 
 declare module "@buildo/bento-design-system" {
   interface TypeOverrides {
