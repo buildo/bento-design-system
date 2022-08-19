@@ -2,7 +2,7 @@ import { IconProps } from "../Icons";
 import { IllustrationProps } from "../Illustrations";
 import { BentoSprinkles } from "../internal";
 import { LabelProps } from "../Typography/Label/Label";
-import { NavigationSize } from "./createNavigation";
+import { NavigationSize } from "./Navigation";
 
 type SizeConfig<A> = Record<NavigationSize, A>;
 export type NavigationConfig = {

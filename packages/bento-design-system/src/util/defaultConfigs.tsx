@@ -24,7 +24,6 @@ import {
 import { ButtonConfig } from "../Button/Config";
 import { CardConfig } from "../Card/Config";
 import { ChipConfig } from "../Chip/Config";
-import { bentoSprinkles, Box } from "../internal";
 import { DisclosureConfig } from "../Disclosure/Config";
 import { DisclosureGroupConfig } from "../DisclosureGroup/Config";
 import { IllustrationNegative, IllustrationPositive, IllustrationSearch } from "../Illustrations";
@@ -53,6 +52,7 @@ import { TooltipConfig } from "../Tooltip/Config";
 import { InlineLoaderConfig } from "../InlineLoader/Config";
 import { DecorativeDividerConfig } from "../Divider/Config";
 import { DateFieldConfig } from "../DateField/Config";
+import { Box } from "../Box/Box";
 
 export const actions: ActionsConfig = {
   primaryActionButtonKind: "solid",
@@ -141,7 +141,7 @@ export const card: CardConfig = {
   defaultRadius: 8,
 };
 
-export const chip: ChipConfig<typeof bentoSprinkles, string> = {
+export const chip: ChipConfig = {
   paddingX: 8,
   paddingY: 4,
   labelSize: "small",
@@ -154,7 +154,7 @@ export const chip: ChipConfig<typeof bentoSprinkles, string> = {
   radius: "circledX",
 };
 
-export const decorativeDivider: DecorativeDividerConfig<typeof bentoSprinkles> = {
+export const decorativeDivider: DecorativeDividerConfig = {
   height: 2,
   radius: "circledX",
   color: "brandSecondary",
@@ -494,6 +494,8 @@ export const underlineTabs: TabsConfig = {
     active: "brandPrimary",
   },
 };
+
+export const tabs: TabsConfig = folderTabs;
 
 export const progressBar: ProgressBarConfig = {
   height: 8,

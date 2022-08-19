@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useComponentProps } from "./useComponentMetadata";
+import ReactMarkdown from "react-markdown";
 
 function getType(type: any): JSX.Element | null {
   if (!type) return null;
@@ -36,7 +37,9 @@ export const PropTable = ({ name }: { name: string }) => {
                 </td>
                 <td>{props[key].defaultValue && <code>{props[key].defaultValue.value}</code>}</td>
                 <td>{props[key].required ? "Yes" : "No"}</td>
-                <td>{props[key].description}</td>
+                <td>
+                  <ReactMarkdown>{props[key].description}</ReactMarkdown>
+                </td>
               </tr>
             );
           })}

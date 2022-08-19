@@ -1,4 +1,4 @@
-import { ButtonProps } from "../Button/createButton";
+import { ButtonProps } from "../Button/Button";
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";

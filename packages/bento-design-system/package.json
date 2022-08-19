@@ -38,7 +38,7 @@
   "homepage": "https://github.com/buildo/bento-design-system#readme",
   "dependencies": {
     "@datepicker-react/hooks": "^2.8.4",
-    "@dessert-box/react": "^0.4.0",
+    "@dessert-box/core": "0.2.0",
     "@floating-ui/core": "1.0.1",
     "@floating-ui/dom": "1.0.1",
     "@floating-ui/react-dom": "1.0.0",

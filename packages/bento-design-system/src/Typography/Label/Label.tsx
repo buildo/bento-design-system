@@ -1,7 +1,7 @@
 import { Children } from "../../util/Children";
-import { BoxProps } from "../../Box/createBentoBox";
-import { Box, bentoSprinkles } from "../../internal";
+import { Box, BoxProps } from "../..";
 import { labelRecipe } from "./Label.css";
+import { BentoSprinkles } from "../../internal";
 
 type Size = "small" | "medium" | "large";
 type Align = "left" | "center" | "right";
@@ -24,10 +24,7 @@ export type LabelProps = {
   color?: Color;
   align?: Align;
   uppercase?: boolean;
-} & Omit<
-  BoxProps<typeof bentoSprinkles>,
-  keyof Parameters<typeof bentoSprinkles>[0] | "className" | "size"
->;
+} & Omit<BoxProps, keyof BentoSprinkles | "className" | "size">;
 
 export function Label({
   children,

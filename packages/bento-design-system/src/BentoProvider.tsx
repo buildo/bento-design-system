@@ -1,10 +1,14 @@
-import { Children } from ".";
-import { ToastProviderProps } from "./Toast/createToastProvider";
+import { Children, PartialBentoConfig } from ".";
+import { bentoSprinkles } from "./internal";
+import { ToastProvider } from "./Toast/ToastProvider";
 import { OverlayProvider } from "@react-aria/overlays";
 import { DefaultMessages, DefaultMessagesContext } from "./DefaultMessagesContext";
 import { LinkComponentContext, LinkComponentProps } from "./util/link";
-import { ComponentType, FunctionComponent, useContext } from "react";
+import { ComponentType, useContext } from "react";
 import { I18nProvider } from "@react-aria/i18n";
+import { BentoConfigProvider } from "./BentoConfigContext";
+import { SprinklesFn } from "./util/ConfigurableTypes";
+import { SprinklesContext } from "./SprinklesContext";
 
 type Props = {
   children?: Children;
@@ -32,15 +36,21 @@ type Props = {
    */
   linkComponent?: ComponentType<LinkComponentProps>;
   locale?: string;
+  config?: PartialBentoConfig;
+  sprinkles?: SprinklesFn;
 } & DefaultMessages;
 
-export function createBentoProvider(ToastProvider: FunctionComponent<ToastProviderProps>) {
+export function createBentoProvider(
+  config: PartialBentoConfig = {},
+  sprinkles: SprinklesFn = bentoSprinkles
+) {
   return function BentoProvider({
     children,
     toastDismissAfterMs = 5000,
     defaultMessages,
     linkComponent,
     locale,
+    ...props
   }: Props) {
     const linkComponentFromContext = useContext(LinkComponentContext);
 
@@ -48,12 +58,20 @@ export function createBentoProvider(ToastProvider: FunctionComponent<ToastProvid
       <I18nProvider locale={locale}>
         <OverlayProvider style={{ height: "100%" }}>
           <DefaultMessagesContext.Provider value={{ defaultMessages }}>
-            <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
-              <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
-            </LinkComponentContext.Provider>
+            <BentoConfigProvider value={props.config ?? config}>
+              <SprinklesContext.Provider value={props.sprinkles ?? sprinkles}>
+                <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
+                  <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
+                </LinkComponentContext.Provider>
+              </SprinklesContext.Provider>
+            </BentoConfigProvider>
           </DefaultMessagesContext.Provider>
         </OverlayProvider>
       </I18nProvider>
     );
   };
 }
+
+export const BentoProvider = createBentoProvider();
+
+export const DesignSystemProvider = BentoProvider;

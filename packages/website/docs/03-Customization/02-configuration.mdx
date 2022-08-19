@@ -18,58 +18,73 @@ So Bento is designed following this strategy:
 
 </details>
 
-This is why all the Bento components are exposed via a `createBentoComponents` constructor. This function allows you to build all the design system components, potentially overriding some of their default configurations.
+Bento comes with a default configuration, but you can override it (partially or entirely) by passing a configuration object to `BentoProvider`.
 
 Let's say, for example, our designers decided all the actions (e.g. the buttons at the end of a form) should be left-aligned, with the primary action on the left.
 
 We can configure this by setting `buttonsAlignment` and `primaryPosition` for the `Actions` component:
 
 ```tsx title="my-project/design-system/src/index.tsx"
-import { createBentoComponents } from "@buildo/bento-design-system";
+import { createBentoProvider } from "@buildo/bento-design-system";
 
-export const { Actions, Modal } = createBentoComponents({
+export const BentoProvider = createBentoProvider({
   actions: {
     buttonsAlignment: "left",
     primaryPosition: "left",
   },
 });
+
+export { Actions, Modal /*...*/ } from "@buildo/bento-design-system";
 ```
 
-This way, not only the `Actions` component we get from the builder will always respect the configuration we passed (without the need to specify the behavior every time we use it via props), but also any other component using `Actions` internally (like `Modal` for the actions in the footer) will follow the same configuration.
+This way, not only the `Actions` component will always respect the configuration we passed (without the need to specify the behavior every time we use it via props), but also any other component using `Actions` internally (like `Modal`) will follow the same configuration.
 
-If you need multiple variants of a component, you can invoke `createBentoComponents` more than once.
+If you need multiple variants of a component, you can use the `withBentoConfig` utility.
 For example, suppose you want two types of `Chip`, one pill-shaped and one square-shaped:
 
 ```tsx title="my-project/design-system/src/index.tsx"
-import { createBentoComponents } from "@buildo/bento-design-system";
+import { Chip } from "@buildo/bento-design-system";
 
-export const { Chip: SquaredChip } = createBentoComponents({
-  chip: { radius: 0 },
-});
+export const { Chip: SquaredChip } = withBentoConfig(
+  {
+    chip: { radius: 0 },
+  },
+  Chip
+);
 
-export const { Chip: PillChip } = createBentoComponents({
-  chip: { radius: "circledX" },
-});
+export const { Chip: PillChip } = withBentoConfig(
+  {
+    chip: { radius: "circledX" },
+  },
+  Chip
+);
 ```
 
 <details>
   <summary>What if we need to use different configurations for a component, depending on where it's used?</summary>
-  Let's say the left-aligned configuration for Actions from the previous example should affect all the usages in the app except for the modals.
+  Let's say the left-aligned configuration for `Actions` from the previous example should affect all the usages in the app except for the modals.
 
-Again, we can call `createBentoComponents` multiple times, to get different sets of components:
+Again, we can use `withBentoConfig` to get different sets of components:
 
 ```tsx
 // both Actions and Form exported from here will use the left-aligned Actions
-export const { Actions, Form } = createBentoComponents({
+import { Actions, ActionsConfig, Form, PartialBentoConfig } from "@buildo/bento-design-system";
+
+const leftAlignedActionsConfig: PartialBentoConfig = {
   actions: {
     buttonsAlignment: "left",
     primaryPosition: "left",
   },
-});
+};
 
-// Modal, instead, will use the default Actions component,
-// since we're not overriding its configuration here
-export const { Modal } = createBentoComponents();
+// The exported Actions will be left-aligned
+export const Actions = withBentoConfig(leftAlignedActionsConfig, Actions);
+
+// The exported Form will use left-aligned Actions
+export const Form = withBentoConfig(leftAlignedActionsConfig, Form);
+
+// Modal, instead, will use the default Actions component as configured by BentoProvider
+export { Modal } from "@buildo/bento-design-system";
 ```
 
 </details>

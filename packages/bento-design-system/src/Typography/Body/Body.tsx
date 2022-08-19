@@ -1,5 +1,4 @@
-import { BoxProps } from "../../Box/createBentoBox";
-import { Box, bentoSprinkles } from "../../internal";
+import { Box, BoxProps } from "../../";
 import { Children } from "../../util/Children";
 import { bodyRecipe } from "./Body.css";
 
@@ -23,7 +22,7 @@ type Props = {
   weight?: "default" | "strong";
   color?: Color;
   align?: Align;
-  as?: BoxProps<typeof bentoSprinkles>["as"];
+  as?: BoxProps["as"];
 };
 
 export function Body({

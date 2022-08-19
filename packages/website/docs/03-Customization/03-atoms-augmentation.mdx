@@ -13,7 +13,7 @@ Bento defines its own sprinkles and it exposes them as `bentoSprinkles` (we've s
 
 As discussed in the [Atomic CSS](../Getting%20Started/atomic-styles) documentation, `bentoSprinkles` is a function which returns a class name given a set of known properties.
 
-When we pass this function to `createBentoComponents` it will return - among the others - a `Box` component, which you can think as the JSX equivalent of a sprinkles function.
+Bento exports a `Box` component, which you can think as the JSX equivalent of a sprinkles function.
 
 :::info
 
@@ -25,7 +25,7 @@ Think of `Box` as a drop-in replacement for `div` (even though you can customize
 
 :::
 
-The type of `Box` props is determined by the type of the sprinkles, and if you don't pass anything to `createBentoComponents` it will use a default set of sprinkles defined by Bento.
+By default, `Box` uses the default set of sprinkles defined by Bento (`bentoSprinkles`)
 
 Suppose now you want to add a new color token (`specialBackgroundColor`) to the set of possible background colors.
 
@@ -96,14 +96,31 @@ The `background` CSS property is part of the statusProperties, since we can spec
 
 </details>
 
-Finally, we pass our new sprinkles to `createBentoComponents`:
+Then, we create a `BentoProvider` with your new sprinkles and inform TypeScript of the type of our new sprinkles function:
 
 ```ts title="my-project/design-system/src/index.ts"
-import { createBentoComponents } from "@buildo/bento-design-system";
+import { createBentoProvider, PartialBentoConfig } from "@buildo/bento-design-system";
 import { mySprinkles } from "./mySprinkles.css";
 
-export const { Box } = createBentoComponents(mySprinkles);
+const config: PartialBentoConfig = {}; // empty config, just for the sake of the example
+
+export const BentoProvider = createBentoProvider(config, mySprinkles);
+
+declare module "@buildo/bento-design-system" {
+  interface TypeOverrides {
+    // inform TypeScript about your own sprinkles function
+    SprinklesFn: typeof sprinkles;
+  }
+}
 ```
+
+:::info
+
+The module declaration above is necessary in order to "override" the default type of sprinkles, so that TypeScript knows about your custom tokens.
+
+It can be defined "inline" in the index file, or in a separate .d.ts file (e.g. `bento.d.ts`).
+
+:::
 
 Now we can use `"specialBackgroundColor"` as a value for the `background` prop of `Box`:
 

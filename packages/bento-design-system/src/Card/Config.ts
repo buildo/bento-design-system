@@ -1,6 +1,5 @@
-import { BoxProps } from "../Box/createBentoBox";
-import { bentoSprinkles } from "../internal";
+import { BentoSprinkles } from "../internal";
 
 export type CardConfig = {
-  defaultRadius: Exclude<BoxProps<typeof bentoSprinkles>["borderRadius"], "circled">;
+  defaultRadius: Exclude<BentoSprinkles["borderRadius"], "circled">;
 };

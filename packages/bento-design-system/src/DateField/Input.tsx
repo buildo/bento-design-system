@@ -1,6 +1,6 @@
 import { useTextField } from "@react-aria/textfield";
 import { InputHTMLAttributes, RefObject, useEffect, useState } from "react";
-import { Box } from "../internal";
+import { Box } from "..";
 import { input } from "./DateField.css";
 import { getInputValue, parseDate as _parseDate } from "@datepicker-react/hooks";
 import { useDateFormatter } from "@react-aria/i18n";

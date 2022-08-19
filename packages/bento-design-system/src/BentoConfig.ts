@@ -20,7 +20,6 @@ import {
 import { FormLayoutConfig } from "./Form/Config";
 import { IconButtonConfig } from "./IconButton/Config";
 import { InlineLoaderConfig } from "./InlineLoader/Config";
-import { bentoSprinkles } from "./internal";
 import { ListConfig } from "./List/Config";
 import { MenuConfig } from "./Menu/Config";
 import { ModalConfig } from "./Modal/Config";
@@ -34,11 +33,9 @@ import { TableConfig } from "./Table/Config";
 import { TabsConfig } from "./Tabs/Config";
 import { ToastConfig } from "./Toast/Config";
 import { TooltipConfig } from "./Tooltip/Config";
+import { Object } from "ts-toolbelt";
 
-export type BentoConfig<
-  AtomsFn extends typeof bentoSprinkles,
-  ChipCustomColor extends string = never
-> = {
+export type BentoConfig = {
   actions: ActionsConfig;
   areaLoader: AreaLoaderConfig;
   avatar: AvatarConfig;
@@ -46,9 +43,9 @@ export type BentoConfig<
   breadcrumb: BreadcrumbConfig;
   button: ButtonConfig;
   card: CardConfig;
-  chip: ChipConfig<AtomsFn, ChipCustomColor>;
+  chip: ChipConfig;
   dateField: DateFieldConfig;
-  decorativeDivider: DecorativeDividerConfig<AtomsFn>;
+  decorativeDivider: DecorativeDividerConfig;
   disclosure: DisclosureConfig;
   disclosureGroup: DisclosureGroupConfig;
   feedback: FeedbackConfig;
@@ -75,3 +72,5 @@ export type BentoConfig<
   stepper: StepperConfig;
   tooltip: TooltipConfig;
 };
+
+export type PartialBentoConfig = Object.Partial<BentoConfig, "deep">;

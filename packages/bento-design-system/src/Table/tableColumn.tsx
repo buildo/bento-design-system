@@ -1,30 +1,19 @@
 import { CellProps, Column as Column_, Row as Row_ } from "react-table";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import {
-  LocalizedString,
-  Children,
-  Body,
-  ButtonProps,
-  ChipProps,
-  IconProps,
-  TooltipProps,
-} from "..";
-import { Box } from "../internal";
+import { LocalizedString, Children, Body, IconProps, Box } from "..";
 import { Column } from "./types";
-import { FunctionComponent } from "react";
-import { ButtonLinkProps } from "../Button/ButtonLink";
 import {
-  createButtonCell,
-  createButtonLinkCell,
-  createChipCell,
-  createIconButtonCell,
-  createTextWithIconCell,
   LinkCell,
   IconCell,
   LabelCell,
   TextCell,
+  ButtonCell,
+  ChipCell,
+  ButtonLinkCell,
+  TextWithIconCell,
+  IconButtonCell,
 } from "./cells";
-import { IconButtonProps } from "../IconButton/createIconButton";
+import { FunctionComponent } from "react";
 
 export type { CellProps } from "react-table";
 
@@ -35,7 +24,7 @@ export type ColumnOptionsBase<A> = {
   width?: Column_<{}>["gridWidth"];
 } & Omit<Column_<{}>, "accessor" | "Header" | "Cell" | "sortType" | "width" | "gridWidth">;
 
-export function column<A extends string, V, D extends Record<string, unknown>>({
+export function custom<A extends string, V, D extends Record<string, unknown>>({
   headerLabel,
   sortType,
   missingValue,
@@ -76,89 +65,75 @@ export function column<A extends string, V, D extends Record<string, unknown>>({
   return column;
 }
 
-export function createButtonColumn(Button: FunctionComponent<ButtonProps>) {
-  const ButtonCell = createButtonCell(Button);
-  return function buttonColumn<A extends string>(options: ColumnOptionsBase<A>) {
-    return column({
-      ...options,
-      Cell: ButtonCell,
-      sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
-    });
-  };
+export function button<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
+    ...options,
+    Cell: ButtonCell,
+    sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
+  });
 }
 
-export function createButtonLinkColumn(ButtonLink: FunctionComponent<ButtonLinkProps>) {
-  const ButtonLinkCell = createButtonLinkCell(ButtonLink);
-  return function buttonLinkColumn<A extends string>(options: ColumnOptionsBase<A>) {
-    return column({
-      ...options,
-      Cell: ButtonLinkCell,
-      sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
-    });
-  };
+export function buttonLink<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
+    ...options,
+    Cell: ButtonLinkCell,
+    sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
+  });
 }
 
-export function createChipColumn<CustomColor extends string>(
-  Chip: FunctionComponent<ChipProps<CustomColor>>
-) {
-  const ChipCell = createChipCell(Chip);
-  return function chipColumn<A extends string>(options: ColumnOptionsBase<A>) {
-    return column({
-      ...options,
-      Cell: ChipCell,
-      sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
-    });
-  };
+export function chip<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
+    ...options,
+    Cell: ChipCell,
+    sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
+  });
 }
 
-export function textColumn<A extends string>(options: ColumnOptionsBase<A>) {
-  return column({
+export function text<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
     ...options,
     Cell: TextCell,
   });
 }
 
-export function createTextWithIconColumn(Tooltip: FunctionComponent<TooltipProps>) {
-  const TextWithIconCell = createTextWithIconCell(Tooltip);
-  return function textWithIconColumn<A extends string>({
-    iconPosition,
-    ...options
-  }: ColumnOptionsBase<A> & {
-    iconPosition: "left" | "right";
-  }) {
-    return column({
-      ...options,
-      Cell: ({
-        value: _value,
-        ...props
-      }: CellProps<
-        {},
-        {
-          icon: FunctionComponent<IconProps> | null;
-          text: LocalizedString;
-          tooltipContent?: Children;
-        }
-      >) => {
-        const value = { ..._value, iconPosition };
-        const textWithIconCellProps = {
-          ...props,
-          value,
-          cell: { ...props.cell, value },
-        };
-        return <TextWithIconCell {...textWithIconCellProps} />;
-      },
-      sortType: (a, b) => (a?.text ?? "").localeCompare(b?.text ?? ""),
-    });
-  };
+export function textWithIcon<A extends string>({
+  iconPosition,
+  ...options
+}: ColumnOptionsBase<A> & {
+  iconPosition: "left" | "right";
+}) {
+  return custom({
+    ...options,
+    Cell: ({
+      value: _value,
+      ...props
+    }: CellProps<
+      {},
+      {
+        icon: FunctionComponent<IconProps> | null;
+        text: LocalizedString;
+        tooltipContent?: Children;
+      }
+    >) => {
+      const value = { ..._value, iconPosition };
+      const textWithIconCellProps = {
+        ...props,
+        value,
+        cell: { ...props.cell, value },
+      };
+      return <TextWithIconCell {...textWithIconCellProps} />;
+    },
+    sortType: (a, b) => (a?.text ?? "").localeCompare(b?.text ?? ""),
+  });
 }
 
-export function numberColumn<A extends string>({
+export function number<A extends string>({
   valueFormatter,
   ...options
 }: ColumnOptionsBase<A> & {
   valueFormatter: (n: number) => LocalizedString;
 }) {
-  return column({
+  return custom({
     ...options,
     Cell: ({ value: numericValue, ...props }: CellProps<{}, number>) => {
       const value = valueFormatter(numericValue);
@@ -173,75 +148,69 @@ export function numberColumn<A extends string>({
   });
 }
 
-export function createNumberWithIconColumn(Tooltip: FunctionComponent<TooltipProps>) {
-  const TextWithIconCell = createTextWithIconCell(Tooltip);
-  return function numberWithIconColumn<A extends string>({
-    valueFormatter,
-    ...options
-  }: ColumnOptionsBase<A> & {
-    valueFormatter: (n: number) => LocalizedString;
-  }) {
-    return column({
-      ...options,
-      Cell: ({
-        value: { numericValue, icon, tooltipContent },
-        ...props
-      }: CellProps<
-        {},
-        {
-          icon: FunctionComponent<IconProps> | null;
-          numericValue: number;
-          tooltipContent?: Children;
-        }
-      >) => {
-        const value = {
-          text: valueFormatter(numericValue),
-          icon,
-          iconPosition: "right" as const,
-          tooltipContent,
-        };
-        const textCellProps = {
-          ...props,
-          value,
-          cell: { ...props.cell, value },
-        };
-        return <TextWithIconCell {...textCellProps} />;
-      },
-      sortType: (a, b) => (a?.numericValue || 0) - (b?.numericValue || 0),
-    });
-  };
+export function numberWithIcon<A extends string>({
+  valueFormatter,
+  ...options
+}: ColumnOptionsBase<A> & {
+  valueFormatter: (n: number) => LocalizedString;
+}) {
+  return custom({
+    ...options,
+    Cell: ({
+      value: { numericValue, icon, tooltipContent },
+      ...props
+    }: CellProps<
+      {},
+      {
+        icon: FunctionComponent<IconProps> | null;
+        numericValue: number;
+        tooltipContent?: Children;
+      }
+    >) => {
+      const value = {
+        text: valueFormatter(numericValue),
+        icon,
+        iconPosition: "right" as const,
+        tooltipContent,
+      };
+      const textCellProps = {
+        ...props,
+        value,
+        cell: { ...props.cell, value },
+      };
+      return <TextWithIconCell {...textCellProps} />;
+    },
+    sortType: (a, b) => (a?.numericValue || 0) - (b?.numericValue || 0),
+  });
 }
 
-export function labelColumn<A extends string>(options: ColumnOptionsBase<A>) {
-  return column({
+export function label<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
     ...options,
     Cell: LabelCell,
   });
 }
 
-export function linkColumn<A extends string>(options: ColumnOptionsBase<A>) {
-  return column({
+export function link<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
     ...options,
     Cell: LinkCell,
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
 }
 
-export function iconColumn<A extends string>(options: ColumnOptionsBase<A>) {
-  return column({
+export function icon<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
     ...options,
     Cell: IconCell,
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
 }
 
-export function createIconButtonColumn(IconButton: FunctionComponent<IconButtonProps>) {
-  const IconButtonCell = createIconButtonCell(IconButton);
-  return function buttonColumn<A extends string>(options: ColumnOptionsBase<A>) {
-    return column({
-      ...options,
-      Cell: IconButtonCell,
-      sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
-    });
-  };
+export function iconButton<A extends string>(options: ColumnOptionsBase<A>) {
+  return custom({
+    ...options,
+    Cell: IconButtonCell,
+    sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
+  });
 }

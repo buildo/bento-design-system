@@ -1,4 +1,3 @@
-import { FunctionComponent } from "react";
 import {
   ActionsProps,
   Body,
@@ -7,12 +6,14 @@ import {
   ContentBlock,
   Display,
   LocalizedString,
+  Box,
+  Stack,
+  Actions,
 } from "..";
 
-import { Box, Stack } from "../internal";
 import { Headline } from "../Typography/Headline/Headline";
-import { FormConfig } from "./Config";
 import { FocusScope } from "@react-aria/focus";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = {
   children: Children;
@@ -26,57 +27,52 @@ type Props = {
   autoFocus?: boolean;
 };
 
-export function createForm(
-  config: FormConfig,
-  {
-    Actions,
-  }: {
-    Actions: FunctionComponent<ActionsProps>;
-  }
-) {
-  return function Form({
-    title,
-    description,
-    children,
-    submitButton,
-    secondaryButton,
-    error,
-    errorBannerWidth = config.defaultErrorBannerWidth,
-    actionsSize = config.defaultActionsSize,
-    autoFocus,
-  }: Props) {
-    return (
-      <FocusScope autoFocus={autoFocus}>
-        <Box as="form" onSubmit={(e) => e.preventDefault()}>
-          <ContentBlock maxWidth={700}>
-            <Stack space={config.formSpacing}>
-              {(title || description) && (
-                <Stack space={config.headerSpacing}>
-                  {title &&
-                    (config.headerTitle.kind === "display" ? (
-                      <Display size={config.headerTitle.size}>{title}</Display>
-                    ) : (
-                      <Headline size={config.headerTitle.size}>{title}</Headline>
-                    ))}
-                  {description && <Body size={config.headerDescriptionSize}>{description}</Body>}
-                </Stack>
-              )}
-              {children}
-              {(submitButton || secondaryButton) && (
-                <Actions
-                  size={actionsSize}
-                  primaryAction={submitButton}
-                  secondaryAction={secondaryButton}
-                  error={error}
-                  errorBannerWidth={errorBannerWidth}
-                />
-              )}
-            </Stack>
-          </ContentBlock>
-        </Box>
-      </FocusScope>
-    );
-  };
+export function Form({
+  title,
+  description,
+  children,
+  submitButton,
+  secondaryButton,
+  error,
+  errorBannerWidth: errorBannerWidth_,
+  actionsSize: actionsSize_,
+  autoFocus,
+}: Props) {
+  const config = useBentoConfig().formLayout.form;
+  const errorBannerWidth = errorBannerWidth_ ?? config.defaultErrorBannerWidth;
+  const actionsSize = actionsSize_ ?? config.defaultActionsSize;
+
+  return (
+    <FocusScope autoFocus={autoFocus}>
+      <Box as="form" onSubmit={(e) => e.preventDefault()}>
+        <ContentBlock maxWidth={700}>
+          <Stack space={config.formSpacing}>
+            {(title || description) && (
+              <Stack space={config.headerSpacing}>
+                {title &&
+                  (config.headerTitle.kind === "display" ? (
+                    <Display size={config.headerTitle.size}>{title}</Display>
+                  ) : (
+                    <Headline size={config.headerTitle.size}>{title}</Headline>
+                  ))}
+                {description && <Body size={config.headerDescriptionSize}>{description}</Body>}
+              </Stack>
+            )}
+            {children}
+            {(submitButton || secondaryButton) && (
+              <Actions
+                size={actionsSize}
+                primaryAction={submitButton}
+                secondaryAction={secondaryButton}
+                error={error}
+                errorBannerWidth={errorBannerWidth}
+              />
+            )}
+          </Stack>
+        </ContentBlock>
+      </Box>
+    </FocusScope>
+  );
 }
 
 export type { Props as FormProps };

@@ -1,15 +1,13 @@
-import { Children } from "..";
-import { Columns } from "../internal";
-import { FormRowConfig } from "./Config";
+import { Children, Columns } from "..";
+import { useBentoConfig } from "../BentoConfigContext";
 
 type Props = {
   children: Children;
 };
 
-export function createFormRow(config: FormRowConfig) {
-  return function FormRow({ children }: Props) {
-    return <Columns space={config.rowSpacing} collapseBelow="tablet" children={children} />;
-  };
+export function FormRow({ children }: Props) {
+  const config = useBentoConfig().formLayout.row;
+  return <Columns space={config.rowSpacing} collapseBelow="tablet" children={children} />;
 }
 
 export type { Props as FormRowProps };

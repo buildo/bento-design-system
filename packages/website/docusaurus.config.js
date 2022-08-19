@@ -62,7 +62,7 @@ const config = {
     [
       "docusaurus-plugin-react-docgen-typescript",
       {
-        src: ["../storybook/stories/index.tsx"],
+        src: ["../bento-design-system/src/index.ts"],
         global: true,
         parserOptions: {
           // @ts-ignore

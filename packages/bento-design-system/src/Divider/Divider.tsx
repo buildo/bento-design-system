@@ -1,7 +1,6 @@
 import { useSeparator } from "@react-aria/separator";
-import { BoxType } from "../Box/createBentoBox";
-import { bentoSprinkles, Box } from "../internal";
-import { DecorativeDividerConfig } from "./Config";
+import { useBentoConfig } from "../BentoConfigContext";
+import { Box } from "../Box/Box";
 import { divider } from "./Divider.css";
 
 type Props = {
@@ -13,20 +12,17 @@ export function Divider({ orientation = "horizontal" }: Props) {
   return <Box {...separatorProps} className={divider({ orientation })} />;
 }
 
-export function createDecorativeDivider<AtomsFn extends typeof bentoSprinkles>(
-  config: DecorativeDividerConfig<AtomsFn>,
-  { Box }: { Box: BoxType<AtomsFn> }
-) {
-  return function DecorativeDivider() {
-    const { separatorProps } = useSeparator({});
-    return (
-      <Box
-        {...separatorProps}
-        className={divider({ orientation: "horizontal" })}
-        color={config.color}
-        style={{ background: "currentColor", height: config.height }}
-        borderRadius={config.radius || undefined}
-      />
-    );
-  };
+export function DecorativeDivider() {
+  const config = useBentoConfig().decorativeDivider;
+  const { separatorProps } = useSeparator({});
+
+  return (
+    <Box
+      {...separatorProps}
+      className={divider({ orientation: "horizontal" })}
+      color={config.color}
+      style={{ background: "currentColor", height: config.height }}
+      borderRadius={config.radius || undefined}
+    />
+  );
 }

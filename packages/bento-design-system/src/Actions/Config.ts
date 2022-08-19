@@ -1,7 +1,6 @@
-import { BoxProps } from "../Box/createBentoBox";
-import { ButtonProps } from "../Button/createButtons";
-import { bentoSprinkles } from "../internal";
-import { ActionsProps } from "./createActions";
+import { ButtonProps } from "../Button/Button";
+import { BentoSprinkles } from "../internal";
+import { ActionsProps } from "./Actions";
 
 export type ActionsConfig = {
   primaryActionButtonKind: ButtonProps["kind"];
@@ -9,6 +8,6 @@ export type ActionsConfig = {
   primaryPosition: "left" | "right";
   defaultSize: ButtonProps["size"];
   buttonsAlignment: "left" | "right" | "spaceBetween";
-  spaceBetweenButtons: BoxProps<typeof bentoSprinkles>["gap"];
+  spaceBetweenButtons: BentoSprinkles["gap"];
   defaultErrorBannerWidth: NonNullable<ActionsProps["errorBannerWidth"]>;
 };
