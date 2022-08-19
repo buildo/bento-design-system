@@ -9,5 +9,5 @@ export type MenuConfig = {
   headerPaddingX: BentoSprinkles["paddingX"];
   headerPaddingY: BentoSprinkles["paddingY"];
   defaultOffset: number;
-  subMenuIcon: (props: IconProps) => Children;
+  childMenuIcon: (props: IconProps) => Children;
 };

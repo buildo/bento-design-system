@@ -4,6 +4,7 @@ import {
   DOMAttributes,
   Ref,
   RefObject,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -14,22 +15,27 @@ import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState, MenuTriggerState } from "@react-stately/menu";
 import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
+import { createPortal } from "react-dom";
+import { FocusScope } from "@react-aria/focus";
 import { useOverlayPosition } from "@react-aria/overlays";
 import { useBentoConfig } from "../BentoConfigContext";
+import { MenuConfig } from "./Config";
 
 type MenuItemProps = ListProps["items"][number] & {
-  subItems?: ListProps["items"];
+  subItems?: MenuItemProps[];
 };
 
-type SubMenuProps = {
+type NestedMenuProps = {
   label: Children;
-  items: ListProps["items"];
+  items: MenuItemProps[];
   isSelected: boolean;
   placement: ComponentProps<typeof Popover>["placement"];
   offset: ComponentProps<typeof Popover>["offset"];
   size: ListProps["size"];
   state: MenuTriggerState;
   triggerRef: RefObject<HTMLElement>;
+  overlayRef: RefObject<HTMLElement>;
+  closeOnSelect?: boolean;
   dividers?: boolean;
   maxHeight?: number;
 };
@@ -59,9 +65,23 @@ type Props = {
   dividers?: boolean;
   maxHeight?: number;
   closeOnSelect?: boolean;
-  subMenuPlacement?: ComponentProps<typeof Popover>["placement"];
-  subMenuOffset?: ComponentProps<typeof Popover>["offset"];
+  childMenuPlacement?: ComponentProps<typeof Popover>["placement"];
+  childMenuOffset?: ComponentProps<typeof Popover>["offset"];
 };
+
+function useNestedMenu(items: MenuItemProps[]) {
+  const childMenuTriggerRefs = useMemo<Array<RefObject<HTMLElement>>>(
+    () =>
+      Array(items.length)
+        .fill(0)
+        .map((_) => createRef()),
+    [items]
+  );
+  const [selectedMenuItem, setSelectedMenuItem] = useState<MenuItemProps>();
+  const childMenuState = useMenuTriggerState({ defaultOpen: false });
+
+  return { childMenuTriggerRefs, childMenuState, selectedMenuItem, setSelectedMenuItem };
+}
 
 export function Menu({
   items: _items,
@@ -74,16 +94,15 @@ export function Menu({
   dividers,
   maxHeight,
   closeOnSelect,
-  subMenuPlacement = "right top",
-  subMenuOffset: subMenuOffset_,
+  childMenuPlacement = "right top",
+  childMenuOffset: childMenuOffset_,
 }: Props) {
   const config = useBentoConfig().menu;
-  const subMenuOffset = subMenuOffset_ ?? config.defaultOffset;
+  const childMenuOffset = childMenuOffset_ ?? config.defaultOffset;
   const triggerRef = useRef(null);
+  const overlayRef = useRef(null);
 
-  const state = useMenuTriggerState({
-    defaultOpen: initialIsOpen,
-  });
+  const state = useMenuTriggerState({ defaultOpen: initialIsOpen });
 
   const { menuTriggerProps, menuProps } = useMenuTrigger({}, state, triggerRef);
   const { buttonProps: triggerProps } = useButton(
@@ -91,75 +110,35 @@ export function Menu({
     triggerRef
   );
 
-  const subMenuTriggerRefs = useMemo<Array<RefObject<HTMLElement>>>(
-    () =>
-      Array(_items.length)
-        .fill(0)
-        .map((_) => createRef()),
-    [_items]
+  const { childMenuTriggerRefs, childMenuState, selectedMenuItem, setSelectedMenuItem } =
+    useNestedMenu(_items);
+
+  const items = processMenuItems(
+    _items,
+    state,
+    selectedMenuItem,
+    setSelectedMenuItem,
+    closeOnSelect,
+    dividers,
+    maxHeight,
+    size,
+    childMenuPlacement,
+    childMenuOffset,
+    childMenuState,
+    childMenuTriggerRefs,
+    overlayRef,
+    config
   );
-  const [selectedSubMenu, setSelectedSubMenu] = useState<MenuItemProps>();
-  const subState = useMenuTriggerState({ defaultOpen: false });
-
-  const processCloseOnSelect = (item: ListProps["items"][number] | MenuItemProps) => {
-    if (closeOnSelect && item.onPress) {
-      const onPress = item.onPress;
-      return {
-        ...item,
-        onPress: () => {
-          onPress();
-          subState.close();
-          state.close();
-        },
-      };
-    } else {
-      return item;
-    }
-  };
-
-  const items = _items.map((item, index) => {
-    if (item.subItems) {
-      const { subItems, label, ...itemProps } = item;
-      return {
-        ...itemProps,
-        label: (
-          <SubMenu
-            label={label}
-            items={subItems.map(processCloseOnSelect)}
-            isSelected={selectedSubMenu === item}
-            placement={subMenuPlacement}
-            offset={subMenuOffset}
-            size={size}
-            state={subState}
-            triggerRef={subMenuTriggerRefs[index]}
-            dividers={dividers}
-            maxHeight={maxHeight}
-          />
-        ),
-        ref: subMenuTriggerRefs[index],
-        trailingIcon: config.subMenuIcon,
-        onPress: () => {
-          if (selectedSubMenu === item) {
-            setSelectedSubMenu(undefined);
-            subState.close();
-          } else {
-            setSelectedSubMenu(item);
-            subState.open();
-          }
-        },
-      } as ListProps["items"][number];
-    } else {
-      return processCloseOnSelect(item);
-    }
-  });
 
   return (
     <Box position="relative">
       {trigger(triggerRef, triggerProps, state)}
       {state.isOpen && (
         <Popover
+          ref={overlayRef}
           onClose={() => {
-            subState.close();
+            setSelectedMenuItem(undefined);
+            childMenuState.close();
             state.close();
           }}
           triggerRef={triggerRef}
@@ -192,49 +171,158 @@ export function Menu({
   );
 }
 
-function SubMenu({
+function NestedMenu({
   label,
-  items,
+  items: _items,
   isSelected,
   placement,
   offset,
   size,
   state,
   triggerRef,
+  overlayRef,
+  closeOnSelect,
   dividers,
   maxHeight,
-}: SubMenuProps) {
+}: NestedMenuProps) {
   const config = useBentoConfig().menu;
-  const subMenuRef = useRef(null);
+  const componentRef = useRef(null);
+
+  const { childMenuTriggerRefs, childMenuState, selectedMenuItem, setSelectedMenuItem } =
+    useNestedMenu(_items);
+
+  const items = processMenuItems(
+    _items,
+    state,
+    selectedMenuItem,
+    setSelectedMenuItem,
+    closeOnSelect,
+    dividers,
+    maxHeight,
+    size,
+    placement,
+    offset,
+    childMenuState,
+    childMenuTriggerRefs,
+    overlayRef,
+    config
+  );
 
   const { menuProps } = useMenuTrigger({}, state, triggerRef);
   const { overlayProps: positionProps } = useOverlayPosition({
     containerPadding: 0,
     targetRef: triggerRef,
-    overlayRef: subMenuRef,
+    overlayRef: componentRef,
     isOpen: isSelected,
     placement,
     offset,
   });
 
+  useEffect(() => {
+    if (!isSelected) {
+      childMenuState.close();
+      setSelectedMenuItem(undefined);
+    }
+  }, [isSelected, childMenuState, setSelectedMenuItem]);
+
+  const nestedMenuPortal = useMemo(
+    () =>
+      createPortal(
+        <FocusScope restoreFocus>
+          <Box
+            ref={componentRef}
+            className={menuRecipe({ elevation: config.elevation })}
+            {...(menuProps as DOMAttributes<HTMLDivElement>)}
+            borderRadius={config.radius}
+            style={{ maxHeight, ...positionProps.style }}
+          >
+            <Inset spaceY={config.paddingY}>
+              <List items={items} size={size} dividers={dividers} />
+            </Inset>
+          </Box>
+        </FocusScope>,
+        overlayRef.current ?? document.body
+      ),
+    [config, dividers, items, maxHeight, menuProps, overlayRef, positionProps, size]
+  );
+
   return (
     <Box>
       {label}
-      {isSelected && state.isOpen && (
-        <Box
-          ref={subMenuRef}
-          className={menuRecipe({ elevation: config.elevation })}
-          {...(menuProps as DOMAttributes<HTMLDivElement>)}
-          borderRadius={config.radius}
-          style={{ maxHeight, height: "fit-content", ...positionProps.style }}
-        >
-          <Inset spaceY={config.paddingY}>
-            <List items={items} size={size} dividers={dividers} />
-          </Inset>
-        </Box>
-      )}
+      {isSelected && state.isOpen ? nestedMenuPortal : null}
     </Box>
   );
+}
+
+function processMenuItems(
+  items: MenuItemProps[],
+  state: MenuTriggerState,
+  selectedItem: MenuItemProps | undefined,
+  setSelectedItem: (item?: MenuItemProps) => void,
+  closeOnSelect: boolean | undefined,
+  dividers: boolean | undefined,
+  maxHeight: number | undefined,
+  size: ListProps["size"],
+  childMenuPlacement: ComponentProps<typeof Popover>["placement"],
+  childMenuOffset: ComponentProps<typeof Popover>["offset"],
+  childMenuState: MenuTriggerState,
+  childMenuTriggers: Array<RefObject<HTMLElement>>,
+  overlayRef: RefObject<HTMLElement>,
+  config: MenuConfig
+) {
+  const processCloseOnSelect = (item: MenuItemProps) => {
+    if (closeOnSelect && item.onPress) {
+      const onPress = item.onPress;
+      return {
+        ...item,
+        onPress: () => {
+          setSelectedItem(undefined);
+          childMenuState.close();
+          state.close();
+          onPress();
+        },
+      };
+    } else {
+      return item;
+    }
+  };
+
+  return items.map((item, index) => {
+    if (item.subItems) {
+      const { subItems, label, ...itemProps } = item;
+      return {
+        ...itemProps,
+        label: (
+          <NestedMenu
+            label={label}
+            items={subItems}
+            isSelected={selectedItem === item}
+            placement={childMenuPlacement}
+            offset={childMenuOffset}
+            size={size}
+            state={childMenuState}
+            triggerRef={childMenuTriggers[index]}
+            overlayRef={overlayRef}
+            dividers={dividers}
+            maxHeight={maxHeight}
+          />
+        ),
+        ref: childMenuTriggers[index],
+        trailingIcon: config.childMenuIcon,
+        onPress: () => {
+          if (selectedItem === item) {
+            setSelectedItem(undefined);
+            childMenuState.close();
+          } else {
+            setSelectedItem(item);
+            childMenuState.open();
+          }
+        },
+      } as ListProps["items"][number];
+    } else {
+      return processCloseOnSelect(item);
+    }
+  });
 }
 
 export type { Props as MenuProps };
