@@ -43,6 +43,7 @@ export * from "./Layout/Stack";
 export * from "./Layout/Tiles";
 export * from "./Link/Link";
 export * from "./List/List";
+export * from "./List/ListItem";
 export * from "./Menu/Menu";
 export * from "./Modal/Modal";
 export * from "./Navigation/Navigation";
