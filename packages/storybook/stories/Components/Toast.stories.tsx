@@ -1,5 +1,5 @@
-import { DesignSystemProvider, Toast, useToast } from "..";
-import { createComponentStories, formatMessage, textArgType } from "../util";
+import { BentoProvider, Toast, useToast } from "..";
+import { createComponentStories, textArgType } from "../util";
 import { action } from "@storybook/addon-actions";
 import { ComponentProps, useEffect } from "react";
 import { Meta, StoryFn } from "@storybook/react";
@@ -8,7 +8,7 @@ import { defaultMessages } from "../defaultMessages";
 const { defaultExport, createStory } = createComponentStories({
   component: Toast,
   args: {
-    message: formatMessage("This is a message for you"),
+    message: "This is a message for you",
   },
   argTypes: {
     message: textArgType,
@@ -31,7 +31,7 @@ export const NonDismissable = createStory(
 export const MessageAndAction = createStory({
   kind: "informative",
   action: {
-    label: formatMessage("Action"),
+    label: "Action",
     onPress: action("onPress"),
   },
 });
@@ -40,7 +40,7 @@ export const NonDismissableAndAction = createStory(
   {
     kind: "informative",
     action: {
-      label: formatMessage("Action"),
+      label: "Action",
       onPress: action("onPress"),
     },
   },
@@ -50,7 +50,7 @@ export const NonDismissableAndAction = createStory(
 export const Positive = createStory({
   kind: "positive",
   action: {
-    label: formatMessage("Action"),
+    label: "Action",
     onPress: action("onPress"),
   },
 });
@@ -58,7 +58,7 @@ export const Positive = createStory({
 export const Negative = createStory({
   kind: "negative",
   action: {
-    label: formatMessage("Action"),
+    label: "Action",
     onPress: action("onPress"),
   },
 });
@@ -66,7 +66,7 @@ export const Negative = createStory({
 export const Warning = createStory({
   kind: "warning",
   action: {
-    label: formatMessage("Action"),
+    label: "Action",
     onPress: action("onPress"),
   },
 });
@@ -74,7 +74,7 @@ export const Warning = createStory({
 export const Secondary = createStory({
   kind: "secondary",
   action: {
-    label: formatMessage("Action"),
+    label: "Action",
     onPress: action("onPress"),
   },
 });
@@ -88,7 +88,7 @@ export const WithProvider = ({
     showToast({
       message,
       kind,
-      action: { label: formatMessage("Action"), onPress: action("onPress") },
+      action: { label: "Action", onPress: action("onPress") },
       dismissable: true,
     });
   }, [message, kind, showToast]);
@@ -98,8 +98,8 @@ export const WithProvider = ({
 
 WithProvider.decorators = [
   (StoryFn: StoryFn) => (
-    <DesignSystemProvider toastDismissAfterMs={1000000} defaultMessages={defaultMessages}>
+    <BentoProvider toastDismissAfterMs={1000000} defaultMessages={defaultMessages}>
       <StoryFn />
-    </DesignSystemProvider>
+    </BentoProvider>
   ),
 ];

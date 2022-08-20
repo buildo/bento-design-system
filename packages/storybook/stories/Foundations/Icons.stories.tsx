@@ -1,6 +1,5 @@
 import { Meta } from "@storybook/react";
 import { Box, Inline, Stack, Body, IconProps, icons } from "..";
-import { formatMessage } from "../util";
 
 const meta = {
   args: {
@@ -30,7 +29,7 @@ export const Icons = (args: IconProps) => {
               <Box display="flex" alignItems="center" style={{ height: 24 }}>
                 <Icon size={args.size} color={args.color} />
               </Box>
-              <Body size="small">{formatMessage(name.replace(/^Icon/g, ""))}</Body>
+              <Body size="small">{name.replace(/^Icon/g, "")}</Body>
             </Stack>
           </Box>
         ))}

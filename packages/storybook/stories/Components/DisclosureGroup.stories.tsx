@@ -1,5 +1,5 @@
 import { DisclosureGroup, Placeholder } from "..";
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
   component: DisclosureGroup,
@@ -12,16 +12,16 @@ export default defaultExport;
 export const Linear = createStory({
   items: [
     {
-      title: formatMessage("Title"),
+      title: "Title",
       children: <Placeholder />,
     },
     {
-      title: formatMessage("Title"),
+      title: "Title",
       children: <Placeholder />,
       initialIsOpen: true,
     },
     {
-      title: formatMessage("Title"),
+      title: "Title",
       children: <Placeholder />,
     },
   ],
@@ -29,26 +29,26 @@ export const Linear = createStory({
 
 const nestedItems = [
   {
-    title: formatMessage("Title"),
+    title: "Title",
     initialIsOpen: true,
     items: [
       {
-        title: formatMessage("Title"),
+        title: "Title",
         children: <Placeholder />,
         initialIsOpen: true,
       },
       {
-        title: formatMessage("Title"),
+        title: "Title",
         children: <Placeholder />,
       },
     ],
   },
   {
-    title: formatMessage("Title"),
+    title: "Title",
     children: <Placeholder />,
   },
   {
-    title: formatMessage("Title"),
+    title: "Title",
     children: <Placeholder />,
   },
 ];

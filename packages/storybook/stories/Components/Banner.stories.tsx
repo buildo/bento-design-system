@@ -1,4 +1,4 @@
-import { createComponentStories, formatMessage, textArgType } from "../util";
+import { createComponentStories, textArgType } from "../util";
 import { Banner } from "../";
 import { action } from "@storybook/addon-actions";
 
@@ -13,14 +13,14 @@ const { defaultExport, createStory } = createComponentStories({
 
 export default defaultExport;
 
-const title = formatMessage("Title");
-const shortDescription = formatMessage("Description");
-const longDescription = formatMessage(`Extensively long description, this is so big that it
+const title = "Title";
+const shortDescription = "Description";
+const longDescription = `Extensively long description, this is so big that it
 should overfill the screen and break into several lines. It's really a long description, not gonna lie.
 Extensively long description, this is so big that it
 should overfill the screen and break into several lines. It's really a long description, not gonna lie.
 Extensively long description, this is so big that it
-should overfill the screen and break into several lines. It's really a long description, not gonna lie.`);
+should overfill the screen and break into several lines. It's really a long description, not gonna lie.`;
 
 export const Dismissable = createStory({
   kind: "informative",
@@ -33,7 +33,7 @@ export const DismissableWithAction = createStory({
   title,
   description: shortDescription,
   action: {
-    label: formatMessage("Close"),
+    label: "Close",
     onPress: action("onAction"),
   },
 });

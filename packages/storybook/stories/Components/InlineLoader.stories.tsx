@@ -1,10 +1,10 @@
 import { InlineLoader } from "../";
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
   component: InlineLoader,
   args: {
-    message: formatMessage("This may take several minutes..."),
+    message: "This may take several minutes...",
   },
 });
 

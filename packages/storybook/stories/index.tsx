@@ -72,6 +72,7 @@ export {
   InlineLoader,
   Inset,
   Label,
+  Link,
   List,
   ListItem,
   Menu,
@@ -122,13 +123,17 @@ export {
   useToast,
   svgIllustrationProps,
   svgIconProps,
+  illustrations,
+  icons,
 } from "@buildo/bento-design-system";
 
 export type {
+  IconProps,
+  IllustrationProps,
   Omit,
+  SelectFieldProps,
   SliderFieldProps,
   TooltipProps,
-  IllustrationProps,
 } from "@buildo/bento-design-system";
 
 export const BentoProvider = createBentoProvider(

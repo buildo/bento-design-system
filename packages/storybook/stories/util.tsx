@@ -2,7 +2,6 @@ import { Parameters } from "@storybook/addons";
 import { ComponentStory } from "@storybook/react";
 import { JSXElementConstructor, ComponentProps, useState } from "react";
 import {
-  unsafeLocalizedString,
   Omit,
   alignToFlexAlignLookup,
   alignYToFlexAlignLookup,
@@ -103,5 +102,3 @@ export const fieldArgTypes = {
   issues: issuesArgType,
   hint: textArgType,
 };
-
-export const formatMessage = unsafeLocalizedString;

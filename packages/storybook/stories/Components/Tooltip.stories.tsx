@@ -1,10 +1,10 @@
-import { Box, IconWarning, Tooltip, TooltipProps } from "../";
-import { createComponentStories, formatMessage } from "../util";
+import { Box, IconWarning, Tooltip, TooltipProps } from "..";
+import { createComponentStories } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Tooltip,
   args: {
-    content: formatMessage("Tooltip content"),
+    content: "Tooltip content",
   },
 });
 

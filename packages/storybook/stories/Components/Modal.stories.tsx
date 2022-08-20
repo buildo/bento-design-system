@@ -1,14 +1,12 @@
 import { Modal, Body, Placeholder, Stack, CustomModal, Feedback, Inset } from "../";
-import { createComponentStories, formatMessage, textArgType } from "../util";
+import { createComponentStories, textArgType } from "../util";
 import { action } from "@storybook/addon-actions";
 import { screen } from "@storybook/testing-library";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Modal,
   args: {
-    title: formatMessage(
-      "Create item title veeeery very long very long title here do you see how long it is?"
-    ),
+    title: "Create item title veeeery very long very long title here do you see how long it is?",
   },
   argTypes: {
     title: textArgType,
@@ -27,11 +25,11 @@ export default defaultExport;
 export const WithActions = createStory({
   children: [<Placeholder />],
   primaryAction: {
-    label: formatMessage("Create"),
+    label: "Create",
     onPress: action("Create"),
   },
   secondaryAction: {
-    label: formatMessage("Cancel"),
+    label: "Cancel",
     onPress: action("Cancel"),
   },
 });
@@ -47,11 +45,11 @@ export const Scrollable = createStory({
     </Stack>,
   ],
   primaryAction: {
-    label: formatMessage("Create"),
+    label: "Create",
     onPress: action("Create"),
   },
   secondaryAction: {
-    label: formatMessage("Cancel"),
+    label: "Cancel",
     onPress: action("Cancel"),
   },
 });
@@ -59,44 +57,40 @@ export const Scrollable = createStory({
 export const WithError = createStory({
   children: [<Placeholder />],
   primaryAction: {
-    label: formatMessage("Create"),
+    label: "Create",
     onPress: action("Create"),
   },
   secondaryAction: {
-    label: formatMessage("Cancel"),
+    label: "Cancel",
     onPress: action("Cancel"),
   },
-  error: formatMessage("Something went wrong"),
+  error: "Something went wrong",
 });
 
 export const Destructive = createStory({
   kind: "destructive",
-  title: formatMessage("Delete item"),
-  children: (
-    <Body size="medium">{formatMessage("Are you sure you want to delete this item?")}</Body>
-  ),
+  title: "Delete item",
+  children: <Body size="medium">Are you sure you want to delete this item?</Body>,
   primaryAction: {
-    label: formatMessage("Delete"),
+    label: "Delete",
     onPress: action("Delete"),
   },
   secondaryAction: {
-    label: formatMessage("Cancel"),
+    label: "Cancel",
     onPress: action("Cancel"),
   },
 });
 
 export const Warning = createStory({
-  title: formatMessage("Warning"),
+  title: "Warning",
   kind: "warning",
-  children: (
-    <Body size="medium">{formatMessage("Are you sure you want to create this item?")}</Body>
-  ),
+  children: <Body size="medium">Are you sure you want to create this item?</Body>,
   primaryAction: {
-    label: formatMessage("Create"),
+    label: "Create",
     onPress: action("Create"),
   },
   secondaryAction: {
-    label: formatMessage("Cancel"),
+    label: "Cancel",
     onPress: action("Cancel"),
   },
 });
@@ -104,7 +98,7 @@ export const Warning = createStory({
 export const WithAsyncPrimaryAction = createStory({
   children: [<Placeholder />],
   primaryAction: {
-    label: formatMessage("Create new item"),
+    label: "Create new item",
     onPress: () =>
       new Promise((resolve) => {
         setTimeout(() => {
@@ -114,7 +108,7 @@ export const WithAsyncPrimaryAction = createStory({
       }),
   },
   secondaryAction: {
-    label: formatMessage("Cancel"),
+    label: "Cancel",
     onPress: action("Cancel"),
   },
 });
@@ -127,11 +121,11 @@ export const Small = createStory({
   size: "small",
   children: [<Placeholder />],
   primaryAction: {
-    label: formatMessage("Create"),
+    label: "Create",
     onPress: action("Create"),
   },
   secondaryAction: {
-    label: formatMessage("Cancel"),
+    label: "Cancel",
     onPress: action("Cancel"),
   },
 });
@@ -140,11 +134,11 @@ export const Large = createStory({
   size: "large",
   children: [<Placeholder />],
   primaryAction: {
-    label: formatMessage("Create"),
+    label: "Create",
     onPress: action("Create"),
   },
   secondaryAction: {
-    label: formatMessage("Cancel"),
+    label: "Cancel",
     onPress: action("Cancel"),
   },
 });
@@ -153,11 +147,11 @@ export const Wide = createStory({
   size: "wide",
   children: [<Placeholder />],
   primaryAction: {
-    label: formatMessage("Create"),
+    label: "Create",
     onPress: action("Create"),
   },
   secondaryAction: {
-    label: formatMessage("Cancel"),
+    label: "Cancel",
     onPress: action("Cancel"),
   },
 });
@@ -170,9 +164,9 @@ export const Custom = () => {
           <Feedback
             size="medium"
             status="negative"
-            title={formatMessage("Something went wrong")}
-            description={formatMessage("Wait a few minutes and retry")}
-            action={{ label: formatMessage("retry"), onPress: action("onPress") }}
+            title="Something went wrong"
+            description="Wait a few minutes and retry"
+            action={{ label: "retry", onPress: action("onPress") }}
           />
         </Stack>
       </Inset>

@@ -1,12 +1,12 @@
 import { action } from "@storybook/addon-actions";
 import React from "react";
 import { Body, Box, Label, Link } from "..";
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Link,
   args: {
-    label: formatMessage("I'm a link"),
+    label: "I'm a link",
   },
   decorators: [
     (Story: React.FC) => (
@@ -77,7 +77,7 @@ export const ComplexChildren = createStory({
   label: undefined,
   children: (
     <Box background="backgroundPositive" padding={40} borderRadius={16} boxShadow="outlinePositive">
-      <Body size="large">{formatMessage("The entire box is a link!")}</Body>
+      <Body size="large">The entire box is a link!</Body>
     </Box>
   ),
 });

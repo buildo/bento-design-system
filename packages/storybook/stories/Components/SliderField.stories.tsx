@@ -1,5 +1,5 @@
 import { SliderField, SliderFieldProps, Omit } from "..";
-import { Actions, createComponentStories, formatMessage } from "../util";
+import { Actions, createComponentStories } from "../util";
 import { Parameters } from "@storybook/addons";
 import { ComponentStory } from "@storybook/react";
 
@@ -7,8 +7,8 @@ const args = {
   name: "slider-field",
   minValue: 0,
   maxValue: 100,
-  label: formatMessage("Label"),
-  hint: formatMessage("Some hint that is very useful to you"),
+  label: "Label",
+  hint: "Some hint that is very useful to you",
 } as const;
 
 const { defaultExport, createControlledStory: createControlledStory_ } = createComponentStories<
@@ -33,7 +33,7 @@ export default defaultExport;
 
 export const Single = createControlledStory(30, {
   type: "single",
-  assistiveText: formatMessage("Assistive text"),
+  assistiveText: "Assistive text",
 });
 
 export const Double = createControlledStory([30, 80], {

@@ -1,13 +1,13 @@
 import { NumberField } from "../";
-import { createComponentStories, fieldArgTypes, formatMessage, textArgType } from "../util";
+import { createComponentStories, fieldArgTypes, textArgType } from "../util";
 
 const { defaultExport, createStory, createControlledStory } = createComponentStories({
   component: NumberField,
   args: {
     name: "applications",
-    label: formatMessage("Applications"),
-    placeholder: formatMessage("Number of target applications"),
-    assistiveText: formatMessage("The number of applications this campaign is targeting"),
+    label: "Applications",
+    placeholder: "Number of target applications",
+    assistiveText: "The number of applications this campaign is targeting",
   },
   argTypes: {
     ...fieldArgTypes,
@@ -24,7 +24,7 @@ export const Disabled = createControlledStory(0, {
 });
 
 export const Error = createControlledStory(0, {
-  issues: [formatMessage("Please insert a number greater than 2")],
+  issues: ["Please insert a number greater than 2"],
 });
 
 export const Currency = createControlledStory(0, {

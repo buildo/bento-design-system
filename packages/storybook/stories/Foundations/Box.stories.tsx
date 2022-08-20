@@ -1,10 +1,10 @@
 import { Box } from "..";
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Box,
   args: {
-    children: formatMessage("Test"),
+    children: "Test",
   },
 });
 

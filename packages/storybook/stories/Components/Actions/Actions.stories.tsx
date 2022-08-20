@@ -1,4 +1,4 @@
-import { createComponentStories, formatMessage } from "../../util";
+import { createComponentStories } from "../../util";
 import { Actions } from "../..";
 import { action } from "@storybook/addon-actions";
 
@@ -11,12 +11,12 @@ const { defaultExport, createStory } = createComponentStories({
 });
 
 export const primaryAction = {
-  label: formatMessage("Primary Action"),
+  label: "Primary Action",
   onPress: action("onPress"),
 };
 
 export const asyncPrimaryAction = {
-  label: formatMessage("Primary Action"),
+  label: "Primary Action",
   onPress: () =>
     new Promise((resolve) =>
       setTimeout(() => {
@@ -27,7 +27,7 @@ export const asyncPrimaryAction = {
 };
 
 export const secondaryAction = {
-  label: formatMessage("Secondary Action"),
+  label: "Secondary Action",
   onPress: action("onPress"),
 };
 
@@ -56,14 +56,14 @@ export const TwoActions = createStory({
 export const TwoActionsWithErrorHug = createStory({
   primaryAction,
   secondaryAction,
-  error: formatMessage("Something went wrong"),
+  error: "Something went wrong",
 });
 
 export const TwoActionsWithErrorFit = createStory({
   primaryAction,
   secondaryAction,
   errorBannerWidth: "fill",
-  error: formatMessage("Something went wrong"),
+  error: "Something went wrong",
 });
 
 export const TwoActionsDestructive = createStory({

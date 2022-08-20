@@ -1,4 +1,4 @@
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 import {
   IconInformative,
   IconNegative,
@@ -8,7 +8,7 @@ import {
   svgIllustrationProps,
   IllustrationProps,
   Box,
-} from "../";
+} from "..";
 import { Children } from "@buildo/bento-design-system";
 
 function Illustration(props: IllustrationProps) {
@@ -28,10 +28,9 @@ const { defaultExport, createStory } = createComponentStories({
   argTypes: {},
 });
 
-const label = formatMessage("List item");
-const labelLong = formatMessage(
-  "Exceedingly long list item label that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so. Exceedingly long list item label that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so."
-);
+const label = "List item";
+const labelLong =
+  "Exceedingly long list item label that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so. Exceedingly long list item label that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so.";
 const labelRich = (
   <>
     Hello{" "}
@@ -40,14 +39,12 @@ const labelRich = (
     </Box>
   </>
 ) as Children;
-const secondLine = formatMessage("description");
-const secondLineLong = formatMessage(
-  "Exceedingly long list item descrption that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so. Exceedingly long list item description that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so."
-);
-const overline = formatMessage("Overline");
-const overlineLong = formatMessage(
-  "Exceedingly long overline that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so. Exceedingly long overline that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so."
-);
+const secondLine = "description";
+const secondLineLong =
+  "Exceedingly long list item descrption that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so. Exceedingly long list item description that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so.";
+const overline = "Overline";
+const overlineLong =
+  "Exceedingly long overline that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so. Exceedingly long overline that should wrap to multiple lines. Let's check with a veeeeeeery long long string. Is it working? I hope so.";
 const href = "https://www.example.com";
 
 export default defaultExport;
@@ -68,7 +65,7 @@ export const SingleLineIcon = createStory({
     { kind: "single-line", label, icon: IconWarning, href },
     {
       kind: "single-line",
-      label: formatMessage("Disabled"),
+      label: "Disabled",
       icon: IconCheck,
       disabled: true,
       href,

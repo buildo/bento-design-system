@@ -8,7 +8,7 @@ import {
   svgIllustrationProps,
   BentoConfigProvider,
 } from "../";
-import { createComponentStories, fieldArgTypes, formatMessage, textArgType } from "../util";
+import { createComponentStories, fieldArgTypes, textArgType } from "../util";
 
 function Illustration(props: IllustrationProps) {
   return (
@@ -23,40 +23,40 @@ const { defaultExport, createStory, createControlledStory } = createComponentSto
   args: {
     menuSize: "large",
     name: "color",
-    label: formatMessage("What's your favorite color?"),
-    placeholder: formatMessage("Select a color"),
+    label: "What's your favorite color?",
+    placeholder: "Select a color",
     options: [
       {
         value: 1,
-        label: formatMessage("Red"),
+        label: "Red",
         kind: "two-line",
-        secondLine: formatMessage("prova"),
+        secondLine: "prova",
         illustration: Illustration,
       },
       {
         value: 2,
-        label: formatMessage("Blue"),
+        label: "Blue",
         kind: "two-line",
-        secondLine: formatMessage("prova"),
+        secondLine: "prova",
         illustration: Illustration,
       },
       {
         value: 3,
-        label: formatMessage("Green"),
+        label: "Green",
         kind: "two-line",
-        secondLine: formatMessage("prova"),
+        secondLine: "prova",
         illustration: Illustration,
         disabled: true,
       },
       {
         value: 4,
-        label: formatMessage(`
+        label: `
           Very very very very very very very very long label. Did I say this label is very long? Well let me say it again, it's loooooong, very looooooooong. Maybe we should say it again, let's go! Very very very very very very very very long label.
-          Very very very very very very very very long label. Did I say this label is very long? Well let me say it again, it's loooooong, very looooooooong. Maybe we should say it again, let's go! Very very very very very very very very long label.`),
+          Very very very very very very very very long label. Did I say this label is very long? Well let me say it again, it's loooooong, very looooooooong. Maybe we should say it again, let's go! Very very very very very very very very long label.`,
         kind: "single-line",
       },
     ],
-    noOptionsMessage: formatMessage("No options"),
+    noOptionsMessage: "No options",
   },
   argTypes: {
     ...fieldArgTypes,
@@ -75,19 +75,15 @@ export const Disabled = createControlledStory(undefined, {
 });
 
 export const Error = createControlledStory(undefined, {
-  issues: [formatMessage("Please select a color")],
+  issues: ["Please select a color"],
 });
 
 export const InModal = createControlledStory(undefined, {
-  hint: formatMessage("Something useful"),
+  hint: "Something useful",
 });
 InModal.decorators = [
   (Story: StoryFn) => (
-    <Modal
-      title={formatMessage("Title")}
-      onClose={() => {}}
-      closeButtonLabel={formatMessage("Close")}
-    >
+    <Modal title="Title" onClose={() => {}} closeButtonLabel="Close">
       <Story />
     </Modal>
   ),
@@ -96,28 +92,28 @@ InModal.decorators = [
 export const MultiSelectOneOptionSelected = createControlledStory([1], {
   isMulti: true,
   multiValueMessage: (numberOfSelectedOptions: number) =>
-    formatMessage(`${numberOfSelectedOptions} options selected`),
+    `${numberOfSelectedOptions} options selected`,
   showMultiSelectBulkActions: true,
 });
 
 export const MultiSelectMultipleOptionsSelected = createControlledStory([1, 2], {
   isMulti: true,
   multiValueMessage: (numberOfSelectedOptions: number) =>
-    formatMessage(`${numberOfSelectedOptions} options selected`),
+    `${numberOfSelectedOptions} options selected`,
 });
 
 export const WithIconSelected = createControlledStory(1, {
   options: [
-    { value: 1, label: formatMessage("Idea"), icon: IconIdea },
-    { value: 2, label: formatMessage("User"), icon: IconUser },
+    { value: 1, label: "Idea", icon: IconIdea },
+    { value: 2, label: "User", icon: IconUser },
   ],
 });
 
 export const ReadOnly = createStory({
   value: 1,
   options: [
-    { value: 1, label: formatMessage("Idea"), icon: IconIdea },
-    { value: 2, label: formatMessage("User"), icon: IconUser },
+    { value: 1, label: "Idea", icon: IconIdea },
+    { value: 2, label: "User", icon: IconUser },
   ],
   isReadOnly: true,
 });
