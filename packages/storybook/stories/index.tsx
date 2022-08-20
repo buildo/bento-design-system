@@ -2,13 +2,14 @@ import "@buildo/bento-design-system/lib/index.css";
 import "@buildo/bento-design-system/lib/defaultTheme.css";
 import "./theme.css";
 import {
-  createBentoComponents,
+  createBentoProvider,
   defaultConfigs,
   withBentoConfig,
+  Actions,
+  Tabs,
 } from "@buildo/bento-design-system";
 import { sprinkles } from "./sprinkles.css";
 
-export * from "@buildo/bento-design-system";
 const FeedbackBackground = (
   <svg viewBox="0 0 440 240">
     <path
@@ -35,7 +36,7 @@ const FeedbackBackground = (
   </svg>
 );
 
-export const {
+export {
   Actions,
   AreaLoader,
   Avatar,
@@ -56,7 +57,6 @@ export const {
   ContentWithSidebar,
   CustomModal,
   DateField,
-  DesignSystemProvider,
   DecorativeDivider,
   Disclosure,
   DisclosureGroup,
@@ -119,16 +119,31 @@ export const {
   IllustrationNegative,
   IllustrationSearch,
   useComponentsShowcase,
-} = createBentoComponents(sprinkles, {
-  chip: {
-    customColors: {
-      custom: "customColor1",
+  useToast,
+  svgIllustrationProps,
+  svgIconProps,
+} from "@buildo/bento-design-system";
+
+export type {
+  Omit,
+  SliderFieldProps,
+  TooltipProps,
+  IllustrationProps,
+} from "@buildo/bento-design-system";
+
+export const BentoProvider = createBentoProvider(
+  {
+    chip: {
+      customColors: {
+        custom: "customColor1",
+      },
+    },
+    feedback: {
+      background: FeedbackBackground,
     },
   },
-  feedback: {
-    background: FeedbackBackground,
-  },
-});
+  sprinkles
+);
 
 export const FolderTabs = Tabs;
 export const UnderlineTabs = withBentoConfig({ tabs: defaultConfigs.underlineTabs }, Tabs);
