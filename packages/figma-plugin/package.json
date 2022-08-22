@@ -1,13 +1,22 @@
 {
   "dependencies": {
+    "@create-figma-plugin/ui": "^2.1.3",
     "@create-figma-plugin/utilities": "^2.1.2",
-    "@figma-plugin/helpers": "^0.15.2"
+    "@figma-plugin/helpers": "^0.15.2",
+    "deep-object-diff": "^1.1.7",
+    "fastestsmallesttextencoderdecoder": "^1.0.22",
+    "figx": "^0.1.0",
+    "preact": "^10.10.6",
+    "prism-theme-night-owl": "^1.4.0",
+    "prismjs": "^1.28.0",
+    "react-simple-code-editor": "^0.13.0"
   },
   "devDependencies": {
     "@buildo/bento-design-system": "workspace:*",
     "@create-figma-plugin/build": "^2.1.2",
     "@create-figma-plugin/tsconfig": "^2.1.2",
     "@figma/plugin-typings": "1.50.0",
+    "@types/prismjs": "^1.26.0",
     "typescript": "^4"
   },
   "scripts": {
@@ -20,6 +29,26 @@
     ],
     "id": "bento",
     "name": "Bento",
-    "main": "src/main.ts"
+    "menu": [
+      {
+        "name": "Export config",
+        "main": "src/config/index.ts",
+        "ui": "src/config/ui.tsx"
+      },
+      {
+        "name": "Export theme",
+        "main": "src/theme.ts"
+      },
+      {
+        "name": "Export icon",
+        "main": "src/icons.ts",
+        "parameters": [
+          {
+            "name": "Icon name",
+            "key": "iconName"
+          }
+        ]
+      }
+    ]
   }
 }

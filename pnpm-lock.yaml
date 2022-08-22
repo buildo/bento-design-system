@@ -225,18 +225,36 @@ importers:
       '@buildo/bento-design-system': workspace:*
       '@create-figma-plugin/build': ^2.1.2
       '@create-figma-plugin/tsconfig': ^2.1.2
+      '@create-figma-plugin/ui': ^2.1.3
       '@create-figma-plugin/utilities': ^2.1.2
       '@figma-plugin/helpers': ^0.15.2
       '@figma/plugin-typings': 1.50.0
+      '@types/prismjs': ^1.26.0
+      deep-object-diff: ^1.1.7
+      fastestsmallesttextencoderdecoder: ^1.0.22
+      figx: ^0.1.0
+      preact: ^10.10.6
+      prism-theme-night-owl: ^1.4.0
+      prismjs: ^1.28.0
+      react-simple-code-editor: ^0.13.0
       typescript: ^4
     dependencies:
+      '@create-figma-plugin/ui': 2.1.3_preact@10.10.6
       '@create-figma-plugin/utilities': 2.1.2
       '@figma-plugin/helpers': 0.15.2
+      deep-object-diff: 1.1.7
+      fastestsmallesttextencoderdecoder: 1.0.22
+      figx: 0.1.0
+      preact: 10.10.6
+      prism-theme-night-owl: 1.4.0
+      prismjs: 1.28.0
+      react-simple-code-editor: 0.13.0_biqbaboplfbrettd7655fr4n2y
     devDependencies:
       '@buildo/bento-design-system': link:../bento-design-system
       '@create-figma-plugin/build': 2.1.2_l4b5t5osdkckihof4hzv7mgs3y
       '@create-figma-plugin/tsconfig': 2.1.2
       '@figma/plugin-typings': 1.50.0
+      '@types/prismjs': 1.26.0
       typescript: 4.7.4
 
   packages/storybook:
@@ -939,14 +957,14 @@ packages:
     resolution: {integrity: sha512-fJgWlZt7nxGksJS9a0XdSaI4XvpExnNIgRP+rVefWh5U7BL8pPuir6SJUmFKRfjWQ51OtWSzwOxhaH/EBWWc0A==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/template': 7.18.6
+      '@babel/template': 7.18.10
       '@babel/types': 7.18.10
 
   /@babel/helper-hoist-variables/7.18.6:
     resolution: {integrity: sha512-UlJQPkFqFULIcyW5sbzgbkxn2FKRgwWiRexcuaR8RNJRy8+LLveqPjwZV/bwrLZCN0eUHD/x8D0heK1ozuoo6Q==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.18.9
+      '@babel/types': 7.18.10
 
   /@babel/helper-member-expression-to-functions/7.18.6:
     resolution: {integrity: sha512-CeHxqwwipekotzPDUuJOfIMtcIHBuc7WAzLmTYWctVigqS5RktNMQ5bEwQSuGewzYnCtTWa3BARXeiLxDTv+Ng==}
@@ -976,9 +994,9 @@ packages:
       '@babel/helper-simple-access': 7.18.6
       '@babel/helper-split-export-declaration': 7.18.6
       '@babel/helper-validator-identifier': 7.18.6
-      '@babel/template': 7.18.6
-      '@babel/traverse': 7.18.9
-      '@babel/types': 7.18.9
+      '@babel/template': 7.18.10
+      '@babel/traverse': 7.18.11
+      '@babel/types': 7.18.10
     transitivePeerDependencies:
       - supports-color
 
@@ -1188,9 +1206,9 @@ packages:
     resolution: {integrity: sha512-Jf5a+rbrLoR4eNdUmnFu8cN5eNJT6qdTdOg5IHIzq87WwyRw9PwguLFOWYgktN/60IP4fgDUawJvs7PjQIzELQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/template': 7.18.6
-      '@babel/traverse': 7.18.9
-      '@babel/types': 7.18.9
+      '@babel/template': 7.18.10
+      '@babel/traverse': 7.18.11
+      '@babel/types': 7.18.10
     transitivePeerDependencies:
       - supports-color
 
@@ -4345,8 +4363,27 @@ packages:
     resolution: {integrity: sha512-/zO3iafnkykyDyuj2uoBPHOznjxT/BWByr3OO639HQzaelB70Exbm0HOQayOcxeOzn/55JpDwz+fPsT5EqyfRw==}
     dev: true
 
+  /@create-figma-plugin/ui/2.1.3_preact@10.10.6:
+    resolution: {integrity: sha512-pIisuhKeAHxkz5bvSLMFddckDXwpEc4kMMW/RNsNkqDOSLXA6yoQeSvG5XT2m6wLgUO/uhAg84Uzn6mKxoaPvA==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      preact: ^10
+    dependencies:
+      '@create-figma-plugin/utilities': 2.1.3
+      preact: 10.10.6
+    dev: false
+
   /@create-figma-plugin/utilities/2.1.2:
     resolution: {integrity: sha512-Id1pP8TMD8zECQs/3acz9UsI+hu40T6Vx3dIATvvf+oAz5hSEerNoIwiYbkrHitT2NTVZin1nrlXN+M1mwxLsQ==}
+    engines: {node: '>=16'}
+    dependencies:
+      hex-rgb: 5.0.0
+      natural-compare-lite: 1.4.0
+      rgb-hex: 4.0.0
+    dev: false
+
+  /@create-figma-plugin/utilities/2.1.3:
+    resolution: {integrity: sha512-ACtzRBBN+IZfLRoMNjkdXHJv1iLJ/IOIiMQUOCSeOPpzW/76GzmKpn2ST5LR2aQNu1UMUBSMhsNXcuIlW9U/4A==}
     engines: {node: '>=16'}
     dependencies:
       hex-rgb: 5.0.0
@@ -8829,6 +8866,10 @@ packages:
     resolution: {integrity: sha512-VjID5MJb1eGKthz2qUerWT8+R4b9N+CHvGCzg9fn4kWZgaF9AhdYikQio3R7wV8YY1NsQKPaCwKz1Yff+aHNUQ==}
     dev: true
 
+  /@types/prismjs/1.26.0:
+    resolution: {integrity: sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==}
+    dev: true
+
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
@@ -11382,10 +11423,24 @@ packages:
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
 
+  /color-string/1.9.1:
+    resolution: {integrity: sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==}
+    dependencies:
+      color-name: 1.1.4
+      simple-swizzle: 0.2.2
+    dev: false
+
   /color-support/1.1.3:
     resolution: {integrity: sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==}
     hasBin: true
     dev: true
+
+  /color/3.2.1:
+    resolution: {integrity: sha512-aBl7dZI9ENN6fUGC7mWpMTPNHmWUSNan9tuWN6ahh5ZLNk9baLJOnSMlrQkHcrfFgz2/RigjUVAjdx36VcemKA==}
+    dependencies:
+      color-convert: 1.9.3
+      color-string: 1.9.1
+    dev: false
 
   /colord/2.9.2:
     resolution: {integrity: sha512-Uqbg+J445nc1TKn4FoDPS6ZZqAvEDnwrH42yo8B40JSOgSLxMZ/gt3h4nmCtPLQeXhjJJkqBx7SCY35WnIixaQ==}
@@ -14181,6 +14236,10 @@ packages:
   /fastest-stable-stringify/2.0.2:
     resolution: {integrity: sha512-bijHueCGd0LqqNK9b5oCMHc0MluJAx0cwqASgbWMvkO01lCYgIhacVRLcaDz3QnyYIRNJRDwMb41VuT6pHJ91Q==}
 
+  /fastestsmallesttextencoderdecoder/1.0.22:
+    resolution: {integrity: sha512-Pb8d48e+oIuY4MaM64Cd7OW1gt4nxCHs7/ddPPZ/Ic3sg8yVGM7O9wDvZ7us6ScaUupzM+pfBolwtYhN1IxBIw==}
+    dev: false
+
   /fastparse/1.1.2:
     resolution: {integrity: sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==}
     dev: true
@@ -14255,6 +14314,12 @@ packages:
       escape-string-regexp: 1.0.5
       object-assign: 4.1.1
     dev: true
+
+  /figx/0.1.0:
+    resolution: {integrity: sha512-nf3q8ykJZE9MGveNz88E+H6ApGjET/rA6ZxFVF9CKOlZlfG558QS5L1yzjsU6OcGp4Cx3jVPuT2C6Ko2UKd3+Q==}
+    dependencies:
+      color: 3.2.1
+    dev: false
 
   /file-entry-cache/6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
@@ -15707,6 +15772,10 @@ packages:
 
   /is-arrayish/0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
+
+  /is-arrayish/0.3.2:
+    resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
+    dev: false
 
   /is-bigint/1.0.4:
     resolution: {integrity: sha512-zB9CruMamjym81i2JZ3UMn54PKGsQzsJeo6xvN3HJJ4CAsQNB6iRutp2To77OfCNuoxspsIhzaPoO1zyCEhFOg==}
@@ -19571,6 +19640,10 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
+  /preact/10.10.6:
+    resolution: {integrity: sha512-w0mCL5vICUAZrh1DuHEdOWBjxdO62lvcO++jbzr8UhhYcTbFkpegLH9XX+7MadjTl/y0feoqwQ/zAnzkc/EGog==}
+    dev: false
+
   /prelude-ls/1.1.2:
     resolution: {integrity: sha512-ESF23V4SKG6lVSGZgYNpbsiaAkdab6ZgOxe52p7+Kid3W3u3bxR4Vfd/o21dmN7jSt0IwgZ4v5MUd26FEtXE9w==}
     engines: {node: '>= 0.8.0'}
@@ -19657,6 +19730,10 @@ packages:
       react: '>=0.14.9 || 18'
     dependencies:
       react: 18.2.0
+
+  /prism-theme-night-owl/1.4.0:
+    resolution: {integrity: sha512-1N1GVbVorGd5t1Vw76yL/3rhqdiCpDrJg26Is+jGeMV7qiIMZL+bC7Mjx7HMMuVKZoi+2nWSbU5IutBYNy9tiQ==}
+    dev: false
 
   /prismjs/1.27.0:
     resolution: {integrity: sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==}
@@ -20324,6 +20401,16 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: true
+
+  /react-simple-code-editor/0.13.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-v49lVlDv6dlda92Hm+7PorN9V8k+Ech7Y52dPZ3QYClJXaciiYW42Ja/j6MPb5ZPfU6w34ZMi2HRsLhxUjBF8A==}
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /react-syntax-highlighter/13.5.3_react@18.2.0:
     resolution: {integrity: sha512-crPaF+QGPeHNIblxxCdf2Lg936NAHKhNhuMzRL3F9ct6aYXL3NcZtCL0Rms9+qVo6Y1EQLdXGypBNSbPL/r+qg==}
@@ -21339,6 +21426,12 @@ packages:
 
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
+
+  /simple-swizzle/0.2.2:
+    resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
+    dependencies:
+      is-arrayish: 0.3.2
+    dev: false
 
   /sirv/1.0.19:
     resolution: {integrity: sha512-JuLThK3TnZG1TAKDwNIqNq6QA2afLOCcm+iE8D1Kj3GA40pSPsxQjjJl0J8X3tsR7T+CP1GavpzLwYkgVLWrZQ==}
