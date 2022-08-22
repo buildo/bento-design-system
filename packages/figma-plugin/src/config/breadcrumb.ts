@@ -1,7 +1,7 @@
 import { findComponent } from "../util/findComponent";
 import { typographyVariant } from "../util/typographyVariant";
 
-export function breadcrumb() {
+export function breadcrumbConfig() {
   const { findWithVariants } = findComponent("Breadcrumb");
 
   const breadcrumb = findWithVariants({});
