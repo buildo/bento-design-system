@@ -3,6 +3,7 @@ import { buttonConfig } from "./button";
 import { once, showUI } from "@create-figma-plugin/utilities";
 import { breadcrumbConfig } from "./breadcrumb";
 import { avatarConfig } from "./avatar";
+import { chipConfig } from "./chip";
 
 export default function exportConfig() {
   const config = {
@@ -10,6 +11,7 @@ export default function exportConfig() {
     banner: bannerConfig(),
     breadcrumb: breadcrumbConfig(),
     button: buttonConfig(),
+    chip: chipConfig(),
   };
 
   showUI({ title: "Bento config", width: 360, height: 600 }, { config });
