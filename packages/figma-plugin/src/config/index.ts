@@ -1,10 +1,12 @@
 import { bannerConfig } from "./banner";
 import { buttonConfig } from "./button";
 import { once, showUI } from "@create-figma-plugin/utilities";
+import { breadcrumb } from "./breadcrumb";
 
 export default function exportConfig() {
   const config = {
     banner: bannerConfig(),
+    breadcrumb: breadcrumb(),
     button: buttonConfig(),
   };
 

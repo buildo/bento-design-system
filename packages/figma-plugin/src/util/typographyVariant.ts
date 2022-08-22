@@ -53,10 +53,13 @@ export function typographyVariant(node: TextNode):
 function toSize(variant: string): "small" | "medium" | "large" {
   switch (variant) {
     case "Small":
+    case "Small Link":
       return "small";
     case "Medium":
+    case "Medium Link":
       return "medium";
     case "Large":
+    case "Large Link":
       return "large";
     default:
       throw Error(`Unexpected size ${variant}`);
