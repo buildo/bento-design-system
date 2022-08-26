@@ -1,87 +1,16 @@
-import {
-  ComponentProps,
-  createRef,
-  DOMAttributes,
-  Ref,
-  RefObject,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import { Children, Popover, Box, Inset, List, ListProps } from "..";
+import { ComponentProps, DOMAttributes, RefObject, useEffect, useMemo, useRef } from "react";
+import { Popover, Box, Inset, List, ListProps } from "..";
 import { menuRecipe } from "./Menu.css";
 import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState, MenuTriggerState } from "@react-stately/menu";
-import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
 import { createPortal } from "react-dom";
 import { FocusScope } from "@react-aria/focus";
 import { useOverlayPosition } from "@react-aria/overlays";
 import { useBentoConfig } from "../BentoConfigContext";
 import { MenuConfig } from "./Config";
-
-type MenuItemProps = ListProps["items"][number] & {
-  subItems?: MenuItemProps[];
-};
-
-type NestedMenuProps = {
-  label: Children;
-  items: MenuItemProps[];
-  isSelected: boolean;
-  placement: ComponentProps<typeof Popover>["placement"];
-  offset: ComponentProps<typeof Popover>["offset"];
-  size: ListProps["size"];
-  state: MenuTriggerState;
-  triggerRef: RefObject<HTMLElement>;
-  overlayRef: RefObject<HTMLElement>;
-  closeOnSelect?: boolean;
-  dividers?: boolean;
-  maxHeight?: number;
-};
-
-type Props = {
-  size: ListProps["size"];
-  items: MenuItemProps[];
-  /**
-   * Optional static content that is displayed before the menu items.
-   */
-  header?: Children;
-  /**
-   * The trigger element that will be used to open the menu.
-   * It must accept a `ref` prop and other accessibility props to ensure the menu is properly
-   * connected to its trigger, for accessibility purposes.
-   *
-   * It can use the `state` parameter to determine and change the menu state.
-   */
-  trigger: (
-    ref: Ref<HTMLElement>,
-    props: Pick<AriaButtonProps, "id" | "aria-labelledby">,
-    state: MenuTriggerState
-  ) => JSX.Element;
-  initialIsOpen?: boolean;
-  placement?: ComponentProps<typeof Popover>["placement"];
-  offset?: ComponentProps<typeof Popover>["offset"];
-  dividers?: boolean;
-  maxHeight?: number;
-  closeOnSelect?: boolean;
-  childMenuPlacement?: ComponentProps<typeof Popover>["placement"];
-  childMenuOffset?: ComponentProps<typeof Popover>["offset"];
-};
-
-function useNestedMenu(items: MenuItemProps[]) {
-  const childMenuTriggerRefs = useMemo<Array<RefObject<HTMLElement>>>(
-    () =>
-      Array(items.length)
-        .fill(0)
-        .map((_) => createRef()),
-    [items]
-  );
-  const [selectedMenuItem, setSelectedMenuItem] = useState<MenuItemProps>();
-  const childMenuState = useMenuTriggerState({ defaultOpen: false });
-
-  return { childMenuTriggerRefs, childMenuState, selectedMenuItem, setSelectedMenuItem };
-}
+import { MenuItemProps, MenuProps, NestedMenuProps } from "./MenuProps";
+import { useNestedMenu } from "./useNestedMenu";
 
 export function Menu({
   items: _items,
@@ -95,10 +24,10 @@ export function Menu({
   maxHeight,
   closeOnSelect,
   childMenuPlacement = "right top",
-  childMenuOffset: childMenuOffset_,
-}: Props) {
+  childMenuOffset: _childMenuOffset,
+}: MenuProps) {
   const config = useBentoConfig().menu;
-  const childMenuOffset = childMenuOffset_ ?? config.defaultOffset;
+  const childMenuOffset = _childMenuOffset ?? config.defaultOffset;
   const triggerRef = useRef(null);
   const overlayRef = useRef(null);
 
@@ -325,5 +254,4 @@ function processMenuItems(
   });
 }
 
-export type { Props as MenuProps };
 export type { MenuTriggerState };
