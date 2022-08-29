@@ -6,10 +6,10 @@ import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { input } from "./SearchBar.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import { O } from "ts-toolbelt";
 import { useBentoConfig } from "../BentoConfigContext";
+import { AtLeast } from "../util/AtLeast";
 
-type Props = O.AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "aria-labelledby">> & {
+type Props = AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "aria-labelledby">> & {
   value: string;
   onChange: (value: string) => unknown;
   onBlur?: () => unknown;
