@@ -108,4 +108,3 @@ export function Field({
 }
 
 export type FieldType = React.FunctionComponent<Props>;
-export type { Props as FieldProps };
