@@ -1,11 +1,11 @@
 import { HTMLAttributes, useRef } from "react";
-import { O } from "ts-toolbelt";
 import { InternalCheckbox } from "./InternalCheckbox";
 import { useCheckbox } from "@react-aria/checkbox";
 import { useToggleState } from "@react-stately/toggle";
 import { FieldProps } from "../Field/FieldProps";
+import { AtLeast } from "../util/AtLeast";
 
-type Props = O.AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "aria-labelledby">> &
+type Props = AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "aria-labelledby">> &
   Pick<FieldProps<boolean>, "value" | "onChange" | "disabled">;
 
 /**

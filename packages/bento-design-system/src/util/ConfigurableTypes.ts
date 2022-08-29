@@ -1,5 +1,5 @@
 import { bentoSprinkles } from "../internal/sprinkles.css";
-import { Object } from "ts-toolbelt";
+import { Overwrite } from "./Overwrite";
 
 interface ConfigurableTypes {
   LocalizedString: string;
@@ -13,7 +13,7 @@ interface ConfigurableTypes {
  */
 export interface TypeOverrides {}
 
-export type ConfiguredTypes = Object.Overwrite<ConfigurableTypes, TypeOverrides>;
+export type ConfiguredTypes = Overwrite<ConfigurableTypes, TypeOverrides>;
 
 // NOTE(gabro): We export the configured types below by intersecting them first with a "baseline" type,
 // which effectively acts as a type constraint.

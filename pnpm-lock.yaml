@@ -111,7 +111,6 @@ importers:
       ts-jest: 28.0.7
       ts-loader: 9.3.1
       ts-pattern: ^3.3.5
-      ts-toolbelt: ^9.6.0
       tsup: 5.12.9
       typescript: 4.7.4
       webpack: 5.74.0
@@ -168,7 +167,6 @@ importers:
       react-use: 17.4.0_biqbaboplfbrettd7655fr4n2y
       ts-deepmerge: 2.0.3
       ts-pattern: 3.3.5
-      ts-toolbelt: 9.6.0
     devDependencies:
       '@babel/preset-env': 7.18.10_@babel+core@7.18.10
       '@babel/preset-react': 7.18.6_@babel+core@7.18.10
@@ -22231,10 +22229,6 @@ packages:
     dependencies:
       typescript: 4.7.4
     dev: true
-
-  /ts-toolbelt/9.6.0:
-    resolution: {integrity: sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w==}
-    dev: false
 
   /tsconfig-paths/3.14.0:
     resolution: {integrity: sha512-cg/1jAZoL57R39+wiw4u/SCC6Ic9Q5NqjBOb+9xISedOYurfog9ZNmKJSxAnb2m/5Bq4lE9lhUcau33Ml8DM0g==}
