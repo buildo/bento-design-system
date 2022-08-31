@@ -19,7 +19,6 @@ import { element } from "../reset.css";
 import { Children } from "../util/Children";
 import { useBentoConfig } from "../BentoConfigContext";
 import { ListItemConfig } from "./Config";
-import { Omit } from "../util/Omit";
 
 type Kind =
   | {
@@ -55,15 +54,15 @@ type RightItem = {
   trailingIcon?: (props: IconProps) => JSX.Element;
 };
 
-type CommonProps = {
+type CommonItemProps = {
   disabled?: boolean;
-  size: ListSize;
   isFocused?: boolean;
   isSelected?: boolean;
   ignoreTabIndex?: boolean;
   key?: string | number;
-  ref?: RefObject<HTMLElement>;
-} & (
+};
+
+type ActionProps =
   | {
       onPress?: () => void;
       href?: never;
@@ -73,11 +72,13 @@ type CommonProps = {
       href?: string;
       target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
       onPress?: never;
-    }
-);
+    };
 
-type ListItemProps = Kind & LeftItem & RightItem & CommonProps;
-type Props = Omit<ListItemProps, "ref">;
+type ItemProps = Kind & LeftItem & RightItem & CommonItemProps & ActionProps;
+
+type Props = ItemProps & {
+  size: ListSize;
+};
 
 export const ListItem = forwardRef<HTMLElement, Props>((props, ref) => {
   const config = useBentoConfig().list.item;
@@ -223,4 +224,13 @@ function Overline(props: Props & { kind: "overline" }) {
   );
 }
 
-export type { ListItemProps };
+export type ListItemProps = ItemProps & {
+  ref?: RefObject<HTMLElement>;
+};
+
+export type {
+  Kind as ListItemKind,
+  LeftItem as ListLeftItem,
+  RightItem as ListRightItem,
+  CommonItemProps,
+};

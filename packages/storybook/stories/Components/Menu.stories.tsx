@@ -1,9 +1,10 @@
 import { Body, Title } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
+import { ComponentProps } from "react";
 import { Avatar, Box, Button, Menu, Stack } from "..";
 import { createComponentStories, formatMessage } from "../util";
 
-const items = [
+const items: ComponentProps<typeof Menu>["items"] = [
   {
     label: formatMessage("Item 1"),
     subItems: [

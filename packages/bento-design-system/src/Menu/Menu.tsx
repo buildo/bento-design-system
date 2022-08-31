@@ -98,3 +98,4 @@ export function Menu({
 }
 
 export type { MenuTriggerState };
+export * from "./MenuProps";

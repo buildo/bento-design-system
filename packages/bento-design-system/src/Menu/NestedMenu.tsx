@@ -4,7 +4,7 @@ import { useOverlayPosition } from "@react-aria/overlays";
 import { MenuTriggerState } from "@react-stately/menu";
 import { ComponentProps, DOMAttributes, RefObject, useEffect, useMemo, useRef } from "react";
 import { createPortal } from "react-dom";
-import { Box, Inset, List, ListProps, Popover } from "..";
+import { Box, Inset, List, ListItemProps, ListProps, Popover } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
 import { menuRecipe } from "./Menu.css";
 import { MenuItemProps, NestedMenuProps } from "./MenuProps";
@@ -109,8 +109,8 @@ export function processMenuItems(
   childMenuTriggers: Array<RefObject<HTMLElement>>,
   overlayRef: RefObject<HTMLElement>,
   config: MenuConfig
-) {
-  const processCloseOnSelect = (item: MenuItemProps) => {
+): ListItemProps[] {
+  const processCloseOnSelect = (item: ListItemProps) => {
     if (closeOnSelect && item.onPress) {
       const onPress = item.onPress;
       return {
@@ -159,7 +159,7 @@ export function processMenuItems(
             childMenuState.open();
           }
         },
-      } as ListProps["items"][number];
+      } as ListItemProps;
     } else {
       return processCloseOnSelect(item);
     }
