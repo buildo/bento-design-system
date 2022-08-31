@@ -2,7 +2,7 @@ import { FocusScope } from "@react-aria/focus";
 import { useMenuTrigger } from "@react-aria/menu";
 import { useOverlayPosition } from "@react-aria/overlays";
 import { MenuTriggerState } from "@react-stately/menu";
-import { ComponentProps, DOMAttributes, RefObject, useEffect, useMemo, useRef } from "react";
+import { ComponentProps, DOMAttributes, RefObject, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Box, Inset, List, ListItemProps, ListProps, Popover } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
@@ -65,25 +65,21 @@ function NestedMenu({
     }
   }, [isSelected, childMenuState, setSelectedMenuItem]);
 
-  const nestedMenuPortal = useMemo(
-    () =>
-      createPortal(
-        <FocusScope restoreFocus>
-          <Box
-            ref={componentRef}
-            className={menuRecipe({ elevation: config.elevation })}
-            {...(menuProps as DOMAttributes<HTMLDivElement>)}
-            borderRadius={config.radius}
-            style={{ maxHeight, ...positionProps.style }}
-          >
-            <Inset spaceY={config.paddingY}>
-              <List items={items} size={size} dividers={dividers} />
-            </Inset>
-          </Box>
-        </FocusScope>,
-        overlayRef.current ?? document.body
-      ),
-    [config, dividers, items, maxHeight, menuProps, overlayRef, positionProps, size]
+  const nestedMenuPortal = createPortal(
+    <FocusScope restoreFocus>
+      <Box
+        ref={componentRef}
+        className={menuRecipe({ elevation: config.elevation })}
+        {...(menuProps as DOMAttributes<HTMLDivElement>)}
+        borderRadius={config.radius}
+        style={{ maxHeight, ...positionProps.style }}
+      >
+        <Inset spaceY={config.paddingY}>
+          <List items={items} size={size} dividers={dividers} />
+        </Inset>
+      </Box>
+    </FocusScope>,
+    overlayRef.current ?? document.body
   );
 
   return (
