@@ -28,14 +28,14 @@ function NestedMenu({
   const config = useBentoConfig().menu;
   const componentRef = useRef(null);
 
-  const { childMenuTriggerRefs, childMenuState, selectedMenuItem, setSelectedMenuItem } =
-    useNestedMenu(_items);
+  const { childMenuTriggerRefs, childMenuState, open, close, isOpen } = useNestedMenu(_items);
 
   const items = processMenuItems(
     _items,
     state,
-    selectedMenuItem,
-    setSelectedMenuItem,
+    open,
+    close,
+    isOpen,
     closeOnSelect,
     dividers,
     maxHeight,
@@ -59,11 +59,8 @@ function NestedMenu({
   });
 
   useEffect(() => {
-    if (!isSelected) {
-      childMenuState.close();
-      setSelectedMenuItem(undefined);
-    }
-  }, [isSelected, childMenuState, setSelectedMenuItem]);
+    if (!isSelected) close();
+  }, [isSelected, close]);
 
   const nestedMenuPortal = createPortal(
     <FocusScope restoreFocus>
@@ -85,7 +82,7 @@ function NestedMenu({
   return (
     <Box>
       {label}
-      {isSelected && state.isOpen ? nestedMenuPortal : null}
+      {isSelected ? nestedMenuPortal : null}
     </Box>
   );
 }
@@ -93,8 +90,9 @@ function NestedMenu({
 export function processMenuItems(
   items: MenuItemProps[],
   state: MenuTriggerState,
-  selectedItem: MenuItemProps | undefined,
-  setSelectedItem: (item?: MenuItemProps) => void,
+  open: (item: MenuItemProps) => void,
+  close: () => void,
+  isOpen: (item: MenuItemProps) => boolean,
   closeOnSelect: boolean | undefined,
   dividers: boolean | undefined,
   maxHeight: number | undefined,
@@ -112,9 +110,8 @@ export function processMenuItems(
       return {
         ...item,
         onPress: () => {
-          setSelectedItem(undefined);
-          childMenuState.close();
-          state.close();
+          close(); // close same-level nested menu that may be open
+          state.close(); // close self
           onPress();
         },
       };
@@ -132,7 +129,7 @@ export function processMenuItems(
           <NestedMenu
             label={label}
             items={subItems}
-            isSelected={selectedItem === item}
+            isSelected={isOpen(item)}
             placement={childMenuPlacement}
             offset={childMenuOffset}
             size={size}
@@ -147,13 +144,8 @@ export function processMenuItems(
         ref: childMenuTriggers[index],
         trailingIcon: config.childMenuIcon,
         onPress: () => {
-          if (selectedItem === item) {
-            setSelectedItem(undefined);
-            childMenuState.close();
-          } else {
-            setSelectedItem(item);
-            childMenuState.open();
-          }
+          if (isOpen(item)) close();
+          else open(item);
         },
       } as ListItemProps;
     } else {

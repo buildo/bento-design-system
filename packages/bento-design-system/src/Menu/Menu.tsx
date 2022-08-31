@@ -36,14 +36,20 @@ export function Menu({
     triggerRef
   );
 
-  const { childMenuTriggerRefs, childMenuState, selectedMenuItem, setSelectedMenuItem } =
-    useNestedMenu(_items);
+  const {
+    childMenuTriggerRefs,
+    childMenuState,
+    open: openNestedMenu,
+    close: closeNestedMenu,
+    isOpen: isNestedMenuOpen,
+  } = useNestedMenu(_items);
 
   const items = processMenuItems(
     _items,
     state,
-    selectedMenuItem,
-    setSelectedMenuItem,
+    openNestedMenu,
+    closeNestedMenu,
+    isNestedMenuOpen,
     closeOnSelect,
     dividers,
     maxHeight,
@@ -63,8 +69,7 @@ export function Menu({
         <Popover
           ref={overlayRef}
           onClose={() => {
-            setSelectedMenuItem(undefined);
-            childMenuState.close();
+            closeNestedMenu();
             state.close();
           }}
           triggerRef={triggerRef}
