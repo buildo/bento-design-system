@@ -7,9 +7,9 @@ import { chipConfig } from "./chip";
 import { disclosureConfig } from "./disclosure";
 import { disclosureGroupConfig } from "./disclosureGroup";
 import { feedbackConfig } from "./feedback";
-import { BentoConfig } from "@buildo/bento-design-system";
 import { dateFieldConfig } from "./dateField";
 import { fieldConfig } from "./field";
+import { inputConfig } from "./input";
 
 export default function exportConfig() {
   const config /*: Record<keyof BentoConfig, unknown> */ = {
@@ -23,6 +23,7 @@ export default function exportConfig() {
     disclosureGroup: disclosureGroupConfig(),
     feedback: feedbackConfig(),
     field: fieldConfig(),
+    input: inputConfig(),
   };
 
   showUI({ title: "Bento config", width: 360, height: 600 }, { config });

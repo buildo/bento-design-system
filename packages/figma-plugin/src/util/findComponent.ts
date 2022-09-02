@@ -1,10 +1,20 @@
-export function findComponentInPage(pageName: string): {
+export function findComponentInPage(
+  pageName: string,
+  componentSet?: string
+): {
   page: PageNode;
   components: ComponentNode[];
   findWithVariants: (properties: { [key: string]: string }) => ComponentNode;
 } {
   const page = figma.root.findChild((c) => stripEmojis(c.name).trim() === pageName) as PageNode;
-  const components = page.findAllWithCriteria({ types: ["COMPONENT"] }) ?? [];
+
+  const components = componentSet
+    ? (
+        page.findOne(
+          (c) => c.type === "COMPONENT_SET" && c.name === componentSet
+        ) as ComponentSetNode | null
+      )?.findAllWithCriteria({ types: ["COMPONENT"] }) ?? []
+    : page.findAllWithCriteria({ types: ["COMPONENT"] }) ?? [];
 
   return {
     page,
