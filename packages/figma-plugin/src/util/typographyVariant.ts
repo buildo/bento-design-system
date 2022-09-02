@@ -20,17 +20,14 @@ export function typographyVariant(node: TextNode):
   | {
       type: "Label";
       size: Parameters<typeof Label>[0]["size"];
-    }
-  | undefined {
+    } {
   if (node.textStyleId === figma.mixed) {
-    console.warn("Unexpected mixed text style for node", node);
-    return undefined;
+    throw new Error(`Unexpected mixed text style for node: ${node}`);
   }
   const style = figma.getStyleById(node.textStyleId) as TextStyle;
   const [name, variant] = style.name.split("/");
   if (!name || !variant) {
-    console.warn("Unexpected text style", style.name);
-    return undefined;
+    throw new Error("Unexpected text style " + style.name);
   }
   const size = toSize(variant);
   switch (name) {
@@ -45,8 +42,7 @@ export function typographyVariant(node: TextNode):
     case "Headline":
       return { type: "Headline", size };
     default:
-      console.log("Unexpected text style", style.name);
-      return undefined;
+      throw new Error("Unexpected text style name: " + name);
   }
 }
 

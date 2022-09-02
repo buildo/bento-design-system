@@ -1,7 +1,7 @@
 export function findComponent(pageName: string): {
   page: PageNode;
   components: ComponentNode[];
-  findWithVariants: (properties: { [key: string]: string }) => ComponentNode | undefined;
+  findWithVariants: (properties: { [key: string]: string }) => ComponentNode;
 } {
   const page = figma.root.findChild((c) => stripEmojis(c.name).trim() === pageName) as PageNode;
   const components = page.findAllWithCriteria({ types: ["COMPONENT"] }) ?? [];
@@ -16,7 +16,7 @@ export function findComponent(pageName: string): {
 function componentByVariantProperties(
   components: ComponentNode[],
   properties: { [key: string]: string }
-): ComponentNode | undefined {
+): ComponentNode {
   const component = components.find((c) => {
     for (const [key, value] of Object.entries(properties)) {
       if (c.variantProperties?.[key] !== value) {
@@ -26,7 +26,9 @@ function componentByVariantProperties(
     return true;
   });
   if (!component) {
-    console.warn("No component found matching these properties:", properties);
+    throw new Error(
+      `No component found matching these properties:\n${JSON.stringify(properties, null, 2)}`
+    );
   }
   return component;
 }

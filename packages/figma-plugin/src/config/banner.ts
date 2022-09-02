@@ -1,5 +1,6 @@
 import { findComponent } from "../util/findComponent";
 import { typographyVariant } from "../util/typographyVariant";
+import { findChildByName } from "../util/findChildByName";
 
 export function bannerConfig() {
   const { findWithVariants } = findComponent("Banner");
@@ -19,14 +20,12 @@ export function bannerConfig() {
     Dismissable: "True",
   });
 
-  const title = informativeBanner?.findOne((c) => c.name === "Title") as TextNode;
-  const description = informativeBanner?.findOne((c) => c.name === "Description") as TextNode;
-  const closeIcon = informativeBanner?.findOne((c) => c.name === "Icon Button") as InstanceNode;
-  const infoIconWithTitle = informativeBanner?.findOne((c) => c.name === "Icon") as InstanceNode;
-  const infoIconWithoutTitle = informativeBannerWithoutTitle?.findOne(
-    (c) => c.name === "Icon"
-  ) as InstanceNode;
-  const actionButton = informativeBanner?.findOne((c) => c.name === "Button") as InstanceNode;
+  const title = findChildByName(informativeBanner, "Title", "TEXT");
+  const description = findChildByName(informativeBanner, "Description", "TEXT");
+  const closeIcon = findChildByName(informativeBanner, "Icon Button", "INSTANCE");
+  const infoIconWithTitle = findChildByName(informativeBanner, "Icon", "INSTANCE");
+  const infoIconWithoutTitle = findChildByName(informativeBannerWithoutTitle, "Icon", "INSTANCE");
+  const actionButton = findChildByName(informativeBanner, "Button", "INSTANCE");
 
   return {
     paddingX: informativeBanner?.paddingLeft,
