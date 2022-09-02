@@ -20,11 +20,11 @@ export function Menu({
   dividers,
   maxHeight,
   closeOnSelect,
-  childMenuPlacement = "right top",
-  childMenuOffset: _childMenuOffset,
+  nestedMenuPlacement = "right top",
+  nestedMenuOffset: _nestedMenuOffset,
 }: MenuProps) {
   const config = useBentoConfig().menu;
-  const childMenuOffset = _childMenuOffset ?? config.defaultOffset;
+  const nestedMenuOffset = _nestedMenuOffset ?? config.defaultOffset;
   const triggerRef = useRef(null);
   const overlayRef = useRef(null);
 
@@ -37,8 +37,8 @@ export function Menu({
   );
 
   const {
-    childMenuTriggerRefs,
-    childMenuState,
+    nestedMenuTriggerRefs,
+    nestedMenuState,
     open: openNestedMenu,
     close: closeNestedMenu,
     isOpen: isNestedMenuOpen,
@@ -54,10 +54,10 @@ export function Menu({
     dividers,
     maxHeight,
     size,
-    childMenuPlacement,
-    childMenuOffset,
-    childMenuState,
-    childMenuTriggerRefs,
+    nestedMenuPlacement,
+    nestedMenuOffset,
+    nestedMenuState,
+    nestedMenuTriggerRefs,
     overlayRef,
     config
   );

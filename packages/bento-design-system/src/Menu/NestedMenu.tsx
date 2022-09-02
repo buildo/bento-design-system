@@ -28,7 +28,7 @@ function NestedMenu({
   const config = useBentoConfig().menu;
   const componentRef = useRef(null);
 
-  const { childMenuTriggerRefs, childMenuState, open, close, isOpen } = useNestedMenu(_items);
+  const { nestedMenuTriggerRefs, nestedMenuState, open, close, isOpen } = useNestedMenu(_items);
 
   const items = processMenuItems(
     _items,
@@ -42,8 +42,8 @@ function NestedMenu({
     size,
     placement,
     offset,
-    childMenuState,
-    childMenuTriggerRefs,
+    nestedMenuState,
+    nestedMenuTriggerRefs,
     overlayRef,
     config
   );
@@ -97,10 +97,10 @@ export function processMenuItems(
   dividers: boolean | undefined,
   maxHeight: number | undefined,
   size: ListProps["size"],
-  childMenuPlacement: ComponentProps<typeof Popover>["placement"],
-  childMenuOffset: ComponentProps<typeof Popover>["offset"],
-  childMenuState: MenuTriggerState,
-  childMenuTriggers: Array<RefObject<HTMLElement>>,
+  nestedMenuPlacement: ComponentProps<typeof Popover>["placement"],
+  nestedMenuOffset: ComponentProps<typeof Popover>["offset"],
+  nestedMenuState: MenuTriggerState,
+  nestedMenuTriggers: Array<RefObject<HTMLElement>>,
   overlayRef: RefObject<HTMLElement>,
   config: MenuConfig
 ): ListItemProps[] {
@@ -121,28 +121,28 @@ export function processMenuItems(
   };
 
   return items.map((item, index) => {
-    if (item.subItems) {
-      const { subItems, label, ...itemProps } = item;
+    if (item.items) {
+      const { items: nestedItems, label, ...itemProps } = item;
       return {
         ...itemProps,
         label: (
           <NestedMenu
             label={label}
-            items={subItems}
+            items={nestedItems}
             isSelected={isOpen(item)}
-            placement={childMenuPlacement}
-            offset={childMenuOffset}
+            placement={nestedMenuPlacement}
+            offset={nestedMenuOffset}
             size={size}
-            state={childMenuState}
-            triggerRef={childMenuTriggers[index]}
+            state={nestedMenuState}
+            triggerRef={nestedMenuTriggers[index]}
             overlayRef={overlayRef}
             closeOnSelect={closeOnSelect}
             dividers={dividers}
             maxHeight={maxHeight}
           />
         ),
-        ref: childMenuTriggers[index],
-        trailingIcon: config.childMenuIcon,
+        ref: nestedMenuTriggers[index],
+        trailingIcon: config.nestedMenuIcon,
         onPress: () => {
           if (isOpen(item)) close();
           else open(item);

@@ -7,7 +7,7 @@ import { createComponentStories, formatMessage } from "../util";
 const items: ComponentProps<typeof Menu>["items"] = [
   {
     label: formatMessage("Item 1"),
-    subItems: [
+    items: [
       { label: formatMessage("Sub item 1.1"), onPress: action("Sub item 1.1") },
       { label: formatMessage("Sub item 1.2"), onPress: action("Sub item 1.2") },
     ],
@@ -23,10 +23,10 @@ const items: ComponentProps<typeof Menu>["items"] = [
   },
   {
     label: formatMessage("Item 4"),
-    subItems: [
+    items: [
       {
         label: formatMessage("Sub item 4.1"),
-        subItems: [
+        items: [
           { label: formatMessage("Sub item 4.1.1"), onPress: action("Sub item 4.1.1") },
           { label: formatMessage("Sub item 4.1.2"), onPress: action("Sub item 4.1.2") },
         ],
@@ -37,7 +37,7 @@ const items: ComponentProps<typeof Menu>["items"] = [
       { label: formatMessage("Sub item 4.5"), onPress: action("Sub item 4.5") },
       {
         label: formatMessage("Sub item 4.6"),
-        subItems: [
+        items: [
           { label: formatMessage("Sub item 4.6.1"), onPress: action("Sub item 4.6.1") },
           { label: formatMessage("Sub item 4.6.2"), onPress: action("Sub item 4.6.2") },
         ],

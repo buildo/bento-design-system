@@ -14,11 +14,14 @@ import {
 export type NestedMenuItemProps = ListItemKind &
   ListLeftItem &
   CommonItemProps & {
-    subItems: MenuItemProps[];
+    items: MenuItemProps[];
+    trailingIcon?: never;
     onPress?: never;
+    href?: never;
+    target?: never;
   };
 
-export type MenuItemProps = NestedMenuItemProps | (ListItemProps & { subItems?: never });
+export type MenuItemProps = NestedMenuItemProps | (ListItemProps & { items?: never });
 
 export type NestedMenuProps = {
   label: Children;
@@ -60,6 +63,6 @@ export type MenuProps = {
   dividers?: boolean;
   maxHeight?: number;
   closeOnSelect?: boolean;
-  childMenuPlacement?: ComponentProps<typeof Popover>["placement"];
-  childMenuOffset?: ComponentProps<typeof Popover>["offset"];
+  nestedMenuPlacement?: ComponentProps<typeof Popover>["placement"];
+  nestedMenuOffset?: ComponentProps<typeof Popover>["offset"];
 };
