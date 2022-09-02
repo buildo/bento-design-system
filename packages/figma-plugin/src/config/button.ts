@@ -1,10 +1,10 @@
 import { findChildByName } from "../util/findChildByName";
-import { findComponent } from "../util/findComponent";
+import { findComponentInPage } from "../util/findComponent";
 import { SimpleBentoConfig } from "../util/SimpleBentoConfig";
 import { typographyVariant } from "../util/typographyVariant";
 
 export function buttonConfig(): Omit<SimpleBentoConfig["button"], "defaultSize"> {
-  const { findWithVariants } = findComponent("Button");
+  const { findWithVariants } = findComponentInPage("Button");
 
   const smallButton = findWithVariants({
     Size: "Small",

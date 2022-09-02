@@ -1,10 +1,10 @@
 import { findChildByName } from "../util/findChildByName";
-import { findComponent } from "../util/findComponent";
+import { findComponentInPage } from "../util/findComponent";
 import { SimpleBentoConfig } from "../util/SimpleBentoConfig";
 import { typographyVariant } from "../util/typographyVariant";
 
 export function chipConfig(): Omit<SimpleBentoConfig["chip"], "closeIcon" | "customColors"> {
-  const { findWithVariants } = findComponent("Chip");
+  const { findWithVariants } = findComponentInPage("Chip");
 
   const chip = findWithVariants({
     Icon: "True",

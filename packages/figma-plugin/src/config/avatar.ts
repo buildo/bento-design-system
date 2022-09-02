@@ -1,10 +1,10 @@
 import { findChildByName } from "../util/findChildByName";
-import { findComponent } from "../util/findComponent";
+import { findComponentInPage } from "../util/findComponent";
 import { SimpleBentoConfig } from "../util/SimpleBentoConfig";
 import { typographyVariant } from "../util/typographyVariant";
 
 export function avatarConfig(): Omit<SimpleBentoConfig["avatar"], "icon" | "outline"> {
-  const { findWithVariants } = findComponent("Avatar");
+  const { findWithVariants } = findComponentInPage("Avatar");
 
   const avatar = findWithVariants({
     Kind: "Initial",

@@ -1,4 +1,4 @@
-import { findComponent } from "../util/findComponent";
+import { findComponentInPage } from "../util/findComponent";
 import { typographyVariant } from "../util/typographyVariant";
 import { findChildByName } from "../util/findChildByName";
 import { SimpleBentoConfig } from "../util/SimpleBentoConfig";
@@ -7,7 +7,7 @@ export function bannerConfig(): Omit<
   SimpleBentoConfig["banner"],
   "outline" | "closeIcon" | "semanticIcons"
 > {
-  const { findWithVariants } = findComponent("Banner");
+  const { findWithVariants } = findComponentInPage("Banner");
 
   const informativeBanner = findWithVariants({
     Kind: "Informative",

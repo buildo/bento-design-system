@@ -1,4 +1,4 @@
-export function findComponent(pageName: string): {
+export function findComponentInPage(pageName: string): {
   page: PageNode;
   components: ComponentNode[];
   findWithVariants: (properties: { [key: string]: string }) => ComponentNode;

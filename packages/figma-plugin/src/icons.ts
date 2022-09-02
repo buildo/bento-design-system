@@ -1,10 +1,10 @@
 // TODO(gabro): this is currently just an experiment
 // @ts-ignore
 import { TextDecoder } from "fastestsmallesttextencoderdecoder";
-import { findComponent } from "./util/findComponent";
+import { findComponentInPage } from "./util/findComponent";
 
 function findAllIcons(): ComponentNode[] {
-  const { page: iconPage } = findComponent("Icon");
+  const { page: iconPage } = findComponentInPage("Icon");
   const iconsSet = iconPage?.findChild((c) => c.name === "Vector") as ComponentSetNode;
   return iconsSet.findAllWithCriteria({ types: ["COMPONENT"] }) ?? [];
 }

@@ -6,7 +6,8 @@ export function findChildByName<T extends NodeType>(
   const child = n.findOne((c) => c.name === name);
 
   if (!child) {
-    throw new Error("Could not found child node named " + name);
+    const componentName = n.parent?.name ?? n.name;
+    throw new Error(`Could not found child node named ${name} in component ${componentName}`);
   }
 
   if (nodeType && child.type !== nodeType) {
