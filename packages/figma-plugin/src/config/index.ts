@@ -9,6 +9,7 @@ import { disclosureGroupConfig } from "./disclosureGroup";
 import { feedbackConfig } from "./feedback";
 import { BentoConfig } from "@buildo/bento-design-system";
 import { dateFieldConfig } from "./dateField";
+import { fieldConfig } from "./field";
 
 export default function exportConfig() {
   const config /*: Record<keyof BentoConfig, unknown> */ = {
@@ -21,6 +22,7 @@ export default function exportConfig() {
     disclosure: disclosureConfig(),
     disclosureGroup: disclosureGroupConfig(),
     feedback: feedbackConfig(),
+    field: fieldConfig(),
   };
 
   showUI({ title: "Bento config", width: 360, height: 600 }, { config });

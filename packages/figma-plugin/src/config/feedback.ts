@@ -39,7 +39,10 @@ export function feedbackConfig(): Omit<
       medium: illustrationMedium.width,
     },
     title: {
-      large: typographyVariant(titleLarge),
+      large: {
+        size: typographyVariant(titleLarge).size,
+        kind: typographyVariant(titleLarge).kind,
+      },
       medium: typographyVariant(titleMedium).size,
     },
     descriptionSize: {

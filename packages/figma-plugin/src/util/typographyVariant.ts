@@ -24,12 +24,15 @@ export function typographyVariant(node: TextNode):
   if (node.textStyleId === figma.mixed) {
     throw new Error(`Unexpected mixed text style for node: ${node}`);
   }
-  const style = figma.getStyleById(node.textStyleId) as TextStyle;
-  const [name, variant] = style.name.split("/");
+
+  const textStyle = figma.getStyleById(node.textStyleId) as TextStyle;
+
+  const [name, variant] = textStyle.name.split("/");
   if (!name || !variant) {
-    throw new Error("Unexpected text style " + style.name);
+    throw new Error("Unexpected text style " + textStyle.name);
   }
   const size = toSize(variant);
+
   switch (name) {
     case "Title":
       return { kind: "title", size };
