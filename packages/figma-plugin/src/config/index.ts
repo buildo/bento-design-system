@@ -6,16 +6,21 @@ import { avatarConfig } from "./avatar";
 import { chipConfig } from "./chip";
 import { disclosureConfig } from "./disclosure";
 import { disclosureGroupConfig } from "./disclosureGroup";
+import { feedbackConfig } from "./feedback";
+import { BentoConfig } from "@buildo/bento-design-system";
+import { dateFieldConfig } from "./dateField";
 
 export default function exportConfig() {
-  const config = {
+  const config /*: Record<keyof BentoConfig, unknown> */ = {
     avatar: avatarConfig(),
     banner: bannerConfig(),
     breadcrumb: breadcrumbConfig(),
     button: buttonConfig(),
     chip: chipConfig(),
+    dateField: dateFieldConfig(),
     disclosure: disclosureConfig(),
     disclosureGroup: disclosureGroupConfig(),
+    feedback: feedbackConfig(),
   };
 
   showUI({ title: "Bento config", width: 360, height: 600 }, { config });

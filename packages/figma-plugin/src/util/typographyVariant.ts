@@ -2,23 +2,23 @@ import { Body, Display, Headline, Label, Title } from "@buildo/bento-design-syst
 
 export function typographyVariant(node: TextNode):
   | {
-      type: "Title";
+      kind: "title";
       size: Parameters<typeof Title>[0]["size"];
     }
   | {
-      type: "Display";
+      kind: "display";
       size: Parameters<typeof Display>[0]["size"];
     }
   | {
-      type: "Headline";
+      kind: "headline";
       size: Parameters<typeof Headline>[0]["size"];
     }
   | {
-      type: "Body";
+      kind: "body";
       size: Parameters<typeof Body>[0]["size"];
     }
   | {
-      type: "Label";
+      kind: "label";
       size: Parameters<typeof Label>[0]["size"];
     } {
   if (node.textStyleId === figma.mixed) {
@@ -32,15 +32,15 @@ export function typographyVariant(node: TextNode):
   const size = toSize(variant);
   switch (name) {
     case "Title":
-      return { type: "Title", size };
+      return { kind: "title", size };
     case "Body":
-      return { type: "Body", size };
+      return { kind: "body", size };
     case "Label":
-      return { type: "Label", size };
+      return { kind: "label", size };
     case "Display":
-      return { type: "Display", size };
+      return { kind: "display", size };
     case "Headline":
-      return { type: "Headline", size };
+      return { kind: "headline", size };
     default:
       throw new Error("Unexpected text style name: " + name);
   }
