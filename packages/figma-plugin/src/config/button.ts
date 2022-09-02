@@ -1,7 +1,9 @@
+import { findChildByName } from "../util/findChildByName";
 import { findComponent } from "../util/findComponent";
+import { SimpleBentoConfig } from "../util/SimpleBentoConfig";
 import { typographyVariant } from "../util/typographyVariant";
 
-export function buttonConfig() {
+export function buttonConfig(): Omit<SimpleBentoConfig["button"], "defaultSize"> {
   const { findWithVariants } = findComponent("Button");
 
   const smallButton = findWithVariants({
@@ -16,27 +18,27 @@ export function buttonConfig() {
     Size: "Large",
     Icon: "True",
   });
-  const buttonLabel = smallButton?.findOne((c) => c.name === "Label") as TextNode;
+  const buttonLabel = findChildByName(smallButton, "Label", "TEXT");
 
   return {
     paddingX: {
-      small: smallButton?.paddingLeft,
-      medium: mediumButton?.paddingLeft,
-      large: largeButton?.paddingLeft,
+      small: smallButton.paddingLeft,
+      medium: mediumButton.paddingLeft,
+      large: largeButton.paddingLeft,
     },
     paddingY: {
-      small: smallButton?.verticalPadding,
-      medium: mediumButton?.verticalPadding,
-      large: largeButton?.verticalPadding,
+      small: smallButton.verticalPadding,
+      medium: mediumButton.verticalPadding,
+      large: largeButton.verticalPadding,
     },
-    labelSize: typographyVariant(buttonLabel)?.size,
-    radius: smallButton?.cornerRadius,
-    internalSpacing: smallButton?.itemSpacing,
+    labelSize: typographyVariant(buttonLabel).size,
+    radius: smallButton.cornerRadius as number,
+    internalSpacing: smallButton.itemSpacing,
     iconSize: {
-      small: smallButton?.findOne((c) => c.name === "Icon")?.width,
-      medium: mediumButton?.findOne((c) => c.name === "Icon")?.width,
-      large: largeButton?.findOne((c) => c.name === "Icon")?.width,
+      small: findChildByName(smallButton, "Icon").width,
+      medium: findChildByName(mediumButton, "Icon").width,
+      large: findChildByName(largeButton, "Icon").width,
     },
-    uppercaseLabel: buttonLabel?.characters === buttonLabel?.characters.toUpperCase(),
+    uppercaseLabel: buttonLabel.characters === buttonLabel.characters.toUpperCase(),
   };
 }

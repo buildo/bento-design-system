@@ -1,7 +1,9 @@
+import { findChildByName } from "../util/findChildByName";
 import { findComponent } from "../util/findComponent";
+import { SimpleBentoConfig } from "../util/SimpleBentoConfig";
 import { typographyVariant } from "../util/typographyVariant";
 
-export function chipConfig() {
+export function chipConfig(): Omit<SimpleBentoConfig["chip"], "closeIcon" | "customColors"> {
   const { findWithVariants } = findComponent("Chip");
 
   const chip = findWithVariants({
@@ -9,11 +11,11 @@ export function chipConfig() {
     Dismissable: "True",
   });
 
-  const label = chip?.findOne((c) => c.name === "Label") as TextNode;
-  const icon = chip?.findOne((c) => c.name === "Icon") as InstanceNode;
-  const closeIcon = chip?.findOne((c) => c.name === "IconButton") as InstanceNode;
+  const label = findChildByName(chip, "Label", "TEXT");
+  const icon = findChildByName(chip, "Icon");
+  const closeIcon = findChildByName(chip, "Icon Button");
 
-  const radius = chip && chip.cornerRadius === chip.height / 2 ? "circledX" : chip?.cornerRadius;
+  const radius = chip.cornerRadius === chip.height / 2 ? "circledX" : (chip.cornerRadius as number);
 
   return {
     paddingX: chip?.paddingLeft,

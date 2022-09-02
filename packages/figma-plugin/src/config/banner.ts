@@ -1,8 +1,12 @@
 import { findComponent } from "../util/findComponent";
 import { typographyVariant } from "../util/typographyVariant";
 import { findChildByName } from "../util/findChildByName";
+import { SimpleBentoConfig } from "../util/SimpleBentoConfig";
 
-export function bannerConfig() {
+export function bannerConfig(): Omit<
+  SimpleBentoConfig["banner"],
+  "outline" | "closeIcon" | "semanticIcons"
+> {
   const { findWithVariants } = findComponent("Banner");
 
   const informativeBanner = findWithVariants({
@@ -28,9 +32,9 @@ export function bannerConfig() {
   const actionButton = findChildByName(informativeBanner, "Button", "INSTANCE");
 
   return {
-    paddingX: informativeBanner?.paddingLeft,
-    paddingY: informativeBanner?.verticalPadding,
-    radius: informativeBanner?.cornerRadius,
+    paddingX: informativeBanner.paddingLeft,
+    paddingY: informativeBanner.verticalPadding,
+    radius: informativeBanner.cornerRadius as number,
     titleSize: typographyVariant(title)?.size,
     descriptionSize: typographyVariant(description)?.size,
     closeIconSize: closeIcon?.width,
@@ -40,5 +44,7 @@ export function bannerConfig() {
     },
     buttonKind: (actionButton.componentProperties["Kind"].value as string).toLowerCase(),
     buttonSize: (actionButton.componentProperties["Size"].value as string).toLowerCase(),
+    // TODO(gabro)
+    // outline: undefined
   };
 }

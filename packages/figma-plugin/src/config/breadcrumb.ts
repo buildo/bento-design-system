@@ -1,16 +1,18 @@
+import { findChildByName } from "../util/findChildByName";
 import { findComponent } from "../util/findComponent";
+import { SimpleBentoConfig } from "../util/SimpleBentoConfig";
 import { typographyVariant } from "../util/typographyVariant";
 
-export function breadcrumbConfig() {
+export function breadcrumbConfig(): Omit<SimpleBentoConfig["breadcrumb"], "separator"> {
   const { findWithVariants } = findComponent("Breadcrumb");
 
   const breadcrumb = findWithVariants({});
-  const breadcrumbItem = breadcrumb?.findOne((c) => c.name === "Link") as TextNode;
-  const separator = breadcrumb?.findOne((c) => c.name === "Icon") as InstanceNode;
+  const breadcrumbItem = findChildByName(breadcrumb, "Link", "TEXT");
+  const separator = findChildByName(breadcrumb, "Icon");
 
   return {
-    fontSize: typographyVariant(breadcrumbItem)?.size,
-    separatorSize: separator?.width,
-    space: breadcrumb?.itemSpacing,
+    fontSize: typographyVariant(breadcrumbItem).size,
+    separatorSize: separator.width,
+    space: breadcrumb.itemSpacing,
   };
 }

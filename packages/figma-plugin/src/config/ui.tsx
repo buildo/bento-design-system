@@ -18,6 +18,7 @@ function format(o: object): string {
 }
 
 function Plugin(props: { config: Record<string, unknown> }) {
+  console.log(props.config);
   const minimalConfig = format(pruneEmptyObjects(diff(defaultConfigs, props.config)));
   const configWithDefaults = format(props.config);
   const [includeDefaultValues, setIncludeDefaultValues] = useState(false);

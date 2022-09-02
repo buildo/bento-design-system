@@ -1,8 +1,9 @@
 import { findChildByName } from "../util/findChildByName";
 import { findComponent } from "../util/findComponent";
+import { SimpleBentoConfig } from "../util/SimpleBentoConfig";
 import { typographyVariant } from "../util/typographyVariant";
 
-export function avatarConfig() {
+export function avatarConfig(): Omit<SimpleBentoConfig["avatar"], "icon" | "outline"> {
   const { findWithVariants } = findComponent("Avatar");
 
   const avatar = findWithVariants({
@@ -17,7 +18,7 @@ export function avatarConfig() {
 
   const width = avatar.width;
   const height = avatar.height;
-  const radius = avatar.cornerRadius === width / 2 ? "circled" : avatar.cornerRadius;
+  const radius = avatar.cornerRadius === width / 2 ? "circled" : (avatar.cornerRadius as number);
 
   return {
     width,
@@ -25,7 +26,5 @@ export function avatarConfig() {
     radius,
     labelSize: typographyVariant(label).size,
     iconSize: icon.width,
-    // TODO(gabro)
-    outline: {},
   };
 }
