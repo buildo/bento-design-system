@@ -13,6 +13,7 @@ import { inputConfig } from "./input";
 import { selectionControlConfig } from "./selectionControl";
 import { formLayoutConfig } from "./formLayout";
 import { iconButtonConfig } from "./iconButton";
+import { inlineLoaderConfig } from "./inlineLoader";
 
 export default function exportConfig() {
   const config /*: Record<keyof BentoConfig, unknown> */ = {
@@ -30,6 +31,7 @@ export default function exportConfig() {
     selectionControl: selectionControlConfig(),
     formLayout: formLayoutConfig(),
     iconButton: iconButtonConfig(),
+    inlineLoader: inlineLoaderConfig(),
   };
 
   showUI({ title: "Bento config", width: 360, height: 600 }, { config });
