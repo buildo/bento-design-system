@@ -24,26 +24,28 @@ function Plugin(props: { config: Record<string, unknown> }) {
   const code = includeDefaultValues ? configWithDefaults : minimalConfig;
 
   return (
-    <Container space="medium">
-      <VerticalSpace space="medium" />
-      <Checkbox
-        value={includeDefaultValues}
-        onChange={(e) => setIncludeDefaultValues(e.currentTarget.checked)}
-      >
-        <Text>Include default values</Text>
-      </Checkbox>
-      <VerticalSpace space="medium" />
-      <Button
-        fullWidth
-        onClick={() => {
-          copyToClipboard(code);
-          emit("copiedToClipboard");
-        }}
-      >
-        Copy to clipboard
-      </Button>
-      <VerticalSpace space="medium" />
-      <div class={styles.container}>
+    <Container space="medium" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+      <div class={styles.noShrink}>
+        <VerticalSpace space="medium" />
+        <Checkbox
+          value={includeDefaultValues}
+          onChange={(e) => setIncludeDefaultValues(e.currentTarget.checked)}
+        >
+          <Text>Include default values</Text>
+        </Checkbox>
+        <VerticalSpace space="medium" />
+        <Button
+          fullWidth
+          onClick={() => {
+            copyToClipboard(code);
+            emit("copiedToClipboard");
+          }}
+        >
+          Copy to clipboard
+        </Button>
+        <VerticalSpace space="medium" />
+      </div>
+      <div class={styles.editorContainer}>
         <Editor
           readOnly
           highlight={function (code: string) {
@@ -55,7 +57,9 @@ function Plugin(props: { config: Record<string, unknown> }) {
           onValueChange={() => {}}
         />
       </div>
-      <VerticalSpace space="medium" />
+      <div class={styles.noShrink}>
+        <VerticalSpace space="medium" />
+      </div>
     </Container>
   );
 }
