@@ -21,8 +21,8 @@ export function inputConfig(): Omit<
 
   return {
     internalSpacing: input.itemSpacing,
-    paddingX: input.horizontalPadding,
-    paddingY: input.paddingTop,
+    paddingX: input.paddingLeft,
+    paddingY: input.verticalPadding,
     radius: input.cornerRadius as number,
     fontSize: typographyVariant(value).size,
     passwordIconSize: icon.width,

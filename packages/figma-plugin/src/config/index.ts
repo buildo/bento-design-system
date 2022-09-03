@@ -10,6 +10,7 @@ import { feedbackConfig } from "./feedback";
 import { dateFieldConfig } from "./dateField";
 import { fieldConfig } from "./field";
 import { inputConfig } from "./input";
+import { selectionControlConfig } from "./selectionControl";
 
 export default function exportConfig() {
   const config /*: Record<keyof BentoConfig, unknown> */ = {
@@ -24,6 +25,7 @@ export default function exportConfig() {
     feedback: feedbackConfig(),
     field: fieldConfig(),
     input: inputConfig(),
+    selectionControl: selectionControlConfig(),
   };
 
   showUI({ title: "Bento config", width: 360, height: 600 }, { config });
