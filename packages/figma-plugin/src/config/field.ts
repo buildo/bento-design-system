@@ -7,11 +7,19 @@ import { typographyVariant } from "../util/typographyVariant";
 export function fieldConfig(): SimpleBentoConfig["field"] {
   const { findWithVariants } = findComponentInPage("Input");
 
-  const inputField = findWithVariants({
-    "Assistive text": "True",
-    Info: "True",
-    State: "Enabled",
-  });
+  const inputField = findWithVariants(
+    {
+      "Assistive Text": "True",
+      Info: "True",
+      State: "Enabled",
+    },
+    // Alternative variant for older versions of Bento when Info was called Tooltip
+    {
+      "Assistive Text": "True",
+      Tooltip: "True",
+      State: "Enabled",
+    }
+  );
 
   const label = findChildByName(inputField, "Label", "TEXT");
   const assistiveText = findChildByName(inputField, "Assistive text", "FRAME");

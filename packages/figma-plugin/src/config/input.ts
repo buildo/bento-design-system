@@ -11,7 +11,6 @@ export function inputConfig(): Omit<
 
   const passwordField = findWithVariants({
     "Assistive text": "True",
-    Info: "True",
     State: "Enabled Value",
   });
 

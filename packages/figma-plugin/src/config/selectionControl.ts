@@ -9,14 +9,12 @@ export function selectionControlConfig(): SimpleBentoConfig["selectionControl"] 
   const radioGroupHorizontal = findWithVariants({
     Orientation: "Horizontal",
     "Assistive text": "True",
-    Info: "True",
     State: "Enabled",
   });
 
   const radioGroupVertical = findWithVariants({
     Orientation: "Vertical",
     "Assistive text": "True",
-    Info: "True",
     State: "Enabled",
   });
 
