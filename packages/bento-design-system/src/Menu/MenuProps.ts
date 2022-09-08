@@ -1,5 +1,5 @@
 import { AriaButtonProps } from "@react-types/button";
-import { ComponentProps, Ref, RefObject } from "react";
+import { ComponentProps, Ref } from "react";
 import {
   Children,
   CommonItemProps,
@@ -22,21 +22,6 @@ export type NestedMenuItemProps = ListItemKind &
   };
 
 export type MenuItemProps = NestedMenuItemProps | (ListItemProps & { items?: never });
-
-export type NestedMenuProps = {
-  label: Children;
-  items: MenuItemProps[];
-  isSelected: boolean;
-  placement: ComponentProps<typeof Popover>["placement"];
-  offset: ComponentProps<typeof Popover>["offset"];
-  size: ListProps["size"];
-  state: MenuTriggerState;
-  triggerRef: RefObject<HTMLElement>;
-  overlayRef: RefObject<HTMLElement>;
-  closeOnSelect: boolean | undefined;
-  dividers: boolean | undefined;
-  maxHeight: number | undefined;
-};
 
 export type MenuProps = {
   size: ListProps["size"];

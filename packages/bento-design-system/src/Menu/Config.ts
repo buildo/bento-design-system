@@ -1,4 +1,3 @@
-import { Children } from "..";
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 
@@ -9,5 +8,5 @@ export type MenuConfig = {
   headerPaddingX: BentoSprinkles["paddingX"];
   headerPaddingY: BentoSprinkles["paddingY"];
   defaultOffset: number;
-  nestedMenuIcon: (props: IconProps) => Children;
+  nestedMenuIcon: (props: IconProps) => JSX.Element;
 };

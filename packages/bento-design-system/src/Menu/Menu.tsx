@@ -1,16 +1,15 @@
 import { DOMAttributes, useRef } from "react";
-import { Popover, Box, Inset, List } from "..";
+import { Popover, Box, Inset } from "..";
 import { menuRecipe } from "./Menu.css";
 import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState, MenuTriggerState } from "@react-stately/menu";
 import { useButton } from "@react-aria/button";
 import { useBentoConfig } from "../BentoConfigContext";
 import { MenuProps } from "./MenuProps";
-import { useNestedMenu } from "./useNestedMenu";
-import { processMenuItems } from "./NestedMenu";
+import { MenuList } from "./MenuList";
 
 export function Menu({
-  items: _items,
+  items,
   header,
   trigger,
   initialIsOpen,
@@ -36,42 +35,13 @@ export function Menu({
     triggerRef
   );
 
-  const {
-    nestedMenuTriggerRefs,
-    nestedMenuState,
-    open: openNestedMenu,
-    close: closeNestedMenu,
-    isOpen: isNestedMenuOpen,
-  } = useNestedMenu(_items);
-
-  const items = processMenuItems(
-    _items,
-    state,
-    openNestedMenu,
-    closeNestedMenu,
-    isNestedMenuOpen,
-    closeOnSelect,
-    dividers,
-    maxHeight,
-    size,
-    nestedMenuPlacement,
-    nestedMenuOffset,
-    nestedMenuState,
-    nestedMenuTriggerRefs,
-    overlayRef,
-    config
-  );
-
   return (
     <Box position="relative">
       {trigger(triggerRef, triggerProps, state)}
       {state.isOpen && (
         <Popover
           ref={overlayRef}
-          onClose={() => {
-            closeNestedMenu();
-            state.close();
-          }}
+          onClose={state.close}
           triggerRef={triggerRef}
           placement={placement}
           offset={offset ?? config.defaultOffset}
@@ -93,7 +63,17 @@ export function Menu({
               </Box>
             )}
             <Inset spaceY={config.paddingY}>
-              <List items={items} size={size} dividers={dividers} />
+              <MenuList
+                items={items}
+                closeMenu={state.close}
+                closeOnSelect={closeOnSelect || false}
+                size={size}
+                dividers={dividers || false}
+                maxHeight={maxHeight}
+                nestedMenuOffset={nestedMenuOffset}
+                nestedMenuPlacement={nestedMenuPlacement}
+                portalRef={overlayRef}
+              />
             </Inset>
           </Box>
         </Popover>

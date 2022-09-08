@@ -1,5 +1,5 @@
 import { useLink } from "@react-aria/link";
-import { AnchorHTMLAttributes, forwardRef, RefObject, useRef } from "react";
+import { AnchorHTMLAttributes, forwardRef, useRef } from "react";
 import {
   Body,
   Label,
@@ -74,9 +74,9 @@ type ActionProps =
       onPress?: never;
     };
 
-type ItemProps = Kind & LeftItem & RightItem & CommonItemProps & ActionProps;
+export type ListItemProps = Kind & LeftItem & RightItem & CommonItemProps & ActionProps;
 
-type Props = ItemProps & {
+type Props = ListItemProps & {
   size: ListSize;
 };
 
@@ -223,10 +223,6 @@ function Overline(props: Props & { kind: "overline" }) {
     </Stack>
   );
 }
-
-export type ListItemProps = ItemProps & {
-  ref?: RefObject<HTMLElement>;
-};
 
 export type {
   Kind as ListItemKind,
