@@ -31,6 +31,11 @@ export function MenuList({
 }: Props) {
   const [nestedMenuOpen, setNestedMenuOpen] = useState<number | null>(null);
 
+  const toggleNestedMenu = (i: number) =>
+    nestedMenuOpen === null || nestedMenuOpen !== i
+      ? setNestedMenuOpen(i)
+      : setNestedMenuOpen(null);
+
   function processItemProps(item: ListItemProps): ListItemProps {
     if (closeOnSelect && item.onPress) {
       const onPress = item.onPress;
@@ -61,7 +66,7 @@ export function MenuList({
               maxHeight={maxHeight}
               portalRef={portalRef}
               isOpen={nestedMenuOpen === i}
-              onSelect={() => setNestedMenuOpen(i)}
+              onSelect={() => toggleNestedMenu(i)}
             />
           );
         } else {
