@@ -31,7 +31,7 @@
     "@storybook/react": "6.5.9",
     "@storybook/testing-library": "0.0.13",
     "@types/lodash.orderby": "4.6.7",
-    "@types/react": "18.0.15",
+    "@types/react": "18.0.20",
     "@types/react-table": "7.7.12",
     "@vanilla-extract/babel-plugin": "1.1.7",
     "@vanilla-extract/css": "1.7.2",
