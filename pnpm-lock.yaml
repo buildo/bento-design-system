@@ -242,7 +242,7 @@ importers:
       '@vanilla-extract/sprinkles': 1.4.1
       '@vanilla-extract/webpack-plugin': 2.1.11
       chromatic: 6.7.2
-      date-fns: 2.29.1
+      date-fns: 2.29.3
       eslint: 8.20.0
       eslint-config-react-app: 7.0.1
       eslint-plugin-sort-export-all: 1.2.2
@@ -257,7 +257,7 @@ importers:
     dependencies:
       '@buildo/bento-design-system': link:../bento-design-system
       '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.2
-      date-fns: 2.29.1
+      date-fns: 2.29.3
     devDependencies:
       '@babel/core': 7.18.10
       '@babel/preset-env': 7.18.10_@babel+core@7.18.10
@@ -11984,8 +11984,8 @@ packages:
     engines: {node: '>=0.11'}
     dev: false
 
-  /date-fns/2.29.1:
-    resolution: {integrity: sha512-dlLD5rKaKxpFdnjrs+5azHDFOPEu4ANy/LTh04A1DTzMM7qoajmKCBc8pkKRFT41CNzw+4gQh79X5C+Jq27HAw==}
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
     engines: {node: '>=0.11'}
     dev: false
 
