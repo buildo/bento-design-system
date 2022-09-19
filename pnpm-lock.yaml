@@ -81,7 +81,7 @@ importers:
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/recipes': ^0.2.5
       '@vanilla-extract/sprinkles': ^1.4.1
-      '@vanilla-extract/webpack-plugin': 2.1.11
+      '@vanilla-extract/webpack-plugin': 2.1.12
       clsx: ^1.2.1
       css-loader: 6.7.1
       esbuild-loader: 2.19.0
@@ -192,7 +192,7 @@ importers:
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/esbuild-plugin': 2.1.0
       '@vanilla-extract/private': 1.0.3
-      '@vanilla-extract/webpack-plugin': 2.1.11_webpack@5.74.0
+      '@vanilla-extract/webpack-plugin': 2.1.12_webpack@5.74.0
       css-loader: 6.7.1_webpack@5.74.0
       esbuild-loader: 2.19.0_webpack@5.74.0
       eslint: 8.20.0
@@ -240,7 +240,7 @@ importers:
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/sprinkles': 1.4.1
-      '@vanilla-extract/webpack-plugin': 2.1.11
+      '@vanilla-extract/webpack-plugin': 2.1.12
       chromatic: 6.7.2
       date-fns: 2.29.1
       eslint: 8.20.0
@@ -277,7 +277,7 @@ importers:
       '@vanilla-extract/babel-plugin': 1.1.7
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/private': 1.0.3
-      '@vanilla-extract/webpack-plugin': 2.1.11_webpack@5.74.0
+      '@vanilla-extract/webpack-plugin': 2.1.12_webpack@5.74.0
       chromatic: 6.7.2
       eslint: 8.20.0
       eslint-config-react-app: 7.0.1_yq4dc5uxx75izsf3ithpxol37y
@@ -9111,9 +9111,24 @@ packages:
       chalk: 4.1.2
       debug: 4.3.3
       loader-utils: 2.0.2
+      webpack: 5.74.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@vanilla-extract/webpack-plugin/2.1.12_webpack@5.74.0:
+    resolution: {integrity: sha512-8mAbIDEh9r7a5cgb3wcILzuhEbGNddV4/qvwogOlxhoGrP4deUKJHEtPURDviWZ+x/FzFZtZ3glWU7WD8+WN8A==}
+    peerDependencies:
+      webpack: ^4.30.0 || ^5.20.2
+    dependencies:
+      '@vanilla-extract/integration': 5.0.0
+      chalk: 4.1.2
+      debug: 4.3.4
+      loader-utils: 2.0.2
       webpack: 5.74.0_3cfszzcgtcfxduka5ky5rqk2t4
     transitivePeerDependencies:
       - supports-color
+    dev: true
 
   /@webassemblyjs/ast/1.11.1:
     resolution: {integrity: sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw==}
@@ -18734,7 +18749,7 @@ packages:
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/css-utils': 0.1.2
       '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.2
-      '@vanilla-extract/webpack-plugin': 2.1.11_webpack@5.74.0
+      '@vanilla-extract/webpack-plugin': 2.1.12_webpack@5.74.0
       babel-loader: 8.2.5_m3opitmgss2x7fiy6klia7uvaa
       classnames: 2.3.1
       codemirror: 5.65.6
