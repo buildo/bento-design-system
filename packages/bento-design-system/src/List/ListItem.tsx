@@ -1,5 +1,5 @@
 import { useLink } from "@react-aria/link";
-import { AnchorHTMLAttributes, useRef } from "react";
+import { AnchorHTMLAttributes, forwardRef, useRef } from "react";
 import {
   Body,
   Label,
@@ -54,29 +54,33 @@ type RightItem = {
   trailingIcon?: (props: IconProps) => JSX.Element;
 };
 
-type Props = Kind &
-  LeftItem &
-  RightItem & {
-    disabled?: boolean;
-    size: ListSize;
-    isFocused?: boolean;
-    isSelected?: boolean;
-    ignoreTabIndex?: boolean;
-    key?: string | number;
-  } & (
-    | {
-        onPress?: () => void;
-        href?: never;
-        target?: never;
-      }
-    | {
-        href?: string;
-        target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
-        onPress?: never;
-      }
-  );
+type CommonItemProps = {
+  disabled?: boolean;
+  isFocused?: boolean;
+  isSelected?: boolean;
+  ignoreTabIndex?: boolean;
+  key?: string | number;
+};
 
-export function ListItem(props: Props) {
+type ActionProps =
+  | {
+      onPress?: () => void;
+      href?: never;
+      target?: never;
+    }
+  | {
+      href?: string;
+      target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
+      onPress?: never;
+    };
+
+export type ListItemProps = Kind & LeftItem & RightItem & CommonItemProps & ActionProps;
+
+type Props = ListItemProps & {
+  size: ListSize;
+};
+
+export const ListItem = forwardRef<HTMLElement, Props>((props, ref) => {
   const config = useBentoConfig().list.item;
   const linkRef = useRef<HTMLElement>(null);
 
@@ -94,6 +98,7 @@ export function ListItem(props: Props) {
 
   return (
     <Box
+      ref={ref}
       as="li"
       className={listItemRecipe({
         interactive,
@@ -122,7 +127,7 @@ export function ListItem(props: Props) {
       </Box>
     </Box>
   );
-}
+});
 
 function renderLeft(props: Props, config: ListItemConfig) {
   if (props.illustration) {
@@ -219,4 +224,9 @@ function Overline(props: Props & { kind: "overline" }) {
   );
 }
 
-export type { Props as ListItemProps };
+export type {
+  Kind as ListItemKind,
+  LeftItem as ListLeftItem,
+  RightItem as ListRightItem,
+  CommonItemProps,
+};

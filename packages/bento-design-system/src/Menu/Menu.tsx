@@ -1,41 +1,15 @@
-import { ComponentProps, DOMAttributes, Ref, useRef } from "react";
-import { Children, Popover, Box, Inset, List, ListProps } from "..";
+import { DOMAttributes, useRef } from "react";
+import { Popover, Box, Inset } from "..";
 import { menuRecipe } from "./Menu.css";
 import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState, MenuTriggerState } from "@react-stately/menu";
-import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
 import { useBentoConfig } from "../BentoConfigContext";
-
-type Props = {
-  size: ListProps["size"];
-  items: ListProps["items"];
-  /**
-   * Optional static content that is displayed before the menu items.
-   */
-  header?: Children;
-  /**
-   * The trigger element that will be used to open the menu.
-   * It must accept a `ref` prop and other accessibility props to ensure the menu is properly
-   * connected to its trigger, for accessibility purposes.
-   *
-   * It can use the `state` parameter to determine and change the menu state.
-   */
-  trigger: (
-    ref: Ref<HTMLElement>,
-    props: Pick<AriaButtonProps, "id" | "aria-labelledby">,
-    state: MenuTriggerState
-  ) => JSX.Element;
-  initialIsOpen?: boolean;
-  placement?: ComponentProps<typeof Popover>["placement"];
-  offset?: ComponentProps<typeof Popover>["offset"];
-  dividers?: boolean;
-  maxHeight?: number;
-  closeOnSelect?: boolean;
-};
+import { MenuProps } from "./MenuProps";
+import { MenuList } from "./MenuList";
 
 export function Menu({
-  items: _items,
+  items,
   header,
   trigger,
   initialIsOpen,
@@ -45,13 +19,15 @@ export function Menu({
   dividers,
   maxHeight,
   closeOnSelect,
-}: Props) {
+  nestedMenuPlacement = "right top",
+  nestedMenuOffset: _nestedMenuOffset,
+}: MenuProps) {
   const config = useBentoConfig().menu;
+  const nestedMenuOffset = _nestedMenuOffset ?? config.defaultOffset;
   const triggerRef = useRef(null);
+  const overlayRef = useRef(null);
 
-  const state = useMenuTriggerState({
-    defaultOpen: initialIsOpen,
-  });
+  const state = useMenuTriggerState({ defaultOpen: initialIsOpen });
 
   const { menuTriggerProps, menuProps } = useMenuTrigger({}, state, triggerRef);
   const { buttonProps: triggerProps } = useButton(
@@ -59,28 +35,13 @@ export function Menu({
     triggerRef
   );
 
-  const items = closeOnSelect
-    ? _items.map((item) => {
-        if (item.onPress) {
-          const onPress = item.onPress;
-          return {
-            ...item,
-            onPress: () => {
-              onPress();
-              state.close();
-            },
-          };
-        }
-        return item;
-      })
-    : _items;
-
   return (
     <Box position="relative">
       {trigger(triggerRef, triggerProps, state)}
       {state.isOpen && (
         <Popover
-          onClose={() => state.close()}
+          ref={overlayRef}
+          onClose={state.close}
           triggerRef={triggerRef}
           placement={placement}
           offset={offset ?? config.defaultOffset}
@@ -102,7 +63,17 @@ export function Menu({
               </Box>
             )}
             <Inset spaceY={config.paddingY}>
-              <List items={items} size={size} dividers={dividers} />
+              <MenuList
+                items={items}
+                closeMenu={state.close}
+                closeOnSelect={closeOnSelect || false}
+                size={size}
+                dividers={dividers || false}
+                maxHeight={maxHeight}
+                nestedMenuOffset={nestedMenuOffset}
+                nestedMenuPlacement={nestedMenuPlacement}
+                portalRef={overlayRef}
+              />
             </Inset>
           </Box>
         </Popover>
@@ -111,5 +82,5 @@ export function Menu({
   );
 }
 
-export type { Props as MenuProps };
 export type { MenuTriggerState };
+export * from "./MenuProps";

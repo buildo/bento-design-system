@@ -1,11 +1,10 @@
-import { Omit } from "../util/Omit";
 import { ListItem, ListItemProps } from "./ListItem";
 import { InternalList } from "./InternalList";
 
 export type ListSize = "medium" | "large";
 type Props = {
   size: ListSize;
-  items: Omit<ListItemProps, "size">[];
+  items: ListItemProps[];
   dividers?: boolean;
 };
 

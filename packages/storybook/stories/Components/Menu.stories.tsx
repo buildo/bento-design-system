@@ -1,32 +1,64 @@
 import { Body, Title } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
+import { ComponentProps } from "react";
 import { Avatar, Box, Button, Menu, Stack } from "..";
 import { createComponentStories, formatMessage } from "../util";
+
+const items: ComponentProps<typeof Menu>["items"] = [
+  {
+    label: formatMessage("Item 1"),
+    items: [
+      { label: formatMessage("Sub item 1.1"), onPress: action("Sub item 1.1") },
+      { label: formatMessage("Sub item 1.2"), onPress: action("Sub item 1.2") },
+    ],
+  },
+  {
+    label: formatMessage("Item 2 (link)"),
+    href: "https://www.google.com",
+  },
+  {
+    label: formatMessage("Item 3"),
+    onPress: action("Item 3"),
+    disabled: true,
+  },
+  {
+    label: formatMessage("Item 4"),
+    items: [
+      {
+        label: formatMessage("Sub item 4.1"),
+        items: [
+          { label: formatMessage("Sub item 4.1.1"), onPress: action("Sub item 4.1.1") },
+          { label: formatMessage("Sub item 4.1.2"), onPress: action("Sub item 4.1.2") },
+        ],
+      },
+      { label: formatMessage("Sub item 4.2"), onPress: action("Sub item 4.2") },
+      { label: formatMessage("Sub item 4.3"), onPress: action("Sub item 4.3") },
+      { label: formatMessage("Sub item 4.4"), onPress: action("Sub item 4.4") },
+      { label: formatMessage("Sub item 4.5"), onPress: action("Sub item 4.5") },
+      {
+        label: formatMessage("Sub item 4.6"),
+        items: [
+          { label: formatMessage("Sub item 4.6.1"), onPress: action("Sub item 4.6.1") },
+          { label: formatMessage("Sub item 4.6.2"), onPress: action("Sub item 4.6.2") },
+        ],
+      },
+      { label: formatMessage("Sub item 4.7"), onPress: action("Sub item 4.7") },
+      { label: formatMessage("Sub item 4.8"), onPress: action("Sub item 4.8") },
+      { label: formatMessage("Sub item 4.9"), onPress: action("Sub item 4.9") },
+    ],
+  },
+  {
+    label: formatMessage("Item 5"),
+    onPress: action("Item 5"),
+  },
+];
 
 const { defaultExport, createStory } = createComponentStories({
   component: Menu,
   args: {
     size: "medium",
     initialIsOpen: true,
-    items: [
-      {
-        label: formatMessage("Item 1"),
-        onPress: action("Item 1"),
-      },
-      {
-        label: formatMessage("Item 2 (link)"),
-        href: "https://www.google.com",
-      },
-      {
-        label: formatMessage("Item 3"),
-        onPress: action("Item 3"),
-        disabled: true,
-      },
-      {
-        label: formatMessage("Item 4"),
-        onPress: action("Item 4"),
-      },
-    ],
+    items,
   },
 });
 
