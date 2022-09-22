@@ -11,7 +11,7 @@ const pixelToRem = (px: number) => `${px / remBaseSize}rem`;
 function theme() {
   return {
     fontFamily: {
-      // default: null,
+      default: getTextStyle("Body/Medium")?.fontFamily,
     },
     fontWeight: {
       body: getTextStyle("Body/Medium")?.weight,
@@ -252,6 +252,7 @@ function getTextStyle(name: string) {
   }
 
   return {
+    fontFamily: text.fontName.family,
     fontSize: pixelToRem(text.fontSize),
     lineHeight: pixelToRem(text.lineHeight.value),
     weight: figmaFontStyleToWeight(text.fontName.style),
