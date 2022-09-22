@@ -5,18 +5,21 @@ export default function exportTheme() {
   figma.closePlugin("Done! Check the console");
 }
 
+const remBaseSize = 16;
+const pixelToRem = (px: number) => `${px / remBaseSize}rem`;
+
 function theme() {
   return {
     fontFamily: {
       // default: null,
     },
     fontWeight: {
-      // body: null,
-      // bodyStrong: null,
-      // display: null,
-      // headline: null,
-      // label: null,
-      // title: null,
+      body: getTextStyle("Body/Medium")?.weight,
+      bodyStrong: getTextStyle("Body/Medium Strong")?.weight,
+      display: getTextStyle("Display/Medium")?.weight,
+      headline: getTextStyle("Headline/Medium")?.weight,
+      label: getTextStyle("Label/Medium")?.weight,
+      title: getTextStyle("Title/Medium")?.weight,
     },
     fontSize: {
       bodySmall: getTextStyle("Body/Small")?.fontSize,
@@ -243,10 +246,16 @@ function getTextStyle(name: string) {
     return;
   }
 
-  return {
-    fontSize: `${text.fontSize}px`,
-    lineHeight: `${text.lineHeight}px`
+  if (text.lineHeight.unit === "AUTO") {
+    console.warn(`Unexpected lineHeight unit "AUTO"`);
+    return;
   }
+
+  return {
+    fontSize: pixelToRem(text.fontSize),
+    lineHeight: pixelToRem(text.lineHeight.value),
+    weight: figmaFontStyleToWeight(text.fontName.style),
+  };
 }
 
 function getStyleColor(name: string): string | undefined {
@@ -293,4 +302,37 @@ function figmaEffectToBoxShadow(effect: Extract<Effect, { type: "DROP_SHADOW" | 
   const prefix = effect.type === "INNER_SHADOW" ? "inset " : "";
 
   return prefix + [offset, radius, spread, color].join(" ");
+}
+
+function figmaFontStyleToWeight(style: string): number | undefined {
+  const s = style.toLowerCase().replace(" ", "").replace("-", "");
+
+  switch (s) {
+    case "thin":
+    case "hairline":
+      return 100;
+    case "extralight":
+    case "ultralight":
+      return 200;
+    case "light":
+      return 300;
+    case "normal":
+    case "regular":
+      return 400;
+    case "medium":
+      return 500;
+    case "semibold":
+    case "demibold":
+      return 600;
+    case "bold":
+      return 700;
+    case "extrabold":
+    case "ultrabold":
+      return 800;
+    case "black":
+    case "heavy":
+      return 900;
+  }
+
+  console.warn("Unhandled font style", style);
 }
