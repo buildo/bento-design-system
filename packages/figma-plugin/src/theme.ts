@@ -52,56 +52,56 @@ function theme() {
       textDisabled: getStyleColor("Text/Disabled"),
     },
     interactiveBackgroundColor: {
-      // primarySolidEnabledBackground:
-      // primarySolidHoverBackground:
-      // primarySolidFocusBackground:
-      // primaryTransparentEnabledBackground:
-      // primaryTransparentHoverBackground:
-      // primaryTransparentFocusBackground:
-      // secondarySolidEnabledBackground:
-      // secondarySolidHoverBackground:
-      // secondarySolidFocusBackground:
-      // secondaryTransparentEnabledBackground:
-      // secondaryTransparentHoverBackground:
-      // secondaryTransparentFocusBackground:
-      // dangerSolidEnabledBackground:
-      // dangerSolidHoverBackground:
-      // dangerSolidFocusBackground:
-      // dangerTransparentEnabledBackground:
-      // dangerTransparentHoverBackground:
-      // dangerTransparentFocusBackground:
-      // disabledSolidBackground:
-      // disabledTransparentBackground:
+      primarySolidEnabledBackground: getStyleColor("Interactive/Primary/Solid/Enabled Background"),
+      primarySolidHoverBackground: getStyleColor("Interactive/Primary/Solid/Hover Background"),
+      primarySolidFocusBackground: getStyleColor("Interactive/Primary/Solid/Focus Background"),
+      primaryTransparentEnabledBackground: getStyleColor("Interactive/Primary/Transparent/Enabled"),
+      primaryTransparentHoverBackground: getStyleColor("Interactive/Primary/Transparent/Hover Background"),
+      primaryTransparentFocusBackground: getStyleColor("Interactive/Primary/Transparent/Focus Background"),
+      secondarySolidEnabledBackground: getStyleColor("Interactive/Secondary/Solid/Enabled Background"),
+      secondarySolidHoverBackground: getStyleColor("Interactive/Secondary/Solid/Hover Background"),
+      secondarySolidFocusBackground: getStyleColor("Interactive/Secondary/Solid/Focus Background"),
+      secondaryTransparentEnabledBackground: getStyleColor("Interactive/Secondary/Enabled Background"),
+      secondaryTransparentHoverBackground: getStyleColor("Interactive/Secondary/Hover Background"),
+      secondaryTransparentFocusBackground: getStyleColor("Interactive/Secondary/Focus Background"),
+      dangerSolidEnabledBackground: getStyleColor("Interactive/Danger/Solid/Enabled Background"),
+      dangerSolidHoverBackground: getStyleColor("Interactive/Danger/Solid/Hover Background"),
+      dangerSolidFocusBackground: getStyleColor("Interactive/Danger/Solid/Focus Background"),
+      dangerTransparentEnabledBackground: getStyleColor("Interactive/Danger/Transparent/Enabled Background"),
+      dangerTransparentHoverBackground: getStyleColor("Interactive/Danger/Transparent/Hover Background"),
+      dangerTransparentFocusBackground: getStyleColor("Interactive/Danger/Transparent/Focus Background"),
+      disabledSolidBackground: getStyleColor("Interactive/Disabled/Solid/Disabled Background"),
+      disabledTransparentBackground: getStyleColor("Interactive/Disabled/Transparent/Disabled Background"),
     },
     interactiveForegroundColor: {
-      // primarySolidEnabledForeground:
-      // primarySolidHoverForeground:
-      // primarySolidFocusForeground:
-      // primaryTransparentEnabledForeground:
-      // primaryTransparentHoverForeground:
-      // primaryTransparentFocusForeground:
-      // secondarySolidEnabledForeground:
-      // secondarySolidHoverForeground:
-      // secondarySolidFocusForeground:
-      // secondaryTransparentEnabledForeground:
-      // secondaryTransparentHoverForeground:
-      // secondaryTransparentFocusForeground:
-      // dangerSolidEnabledForeground:
-      // dangerSolidHoverForeground:
-      // dangerSolidFocusForeground:
-      // dangerTransparentEnabledForeground:
-      // dangerTransparentHoverForeground:
-      // dangerTransparentFocusForeground:
-      // disabledSolidForeground:
-      // disabledTransparentForeground:
-      // linkEnabled:
-      // linkHover:
-      // linkFocus:
-      // linkDisabled:
-      // linkEnabledInverse:
-      // linkHoverInverse:
-      // linkFocusInverse:
-      // linkDisabledInverse:
+      primarySolidEnabledForeground: getStyleColor("Interactive/Primary/Solid/Enabled Foreground"),
+      primarySolidHoverForeground: getStyleColor("Interactive/Primary/Solid/Hover Foreground"),
+      primarySolidFocusForeground: getStyleColor("Interactive/Primary/Solid/Focus Foreground"),
+      primaryTransparentEnabledForeground: getStyleColor("Interactive/Primary/TranspareForeground"),
+      primaryTransparentHoverForeground: getStyleColor("Interactive/Primary/Transparent/Hover Foreground"),
+      primaryTransparentFocusForeground: getStyleColor("Interactive/Primary/Transparent/Focus Foreground"),
+      secondarySolidEnabledForeground: getStyleColor("Interactive/Secondary/Solid/Enabled Foreground"),
+      secondarySolidHoverForeground: getStyleColor("Interactive/Secondary/Solid/Hover Foreground"),
+      secondarySolidFocusForeground: getStyleColor("Interactive/Secondary/Solid/Focus Foreground"),
+      secondaryTransparentEnabledForeground: getStyleColor("Interactive/Secondary/Enabled Foreground"),
+      secondaryTransparentHoverForeground: getStyleColor("Interactive/Secondary/Hover Foreground"),
+      secondaryTransparentFocusForeground: getStyleColor("Interactive/Secondary/Focus Foreground"),
+      dangerSolidEnabledForeground: getStyleColor("Interactive/Danger/Solid/Enabled Foreground"),
+      dangerSolidHoverForeground: getStyleColor("Interactive/Danger/Solid/Hover Foreground"),
+      dangerSolidFocusForeground: getStyleColor("Interactive/Danger/Solid/Focus Foreground"),
+      dangerTransparentEnabledForeground: getStyleColor("Interactive/Danger/Transparent/Enabled Foreground"),
+      dangerTransparentHoverForeground: getStyleColor("Interactive/Danger/Transparent/Hover Foreground"),
+      dangerTransparentFocusForeground: getStyleColor("Interactive/Danger/Transparent/Focus Foreground"),
+      disabledSolidForeground: getStyleColor("Interactive/Disabled/Solid/Disabled Foreground"),
+      disabledTransparentForeground: getStyleColor("Interactive/Disabled/Transparent/Disabled Foreground"),
+      linkEnabled: getStyleColor("Interactive/Link/Enabled"),
+      linkHover: getStyleColor("Interactive/Link/Hover"),
+      linkFocus: getStyleColor("Interactive/Link/Focus"),
+      linkDisabled: getStyleColor("Interactive/Link/Disabled"),
+      linkEnabledInverse: getStyleColor("Interactive/Link/Enabled Inverse"),
+      linkHoverInverse: getStyleColor("Interactive/Link/Hover Inverse"),
+      linkFocusInverse: getStyleColor("Interactive/Link/Focus Inverse"),
+      linkDisabledInverse: getStyleColor("Interactive/Link/Disabled Inverse"),
     },
     outlineColor: {
       outlineInteractive: getStyleColor("Outline/Interactive"),
