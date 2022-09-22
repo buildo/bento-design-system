@@ -7,6 +7,80 @@ export default function exportTheme() {
 
 function theme() {
   return {
+    fontFamily: {
+      // default: null,
+    },
+    fontWeight: {
+      // body: null,
+      // bodyStrong: null,
+      // display: null,
+      // headline: null,
+      // label: null,
+      // title: null,
+    },
+    fontSize: {
+      bodySmall: getTextStyle("Body/Small")?.fontSize,
+      bodyMedium: getTextStyle("Body/Medium")?.fontSize,
+      bodyLarge: getTextStyle("Body/Large")?.fontSize,
+      displaySmall: getTextStyle("Display/Small")?.fontSize,
+      displayMedium: getTextStyle("Display/Medium")?.fontSize,
+      displayLarge: getTextStyle("Display/Large")?.fontSize,
+      headlineSmall: getTextStyle("Headline/Small")?.fontSize,
+      headlineMedium: getTextStyle("Headline/Medium")?.fontSize,
+      headlineLarge: getTextStyle("Headline/Large")?.fontSize,
+      labelSmall: getTextStyle("Label/Small")?.fontSize,
+      labelMedium: getTextStyle("Label/Medium")?.fontSize,
+      labelLarge: getTextStyle("Label/Large")?.fontSize,
+      titleSmall: getTextStyle("Title/Small")?.fontSize,
+      titleMedium: getTextStyle("Title/Medium")?.fontSize,
+      titleLarge: getTextStyle("Title/Large")?.fontSize,
+    },
+    lineHeight: {
+      bodySmall: getTextStyle("Body/Small")?.lineHeight,
+      bodyMedium: getTextStyle("Body/Medium")?.lineHeight,
+      bodyLarge: getTextStyle("Body/Large")?.lineHeight,
+      displaySmall: getTextStyle("Display/Small")?.lineHeight,
+      displayMedium: getTextStyle("Display/Medium")?.lineHeight,
+      displayLarge: getTextStyle("Display/Large")?.lineHeight,
+      headlineSmall: getTextStyle("Headline/Small")?.lineHeight,
+      headlineMedium: getTextStyle("Headline/Medium")?.lineHeight,
+      headlineLarge: getTextStyle("Headline/Large")?.lineHeight,
+      labelSmall: getTextStyle("Label/Small")?.lineHeight,
+      labelMedium: getTextStyle("Label/Medium")?.lineHeight,
+      labelLarge: getTextStyle("Label/Large")?.lineHeight,
+      titleSmall: getTextStyle("Title/Small")?.lineHeight,
+      titleMedium: getTextStyle("Title/Medium")?.lineHeight,
+      titleLarge: getTextStyle("Title/Large")?.lineHeight,
+    },
+    letterSpacing: {
+      // 1: null,
+      // 2: null,
+    },
+    space: {
+      // 0: null,
+      // 4: null,
+      // 8: null,
+      // 16: null,
+      // 24: null,
+      // 32: null,
+      // 40: null,
+      // 80: null,
+    },
+    negativeSpace: {
+      // 0: null,
+      // negative4: null,
+      // negative8: null,
+      // negative16: null,
+      // negative24: null,
+      // negative32: null,
+      // negative40: null,
+      // negative80: null,
+    },
+    radius: {
+      // 4: null,
+      // 8: null,
+      // 16: null,
+    },
     brandColor: {
       brandPrimary: getStyleColor("Brand/Primary"),
       brandSecondary: getStyleColor("Brand/Secondary"),
@@ -158,6 +232,21 @@ function theme() {
       elevationLarge: getEffectStyle("Elevation/Large"),
     },
   };
+}
+
+function getTextStyle(name: string) {
+  const styles = figma.getLocalTextStyles();
+  const text = styles.find((s) => s.name === name);
+
+  if (!text) {
+    console.warn(`No text style found for name '${name}'`);
+    return;
+  }
+
+  return {
+    fontSize: `${text.fontSize}px`,
+    lineHeight: `${text.lineHeight}px`
+  }
 }
 
 function getStyleColor(name: string): string | undefined {
