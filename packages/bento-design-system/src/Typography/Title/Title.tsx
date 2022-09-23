@@ -1,4 +1,4 @@
-import { LocalizedString, BoxProps, Box } from "../..";
+import { LocalizedString, Box, AsProp } from "../..";
 import { titleRecipe } from "./Title.css";
 
 type Size = "small" | "medium" | "large";
@@ -18,7 +18,7 @@ type Props = {
   size: Size;
   color?: Color;
   align?: Align;
-} & Pick<BoxProps, "as">;
+} & AsProp;
 
 export function Title({ children, size, align, color = "default", ...boxProps }: Props) {
   return (
