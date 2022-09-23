@@ -8,6 +8,7 @@ import {
   arrow,
   Placement,
   UseFloatingProps,
+  flip,
 } from "@floating-ui/react-dom";
 import { useTooltipTriggerState } from "@react-stately/tooltip";
 import { useTooltipTrigger, useTooltip } from "@react-aria/tooltip";
@@ -38,7 +39,7 @@ export function Tooltip(props: Props) {
   const floatingProps: UseFloatingProps = props.placement
     ? {
         placement: props.placement,
-        middleware: [shift(), offset(8), arrow({ element: arrowRef })],
+        middleware: [shift(), flip(), offset(8), arrow({ element: arrowRef })],
       }
     : {
         middleware: [shift(), autoPlacement(), offset(8), arrow({ element: arrowRef })],
