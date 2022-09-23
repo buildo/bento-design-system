@@ -19,3 +19,8 @@ const trigger: TooltipProps["trigger"] = (ref, props) => (
 export const Basic = createStory({
   trigger,
 });
+
+export const ForcedPlacement = createStory({
+  trigger,
+  placement: "bottom",
+});
