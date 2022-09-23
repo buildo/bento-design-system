@@ -4,7 +4,7 @@ import { Divider } from "../Divider/Divider";
 import { ResponsiveAlign, alignToFlexAlign } from "../util/align";
 import { childKey } from "../util/childKey";
 import { Children } from "../util/Children";
-import { Box, BoxProps } from "../Box/Box";
+import { AsProp, Box } from "../Box/Box";
 import { ResponsiveSpace } from "../internal";
 
 type StackProps = {
@@ -12,7 +12,7 @@ type StackProps = {
   children: Children;
   align?: ResponsiveAlign;
   dividers?: boolean;
-} & Pick<BoxProps, "as">;
+} & AsProp;
 
 export function Stack({ space, align, children, dividers, ...boxProps }: StackProps) {
   return (

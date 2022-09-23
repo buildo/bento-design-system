@@ -1,5 +1,5 @@
 import flattenChildren from "react-keyed-flatten-children";
-import { BoxProps, Box } from "../Box/Box";
+import { Box, AsProp } from "../Box/Box";
 import { ResponsiveSpace } from "../internal";
 import { Children } from "../util/Children";
 import {
@@ -11,7 +11,7 @@ type InlineProps = {
   space: ResponsiveSpace;
   children: Children;
 } & CollapsibleAlignmentProps &
-  Pick<BoxProps, "as">;
+  AsProp;
 
 export function Inline({
   space,

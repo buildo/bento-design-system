@@ -10,13 +10,17 @@ type HTMLProperties = Omit<
   "as" | "color" | "height" | "width" | "className"
 >;
 
+type AsProp = {
+  as?: React.ElementType;
+};
+
 type Props = Parameters<SprinklesFn>[0] &
-  HTMLProperties & {
-    as?: React.ElementType;
+  HTMLProperties &
+  AsProp & {
     className?: ClassValue;
   };
 
-export type { Props as BoxProps };
+export type { AsProp, Props as BoxProps };
 
 export type BoxType = React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLElement>>;
 
