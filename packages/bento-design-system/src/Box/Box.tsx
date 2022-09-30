@@ -36,7 +36,7 @@ export const Box: BoxType = forwardRef<HTMLElement, Props>(
     const sprinkles = useSprinkles();
     const { atomProps, customProps, otherProps } = extractAtomsFromProps(props, sprinkles);
 
-    const el = typeof element === "string" ? element : "div";
+    const el = element ?? "div";
     const elementReset = resetStyles.element[el as keyof typeof resetStyles.element];
 
     return createElement(el, {
