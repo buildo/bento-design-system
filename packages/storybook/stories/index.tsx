@@ -58,6 +58,7 @@ export {
   CustomModal,
   DateField,
   DecorativeDivider,
+  DesignSystemProvider,
   Disclosure,
   DisclosureGroup,
   Display,
