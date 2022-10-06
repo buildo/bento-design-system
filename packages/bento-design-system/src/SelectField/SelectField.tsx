@@ -13,7 +13,7 @@ import * as selectComponents from "./components";
 import { ListItemProps } from "../List/ListItem";
 import { Omit } from "../util/Omit";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import { useBentoConfig } from "../BentoConfigContext";
+import { BentoConfigProvider, useBentoConfig } from "../BentoConfigContext";
 
 export type SelectOption<A> = Omit<
   ListItemProps,
@@ -97,96 +97,99 @@ export function SelectField<A, IsMulti extends boolean = false>(props: Props<A, 
   const { defaultMessages } = useDefaultMessages();
 
   return (
-    <Field
-      label={label}
-      hint={hint}
-      labelProps={labelProps}
-      assistiveText={assistiveText}
-      issues={issues}
-      assistiveTextProps={descriptionProps}
-      errorMessageProps={errorMessageProps}
-      disabled={disabled}
-    >
-      <Select
-        id={fieldProps.id}
-        aria-label={fieldProps["aria-label"]}
-        aria-labelledby={fieldProps["aria-labelledby"]}
-        isDisabled={disabled}
-        isReadOnly={isReadOnly || false}
-        autoFocus={autoFocus}
-        value={
-          isMulti
-            ? options.filter((o) => ((value ?? []) as readonly A[]).includes(o.value))
-            : options.find((o) => o.value === value)
-        }
-        onChange={(o) => {
-          if (isMulti) {
-            const multiValue = o as MultiValueT<SelectOption<A>>;
-            (onChange as Props<A, true>["onChange"])(multiValue.map((a) => a.value));
-          } else {
-            const singleValue = o as SingleValueT<SelectOption<A>>;
-            (onChange as Props<A, false>["onChange"])(
-              singleValue == null ? undefined : singleValue.value
-            );
+    // NOTE(gabro): SelectField has its own config for List, so we override it here using BentoConfigProvider
+    <BentoConfigProvider value={{ list: dropdownConfig.list }}>
+      <Field
+        label={label}
+        hint={hint}
+        labelProps={labelProps}
+        assistiveText={assistiveText}
+        issues={issues}
+        assistiveTextProps={descriptionProps}
+        errorMessageProps={errorMessageProps}
+        disabled={disabled}
+      >
+        <Select
+          id={fieldProps.id}
+          aria-label={fieldProps["aria-label"]}
+          aria-labelledby={fieldProps["aria-labelledby"]}
+          isDisabled={disabled}
+          isReadOnly={isReadOnly || false}
+          autoFocus={autoFocus}
+          value={
+            isMulti
+              ? options.filter((o) => ((value ?? []) as readonly A[]).includes(o.value))
+              : options.find((o) => o.value === value)
           }
-        }}
-        onBlur={onBlur}
-        options={options
-          .slice() // avoid mutating the original array
-          .sort((a, b) => {
-            // In case of multi-select, we display the selected options first
+          onChange={(o) => {
             if (isMulti) {
-              const selectedValues = (value ?? []) as readonly A[];
-              const isSelected = (a: SelectOption<A>) => selectedValues.includes(a.value);
-              if (isSelected(a) && !isSelected(b)) {
-                return -1;
-              }
-              if (!isSelected(a) && isSelected(b)) {
-                return 1;
-              }
+              const multiValue = o as MultiValueT<SelectOption<A>>;
+              (onChange as Props<A, true>["onChange"])(multiValue.map((a) => a.value));
+            } else {
+              const singleValue = o as SingleValueT<SelectOption<A>>;
+              (onChange as Props<A, false>["onChange"])(
+                singleValue == null ? undefined : singleValue.value
+              );
             }
-            return 0;
-          })}
-        placeholder={placeholder}
-        menuPortalTarget={menuPortalTarget}
-        components={{
-          ...selectComponents,
-          MultiValue,
-        }}
-        openMenuOnFocus
-        styles={selectComponents.styles<SelectOption<A>, IsMulti>()}
-        validationState={validationState}
-        isMulti={isMulti}
-        isClearable={false}
-        noOptionsMessage={() => noOptionsMessage ?? defaultMessages.SelectField.noOptionsMessage}
-        multiValueMessage={
-          isMulti
-            ? (props as unknown as Props<A, true>).multiValueMessage ??
-              defaultMessages.SelectField.multiOptionsSelected
-            : undefined
-        }
-        closeMenuOnSelect={!isMulti}
-        hideSelectedOptions={false}
-        menuSize={menuSize}
-        menuIsOpen={isReadOnly ? false : undefined}
-        isSearchable={isReadOnly ? false : searchable ?? true}
-        showMultiSelectBulkActions={
-          isMulti ? (props as unknown as Props<A, true>).showMultiSelectBulkActions : false
-        }
-        clearAllButtonLabel={
-          isMulti
-            ? (props as unknown as Props<A, true>).clearAllButtonLabel ??
-              defaultMessages.SelectField.clearAllButtonLabel
-            : undefined
-        }
-        selectAllButtonLabel={
-          isMulti
-            ? (props as unknown as Props<A, true>).selectAllButtonLabel ??
-              defaultMessages.SelectField.selectAllButtonLabel
-            : undefined
-        }
-      />
-    </Field>
+          }}
+          onBlur={onBlur}
+          options={options
+            .slice() // avoid mutating the original array
+            .sort((a, b) => {
+              // In case of multi-select, we display the selected options first
+              if (isMulti) {
+                const selectedValues = (value ?? []) as readonly A[];
+                const isSelected = (a: SelectOption<A>) => selectedValues.includes(a.value);
+                if (isSelected(a) && !isSelected(b)) {
+                  return -1;
+                }
+                if (!isSelected(a) && isSelected(b)) {
+                  return 1;
+                }
+              }
+              return 0;
+            })}
+          placeholder={placeholder}
+          menuPortalTarget={menuPortalTarget}
+          components={{
+            ...selectComponents,
+            MultiValue,
+          }}
+          openMenuOnFocus
+          styles={selectComponents.styles<SelectOption<A>, IsMulti>()}
+          validationState={validationState}
+          isMulti={isMulti}
+          isClearable={false}
+          noOptionsMessage={() => noOptionsMessage ?? defaultMessages.SelectField.noOptionsMessage}
+          multiValueMessage={
+            isMulti
+              ? (props as unknown as Props<A, true>).multiValueMessage ??
+                defaultMessages.SelectField.multiOptionsSelected
+              : undefined
+          }
+          closeMenuOnSelect={!isMulti}
+          hideSelectedOptions={false}
+          menuSize={menuSize}
+          menuIsOpen={isReadOnly ? false : undefined}
+          isSearchable={isReadOnly ? false : searchable ?? true}
+          showMultiSelectBulkActions={
+            isMulti ? (props as unknown as Props<A, true>).showMultiSelectBulkActions : false
+          }
+          clearAllButtonLabel={
+            isMulti
+              ? (props as unknown as Props<A, true>).clearAllButtonLabel ??
+                defaultMessages.SelectField.clearAllButtonLabel
+              : undefined
+          }
+          selectAllButtonLabel={
+            isMulti
+              ? (props as unknown as Props<A, true>).selectAllButtonLabel ??
+                defaultMessages.SelectField.selectAllButtonLabel
+              : undefined
+          }
+        />
+      </Field>
+    </BentoConfigProvider>
   );
 }
 
