@@ -8,5 +8,5 @@ export default defineConfig({
   dts: true,
   // See https://esbuild.github.io/content-types/#auto-import-for-jsx
   inject: ["./jsxShim.ts"],
-  noExternal: ["@fontsource/ibm-plex-sans"],
+  noExternal: ["@fontsource"],
 });
