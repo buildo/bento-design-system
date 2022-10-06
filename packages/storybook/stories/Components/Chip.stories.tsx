@@ -1,11 +1,11 @@
 import { IconPlaceholder } from "@buildo/bento-design-system";
 import { Chip } from "../";
-import { createComponentStories, formatMessage, textArgType } from "../util";
+import { createComponentStories, textArgType } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Chip,
   args: {
-    label: formatMessage("Label"),
+    label: "Label",
   },
   argTypes: {
     label: textArgType,

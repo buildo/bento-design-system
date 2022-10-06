@@ -1,5 +1,5 @@
-import { Stepper } from "../";
-import { createComponentStories, formatMessage } from "../util";
+import { Stepper } from "..";
+import { createComponentStories } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Stepper,
@@ -11,10 +11,10 @@ export default defaultExport;
 export const stepper = createStory({
   currentStep: 2,
   steps: [
-    { label: formatMessage("Step 1") },
-    { label: formatMessage("Step 2") },
-    { label: formatMessage("Step 3") },
-    { label: formatMessage("Step 4") },
-    { label: formatMessage("Step 5") },
+    { label: "Step 1" },
+    { label: "Step 2" },
+    { label: "Step 3" },
+    { label: "Step 4" },
+    { label: "Step 5" },
   ],
 });

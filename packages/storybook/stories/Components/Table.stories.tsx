@@ -10,7 +10,7 @@ import {
   IconWarning,
   NumberField,
 } from "../";
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 import orderBy from "lodash.orderby";
 import { IconClose } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
@@ -25,59 +25,59 @@ export default defaultExport;
 
 const exampleColumns = [
   tableColumn.button({
-    headerLabel: formatMessage("Button"),
+    headerLabel: "Button",
     accessor: "button",
     sticky: "left",
     disableSortBy: true,
     align: "center",
   }),
   tableColumn.text({
-    headerLabel: formatMessage("Name"),
+    headerLabel: "Name",
     accessor: "name",
   }),
   tableColumn.text({
-    headerLabel: formatMessage("Extended address"),
+    headerLabel: "Extended address",
     accessor: "address",
     width: { custom: 200 },
   }),
   tableColumn.textWithIcon({
-    headerLabel: formatMessage("Country"),
+    headerLabel: "Country",
     accessor: "country",
     iconPosition: "right",
-    hint: formatMessage("This is a hint"),
+    hint: "This is a hint",
   }),
   tableColumn.number({
-    headerLabel: formatMessage("Applications"),
+    headerLabel: "Applications",
     accessor: "applications",
-    valueFormatter: (value) => formatMessage(Intl.NumberFormat("en").format(value)),
+    valueFormatter: (value) => Intl.NumberFormat("en").format(value),
     align: "right",
     hint: { onPress: action("hint") },
   }),
   tableColumn.numberWithIcon({
-    headerLabel: formatMessage("Value"),
+    headerLabel: "Value",
     accessor: "value",
-    valueFormatter: (value) => formatMessage(Intl.NumberFormat("en").format(value)),
+    valueFormatter: (value) => Intl.NumberFormat("en").format(value),
     align: "right",
   }),
   tableColumn.label({
-    headerLabel: formatMessage("Type"),
+    headerLabel: "Type",
     accessor: "type",
   }),
   tableColumn.link({
-    headerLabel: formatMessage("Website"),
+    headerLabel: "Website",
     accessor: "website",
   }),
   tableColumn.icon({
-    headerLabel: formatMessage("Alerts"),
+    headerLabel: "Alerts",
     accessor: "alerts",
   }),
   tableColumn.chip({
-    headerLabel: formatMessage("Status"),
+    headerLabel: "Status",
     accessor: "status",
     align: "center",
   }),
   tableColumn.iconButton({
-    headerLabel: formatMessage("Actions"),
+    headerLabel: "Actions",
     accessor: "deleteAction",
     align: "center",
     disableSortBy: true,
@@ -85,131 +85,131 @@ const exampleColumns = [
 ];
 
 const deleteAction = {
-  label: formatMessage("Delete"),
+  label: "Delete",
   icon: IconClose,
   onPress: () => {},
 };
 
 const exampleData = [
   {
-    name: formatMessage("Amazon"),
+    name: "Amazon",
     address: "Theodore Lowe Ap #867-859 Sit Rd. Azusa New York 39531",
     country: {
       icon: IconInformative,
-      text: formatMessage("US"),
-      tooltipContent: formatMessage("United States"),
+      text: "US",
+      tooltipContent: "United States",
     },
     button: {
-      label: formatMessage("Row 1"),
+      label: "Row 1",
       kind: "transparent",
       hierarchy: "primary",
       onPress: () => {},
     } as const,
-    status: { label: formatMessage("Active"), color: "green" } as const,
+    status: { label: "Active", color: "green" } as const,
     value: {
       numericValue: 100,
       icon: IconInformative,
     },
-    type: formatMessage("Private"),
-    website: { href: "http://www.amazon.com", label: formatMessage("Link") },
-    alerts: { icon: IconWarning, label: formatMessage("Warning") },
-    group: formatMessage("Group 1"),
+    type: "Private",
+    website: { href: "http://www.amazon.com", label: "Link" },
+    alerts: { icon: IconWarning, label: "Warning" },
+    group: "Group 1",
     deleteAction,
   },
   {
-    name: formatMessage("Google"),
+    name: "Google",
     address: "Cecilia Chapman 711-2880 Nulla St.  Mankato Mississippi 96522",
     country: {
       icon: IconInformative,
-      text: formatMessage("US"),
-      tooltipContent: formatMessage("United States"),
+      text: "US",
+      tooltipContent: "United States",
     },
     button: {
-      label: formatMessage("Row 2"),
+      label: "Row 2",
       kind: "transparent",
       hierarchy: "primary",
       onPress: () => {},
     } as const,
     applications: 10_000,
-    status: { label: formatMessage("Paused"), color: "blue" } as const,
+    status: { label: "Paused", color: "blue" } as const,
     value: {
       numericValue: 150,
       icon: IconInformative,
     },
-    type: formatMessage("Private"),
-    website: { href: "http://www.google.com", label: formatMessage("Link") },
-    group: formatMessage("Group 2"),
+    type: "Private",
+    website: { href: "http://www.google.com", label: "Link" },
+    group: "Group 2",
     deleteAction,
   },
   {
-    name: formatMessage("Microsoft"),
+    name: "Microsoft",
     address: "Iris Watson P.O. Box 283 8562 Fusce Rd.  Frederick Nebraska 20620",
     country: {
       icon: IconInformative,
-      text: formatMessage("US"),
-      tooltipContent: formatMessage("United States"),
+      text: "US",
+      tooltipContent: "United States",
     },
     button: {
-      label: formatMessage("Row 3"),
+      label: "Row 3",
       kind: "transparent",
       hierarchy: "primary",
       onPress: () => {},
     } as const,
     applications: 1_000,
-    status: { label: formatMessage("Pending"), color: "yellow" } as const,
+    status: { label: "Pending", color: "yellow" } as const,
     value: {
       numericValue: 120,
       icon: IconInformative,
     },
-    type: formatMessage("Private"),
-    website: { href: "http://www.microsoft.com", label: formatMessage("Link") },
-    alerts: { icon: IconWarning, label: formatMessage("Warning") },
-    group: formatMessage("Group 1"),
+    type: "Private",
+    website: { href: "http://www.microsoft.com", label: "Link" },
+    alerts: { icon: IconWarning, label: "Warning" },
+    group: "Group 1",
     deleteAction,
   },
   {
-    name: formatMessage("buildo"),
+    name: "buildo",
     address: "Celeste Slater 606-3727 Ullamcorper. Street Roseville NH 11523",
     country: {
       icon: null,
-      text: formatMessage("IT"),
+      text: "IT",
     },
     button: {
-      label: formatMessage("Row 4"),
+      label: "Row 4",
       kind: "transparent",
       hierarchy: "primary",
       onPress: () => {},
     } as const,
     applications: 1_200,
-    status: { label: formatMessage("Active"), color: "green" } as const,
-    type: formatMessage("Private"),
-    website: { href: "http://www.buildo.io", label: formatMessage("Link") },
-    group: formatMessage("Group 2"),
+    status: { label: "Active", color: "green" } as const,
+    type: "Private",
+    website: { href: "http://www.buildo.io", label: "Link" },
+    group: "Group 2",
     deleteAction,
   },
   {
-    name: formatMessage("Twitter"),
+    name: "Twitter",
     address: "Theodore Lowe Ap #867-859 Sit Rd. Azusa New York 39531",
     country: {
       icon: IconInformative,
-      text: formatMessage("US"),
-      tooltipContent: formatMessage("United States"),
+      text: "US",
+      tooltipContent: "United States",
     },
     button: {
-      label: formatMessage("Row 5"),
+      label: "Row 5",
       kind: "transparent",
       hierarchy: "primary",
       onPress: () => {},
     } as const,
     applications: 12_000,
-    status: { label: formatMessage("Paused"), color: "blue" } as const,
+    status: { label: "Paused", color: "blue" } as const,
     value: {
       numericValue: 137,
       icon: IconInformative,
     },
-    type: formatMessage("Private"),
-    website: { href: "http://www.twitter.com", label: formatMessage("Link") },
-    group: formatMessage("Group 1"),
+    type: "Private",
+    website: { href: "http://www.twitter.com", label: "Link" },
+    group: "Group 1",
     deleteAction,
   },
 ];
@@ -231,9 +231,9 @@ export const WithFilter = (_args: Parameters<typeof createStory>[0]) => {
   }
 
   const statusOptions = [
-    { label: formatMessage("Active"), value: "Active" } as const,
-    { label: formatMessage("Paused"), value: "Paused" } as const,
-    { label: formatMessage("Pending"), value: "Pending" } as const,
+    { label: "Active", value: "Active" } as const,
+    { label: "Paused", value: "Paused" } as const,
+    { label: "Pending", value: "Pending" } as const,
   ];
   type Status = typeof statusOptions[number]["value"];
 
@@ -254,16 +254,16 @@ export const WithFilter = (_args: Parameters<typeof createStory>[0]) => {
         <TextField
           name="name"
           onBlur={() => {}}
-          label={formatMessage("Name")}
-          placeholder={formatMessage("Search by name")}
+          label="Name"
+          placeholder="Search by name"
           value={nameFilter}
           onChange={setNameFilter}
         />
         <SelectField
           name="status"
           onBlur={() => {}}
-          label={formatMessage("Status")}
-          placeholder={formatMessage("Select a status to filter")}
+          label="Status"
+          placeholder="Select a status to filter"
           value={statusFilter}
           onChange={setStatusFilter}
           options={statusOptions}
@@ -308,8 +308,8 @@ export const WithControlledSorting = (_args: Parameters<typeof createStory>[0]) 
         <NumberField
           name="numberOfRows"
           onBlur={() => {}}
-          label={formatMessage("Number of rows")}
-          placeholder={formatMessage("Number of rows")}
+          label="Number of rows"
+          placeholder="Number of rows"
           value={numberOfRows}
           onChange={setNumberOfRows}
         />
@@ -323,7 +323,7 @@ export const Grouped = createStory({
   columns: [
     ...exampleColumns,
     tableColumn.text({
-      headerLabel: formatMessage("Group"),
+      headerLabel: "Group",
       accessor: "group",
     }),
   ] as const,
@@ -334,15 +334,15 @@ export const Grouped = createStory({
 export const WithFillColumn = createStory({
   columns: [
     tableColumn.text({
-      headerLabel: formatMessage("Name"),
+      headerLabel: "Name",
       accessor: "name",
       width: "fill-available",
     }),
     tableColumn.textWithIcon({
-      headerLabel: formatMessage("Country"),
+      headerLabel: "Country",
       accessor: "country",
       iconPosition: "right",
-      hint: formatMessage("This is a hint"),
+      hint: "This is a hint",
     }),
   ] as const,
   data: exampleData,

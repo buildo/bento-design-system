@@ -1,5 +1,5 @@
 import { Body, Box, Card, AreaLoader, Stack, Title, Inset } from "../";
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 import { Story } from "@storybook/react";
 import { useArgs } from "@storybook/addons";
 import { useEffect } from "react";
@@ -20,8 +20,8 @@ InCard.decorators = [
       <Box position="relative">
         <Inset space={24}>
           <Stack space={8}>
-            <Title size="large">{formatMessage("Campaign type")}</Title>
-            <Body size="large">{formatMessage("Drive-traffic advanced")}</Body>
+            <Title size="large">Campaign type</Title>
+            <Body size="large">Drive-traffic advanced</Body>
           </Stack>
         </Inset>
         <Story />

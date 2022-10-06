@@ -40,9 +40,6 @@ import { SelectField } from "./SelectField/SelectField";
 import { TextField } from "./TextField/TextField";
 import { Body } from "./Typography/Body/Body";
 import { Title } from "./Typography/Title/Title";
-import { unsafeLocalizedString } from "./util/LocalizedString";
-
-const formatMessage = unsafeLocalizedString;
 
 type ComponentShowcase<
   C extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
@@ -118,7 +115,7 @@ function componentShowcase<
 
   return (
     <Stack space={24}>
-      <Title size="large">{formatMessage(title)}</Title>
+      <Title size="large">{title}</Title>
       {iframe ? <IFrame height={400}>{content}</IFrame> : content}
     </Stack>
   );
@@ -126,33 +123,33 @@ function componentShowcase<
 
 export function useComponentsShowcase({ action }: { action: (s: string) => () => void }) {
   const buttonSharedProps = {
-    label: formatMessage("Button"),
+    label: "Button",
     onPress: action("onPress"),
   } as const;
 
   const iconButtonSharedProps = {
-    label: formatMessage("Icon Button"),
+    label: "Icon Button",
     onPress: action("onPress"),
     icon: IconIdea,
     size: 16,
   } as const;
 
   const bannerSharedProps = {
-    title: formatMessage("Title"),
-    description: formatMessage("A description of what's going on"),
+    title: "Title",
+    description: "A description of what's going on",
     action: {
-      label: formatMessage("Action"),
+      label: "Action",
       onPress: action("onPress"),
     },
-    dismissButtonLabel: formatMessage("Dismiss"),
+    dismissButtonLabel: "Dismiss",
     onDismiss: action("onDismiss"),
   } as const;
 
   const feedbackSharedProps = {
-    title: formatMessage("Title"),
+    title: "Title",
     status: "positive",
-    description: formatMessage("Description"),
-    action: { label: formatMessage("Action"), onPress: action("onPress") },
+    description: "Description",
+    action: { label: "Action", onPress: action("onPress") },
   } as const;
 
   const [formState, setFormState] = useState({
@@ -172,7 +169,7 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
         componentShowcase({
           title: "AreaLoader",
           Component: AreaLoader,
-          variants: [[{ message: formatMessage("Loading...") }]],
+          variants: [[{ message: "Loading..." }]],
           absolute: true,
         }),
         componentShowcase({
@@ -186,9 +183,9 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
           variants: [
             [
               {
-                primaryAction: { label: formatMessage("Primary"), onPress: action("onPress") },
+                primaryAction: { label: "Primary", onPress: action("onPress") },
                 secondaryAction: {
-                  label: formatMessage("Secondary"),
+                  label: "Secondary",
                   onPress: action("onPress"),
                 },
               },
@@ -214,11 +211,11 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
             [
               {
                 items: [
-                  { label: formatMessage("Root"), href: "" },
-                  { label: formatMessage("1st level"), href: "" },
-                  { label: formatMessage("2nd level"), href: "" },
-                  { label: formatMessage("3rd level"), href: "" },
-                  { label: formatMessage("Current page") },
+                  { label: "Root", href: "" },
+                  { label: "1st level", href: "" },
+                  { label: "2nd level", href: "" },
+                  { label: "3rd level", href: "" },
+                  { label: "Current page" },
                 ],
               },
             ],
@@ -255,8 +252,8 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                 padding: 24,
                 children: (
                   <Stack space={8}>
-                    <Title size="medium">{formatMessage("Experiment name")}</Title>
-                    <Body size="large">{formatMessage("Experiment description")}</Body>
+                    <Title size="medium">Experiment name</Title>
+                    <Body size="large">Experiment description</Body>
                   </Stack>
                 ),
               },
@@ -268,11 +265,11 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
           Component: Chip,
           variants: [
             [
-              { color: "green", label: formatMessage("Chip") },
-              { color: "green", label: formatMessage("Chip"), icon: IconCheck },
+              { color: "green", label: "Chip" },
+              { color: "green", label: "Chip", icon: IconCheck },
               {
                 color: "green",
-                label: formatMessage("Chip"),
+                label: "Chip",
                 icon: IconCheck,
                 onDismiss: action("onDismiss"),
               },
@@ -287,38 +284,26 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
               {
                 items: [
                   {
-                    title: formatMessage("Section 1"),
+                    title: "Section 1",
                     initialIsOpen: true,
-                    children: (
-                      <Body size="large">{formatMessage("Content of the first section")}</Body>
-                    ),
+                    children: <Body size="large">Content of the first section</Body>,
                   },
                   {
-                    title: formatMessage("Section 2"),
-                    children: (
-                      <Body size="large">{formatMessage("Content of the second section")}</Body>
-                    ),
+                    title: "Section 2",
+                    children: <Body size="large">Content of the second section</Body>,
                   },
                   {
-                    title: formatMessage("Section 3"),
+                    title: "Section 3",
                     initialIsOpen: true,
                     items: [
                       {
-                        title: formatMessage("Subsection 3.1"),
-                        children: (
-                          <Body size="large">
-                            {formatMessage("Content of the first subsection")}
-                          </Body>
-                        ),
+                        title: "Subsection 3.1",
+                        children: <Body size="large">Content of the first subsection</Body>,
                         initialIsOpen: true,
                       },
                       {
-                        title: formatMessage("Subsection 3.2"),
-                        children: (
-                          <Body size="large">
-                            {formatMessage("Content of the second subsection")}
-                          </Body>
-                        ),
+                        title: "Subsection 3.2",
+                        children: <Body size="large">Content of the second subsection</Body>,
                       },
                     ],
                   },
@@ -343,32 +328,29 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
           variants: [
             [
               {
-                title: formatMessage("Form title"),
-                description: formatMessage("Form description"),
-                submitButton: { label: formatMessage("Submit"), onPress: action("Submit") },
-                secondaryButton: { label: formatMessage("Cancel"), onPress: action("Cancel") },
+                title: "Form title",
+                description: "Form description",
+                submitButton: { label: "Submit", onPress: action("Submit") },
+                secondaryButton: { label: "Cancel", onPress: action("Cancel") },
                 children: (
                   <>
-                    <FormSection
-                      title={formatMessage("Section title")}
-                      description={formatMessage("Section description")}
-                    >
+                    <FormSection title="Section title" description="Section description">
                       <FormRow>
                         <TextField
                           name="firstName"
                           onBlur={action("onBlur")}
                           value={formState.firstName}
                           onChange={(firstName) => setFormState((s) => ({ ...s, firstName }))}
-                          label={formatMessage("First Name")}
-                          placeholder={formatMessage("Insert the first name")}
+                          label="First Name"
+                          placeholder="Insert the first name"
                         />
                         <TextField
                           name="lastName"
                           onBlur={action("onBlur")}
                           value={formState.lastName}
                           onChange={(lastName) => setFormState((s) => ({ ...s, lastName }))}
-                          label={formatMessage("Last Name")}
-                          placeholder={formatMessage("Insert the last name")}
+                          label="Last Name"
+                          placeholder="Insert the last name"
                         />
                       </FormRow>
                       <FormRow>
@@ -379,12 +361,12 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                           onChange={(status: string | undefined) =>
                             setFormState((s) => ({ ...s, status }))
                           }
-                          label={formatMessage("Status")}
-                          placeholder={formatMessage("Choose an option")}
+                          label="Status"
+                          placeholder="Choose an option"
                           options={[
-                            { label: formatMessage("Open"), value: "open" },
-                            { label: formatMessage("Closed"), value: "closed" },
-                            { label: formatMessage("Pending"), value: "pending" },
+                            { label: "Open", value: "open" },
+                            { label: "Closed", value: "closed" },
+                            { label: "Pending", value: "pending" },
                           ]}
                         />
                       </FormRow>
@@ -394,11 +376,11 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                           onBlur={action("onBlur")}
                           value={formState.gender}
                           onChange={(gender) => setFormState((s) => ({ ...s, gender }))}
-                          label={formatMessage("Gender")}
+                          label="Gender"
                           options={[
-                            { label: formatMessage("Male"), value: "male" },
-                            { label: formatMessage("Female"), value: "female" },
-                            { label: formatMessage("Other"), value: "other" },
+                            { label: "Male", value: "male" },
+                            { label: "Female", value: "female" },
+                            { label: "Other", value: "other" },
                           ]}
                         />
                       </FormRow>
@@ -410,7 +392,7 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                           onChange={(termsAndConditions: boolean) =>
                             setFormState((s) => ({ ...s, termsAndConditions }))
                           }
-                          label={formatMessage("I have read the terms and conditions")}
+                          label="I have read the terms and conditions"
                         />
                       </FormRow>
                     </FormSection>
@@ -446,20 +428,20 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                 items: [
                   {
                     kind: "single-line",
-                    label: formatMessage("Item 1 - Single line"),
+                    label: "Item 1 - Single line",
                     icon: IconIdea,
                     trailingIcon: IconCheck,
                   },
                   {
                     kind: "two-line",
-                    label: formatMessage("Item 2 - Two lines"),
-                    secondLine: formatMessage("Second line"),
+                    label: "Item 2 - Two lines",
+                    secondLine: "Second line",
                     trailingIcon: IconCheck,
                   },
                   {
                     kind: "overline",
-                    label: formatMessage("Item 3 - Overline"),
-                    overline: formatMessage("Overline"),
+                    label: "Item 3 - Overline",
+                    overline: "Overline",
                     icon: IconIdea,
                   },
                 ],
@@ -476,10 +458,10 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                 kind: "none",
                 size: "medium",
                 destinations: [
-                  { href: "", label: formatMessage("Home"), active: true },
-                  { href: "", label: formatMessage("Experiments") },
-                  { href: "", label: formatMessage("Users") },
-                  { href: "", label: formatMessage("Profile") },
+                  { href: "", label: "Home", active: true },
+                  { href: "", label: "Experiments" },
+                  { href: "", label: "Users" },
+                  { href: "", label: "Profile" },
                 ],
               },
             ],
@@ -488,10 +470,10 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                 kind: "icon",
                 size: "large",
                 destinations: [
-                  { href: "", label: formatMessage("Home"), active: true, icon: IconIdea },
-                  { href: "", label: formatMessage("Experiments"), icon: IconSearch },
-                  { href: "", label: formatMessage("Users"), icon: IconUser },
-                  { href: "", label: formatMessage("Profile"), icon: IconInformative },
+                  { href: "", label: "Home", active: true, icon: IconIdea },
+                  { href: "", label: "Experiments", icon: IconSearch },
+                  { href: "", label: "Users", icon: IconUser },
+                  { href: "", label: "Profile", icon: IconInformative },
                 ],
               },
             ],
@@ -512,7 +494,7 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
           variants: [
             [
               {
-                placeholder: formatMessage("Search anything..."),
+                placeholder: "Search anything...",
                 value: searchBarValue,
                 onChange: searchBarOnChange,
                 "aria-label": "Search",
@@ -528,11 +510,11 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
               {
                 currentStep: 2,
                 steps: [
-                  { label: formatMessage("Step 1") },
-                  { label: formatMessage("Step 2") },
-                  { label: formatMessage("Step 3") },
-                  { label: formatMessage("Step 4") },
-                  { label: formatMessage("Step 5") },
+                  { label: "Step 1" },
+                  { label: "Step 2" },
+                  { label: "Step 3" },
+                  { label: "Step 4" },
+                  { label: "Step 5" },
                 ],
               },
             ],
@@ -547,18 +529,18 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                 {
                   columns: [
                     tableColumn.text({
-                      headerLabel: formatMessage("Name"),
+                      headerLabel: "Name",
                       accessor: "name",
                       sticky: "left",
                     }),
                     tableColumn.number({
-                      headerLabel: formatMessage("Experiments"),
+                      headerLabel: "Experiments",
                       accessor: "experiments",
-                      valueFormatter: (value) => formatMessage(`${value}/100`),
+                      valueFormatter: (value) => `${value}/100`,
                       align: "right",
                     }),
                     tableColumn.chip({
-                      headerLabel: formatMessage("Status"),
+                      headerLabel: "Status",
                       accessor: "status",
                       align: "center",
                     }),
@@ -567,17 +549,17 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                     {
                       name: "John Doe",
                       experiments: 100,
-                      status: { label: formatMessage("done"), color: "green" },
+                      status: { label: "done", color: "green" },
                     },
                     {
                       name: "Jane Doe",
                       experiments: 20,
-                      status: { label: formatMessage("running"), color: "blue" },
+                      status: { label: "running", color: "blue" },
                     },
                     {
                       name: "Jane Doe",
                       experiments: 0,
-                      status: { label: formatMessage("pending"), color: "yellow" },
+                      status: { label: "pending", color: "yellow" },
                     },
                   ],
                 },
@@ -594,10 +576,10 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                 onChange: tabOnChange as any,
                 size: "medium",
                 tabs: [
-                  { label: formatMessage("Tab 1"), value: "tab1" },
-                  { label: formatMessage("Tab 2"), value: "tab2" },
-                  { label: formatMessage("Tab 3"), value: "tab3" },
-                  { label: formatMessage("Tab 4"), value: "tab4" },
+                  { label: "Tab 1", value: "tab1" },
+                  { label: "Tab 2", value: "tab2" },
+                  { label: "Tab 3", value: "tab3" },
+                  { label: "Tab 4", value: "tab4" },
                 ],
               },
             ],

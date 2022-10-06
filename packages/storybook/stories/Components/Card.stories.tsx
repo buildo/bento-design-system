@@ -1,4 +1,4 @@
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 import { Body, Card, Stack, Title } from "../";
 import { unconditionalProperties, vars } from "@buildo/bento-design-system";
 
@@ -64,8 +64,8 @@ export default defaultExport;
 export const card = createStory({
   children: (
     <Stack space={8}>
-      <Title size="large">{formatMessage("Campaign type")}</Title>
-      <Body size="large">{formatMessage("Drive-traffic advanced")}</Body>
+      <Title size="large">Campaign type</Title>
+      <Body size="large">Drive-traffic advanced</Body>
     </Stack>
   ),
 });

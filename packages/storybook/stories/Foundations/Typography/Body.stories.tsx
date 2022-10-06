@@ -1,10 +1,10 @@
-import { createComponentStories, formatMessage, textArgType } from "../../util";
+import { createComponentStories, textArgType } from "../../util";
 import { Body } from "../..";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Body,
   args: {
-    children: formatMessage("The quick brown fox jumps over the lazy dog"),
+    children: "The quick brown fox jumps over the lazy dog",
   },
   argTypes: {
     children: textArgType,

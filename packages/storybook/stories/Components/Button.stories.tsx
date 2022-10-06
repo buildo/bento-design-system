@@ -1,10 +1,10 @@
-import { createComponentStories, formatMessage, textArgType } from "../util";
+import { createComponentStories, textArgType } from "../util";
 import { Button, IconCheck } from "../";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Button,
   args: {
-    label: formatMessage("Button"),
+    label: "Button",
   },
   argTypes: {
     label: textArgType,

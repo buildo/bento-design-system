@@ -1,11 +1,11 @@
-import { createComponentStories, formatMessage, textArgType } from "../util";
+import { createComponentStories, textArgType } from "../util";
 import { ButtonLink } from "../";
 import { IconCheck } from "@buildo/bento-design-system";
 
 const { defaultExport, createStory } = createComponentStories({
   component: ButtonLink,
   args: {
-    label: formatMessage("Button"),
+    label: "Button",
     href: "https://google.com",
     target: "blank",
   },

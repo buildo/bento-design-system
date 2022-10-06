@@ -1,7 +1,7 @@
 import { Story } from "@storybook/react";
 import { ComponentProps, useRef, useState } from "react";
 import { Box, Button, Placeholder, Popover } from "..";
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 
 const { defaultExport } = createComponentStories({
   component: Popover,
@@ -32,7 +32,7 @@ popover.decorators = [
         <Button
           kind="solid"
           hierarchy="primary"
-          label={formatMessage(`${isOpen ? "Close" : "Open"} popover`)}
+          label={`${isOpen ? "Close" : "Open"} popover`}
           onPress={() => setIsOpen(!isOpen)}
         />
         {story({

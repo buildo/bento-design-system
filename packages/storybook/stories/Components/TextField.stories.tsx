@@ -1,15 +1,13 @@
 import { TextField } from "..";
-import { createComponentStories, fieldArgTypes, formatMessage, textArgType } from "../util";
+import { createComponentStories, fieldArgTypes, textArgType } from "../util";
 
 const { defaultExport, createStory, createControlledStory } = createComponentStories({
   component: TextField,
   args: {
     name: "nickname",
-    label: formatMessage("Nickname"),
-    placeholder: formatMessage("Insert your nickname"),
-    assistiveText: formatMessage(
-      "Your nickname is the name people commonly use to informally refer to you"
-    ),
+    label: "Nickname",
+    placeholder: "Insert your nickname",
+    assistiveText: "Your nickname is the name people commonly use to informally refer to you",
   },
   argTypes: {
     ...fieldArgTypes,
@@ -26,7 +24,7 @@ export const Disabled = createControlledStory("", {
 });
 
 export const Error = createControlledStory("", {
-  issues: [formatMessage("Please insert at least 3 characters")],
+  issues: ["Please insert at least 3 characters"],
 });
 
 export const ReadOnly = createStory({

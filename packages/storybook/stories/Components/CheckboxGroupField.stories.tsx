@@ -1,29 +1,29 @@
 import { CheckboxGroupField } from "../";
-import { createComponentStories, formatMessage, textArgType } from "../util";
+import { createComponentStories, textArgType } from "../util";
 
 const { defaultExport, createControlledStory } = createComponentStories({
   component: CheckboxGroupField,
   args: {
-    label: formatMessage("What are your favourite colors?"),
+    label: "What are your favourite colors?",
     orientation: "vertical",
-    assistiveText: formatMessage("You can select multiple options"),
+    assistiveText: "You can select multiple options",
     options: [
       {
         value: "blue",
-        label: formatMessage("Blue"),
+        label: "Blue",
       },
       {
         value: "green",
-        label: formatMessage("Green"),
+        label: "Green",
       },
       {
         value: "pink",
-        label: formatMessage("Pink"),
+        label: "Pink",
         isDisabled: true,
       },
       {
         value: "red",
-        label: formatMessage("Red"),
+        label: "Red",
       },
     ],
   },
@@ -39,5 +39,5 @@ export const Vertical = createControlledStory([], {});
 export const Horizontal = createControlledStory([], { orientation: "horizontal" });
 
 export const Error = createControlledStory([], {
-  issues: [formatMessage("Select at least 1 option")],
+  issues: ["Select at least 1 option"],
 });

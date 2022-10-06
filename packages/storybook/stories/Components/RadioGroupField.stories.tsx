@@ -1,31 +1,30 @@
-import { createComponentStories, fieldArgTypes, formatMessage } from "../util";
+import { createComponentStories, fieldArgTypes } from "../util";
 import { RadioGroupField } from "..";
 
 const { defaultExport, createControlledStory } = createComponentStories({
   component: RadioGroupField,
   args: {
-    label: formatMessage("Budget options"),
+    label: "Budget options",
     name: "budgetOptions",
-    assistiveText: formatMessage("Assistive Text"),
+    assistiveText: "Assistive Text",
     options: [
       {
         value: "unlimited",
-        label: formatMessage("Unlimited"),
+        label: "Unlimited",
       },
       {
         value: 2,
-        label: formatMessage("Monthly"),
+        label: "Monthly",
       },
       {
         value: "yearly",
-        label: formatMessage("Yearly"),
+        label: "Yearly",
         isDisabled: true,
       },
       {
         value: false,
-        label: formatMessage(
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        ),
+        label:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       },
     ],
   },

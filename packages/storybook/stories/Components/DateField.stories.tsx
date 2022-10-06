@@ -1,4 +1,4 @@
-import { createComponentStories, formatMessage, fieldArgTypes, textArgType } from "../util";
+import { createComponentStories, fieldArgTypes, textArgType } from "../util";
 import { DateField } from "../";
 import {
   startOfWeek,
@@ -17,10 +17,10 @@ const { defaultExport, createControlledStory } = createComponentStories({
   component: DateField,
   args: {
     name: "date",
-    label: formatMessage("Date"),
-    placeholder: formatMessage("Select a date"),
-    assistiveText: formatMessage("This is your favorite date"),
-    hint: formatMessage("Some hint that is very useful to you"),
+    label: "Date",
+    placeholder: "Select a date",
+    assistiveText: "This is your favorite date",
+    hint: "Some hint that is very useful to you",
   },
   argTypes: {
     ...fieldArgTypes,
@@ -51,7 +51,7 @@ const inOneWeek = addWeeks(today, 1);
 export const SingleWithMinMax = createControlledStory(null, {
   minDate: today,
   maxDate: inOneWeek,
-  assistiveText: formatMessage("You can select a date between today and one week from now"),
+  assistiveText: "You can select a date between today and one week from now",
 });
 
 const inOneMonth = addMonths(today, 1);
@@ -59,21 +59,21 @@ export const RangeWithMinMax = createControlledStory([null, null], {
   type: "range",
   minDate: today,
   maxDate: inOneMonth,
-  assistiveText: formatMessage("You can select a date between today and one month from now"),
+  assistiveText: "You can select a date between today and one month from now",
 });
 
 export const SingleWithShortcuts = createControlledStory(null, {
   shortcuts: [
     {
-      label: formatMessage("Today"),
+      label: "Today",
       value: new Date(),
     },
     {
-      label: formatMessage("In a week"),
+      label: "In a week",
       value: inOneWeek,
     },
     {
-      label: formatMessage("In a month"),
+      label: "In a month",
       value: inOneMonth,
     },
   ],
@@ -83,15 +83,15 @@ export const RangeWithShortcuts = createControlledStory([null, null], {
   type: "range",
   shortcuts: [
     {
-      label: formatMessage("This Week"),
+      label: "This Week",
       value: [startOfWeek(today), endOfWeek(today)],
     },
     {
-      label: formatMessage("This Month"),
+      label: "This Month",
       value: [startOfMonth(today), endOfMonth(today)],
     },
     {
-      label: formatMessage("This Year"),
+      label: "This Year",
       value: [startOfYear(today), endOfYear(today)],
     },
   ],

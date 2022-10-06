@@ -2,53 +2,53 @@ import { Body, Title } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
 import { ComponentProps } from "react";
 import { Avatar, Box, Button, Menu, Stack } from "..";
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 
 const items: ComponentProps<typeof Menu>["items"] = [
   {
-    label: formatMessage("Item 1"),
+    label: "Item 1",
     items: [
-      { label: formatMessage("Sub item 1.1"), onPress: action("Sub item 1.1") },
-      { label: formatMessage("Sub item 1.2"), onPress: action("Sub item 1.2") },
+      { label: "Sub item 1.1", onPress: action("Sub item 1.1") },
+      { label: "Sub item 1.2", onPress: action("Sub item 1.2") },
     ],
   },
   {
-    label: formatMessage("Item 2 (link)"),
+    label: "Item 2 (link)",
     href: "https://www.google.com",
   },
   {
-    label: formatMessage("Item 3"),
+    label: "Item 3",
     onPress: action("Item 3"),
     disabled: true,
   },
   {
-    label: formatMessage("Item 4"),
+    label: "Item 4",
     items: [
       {
-        label: formatMessage("Sub item 4.1"),
+        label: "Sub item 4.1",
         items: [
-          { label: formatMessage("Sub item 4.1.1"), onPress: action("Sub item 4.1.1") },
-          { label: formatMessage("Sub item 4.1.2"), onPress: action("Sub item 4.1.2") },
+          { label: "Sub item 4.1.1", onPress: action("Sub item 4.1.1") },
+          { label: "Sub item 4.1.2", onPress: action("Sub item 4.1.2") },
         ],
       },
-      { label: formatMessage("Sub item 4.2"), onPress: action("Sub item 4.2") },
-      { label: formatMessage("Sub item 4.3"), onPress: action("Sub item 4.3") },
-      { label: formatMessage("Sub item 4.4"), onPress: action("Sub item 4.4") },
-      { label: formatMessage("Sub item 4.5"), onPress: action("Sub item 4.5") },
+      { label: "Sub item 4.2", onPress: action("Sub item 4.2") },
+      { label: "Sub item 4.3", onPress: action("Sub item 4.3") },
+      { label: "Sub item 4.4", onPress: action("Sub item 4.4") },
+      { label: "Sub item 4.5", onPress: action("Sub item 4.5") },
       {
-        label: formatMessage("Sub item 4.6"),
+        label: "Sub item 4.6",
         items: [
-          { label: formatMessage("Sub item 4.6.1"), onPress: action("Sub item 4.6.1") },
-          { label: formatMessage("Sub item 4.6.2"), onPress: action("Sub item 4.6.2") },
+          { label: "Sub item 4.6.1", onPress: action("Sub item 4.6.1") },
+          { label: "Sub item 4.6.2", onPress: action("Sub item 4.6.2") },
         ],
       },
-      { label: formatMessage("Sub item 4.7"), onPress: action("Sub item 4.7") },
-      { label: formatMessage("Sub item 4.8"), onPress: action("Sub item 4.8") },
-      { label: formatMessage("Sub item 4.9"), onPress: action("Sub item 4.9") },
+      { label: "Sub item 4.7", onPress: action("Sub item 4.7") },
+      { label: "Sub item 4.8", onPress: action("Sub item 4.8") },
+      { label: "Sub item 4.9", onPress: action("Sub item 4.9") },
     ],
   },
   {
-    label: formatMessage("Item 5"),
+    label: "Item 5",
     onPress: action("Item 5"),
   },
 ];
@@ -67,12 +67,7 @@ export default defaultExport;
 export const ButtonTrigger = createStory({
   trigger: (ref, triggerProps, { toggle }) => (
     <Box ref={ref} display="inline-block" {...triggerProps}>
-      <Button
-        kind="solid"
-        hierarchy="primary"
-        label={formatMessage("Open menu")}
-        onPress={() => toggle()}
-      />
+      <Button kind="solid" hierarchy="primary" label="Open menu" onPress={() => toggle()} />
     </Box>
   ),
 });
@@ -80,10 +75,10 @@ export const ButtonTrigger = createStory({
 export const AvatarTrigger = createStory({
   header: (
     <Stack space={4}>
-      <Title size="medium">{formatMessage("Jane Doe")}</Title>
-      <Body size="medium">{formatMessage("hello@example.com")}</Body>
+      <Title size="medium">Jane Doe</Title>
+      <Body size="medium">hello@example.com</Body>
       <Body size="small" color="secondary">
-        {formatMessage("Admin")}
+        Admin
       </Body>
     </Stack>
   ),

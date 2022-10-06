@@ -11,7 +11,7 @@ import {
   RadioGroupField,
   Omit,
 } from "..";
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Form,
@@ -30,12 +30,12 @@ const ExampleTextField = (
   const [value, onChange] = useState("");
   return (
     <TextField
-      placeholder={formatMessage("Insert a value")}
+      placeholder="Insert a value"
       value={value}
       onChange={onChange}
       onBlur={() => {}}
       name="textField"
-      hint={formatMessage("Some useful advice on how to fill this field")}
+      hint="Some useful advice on how to fill this field"
       {...props}
     />
   );
@@ -50,7 +50,7 @@ const ExampleNumberField = (
   const [value, onChange] = useState<number | undefined>(undefined);
   return (
     <NumberField
-      placeholder={formatMessage("Insert a value")}
+      placeholder="Insert a value"
       value={value}
       onChange={onChange}
       onBlur={() => {}}
@@ -69,7 +69,7 @@ const ExampleSelectField = <A extends {}>(
   const [value, onChange] = useState<A | undefined>(undefined);
   return (
     <SelectField
-      placeholder={formatMessage("Select a value")}
+      placeholder="Select a value"
       value={value}
       onChange={onChange}
       name="selectField"
@@ -96,67 +96,57 @@ const ExampleRadioGroupField = (
 };
 
 export const multipleSections = createStory({
-  title: formatMessage("Sign-up"),
-  description: formatMessage("We will ask you some data in order to sign you up"),
+  title: "Sign-up",
+  description: "We will ask you some data in order to sign you up",
   submitButton: {
     onPress: action("Submit"),
-    label: formatMessage("Sign up"),
+    label: "Sign up",
   },
   secondaryButton: {
     onPress: action("Cancel"),
-    label: formatMessage("Never mind"),
+    label: "Never mind",
   },
   children: [
-    <FormSection title={formatMessage("Personal information")}>
+    <FormSection title="Personal information">
       <FormRow>
-        <ExampleTextField label={formatMessage("First name")} />
-        <ExampleTextField label={formatMessage("Last name")} />
+        <ExampleTextField label="First name" />
+        <ExampleTextField label="Last name" />
       </FormRow>
     </FormSection>,
-    <FormSection
-      title={formatMessage("Address")}
-      description={formatMessage("We need this data for invoicing purposes")}
-    >
+    <FormSection title="Address" description="We need this data for invoicing purposes">
       <FormRow>
-        <ExampleTextField label={formatMessage("Street")} />
-        <ExampleTextField label={formatMessage("Number")} />
+        <ExampleTextField label="Street" />
+        <ExampleTextField label="Number" />
       </FormRow>
       <FormRow>
-        <ExampleTextField label={formatMessage("City")} />
+        <ExampleTextField label="City" />
       </FormRow>
       <FormRow>
-        <ExampleTextField label={formatMessage("Country")} />
+        <ExampleTextField label="Country" />
       </FormRow>
     </FormSection>,
-    <FormSection title={formatMessage("Tell us more about you")}>
+    <FormSection title="Tell us more about you">
       <FormRow>
-        <ExampleNumberField
-          label={formatMessage("Average income")}
-          kind="currency"
-          currency="EUR"
-        />
-        <ExampleNumberField
-          label={formatMessage("% of income spent on candies")}
-          kind="percentage"
-        />
+        <ExampleNumberField label="Average income" kind="currency" currency="EUR" />
+        <ExampleNumberField label="% of income spent on candies" kind="percentage" />
       </FormRow>
       <FormRow>
         <ExampleSelectField
-          label={formatMessage("Select your gender")}
+          label="Select your gender"
           options={[
-            { label: formatMessage("Male"), value: "M", kind: "single-line" },
-            { label: formatMessage("Female"), value: "F", kind: "single-line" },
-            { label: formatMessage("Other"), value: "O", kind: "single-line" },
+            { label: "Male", value: "M", kind: "single-line" },
+            { label: "Female", value: "F", kind: "single-line" },
+            { label: "Other", value: "O", kind: "single-line" },
           ]}
         />
       </FormRow>
       <FormRow>
         <ExampleRadioGroupField
-          label={formatMessage("What's your main income source?")}
+          label={"What's your main income source?"}
           options={[
-            { label: formatMessage("Working"), value: "W" },
-            { label: formatMessage("Inheritance"), value: "I" },
-            { label: formatMessage("Other"), value: "O" },
+            { label: "Working", value: "W" },
+            { label: "Inheritance", value: "I" },
+            { label: "Other", value: "O" },
           ]}
         />
       </FormRow>

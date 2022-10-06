@@ -2,13 +2,13 @@ import "@buildo/bento-design-system/lib/index.css";
 import "@buildo/bento-design-system/lib/defaultTheme.css";
 import "./theme.css";
 import {
-  createBentoComponents,
+  createBentoProvider,
   defaultConfigs,
   withBentoConfig,
+  createBentoComponents,
 } from "@buildo/bento-design-system";
 import { sprinkles } from "./sprinkles.css";
 
-export * from "@buildo/bento-design-system";
 const FeedbackBackground = (
   <svg viewBox="0 0 440 240">
     <path
@@ -35,6 +35,21 @@ const FeedbackBackground = (
   </svg>
 );
 
+// NOTE(gabro): we're still using createBentoComponents instead of exporting the
+// components directly from @buildo/bento-design-system due to
+// https://github.com/storybookjs/storybook/issues/12185
+// In short, Storybook (which uses react-docgen-typescript) does not pick up the
+// props when the component comes from an external library.
+//
+// The workaround would be to wrap each component in another component that just
+// re-exports it (see https://github.com/storybookjs/storybook/issues/13502#issuecomment-752897475),
+// but that would be way too inconvenient.
+//
+// Using createBentoComponents creates the components directly in Storybook, so
+// their props are picked up correctly.
+//
+// We tried several solutions from the linked issues, but it seems our monorepo
+// setup make this particularly tricky
 export const {
   Actions,
   AreaLoader,
@@ -56,7 +71,6 @@ export const {
   ContentWithSidebar,
   CustomModal,
   DateField,
-  DesignSystemProvider,
   DecorativeDivider,
   Disclosure,
   DisclosureGroup,
@@ -72,6 +86,7 @@ export const {
   InlineLoader,
   Inset,
   Label,
+  Link,
   List,
   ListItem,
   Menu,
@@ -119,16 +134,39 @@ export const {
   IllustrationNegative,
   IllustrationSearch,
   useComponentsShowcase,
-} = createBentoComponents(sprinkles, {
-  chip: {
-    customColors: {
-      custom: "customColor1",
+} = createBentoComponents();
+
+export {
+  useToast,
+  svgIllustrationProps,
+  svgIconProps,
+  illustrations,
+  icons,
+  BentoConfigProvider,
+} from "@buildo/bento-design-system";
+
+export type {
+  IconProps,
+  IllustrationProps,
+  Omit,
+  SelectFieldProps,
+  SliderFieldProps,
+  TooltipProps,
+} from "@buildo/bento-design-system";
+
+export const BentoProvider = createBentoProvider(
+  {
+    chip: {
+      customColors: {
+        custom: "customColor1",
+      },
+    },
+    feedback: {
+      background: FeedbackBackground,
     },
   },
-  feedback: {
-    background: FeedbackBackground,
-  },
-});
+  sprinkles
+);
 
 export const FolderTabs = Tabs;
 export const UnderlineTabs = withBentoConfig({ tabs: defaultConfigs.underlineTabs }, Tabs);

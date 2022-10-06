@@ -1,10 +1,10 @@
 import { Body, Box, ContentWithSidebar } from "..";
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 
 const content = (
   <Box display="flex" height="full" justifyContent="center" alignItems="center">
     <Body key="main" size="large">
-      {formatMessage("Main content")}
+      Main content
     </Body>
   </Box>
 );
@@ -12,7 +12,7 @@ const content = (
 const sidebar = (
   <Box display="flex" height="full" justifyContent="center" alignItems="center">
     <Body key="sidebar" size="large">
-      {formatMessage("Sidebar")}
+      Sidebar
     </Body>
   </Box>
 );

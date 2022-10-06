@@ -1,13 +1,13 @@
 import { TextArea } from "..";
-import { createComponentStories, fieldArgTypes, formatMessage, textArgType } from "../util";
+import { createComponentStories, fieldArgTypes, textArgType } from "../util";
 
 const { defaultExport, createStory, createControlledStory } = createComponentStories({
   component: TextArea,
   args: {
     name: "description",
-    label: formatMessage("Description"),
-    placeholder: formatMessage("Insert description"),
-    assistiveText: formatMessage("Add a description"),
+    label: "Description",
+    placeholder: "Insert description",
+    assistiveText: "Add a description",
   },
   argTypes: {
     ...fieldArgTypes,
@@ -24,7 +24,7 @@ export const Disabled = createControlledStory("", {
 });
 
 export const Error = createControlledStory("", {
-  issues: [formatMessage("Please insert at least 3 words")],
+  issues: ["Please insert at least 3 words"],
 });
 
 export const ReadOnly = createStory({

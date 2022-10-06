@@ -1,10 +1,10 @@
 import { Body, Box, Card, Checkbox, Column, Columns, Stack, Title } from "..";
-import { createComponentStories, formatMessage, textArgType } from "../util";
+import { createComponentStories, textArgType } from "../util";
 
 const { defaultExport, createControlledStory } = createComponentStories({
   component: Checkbox,
   args: {
-    "aria-label": formatMessage("Toggle card selection"),
+    "aria-label": "Toggle card selection",
   },
   argTypes: {
     label: textArgType,
@@ -18,11 +18,14 @@ const { defaultExport, createControlledStory } = createComponentStories({
               <Story />
             </Column>
             <Stack space={8}>
-              <Title size="medium">{formatMessage("Selectable card")}</Title>
+              <Title size="medium">Selectable card</Title>
               <Body size="medium">
-                {formatMessage(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                )}
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
               </Body>
             </Stack>
           </Columns>

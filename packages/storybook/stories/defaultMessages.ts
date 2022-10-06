@@ -1,45 +1,42 @@
 import { ComponentProps } from "react";
 import { BentoProvider } from ".";
-import { formatMessage } from "./util";
 
 export const defaultMessages: ComponentProps<typeof BentoProvider>["defaultMessages"] = {
   Chip: {
-    dismissButtonLabel: formatMessage("Remove"),
+    dismissButtonLabel: "Remove",
   },
   Banner: {
-    dismissButtonLabel: formatMessage("Close"),
+    dismissButtonLabel: "Close",
   },
   Modal: {
-    closeButtonLabel: formatMessage("Close"),
+    closeButtonLabel: "Close",
   },
   SelectField: {
-    noOptionsMessage: formatMessage("No options"),
+    noOptionsMessage: "No options",
     multiOptionsSelected: (n) => {
       const options = n > 1 ? "options" : "option";
-      return formatMessage(`${n} ${options} selected`);
+      return `${n} ${options} selected`;
     },
-    selectAllButtonLabel: formatMessage("Select all"),
-    clearAllButtonLabel: formatMessage("Clear all"),
+    selectAllButtonLabel: "Select all",
+    clearAllButtonLabel: "Clear all",
   },
   SearchBar: {
-    clearButtonLabel: formatMessage("Clear"),
+    clearButtonLabel: "Clear",
   },
   Table: {
-    noResultsTitle: formatMessage("No results found"),
-    noResultsDescription: formatMessage(
-      "Try adjusting your search filters to find what you're looking for."
-    ),
-    missingValue: formatMessage("-"),
+    noResultsTitle: "No results found",
+    noResultsDescription: "Try adjusting your search filters to find what you're looking for.",
+    missingValue: "-",
   },
   Loader: {
-    loadingMessage: formatMessage("Loading..."),
+    loadingMessage: "Loading...",
   },
   DateField: {
-    previousMonthLabel: formatMessage("Prev month"),
-    nextMonthLabel: formatMessage("Next month"),
+    previousMonthLabel: "Prev month",
+    nextMonthLabel: "Next month",
   },
   TextField: {
-    showPasswordLabel: formatMessage("Show password"),
-    hidePasswordLabel: formatMessage("Hide password"),
+    showPasswordLabel: "Show password",
+    hidePasswordLabel: "Hide password",
   },
 };

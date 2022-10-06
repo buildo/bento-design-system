@@ -1,11 +1,11 @@
 import { Card, Disclosure, Placeholder } from "../";
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 import { Story } from "@storybook/react";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Disclosure,
   args: {
-    title: formatMessage("Title"),
+    title: "Title",
     children: <Placeholder />,
   },
   argTypes: {},

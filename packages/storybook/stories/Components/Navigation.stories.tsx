@@ -1,27 +1,27 @@
-import { createComponentStories, formatMessage } from "../util";
+import { createComponentStories } from "../util";
 import { Navigation } from "../";
 import { ComponentProps } from "react";
 import { IconInformative, IllustrationIdea } from "..";
 
 const destinations: ComponentProps<typeof Navigation>["destinations"] = [
   {
-    label: formatMessage("Destination 1"),
+    label: "Destination 1",
     href: "https://google.com",
     target: "_blank",
     active: true,
   },
   {
-    label: formatMessage("Destination 2"),
+    label: "Destination 2",
     href: "https://amazon.com",
     target: "_blank",
   },
   {
-    label: formatMessage("Destination 3"),
+    label: "Destination 3",
     href: "https://apple.com",
     disabled: true,
   },
   {
-    label: formatMessage("Destination 4"),
+    label: "Destination 4",
     href: "https://microsoft.com",
   },
 ];

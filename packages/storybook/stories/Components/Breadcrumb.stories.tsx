@@ -1,4 +1,4 @@
-import { Breadcrumb, unsafeLocalizedString } from "../";
+import { Breadcrumb } from "..";
 import { createComponentStories } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
@@ -11,27 +11,27 @@ export default defaultExport;
 export const breadcrumb = createStory({
   items: [
     {
-      label: unsafeLocalizedString("Root"),
+      label: "Root",
       href: "https://www.example.com",
     },
     {
-      label: unsafeLocalizedString("1st Level"),
+      label: "1st Level",
       href: "https://www.example.com",
     },
     {
-      label: unsafeLocalizedString("2nd Level"),
+      label: "2nd Level",
       href: "https://www.example.com",
     },
     {
-      label: unsafeLocalizedString("3rd Level"),
+      label: "3rd Level",
       href: "https://www.example.com",
     },
     {
-      label: unsafeLocalizedString("4th Level"),
+      label: "4th Level",
       href: "https://www.example.com",
     },
     {
-      label: unsafeLocalizedString("5th Level"),
+      label: "5th Level",
     },
   ],
 });

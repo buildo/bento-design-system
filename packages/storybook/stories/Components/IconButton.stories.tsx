@@ -1,11 +1,11 @@
-import { createComponentStories, formatMessage, textArgType } from "../util";
+import { createComponentStories, textArgType } from "../util";
 import { IconButton } from "../";
 import { IconPlaceholder } from "@buildo/bento-design-system";
 
 const { defaultExport, createStory } = createComponentStories({
   component: IconButton,
   args: {
-    label: formatMessage("Button"),
+    label: "Button",
     icon: IconPlaceholder,
     size: 12,
   },
