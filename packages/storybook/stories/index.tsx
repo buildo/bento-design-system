@@ -5,8 +5,7 @@ import {
   createBentoProvider,
   defaultConfigs,
   withBentoConfig,
-  Actions,
-  Tabs,
+  createBentoComponents,
 } from "@buildo/bento-design-system";
 import { sprinkles } from "./sprinkles.css";
 
@@ -36,7 +35,22 @@ const FeedbackBackground = (
   </svg>
 );
 
-export {
+// NOTE(gabro): we're still using createBentoComponents instead of exporting the
+// components directly from @buildo/bento-design-system due to
+// https://github.com/storybookjs/storybook/issues/12185
+// In short, Storybook (which uses react-docgen-typescript) does not pick up the
+// props when the component comes from an external library.
+//
+// The workaround would be to wrap each component in another component that just
+// re-exports it (see https://github.com/storybookjs/storybook/issues/13502#issuecomment-752897475),
+// but that would be way too inconvenient.
+//
+// Using createBentoComponents creates the components directly in Storybook, so
+// their props are picked up correctly.
+//
+// We tried several solutions from the linked issues, but it seems our monorepo
+// setup make this particularly tricky
+export const {
   Actions,
   AreaLoader,
   Avatar,
@@ -120,6 +134,9 @@ export {
   IllustrationNegative,
   IllustrationSearch,
   useComponentsShowcase,
+} = createBentoComponents();
+
+export {
   useToast,
   svgIllustrationProps,
   svgIconProps,
