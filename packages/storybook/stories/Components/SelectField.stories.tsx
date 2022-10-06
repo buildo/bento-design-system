@@ -139,7 +139,9 @@ CustomListConfig.decorators = [
         },
       }}
     >
-      <Story />
+      <Modal title="Title" onClose={() => {}}>
+        <Story />
+      </Modal>
     </BentoConfigProvider>
   ),
 ];
