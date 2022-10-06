@@ -6,6 +6,7 @@ import {
   Modal,
   SelectField,
   svgIllustrationProps,
+  BentoConfigProvider,
 } from "../";
 import { createComponentStories, fieldArgTypes, formatMessage, textArgType } from "../util";
 
@@ -120,3 +121,27 @@ export const ReadOnly = createStory({
   ],
   isReadOnly: true,
 });
+
+// This story tests that we can configure List specifically for SelectField
+export const CustomListConfig = createStory({
+  autoFocus: true,
+});
+CustomListConfig.decorators = [
+  (Story: StoryFn) => (
+    <BentoConfigProvider
+      value={{
+        dropdown: {
+          list: {
+            item: {
+              paddingX: { large: 80, medium: 80 },
+            },
+          },
+        },
+      }}
+    >
+      <Modal title="Title" onClose={() => {}}>
+        <Story />
+      </Modal>
+    </BentoConfigProvider>
+  ),
+];
