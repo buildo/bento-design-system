@@ -107,6 +107,7 @@ export * from "./vars.css";
 
 export type { BentoConfig, PartialBentoConfig } from "./BentoConfig";
 export { defaultConfigs };
+export { BentoConfigProvider } from "./BentoConfigContext";
 
 export { createBentoComponents } from "./createBentoComponents";
 
