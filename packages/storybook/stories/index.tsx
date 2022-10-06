@@ -142,6 +142,7 @@ export {
   svgIconProps,
   illustrations,
   icons,
+  BentoConfigProvider,
 } from "@buildo/bento-design-system";
 
 export type {
