@@ -17,8 +17,13 @@ export function BentoConfigProvider({
   value: PartialBentoConfig;
   children: Children;
 }) {
+  // NOTE(gabro): in case we nest config providers, each nested provider should only override the
+  // partial config it was given.
+  // So we retrieve the parent config via useBentoConfig(), which will default to the default config
+  // in case this is the top level provider.
+  const parentConfig = useBentoConfig();
   return (
-    <BentoConfigContext.Provider value={merge(defaultConfigs, config)}>
+    <BentoConfigContext.Provider value={merge(parentConfig, config)}>
       {children}
     </BentoConfigContext.Provider>
   );
