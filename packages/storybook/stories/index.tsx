@@ -115,6 +115,7 @@ export const {
   Tooltip,
   TextField,
   TextArea,
+  TimeField,
   IconIdea,
   IconCheck,
   IconChevronDown,
@@ -143,6 +144,7 @@ export {
   illustrations,
   icons,
   BentoConfigProvider,
+  Time,
 } from "@buildo/bento-design-system";
 
 export type {
@@ -152,6 +154,7 @@ export type {
   SelectFieldProps,
   SliderFieldProps,
   TooltipProps,
+  TimeValue,
 } from "@buildo/bento-design-system";
 
 export const BentoProvider = createBentoProvider(
