@@ -1,5 +1,5 @@
 import { defaultMessages } from "../stories/defaultMessages";
-import { DesignSystemProvider } from "../stories/";
+import { DesignSystemProvider } from "../stories";
 
 export const decorators = [
   (Story) => (

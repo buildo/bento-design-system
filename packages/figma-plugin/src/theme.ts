@@ -269,8 +269,10 @@ function getStyleColor(name: string): string | undefined {
   }
 
   switch (paint.type) {
-    case "SOLID":
-      return figmaRGBToHex(paint.color).toUpperCase();
+    case "SOLID": {
+      const color: RGB | RGBA = paint.opacity ? { ...paint.color, a: paint.opacity } : paint.color;
+      return figmaRGBToHex(color).toUpperCase();
+    }
     default:
       console.warn("Unhandled paint type", paint.type);
   }
