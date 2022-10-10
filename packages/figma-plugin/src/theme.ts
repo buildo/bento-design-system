@@ -216,20 +216,20 @@ function theme() {
       brightPink: getStyleColor("Data Visualization/Bright Pink"),
     },
     boxShadow: {
-      // outlineInteractive:
-      // outlineInteractiveBottom:
-      // outlineDecorative:
-      // outlineDecorativeBottom:
-      // outlineContainer:
-      // outlineInputEnabled:
-      // outlineInputHover:
-      // outlineInputFocus:
-      // outlineInputDisabled:
-      // outlineInformative:
-      // outlinePositive:
-      // outlineWarning:
-      // outlineNegative:
-      // outlineNegativeStrong:
+      outlineInteractive: `inset 0px 0px 0px 1px ${getStyleColor("Outline/Interactive")}`,
+      outlineInteractiveBottom: `inset 0px -1px 0px ${getStyleColor("Outline/Interactive")}`,
+      outlineDecorative: `inset 0px 0px 0px 1px ${getStyleColor("Outline/Decorative")}`,
+      outlineDecorativeBottom: `inset 0px -1px 0px ${getStyleColor("Outline/Decorative")}`,
+      outlineContainer: `inset 0px 0px 0px 1px ${getStyleColor("Outline/Container")}`,
+      outlineInputEnabled: `inset 0px 0px 0px 1px ${getStyleColor("Outline/Input Enabled")}`,
+      outlineInputHover: `inset 0px 0px 0px 1px ${getStyleColor("Outline/Input Hover")}`,
+      outlineInputFocus: `inset 0px 0px 0px 2px ${getStyleColor("Outline/Input Focus")}`,
+      outlineInputDisabled: `inset 0px 0px 0px 1px ${getStyleColor("Outline/Input Disabled")}`,
+      outlineInformative: `inset 0px 0px 0px 1px ${getStyleColor("Outline/Informative")}`,
+      outlinePositive: `inset 0px 0px 0px 1px ${getStyleColor("Outline/Positive")}`,
+      outlineWarning: `inset 0px 0px 0px 1px ${getStyleColor("Outline/Warning")}`,
+      outlineNegative: `inset 0px 0px 0px 1px ${getStyleColor("Outline/Negative")}`,
+      outlineNegativeStrong: `inset 0px 0px 0px 2px ${getStyleColor("Outline/Negative")}`,
       elevationSmall: getEffectStyle("Elevation/Small"),
       elevationMedium: getEffectStyle("Elevation/Medium"),
       elevationLarge: getEffectStyle("Elevation/Large"),
