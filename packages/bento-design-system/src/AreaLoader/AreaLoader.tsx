@@ -1,10 +1,11 @@
 import clsx from "clsx";
-import { bentoSprinkles, Box, Inline, Stack, Body, LocalizedString } from "..";
+import { Box, Inline, Stack, Body, LocalizedString } from "..";
 import { container, dot, text } from "./AreaLoader.css";
 import { BentoSprinkles } from "../internal";
 import { AreaLoaderConfig } from "./Config";
 import { BodyProps } from "../Typography/Body/Body";
 import { useBentoConfig } from "../BentoConfigContext";
+import { useSprinkles } from "../SprinklesContext";
 
 function readabilityAreaColorToBackground(
   color: AreaLoaderConfig["readabilityAreaColor"]
@@ -54,18 +55,20 @@ export type { Props as AreaLoaderProps };
  */
 export function AreaLoader({ message }: Props) {
   const config = useBentoConfig().areaLoader;
+  const sprinkles = useSprinkles();
+
   return (
     <Box
       className={clsx(
         container,
-        bentoSprinkles({
+        sprinkles({
           background: config.scrimColor === "dark" ? "backgroundDarkScrim" : "backgroundLightScrim",
         })
       )}
     >
       <Box
         padding={80}
-        className={bentoSprinkles({
+        className={sprinkles({
           background: readabilityAreaColorToBackground(config.readabilityAreaColor),
           borderRadius: config.readabilityAreaBorderRadius,
         })}
@@ -75,7 +78,7 @@ export function AreaLoader({ message }: Props) {
             {config.dots.map((dotConfig, index) => (
               <Box
                 key={`dot-${index}`}
-                className={clsx(dot, bentoSprinkles({ background: dotConfig.color }))}
+                className={clsx(dot, sprinkles({ background: dotConfig.color }))}
                 style={{
                   animationDelay: `${0.2 * index}s`,
                 }}
