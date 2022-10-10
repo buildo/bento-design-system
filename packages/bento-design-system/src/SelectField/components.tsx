@@ -27,7 +27,6 @@ import {
   Column,
   Inline,
   Inset,
-  bentoSprinkles,
   Button,
 } from "..";
 import { singleValue, placeholder, menu, control } from "./SelectField.css";
@@ -37,6 +36,7 @@ import { SelectOption } from "./SelectField";
 import { InternalList } from "../List/InternalList";
 import { ListItem } from "../List/ListItem";
 import { useBentoConfig } from "../BentoConfigContext";
+import { useSprinkles } from "../SprinklesContext";
 
 export function Control<A, IsMulti extends boolean>({
   selectProps: { validationState: validation, isDisabled, isReadOnly = false },
@@ -65,10 +65,11 @@ export function Control<A, IsMulti extends boolean>({
 }
 
 export function ValueContainer<A, IsMulti extends boolean>(props: ValueContainerProps<A, IsMulti>) {
+  const sprinkles = useSprinkles();
   return (
     <defaultComponents.ValueContainer
       {...props}
-      className={bentoSprinkles({
+      className={sprinkles({
         gap: 8,
       })}
     />
@@ -144,6 +145,7 @@ export function Input<A, IsMulti extends boolean>(props: InputProps<A, IsMulti>)
 
 export function Menu<A, IsMulti extends boolean>(props: MenuProps<A, IsMulti>) {
   const dropdownConfig = useBentoConfig().dropdown;
+  const sprinkles = useSprinkles();
 
   const elevation = (() => {
     switch (dropdownConfig.elevation) {
@@ -161,7 +163,7 @@ export function Menu<A, IsMulti extends boolean>(props: MenuProps<A, IsMulti>) {
       {...props}
       className={clsx(
         menu,
-        bentoSprinkles({
+        sprinkles({
           boxShadow: elevation,
           borderRadius: dropdownConfig.radius,
         })
