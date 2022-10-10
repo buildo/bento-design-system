@@ -1,12 +1,12 @@
 import { useRef } from "react";
 import { useDateSegment } from "@react-aria/datepicker";
-import { DateFieldState, DateSegment } from "@react-stately/datepicker";
+import { DateFieldState, DateSegment as DateSegmentT } from "@react-stately/datepicker";
 import { Box } from "../Box/Box";
 import { useBentoConfig } from "../BentoConfigContext";
 import { Body } from "../Typography/Body/Body";
 
 type Props = {
-  segment: DateSegment;
+  segment: DateSegmentT;
   state: DateFieldState;
 };
 
