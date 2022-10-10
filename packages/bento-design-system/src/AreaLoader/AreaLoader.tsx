@@ -1,5 +1,4 @@
-import clsx from "clsx";
-import { bentoSprinkles, Box, Inline, Stack, Body, LocalizedString } from "..";
+import { Box, Inline, Stack, Body, LocalizedString } from "..";
 import { container, dot, text } from "./AreaLoader.css";
 import { BentoSprinkles } from "../internal";
 import { AreaLoaderConfig } from "./Config";
@@ -54,28 +53,24 @@ export type { Props as AreaLoaderProps };
  */
 export function AreaLoader({ message }: Props) {
   const config = useBentoConfig().areaLoader;
+
   return (
     <Box
-      className={clsx(
-        container,
-        bentoSprinkles({
-          background: config.scrimColor === "dark" ? "backgroundDarkScrim" : "backgroundLightScrim",
-        })
-      )}
+      background={config.scrimColor === "dark" ? "backgroundDarkScrim" : "backgroundLightScrim"}
+      className={container}
     >
       <Box
         padding={80}
-        className={bentoSprinkles({
-          background: readabilityAreaColorToBackground(config.readabilityAreaColor),
-          borderRadius: config.readabilityAreaBorderRadius,
-        })}
+        background={readabilityAreaColorToBackground(config.readabilityAreaColor)}
+        borderRadius={config.readabilityAreaBorderRadius}
       >
         <Stack space={32}>
           <Inline space={8} align="center">
             {config.dots.map((dotConfig, index) => (
               <Box
                 key={`dot-${index}`}
-                className={clsx(dot, bentoSprinkles({ background: dotConfig.color }))}
+                background={dotConfig.color}
+                className={dot}
                 style={{
                   animationDelay: `${0.2 * index}s`,
                 }}
