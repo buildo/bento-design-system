@@ -27,19 +27,37 @@ export const inputRecipe = strictRecipe({
   ],
   variants: {
     validation: {
-      valid: bentoSprinkles({
-        boxShadow: {
-          default: "outlineInputEnabled",
-          hover: "outlineInputHover",
-          focus: "outlineInputFocus",
+      valid: [
+        bentoSprinkles({
+          boxShadow: {
+            default: "outlineInputEnabled",
+            hover: "outlineInputHover",
+            focus: "outlineInputFocus",
+          },
+        }),
+        {
+          selectors: {
+            "&:focus-within:not(:disabled):not([disabled])": {
+              boxShadow: vars.boxShadow.outlineInputFocus,
+            },
+          },
         },
-      }),
-      invalid: bentoSprinkles({
-        boxShadow: {
-          default: "outlineNegative",
-          focus: "outlineNegativeStrong",
+      ],
+      invalid: [
+        bentoSprinkles({
+          boxShadow: {
+            default: "outlineNegative",
+            focus: "outlineNegativeStrong",
+          },
+        }),
+        {
+          selectors: {
+            "&:focus-within:not(:disabled):not([disabled])": {
+              boxShadow: vars.boxShadow.outlineNegativeStrong,
+            },
+          },
         },
-      }),
+      ],
       notSet: {},
     },
   },
