@@ -4,6 +4,7 @@ import { DateFieldState, DateSegment as DateSegmentT } from "@react-stately/date
 import { Box } from "../Box/Box";
 import { useBentoConfig } from "../BentoConfigContext";
 import { Body } from "../Typography/Body/Body";
+import { dateSegment } from "./DateSegment.css";
 
 type Props = {
   segment: DateSegmentT;
@@ -18,7 +19,7 @@ export function DateSegment({ segment, state }: Props) {
   const isSpace = segment.type === "literal" && segment.text.trim().length === 0;
 
   return (
-    <Box {...segmentProps} width={isSpace ? 4 : undefined} ref={ref}>
+    <Box {...segmentProps} className={dateSegment} width={isSpace ? 4 : undefined} ref={ref}>
       <Body
         color={state.isDisabled ? "disabled" : segment.isPlaceholder ? "secondary" : "default"}
         size={config.fontSize}
