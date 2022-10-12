@@ -88,12 +88,12 @@ export function Field({
           <Box paddingLeft={config.assistiveText.paddingLeft}>
             <Stack space={4}>
               {issues.map((errorMessage, index) => (
-                <Columns space={4} alignY="center">
+                <Columns space={4} alignY="center" key={index}>
                   <Column width="content">
                     <IconNegative size={12} color="negative" />
                   </Column>
                   <Box {...errorMessageProps}>
-                    <Body key={index} size={config.assistiveText.size} color="negative">
+                    <Body size={config.assistiveText.size} color="negative">
                       {errorMessage}
                     </Body>
                   </Box>
