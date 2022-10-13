@@ -154,7 +154,6 @@ export type {
   SelectFieldProps,
   SliderFieldProps,
   TooltipProps,
-  TimeValue,
 } from "@buildo/bento-design-system";
 
 export const BentoProvider = createBentoProvider(

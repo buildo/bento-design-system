@@ -117,4 +117,3 @@ export { useComponentsShowcase } from "./useComponentsShowcase";
 export type { ClassValue } from "clsx";
 
 export { Time } from "@internationalized/date";
-export type { TimeValue } from "@react-types/datepicker";
