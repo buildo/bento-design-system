@@ -48,6 +48,8 @@ function Tab({
     <Box
       tabIndex={active || disabled ? -1 : 0}
       className={tabRecipe({ active, kind: config.kind })}
+      color={config.kind === "folder" && active ? config.activeForegroundColor : undefined}
+      fill={config.kind === "folder" && active ? config.activeForegroundColor : undefined}
       background={config.kind === "folder" && active ? config.activeBackgroundColor : undefined}
       {...pressProps}
       disabled={disabled}

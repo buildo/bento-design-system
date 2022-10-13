@@ -46,16 +46,6 @@ export const tabRecipe = strictRecipe({
     {
       variants: {
         active: true,
-        kind: "folder",
-      },
-      style: bentoSprinkles({
-        color: { default: "textInteractive", hover: "textInteractive", focus: "textInteractive" },
-        fill: { default: "textInteractive", hover: "textInteractive", focus: "textInteractive" },
-      }),
-    },
-    {
-      variants: {
-        active: true,
         kind: "underline",
       },
       style: bentoSprinkles({
