@@ -52,7 +52,6 @@ import { TooltipConfig } from "../Tooltip/Config";
 import { InlineLoaderConfig } from "../InlineLoader/Config";
 import { DecorativeDividerConfig } from "../Divider/Config";
 import { DateFieldConfig } from "../DateField/Config";
-import { Box } from "../Box/Box";
 
 export const actions: ActionsConfig = {
   primaryActionButtonKind: "solid",
