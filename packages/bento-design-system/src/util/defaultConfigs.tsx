@@ -380,16 +380,13 @@ export const navigation: NavigationConfig = {
     medium: "large",
     large: "large",
   },
-  activeVisualElement: (
-    <Box
-      position="absolute"
-      left={0}
-      bottom={0}
-      background="brandPrimary"
-      width="full"
-      style={{ height: 2 }}
-    />
-  ),
+  activeVisualElement: {
+    lineColor: "brandPrimary",
+    lineHeight: {
+      medium: 2,
+      large: 2,
+    },
+  },
   uppercaseLabel: false,
 };
 
