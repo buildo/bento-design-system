@@ -68,6 +68,7 @@ export function TimeField(props: Props) {
         paddingX={config.paddingX}
         paddingY={config.paddingY}
         className={inputRecipe({ validation: validationState || "notSet" })}
+        disabled={props.disabled}
         {...fieldProps}
       >
         {state.segments.map((segment, i) => (
