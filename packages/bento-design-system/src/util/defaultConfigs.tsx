@@ -478,6 +478,7 @@ export const folderTabs: TabsConfig = {
     medium: 40,
     large: 40,
   },
+  activeBackgroundColor: "backgroundInteractiveOverlay",
 };
 
 export const underlineTabs: TabsConfig = {

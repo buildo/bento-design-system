@@ -19,6 +19,7 @@ type TabsKindConfig =
   | {
       kind: "folder";
       radius: BentoSprinkles["borderRadius"];
+      activeBackgroundColor: BentoSprinkles["background"];
     }
   | {
       kind: "underline";

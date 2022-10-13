@@ -48,6 +48,7 @@ function Tab({
     <Box
       tabIndex={active || disabled ? -1 : 0}
       className={tabRecipe({ active, kind: config.kind })}
+      background={config.kind === "folder" && active ? config.activeBackgroundColor : undefined}
       {...pressProps}
       disabled={disabled}
       borderTopRadius={config.kind === "folder" ? config.radius : undefined}

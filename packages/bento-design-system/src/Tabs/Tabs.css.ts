@@ -49,11 +49,6 @@ export const tabRecipe = strictRecipe({
         kind: "folder",
       },
       style: bentoSprinkles({
-        background: {
-          default: "backgroundInteractiveOverlay",
-          hover: "backgroundInteractiveOverlay",
-          focus: "backgroundInteractiveOverlay",
-        },
         color: { default: "textInteractive", hover: "textInteractive", focus: "textInteractive" },
         fill: { default: "textInteractive", hover: "textInteractive", focus: "textInteractive" },
       }),
