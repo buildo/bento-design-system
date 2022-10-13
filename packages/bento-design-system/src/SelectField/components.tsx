@@ -165,6 +165,9 @@ export function Menu<A, IsMulti extends boolean>(props: MenuProps<A, IsMulti>) {
         menu,
         sprinkles({
           boxShadow: elevation,
+          borderStyle: "solid",
+          borderColor: "outlineContainer",
+          borderWidth: 1,
           borderRadius: dropdownConfig.radius,
         })
       )}
