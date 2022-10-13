@@ -164,10 +164,6 @@ export const BentoProvider = createBentoProvider(
     feedback: {
       background: FeedbackBackground,
     },
-    table: {
-      headerBackgroundColor: "backgroundPrimaryInverse",
-      headerForegroundColor: "foregroundPrimaryInverse",
-    },
   },
   sprinkles
 );
