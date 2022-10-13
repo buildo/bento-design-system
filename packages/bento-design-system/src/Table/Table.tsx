@@ -332,6 +332,8 @@ function ColumnHeader<D extends Record<string, unknown>>({
   stickyHeaders?: boolean;
   sticky: boolean;
 }) {
+  const config = useBentoConfig().table;
+
   const sortIcon = ((): ((props: IconProps) => Children) | null => {
     if (!column.canSort) {
       return null;
@@ -361,7 +363,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
       <Tooltip
         trigger={(ref, props) => (
           <Box as="div" display="inline-block" ref={ref} {...props}>
-            <IconInfo size={12} color="default" />
+            <IconInfo size={12} color="currentColor" />
           </Box>
         )}
         content={column.hint}
@@ -378,6 +380,8 @@ function ColumnHeader<D extends Record<string, unknown>>({
     >
       <Box
         className={columnHeader}
+        background={config.headerBackgroundColor}
+        color={config.headerForegroundColor}
         {...column.getHeaderProps(column.getSortByToggleProps())}
         textAlign={column.align}
       >
