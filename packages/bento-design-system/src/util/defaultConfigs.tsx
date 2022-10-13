@@ -443,7 +443,6 @@ export const toast: ToastConfig = {
   messageSize: "medium",
   closeIcon: IconClose,
   closeIconSize: 12,
-  smallButtonPaddingY: button.paddingY.small,
   outline: false,
   internalSpacing: 16,
   elevation: "none",

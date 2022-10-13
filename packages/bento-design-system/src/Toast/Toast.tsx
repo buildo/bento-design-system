@@ -26,6 +26,7 @@ type Props = {
  */
 export function Toast({ kind, message, action, onDismiss }: Props) {
   const config = useBentoConfig().toast;
+  const buttonConfig = useBentoConfig().button;
   const { defaultMessages } = useDefaultMessages();
   return (
     <Box
@@ -42,7 +43,7 @@ export function Toast({ kind, message, action, onDismiss }: Props) {
         </Body>
         {action && (
           <Column width="content">
-            <Bleed spaceY={config.smallButtonPaddingY}>
+            <Bleed spaceY={buttonConfig.paddingY[config.buttonSize]}>
               <Button
                 size={config.buttonSize}
                 kind={config.buttonKind}
