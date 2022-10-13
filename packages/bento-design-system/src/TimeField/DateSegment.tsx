@@ -9,9 +9,10 @@ import { dateSegment } from "./DateSegment.css";
 type Props = {
   segment: DateSegmentT;
   state: DateFieldState;
+  isReadonly?: boolean;
 };
 
-export function DateSegment({ segment, state }: Props) {
+export function DateSegment({ segment, state, isReadonly }: Props) {
   const config = useBentoConfig().input;
   const ref = useRef<HTMLDivElement>(null);
   const { segmentProps } = useDateSegment(segment, state, ref);
@@ -19,7 +20,13 @@ export function DateSegment({ segment, state }: Props) {
   const isSpace = segment.type === "literal" && segment.text.trim().length === 0;
 
   return (
-    <Box {...segmentProps} className={dateSegment} width={isSpace ? 4 : undefined} ref={ref}>
+    <Box
+      {...segmentProps}
+      readOnly={isReadonly}
+      className={dateSegment}
+      width={isSpace ? 4 : undefined}
+      ref={ref}
+    >
       <Body
         color={state.isDisabled ? "disabled" : segment.isPlaceholder ? "secondary" : "default"}
         size={config.fontSize}

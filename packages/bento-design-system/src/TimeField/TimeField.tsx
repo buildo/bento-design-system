@@ -63,6 +63,7 @@ export function TimeField(props: Props) {
       <Box
         ref={ref}
         display="flex"
+        readOnly={props.isReadOnly}
         borderRadius={config.radius}
         paddingX={config.paddingX}
         paddingY={config.paddingY}
@@ -70,7 +71,7 @@ export function TimeField(props: Props) {
         {...fieldProps}
       >
         {state.segments.map((segment, i) => (
-          <DateSegment key={i} segment={segment} state={state} />
+          <DateSegment key={i} segment={segment} state={state} isReadonly={props.isReadOnly} />
         ))}
       </Box>
     </Field>
