@@ -65,6 +65,7 @@ export * from "./Tabs/Tabs";
 export * from "./TextArea/TextArea";
 export { bentoSprinkles } from "./internal/sprinkles.css";
 export * from "./TextField/TextField";
+export * from "./TimeField/TimeField";
 export * from "./Toast/Toast";
 export type {
   TypeOverrides,
@@ -114,3 +115,5 @@ export { createBentoComponents } from "./createBentoComponents";
 export { useComponentsShowcase } from "./useComponentsShowcase";
 
 export type { ClassValue } from "clsx";
+
+export { Time } from "@internationalized/date";

@@ -73,6 +73,7 @@ import { SelectField } from "./SelectField/SelectField";
 import { SliderField } from "./SliderField/SliderField";
 import { TextArea } from "./TextArea/TextArea";
 import { TextField } from "./TextField/TextField";
+import { TimeField } from "./TimeField/TimeField";
 
 /** @deprecated Import components directly from "@buildo/bento-design-system" instead */
 export function createBentoComponents(): R;
@@ -175,6 +176,7 @@ function internalCreateBentoComponents(
     Tooltip,
     TextField,
     TextArea,
+    TimeField,
   };
 
   return {
