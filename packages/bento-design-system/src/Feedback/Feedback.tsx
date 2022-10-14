@@ -135,7 +135,7 @@ function renderIllustration(
 ): Children {
   const illustrationProps: IllustrationProps = {
     size: config.illustrationSize[size],
-    style: "color",
+    kind: "color",
   };
   if (background && config.background) {
     // NOTE(gabro): when we have a background, the overall size of the illustration is the one of

@@ -92,7 +92,7 @@ function Destination({
             {illustration &&
               illustration({
                 size: config.illustrationSize[size],
-                style: "outline",
+                kind: "outline",
                 color: "inherit",
               })}
           </Column>

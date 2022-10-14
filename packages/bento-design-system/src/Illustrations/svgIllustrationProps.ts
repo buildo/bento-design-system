@@ -10,7 +10,7 @@ export function svgIllustrationProps(props: IllustrationProps): SVGAttributes<SV
   };
 }
 
-function outlineColor(color: (IllustrationProps & { style: "outline" })["color"]): string {
+function outlineColor(color: (IllustrationProps & { kind: "outline" })["color"]): string {
   switch (color) {
     case "default":
       return vars.foregroundColor.foregroundSecondary;
