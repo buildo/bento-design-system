@@ -119,7 +119,7 @@ export const statusProperties = {
   outlineColor: vars.outlineColor,
   stroke: color,
   textDecoration: ["none", "underline"],
-  fill: { ...color, ...background, inherit: "inherit" },
+  fill: { ...color, ...background, inherit: "inherit", currentColor: "currentColor" },
   borderColor: { ...color, transparent: "transparent" },
   borderStyle: {
     solid: "solid",

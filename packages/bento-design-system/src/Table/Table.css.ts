@@ -17,11 +17,14 @@ export const columnHeader = bentoSprinkles({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  background: "backgroundPrimary",
   boxShadow: "outlineDecorativeBottom",
   paddingX: 16,
   paddingY: 8,
   height: "full",
+});
+
+export const sortIconContainer = style({
+  filter: "opacity(80%)",
 });
 
 export const stickyColumnHeader = bentoSprinkles({

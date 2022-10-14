@@ -14,6 +14,7 @@ export type IconProps = {
     | "negative"
     | "disabled"
     | "inherit"
-    | "interactive";
+    | "interactive"
+    | "currentColor";
   className?: string;
 };

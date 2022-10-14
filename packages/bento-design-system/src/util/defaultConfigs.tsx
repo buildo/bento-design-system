@@ -430,6 +430,8 @@ export const dropdown: DropdownConfig = {
 export const table: TableConfig = {
   headerInfoIcon: IconInformative,
   emptyIllustration: IllustrationSearch,
+  headerBackgroundColor: "backgroundPrimary",
+  headerForegroundColor: undefined,
 };
 
 export const toast: ToastConfig = {
