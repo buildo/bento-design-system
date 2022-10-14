@@ -36,13 +36,14 @@ export function Tooltip(props: Props) {
   const config = useBentoConfig().tooltip;
   const arrowRef = useRef<HTMLElement | null>(null);
 
+  const commonMiddleware = [shift(), offset(8), arrow({ element: arrowRef })];
   const floatingProps: UseFloatingProps = props.placement
     ? {
         placement: props.placement,
-        middleware: [shift(), flip(), offset(8), arrow({ element: arrowRef })],
+        middleware: commonMiddleware.concat([flip()]),
       }
     : {
-        middleware: [shift(), autoPlacement(), offset(8), arrow({ element: arrowRef })],
+        middleware: commonMiddleware.concat([autoPlacement()]),
       };
   const {
     x,
