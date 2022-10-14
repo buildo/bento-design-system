@@ -5,12 +5,13 @@ import { IllustrationProps } from "./IllustrationProps";
 export function svgIllustrationProps(props: IllustrationProps): SVGAttributes<SVGElement> {
   return {
     ...sizeToDimensions(props.size),
-    fill: props.style === "outline" ? outlineColor(props.color) : undefined,
+    fill:
+      props.kind === "outline" || props.style === "outline" ? outlineColor(props.color) : undefined,
     viewBox: "0 0 80 80",
   };
 }
 
-function outlineColor(color: (IllustrationProps & { style: "outline" })["color"]): string {
+function outlineColor(color: (IllustrationProps & { kind: "outline" })["color"]): string {
   switch (color) {
     case "default":
       return vars.foregroundColor.foregroundSecondary;

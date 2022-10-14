@@ -4,14 +4,14 @@ import { Box, Inline, Stack, Body, IllustrationProps, illustrations } from "..";
 const meta = {
   args: {
     size: 24,
-    style: "color",
+    kind: "color",
   },
   argTypes: {
     size: {
       options: [24, 32, 40, 80, 160],
       control: { type: "select" },
     },
-    style: {
+    kind: {
       options: ["color", "outline"],
       control: { type: "select" },
     },
@@ -26,15 +26,15 @@ export default meta;
 
 export const Illustrations = (args: IllustrationProps) => {
   const illustrationProps: IllustrationProps =
-    args.style === "outline"
+    args.kind === "outline"
       ? {
           size: args.size,
-          style: "outline",
+          kind: "outline",
           color: args.color,
         }
       : {
           size: args.size,
-          style: "color",
+          kind: "color",
         };
 
   return (

@@ -38,5 +38,5 @@ export function IllustrationLaptop(props: IllustrationProps) {
       </>
     ),
   };
-  return <svg {...svgIllustrationProps(props)}>{variants[props.style]}</svg>;
+  return <svg {...svgIllustrationProps(props)}>{variants[props.style ?? props.kind]}</svg>;
 }

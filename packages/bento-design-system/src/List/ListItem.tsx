@@ -135,7 +135,7 @@ function renderLeft(props: Props, config: ListItemConfig) {
       <Column width="content">
         {props.illustration({
           size: config.iconSize.illustration,
-          style: "outline",
+          kind: "outline",
           color: props.disabled ? "disabled" : "default",
         })}
       </Column>
