@@ -1,7 +1,9 @@
 import { useComponentsShowcase } from ".";
 import { action } from "@storybook/addon-actions";
 
-export default {};
+export default {
+  title: "Showcase",
+};
 
 export const Showcase = () => {
   return useComponentsShowcase({ action });

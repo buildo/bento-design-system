@@ -1,7 +1,8 @@
 import { Meta } from "@storybook/react";
 import { Box, Inline, Stack, Body, IllustrationProps, illustrations } from "..";
 
-const meta = {
+export default {
+  title: "Illustrations",
   args: {
     size: 24,
     kind: "color",
@@ -20,9 +21,7 @@ const meta = {
       control: { type: "select" },
     },
   },
-} as Meta<IllustrationProps>;
-
-export default meta;
+};
 
 export const Illustrations = (args: IllustrationProps) => {
   const illustrationProps: IllustrationProps =

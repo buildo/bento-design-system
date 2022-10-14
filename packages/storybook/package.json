@@ -2,14 +2,14 @@
   "name": "storybook",
   "private": true,
   "scripts": {
-    "build": "build-storybook",
+    "build": "sb build",
     "prettier-check": "prettier --parser=typescript \"stories/**/*.{ts,tsx}\" --check",
     "prettier-write": "prettier --parser=typescript \"stories/**/*.{ts,tsx}\" --write",
     "eslint-check": "eslint \"stories/**/*.{js,ts,tsx}\"",
     "typecheck": "tsc --noEmit",
-    "start": "start-storybook -p 6006",
+    "start": "sb dev -p 6006",
     "lint-staged": "lint-staged",
-    "build-storybook": "build-storybook",
+    "build-storybook": "sb build",
     "chromatic": "chromatic $CHROMATIC_OPTIONS"
   },
   "dependencies": {
@@ -18,25 +18,21 @@
     "date-fns": "2.29.3"
   },
   "devDependencies": {
-    "@babel/core": "7.18.10",
     "@babel/preset-env": "7.18.10",
-    "@babel/preset-react": "7.18.6",
     "@babel/preset-typescript": "7.18.6",
-    "@storybook/addon-actions": "6.5.9",
-    "@storybook/addon-essentials": "6.5.9",
-    "@storybook/addon-links": "6.5.9",
-    "@storybook/addons": "6.5.9",
-    "@storybook/builder-webpack5": "6.5.9",
-    "@storybook/manager-webpack5": "6.5.9",
-    "@storybook/react": "6.5.9",
-    "@storybook/testing-library": "0.0.13",
+    "@storybook/addon-actions": "7.0.0-alpha.37",
+    "@storybook/addon-essentials": "7.0.0-alpha.37",
+    "@storybook/addon-links": "7.0.0-alpha.37",
+    "@storybook/addons": "7.0.0-alpha.37",
+    "@storybook/react": "7.0.0-alpha.37",
+    "@storybook/react-vite": "7.0.0-alpha.37",
+    "@storybook/testing-library": "0.0.14-next.0",
     "@types/lodash.orderby": "4.6.7",
     "@types/react": "18.0.21",
     "@types/react-table": "7.7.12",
-    "@vanilla-extract/babel-plugin": "1.1.7",
     "@vanilla-extract/css": "1.7.2",
     "@vanilla-extract/private": "1.0.3",
-    "@vanilla-extract/webpack-plugin": "2.1.12",
+    "@vanilla-extract/vite-plugin": "^3.6.1",
     "chromatic": "6.7.2",
     "eslint": "8.20.0",
     "eslint-config-react-app": "7.0.1",
@@ -47,7 +43,9 @@
     "prettier": "2.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "storybook": "^7.0.0-alpha.37",
     "storybook-addon-themes": "6.1.0",
-    "typescript": "4.7.4"
+    "typescript": "4.9.1-beta",
+    "vite": "^3.1.8"
   }
 }

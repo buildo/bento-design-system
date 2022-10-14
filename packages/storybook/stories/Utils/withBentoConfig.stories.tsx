@@ -6,7 +6,9 @@ import {
 import { action } from "@storybook/addon-actions";
 import { defaultMessages } from "../defaultMessages";
 
-export default {};
+export default {
+  title: "withBentoConfig",
+};
 
 // This tests that `withBentoConfig` only overrides the specific config passed to it.
 // In this case we check that when we customize the Modal, we don't change the

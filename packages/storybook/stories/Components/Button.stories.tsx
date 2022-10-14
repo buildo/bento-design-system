@@ -1,95 +1,99 @@
-import { createComponentStories, textArgType } from "../util";
 import { Button, IconCheck } from "../";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Button,
   args: {
     label: "Button",
   },
-  argTypes: {
-    label: textArgType,
+}; // satisfies Meta<ButtonProps>;
+
+export default meta;
+
+// type Story = StoryObj<typeof meta>;
+
+export const PrimarySolid = {
+  args: {
+    kind: "solid",
+    hierarchy: "primary",
   },
-});
+}; // satisfies Story;
 
-export default defaultExport;
+export const SecondarySolid = {
+  args: {
+    kind: "solid",
+    hierarchy: "secondary",
+  },
+}; // satisfies Story;
 
-export const PrimarySolid = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-});
+export const DangerSolid = {
+  args: {
+    kind: "solid",
+    hierarchy: "danger",
+  },
+}; // satisfies Story;
 
-export const SecondarySolid = createStory({
-  kind: "solid",
-  hierarchy: "secondary",
-});
+// export const PrimaryTransparent = createStory({
+//   kind: "transparent",
+//   hierarchy: "primary",
+// });
 
-export const DangerSolid = createStory({
-  kind: "solid",
-  hierarchy: "danger",
-});
+// export const SecondaryTransparent = createStory({
+//   kind: "transparent",
+//   hierarchy: "secondary",
+// });
 
-export const PrimaryTransparent = createStory({
-  kind: "transparent",
-  hierarchy: "primary",
-});
+// export const DangerTransparent = createStory({
+//   kind: "transparent",
+//   hierarchy: "danger",
+// });
 
-export const SecondaryTransparent = createStory({
-  kind: "transparent",
-  hierarchy: "secondary",
-});
+// export const PrimaryOutline = createStory({
+//   kind: "outline",
+//   hierarchy: "primary",
+// });
 
-export const DangerTransparent = createStory({
-  kind: "transparent",
-  hierarchy: "danger",
-});
+// export const SecondaryOutline = createStory({
+//   kind: "outline",
+//   hierarchy: "secondary",
+// });
 
-export const PrimaryOutline = createStory({
-  kind: "outline",
-  hierarchy: "primary",
-});
+// export const DangerOutline = createStory({
+//   kind: "outline",
+//   hierarchy: "danger",
+// });
 
-export const SecondaryOutline = createStory({
-  kind: "outline",
-  hierarchy: "secondary",
-});
+// export const SolidDisabled = createStory({
+//   kind: "solid",
+//   hierarchy: "primary",
+//   isDisabled: true,
+// });
 
-export const DangerOutline = createStory({
-  kind: "outline",
-  hierarchy: "danger",
-});
+// export const TransparentDisabled = createStory({
+//   kind: "transparent",
+//   hierarchy: "primary",
+//   isDisabled: true,
+// });
 
-export const SolidDisabled = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-  isDisabled: true,
-});
+// export const OutlineDisabled = createStory({
+//   kind: "outline",
+//   hierarchy: "primary",
+//   isDisabled: true,
+// });
 
-export const TransparentDisabled = createStory({
-  kind: "transparent",
-  hierarchy: "primary",
-  isDisabled: true,
-});
+// export const PrimarySmall = createStory({
+//   kind: "solid",
+//   hierarchy: "primary",
+//   size: "small",
+// });
 
-export const OutlineDisabled = createStory({
-  kind: "outline",
-  hierarchy: "primary",
-  isDisabled: true,
-});
+// export const PrimaryLarge = createStory({
+//   kind: "solid",
+//   hierarchy: "primary",
+//   size: "large",
+// });
 
-export const PrimarySmall = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-  size: "small",
-});
-
-export const PrimaryLarge = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-  size: "large",
-});
-
-export const WithIcon = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-  icon: IconCheck,
-});
+// export const WithIcon = createStory({
+//   kind: "solid",
+//   hierarchy: "primary",
+//   icon: IconCheck,
+// });

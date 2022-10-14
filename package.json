@@ -27,7 +27,8 @@
   "packageManager": "pnpm@7.8.0",
   "pnpm": {
     "overrides": {
-      "@types/react": "^18"
+      "@types/react": "^18",
+      "esbuild": "0.15.10"
     },
     "peerDependencyRules": {
       "allowedVersions": {

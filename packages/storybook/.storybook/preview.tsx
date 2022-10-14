@@ -1,5 +1,5 @@
 import { defaultMessages } from "../stories/defaultMessages";
-import { BentoProvider } from "../stories/";
+import { BentoProvider } from "../stories";
 
 export const decorators = [
   (Story) => (

@@ -1,7 +1,7 @@
-import { Meta } from "@storybook/react";
 import { Box, Inline, Stack, Body, IconProps, icons } from "..";
 
-const meta = {
+export default {
+  title: "Icon",
   args: {
     size: 24,
   },
@@ -15,9 +15,7 @@ const meta = {
       control: { type: "select" },
     },
   },
-} as Meta<IconProps>;
-
-export default meta;
+};
 
 export const Icons = (args: IconProps) => {
   return (
