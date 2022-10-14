@@ -11,7 +11,6 @@ export type ToastConfig = {
   messageSize: BodyProps["size"];
   closeIcon: (props: IconProps) => Children;
   closeIconSize: IconProps["size"];
-  smallButtonPaddingY: BentoSprinkles["paddingY"];
   outline: boolean;
   internalSpacing: BentoSprinkles["gap"];
   elevation: "none" | "small" | "medium" | "large";
