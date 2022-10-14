@@ -72,6 +72,20 @@ function Destination({
 
   const LinkComponent = useLinkComponent();
 
+  const activeElement =
+    "props" in config.activeVisualElement ? (
+      config.activeVisualElement
+    ) : (
+      <Box
+        position="absolute"
+        left={0}
+        bottom={0}
+        width="full"
+        background={config.activeVisualElement.lineColor}
+        style={{ height: config.activeVisualElement.lineHeight[size] }}
+      />
+    );
+
   return (
     <Box
       tabIndex={active || disabled ? -1 : 0}
@@ -101,7 +115,7 @@ function Destination({
           {label}
         </Label>
       </Columns>
-      {active && config.activeVisualElement}
+      {active && activeElement}
     </Box>
   );
 }
