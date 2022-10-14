@@ -32,6 +32,7 @@ import {
   lastLeftStickyColumn,
   sectionHeader,
   sectionHeaderContainer,
+  sortIconContainer,
   stickyColumnHeader,
   table,
 } from "./Table.css";
@@ -393,7 +394,13 @@ function ColumnHeader<D extends Record<string, unknown>>({
               </Column>
             ) : null}
             {hint && <Column width="content">{hint}</Column>}
-            {sortIcon && <Column width="content">{sortIcon({ size: 8 })}</Column>}
+            {sortIcon && (
+              <Column width="content">
+                <Box className={sortIconContainer}>
+                  {sortIcon({ size: 8, color: "currentColor" })}
+                </Box>
+              </Column>
+            )}
           </Columns>
         )}
       </Box>

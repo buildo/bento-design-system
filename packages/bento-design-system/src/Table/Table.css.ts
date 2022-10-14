@@ -23,6 +23,10 @@ export const columnHeader = bentoSprinkles({
   height: "full",
 });
 
+export const sortIconContainer = style({
+  filter: "opacity(80%)",
+});
+
 export const stickyColumnHeader = bentoSprinkles({
   position: "sticky",
   top: 0,
