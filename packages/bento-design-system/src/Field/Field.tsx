@@ -1,14 +1,15 @@
 import { DOMAttributes, ElementType, LabelHTMLAttributes } from "react";
 import { Body } from "../Typography/Body/Body";
 import { Label } from "../Typography/Label/Label";
-import { Stack, Box, Columns, Column, Tooltip } from "..";
+import { Stack, Box, Columns, Column, Tooltip, LocalizedString } from "..";
 import { Children } from "../util/Children";
 import { FieldProps } from "./FieldProps";
 import { IconNegative } from "../Icons";
 import { FocusableElement } from "@react-types/shared";
 import { useBentoConfig } from "../BentoConfigContext";
+import { Placement } from "@floating-ui/core";
 
-type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "hint"> & {
+type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText"> & {
   /** The field label rendered on screen. Can be omitted in case of fields that have a custom label, such as CheckboxField  */
   label?: FieldProps<never>["label"];
   /** The dom element used to render the label. Defaults to <label>, but can be customized for fields that are group of inputs, like RadioGroup.
@@ -23,7 +24,16 @@ type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText" | "
   errorMessageProps: DOMAttributes<FocusableElement>;
   /** The field element */
   children: Children;
-};
+} & (
+    | {
+        hint: LocalizedString;
+        hintPlacement?: Placement;
+      }
+    | {
+        hint?: never;
+        hintPlacement?: never;
+      }
+  );
 
 /**
  * A utility for rendering a form field with a label, a description and error message, alongside their accessibility props.
@@ -40,6 +50,7 @@ export function Field({
   disabled,
   labelElement = "label",
   hint,
+  hintPlacement,
 }: Props) {
   const config = useBentoConfig().field;
   return (
@@ -69,6 +80,7 @@ export function Field({
                     </Box>
                   )}
                   content={hint}
+                  placement={hintPlacement}
                 />
               </Column>
             )}
