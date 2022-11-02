@@ -37,7 +37,8 @@
       },
       {
         "name": "Export theme",
-        "main": "src/theme.ts"
+        "main": "src/theme/index.ts",
+        "ui": "src/theme/ui.tsx"
       },
       {
         "name": "Export icon",

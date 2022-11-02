@@ -1,8 +1,12 @@
 import { figmaRGBToHex, figmaRGBToWebRGB } from "@figma-plugin/helpers";
+import { once, showUI } from "@create-figma-plugin/utilities";
 
 export default function exportTheme() {
-  console.log(JSON.stringify(theme(), null, 2));
-  figma.closePlugin("Done! Check the console");
+  showUI({ title: "Bento theme", width: 360, height: 600 }, { theme: theme() });
+
+  once("copiedToClipboard", () => {
+    figma.notify("Config copied to clipboard");
+  });
 }
 
 const remBaseSize = 16;
