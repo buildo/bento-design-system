@@ -162,6 +162,10 @@
       "tsx": {
         "skipTypeImports": true
       }
-    }
+    },
+    "excludeRegExp": [
+      "react-input-mask",
+      "Menu/NestedMenu"
+    ]
   }
 }

@@ -14,11 +14,11 @@ import {
 import { IconProps } from "../Icons/IconProps";
 import { IllustrationProps } from "../Illustrations/IllustrationProps";
 import { listItemRecipe } from "./ListItem.css";
-import { ListSize } from "./List";
+import type { ListSize } from "./List";
 import { element } from "../reset.css";
 import { Children } from "../util/Children";
 import { useBentoConfig } from "../BentoConfigContext";
-import { ListItemConfig } from "./Config";
+import type { ListItemConfig } from "./Config";
 
 type Kind =
   | {

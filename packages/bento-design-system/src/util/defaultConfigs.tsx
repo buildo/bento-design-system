@@ -1,8 +1,8 @@
-import { ActionsConfig } from "../Actions/Config";
-import { AreaLoaderConfig } from "../AreaLoader/Config";
-import { AvatarConfig } from "../Avatar/Config";
-import { BannerConfig } from "../Banner/Config";
-import { BreadcrumbConfig } from "../Breadcrumb/Config";
+import type { ActionsConfig } from "../Actions/Config";
+import type { AreaLoaderConfig } from "../AreaLoader/Config";
+import type { AvatarConfig } from "../Avatar/Config";
+import type { BannerConfig } from "../Banner/Config";
+import type { BreadcrumbConfig } from "../Breadcrumb/Config";
 import {
   IconPositive,
   IconChevronRight,
@@ -21,37 +21,37 @@ import {
   IconEyeClosed,
   IconEye,
 } from "../Icons";
-import { ButtonConfig } from "../Button/Config";
-import { CardConfig } from "../Card/Config";
-import { ChipConfig } from "../Chip/Config";
-import { DisclosureConfig } from "../Disclosure/Config";
-import { DisclosureGroupConfig } from "../DisclosureGroup/Config";
+import type { ButtonConfig } from "../Button/Config";
+import type { CardConfig } from "../Card/Config";
+import type { ChipConfig } from "../Chip/Config";
+import type { DisclosureConfig } from "../Disclosure/Config";
+import type { DisclosureGroupConfig } from "../DisclosureGroup/Config";
 import { IllustrationNegative, IllustrationPositive, IllustrationSearch } from "../Illustrations";
-import { FeedbackConfig } from "../Feedback/Config";
-import {
+import type { FeedbackConfig } from "../Feedback/Config";
+import type {
   FieldConfig,
   InputConfig,
   SelectionControlConfig,
   SelectionControlGroupConfig,
 } from "../Field/Config";
-import { FormLayoutConfig } from "../Form/Config";
-import { IconButtonConfig } from "../IconButton/Config";
-import { ListConfig } from "../List/Config";
-import { MenuConfig } from "../Menu/Config";
-import { ModalConfig } from "../Modal/Config";
-import { NavigationConfig } from "../Navigation/Config";
-import { SearchBarConfig } from "../SearchBar/Config";
-import { DropdownConfig } from "../SelectField/Config";
-import { TableConfig } from "../Table/Config";
-import { TabsConfig } from "../Tabs/Config";
-import { ToastConfig } from "../Toast/Config";
-import { ProgressBarConfig } from "../ProgressBar/Config";
-import { StepperConfig } from "../Stepper/Config";
-import { SliderConfig } from "../Slider/Config";
-import { TooltipConfig } from "../Tooltip/Config";
-import { InlineLoaderConfig } from "../InlineLoader/Config";
-import { DecorativeDividerConfig } from "../Divider/Config";
-import { DateFieldConfig } from "../DateField/Config";
+import type { FormLayoutConfig } from "../Form/Config";
+import type { IconButtonConfig } from "../IconButton/Config";
+import type { ListConfig } from "../List/Config";
+import type { MenuConfig } from "../Menu/Config";
+import type { ModalConfig } from "../Modal/Config";
+import type { NavigationConfig } from "../Navigation/Config";
+import type { SearchBarConfig } from "../SearchBar/Config";
+import type { DropdownConfig } from "../SelectField/Config";
+import type { TableConfig } from "../Table/Config";
+import type { TabsConfig } from "../Tabs/Config";
+import type { ToastConfig } from "../Toast/Config";
+import type { ProgressBarConfig } from "../ProgressBar/Config";
+import type { StepperConfig } from "../Stepper/Config";
+import type { SliderConfig } from "../Slider/Config";
+import type { TooltipConfig } from "../Tooltip/Config";
+import type { InlineLoaderConfig } from "../InlineLoader/Config";
+import type { DecorativeDividerConfig } from "../Divider/Config";
+import type { DateFieldConfig } from "../DateField/Config";
 
 export const actions: ActionsConfig = {
   primaryActionButtonKind: "solid",

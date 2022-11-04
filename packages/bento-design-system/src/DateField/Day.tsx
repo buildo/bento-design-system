@@ -2,7 +2,7 @@ import { useDay } from "@datepicker-react/hooks";
 import { useEffect, useRef } from "react";
 import { Box } from "..";
 import { Body } from "../Typography/Body/Body";
-import { CommonCalendarProps } from "./Calendar";
+import type { CommonCalendarProps } from "./Calendar";
 import { dayRadius, dayRecipe } from "./DateField.css";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { useBentoConfig } from "../BentoConfigContext";

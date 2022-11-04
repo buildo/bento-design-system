@@ -2,7 +2,7 @@ import { Body, ButtonProps, Children, Display, LocalizedString, Box, Stack, Butt
 import { IllustrationProps } from "../Illustrations/IllustrationProps";
 import { Title } from "../Typography/Title/Title";
 import { Headline } from "../Typography/Headline/Headline";
-import { FeedbackConfig } from "./Config";
+import type { FeedbackConfig } from "./Config";
 import { useBentoConfig } from "../BentoConfigContext";
 
 type Status = "positive" | "negative";
