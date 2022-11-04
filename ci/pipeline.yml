@@ -73,6 +73,8 @@ jobs:
                 file: bento/ci/tasks/test.yml
               - task: build
                 file: bento/ci/tasks/build.yml
+              - task: circular-deps
+                file: bento/ci/tasks/circular-deps.yml
               - task: chromatic
                 file: bento/ci/tasks/chromatic.yml
                 params:
@@ -180,6 +182,19 @@ jobs:
                   put: update-status
                   resource: pr
                   params: { path: bento, status: failure, context: build }
+                  get_params: { skip_download: true }
+
+              - task: circular-deps
+                file: bento/ci/tasks/circular-deps.yml
+                on_success:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: success, context: circular-deps }
+                  get_params: { skip_download: true }
+                on_failure:
+                  put: update-status
+                  resource: pr
+                  params: { path: bento, status: failure, context: circular-deps }
                   get_params: { skip_download: true }
 
               - task: chromatic
