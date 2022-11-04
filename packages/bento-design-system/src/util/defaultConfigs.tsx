@@ -55,6 +55,7 @@ import type { DecorativeDividerConfig } from "../Divider/Config";
 import type { DateFieldConfig } from "../DateField/Config";
 import type { ReadOnlyFieldConfig } from "../ReadOnlyField/Config";
 import type { FileUploaderFieldConfig } from "../FileUploaderField/Config";
+import type { ChartConfig } from "../Charts/Config";
 
 export const actions: ActionsConfig = {
   primaryActionButtonKind: "solid",
@@ -141,6 +142,19 @@ export const button: ButtonConfig = {
 
 export const card: CardConfig = {
   defaultRadius: 8,
+};
+
+export const chart: ChartConfig = {
+  defaultDataColors: [
+    "brightRed",
+    "brightBlue",
+    "brightGreen",
+    "brightIndigo",
+    "brightJade",
+    "brightViolet",
+    "brightOrange",
+    "brightPink",
+  ],
 };
 
 export const chip: ChipConfig = {

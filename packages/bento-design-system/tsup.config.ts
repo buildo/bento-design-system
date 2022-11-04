@@ -2,7 +2,7 @@ import { defineConfig } from "tsup";
 import { vanillaExtractPlugin } from "@vanilla-extract/esbuild-plugin";
 
 export default defineConfig({
-  entry: ["src/index.ts", "src/defaultTheme.ts"],
+  entry: ["src/index.ts", "src/defaultTheme.ts", "src/charts.ts"],
   outDir: "lib",
   esbuildPlugins: [vanillaExtractPlugin()],
   dts: true,

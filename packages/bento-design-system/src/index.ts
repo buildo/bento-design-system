@@ -63,17 +63,17 @@ export * from "./Stepper/Stepper";
 export * from "./Switch/Switch";
 export * from "./Table/Table";
 export * from "./Tabs/Tabs";
-export * from "./TextArea/TextArea";
 export { bentoSprinkles } from "./internal/sprinkles.css";
+export * from "./TextArea/TextArea";
 export * from "./TextField/TextField";
 export * from "./TimeField/TimeField";
-export * from "./Toast/Toast";
 export type {
   TypeOverrides,
   LocalizedString,
   ChipCustomColors as CustomChipColors,
   SprinklesFn,
 } from "./util/ConfigurableTypes";
+export * from "./Toast/Toast";
 export * from "./Toast/ToastProvider";
 export * from "./Toast/useToast";
 export * from "./Tooltip/Tooltip";
