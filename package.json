@@ -18,7 +18,8 @@
     "eslint-check": "turbo run eslint-check",
     "chromatic": "turbo run chromatic",
     "website-start": "turbo run website-start",
-    "website-build": "turbo run website-build"
+    "website-build": "turbo run website-build",
+    "check-circular-deps": "turbo run check-circular-deps"
   },
   "devDependencies": {
     "husky": "8.0.1",
