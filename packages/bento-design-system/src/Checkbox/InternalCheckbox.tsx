@@ -77,7 +77,7 @@ export function InternalCheckbox({ option, inputRef, inputProps }: Props) {
           />
         </Column>
         <Box style={{ paddingTop: config.labelPaddingTop }}>
-          <Body size={config.labelSize} color={option.isDisabled ? "disabled" : "default"}>
+          <Body size={config.labelSize} color={option.isDisabled ? "disabled" : "primary"}>
             {option.label}
           </Body>
         </Box>

@@ -108,7 +108,7 @@ function RadioOption<A extends string | number | boolean>({
           <Radio selected={selected} focused={isFocusVisible} />
         </Column>
         <Box style={{ paddingTop: config.element.labelPaddingTop }}>
-          <Body size={config.element.labelSize} color={option.isDisabled ? "disabled" : "default"}>
+          <Body size={config.element.labelSize} color={option.isDisabled ? "disabled" : "primary"}>
             {option.label}
           </Body>
         </Box>

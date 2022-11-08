@@ -90,7 +90,7 @@ export function SearchBar(props: Props) {
             input,
             inputRecipe({ validation: "valid" }),
             bodyRecipe({
-              color: props.disabled ? "disabled" : "default",
+              color: props.disabled ? "disabled" : "primary",
               weight: "default",
               size: config.fontSize,
             }),

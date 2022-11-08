@@ -53,7 +53,7 @@ export function Switch(props: Props) {
             />
           </Column>
           <Box style={{ paddingTop: config.labelPaddingTop }}>
-            <Body size={config.labelSize} color={props.disabled ? "disabled" : "default"}>
+            <Body size={config.labelSize} color={props.disabled ? "disabled" : "primary"}>
               {props.label}
             </Body>
           </Box>

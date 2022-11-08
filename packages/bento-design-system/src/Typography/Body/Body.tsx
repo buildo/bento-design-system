@@ -1,19 +1,11 @@
 import { Box, BoxProps } from "../../";
 import { Children } from "../../util/Children";
+import { TypographyColor } from "../TypographyColor";
 import { bodyRecipe } from "./Body.css";
 
 type Size = "small" | "medium" | "large";
 type Align = "left" | "center" | "right" | "justify";
-type Color =
-  | "default"
-  | "secondary"
-  | "negative"
-  | "disabled"
-  | "positive"
-  | "informative"
-  | "warning"
-  | "primaryInverse"
-  | "inherit";
+type Color = TypographyColor | "inherit";
 
 type Props = {
   id?: string;
@@ -29,7 +21,7 @@ export function Body({
   children,
   size,
   weight = "default",
-  color = "default",
+  color = "primary",
   align,
   as = "span",
 }: Props) {

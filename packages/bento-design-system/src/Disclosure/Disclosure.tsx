@@ -66,7 +66,7 @@ export function Disclosure({
           <Column width="content">
             {icon({ size: config.iconSize[level], color: level === 1 ? "primary" : "secondary" })}
           </Column>
-          <Title size={config.titleSize[level]} color={level === 1 ? "default" : "secondary"}>
+          <Title size={config.titleSize[level]} color={level === 1 ? "primary" : "secondary"}>
             {title}
           </Title>
         </Columns>

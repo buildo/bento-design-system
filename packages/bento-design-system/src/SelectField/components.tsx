@@ -93,7 +93,7 @@ export function SingleValue<A, IsMulti extends boolean>({
             })}
           </Column>
         )}
-        <Body size={inputConfig.fontSize} color={isDisabled ? "disabled" : "default"}>
+        <Body size={inputConfig.fontSize} color={isDisabled ? "disabled" : "primary"}>
           {children as any}
         </Body>
       </Columns>
@@ -137,7 +137,7 @@ export function Input<A, IsMulti extends boolean>(props: InputProps<A, IsMulti>)
       className={bodyRecipe({
         size: inputConfig.fontSize,
         weight: "default",
-        color: "default",
+        color: "primary",
       })}
     />
   );

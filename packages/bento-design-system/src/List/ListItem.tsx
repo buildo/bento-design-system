@@ -186,7 +186,7 @@ function renderContent(props: Props) {
 function SingleLine(props: Props & { kind: "single-line" }) {
   const config = useBentoConfig().list.item;
   return (
-    <Body size={config.fontSize.firstLine} color={props.disabled ? "disabled" : "default"}>
+    <Body size={config.fontSize.firstLine} color={props.disabled ? "disabled" : "primary"}>
       {props.label}
     </Body>
   );
@@ -196,7 +196,7 @@ function TwoLine(props: Props & { kind: "two-line" }) {
   const config = useBentoConfig().list.item;
   return (
     <Stack space={4} align="left">
-      <Body size={config.fontSize.firstLine} color={props.disabled ? "disabled" : "default"}>
+      <Body size={config.fontSize.firstLine} color={props.disabled ? "disabled" : "primary"}>
         {props.label}
       </Body>
       <Body size={config.fontSize.secondLine} color={props.disabled ? "disabled" : "secondary"}>
@@ -217,7 +217,7 @@ function Overline(props: Props & { kind: "overline" }) {
       >
         {props.overline}
       </Label>
-      <Body size={config.fontSize.firstLine} color={props.disabled ? "disabled" : "default"}>
+      <Body size={config.fontSize.firstLine} color={props.disabled ? "disabled" : "primary"}>
         {props.label}
       </Body>
     </Stack>
