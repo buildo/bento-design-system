@@ -1,5 +1,5 @@
 import { Stack, Children } from "..";
-import { ListProps } from "./List";
+import type { ListProps } from "./List";
 
 type Props = Omit<ListProps, "items" | "size"> & {
   children: Children;

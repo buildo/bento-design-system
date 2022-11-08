@@ -1,4 +1,3 @@
-import React from "react";
 import "react-input-mask";
 
 declare module "react-input-mask" {

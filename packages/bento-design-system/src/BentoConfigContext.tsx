@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import * as defaultConfigs from "./util/defaultConfigs";
-import { BentoConfig, PartialBentoConfig } from "./BentoConfig";
+import type { BentoConfig, PartialBentoConfig } from "./BentoConfig";
 import merge from "ts-deepmerge";
 import { Children } from "./util/Children";
 
