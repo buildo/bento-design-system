@@ -64,7 +64,7 @@ function Tab({
       borderBottomWidth={config.kind === "underline" ? config.lineHeight : undefined}
       borderStyle="solid"
     >
-      <Columns space={config.internalSpacing} alignY="center">
+      <Columns space={config.internalSpacing} alignY="center" align="center">
         {icon && (
           <Column width="content">{icon({ size: config.iconSize, color: "inherit" })}</Column>
         )}
