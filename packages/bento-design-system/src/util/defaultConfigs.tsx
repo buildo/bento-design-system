@@ -483,7 +483,10 @@ export const underlineTabs: TabsConfig = {
     medium: 16,
     large: 32,
   },
-  lineHeight: 2,
+  lineHeight: {
+    medium: 2,
+    large: 4,
+  },
   lineColor: {
     default: "transparent",
     hover: "foregroundSecondaryInverse",

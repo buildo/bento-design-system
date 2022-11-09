@@ -22,7 +22,7 @@ type TabsKindConfig =
     }
   | {
       kind: "underline";
-      lineHeight: BentoSprinkles["borderBottomWidth"];
+      lineHeight: SizeConfig<number>;
       lineColor: NonNullable<BentoSprinkles["decoration"]>;
     };
 
