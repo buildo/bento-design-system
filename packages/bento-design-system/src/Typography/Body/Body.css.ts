@@ -14,6 +14,7 @@ export const bodyRecipe = strictRecipe({
       strong: bentoSprinkles({ fontWeight: "bodyStrong" }),
     },
     color: {
+      default: bentoSprinkles({ color: "textPrimary" }),
       primary: bentoSprinkles({ color: "textPrimary" }),
       secondary: bentoSprinkles({ color: "textSecondary" }),
       primaryInverse: bentoSprinkles({ color: "textPrimaryInverse" }),

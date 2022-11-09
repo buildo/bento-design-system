@@ -14,6 +14,7 @@ export const titleRecipe = strictRecipe({
       large: bentoSprinkles({ fontSize: "titleLarge", lineHeight: "titleLarge" }),
     },
     color: {
+      default: bentoSprinkles({ color: "textPrimary" }),
       primary: bentoSprinkles({ color: "textPrimary" }),
       secondary: bentoSprinkles({ color: "textSecondary" }),
       primaryInverse: bentoSprinkles({ color: "textPrimaryInverse" }),

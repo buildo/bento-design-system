@@ -5,7 +5,7 @@ import { bodyRecipe } from "./Body.css";
 
 type Size = "small" | "medium" | "large";
 type Align = "left" | "center" | "right" | "justify";
-type Color = TypographyColor | "inherit";
+type Color = "default" | TypographyColor | "inherit";
 
 type Props = {
   id?: string;
