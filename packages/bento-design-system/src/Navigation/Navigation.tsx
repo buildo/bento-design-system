@@ -81,7 +81,8 @@ function Destination({
         left={0}
         bottom={0}
         width="full"
-        background={config.activeVisualElement.lineColor}
+        background="currentColor"
+        color={config.activeVisualElement.lineColor}
         style={{ height: config.activeVisualElement.lineHeight[size] }}
       />
     );

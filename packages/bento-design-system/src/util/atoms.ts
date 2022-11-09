@@ -89,6 +89,7 @@ const color = {
   ...vars.interactiveForegroundColor,
   ...vars.outlineColor,
   ...vars.dataVisualizationColor,
+  transparent: "transparent",
 };
 
 const background = {
@@ -99,8 +100,15 @@ const background = {
   ...vars.dataVisualizationColor,
 };
 
+const decoration = {
+  ...vars.brandColor,
+  ...vars.foregroundColor,
+  transparent: "transparent",
+};
+
 export const statusProperties = {
   color,
+  decoration,
   background: { ...background, currentColor: "currentColor" },
   cursor: {
     pointer: "pointer",
@@ -120,7 +128,7 @@ export const statusProperties = {
   stroke: color,
   textDecoration: ["none", "underline"],
   fill: { ...color, ...background, inherit: "inherit", currentColor: "currentColor" },
-  borderColor: { ...color, transparent: "transparent" },
+  borderColor: color,
   borderStyle: {
     solid: "solid",
     dashed: "dashed",
