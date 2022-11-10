@@ -9,5 +9,12 @@ export const headlineRecipe = strictRecipe({
       medium: bentoSprinkles({ fontSize: "headlineMedium", lineHeight: "headlineMedium" }),
       large: bentoSprinkles({ fontSize: "headlineLarge", lineHeight: "headlineLarge" }),
     },
+    color: {
+      primary: bentoSprinkles({ color: "textPrimary" }),
+      secondary: bentoSprinkles({ color: "textSecondary" }),
+      primaryInverse: bentoSprinkles({ color: "textPrimaryInverse" }),
+      secondaryInverse: bentoSprinkles({ color: "textSecondaryInverse" }),
+      inherit: { color: "inherit" },
+    },
   },
 });

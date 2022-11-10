@@ -38,7 +38,7 @@ export function Toast({ kind, message, action, onDismiss }: Props) {
       paddingX={config.paddingX}
     >
       <Columns space={config.internalSpacing} alignY="center">
-        <Body size={config.messageSize} color={kind === "secondary" ? "default" : kind}>
+        <Body size={config.messageSize} color={kind === "secondary" ? "primary" : kind}>
           {message}
         </Body>
         {action && (

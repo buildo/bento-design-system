@@ -28,7 +28,7 @@ export function DateSegment({ segment, state, isReadonly }: Props) {
       ref={ref}
     >
       <Body
-        color={state.isDisabled ? "disabled" : segment.isPlaceholder ? "secondary" : "default"}
+        color={state.isDisabled ? "disabled" : segment.isPlaceholder ? "secondary" : "primary"}
         size={config.fontSize}
       >
         {segment.text}

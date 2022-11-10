@@ -52,7 +52,7 @@ export function TextArea(props: Props) {
         className={[
           inputRecipe({ validation: validationState || "notSet" }),
           bodyRecipe({
-            color: props.disabled ? "disabled" : "default",
+            color: props.disabled ? "disabled" : "primary",
             weight: "default",
             size: config.fontSize,
           }),

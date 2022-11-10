@@ -73,7 +73,7 @@ export function NumberInput(props: Props) {
         className={[
           inputRecipe({ validation: props.isReadOnly ? "notSet" : props.validationState }),
           bodyRecipe({
-            color: props.disabled ? "disabled" : "default",
+            color: props.disabled ? "disabled" : "primary",
             weight: "default",
             size: config.fontSize,
           }),

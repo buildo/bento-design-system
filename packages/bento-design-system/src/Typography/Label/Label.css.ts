@@ -24,17 +24,18 @@ export const labelRecipe = strictRecipe({
     color: {
       default: {},
       primary: bentoSprinkles({ color: "textPrimary", fill: "textPrimary" }),
-      primaryInverse: bentoSprinkles({ color: "textPrimaryInverse", fill: "textPrimaryInverse" }),
       secondary: bentoSprinkles({ color: "textSecondary", fill: "textSecondary" }),
+      primaryInverse: bentoSprinkles({ color: "textPrimaryInverse", fill: "textPrimaryInverse" }),
       secondaryInverse: bentoSprinkles({
         color: "textSecondaryInverse",
         fill: "textSecondaryInverse",
       }),
-      disabled: bentoSprinkles({ color: "textDisabled", fill: "textDisabled" }),
+      interactive: bentoSprinkles({ color: "textInteractive", fill: "textInteractive" }),
+      informative: bentoSprinkles({ color: "textInformative", fill: "textInformative" }),
       positive: bentoSprinkles({ color: "textPositive", fill: "textPositive" }),
       warning: bentoSprinkles({ color: "textWarning", fill: "textWarning" }),
-      informative: bentoSprinkles({ color: "textInformative", fill: "textInformative" }),
       negative: bentoSprinkles({ color: "textNegative", fill: "textNegative" }),
+      disabled: bentoSprinkles({ color: "textDisabled", fill: "textDisabled" }),
       inherit: { color: "inherit", fill: "inherit" },
     },
     uppercase: {

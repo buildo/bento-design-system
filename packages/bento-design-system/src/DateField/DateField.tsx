@@ -160,7 +160,7 @@ export function DateField(props: Props) {
         className={clsx(
           inputRecipe({ validation: validationState || "notSet" }),
           bodyRecipe({
-            color: props.disabled ? "disabled" : "default",
+            color: props.disabled ? "disabled" : "primary",
             weight: "default",
             size: inputConfig.fontSize,
           }),

@@ -23,7 +23,7 @@ function readabilityAreaColorToBackground(
 function messageColorToBodyColor(color: AreaLoaderConfig["messageColor"]): BodyProps["color"] {
   switch (color) {
     case "primary":
-      return "default";
+      return "primary";
     case "primary-inverse":
       return "primaryInverse";
   }

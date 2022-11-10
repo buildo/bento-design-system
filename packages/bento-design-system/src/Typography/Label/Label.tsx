@@ -2,21 +2,11 @@ import { Children } from "../../util/Children";
 import { Box, BoxProps } from "../..";
 import { labelRecipe } from "./Label.css";
 import { BentoSprinkles } from "../../internal";
+import { TypographyColor } from "../TypographyColor";
 
 type Size = "small" | "medium" | "large";
 type Align = "left" | "center" | "right";
-type Color =
-  | "default"
-  | "primary"
-  | "primaryInverse"
-  | "secondary"
-  | "secondaryInverse"
-  | "disabled"
-  | "negative"
-  | "positive"
-  | "informative"
-  | "warning"
-  | "inherit";
+type Color = "default" | TypographyColor | "inherit";
 
 export type LabelProps = {
   children: Children;

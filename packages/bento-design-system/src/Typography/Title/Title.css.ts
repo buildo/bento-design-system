@@ -15,13 +15,15 @@ export const titleRecipe = strictRecipe({
     },
     color: {
       default: bentoSprinkles({ color: "textPrimary" }),
+      primary: bentoSprinkles({ color: "textPrimary" }),
+      secondary: bentoSprinkles({ color: "textSecondary" }),
+      primaryInverse: bentoSprinkles({ color: "textPrimaryInverse" }),
+      secondaryInverse: bentoSprinkles({ color: "textSecondaryInverse" }),
       informative: bentoSprinkles({ color: "textInformative" }),
       positive: bentoSprinkles({ color: "textPositive" }),
       warning: bentoSprinkles({ color: "textWarning" }),
       negative: bentoSprinkles({ color: "textNegative" }),
-      secondary: bentoSprinkles({ color: "textSecondary" }),
-      primaryInverse: bentoSprinkles({ color: "textPrimaryInverse" }),
-      secondaryInverse: bentoSprinkles({ color: "textSecondaryInverse" }),
+      inherit: { color: "inherit" },
     },
   },
 });
