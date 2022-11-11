@@ -485,7 +485,7 @@ export const underlineTabs: TabsConfig = {
   },
   lineHeight: {
     medium: 2,
-    large: 4,
+    large: 2,
   },
   lineColor: {
     default: "transparent",
