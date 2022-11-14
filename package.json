@@ -22,7 +22,7 @@
     "check-circular-deps": "turbo run check-circular-deps"
   },
   "devDependencies": {
-    "husky": "8.0.1",
+    "husky": "8.0.2",
     "turbo": "1.2.3"
   },
   "packageManager": "pnpm@7.8.0",
