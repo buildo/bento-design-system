@@ -4,10 +4,11 @@ import { FieldProps } from "../Field/FieldProps";
 import { InternalCheckbox } from "../Checkbox/InternalCheckbox";
 import { useField } from "@react-aria/label";
 import { CheckboxGroupState, useCheckboxGroupState } from "@react-stately/checkbox";
-import { Box, Inline, Stack, Field } from "..";
+import { Box, Inline, Stack, Field, HintProps } from "..";
 import { Children } from "../util/Children";
 import { FocusScope } from "@react-aria/focus";
 import { useBentoConfig } from "../BentoConfigContext";
+import { Omit } from "../util/Omit";
 
 export type CheckboxOption = {
   value: string;
@@ -16,11 +17,11 @@ export type CheckboxOption = {
   autoFocus?: boolean;
 };
 
-type Props = FieldProps<string[]> & {
+type Props = Omit<FieldProps<string[]>, "hint"> & {
   label: Children;
   options: Array<CheckboxOption>;
   orientation?: "vertical" | "horizontal";
-};
+} & HintProps;
 
 function CheckboxItem({ state, option }: { state: CheckboxGroupState; option: CheckboxOption }) {
   const ref = useRef<HTMLInputElement>(null);

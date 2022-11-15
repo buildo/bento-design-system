@@ -226,6 +226,7 @@ export const field: FieldConfig = {
   tip: {
     icon: IconInfo,
     iconSize: 12,
+    placement: "right",
   },
 };
 

@@ -1,3 +1,4 @@
+import { Placement } from "@floating-ui/core";
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";
@@ -17,6 +18,7 @@ export type FieldConfig = {
   tip: {
     icon: (props: IconProps) => Children;
     iconSize: IconProps["size"];
+    placement: Placement;
   };
 };
 

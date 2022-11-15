@@ -9,6 +9,16 @@ import { FocusableElement } from "@react-types/shared";
 import { useBentoConfig } from "../BentoConfigContext";
 import { Placement } from "@floating-ui/core";
 
+type HintProps =
+  | {
+      hint: LocalizedString;
+      hintPlacement?: Placement;
+    }
+  | {
+      hint?: never;
+      hintPlacement?: never;
+    };
+
 type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText"> & {
   /** The field label rendered on screen. Can be omitted in case of fields that have a custom label, such as CheckboxField  */
   label?: FieldProps<never>["label"];
@@ -24,16 +34,7 @@ type Props = Pick<FieldProps<never>, "issues" | "disabled" | "assistiveText"> & 
   errorMessageProps: DOMAttributes<FocusableElement>;
   /** The field element */
   children: Children;
-} & (
-    | {
-        hint: LocalizedString;
-        hintPlacement?: Placement;
-      }
-    | {
-        hint?: never;
-        hintPlacement?: never;
-      }
-  );
+} & HintProps;
 
 /**
  * A utility for rendering a form field with a label, a description and error message, alongside their accessibility props.
@@ -80,7 +81,7 @@ export function Field({
                     </Box>
                   )}
                   content={hint}
-                  placement={hintPlacement}
+                  placement={hintPlacement ?? config.tip.placement}
                 />
               </Column>
             )}
@@ -121,4 +122,4 @@ export function Field({
 
 export type FieldType = React.FunctionComponent<Props>;
 
-export type { FieldProps };
+export type { FieldProps, HintProps };

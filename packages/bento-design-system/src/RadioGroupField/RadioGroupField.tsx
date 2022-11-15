@@ -1,4 +1,4 @@
-import { Body, LocalizedString, Box, Column, Columns, Inline, Stack, Field } from "..";
+import { Body, LocalizedString, Box, Column, Columns, Inline, Stack, Field, HintProps } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { RadioGroupState, useRadioGroupState } from "@react-stately/radio";
 import { useRadioGroup, useRadio } from "@react-aria/radio";
@@ -10,6 +10,7 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { FocusScope, useFocusRing } from "@react-aria/focus";
 import { Radio } from "./Radio";
 import { useBentoConfig } from "../BentoConfigContext";
+import { Omit } from "../util/Omit";
 
 export type RadioOption<A> = {
   value: A;
@@ -17,11 +18,11 @@ export type RadioOption<A> = {
   isDisabled?: boolean;
 };
 
-type Props<A> = FieldProps<A | undefined, A> & {
+type Props<A> = Omit<FieldProps<A | undefined, A>, "hint"> & {
   name: string;
   options: Array<RadioOption<A>>;
   orientation?: "vertical" | "horizontal";
-};
+} & HintProps;
 
 export function RadioGroupField<A extends string | number | boolean>(props: Props<A>) {
   const config = useBentoConfig().selectionControl;
