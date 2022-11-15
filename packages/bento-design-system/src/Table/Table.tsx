@@ -368,6 +368,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
           </Box>
         )}
         content={column.hint}
+        placement={config.hintPlacement}
       />
     )
   ) : null;

@@ -20,6 +20,7 @@ import {
   ButtonLink,
   ButtonLinkProps,
 } from "..";
+import { useBentoConfig } from "../BentoConfigContext";
 
 export function ButtonCell({
   value: buttonProps,
@@ -63,6 +64,7 @@ export function TextWithIconCell({
     tooltipContent?: Children;
   }
 >) {
+  const config = useBentoConfig().table;
   const icon_ = icon && icon({ size: 12 });
 
   return (
@@ -71,6 +73,7 @@ export function TextWithIconCell({
         {tooltipContent ? (
           <Tooltip
             content={tooltipContent}
+            placement={config.cellTooltipPlacement}
             trigger={(ref, triggerProps) => (
               <Box ref={ref} {...triggerProps}>
                 {icon_}

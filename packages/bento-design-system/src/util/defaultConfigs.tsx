@@ -431,6 +431,8 @@ export const table: TableConfig = {
   emptyIllustration: IllustrationSearch,
   headerBackgroundColor: "backgroundPrimary",
   headerForegroundColor: undefined,
+  hintPlacement: "top",
+  cellTooltipPlacement: "bottom",
 };
 
 export const toast: ToastConfig = {
