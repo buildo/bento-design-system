@@ -1,3 +1,4 @@
+import { Brush } from "recharts";
 import { BarChart } from "../..";
 import { createComponentStories } from "../../util";
 
@@ -9,7 +10,7 @@ const { defaultExport, createStory } = createComponentStories({
     data: [
       {
         name: "Page A",
-        uv: 4000,
+        uz: 4000,
         pv: 2400,
         amt: 2400,
       },
@@ -56,4 +57,6 @@ const { defaultExport, createStory } = createComponentStories({
 
 export default defaultExport;
 
-export const barChart = createStory({});
+export const barChart = createStory({
+  children: <Brush />,
+});

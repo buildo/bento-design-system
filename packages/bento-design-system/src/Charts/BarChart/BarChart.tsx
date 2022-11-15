@@ -14,9 +14,9 @@ import { allColors } from "../../util/atoms";
 import { Children } from "../../util/Children";
 import { ChartDataColor } from "../Config";
 
-type Props<D extends string, C extends string[]> = {
-  data: Record<D, unknown>[];
-  categories: C;
+type Props<D extends string, C extends string> = {
+  data: Record<D | C, unknown>[];
+  categories: C[];
   dataKey: D;
   showXAxis?: boolean;
   showYAxis?: boolean;
@@ -33,7 +33,7 @@ type Props<D extends string, C extends string[]> = {
 
 export type { Props as BarChartProps };
 
-export function BarChart<D extends string, C extends string[]>({
+export function BarChart<D extends string, C extends string>({
   data,
   dataKey,
   categories,
@@ -78,7 +78,7 @@ export function BarChart<D extends string, C extends string[]>({
           <Bar
             key={category}
             dataKey={category}
-            fill={colors[i]}
+            fill={colors[i % colors.length]}
             isAnimationActive={showAnimation}
             stackId={stacked ? "stack" : undefined}
           />

@@ -1,8 +1,7 @@
 import {
-  LineChart as RechartLineChart,
-  Line,
-  XAxis,
-  YAxis,
+  PieChart as RechartPieChart,
+  Pie,
+  Cell,
   Tooltip,
   Legend,
   ResponsiveContainer,
@@ -13,30 +12,17 @@ import { allColors } from "../../util/atoms";
 import { ChartProps } from "../ChartProps";
 
 type Props<D extends string, C extends string> = ChartProps & {
-  data: Record<D | C, unknown>[];
-  categories: C[];
+  data: Record<D, unknown>[];
+  category: C;
   dataKey: D;
-  showXAxis?: boolean;
-  showYAxis?: boolean;
-  lineType?:
-    | "linear"
-    | "natural"
-    | "monotoneX"
-    | "monotoneY"
-    | "monotone"
-    | "step"
-    | "stepBefore"
-    | "stepAfter";
 };
 
-export type { Props as LineChartProps };
+export type { Props as DonutChartProps };
 
-export function LineChart<D extends string, C extends string>({
+export function DonutChart<D extends string, C extends string>({
   data,
   dataKey,
-  categories,
-  showXAxis = true,
-  showYAxis = true,
+  category,
   showLegend = true,
   showAnimation = true,
   showTooltip = true,
@@ -47,7 +33,6 @@ export function LineChart<D extends string, C extends string>({
   maxHeight,
   aspect,
   debounce,
-  lineType = "monotone",
   dataColors,
   children,
 }: Props<D, C>) {
@@ -67,24 +52,28 @@ export function LineChart<D extends string, C extends string>({
       aspect={aspect}
       debounce={debounce}
     >
-      <RechartLineChart data={data}>
-        {categories.map((category, i) => (
-          <Line
-            type={lineType}
-            key={category}
-            dataKey={category}
-            isAnimationActive={showAnimation}
-            stroke={colors[i % colors.length]}
-            strokeWidth={2}
-            dot={false}
-          />
-        ))}
-        {showXAxis && <XAxis dataKey={dataKey} />}
-        {showYAxis && <YAxis />}
+      <RechartPieChart>
+        <Pie
+          data={data}
+          dataKey={category}
+          nameKey={dataKey}
+          isAnimationActive={showAnimation}
+          cx="50%"
+          cy="50%"
+          startAngle={90}
+          endAngle={-270}
+          innerRadius="75%"
+          outerRadius="100%"
+          paddingAngle={0}
+        >
+          {data.map((_entry, i) => (
+            <Cell key={`cell-${i}`} fill={colors[i % colors.length]} />
+          ))}
+        </Pie>
         {showTooltip && <Tooltip />}
         {showLegend && <Legend />}
         {children}
-      </RechartLineChart>
+      </RechartPieChart>
     </ResponsiveContainer>
   );
 }

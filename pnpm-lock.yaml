@@ -264,12 +264,14 @@ importers:
       prettier: 2.7.1
       react: 18.2.0
       react-dom: 18.2.0
+      recharts: ^2.1.16
       storybook-addon-themes: 6.1.0
       typescript: 4.7.4
     dependencies:
       '@buildo/bento-design-system': link:../bento-design-system
       '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.2
       date-fns: 2.29.3
+      recharts: 2.1.16_v2m5e27vhdewzwhryxwfaorcca
     devDependencies:
       '@babel/core': 7.18.10
       '@babel/preset-env': 7.18.10_@babel+core@7.18.10
