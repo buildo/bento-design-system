@@ -5,7 +5,6 @@ import { vars } from "../vars.css";
 
 export const buttonRecipe = strictRecipe({
   base: bentoSprinkles({
-    textTransform: "uppercase",
     cursor: {
       default: "pointer",
       disabled: "notAllowed",
