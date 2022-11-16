@@ -61,7 +61,9 @@ function Tab({
             : config.lineColor
           : undefined
       }
-      borderBottomWidth={config.kind === "underline" ? config.lineHeight : undefined}
+      style={{
+        borderBottomWidth: config.kind === "underline" ? config.lineHeight[size] : undefined,
+      }}
       borderStyle="solid"
     >
       <Columns space={config.internalSpacing} alignY="center" align="center">

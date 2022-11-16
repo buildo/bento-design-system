@@ -22,8 +22,8 @@ type TabsKindConfig =
     }
   | {
       kind: "underline";
-      lineHeight: BentoSprinkles["borderBottomWidth"];
-      lineColor: NonNullable<BentoSprinkles["borderColor"]>;
+      lineHeight: SizeConfig<number>;
+      lineColor: NonNullable<BentoSprinkles["decoration"]>;
     };
 
 export type TabsConfig = TabsWidthConfig &

@@ -20,5 +20,5 @@ export type NavigationConfig = {
 
 type ActiveVisualElementConfig = {
   lineHeight: SizeConfig<number>;
-  lineColor: BentoSprinkles["background"];
+  lineColor: BentoSprinkles["decoration"];
 };
