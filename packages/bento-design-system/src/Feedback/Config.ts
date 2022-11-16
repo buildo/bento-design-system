@@ -17,6 +17,7 @@ export type FeedbackConfig = {
     medium: TitleProps["size"];
     large:
       | { kind: "display"; size: DisplayProps["size"] }
+      | { kind: "title"; size: TitleProps["size"] }
       | { kind: "headline"; size: HeadlineProps["size"] };
   };
   descriptionSize: SizeConfig<BodyProps["size"]>;

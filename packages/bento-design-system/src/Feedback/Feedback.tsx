@@ -95,6 +95,12 @@ function renderTitle(size: FeedbackSize, title: LocalizedString, config: Feedbac
               {title}
             </Display>
           );
+        case "title":
+          return (
+            <Title size={config.title.large.size} align="center">
+              {title}
+            </Title>
+          );
         case "headline":
           return (
             <Headline size={config.title.large.size} align="center">
