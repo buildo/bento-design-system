@@ -27,6 +27,7 @@ import { actionsConfig } from "./actionsConfig.js";
 import { areaLoaderConfig } from "./areaLoaderConfig.js";
 import { decorativeDividerConfig } from "./decorativeDividerConfig.js";
 import { modalConfig } from "./modalConfig.js";
+import { navigationConfig } from "./navigationConfig.js";
 
 export async function syncConfig({
   ctx,
@@ -68,7 +69,7 @@ export async function syncConfig({
     menu: {},
     modal: modalConfig(ctx),
     // TODO
-    navigation: {},
+    navigation: navigationConfig(ctx),
     // TODO
     progressBar: {},
     // TODO
