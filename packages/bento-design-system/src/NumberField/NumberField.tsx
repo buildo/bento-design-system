@@ -6,16 +6,14 @@ import { LocalizedString } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { FormatProps } from "../NumberInput/FormatProps";
 import { useFormatOptions } from "../NumberInput/formatOptions";
-import { Field, HintProps } from "../Field/Field";
+import { Field } from "../Field/Field";
 import { NumberInput } from "../NumberInput/NumberInput";
-import { Omit } from "../util/Omit";
 
-type Props = Omit<FieldProps<number | undefined, number>, "hint"> & {
+type Props = FieldProps<number | undefined, number> & {
   placeholder: LocalizedString;
   isReadOnly?: boolean;
 } & FormatProps &
-  Pick<NumberFieldStateOptions, "minValue" | "maxValue" | "step"> &
-  HintProps;
+  Pick<NumberFieldStateOptions, "minValue" | "maxValue" | "step">;
 
 export function NumberField(props: Props) {
   const { locale } = useLocale();

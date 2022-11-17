@@ -1,15 +1,15 @@
 import { useCheckbox } from "@react-aria/checkbox";
 import { useToggleState } from "@react-stately/toggle";
 import { useRef } from "react";
-import { Children, Field, HintProps } from "..";
+import { Children, Field } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { InternalCheckbox } from "../Checkbox/InternalCheckbox";
 import { useField } from "@react-aria/label";
 import { Omit } from "../util/Omit";
 
-type Props = Omit<FieldProps<boolean>, "assistiveText" | "hint"> & {
+type Props = Omit<FieldProps<boolean>, "assistiveText"> & {
   label: Children;
-} & HintProps;
+};
 
 export function CheckboxField(props: Props) {
   const checkboxProps = {

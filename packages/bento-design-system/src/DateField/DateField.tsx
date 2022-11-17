@@ -4,7 +4,7 @@ import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { FocusedInput, useDatepicker, UseDatepickerProps } from "@datepicker-react/hooks";
 import { Calendar } from "./Calendar";
-import { Box, Button, Column, Columns, Field, HintProps, Inline } from "..";
+import { Box, Button, Column, Columns, Field, Inline } from "..";
 import { useField } from "@react-aria/label";
 import { Input } from "./Input";
 import { IconMinus } from "../Icons";
@@ -12,7 +12,6 @@ import { dateFieldRecipe } from "./DateField.css";
 import clsx from "clsx";
 import { LocalizedString } from "../util/LocalizedString";
 import { useBentoConfig } from "../BentoConfigContext";
-import { Omit } from "../util/Omit";
 
 export type ShortcutProps<Value> = {
   label: LocalizedString;
@@ -21,16 +20,16 @@ export type ShortcutProps<Value> = {
 type SingleDateFieldProps = {
   type?: "single";
   shortcuts?: ShortcutProps<Date>[];
-} & Omit<FieldProps<Date | null>, "hint">;
+} & FieldProps<Date | null>;
 type RangeDateFieldProps = {
   type: "range";
   shortcuts?: ShortcutProps<[Date, Date]>[];
-} & Omit<FieldProps<[Date | null, Date | null]>, "hint">;
+} & FieldProps<[Date | null, Date | null]>;
 type Props = (SingleDateFieldProps | RangeDateFieldProps) & {
   minDate?: UseDatepickerProps["minBookingDate"];
   maxDate?: UseDatepickerProps["maxBookingDate"];
   readOnly?: boolean;
-} & HintProps;
+};
 
 export function DateField(props: Props) {
   const inputConfig = useBentoConfig().input;

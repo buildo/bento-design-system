@@ -1,6 +1,6 @@
 import { useTextField } from "@react-aria/textfield";
 import { useRef, useState } from "react";
-import { Box, IconButton, Field, HintProps } from "..";
+import { Box, IconButton, Field } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { inputRecipe } from "../Field/Field.css";
 import { FieldProps } from "../Field/FieldProps";
@@ -8,15 +8,14 @@ import { bodyRecipe } from "../Typography/Body/Body.css";
 import useDimensions from "react-cool-dimensions";
 import { defaultMessages } from "../../test/util/defaultMessages";
 import { useBentoConfig } from "../BentoConfigContext";
-import { Omit } from "../util/Omit";
 
-type Props = Omit<FieldProps<string>, "hint"> & {
+type Props = FieldProps<string> & {
   placeholder: LocalizedString;
   type?: "text" | "email" | "url" | "password";
   isReadOnly?: boolean;
   showPasswordLabel?: LocalizedString;
   hidePasswordLabel?: LocalizedString;
-} & HintProps;
+};
 
 export function TextField(props: Props) {
   const config = useBentoConfig().input;

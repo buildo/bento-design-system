@@ -8,7 +8,7 @@ import { Body, ListSize, LocalizedString } from "..";
 import { useField } from "@react-aria/label";
 import { useEffect, useMemo } from "react";
 import { FieldProps } from "../Field/FieldProps";
-import { Field, HintProps } from "../Field/Field";
+import { Field } from "../Field/Field";
 import * as selectComponents from "./components";
 import { ListItemProps } from "../List/ListItem";
 import { Omit } from "../util/Omit";
@@ -22,10 +22,9 @@ export type SelectOption<A> = Omit<
   value: A;
 };
 
-type Props<A, IsMulti extends boolean> = Omit<
-  IsMulti extends false ? FieldProps<A | undefined> : FieldProps<A[]>,
-  "hint"
-> & {
+type Props<A, IsMulti extends boolean> = (IsMulti extends false
+  ? FieldProps<A | undefined>
+  : FieldProps<A[]>) & {
   menuSize?: ListSize;
   placeholder: LocalizedString;
   options: Array<SelectOption<A>>;
@@ -40,8 +39,7 @@ type Props<A, IsMulti extends boolean> = Omit<
         selectAllButtonLabel?: LocalizedString;
         clearAllButtonLabel?: LocalizedString;
       }
-    : {}) &
-  HintProps;
+    : {});
 
 declare module "react-select/dist/declarations/src/Select" {
   export interface Props<Option, IsMulti extends boolean, Group extends GroupBase<Option>> {

@@ -4,26 +4,23 @@ import { clamp } from "@react-aria/utils";
 import { useSliderState } from "@react-stately/slider";
 import { ValueBase } from "@react-types/shared";
 import { useRef } from "react";
-import { Field, HintProps, Slider } from "..";
+import { Field, Slider } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { useFormatOptions } from "../NumberInput/formatOptions";
 import { FormatProps } from "../NumberInput/FormatProps";
-import { Omit } from "../util/Omit";
 
-type Props = Omit<
+type Props = (
   | ({ type: "single" } & FieldProps<number>)
   | ({
       type: "double";
-    } & FieldProps<[number, number]>),
-  "hint"
-> & {
+    } & FieldProps<[number, number]>)
+) & {
   minValue: number;
   maxValue: number;
   step?: number;
   dragStep?: number;
   hideThumbValue?: boolean;
-} & FormatProps &
-  HintProps;
+} & FormatProps;
 
 function roundToStep(value: number, step: number) {
   return Math.round(value / step) * step;

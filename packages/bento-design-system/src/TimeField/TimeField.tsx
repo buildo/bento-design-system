@@ -3,20 +3,19 @@ import { useTimeField } from "@react-aria/datepicker";
 import { useLocale } from "@react-aria/i18n";
 import { useTimeFieldState } from "@react-stately/datepicker";
 import { useRef } from "react";
-import { Field, HintProps } from "../Field/Field";
+import { Field } from "../Field/Field";
 import { Box } from "../Box/Box";
 import { inputRecipe } from "../Field/Field.css";
 import { useBentoConfig } from "../BentoConfigContext";
 import { DateSegment } from "./DateSegment";
 import { Time } from "@internationalized/date";
 import { TimeValue } from "@react-types/datepicker";
-import { Omit } from "../util/Omit";
 
-type Props = Omit<FieldProps<Time | undefined, Time>, "hint"> & {
+type Props = FieldProps<Time | undefined, Time> & {
   isReadOnly?: boolean;
   /** @default based on the user locale (customizable via BentoProvider) */
   hourCycle?: 12 | 24;
-} & HintProps;
+};
 
 export function TimeField(props: Props) {
   const config = useBentoConfig().input;
