@@ -1,4 +1,4 @@
-import { Placement } from "@floating-ui/core";
+import { TooltipPlacement } from "../Field/FieldProps";
 import { IconProps } from "../Icons";
 import { IllustrationProps } from "../Illustrations";
 import { BentoSprinkles } from "../internal";
@@ -8,6 +8,6 @@ export type TableConfig = {
   emptyIllustration: (props: IllustrationProps) => JSX.Element;
   headerBackgroundColor: BentoSprinkles["background"];
   headerForegroundColor: BentoSprinkles["color"];
-  hintPlacement: Placement;
-  cellTooltipPlacement: Placement;
+  hintPlacement: TooltipPlacement;
+  cellTooltipPlacement: TooltipPlacement;
 };

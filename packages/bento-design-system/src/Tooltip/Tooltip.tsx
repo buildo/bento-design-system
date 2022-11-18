@@ -6,7 +6,6 @@ import {
   autoPlacement,
   offset,
   arrow,
-  Placement,
   UseFloatingProps,
   flip,
 } from "@floating-ui/react-dom";
@@ -15,6 +14,7 @@ import { useTooltipTrigger, useTooltip } from "@react-aria/tooltip";
 import { tooltip, arrow as arrowStyle } from "./Tooltip.css";
 import { createPortal } from "../util/createPortal";
 import { useBentoConfig } from "../BentoConfigContext";
+import { TooltipPlacement } from "../Field/FieldProps";
 
 type Props = {
   content: Children;
@@ -29,7 +29,7 @@ type Props = {
     ref: Ref<HTMLElement>,
     props: Omit<HTMLAttributes<HTMLElement>, "color">
   ) => JSX.Element;
-  placement?: Placement;
+  placement?: TooltipPlacement;
 };
 
 export function Tooltip(props: Props) {

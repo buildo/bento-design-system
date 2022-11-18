@@ -1,7 +1,11 @@
 import { LocalizedString } from "../util/LocalizedString";
 import { Children } from "../util/Children";
 import { NonEmptyArray } from "../util/NonEmptyArray";
-import { Placement } from "@floating-ui/core";
+
+type Alignment = "start" | "end";
+type Side = "top" | "right" | "bottom" | "left";
+type AlignedPlacement = `${Side}-${Alignment}`;
+export type TooltipPlacement = Side | AlignedPlacement;
 
 export type FieldProps<V, VO = V> = {
   name: string;
@@ -16,7 +20,7 @@ export type FieldProps<V, VO = V> = {
 } & (
   | {
       hint: LocalizedString;
-      hintPlacement?: Placement;
+      hintPlacement?: TooltipPlacement;
     }
   | {
       hint?: never;
