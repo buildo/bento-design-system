@@ -26,6 +26,7 @@ export * from "./DisclosureGroup/DisclosureGroup";
 export * from "./Divider/Divider";
 export * from "./Feedback/Feedback";
 export * from "./Field/Field";
+export * from "./FileUploaderField/FileUploaderField";
 export * from "./Form/Form";
 export * from "./Form/FormRow";
 export * from "./Form/FormSection";

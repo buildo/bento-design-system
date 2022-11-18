@@ -77,6 +77,7 @@ export const {
   Display,
   Feedback,
   Field,
+  FileUploaderField,
   Form,
   FormRow,
   FormSection,

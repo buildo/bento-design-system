@@ -35,6 +35,7 @@ type Props = {
   icon?: FunctionComponent<IconProps>;
   /** Truncate and show ellipsis after a number of characters */
   maxCharacters?: number;
+  size?: "medium" | "large";
 } & DismissProps;
 
 const defaultColorsMapping: Record<DefaultColor, BentoSprinkles["background"]> = {
@@ -50,7 +51,14 @@ const defaultColorsMapping: Record<DefaultColor, BentoSprinkles["background"]> =
   pink: "softPink",
 };
 
-export function Chip({ color, label: _label, icon, maxCharacters, ...dismissProps }: Props) {
+export function Chip({
+  color,
+  label: _label,
+  icon,
+  maxCharacters,
+  size = "medium",
+  ...dismissProps
+}: Props) {
   const config = useBentoConfig().chip;
   const colorsMapping = { ...defaultColorsMapping, ...config.customColors };
 
