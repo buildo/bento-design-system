@@ -4,6 +4,7 @@ export * from "./IconChevronLeft";
 export * from "./IconChevronRight";
 export * from "./IconChevronUp";
 export * from "./IconClose";
+export * from "./IconCopyLight";
 export * from "./IconEdit";
 export * from "./IconEye";
 export * from "./IconEyeClosed";
