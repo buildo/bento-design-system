@@ -1,6 +1,15 @@
 import { CellProps, Column as Column_, Row as Row_ } from "react-table";
 import { useDefaultMessages } from "../util/useDefaultMessages";
-import { LocalizedString, Children, Body, IconProps, Box } from "..";
+import {
+  LocalizedString,
+  Children,
+  Body,
+  IconProps,
+  Box,
+  IconButtonProps,
+  BodyProps,
+  ButtonProps,
+} from "..";
 import { Column } from "./types";
 import {
   LinkCell,
@@ -13,7 +22,7 @@ import {
   TextWithIconCell,
   IconButtonCell,
 } from "./cells";
-import { FunctionComponent } from "react";
+import { ComponentProps, FunctionComponent } from "react";
 
 export type { CellProps } from "react-table";
 
@@ -65,18 +74,28 @@ export function custom<A extends string, V, D extends Record<string, unknown>>({
   return column;
 }
 
-export function button<A extends string>(options: ColumnOptionsBase<A>) {
+export function button<A extends string>({
+  size,
+  ...options
+}: ColumnOptionsBase<A> & Partial<Pick<ButtonProps, "size">>) {
   return custom({
     ...options,
-    Cell: ButtonCell,
+    Cell: (props: Omit<ComponentProps<typeof ButtonCell>, "options">) => (
+      <ButtonCell {...{ ...props, options: { size } }} />
+    ),
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
 }
 
-export function buttonLink<A extends string>(options: ColumnOptionsBase<A>) {
+export function buttonLink<A extends string>({
+  size,
+  ...options
+}: ColumnOptionsBase<A> & Partial<Pick<ButtonProps, "size">>) {
   return custom({
     ...options,
-    Cell: ButtonLinkCell,
+    Cell: (props: Omit<ComponentProps<typeof ButtonLinkCell>, "options">) => (
+      <ButtonLinkCell {...{ ...props, options: { size } }} />
+    ),
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
 }
@@ -89,19 +108,29 @@ export function chip<A extends string>(options: ColumnOptionsBase<A>) {
   });
 }
 
-export function text<A extends string>(options: ColumnOptionsBase<A>) {
+export function text<A extends string>({
+  size,
+  weight,
+  color,
+  ...options
+}: ColumnOptionsBase<A> & Partial<Pick<BodyProps, "size" | "weight" | "color">>) {
   return custom({
     ...options,
-    Cell: TextCell,
+    Cell: (props: Omit<ComponentProps<typeof TextCell>, "options">) => (
+      <TextCell {...{ ...props, options: { size, weight, color } }} />
+    ),
   });
 }
 
 export function textWithIcon<A extends string>({
   iconPosition,
+  size,
+  weight,
+  color,
   ...options
 }: ColumnOptionsBase<A> & {
   iconPosition: "left" | "right";
-}) {
+} & Partial<Pick<BodyProps, "size" | "weight" | "color">>) {
   return custom({
     ...options,
     Cell: ({
@@ -120,6 +149,7 @@ export function textWithIcon<A extends string>({
         ...props,
         value,
         cell: { ...props.cell, value },
+        options: { size, weight, color },
       };
       return <TextWithIconCell {...textWithIconCellProps} />;
     },
@@ -129,10 +159,13 @@ export function textWithIcon<A extends string>({
 
 export function number<A extends string>({
   valueFormatter,
+  size,
+  weight,
+  color,
   ...options
 }: ColumnOptionsBase<A> & {
   valueFormatter: (n: number) => LocalizedString;
-}) {
+} & Partial<Pick<BodyProps, "size" | "weight" | "color">>) {
   return custom({
     ...options,
     Cell: ({ value: numericValue, ...props }: CellProps<{}, number>) => {
@@ -141,6 +174,7 @@ export function number<A extends string>({
         ...props,
         value,
         cell: { ...props.cell, value },
+        options: { size, weight, color },
       };
       return <TextCell {...textCellProps} />;
     },
@@ -150,10 +184,13 @@ export function number<A extends string>({
 
 export function numberWithIcon<A extends string>({
   valueFormatter,
+  size,
+  weight,
+  color,
   ...options
 }: ColumnOptionsBase<A> & {
   valueFormatter: (n: number) => LocalizedString;
-}) {
+} & Partial<Pick<BodyProps, "size" | "weight" | "color">>) {
   return custom({
     ...options,
     Cell: ({
@@ -177,6 +214,11 @@ export function numberWithIcon<A extends string>({
         ...props,
         value,
         cell: { ...props.cell, value },
+        options: {
+          size,
+          weight,
+          color,
+        },
       };
       return <TextWithIconCell {...textCellProps} />;
     },
@@ -191,26 +233,45 @@ export function label<A extends string>(options: ColumnOptionsBase<A>) {
   });
 }
 
-export function link<A extends string>(options: ColumnOptionsBase<A>) {
+export function link<A extends string>({
+  size,
+  weight,
+  ...options
+}: ColumnOptionsBase<A> & Partial<Pick<BodyProps, "size" | "weight">>) {
   return custom({
     ...options,
-    Cell: LinkCell,
+    Cell: (props: Omit<ComponentProps<typeof LinkCell>, "options">) => (
+      <LinkCell {...{ ...props, options: { size, weight } }} />
+    ),
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
 }
 
-export function icon<A extends string>(options: ColumnOptionsBase<A>) {
+export function icon<A extends string>({
+  size,
+  color,
+  ...options
+}: ColumnOptionsBase<A> & Partial<Pick<IconProps, "size" | "color">>) {
   return custom({
     ...options,
-    Cell: IconCell,
+    Cell: (props: Omit<ComponentProps<typeof IconCell>, "options">) => (
+      <IconCell {...{ ...props, options: { size, color } }} />
+    ),
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
 }
 
-export function iconButton<A extends string>(options: ColumnOptionsBase<A>) {
+export function iconButton<A extends string>({
+  size,
+  kind,
+  hierarchy,
+  ...options
+}: ColumnOptionsBase<A> & Partial<Pick<IconButtonProps, "size" | "kind" | "hierarchy">>) {
   return custom({
     ...options,
-    Cell: IconButtonCell,
+    Cell: (props: Omit<ComponentProps<typeof IconButtonCell>, "options">) => (
+      <IconButtonCell {...{ ...props, options: { size, kind, hierarchy } }} />
+    ),
     sortType: (a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""),
   });
 }
