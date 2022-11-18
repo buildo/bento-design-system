@@ -85,12 +85,8 @@ export function TextWithIconCell({
     iconColor?: IconProps["color"];
   };
 }) {
-<<<<<<< HEAD
   const config = useBentoConfig().table;
-  const icon_ = icon && icon({ size: 12 });
-=======
   const icon_ = icon && icon({ size: iconSize ?? 12, color: iconColor });
->>>>>>> 45e7f2a0 (Allow customizing icon size and color in textWithIcon)
 
   return (
     <Inset space={16}>
