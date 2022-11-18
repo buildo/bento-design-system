@@ -20,6 +20,7 @@ import {
   IconSpinner,
   IconEyeClosed,
   IconEye,
+  IconCopyLight,
 } from "../Icons";
 import type { ButtonConfig } from "../Button/Config";
 import type { CardConfig } from "../Card/Config";
@@ -52,6 +53,7 @@ import type { TooltipConfig } from "../Tooltip/Config";
 import type { InlineLoaderConfig } from "../InlineLoader/Config";
 import type { DecorativeDividerConfig } from "../Divider/Config";
 import type { DateFieldConfig } from "../DateField/Config";
+import { ReadOnlyFieldConfig } from "../ReadOnlyField/Config";
 
 export const actions: ActionsConfig = {
   primaryActionButtonKind: "solid",
@@ -387,6 +389,11 @@ export const navigation: NavigationConfig = {
     },
   },
   uppercaseLabel: false,
+};
+
+export const readOnlyField: ReadOnlyFieldConfig = {
+  copyIcon: IconCopyLight,
+  copyIconSize: 24,
 };
 
 export const searchBar: SearchBarConfig = {
