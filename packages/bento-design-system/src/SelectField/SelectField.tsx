@@ -63,6 +63,7 @@ export function SelectField<A, IsMulti extends boolean = false>(props: Props<A, 
     onBlur,
     label,
     hint,
+    hintPlacement,
     assistiveText,
     issues,
     placeholder,
@@ -96,18 +97,20 @@ export function SelectField<A, IsMulti extends boolean = false>(props: Props<A, 
 
   const { defaultMessages } = useDefaultMessages();
 
+  const hintProps = hint !== undefined ? { hint, hintPlacement } : { hint };
+
   return (
     // NOTE(gabro): SelectField has its own config for List, so we override it here using BentoConfigProvider
     <BentoConfigProvider value={{ list: dropdownConfig.list }}>
       <Field
         label={label}
-        hint={hint}
         labelProps={labelProps}
         assistiveText={assistiveText}
         issues={issues}
         assistiveTextProps={descriptionProps}
         errorMessageProps={errorMessageProps}
         disabled={disabled}
+        {...hintProps}
       >
         <Select
           id={fieldProps.id}

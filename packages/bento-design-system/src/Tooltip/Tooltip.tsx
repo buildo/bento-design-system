@@ -1,11 +1,20 @@
 import { HTMLAttributes, Ref, useRef } from "react";
 import { Label, Children, Box, Inset } from "..";
-import { useFloating, shift, autoPlacement, offset, arrow } from "@floating-ui/react-dom";
+import {
+  useFloating,
+  shift,
+  autoPlacement,
+  offset,
+  arrow,
+  UseFloatingProps,
+  flip,
+} from "@floating-ui/react-dom";
 import { useTooltipTriggerState } from "@react-stately/tooltip";
 import { useTooltipTrigger, useTooltip } from "@react-aria/tooltip";
 import { tooltip, arrow as arrowStyle } from "./Tooltip.css";
 import { createPortal } from "../util/createPortal";
 import { useBentoConfig } from "../BentoConfigContext";
+import { TooltipPlacement } from "../Field/FieldProps";
 
 type Props = {
   content: Children;
@@ -20,11 +29,22 @@ type Props = {
     ref: Ref<HTMLElement>,
     props: Omit<HTMLAttributes<HTMLElement>, "color">
   ) => JSX.Element;
+  placement?: TooltipPlacement;
 };
 
 export function Tooltip(props: Props) {
   const config = useBentoConfig().tooltip;
   const arrowRef = useRef<HTMLElement | null>(null);
+
+  const commonMiddleware = [shift(), offset(8), arrow({ element: arrowRef })];
+  const floatingProps: UseFloatingProps = props.placement
+    ? {
+        placement: props.placement,
+        middleware: commonMiddleware.concat([flip()]),
+      }
+    : {
+        middleware: commonMiddleware.concat([autoPlacement()]),
+      };
   const {
     x,
     y,
@@ -33,9 +53,8 @@ export function Tooltip(props: Props) {
     strategy,
     placement,
     middlewareData: { arrow: arrowData },
-  } = useFloating({
-    middleware: [shift(), autoPlacement(), offset(8), arrow({ element: arrowRef })],
-  });
+  } = useFloating(floatingProps);
+
   const trigger = { delay: 500 };
   const state = useTooltipTriggerState(trigger);
   const ref = useRef<HTMLElement | null>(null);

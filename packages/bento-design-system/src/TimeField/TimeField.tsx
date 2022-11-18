@@ -50,6 +50,11 @@ export function TimeField(props: Props) {
     ref
   );
 
+  const hintProps =
+    props.hint !== undefined
+      ? { hint: props.hint, hintPlacement: props.hintPlacement }
+      : { hint: props.hint };
+
   return (
     <Field
       label={props.label}
@@ -59,6 +64,7 @@ export function TimeField(props: Props) {
       labelProps={labelProps}
       assistiveTextProps={descriptionProps}
       errorMessageProps={errorMessageProps}
+      {...hintProps}
     >
       <Box
         ref={ref}

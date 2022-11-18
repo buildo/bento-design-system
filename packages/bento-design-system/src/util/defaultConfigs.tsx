@@ -226,6 +226,7 @@ export const field: FieldConfig = {
   tip: {
     icon: IconInfo,
     iconSize: 12,
+    placement: "right",
   },
 };
 
@@ -431,6 +432,8 @@ export const table: TableConfig = {
   emptyIllustration: IllustrationSearch,
   headerBackgroundColor: "backgroundPrimary",
   headerForegroundColor: undefined,
+  hintPlacement: "top",
+  cellTooltipPlacement: "bottom",
 };
 
 export const toast: ToastConfig = {

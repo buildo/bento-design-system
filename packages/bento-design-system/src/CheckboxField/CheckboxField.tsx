@@ -5,6 +5,7 @@ import { Children, Field } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { InternalCheckbox } from "../Checkbox/InternalCheckbox";
 import { useField } from "@react-aria/label";
+import { Omit } from "../util/Omit";
 
 type Props = Omit<FieldProps<boolean>, "assistiveText"> & {
   label: Children;
