@@ -2,7 +2,7 @@ import { mapResponsiveValue, OptionalResponsiveValue } from "../internal/sprinkl
 
 export type Align = "left" | "center" | "right";
 export type ResponsiveAlign = OptionalResponsiveValue<Align>;
-export type AlignY = "top" | "center" | "bottom" | "stretch";
+export type AlignY = "top" | "center" | "bottom" | "stretch" | "baseline";
 export type ResponsiveAlignY = OptionalResponsiveValue<AlignY>;
 
 export const alignToFlexAlignLookup = {
@@ -19,6 +19,7 @@ export const alignYToFlexAlignLookup = {
   center: "center",
   bottom: "flexEnd",
   stretch: "stretch",
+  baseline: "baseline",
 } as const;
 
 export const alignYToFlexAlign = (alignY: OptionalResponsiveValue<AlignY> | undefined) =>

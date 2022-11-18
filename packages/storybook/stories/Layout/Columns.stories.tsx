@@ -1,5 +1,11 @@
-import { Column, Columns, Placeholder } from "..";
-import { createComponentStories, disableControlArgType, spaceArgType } from "../util";
+import { Card, Column, Columns, Display, Placeholder } from "..";
+import {
+  alignArgType,
+  alignYArgType,
+  createComponentStories,
+  disableControlArgType,
+  spaceArgType,
+} from "../util";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Columns,
@@ -10,6 +16,8 @@ const { defaultExport, createStory } = createComponentStories({
   argTypes: {
     space: spaceArgType,
     children: disableControlArgType,
+    align: alignArgType,
+    alignY: alignYArgType,
   },
 });
 
@@ -81,6 +89,22 @@ export const alignY = createStory({
 export const alignYStretch = createStory({
   alignY: "stretch",
   children: [<Placeholder height={100} />, <Placeholder height="100%" />],
+});
+
+export const alignYBaseline = createStory({
+  alignY: "baseline",
+  children: [
+    <Column width="content">
+      <Card padding={24}>
+        <Display size="large">Hello</Display>
+      </Card>
+    </Column>,
+    <Column width="content">
+      <Card padding={24}>
+        <Display size="small">World</Display>
+      </Card>
+    </Column>,
+  ],
 });
 
 export const reverse = createStory({

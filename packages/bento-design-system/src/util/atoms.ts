@@ -44,6 +44,7 @@ export const responsiveProperties = {
     center: "center",
     flexEnd: "flex-end",
     stretch: "stretch",
+    baseline: "baseline",
   },
   justifyContent: {
     flexStart: "flex-start",

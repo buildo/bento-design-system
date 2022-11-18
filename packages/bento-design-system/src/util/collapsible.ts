@@ -89,21 +89,21 @@ export function responsiveCollapsibleAlignmentProps({
     },
     justifyContent: {
       mobile: collapseMobile
-        ? alignItemsMobile === "stretch"
+        ? alignItemsMobile === "stretch" || alignItemsMobile === "baseline"
           ? undefined
           : alignItemsMobile
         : reverseMobile
         ? invertAlignment(justifyContentMobile)
         : justifyContentMobile,
       tablet: collapseTablet
-        ? alignItemsTablet === "stretch"
+        ? alignItemsTablet === "stretch" || alignItemsTablet === "baseline"
           ? undefined
           : alignItemsTablet
         : reverseTablet
         ? invertAlignment(justifyContentTablet)
         : justifyContentTablet,
       desktop: collapseDesktop
-        ? alignItemsDesktop === "stretch"
+        ? alignItemsDesktop === "stretch" || alignItemsDesktop === "baseline"
           ? undefined
           : alignItemsDesktop
         : reverseDesktop
