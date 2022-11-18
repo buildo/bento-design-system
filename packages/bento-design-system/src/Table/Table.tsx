@@ -25,6 +25,7 @@ import {
   Feedback,
   IconButton,
   Tooltip,
+  FeedbackProps,
 } from "..";
 import {
   cellContainerRecipe,
@@ -76,6 +77,7 @@ type Props<C extends ReadonlyArray<ColumnType<string, {}, any>>> = {
   groupBy?: C[number]["accessor"];
   noResultsTitle?: LocalizedString;
   noResultsDescription?: LocalizedString;
+  noResultsFeedbackSize?: FeedbackProps["size"];
   initialSorting?: Array<SortingRule<C>>;
   stickyHeaders?: boolean;
   height?: { custom: string | number };
@@ -106,6 +108,7 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
   groupBy,
   noResultsTitle,
   noResultsDescription,
+  noResultsFeedbackSize = "large",
   customSorting,
   onSort,
   initialSorting,
@@ -230,9 +233,16 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
 
   if (data.length === 0) {
     return (
-      <Box display="flex" paddingTop={80} justifyContent="center">
+      <Box
+        display="flex"
+        paddingTop={match(noResultsFeedbackSize)
+          .with("large", () => 80 as const)
+          .with("medium", () => 24 as const)
+          .exhaustive()}
+        justifyContent="center"
+      >
         <Feedback
-          size="large"
+          size={noResultsFeedbackSize}
           illustration={config.emptyIllustration}
           background
           title={noResultsTitle ?? defaultMessages.Table.noResultsTitle}

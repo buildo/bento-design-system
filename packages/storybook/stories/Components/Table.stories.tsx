@@ -300,6 +300,12 @@ export const Empty = createStory({
   data: [],
 });
 
+export const EmptyMediumSize = createStory({
+  columns: exampleColumns,
+  data: [],
+  noResultsFeedbackSize: "medium",
+});
+
 export const WithFilter = (_args: Parameters<typeof createStory>[0]) => {
   function filterIfDefined<F>(filterValue: F | undefined, f: (filterValue: F) => boolean): boolean {
     return !filterValue || f(filterValue);
