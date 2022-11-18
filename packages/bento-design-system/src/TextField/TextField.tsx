@@ -1,6 +1,6 @@
 import { useTextField } from "@react-aria/textfield";
 import { useRef, useState } from "react";
-import { Box, IconButton, Field } from "..";
+import { Box, IconButton, Field, Children, Columns } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { inputRecipe } from "../Field/Field.css";
 import { FieldProps } from "../Field/FieldProps";
@@ -8,13 +8,15 @@ import { bodyRecipe } from "../Typography/Body/Body.css";
 import useDimensions from "react-cool-dimensions";
 import { defaultMessages } from "../../test/util/defaultMessages";
 import { useBentoConfig } from "../BentoConfigContext";
+import { match } from "ts-pattern";
 
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;
-  type?: "text" | "email" | "url" | "password";
   isReadOnly?: boolean;
-  showPasswordLabel?: LocalizedString;
-  hidePasswordLabel?: LocalizedString;
+  type?: "text" | "email" | "url" | "password";
+  rightAccessory?: Children;
+  showPasswordLabel?: never;
+  hidePasswordLabel?: never;
 };
 
 export function TextField(props: Props) {
@@ -47,6 +49,24 @@ export function TextField(props: Props) {
 
   const type = props.type === "password" && !showPassword ? "password" : "text";
 
+  const rightAccessory = match(props.type ?? "text")
+    .with("password", () => (
+      // if we have both a rightAccessory and type='password', display the accessory on the left of the password toggle field
+      <Columns space={config.paddingX} alignY="center">
+        <IconButton
+          size={config.passwordIconSize}
+          icon={passwordIcon}
+          onPress={() => setShowPassword((prevValue) => !prevValue)}
+          kind="transparent"
+          hierarchy="secondary"
+          label={passwordIconLabel}
+        />
+        {props.rightAccessory}
+      </Columns>
+    ))
+    .with("email", "text", "url", () => props.rightAccessory)
+    .exhaustive();
+
   return (
     <Field
       {...props}
@@ -75,28 +95,21 @@ export function TextField(props: Props) {
               size: config.fontSize,
             }),
           ]}
-          style={{ paddingRight: rightAccessoryWidth, flexGrow: 1 }}
+          style={{ paddingRight: rightAccessory ? rightAccessoryWidth : undefined, flexGrow: 1 }}
         />
-        {props.type === "password" && (
+        {rightAccessory && (
           <Box
             ref={rightAccessoryRef}
             position="absolute"
             display="flex"
             justifyContent="center"
             alignItems="center"
-            paddingX={16}
+            paddingX={config.paddingX}
             top={0}
             bottom={0}
             right={0}
           >
-            <IconButton
-              size={config.passwordIconSize}
-              icon={passwordIcon}
-              onPress={() => setShowPassword((prevValue) => !prevValue)}
-              kind="transparent"
-              hierarchy="secondary"
-              label={passwordIconLabel}
-            />
+            {rightAccessory}
           </Box>
         )}
       </Box>
