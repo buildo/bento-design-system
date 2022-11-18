@@ -124,12 +124,16 @@ export function text<A extends string>({
 
 export function textWithIcon<A extends string>({
   iconPosition,
+  iconSize,
+  iconColor,
   size,
   weight,
   color,
   ...options
 }: ColumnOptionsBase<A> & {
   iconPosition: "left" | "right";
+  iconSize?: IconProps["size"];
+  iconColor?: IconProps["color"];
 } & Partial<Pick<BodyProps, "size" | "weight" | "color">>) {
   return custom({
     ...options,

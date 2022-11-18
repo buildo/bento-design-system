@@ -70,7 +70,7 @@ export function TextCell({
 export function TextWithIconCell({
   value: { icon, iconPosition, text, tooltipContent },
   column: { align },
-  options: { size, weight, color },
+  options: { size, weight, color, iconSize, iconColor },
 }: CellProps<
   {},
   {
@@ -80,10 +80,17 @@ export function TextWithIconCell({
     tooltipContent?: Children;
   }
 > & {
-  options: Partial<Pick<BodyProps, "size" | "weight" | "color">>;
+  options: Partial<Pick<BodyProps, "size" | "weight" | "color">> & {
+    iconSize?: IconProps["size"];
+    iconColor?: IconProps["color"];
+  };
 }) {
+<<<<<<< HEAD
   const config = useBentoConfig().table;
   const icon_ = icon && icon({ size: 12 });
+=======
+  const icon_ = icon && icon({ size: iconSize ?? 12, color: iconColor });
+>>>>>>> 45e7f2a0 (Allow customizing icon size and color in textWithIcon)
 
   return (
     <Inset space={16}>
