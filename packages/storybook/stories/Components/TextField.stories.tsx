@@ -31,3 +31,8 @@ export const ReadOnly = createStory({
   value: "MyNickname",
   isReadOnly: true,
 });
+
+export const CustomAccessory = createStory({
+  value: "With a custom accessory",
+  rightAccessory: "👍",
+});

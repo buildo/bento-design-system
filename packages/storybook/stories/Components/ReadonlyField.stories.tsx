@@ -19,3 +19,5 @@ export default defaultExport;
 export const Default = createStory({});
 
 export const Password = createStory({ type: "password" });
+
+export const RightAccessory = createStory({ rightAccessory: "👍" });
