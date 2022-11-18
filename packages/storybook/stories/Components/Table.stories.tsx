@@ -84,6 +84,81 @@ const exampleColumns = [
   }),
 ];
 
+const customizedColumns = [
+  tableColumn.button({
+    headerLabel: "Button",
+    accessor: "button",
+    sticky: "left",
+    disableSortBy: true,
+    align: "center",
+    size: "large",
+  }),
+  tableColumn.text({
+    headerLabel: "Name",
+    accessor: "name",
+    weight: "strong",
+    size: "large",
+  }),
+  tableColumn.text({
+    headerLabel: "Extended address",
+    accessor: "address",
+    width: { custom: 200 },
+  }),
+  tableColumn.textWithIcon({
+    headerLabel: "Country",
+    accessor: "country",
+    iconPosition: "right",
+    hint: "This is a hint",
+    weight: "strong",
+  }),
+  tableColumn.number({
+    headerLabel: "Applications",
+    accessor: "applications",
+    valueFormatter: (value) => Intl.NumberFormat("en").format(value),
+    align: "right",
+    hint: { onPress: action("hint") },
+    size: "large",
+    weight: "strong",
+    color: "warning",
+  }),
+  tableColumn.numberWithIcon({
+    headerLabel: "Value",
+    accessor: "value",
+    valueFormatter: (value) => Intl.NumberFormat("en").format(value),
+    align: "right",
+    weight: "strong",
+    color: "negative",
+  }),
+  tableColumn.label({
+    headerLabel: "Type",
+    accessor: "type",
+  }),
+  tableColumn.link({
+    headerLabel: "Website",
+    accessor: "website",
+    weight: "strong",
+  }),
+  tableColumn.icon({
+    headerLabel: "Alerts",
+    accessor: "alerts",
+    size: 24,
+  }),
+  tableColumn.chip({
+    headerLabel: "Status",
+    accessor: "status",
+    align: "center",
+  }),
+  tableColumn.iconButton({
+    headerLabel: "Actions",
+    accessor: "deleteAction",
+    align: "center",
+    disableSortBy: true,
+    size: 24,
+    kind: "solid",
+    hierarchy: "danger",
+  }),
+];
+
 const deleteAction = {
   label: "Delete",
   icon: IconClose,
@@ -225,6 +300,12 @@ export const Empty = createStory({
   data: [],
 });
 
+export const EmptyMediumSize = createStory({
+  columns: exampleColumns,
+  data: [],
+  noResultsFeedbackSize: "medium",
+});
+
 export const WithFilter = (_args: Parameters<typeof createStory>[0]) => {
   function filterIfDefined<F>(filterValue: F | undefined, f: (filterValue: F) => boolean): boolean {
     return !filterValue || f(filterValue);
@@ -354,4 +435,9 @@ export const StickyHeaders = createStory({
   initialSorting: [{ id: "name" }],
   stickyHeaders: true,
   height: { custom: 320 },
+});
+
+export const CustomizedColumns = createStory({
+  columns: customizedColumns,
+  data: exampleData,
 });

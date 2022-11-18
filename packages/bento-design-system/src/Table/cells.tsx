@@ -19,16 +19,20 @@ import {
   IconButtonProps,
   ButtonLink,
   ButtonLinkProps,
+  BodyProps,
 } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
 
 export function ButtonCell({
   value: buttonProps,
   column: { align },
-}: CellProps<{}, Omit<ButtonProps, "size">>) {
+  options: { size },
+}: CellProps<{}, Omit<ButtonProps, "size">> & {
+  options: Partial<Pick<ButtonProps, "size">>;
+}) {
   return (
     <Inline space={0} align={align} alignY="center">
-      <Button {...buttonProps} size="medium" />
+      <Button size={size ?? "medium"} {...buttonProps} />
     </Inline>
   );
 }
@@ -36,18 +40,29 @@ export function ButtonCell({
 export function ButtonLinkCell({
   value: buttonProps,
   column: { align },
-}: CellProps<{}, Omit<ButtonLinkProps, "size">>) {
+  options: { size },
+}: CellProps<{}, Omit<ButtonLinkProps, "size">> & {
+  options: Partial<Pick<ButtonLinkProps, "size">>;
+}) {
   return (
     <Inline space={0} align={align}>
-      <ButtonLink {...buttonProps} size="medium" />
+      <ButtonLink size={size ?? "medium"} {...buttonProps} />
     </Inline>
   );
 }
 
-export function TextCell({ value, column: { align } }: CellProps<{}, LocalizedString>) {
+export function TextCell({
+  value,
+  column: { align },
+  options: { size, weight, color },
+}: CellProps<{}, LocalizedString> & {
+  options: Partial<Pick<BodyProps, "size" | "weight" | "color">>;
+}) {
   return (
     <Box padding={16} textAlign={align}>
-      <Body size="medium">{value}</Body>
+      <Body size={size ?? "medium"} weight={weight} color={color}>
+        {value}
+      </Body>
     </Box>
   );
 }
@@ -55,6 +70,7 @@ export function TextCell({ value, column: { align } }: CellProps<{}, LocalizedSt
 export function TextWithIconCell({
   value: { icon, iconPosition, text, tooltipContent },
   column: { align },
+  options: { size, weight, color, iconSize, iconColor },
 }: CellProps<
   {},
   {
@@ -63,9 +79,14 @@ export function TextWithIconCell({
     text: LocalizedString;
     tooltipContent?: Children;
   }
->) {
+> & {
+  options: Partial<Pick<BodyProps, "size" | "weight" | "color">> & {
+    iconSize?: IconProps["size"];
+    iconColor?: IconProps["color"];
+  };
+}) {
   const config = useBentoConfig().table;
-  const icon_ = icon && icon({ size: 12 });
+  const icon_ = icon && icon({ size: iconSize ?? 12, color: iconColor });
 
   return (
     <Inset space={16}>
@@ -83,7 +104,9 @@ export function TextWithIconCell({
         ) : (
           icon_
         )}
-        <Body size="medium">{text}</Body>
+        <Body size={size ?? "medium"} weight={weight} color={color}>
+          {text}
+        </Body>
       </Inline>
     </Inset>
   );
@@ -107,10 +130,16 @@ export function LabelCell({ value, column: { align } }: CellProps<{}, LocalizedS
   );
 }
 
-export function LinkCell({ value, column: { align } }: CellProps<{}, ComponentProps<typeof Link>>) {
+export function LinkCell({
+  value,
+  column: { align },
+  options: { size, weight },
+}: CellProps<{}, ComponentProps<typeof Link>> & {
+  options: Partial<Pick<BodyProps, "size" | "weight">>;
+}) {
   return (
     <Box padding={16} textAlign={align}>
-      <Body size="medium">
+      <Body size={size ?? "medium"} weight={weight}>
         <Link {...value} />
       </Body>
     </Box>
@@ -120,10 +149,13 @@ export function LinkCell({ value, column: { align } }: CellProps<{}, ComponentPr
 export function IconCell({
   value,
   column: { align },
-}: CellProps<{}, { icon: (props: IconProps) => JSX.Element; label: LocalizedString }>) {
+  options: { size, color },
+}: CellProps<{}, { icon: (props: IconProps) => JSX.Element; label: LocalizedString }> & {
+  options: Partial<Pick<IconProps, "size" | "color">>;
+}) {
   return (
     <Box padding={16} textAlign={align} aria-label={value.label}>
-      {value.icon({ size: 16, color: "default" })}
+      {value.icon({ size: size ?? 16, color: color ?? "default" })}
     </Box>
   );
 }
@@ -131,10 +163,18 @@ export function IconCell({
 export function IconButtonCell({
   value: iconButtonProps,
   column: { align },
-}: CellProps<{}, Omit<IconButtonProps, "size" | "kind" | "hierarchy">>) {
+  options: { size, hierarchy, kind },
+}: CellProps<{}, Omit<IconButtonProps, "size" | "kind" | "hierarchy">> & {
+  options: Partial<Pick<IconButtonProps, "size" | "kind" | "hierarchy">>;
+}) {
   return (
     <Inline space={0} align={align} alignY="center">
-      <IconButton kind="transparent" hierarchy="primary" {...iconButtonProps} size={16} />
+      <IconButton
+        kind={kind ?? "transparent"}
+        hierarchy={hierarchy ?? "primary"}
+        size={size ?? 16}
+        {...iconButtonProps}
+      />
     </Inline>
   );
 }
