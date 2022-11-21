@@ -49,7 +49,7 @@ export async function syncConfig({
     button: buttonConfig(ctx),
     card: {},
     // TODO
-    chart: {},
+    // chart: {},
     chip: chipConfig(ctx),
     dateField: dateFieldConfig(ctx),
     decorativeDivider: decorativeDividerConfig(ctx),
