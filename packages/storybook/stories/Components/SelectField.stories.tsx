@@ -102,6 +102,14 @@ export const MultiSelectMultipleOptionsSelected = createControlledStory([1, 2], 
     `${numberOfSelectedOptions} options selected`,
 });
 
+export const MultiSelectModeChipsSelected = createControlledStory([1, 2], {
+  isMulti: true,
+  multiSelectMode: "chips",
+  showMultiSelectBulkActions: true,
+  multiValueMessage: (numberOfSelectedOptions: number) =>
+    `${numberOfSelectedOptions} options selected`,
+});
+
 export const WithIconSelected = createControlledStory(1, {
   options: [
     { value: 1, label: "Idea", icon: IconIdea },

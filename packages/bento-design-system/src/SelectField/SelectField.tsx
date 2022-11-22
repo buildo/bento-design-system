@@ -4,7 +4,7 @@ import Select, {
   MultiValueProps,
   SingleValue as SingleValueT,
 } from "react-select";
-import { Body, ListSize, LocalizedString } from "..";
+import { Body, Chip, ListSize, LocalizedString } from "..";
 import { useField } from "@react-aria/label";
 import { useEffect, useMemo } from "react";
 import { FieldProps } from "../Field/FieldProps";
@@ -28,7 +28,16 @@ type MultiProps<A> = {
   showMultiSelectBulkActions?: boolean;
   selectAllButtonLabel?: LocalizedString;
   clearAllButtonLabel?: LocalizedString;
-} & FieldProps<A[]>;
+} & FieldProps<A[]> &
+  (
+    | {
+        multiSelectMode?: "summary";
+        multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString;
+      }
+    | {
+        multiSelectMode: "chips";
+      }
+  );
 
 type SingleProps<A> = {
   isMulti?: false;
@@ -52,6 +61,7 @@ declare module "react-select/dist/declarations/src/Select" {
     showMultiSelectBulkActions?: boolean;
     selectAllButtonLabel?: LocalizedString;
     clearAllButtonLabel?: LocalizedString;
+    multiSelectMode?: "summary" | "chips";
   }
 }
 
@@ -165,7 +175,7 @@ export function SelectField<A>(props: Props<A>) {
           isClearable={false}
           noOptionsMessage={() => noOptionsMessage ?? defaultMessages.SelectField.noOptionsMessage}
           multiValueMessage={
-            isMulti
+            props.isMulti && (!props.multiSelectMode || props.multiSelectMode === "summary")
               ? props.multiValueMessage ?? defaultMessages.SelectField.multiOptionsSelected
               : undefined
           }
@@ -185,6 +195,7 @@ export function SelectField<A>(props: Props<A>) {
               ? props.selectAllButtonLabel ?? defaultMessages.SelectField.selectAllButtonLabel
               : undefined
           }
+          multiSelectMode={isMulti ? props.multiSelectMode : undefined}
         />
       </Field>
     </BentoConfigProvider>
@@ -194,23 +205,32 @@ export function SelectField<A>(props: Props<A>) {
 // NOTE(gabro): we override MultiValue instead of ValueContainer (which would be more natural)
 // because overriding ValueContainer breaks the logic for closing the menu when clicking away.
 // See: https://github.com/JedWatson/react-select/issues/2239#issuecomment-861848975
-function MultiValue<A>(props: MultiValueProps<A>) {
+function MultiValue<A extends SelectOption<unknown>>(props: MultiValueProps<A>) {
   const inputConfig = useBentoConfig().input;
-  const numberOfSelectedOptions = props.getValue().length;
+  switch (props.selectProps.multiSelectMode ?? "summary") {
+    case "summary":
+      const numberOfSelectedOptions = props.getValue().length;
 
-  if (props.index > 0 || !props.selectProps.multiValueMessage) {
-    return null;
+      if (props.index > 0 || !props.selectProps.multiValueMessage) {
+        return null;
+      }
+
+      if (numberOfSelectedOptions === 1) {
+        return selectComponents.SingleValue(props);
+      }
+
+      return (
+        <Body size={inputConfig.fontSize}>
+          {props.selectProps.multiValueMessage(numberOfSelectedOptions)}
+        </Body>
+      );
+    case "chips":
+      return (
+        <Chip
+          color="blue"
+          label={props.data.label as LocalizedString}
+          onDismiss={props.removeProps.onClick as () => void}
+        />
+      );
   }
-
-  if (numberOfSelectedOptions === 1) {
-    return selectComponents.SingleValue(props);
-  }
-
-  return (
-    <Body size={inputConfig.fontSize}>
-      {props.selectProps.multiValueMessage(numberOfSelectedOptions)}
-    </Body>
-  );
 }
-
-export type { Props as SelectFieldProps };
