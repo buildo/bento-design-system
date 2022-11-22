@@ -70,6 +70,8 @@ export function ValueContainer<A>(props: ValueContainerProps<A>) {
       {...props}
       className={sprinkles({
         gap: 8,
+        overflowX: "auto",
+        flexWrap: "nowrap",
       })}
     />
   );

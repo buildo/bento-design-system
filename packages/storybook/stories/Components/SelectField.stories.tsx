@@ -102,12 +102,40 @@ export const MultiSelectMultipleOptionsSelected = createControlledStory([1, 2], 
     `${numberOfSelectedOptions} options selected`,
 });
 
-export const MultiSelectModeChipsSelected = createControlledStory([1, 2], {
+const manyColors = [
+  "red",
+  "green",
+  "blue",
+  "yellow",
+  "orange",
+  "purple",
+  "pink",
+  "brown",
+  "black",
+  "white",
+  "gray",
+  "cyan",
+  "magenta",
+  "lime",
+  "maroon",
+  "navy",
+  "olive",
+  "teal",
+  "aqua",
+  "fuchsia",
+];
+
+export const MultiSelectModeChipsSelected = createControlledStory(manyColors, {
   isMulti: true,
   multiSelectMode: "chips",
   showMultiSelectBulkActions: true,
   multiValueMessage: (numberOfSelectedOptions: number) =>
     `${numberOfSelectedOptions} options selected`,
+  options: manyColors.map((color) => ({
+    value: color,
+    label: color,
+    kind: "single-line",
+  })),
 });
 
 export const WithIconSelected = createControlledStory(1, {
