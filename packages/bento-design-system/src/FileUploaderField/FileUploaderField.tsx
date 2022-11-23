@@ -151,19 +151,34 @@ export function FileUploaderField<E extends string>({
   // only when a file is dragged over the component, not the whole window, which is what we prefer.
   const [isDragActive, setDragActive] = useState<boolean>(false);
 
-  const setDragActiveOnEvent = (active: boolean) => (e: DragEvent) => {
-    if (e.type !== "dragleave" || !(e as any).fromElement) {
-      setDragActive(active);
-    }
-    e.stopPropagation();
-    e.preventDefault();
-    return false;
-  };
+  const setDragActiveOnEvent = useCallback(
+    (active: boolean) => (e: DragEvent) => {
+      if (e.type !== "dragleave" || !(e as any).fromElement) {
+        setDragActive(active);
+      }
+      e.stopPropagation();
+      e.preventDefault();
+      return false;
+    },
+    []
+  );
 
-  const onDragEnter = useCallback(setDragActiveOnEvent(!uploading && !disabled), []); //eslint-disable-line react-hooks/exhaustive-deps
-  const onDragLeave = useCallback(setDragActiveOnEvent(false), []); //eslint-disable-line react-hooks/exhaustive-deps
-  const onDragEnd = useCallback(setDragActiveOnEvent(false), []); //eslint-disable-line react-hooks/exhaustive-deps
-  const onDrop = useCallback(setDragActiveOnEvent(false), []); //eslint-disable-line react-hooks/exhaustive-deps
+  const onDragEnter = useCallback(
+    (e: DragEvent) => setDragActiveOnEvent(!uploading && !disabled)(e),
+    [uploading, disabled, setDragActiveOnEvent]
+  );
+  const onDragLeave = useCallback(
+    (e: DragEvent) => setDragActiveOnEvent(false)(e),
+    [setDragActiveOnEvent]
+  );
+  const onDragEnd = useCallback(
+    (e: DragEvent) => setDragActiveOnEvent(false)(e),
+    [setDragActiveOnEvent]
+  );
+  const onDrop = useCallback(
+    (e: DragEvent) => setDragActiveOnEvent(false)(e),
+    [setDragActiveOnEvent]
+  );
 
   useEffect(() => {
     window.addEventListener("dragenter", onDragEnter);
@@ -229,7 +244,7 @@ export function FileUploaderField<E extends string>({
     noClick: true,
     multiple: false,
     disabled,
-    // note(Fede): we need to pass both mime types and file extension because:
+    // NOTE(fede): we need to pass both mime types and file extension because:
     // 1. defining accepted mime types correctly prevent other files from being selected
     // in the browse dialog but the subsequent validation fails;
     // 2. defining accepted file extensions doesn't prevent other files from being selected
