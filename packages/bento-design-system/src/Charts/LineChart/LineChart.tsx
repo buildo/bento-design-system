@@ -11,6 +11,7 @@ import { useBentoConfig } from "../../BentoConfigContext";
 import { bodyRecipe } from "../../Typography/Body/Body.css";
 import { allColors } from "../../util/atoms";
 import { ChartProps } from "../ChartProps";
+import { legendContent } from "../Legend/Legend";
 
 type Props<D extends string, C extends string> = ChartProps & {
   data: Record<D | C, unknown>[];
@@ -82,7 +83,7 @@ export function LineChart<D extends string, C extends string>({
         {showXAxis && <XAxis dataKey={dataKey} />}
         {showYAxis && <YAxis />}
         {showTooltip && <Tooltip />}
-        {showLegend && <Legend />}
+        {showLegend && <Legend content={legendContent} />}
         {children}
       </RechartLineChart>
     </ResponsiveContainer>

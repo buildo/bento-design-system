@@ -13,6 +13,7 @@ import { bodyRecipe } from "../../Typography/Body/Body.css";
 import { allColors } from "../../util/atoms";
 import { Children } from "../../util/Children";
 import { ChartDataColor } from "../Config";
+import { legendContent } from "../Legend/Legend";
 
 type Props<D extends string, C extends string> = {
   data: Record<D | C, unknown>[];
@@ -73,7 +74,7 @@ export function BarChart<D extends string, C extends string>({
         {showXAxis && <XAxis dataKey={dataKey} />}
         {showYAxis && <YAxis />}
         {showTooltip && <Tooltip />}
-        {showLegend && <Legend />}
+        {showLegend && <Legend content={legendContent} />}
         {categories.map((category, i) => (
           <Bar
             key={category}

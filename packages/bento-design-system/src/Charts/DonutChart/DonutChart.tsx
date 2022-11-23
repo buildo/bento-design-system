@@ -10,6 +10,7 @@ import { useBentoConfig } from "../../BentoConfigContext";
 import { bodyRecipe } from "../../Typography/Body/Body.css";
 import { allColors } from "../../util/atoms";
 import { ChartProps } from "../ChartProps";
+import { legendContent } from "../Legend/Legend";
 
 type Props<D extends string, C extends string> = ChartProps & {
   data: Record<D, unknown>[];
@@ -65,13 +66,15 @@ export function DonutChart<D extends string, C extends string>({
           innerRadius="75%"
           outerRadius="100%"
           paddingAngle={0}
+          // Remove 1px gap between slices
+          stroke=""
         >
           {data.map((_entry, i) => (
             <Cell key={`cell-${i}`} fill={colors[i % colors.length]} />
           ))}
         </Pie>
         {showTooltip && <Tooltip />}
-        {showLegend && <Legend />}
+        {showLegend && <Legend content={legendContent} />}
         {children}
       </RechartPieChart>
     </ResponsiveContainer>

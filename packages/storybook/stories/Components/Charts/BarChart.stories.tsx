@@ -1,4 +1,3 @@
-import { Brush } from "recharts";
 import { BarChart } from "../..";
 import { createComponentStories } from "../../util";
 
@@ -57,6 +56,4 @@ const { defaultExport, createStory } = createComponentStories({
 
 export default defaultExport;
 
-export const barChart = createStory({
-  children: <Brush />,
-});
+export const barChart = createStory({});
