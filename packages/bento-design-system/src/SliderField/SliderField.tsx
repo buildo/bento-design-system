@@ -20,6 +20,7 @@ type Props = (
   step?: number;
   dragStep?: number;
   hideThumbValue?: boolean;
+  onDragStatusChange?: (isDragging: boolean) => void;
 } & FormatProps;
 
 function roundToStep(value: number, step: number) {

@@ -4,7 +4,7 @@ import { mergeProps } from "@react-aria/utils";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SliderState } from "@react-stately/slider";
 import { FocusableElement } from "@react-types/shared";
-import { DOMAttributes, OutputHTMLAttributes, RefObject, useRef } from "react";
+import { DOMAttributes, OutputHTMLAttributes, RefObject, useEffect, useRef } from "react";
 import { Box, Column, Columns, Stack } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
 import { Label } from "../Typography/Label/Label";
@@ -21,6 +21,7 @@ type Props = {
   numberFormatter: Intl.NumberFormat;
   hideThumbValue?: boolean;
   autoFocus?: boolean;
+  onDragStatusChange?: (isDragging: boolean) => void;
 };
 
 export function Slider(props: Props) {
@@ -75,6 +76,7 @@ export function Slider(props: Props) {
               disabled={props.disabled}
               showValue={!props.hideThumbValue}
               autoFocus={props.autoFocus}
+              onDragStatusChange={props.onDragStatusChange}
             />
             {props.type === "double" && (
               <Thumb
@@ -84,6 +86,7 @@ export function Slider(props: Props) {
                 outputProps={props.outputProps}
                 disabled={props.disabled}
                 showValue={!props.hideThumbValue}
+                onDragStatusChange={props.onDragStatusChange}
               />
             )}
           </Box>
@@ -108,17 +111,23 @@ type ThumbProps = {
   disabled?: boolean;
   showValue: boolean;
   autoFocus?: boolean;
+  onDragStatusChange?: (isDragging: boolean) => void;
 };
 
 function Thumb(props: ThumbProps) {
   const config = useBentoConfig().slider;
-  const { state, trackRef, index } = props;
+  const { state, trackRef, index, onDragStatusChange } = props;
   const inputRef = useRef<HTMLInputElement>(null);
   const {
     thumbProps: { style, ...thumbProps },
     inputProps,
+    isDragging,
   } = useSliderThumb({ index, trackRef, inputRef, isDisabled: props.disabled }, state);
   const { focusProps, isFocusVisible } = useFocusRing({ autoFocus: props.autoFocus });
+
+  useEffect(() => {
+    onDragStatusChange?.(isDragging);
+  }, [isDragging, onDragStatusChange]);
 
   const output = (
     <Box as="output" {...props.outputProps} color={undefined}>
