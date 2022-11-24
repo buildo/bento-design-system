@@ -200,6 +200,7 @@ export function SelectField<A, IsMulti extends boolean = false>(props: Props<A, 
 // because overriding ValueContainer breaks the logic for closing the menu when clicking away.
 // See: https://github.com/JedWatson/react-select/issues/2239#issuecomment-861848975
 function MultiValue<A, IsMulti extends boolean>(props: MultiValueProps<A, IsMulti>) {
+  const inputConfig = useBentoConfig().input;
   const numberOfSelectedOptions = props.getValue().length;
 
   if (props.index > 0 || !props.selectProps.multiValueMessage) {
@@ -210,7 +211,11 @@ function MultiValue<A, IsMulti extends boolean>(props: MultiValueProps<A, IsMult
     return selectComponents.SingleValue(props);
   }
 
-  return <Body size="large">{props.selectProps.multiValueMessage(numberOfSelectedOptions)}</Body>;
+  return (
+    <Body size={inputConfig.fontSize}>
+      {props.selectProps.multiValueMessage(numberOfSelectedOptions)}
+    </Body>
+  );
 }
 
 export type { Props as SelectFieldProps };
