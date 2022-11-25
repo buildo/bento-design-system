@@ -8,10 +8,10 @@ type AlignedPlacement = `${Side}-${Alignment}`;
 export type TooltipPlacement = Side | AlignedPlacement;
 
 export type FieldProps<V, VO = V> = {
-  name: string;
+  name?: string;
   value: V;
   onChange: (value: VO) => unknown;
-  onBlur: () => unknown;
+  onBlur?: () => unknown;
   label: LocalizedString;
   issues?: NonEmptyArray<Children>;
   disabled?: boolean;
