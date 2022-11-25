@@ -8,7 +8,7 @@ const { defaultExport, createControlledStory } = createComponentStories({
 
 export default defaultExport;
 
-export const fileUploader = createControlledStory(undefined, {
+export const fileUploaderField = createControlledStory(undefined, {
   label: "Upload a file",
   allowedFileTypes: {
     "text/csv": [".csv"],
