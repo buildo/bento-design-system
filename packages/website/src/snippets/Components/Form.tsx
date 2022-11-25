@@ -18,7 +18,6 @@ export default function FormExample() {
             label="Name"
             value={name}
             onChange={setName}
-            onBlur={() => {}}
           />
           <TextField
             name="surname"
@@ -26,7 +25,6 @@ export default function FormExample() {
             label="Surname"
             value={surname}
             onChange={setSurname}
-            onBlur={() => {}}
           />
         </FormRow>
       </FormSection>

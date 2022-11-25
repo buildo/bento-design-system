@@ -10,7 +10,6 @@ export default function SliderFieldExample() {
       label="Value"
       value={value}
       onChange={setValue}
-      onBlur={() => {}}
       minValue={0}
       maxValue={100}
       step={10}

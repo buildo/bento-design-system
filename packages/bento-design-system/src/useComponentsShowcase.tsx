@@ -338,7 +338,6 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                       <FormRow>
                         <TextField
                           name="firstName"
-                          onBlur={action("onBlur")}
                           value={formState.firstName}
                           onChange={(firstName) => setFormState((s) => ({ ...s, firstName }))}
                           label="First Name"
@@ -346,7 +345,6 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                         />
                         <TextField
                           name="lastName"
-                          onBlur={action("onBlur")}
                           value={formState.lastName}
                           onChange={(lastName) => setFormState((s) => ({ ...s, lastName }))}
                           label="Last Name"
@@ -356,7 +354,6 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                       <FormRow>
                         <SelectField
                           name="status"
-                          onBlur={action("onBlur")}
                           value={formState.status}
                           onChange={(status: string | undefined) =>
                             setFormState((s) => ({ ...s, status }))
@@ -373,7 +370,6 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                       <FormRow>
                         <RadioGroupField
                           name="gender"
-                          onBlur={action("onBlur")}
                           value={formState.gender}
                           onChange={(gender) => setFormState((s) => ({ ...s, gender }))}
                           label="Gender"
@@ -387,7 +383,6 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                       <FormRow>
                         <CheckboxField
                           name="termsAndConditions"
-                          onBlur={action("onBlur")}
                           value={formState.termsAndConditions}
                           onChange={(termsAndConditions: boolean) =>
                             setFormState((s) => ({ ...s, termsAndConditions }))

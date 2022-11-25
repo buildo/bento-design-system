@@ -10,7 +10,6 @@ export default function NumberFieldExample() {
       placeholder="Type here..."
       value={value}
       onChange={setValue}
-      onBlur={() => {}}
       kind="currency"
       currency="EUR"
     />

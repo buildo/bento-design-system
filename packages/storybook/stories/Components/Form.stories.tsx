@@ -33,7 +33,6 @@ const ExampleTextField = (
       placeholder="Insert a value"
       value={value}
       onChange={onChange}
-      onBlur={() => {}}
       name="textField"
       hint="Some useful advice on how to fill this field"
       {...props}
@@ -53,7 +52,6 @@ const ExampleNumberField = (
       placeholder="Insert a value"
       value={value}
       onChange={onChange}
-      onBlur={() => {}}
       name="numberField"
       {...props}
     />
@@ -73,7 +71,6 @@ const ExampleSelectField = <A extends {}>(
       value={value}
       onChange={onChange}
       name="selectField"
-      onBlur={() => {}}
       isMulti={false}
       {...props}
     />
@@ -84,15 +81,7 @@ const ExampleRadioGroupField = (
   props: Omit<ComponentProps<typeof RadioGroupField>, "value" | "onChange" | "name" | "onBlur">
 ) => {
   const [value, onChange] = useState<string | number | boolean | undefined>(undefined);
-  return (
-    <RadioGroupField
-      value={value}
-      onChange={onChange}
-      name="radioGroupField"
-      onBlur={() => {}}
-      {...props}
-    />
-  );
+  return <RadioGroupField value={value} onChange={onChange} name="radioGroupField" {...props} />;
 };
 
 export const multipleSections = createStory({

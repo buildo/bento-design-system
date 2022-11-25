@@ -23,7 +23,6 @@ export const ExampleTextField = (
       placeholder="Insert a value"
       value={value}
       onChange={onChange}
-      onBlur={() => {}}
       name="textField"
       hint="Some useful advice on how to fill this field"
       {...props}
@@ -43,7 +42,6 @@ export const ExampleNumberField = (
       placeholder="Insert a value"
       value={value}
       onChange={onChange}
-      onBlur={() => {}}
       name="numberField"
       {...props}
     />
@@ -63,7 +61,6 @@ export const ExampleSelectField = <A extends {}>(
       value={value}
       onChange={onChange}
       name="selectField"
-      onBlur={() => {}}
       {...props}
     />
   );
@@ -73,15 +70,7 @@ export const ExampleRadioGroupField = (
   props: Omit<ComponentProps<typeof RadioGroupField>, "value" | "onChange" | "name" | "onBlur">
 ) => {
   const [value, onChange] = useState<string | number | boolean | undefined>(undefined);
-  return (
-    <RadioGroupField
-      value={value}
-      onChange={onChange}
-      name="radioGroupField"
-      onBlur={() => {}}
-      {...props}
-    />
-  );
+  return <RadioGroupField value={value} onChange={onChange} name="radioGroupField" {...props} />;
 };
 
 export const ExampleSliderField = (
@@ -99,7 +88,6 @@ export const ExampleSliderField = (
       maxValue={props.maxValue}
       label={props.label}
       name="slider"
-      onBlur={() => {}}
       type="single"
       kind="decimal"
       value={value}
