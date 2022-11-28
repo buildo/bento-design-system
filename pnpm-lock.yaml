@@ -21,7 +21,7 @@ importers:
       '@datepicker-react/hooks': ^2.8.4
       '@dessert-box/core': 0.2.0
       '@floating-ui/core': 1.0.2
-      '@floating-ui/dom': 1.0.4
+      '@floating-ui/dom': 1.0.7
       '@floating-ui/react-dom': 1.0.0
       '@fontsource/ibm-plex-sans': ^4.5.11
       '@internationalized/date': ^3.0.0
@@ -123,7 +123,7 @@ importers:
       '@datepicker-react/hooks': 2.8.4_react@18.2.0
       '@dessert-box/core': 0.2.0
       '@floating-ui/core': 1.0.2
-      '@floating-ui/dom': 1.0.4
+      '@floating-ui/dom': 1.0.7
       '@floating-ui/react-dom': 1.0.0_biqbaboplfbrettd7655fr4n2y
       '@fontsource/ibm-plex-sans': 4.5.11
       '@internationalized/date': 3.0.0
@@ -5219,8 +5219,8 @@ packages:
     resolution: {integrity: sha512-Skfy0YS3NJ5nV9us0uuPN0HDk1Q4edljaOhRBJGDWs9EBa7ZVMYBHRFlhLvvmwEoaIM9BlH6QJFn9/uZg0bACg==}
     dev: false
 
-  /@floating-ui/dom/1.0.4:
-    resolution: {integrity: sha512-maYJRv+sAXTy4K9mzdv0JPyNW5YPVHrqtY90tEdI6XNpuLOP26Ci2pfwPsKBA/Wh4Z3FX5sUrtUFTdMYj9v+ug==}
+  /@floating-ui/dom/1.0.7:
+    resolution: {integrity: sha512-6RsqvCYe0AYWtsGvuWqCm7mZytnXAZCjWtsWu1Kg8dI3INvj/DbKlDsZO+mKSaQdPT12uxIW9W2dAWJkPx4Y5g==}
     dependencies:
       '@floating-ui/core': 1.0.2
     dev: false
@@ -5231,7 +5231,7 @@ packages:
       react: '>=16.8.0 || 18'
       react-dom: '>=16.8.0 || 18'
     dependencies:
-      '@floating-ui/dom': 1.0.4
+      '@floating-ui/dom': 1.0.7
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
