@@ -41,7 +41,7 @@
     "@datepicker-react/hooks": "^2.8.4",
     "@dessert-box/core": "0.2.0",
     "@floating-ui/core": "1.0.2",
-    "@floating-ui/dom": "1.0.4",
+    "@floating-ui/dom": "1.0.7",
     "@floating-ui/react-dom": "1.0.0",
     "@fontsource/ibm-plex-sans": "^4.5.11",
     "@internationalized/date": "^3.0.0",
