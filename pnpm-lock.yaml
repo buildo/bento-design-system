@@ -20,7 +20,7 @@ importers:
       '@babel/preset-typescript': 7.18.6
       '@datepicker-react/hooks': ^2.8.4
       '@dessert-box/core': 0.2.0
-      '@floating-ui/core': 1.0.1
+      '@floating-ui/core': 1.0.2
       '@floating-ui/dom': 1.0.4
       '@floating-ui/react-dom': 1.0.0
       '@fontsource/ibm-plex-sans': ^4.5.11
@@ -122,7 +122,7 @@ importers:
     dependencies:
       '@datepicker-react/hooks': 2.8.4_react@18.2.0
       '@dessert-box/core': 0.2.0
-      '@floating-ui/core': 1.0.1
+      '@floating-ui/core': 1.0.2
       '@floating-ui/dom': 1.0.4
       '@floating-ui/react-dom': 1.0.0_biqbaboplfbrettd7655fr4n2y
       '@fontsource/ibm-plex-sans': 4.5.11
@@ -5215,14 +5215,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@floating-ui/core/1.0.1:
-    resolution: {integrity: sha512-bO37brCPfteXQfFY0DyNDGB3+IMe4j150KFQcgJ5aBP295p9nBGeHEs/p0czrRbtlHq4Px/yoPXO/+dOCcF4uA==}
+  /@floating-ui/core/1.0.2:
+    resolution: {integrity: sha512-Skfy0YS3NJ5nV9us0uuPN0HDk1Q4edljaOhRBJGDWs9EBa7ZVMYBHRFlhLvvmwEoaIM9BlH6QJFn9/uZg0bACg==}
     dev: false
 
   /@floating-ui/dom/1.0.4:
     resolution: {integrity: sha512-maYJRv+sAXTy4K9mzdv0JPyNW5YPVHrqtY90tEdI6XNpuLOP26Ci2pfwPsKBA/Wh4Z3FX5sUrtUFTdMYj9v+ug==}
     dependencies:
-      '@floating-ui/core': 1.0.1
+      '@floating-ui/core': 1.0.2
     dev: false
 
   /@floating-ui/react-dom/1.0.0_biqbaboplfbrettd7655fr4n2y:
@@ -9196,20 +9196,6 @@ packages:
     dependencies:
       '@vanilla-extract/css': 1.7.2
 
-  /@vanilla-extract/webpack-plugin/2.1.11_webpack@5.74.0:
-    resolution: {integrity: sha512-jCm2TT1jSN/m0TZXYtByuHOsX+ZDimku1SJzvDWF1Eqs3f0If2W1zcd+gaXR6lSaVJ/1MSB/evmeutsT/D3MoA==}
-    peerDependencies:
-      webpack: ^4.30.0 || ^5.20.2
-    dependencies:
-      '@vanilla-extract/integration': 5.0.0
-      chalk: 4.1.2
-      debug: 4.3.4
-      loader-utils: 2.0.2
-      webpack: 5.74.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /@vanilla-extract/webpack-plugin/2.1.12_webpack@5.74.0:
     resolution: {integrity: sha512-8mAbIDEh9r7a5cgb3wcILzuhEbGNddV4/qvwogOlxhoGrP4deUKJHEtPURDviWZ+x/FzFZtZ3glWU7WD8+WN8A==}
     peerDependencies:
@@ -9222,7 +9208,6 @@ packages:
       webpack: 5.74.0_vbceztasdfzb7jghsjfkkrkonm
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@webassemblyjs/ast/1.11.1:
     resolution: {integrity: sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw==}
@@ -18772,7 +18757,7 @@ packages:
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/css-utils': 0.1.2
       '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.2
-      '@vanilla-extract/webpack-plugin': 2.1.11_webpack@5.74.0
+      '@vanilla-extract/webpack-plugin': 2.1.12_webpack@5.74.0
       babel-loader: 8.2.5_m3opitmgss2x7fiy6klia7uvaa
       classnames: 2.3.1
       codemirror: 5.65.6
