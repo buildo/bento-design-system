@@ -1,5 +1,5 @@
 import { useNumberFormatter } from "@react-aria/i18n";
-import { useSlider } from "@react-aria/slider";
+import { useSlider, AriaSliderProps } from "@react-aria/slider";
 import { clamp } from "@react-aria/utils";
 import { useSliderState } from "@react-stately/slider";
 import { ValueBase } from "@react-types/shared";
@@ -10,9 +10,17 @@ import { useFormatOptions } from "../NumberInput/formatOptions";
 import { FormatProps } from "../NumberInput/FormatProps";
 
 type Props = (
-  | ({ type: "single" } & FieldProps<number>)
+  | ({
+      type: "single";
+      /**
+       * Invoked when the user stops dragging the slider.
+       * This is different from onChange, which is called continuously while dragging.
+       */
+      onChangeEnd?: (value: number) => void;
+    } & FieldProps<number>)
   | ({
       type: "double";
+      onChangeEnd?: (value: [number, number]) => void;
     } & FieldProps<[number, number]>)
 ) & {
   minValue: number;
@@ -31,7 +39,7 @@ export function SliderField(props: Props) {
   const formatOptions = useFormatOptions(props);
   const numberFormatter = useNumberFormatter(formatOptions);
 
-  const valueProps: ValueBase<number | number[]> = {
+  const valueProps: ValueBase<number | number[]> & Pick<AriaSliderProps, "onChangeEnd"> = {
     value: props.value,
     onChange: (values: number | number[]) => {
       if (typeof values === "number" && props.type === "single") {
@@ -41,9 +49,17 @@ export function SliderField(props: Props) {
         props.onChange(values as [number, number]);
       }
     },
+    onChangeEnd: (values: number | number[]) => {
+      if (typeof values === "number" && props.type === "single") {
+        props.onChangeEnd?.(values);
+      }
+      if (Array.isArray(values) && props.type === "double") {
+        props.onChangeEnd?.(values as [number, number]);
+      }
+    },
   };
 
-  const { value, onChange, ...internalProps } = props;
+  const { value, onChange, onChangeEnd, ...internalProps } = props;
 
   const internalState = useSliderState<number | number[]>({
     ...internalProps,
