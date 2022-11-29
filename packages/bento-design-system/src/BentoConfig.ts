@@ -17,6 +17,7 @@ import {
   SelectionControlConfig,
   SelectionControlGroupConfig,
 } from "./Field/Config";
+import { FileUploaderFieldConfig } from "./FileUploaderField/Config";
 import { FormLayoutConfig } from "./Form/Config";
 import { IconButtonConfig } from "./IconButton/Config";
 import { InlineLoaderConfig } from "./InlineLoader/Config";
@@ -51,6 +52,7 @@ export type BentoConfig = {
   disclosureGroup: DisclosureGroupConfig;
   feedback: FeedbackConfig;
   field: FieldConfig;
+  fileUploaderField: FileUploaderFieldConfig;
   input: InputConfig;
   selectionControl: {
     group: SelectionControlGroupConfig;

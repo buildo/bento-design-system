@@ -23,6 +23,7 @@ export const {
   DesignSystemProvider,
   Disclosure,
   Feedback,
+  FileUploaderField,
   Form,
   FormSection,
   FormRow,

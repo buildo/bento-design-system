@@ -53,7 +53,8 @@ import type { TooltipConfig } from "../Tooltip/Config";
 import type { InlineLoaderConfig } from "../InlineLoader/Config";
 import type { DecorativeDividerConfig } from "../Divider/Config";
 import type { DateFieldConfig } from "../DateField/Config";
-import { ReadOnlyFieldConfig } from "../ReadOnlyField/Config";
+import type { ReadOnlyFieldConfig } from "../ReadOnlyField/Config";
+import type { FileUploaderFieldConfig } from "../FileUploaderField/Config";
 
 export const actions: ActionsConfig = {
   primaryActionButtonKind: "solid",
@@ -230,6 +231,10 @@ export const field: FieldConfig = {
     iconSize: 12,
     placement: "right",
   },
+};
+
+export const fileUploaderField: FileUploaderFieldConfig = {
+  defaultHeight: "8rem",
 };
 
 export const inlineLoader: InlineLoaderConfig = {
