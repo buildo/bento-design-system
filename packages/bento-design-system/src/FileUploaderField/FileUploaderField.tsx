@@ -76,7 +76,6 @@ type Props<E extends string> = {
   texts: FileUploaderTexts;
   /**
    * A function to render validation issues. It's used to display a user-friendly error message under the field.
-   * The function can return
    */
   renderIssue: (issue: E | ErrorCode, file?: File) => Children;
   /**
@@ -84,7 +83,7 @@ type Props<E extends string> = {
    */
   issues?: NonEmptyArray<E>;
   /**
-   * The maximum number of files that can be uploaded, in megabytes.
+   * The maximum size of uploaded files, in megabytes.
    */
   maxFileSize?: number;
   /**
