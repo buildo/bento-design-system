@@ -334,7 +334,6 @@ export const WithFilter = (_args: Parameters<typeof createStory>[0]) => {
       <FormRow>
         <TextField
           name="name"
-          onBlur={() => {}}
           label="Name"
           placeholder="Search by name"
           value={nameFilter}
@@ -342,7 +341,6 @@ export const WithFilter = (_args: Parameters<typeof createStory>[0]) => {
         />
         <SelectField
           name="status"
-          onBlur={() => {}}
           label="Status"
           placeholder="Select a status to filter"
           value={statusFilter}
@@ -388,7 +386,6 @@ export const WithControlledSorting = (_args: Parameters<typeof createStory>[0]) 
       <FormRow>
         <NumberField
           name="numberOfRows"
-          onBlur={() => {}}
           label="Number of rows"
           placeholder="Number of rows"
           value={numberOfRows}

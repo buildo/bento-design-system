@@ -10,7 +10,6 @@ export default function RadioGroupFieldExample() {
       name="favourite-color"
       value={value}
       onChange={setValue}
-      onBlur={() => {}}
       options={[
         {
           value: "Green",

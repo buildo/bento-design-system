@@ -21,8 +21,6 @@ type Props = Omit<
       }
   );
 
-const constVoid = () => {};
-
 /**
  * A convenient wrapper to the TextField, that forces isReadOnly=true
  * and doesn't require all those props that don't make sense for a read-only field (onChange, onBlur, placeholder, ...)
@@ -58,8 +56,7 @@ export function ReadOnlyField(props: Props) {
   return (
     <TextField
       {...props}
-      onChange={constVoid}
-      onBlur={constVoid}
+      onChange={() => {}}
       placeholder=""
       isReadOnly
       rightAccessory={rightAccessory}

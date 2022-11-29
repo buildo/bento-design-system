@@ -9,7 +9,6 @@ export default function SwitchExample() {
       name="terms-and-conditions"
       value={checked}
       onChange={setChecked}
-      onBlur={() => {}}
     />
   );
 }

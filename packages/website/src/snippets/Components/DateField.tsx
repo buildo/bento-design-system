@@ -10,7 +10,6 @@ export default function DateFieldExample() {
       label="Birth date"
       value={value}
       onChange={setValue}
-      onBlur={() => {}}
     />
   );
 }

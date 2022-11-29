@@ -6,7 +6,6 @@ export default function SelectFieldExample() {
   return (
     <SelectField
       value={value}
-      onBlur={() => {}}
       onChange={setValue}
       name="color"
       label="What's your favorite color?"

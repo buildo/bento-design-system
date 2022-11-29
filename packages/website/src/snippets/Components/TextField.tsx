@@ -10,7 +10,6 @@ export default function TextFieldExample() {
       placeholder="Type here..."
       value={value}
       onChange={setValue}
-      onBlur={() => {}}
     />
   );
 }
