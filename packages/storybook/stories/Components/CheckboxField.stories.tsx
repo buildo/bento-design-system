@@ -1,4 +1,4 @@
-import { CheckboxField } from "../";
+import { CheckboxField, IconIdea, Body } from "../";
 import { createComponentStories, textArgType } from "../util";
 
 const { defaultExport, createControlledStory } = createComponentStories({
@@ -29,4 +29,16 @@ export const Disabled = createControlledStory(false, {
 export const LongLabel = createControlledStory(false, {
   label:
     "Very very very very very very very very long label. Did I say this label is very long? Well let me say it again, it's loooooong, very looooooooong. Maybe we should say it again, let's go! Very very very very very very very very long label.",
+});
+
+export const ComplexLabel = createControlledStory(false, {
+  label: (
+    <>
+      Some text, some{" "}
+      <Body size="large" weight="strong">
+        bold words
+      </Body>
+      , then some more text and an icon <IconIdea size={16} />
+    </>
+  ),
 });
