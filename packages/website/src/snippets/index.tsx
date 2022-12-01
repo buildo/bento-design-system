@@ -2,8 +2,6 @@ import { createBentoComponents } from "@buildo/bento-design-system";
 
 export * from "@buildo/bento-design-system";
 
-export * from "@buildo/bento-design-system/lib/charts";
-
 export const {
   Actions,
   AreaLoader,
