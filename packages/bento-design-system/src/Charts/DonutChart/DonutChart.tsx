@@ -11,6 +11,7 @@ import { bodyRecipe } from "../../Typography/Body/Body.css";
 import { allColors } from "../../util/atoms";
 import { ChartProps } from "../ChartProps";
 import { legendContent } from "../Legend/Legend";
+import { tooltipContent } from "../Tooltip/Tooltip";
 
 type Props<D extends string, C extends string> = ChartProps & {
   data: Record<D, unknown>[];
@@ -73,7 +74,7 @@ export function DonutChart<D extends string, C extends string>({
             <Cell key={`cell-${i}`} fill={colors[i % colors.length]} />
           ))}
         </Pie>
-        {showTooltip && <Tooltip />}
+        {showTooltip && <Tooltip content={tooltipContent} />}
         {showLegend && <Legend content={legendContent} />}
         {children}
       </RechartPieChart>

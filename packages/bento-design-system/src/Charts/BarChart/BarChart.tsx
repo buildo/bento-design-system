@@ -12,8 +12,10 @@ import { useBentoConfig } from "../../BentoConfigContext";
 import { bodyRecipe } from "../../Typography/Body/Body.css";
 import { allColors } from "../../util/atoms";
 import { Children } from "../../util/Children";
+import { vars } from "../../vars.css";
 import { ChartDataColor } from "../Config";
 import { legendContent } from "../Legend/Legend";
+import { tooltipContent } from "../Tooltip/Tooltip";
 
 type Props<D extends string, C extends string> = {
   data: Record<D | C, unknown>[];
@@ -73,7 +75,12 @@ export function BarChart<D extends string, C extends string>({
       <RechartBarChart data={data}>
         {showXAxis && <XAxis dataKey={dataKey} />}
         {showYAxis && <YAxis />}
-        {showTooltip && <Tooltip />}
+        {showTooltip && (
+          <Tooltip
+            content={tooltipContent}
+            cursor={{ fill: vars.backgroundColor.backgroundSecondary }}
+          />
+        )}
         {showLegend && <Legend content={legendContent} />}
         {categories.map((category, i) => (
           <Bar
