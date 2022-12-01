@@ -3,7 +3,6 @@ import {
   BarChart as RechartBarChart,
   Legend,
   ResponsiveContainer,
-  ResponsiveContainerProps,
   Tooltip,
   XAxis,
   YAxis,
@@ -11,28 +10,19 @@ import {
 import { useBentoConfig } from "../../BentoConfigContext";
 import { bodyRecipe } from "../../Typography/Body/Body.css";
 import { allColors } from "../../util/atoms";
-import { Children } from "../../util/Children";
 import { vars } from "../../vars.css";
-import { ChartDataColor } from "../Config";
+import { ChartProps } from "../ChartProps";
 import { legendContent } from "../Legend/Legend";
 import { tooltipContent } from "../Tooltip/Tooltip";
 
-type Props<D extends string, C extends string> = {
+type Props<D extends string, C extends string> = ChartProps & {
   data: Record<D | C, unknown>[];
   categories: C[];
   dataKey: D;
   showXAxis?: boolean;
   showYAxis?: boolean;
-  showAnimation?: boolean;
-  showLegend?: boolean;
-  showTooltip?: boolean;
   stacked?: boolean;
-  dataColors?: ChartDataColor[];
-  children?: Children;
-} & Pick<
-  ResponsiveContainerProps,
-  "width" | "height" | "minWidth" | "minHeight" | "maxHeight" | "aspect" | "debounce"
->;
+};
 
 export type { Props as BarChartProps };
 
