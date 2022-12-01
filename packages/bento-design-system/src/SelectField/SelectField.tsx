@@ -22,24 +22,26 @@ export type SelectOption<A> = Omit<
   value: A;
 };
 
-type Props<A, IsMulti extends boolean> = (IsMulti extends false
-  ? FieldProps<A | undefined>
-  : FieldProps<A[]>) & {
+type MultiProps<A> = {
+  isMulti: true;
+  multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString;
+  showMultiSelectBulkActions?: boolean;
+  selectAllButtonLabel?: LocalizedString;
+  clearAllButtonLabel?: LocalizedString;
+} & FieldProps<A[]>;
+
+type SingleProps<A> = {
+  isMulti?: false;
+} & FieldProps<A | undefined>;
+
+type Props<A> = {
   menuSize?: ListSize;
   placeholder: LocalizedString;
   options: Array<SelectOption<A>>;
-  isMulti?: IsMulti;
   noOptionsMessage?: LocalizedString;
   isReadOnly?: boolean;
   searchable?: boolean;
-} & (IsMulti extends true
-    ? {
-        multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString;
-        showMultiSelectBulkActions?: boolean;
-        selectAllButtonLabel?: LocalizedString;
-        clearAllButtonLabel?: LocalizedString;
-      }
-    : {});
+} & (SingleProps<A> | MultiProps<A>);
 
 declare module "react-select/dist/declarations/src/Select" {
   export interface Props<Option, IsMulti extends boolean, Group extends GroupBase<Option>> {
@@ -53,7 +55,7 @@ declare module "react-select/dist/declarations/src/Select" {
   }
 }
 
-export function SelectField<A, IsMulti extends boolean = false>(props: Props<A, IsMulti>) {
+export function SelectField<A>(props: Props<A>) {
   const dropdownConfig = useBentoConfig().dropdown;
 
   const {
@@ -127,12 +129,10 @@ export function SelectField<A, IsMulti extends boolean = false>(props: Props<A, 
           onChange={(o) => {
             if (isMulti) {
               const multiValue = o as MultiValueT<SelectOption<A>>;
-              (onChange as Props<A, true>["onChange"])(multiValue.map((a) => a.value));
+              onChange(multiValue.map((a) => a.value));
             } else {
               const singleValue = o as SingleValueT<SelectOption<A>>;
-              (onChange as Props<A, false>["onChange"])(
-                singleValue == null ? undefined : singleValue.value
-              );
+              onChange(singleValue == null ? undefined : singleValue.value);
             }
           }}
           onBlur={onBlur}
@@ -159,15 +159,14 @@ export function SelectField<A, IsMulti extends boolean = false>(props: Props<A, 
             MultiValue,
           }}
           openMenuOnFocus
-          styles={selectComponents.styles<SelectOption<A>, IsMulti>()}
+          styles={selectComponents.styles<SelectOption<A>>()}
           validationState={validationState}
           isMulti={isMulti}
           isClearable={false}
           noOptionsMessage={() => noOptionsMessage ?? defaultMessages.SelectField.noOptionsMessage}
           multiValueMessage={
             isMulti
-              ? (props as unknown as Props<A, true>).multiValueMessage ??
-                defaultMessages.SelectField.multiOptionsSelected
+              ? props.multiValueMessage ?? defaultMessages.SelectField.multiOptionsSelected
               : undefined
           }
           closeMenuOnSelect={!isMulti}
@@ -175,19 +174,15 @@ export function SelectField<A, IsMulti extends boolean = false>(props: Props<A, 
           menuSize={menuSize}
           menuIsOpen={isReadOnly ? false : undefined}
           isSearchable={isReadOnly ? false : searchable ?? true}
-          showMultiSelectBulkActions={
-            isMulti ? (props as unknown as Props<A, true>).showMultiSelectBulkActions : false
-          }
+          showMultiSelectBulkActions={isMulti ? props.showMultiSelectBulkActions : false}
           clearAllButtonLabel={
             isMulti
-              ? (props as unknown as Props<A, true>).clearAllButtonLabel ??
-                defaultMessages.SelectField.clearAllButtonLabel
+              ? props.clearAllButtonLabel ?? defaultMessages.SelectField.clearAllButtonLabel
               : undefined
           }
           selectAllButtonLabel={
             isMulti
-              ? (props as unknown as Props<A, true>).selectAllButtonLabel ??
-                defaultMessages.SelectField.selectAllButtonLabel
+              ? props.selectAllButtonLabel ?? defaultMessages.SelectField.selectAllButtonLabel
               : undefined
           }
         />
@@ -199,7 +194,7 @@ export function SelectField<A, IsMulti extends boolean = false>(props: Props<A, 
 // NOTE(gabro): we override MultiValue instead of ValueContainer (which would be more natural)
 // because overriding ValueContainer breaks the logic for closing the menu when clicking away.
 // See: https://github.com/JedWatson/react-select/issues/2239#issuecomment-861848975
-function MultiValue<A, IsMulti extends boolean>(props: MultiValueProps<A, IsMulti>) {
+function MultiValue<A>(props: MultiValueProps<A>) {
   const inputConfig = useBentoConfig().input;
   const numberOfSelectedOptions = props.getValue().length;
 

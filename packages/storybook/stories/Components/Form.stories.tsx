@@ -60,7 +60,7 @@ const ExampleNumberField = (
 
 const ExampleSelectField = <A extends {}>(
   props: Omit<
-    SelectFieldProps<A, false>,
+    SelectFieldProps<A> & { isMulti?: false },
     "placeholder" | "value" | "onChange" | "name" | "onBlur" | "multiValueMessage"
   >
 ) => {
