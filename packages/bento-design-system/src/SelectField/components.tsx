@@ -228,7 +228,11 @@ export function Option<B, A extends SelectOption<B>, IsMulti extends boolean>(
       <ListItem
         {...props.data}
         size={props.selectProps.menuSize ?? "medium"}
-        onPress={() => props.selectOption(props.data)}
+        onPress={() =>
+          props.isSelected && !props.selectProps.isMulti
+            ? props.setValue(null as any, "deselect-option")
+            : props.selectOption(props.data)
+        }
         trailingIcon={props.isSelected ? IconCheck : undefined}
         isFocused={props.isFocused}
         isSelected={props.isSelected}
