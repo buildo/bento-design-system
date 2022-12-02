@@ -38,13 +38,13 @@ import { ListItem } from "../List/ListItem";
 import { useBentoConfig } from "../BentoConfigContext";
 import { useSprinkles } from "../SprinklesContext";
 
-export function Control<A, IsMulti extends boolean>({
+export function Control<A>({
   selectProps: { validationState: validation, isDisabled, isReadOnly = false },
   innerProps,
   innerRef,
   menuIsOpen,
   children,
-}: ControlProps<A, IsMulti>) {
+}: ControlProps<A>) {
   const inputConfig = useBentoConfig().input;
 
   return (
@@ -64,7 +64,7 @@ export function Control<A, IsMulti extends boolean>({
   );
 }
 
-export function ValueContainer<A, IsMulti extends boolean>(props: ValueContainerProps<A, IsMulti>) {
+export function ValueContainer<A>(props: ValueContainerProps<A>) {
   const sprinkles = useSprinkles();
   return (
     <defaultComponents.ValueContainer
@@ -76,11 +76,7 @@ export function ValueContainer<A, IsMulti extends boolean>(props: ValueContainer
   );
 }
 
-export function SingleValue<A, IsMulti extends boolean>({
-  children,
-  isDisabled,
-  data,
-}: SingleValueProps<A, IsMulti>) {
+export function SingleValue<A>({ children, isDisabled, data }: SingleValueProps<A>) {
   const inputConfig = useBentoConfig().input;
 
   return (
@@ -101,10 +97,7 @@ export function SingleValue<A, IsMulti extends boolean>({
   );
 }
 
-export function Placeholder<A, IsMulti extends boolean>({
-  children,
-  isDisabled,
-}: PlaceholderProps<A, IsMulti>) {
+export function Placeholder<A>({ children, isDisabled }: PlaceholderProps<A>) {
   const inputConfig = useBentoConfig().input;
 
   return (
@@ -116,10 +109,10 @@ export function Placeholder<A, IsMulti extends boolean>({
   );
 }
 
-export function DropdownIndicator<A, IsMulti extends boolean>({
+export function DropdownIndicator<A>({
   isDisabled,
   selectProps: { isReadOnly },
-}: DropdownIndicatorProps<A, IsMulti>) {
+}: DropdownIndicatorProps<A>) {
   if (isReadOnly) return null;
   return (
     <Box paddingLeft={16}>
@@ -128,7 +121,7 @@ export function DropdownIndicator<A, IsMulti extends boolean>({
   );
 }
 
-export function Input<A, IsMulti extends boolean>(props: InputProps<A, IsMulti>) {
+export function Input<A>(props: InputProps<A>) {
   const inputConfig = useBentoConfig().input;
 
   return (
@@ -143,7 +136,7 @@ export function Input<A, IsMulti extends boolean>(props: InputProps<A, IsMulti>)
   );
 }
 
-export function Menu<A, IsMulti extends boolean>(props: MenuProps<A, IsMulti>) {
+export function Menu<A>(props: MenuProps<A>) {
   const dropdownConfig = useBentoConfig().dropdown;
   const sprinkles = useSprinkles();
 
@@ -177,9 +170,7 @@ export function Menu<A, IsMulti extends boolean>(props: MenuProps<A, IsMulti>) {
   );
 }
 
-export function MenuList<A extends { disabled?: boolean }, IsMulti extends boolean>(
-  props: MenuListProps<A, IsMulti>
-) {
+export function MenuList<A extends { disabled?: boolean }>(props: MenuListProps<A>) {
   const dropdownConfig = useBentoConfig().dropdown;
 
   return (
@@ -220,9 +211,7 @@ export function MenuList<A extends { disabled?: boolean }, IsMulti extends boole
   );
 }
 
-export function Option<B, A extends SelectOption<B>, IsMulti extends boolean>(
-  props: OptionProps<A, IsMulti>
-) {
+export function Option<B, A extends SelectOption<B>>(props: OptionProps<A>) {
   return (
     <defaultComponents.Option {...props}>
       <ListItem
@@ -243,13 +232,11 @@ export function Option<B, A extends SelectOption<B>, IsMulti extends boolean>(
   );
 }
 
-export function MenuPortal<A, IsMulti extends boolean>(
-  props: MenuPortalProps<A, IsMulti, GroupBase<A>>
-) {
+export function MenuPortal<A>(props: MenuPortalProps<A, boolean, GroupBase<A>>) {
   return <defaultComponents.MenuPortal {...props} />;
 }
 
-export function NoOptionsMessage<A, IsMulti extends boolean>(props: NoticeProps<A, IsMulti>) {
+export function NoOptionsMessage<A>(props: NoticeProps<A>) {
   return (
     <Inset space={16}>
       <Inline space={0} align="center" alignY="center">
@@ -263,11 +250,13 @@ export function NoOptionsMessage<A, IsMulti extends boolean>(props: NoticeProps<
 
 export const IndicatorSeparator = null;
 
-export const styles = <A, IsMulti extends boolean>(): StylesConfig<A, IsMulti> => ({
-  menuPortal: ({ zIndex, ...provided }) => provided,
-  valueContainer: ({ padding, ...provided }) => provided,
-  input: ({ margin, paddingBottom, paddingTop, color, ...provided }) => provided,
-  menu: () => ({}),
-  menuList: ({ paddingTop, paddingBottom, ...provided }) => provided,
-  option: () => ({}),
-});
+export function styles<A>(): StylesConfig<A> {
+  return {
+    menuPortal: ({ zIndex, ...provided }) => provided,
+    valueContainer: ({ padding, ...provided }) => provided,
+    input: ({ margin, paddingBottom, paddingTop, color, ...provided }) => provided,
+    menu: () => ({}),
+    menuList: ({ paddingTop, paddingBottom, ...provided }) => provided,
+    option: () => ({}),
+  };
+}
