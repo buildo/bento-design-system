@@ -14,7 +14,7 @@ import { legendContent } from "../Legend/Legend";
 import { tooltipContent } from "../Tooltip/Tooltip";
 
 type Props<D extends string, C extends string> = ChartProps & {
-  data: Record<D, unknown>[];
+  data: Record<C | D, unknown>[];
   category: C;
   dataKey: D;
 };
