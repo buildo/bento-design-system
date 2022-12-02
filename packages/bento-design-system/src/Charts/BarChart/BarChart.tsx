@@ -34,7 +34,7 @@ export function BarChart<D extends string, C extends string>({
   hideYAxis = false,
   hideLegend = false,
   disableAnimation = false,
-  hideTooltip = true,
+  hideTooltip = false,
   width = "100%",
   height,
   minWidth,
@@ -63,21 +63,21 @@ export function BarChart<D extends string, C extends string>({
       debounce={debounce}
     >
       <RechartBarChart data={data}>
-        {hideXAxis && <XAxis dataKey={dataKey} />}
-        {hideYAxis && <YAxis />}
-        {hideTooltip && (
+        {!hideXAxis && <XAxis dataKey={dataKey} />}
+        {!hideYAxis && <YAxis />}
+        {!hideTooltip && (
           <Tooltip
             content={tooltipContent}
             cursor={{ fill: vars.backgroundColor.backgroundSecondary }}
           />
         )}
-        {hideLegend && <Legend content={legendContent} />}
+        {!hideLegend && <Legend content={legendContent} />}
         {categories.map((category, i) => (
           <Bar
             key={category}
             dataKey={category}
             fill={colors[i % colors.length]}
-            isAnimationActive={disableAnimation}
+            isAnimationActive={!disableAnimation}
             stackId={stacked ? "stack" : undefined}
           />
         ))}

@@ -75,16 +75,16 @@ export function LineChart<D extends string, C extends string>({
             type={lineType}
             key={category}
             dataKey={category}
-            isAnimationActive={disableAnimation}
+            isAnimationActive={!disableAnimation}
             stroke={colors[i % colors.length]}
             strokeWidth={2}
             dot={false}
           />
         ))}
-        {hideXAxis && <XAxis dataKey={dataKey} />}
-        {hideYAxis && <YAxis />}
-        {hideTooltip && <Tooltip content={tooltipContent} />}
-        {hideLegend && <Legend content={legendContent} />}
+        {!hideXAxis && <XAxis dataKey={dataKey} />}
+        {!hideYAxis && <YAxis />}
+        {!hideTooltip && <Tooltip content={tooltipContent} />}
+        {!hideLegend && <Legend content={legendContent} />}
         {children}
       </RechartLineChart>
     </ResponsiveContainer>

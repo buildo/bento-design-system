@@ -25,9 +25,9 @@ export function DonutChart<D extends string, C extends string>({
   data,
   dataKey,
   category,
-  hideLegend = true,
-  disableAnimation = true,
-  hideTooltip = true,
+  hideLegend = false,
+  disableAnimation = false,
+  hideTooltip = false,
   width = "100%",
   height,
   minWidth,
@@ -59,7 +59,7 @@ export function DonutChart<D extends string, C extends string>({
           data={data}
           dataKey={category}
           nameKey={dataKey}
-          isAnimationActive={disableAnimation}
+          isAnimationActive={!disableAnimation}
           cx="50%"
           cy="50%"
           startAngle={90}
@@ -74,8 +74,8 @@ export function DonutChart<D extends string, C extends string>({
             <Cell key={`cell-${i}`} fill={colors[i % colors.length]} />
           ))}
         </Pie>
-        {hideTooltip && <Tooltip content={tooltipContent} />}
-        {hideLegend && <Legend content={legendContent} />}
+        {!hideTooltip && <Tooltip content={tooltipContent} />}
+        {!hideLegend && <Legend content={legendContent} />}
         {children}
       </RechartPieChart>
     </ResponsiveContainer>
