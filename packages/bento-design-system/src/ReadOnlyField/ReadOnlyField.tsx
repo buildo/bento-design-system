@@ -68,15 +68,7 @@ export function ReadOnlyField(props: Props) {
     ))
     .exhaustive();
 
-  return (
-    <TextField
-      {...props}
-      onChange={() => {}}
-      placeholder=""
-      isReadOnly
-      rightAccessory={rightAccessory}
-    />
-  );
+  return <TextField {...props} onChange={() => {}} isReadOnly rightAccessory={rightAccessory} />;
 }
 
 export type { Props as ReadOnlyFieldProps };

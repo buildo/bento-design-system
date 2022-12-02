@@ -10,7 +10,7 @@ import { Field } from "../Field/Field";
 import { NumberInput } from "../NumberInput/NumberInput";
 
 type Props = FieldProps<number | undefined, number> & {
-  placeholder: LocalizedString;
+  placeholder?: LocalizedString;
   isReadOnly?: boolean;
   rightAccessory?: Children;
 } & FormatProps &

@@ -45,7 +45,7 @@ type SingleProps<A> = {
 
 type Props<A> = {
   menuSize?: ListSize;
-  placeholder: LocalizedString;
+  placeholder?: LocalizedString;
   options: Array<SelectOption<A>>;
   noOptionsMessage?: LocalizedString;
   isReadOnly?: boolean;

@@ -10,7 +10,7 @@ import { getReadOnlyBackgroundStyle } from "../Field/utils";
 import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = FieldProps<string> & {
-  placeholder: LocalizedString;
+  placeholder?: LocalizedString;
   isReadOnly?: boolean;
   rows?: number;
 } & Pick<React.HTMLProps<HTMLTextAreaElement>, "onKeyDown" | "onKeyUp">;
