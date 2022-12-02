@@ -29,7 +29,7 @@ export const tooltipContent = <TValue extends ValueType, TName extends NameType>
         <Body size="medium">{label}</Body>
         <Stack space={4}>
           {payload.map(({ value, name, color }) => (
-            <Columns space={4} alignY="center">
+            <Columns key={name} space={4} alignY="center">
               <Column width="content">
                 <Box height={16} width={16} borderRadius={4} style={{ backgroundColor: color }} />
               </Column>
