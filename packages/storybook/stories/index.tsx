@@ -35,6 +35,8 @@ const FeedbackBackground = (
   </svg>
 );
 
+export { BarChart, DonutChart, LineChart } from "@buildo/bento-design-system";
+
 // NOTE(gabro): we're still using createBentoComponents instead of exporting the
 // components directly from @buildo/bento-design-system due to
 // https://github.com/storybookjs/storybook/issues/12185

@@ -5,6 +5,7 @@ import { BannerConfig } from "./Banner/Config";
 import { BreadcrumbConfig } from "./Breadcrumb/Config";
 import { ButtonConfig } from "./Button/Config";
 import { CardConfig } from "./Card/Config";
+import { ChartConfig } from "./Charts/Config";
 import { ChipConfig } from "./Chip/Config";
 import { DateFieldConfig } from "./DateField/Config";
 import { DisclosureConfig } from "./Disclosure/Config";
@@ -45,6 +46,7 @@ export type BentoConfig = {
   breadcrumb: BreadcrumbConfig;
   button: ButtonConfig;
   card: CardConfig;
+  chart: ChartConfig;
   chip: ChipConfig;
   dateField: DateFieldConfig;
   decorativeDivider: DecorativeDividerConfig;

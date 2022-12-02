@@ -107,6 +107,16 @@ const decoration = {
   transparent: "transparent",
 };
 
+export const allColors = {
+  ...vars.brandColor,
+  ...vars.textColor,
+  ...vars.foregroundColor,
+  ...vars.backgroundColor,
+  ...vars.interactiveBackgroundColor,
+  ...vars.outlineColor,
+  ...vars.dataVisualizationColor,
+};
+
 export const statusProperties = {
   color,
   decoration,
