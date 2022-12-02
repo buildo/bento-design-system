@@ -1,5 +1,6 @@
 import { DonutChart } from "../..";
 import { createComponentStories } from "../../util";
+import isChromatic from "chromatic/isChromatic";
 
 const { defaultExport, createStory } = createComponentStories({
   component: DonutChart,
@@ -7,9 +8,9 @@ const { defaultExport, createStory } = createComponentStories({
     height: 300,
     dataKey: "name",
     category: "value",
-    showLegend: true,
-    showTooltip: true,
-    showAnimation: true,
+    hideLegend: false,
+    hideTooltip: false,
+    disableAnimation: isChromatic(),
     data: [
       {
         name: "Group A",

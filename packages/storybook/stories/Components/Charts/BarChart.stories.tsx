@@ -1,11 +1,17 @@
 import { BarChart } from "../..";
 import { createComponentStories } from "../../util";
+import isChromatic from "chromatic/isChromatic";
 
 const { defaultExport, createStory } = createComponentStories({
   component: BarChart,
   args: {
     height: 300,
     categories: ["uv", "pv", "amt"],
+    hideXAxis: false,
+    hideYAxis: false,
+    hideLegend: false,
+    hideTooltip: false,
+    disableAnimation: isChromatic(),
     data: [
       {
         name: "Page A",
