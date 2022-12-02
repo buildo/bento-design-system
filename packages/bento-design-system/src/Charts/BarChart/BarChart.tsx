@@ -19,8 +19,8 @@ type Props<D extends string, C extends string> = ChartProps & {
   data: Record<D | C, unknown>[];
   categories: C[];
   dataKey: D;
-  showXAxis?: boolean;
-  showYAxis?: boolean;
+  hideXAxis?: boolean;
+  hideYAxis?: boolean;
   stacked?: boolean;
 };
 
@@ -30,11 +30,11 @@ export function BarChart<D extends string, C extends string>({
   data,
   dataKey,
   categories,
-  showXAxis = true,
-  showYAxis = true,
-  showLegend = true,
-  showAnimation = true,
-  showTooltip = true,
+  hideXAxis = false,
+  hideYAxis = false,
+  hideLegend = false,
+  disableAnimation = false,
+  hideTooltip = true,
   width = "100%",
   height,
   minWidth,
@@ -63,21 +63,21 @@ export function BarChart<D extends string, C extends string>({
       debounce={debounce}
     >
       <RechartBarChart data={data}>
-        {showXAxis && <XAxis dataKey={dataKey} />}
-        {showYAxis && <YAxis />}
-        {showTooltip && (
+        {hideXAxis && <XAxis dataKey={dataKey} />}
+        {hideYAxis && <YAxis />}
+        {hideTooltip && (
           <Tooltip
             content={tooltipContent}
             cursor={{ fill: vars.backgroundColor.backgroundSecondary }}
           />
         )}
-        {showLegend && <Legend content={legendContent} />}
+        {hideLegend && <Legend content={legendContent} />}
         {categories.map((category, i) => (
           <Bar
             key={category}
             dataKey={category}
             fill={colors[i % colors.length]}
-            isAnimationActive={showAnimation}
+            isAnimationActive={disableAnimation}
             stackId={stacked ? "stack" : undefined}
           />
         ))}

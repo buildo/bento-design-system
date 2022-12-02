@@ -18,8 +18,8 @@ type Props<D extends string, C extends string> = ChartProps & {
   data: Record<D | C, unknown>[];
   categories: C[];
   dataKey: D;
-  showXAxis?: boolean;
-  showYAxis?: boolean;
+  hideXAxis?: boolean;
+  hideYAxis?: boolean;
   lineType?:
     | "linear"
     | "natural"
@@ -37,11 +37,11 @@ export function LineChart<D extends string, C extends string>({
   data,
   dataKey,
   categories,
-  showXAxis = true,
-  showYAxis = true,
-  showLegend = true,
-  showAnimation = true,
-  showTooltip = true,
+  hideXAxis = false,
+  hideYAxis = false,
+  hideLegend = false,
+  disableAnimation = false,
+  hideTooltip = false,
   width = "100%",
   height,
   minWidth,
@@ -75,16 +75,16 @@ export function LineChart<D extends string, C extends string>({
             type={lineType}
             key={category}
             dataKey={category}
-            isAnimationActive={showAnimation}
+            isAnimationActive={disableAnimation}
             stroke={colors[i % colors.length]}
             strokeWidth={2}
             dot={false}
           />
         ))}
-        {showXAxis && <XAxis dataKey={dataKey} />}
-        {showYAxis && <YAxis />}
-        {showTooltip && <Tooltip content={tooltipContent} />}
-        {showLegend && <Legend content={legendContent} />}
+        {hideXAxis && <XAxis dataKey={dataKey} />}
+        {hideYAxis && <YAxis />}
+        {hideTooltip && <Tooltip content={tooltipContent} />}
+        {hideLegend && <Legend content={legendContent} />}
         {children}
       </RechartLineChart>
     </ResponsiveContainer>
