@@ -9,7 +9,7 @@ const { defaultExport, createStory } = createComponentStories({
     data: [
       {
         name: "Page A",
-        uz: 4000,
+        uv: 4000,
         pv: 2400,
         amt: 2400,
       },
