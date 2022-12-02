@@ -13,7 +13,19 @@ export const legendContent: Required<RechartsLegendProps>["content"] = ({ payloa
         {payload.map((entry) =>
           match(entry.type ?? "square")
             .with("plainline", "line", () => <LegendItemLine key={entry.value} {...entry} />)
-            .otherwise(() => <LegendItemArea key={entry.value} {...entry} />)
+            .with(
+              "rect",
+              "square",
+              "circle",
+              "cross",
+              "diamond",
+              "star",
+              "triangle",
+              "wye",
+              "none",
+              () => <LegendItemArea key={entry.value} {...entry} />
+            )
+            .exhaustive()
         )}
       </Inline>
     </Box>
