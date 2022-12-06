@@ -30,7 +30,7 @@ importers:
       '@react-aria/checkbox': 3.6.0
       '@react-aria/datepicker': ^3.1.2
       '@react-aria/dialog': 3.4.0
-      '@react-aria/focus': 3.9.0
+      '@react-aria/focus': 3.7.0
       '@react-aria/i18n': 3.6.1
       '@react-aria/interactions': 3.12.0
       '@react-aria/label': 3.4.2
@@ -134,7 +134,7 @@ importers:
       '@react-aria/checkbox': 3.6.0_react@18.2.0
       '@react-aria/datepicker': 3.1.2_biqbaboplfbrettd7655fr4n2y
       '@react-aria/dialog': 3.4.0_biqbaboplfbrettd7655fr4n2y
-      '@react-aria/focus': 3.9.0_react@18.2.0
+      '@react-aria/focus': 3.7.0_react@18.2.0
       '@react-aria/i18n': 3.6.1_react@18.2.0
       '@react-aria/interactions': 3.12.0_react@18.2.0
       '@react-aria/label': 3.4.2_react@18.2.0
@@ -7030,6 +7030,19 @@ packages:
       - react-dom
     dev: false
 
+  /@react-aria/focus/3.7.0_react@18.2.0:
+    resolution: {integrity: sha512-LydZSLBLEUklakM0Ogdk17F3f/Uwaj5Nl1mfcK8HhrroGT8A8XH0KjA9D6gM6JGHgxZemx0ufOgxhQZeBGQMQw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || 18
+    dependencies:
+      '@babel/runtime': 7.18.9
+      '@react-aria/interactions': 3.12.0_react@18.2.0
+      '@react-aria/utils': 3.14.0_react@18.2.0
+      '@react-types/shared': 3.15.0_react@18.2.0
+      clsx: 1.2.1
+      react: 18.2.0
+    dev: false
+
   /@react-aria/focus/3.9.0_react@18.2.0:
     resolution: {integrity: sha512-DwesjEjWjFfwAwzv9qeqkyKZNPAYmPa3UrygxzmXeKEg2JpaACGZPxRcmT2EFJFEDbX8daQDEeRGyLO49o5agg==}
     peerDependencies:
@@ -10802,10 +10815,8 @@ packages:
       ajv: 6.12.6
     dev: true
 
-  /ajv-formats/2.1.1_ajv@8.10.0:
+  /ajv-formats/2.1.1:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
-    peerDependencies:
-      ajv: ^8.0.0
     peerDependenciesMeta:
       ajv:
         optional: true
@@ -21163,12 +21174,6 @@ packages:
   /react-dev-utils/12.0.1_5h25ija3xpc2rfdjgit4izdexa:
     resolution: {integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==}
     engines: {node: '>=14'}
-    peerDependencies:
-      typescript: '>=2.7'
-      webpack: '>=4'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
     dependencies:
       '@babel/code-frame': 7.18.6
       address: 1.2.0
@@ -21199,7 +21204,9 @@ packages:
     transitivePeerDependencies:
       - eslint
       - supports-color
+      - typescript
       - vue-template-compiler
+      - webpack
 
   /react-docgen-typescript/2.2.2_typescript@4.7.4:
     resolution: {integrity: sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==}
@@ -22398,7 +22405,7 @@ packages:
     dependencies:
       '@types/json-schema': 7.0.11
       ajv: 8.10.0
-      ajv-formats: 2.1.1_ajv@8.10.0
+      ajv-formats: 2.1.1
       ajv-keywords: 5.1.0_ajv@8.10.0
 
   /scope-eval/1.0.0:
