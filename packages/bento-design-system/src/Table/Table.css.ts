@@ -13,14 +13,30 @@ export const lastLeftStickyColumn = bentoSprinkles({
   paddingRight: 8,
 });
 
-export const columnHeader = bentoSprinkles({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  boxShadow: "outlineDecorativeBottom",
-  paddingX: 16,
-  paddingY: 8,
-  height: "full",
+export const columnHeaderRecipe = strictRecipe({
+  base: bentoSprinkles({
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    boxShadow: "outlineDecorativeBottom",
+    paddingX: 16,
+    paddingY: 8,
+    height: "full",
+  }),
+  variants: {
+    firstColumn: {
+      true: bentoSprinkles({
+        paddingLeft: 24,
+        paddingRight: 16,
+      }),
+    },
+    lastColumn: {
+      true: bentoSprinkles({
+        paddingLeft: 16,
+        paddingRight: 24,
+      }),
+    },
+  },
 });
 
 export const sortIconContainer = style({
@@ -43,6 +59,12 @@ export const cellContainerRecipe = strictRecipe({
     even: {
       true: bentoSprinkles({ background: "backgroundSecondary" }),
       false: bentoSprinkles({ background: "backgroundPrimary" }),
+    },
+    firstColumn: {
+      true: bentoSprinkles({ paddingLeft: 8 }),
+    },
+    lastColumn: {
+      true: bentoSprinkles({ paddingRight: 8 }),
     },
   },
 });

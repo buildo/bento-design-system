@@ -29,7 +29,7 @@ import {
 } from "..";
 import {
   cellContainerRecipe,
-  columnHeader,
+  columnHeaderRecipe,
   lastLeftStickyColumn,
   sectionHeader,
   sectionHeaderContainer,
@@ -41,7 +41,6 @@ import { Column as ColumnType, GridWidth, Row as RowType } from "./types";
 import { useLayoutEffect, useMemo, useState, CSSProperties, useEffect } from "react";
 import { IconHelp, IconInfo } from "../Icons";
 import { match, __ } from "ts-pattern";
-import clsx from "clsx";
 import { useBentoConfig } from "../BentoConfigContext";
 
 type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
@@ -281,6 +280,8 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
         index={rowIndex}
         lastLeftSticky={index === lastStickyColumnIndex}
         style={stickyLeftColumnStyle[cell.column.id]}
+        first={index === 0}
+        last={(index + 1) % columns.length === 0}
       >
         {cell.render("Cell")}
       </CellContainer>
@@ -304,6 +305,8 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
             lastLeftSticky={index === lastStickyColumnIndex}
             stickyHeaders={stickyHeaders}
             sticky={stickyLeftColumnsIds.includes(column.id)}
+            first={index === 0}
+            last={index + 1 === columns.length}
           />
         ))
       )}
@@ -336,12 +339,16 @@ function ColumnHeader<D extends Record<string, unknown>>({
   lastLeftSticky,
   stickyHeaders,
   sticky,
+  first,
+  last,
 }: {
   column: ColumnInstance<D>;
   style: CSSProperties;
   lastLeftSticky: boolean;
   stickyHeaders?: boolean;
   sticky: boolean;
+  first: boolean;
+  last: boolean;
 }) {
   const config = useBentoConfig().table;
 
@@ -387,11 +394,11 @@ function ColumnHeader<D extends Record<string, unknown>>({
 
   return (
     <Box
-      className={clsx(lastLeftSticky && lastLeftStickyColumn, stickyHeaders && stickyColumnHeader)}
+      className={[lastLeftSticky && lastLeftStickyColumn, stickyHeaders && stickyColumnHeader]}
       style={{ ...style, zIndex: sticky ? zIndexes.leftStickyHeader : zIndexes.header }}
     >
       <Box
-        className={columnHeader}
+        className={columnHeaderRecipe({ firstColumn: first, lastColumn: last })}
         background={config.headerBackgroundColor}
         color={config.headerForegroundColor}
         {...column.getHeaderProps(column.getSortByToggleProps())}
@@ -469,16 +476,27 @@ function CellContainer({
   index,
   style,
   lastLeftSticky,
+  first,
+  last,
   ...props
 }: {
   children: any;
   index: number;
   style: CSSProperties;
   lastLeftSticky: boolean;
+  first: boolean;
+  last: boolean;
 } & TableCellProps) {
   return (
     <Box className={lastLeftSticky && lastLeftStickyColumn} style={style}>
-      <Box className={cellContainerRecipe({ even: index % 2 === 0 })} {...props}>
+      <Box
+        className={cellContainerRecipe({
+          even: index % 2 === 0,
+          firstColumn: first,
+          lastColumn: last,
+        })}
+        {...props}
+      >
         {children}
       </Box>
     </Box>
