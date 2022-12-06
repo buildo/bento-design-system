@@ -31,9 +31,11 @@ export function ButtonCell({
   options: Partial<Pick<ButtonProps, "size">>;
 }) {
   return (
-    <Inline space={0} align={align} alignY="center">
-      <Button size={size ?? "medium"} {...buttonProps} />
-    </Inline>
+    <Inset space={8}>
+      <Inline space={0} align={align} alignY="center">
+        <Button size={size ?? "medium"} {...buttonProps} />
+      </Inline>
+    </Inset>
   );
 }
 
@@ -45,9 +47,11 @@ export function ButtonLinkCell({
   options: Partial<Pick<ButtonLinkProps, "size">>;
 }) {
   return (
-    <Inline space={0} align={align}>
-      <ButtonLink size={size ?? "medium"} {...buttonProps} />
-    </Inline>
+    <Inset space={8}>
+      <Inline space={0} align={align}>
+        <ButtonLink size={size ?? "medium"} {...buttonProps} />
+      </Inline>
+    </Inset>
   );
 }
 
@@ -168,13 +172,15 @@ export function IconButtonCell({
   options: Partial<Pick<IconButtonProps, "size" | "kind" | "hierarchy">>;
 }) {
   return (
-    <Inline space={0} align={align} alignY="center">
-      <IconButton
-        kind={kind ?? "transparent"}
-        hierarchy={hierarchy ?? "primary"}
-        size={size ?? 16}
-        {...iconButtonProps}
-      />
-    </Inline>
+    <Inset space={16}>
+      <Inline space={0} align={align} alignY="center">
+        <IconButton
+          kind={kind ?? "transparent"}
+          hierarchy={hierarchy ?? "primary"}
+          size={size ?? 16}
+          {...iconButtonProps}
+        />
+      </Inline>
+    </Inset>
   );
 }
