@@ -21,7 +21,7 @@ importers:
       '@datepicker-react/hooks': ^2.8.4
       '@dessert-box/core': 0.2.0
       '@floating-ui/core': 1.0.2
-      '@floating-ui/dom': 1.0.7
+      '@floating-ui/dom': 1.0.9
       '@floating-ui/react-dom': 1.0.1
       '@fontsource/ibm-plex-sans': ^4.5.11
       '@internationalized/date': ^3.0.0
@@ -125,7 +125,7 @@ importers:
       '@datepicker-react/hooks': 2.8.4_react@18.2.0
       '@dessert-box/core': 0.2.0
       '@floating-ui/core': 1.0.2
-      '@floating-ui/dom': 1.0.7
+      '@floating-ui/dom': 1.0.9
       '@floating-ui/react-dom': 1.0.1_biqbaboplfbrettd7655fr4n2y
       '@fontsource/ibm-plex-sans': 4.5.11
       '@internationalized/date': 3.0.0
@@ -6379,10 +6379,14 @@ packages:
     resolution: {integrity: sha512-Skfy0YS3NJ5nV9us0uuPN0HDk1Q4edljaOhRBJGDWs9EBa7ZVMYBHRFlhLvvmwEoaIM9BlH6QJFn9/uZg0bACg==}
     dev: false
 
-  /@floating-ui/dom/1.0.7:
-    resolution: {integrity: sha512-6RsqvCYe0AYWtsGvuWqCm7mZytnXAZCjWtsWu1Kg8dI3INvj/DbKlDsZO+mKSaQdPT12uxIW9W2dAWJkPx4Y5g==}
+  /@floating-ui/core/1.0.4:
+    resolution: {integrity: sha512-FPFLbg2b06MIw1dqk2SOEMAMX3xlrreGjcui5OTxfBDtaKTmh0kioOVjT8gcfl58juawL/yF+S+gnq8aUYQx/Q==}
+    dev: false
+
+  /@floating-ui/dom/1.0.9:
+    resolution: {integrity: sha512-nF9P6/BoARdt+h+CdUW3td4EUVngeDONCGuzRgnZveRZiJETx63cxhinE0JaPPC2tbcdTY9IGZocS5/7ag3xRg==}
     dependencies:
-      '@floating-ui/core': 1.0.2
+      '@floating-ui/core': 1.0.4
     dev: false
 
   /@floating-ui/react-dom/1.0.1_biqbaboplfbrettd7655fr4n2y:
@@ -6391,7 +6395,7 @@ packages:
       react: '>=16.8.0 || 18'
       react-dom: '>=16.8.0 || 18'
     dependencies:
-      '@floating-ui/dom': 1.0.7
+      '@floating-ui/dom': 1.0.9
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
@@ -10815,8 +10819,10 @@ packages:
       ajv: 6.12.6
     dev: true
 
-  /ajv-formats/2.1.1:
+  /ajv-formats/2.1.1_ajv@8.10.0:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependencies:
+      ajv: ^8.0.0
     peerDependenciesMeta:
       ajv:
         optional: true
@@ -21174,6 +21180,12 @@ packages:
   /react-dev-utils/12.0.1_5h25ija3xpc2rfdjgit4izdexa:
     resolution: {integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==}
     engines: {node: '>=14'}
+    peerDependencies:
+      typescript: '>=2.7'
+      webpack: '>=4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dependencies:
       '@babel/code-frame': 7.18.6
       address: 1.2.0
@@ -21204,9 +21216,7 @@ packages:
     transitivePeerDependencies:
       - eslint
       - supports-color
-      - typescript
       - vue-template-compiler
-      - webpack
 
   /react-docgen-typescript/2.2.2_typescript@4.7.4:
     resolution: {integrity: sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==}
@@ -22405,7 +22415,7 @@ packages:
     dependencies:
       '@types/json-schema': 7.0.11
       ajv: 8.10.0
-      ajv-formats: 2.1.1
+      ajv-formats: 2.1.1_ajv@8.10.0
       ajv-keywords: 5.1.0_ajv@8.10.0
 
   /scope-eval/1.0.0:
