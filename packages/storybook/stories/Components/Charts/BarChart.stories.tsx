@@ -63,3 +63,7 @@ const { defaultExport, createStory } = createComponentStories({
 export default defaultExport;
 
 export const barChart = createStory({});
+
+export const barChartWithYAxisFormatter = createStory({
+  yAxisValueFormatter: (value: number | string) => `$${value.toString()}`,
+});

@@ -3,15 +3,21 @@ import { Box } from "../../Box/Box";
 import { Column, Columns } from "../../Layout/Columns";
 import { Stack } from "../../Layout/Stack";
 import { Body } from "../../Typography/Body/Body";
+import { NameType, ValueFormatter, ValueType } from "../utils";
 
-type ValueType = number | string;
-type NameType = number | string;
+type TooltipProps<TValue extends ValueType, TName extends NameType> = RechartsTooltipProps<
+  TValue,
+  TName
+> & {
+  valueFormatter?: ValueFormatter;
+};
 
-export const tooltipContent = <TValue extends ValueType, TName extends NameType>({
+export function TooltipContent<TValue extends ValueType, TName extends NameType>({
   active,
   payload = [],
   label,
-}: RechartsTooltipProps<TValue, TName>) => {
+  valueFormatter,
+}: TooltipProps<TValue, TName>) {
   if (!active || payload.length === 0) {
     return null;
   }
@@ -33,11 +39,13 @@ export const tooltipContent = <TValue extends ValueType, TName extends NameType>
               <Column width="content">
                 <Box height={16} width={16} borderRadius={4} style={{ backgroundColor: color }} />
               </Column>
-              <Body size="small">{`${name}: ${value}`}</Body>
+              <Body size="small">{`${name}: ${
+                valueFormatter && value !== undefined ? valueFormatter(value) : value
+              }`}</Body>
             </Columns>
           ))}
         </Stack>
       </Stack>
     </Box>
   );
-};
+}
