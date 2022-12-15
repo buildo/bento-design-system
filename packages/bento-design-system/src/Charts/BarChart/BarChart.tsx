@@ -13,7 +13,7 @@ import { allColors } from "../../util/atoms";
 import { vars } from "../../vars.css";
 import { ChartProps } from "../ChartProps";
 import { legendContent } from "../Legend/Legend";
-import { tooltipContent } from "../Tooltip/Tooltip";
+import { tooltipContent, tooltipStyle } from "../Tooltip/Tooltip";
 import { ValueFormatter } from "../ValueFormatter";
 
 type Props<D extends string, C extends string> = ChartProps & {
@@ -72,6 +72,7 @@ export function BarChart<D extends string, C extends string>({
         {!hideYAxis && <YAxis tickFormatter={yAxisValueFormatter} />}
         {!hideTooltip && (
           <Tooltip
+            wrapperStyle={tooltipStyle}
             content={tooltipContent}
             cursor={{ fill: vars.backgroundColor.backgroundSecondary }}
             formatter={yAxisValueFormatter}

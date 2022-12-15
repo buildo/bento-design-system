@@ -1,5 +1,7 @@
 import { TooltipProps as RechartsTooltipProps } from "recharts";
+import { useBentoConfig } from "../../BentoConfigContext";
 import { Box } from "../../Box/Box";
+import { cardRecipe } from "../../Card/Card.css";
 import { Column, Columns } from "../../Layout/Columns";
 import { Stack } from "../../Layout/Stack";
 import { Body } from "../../Typography/Body/Body";
@@ -14,14 +16,13 @@ export const tooltipContent = <TValue extends ValueType, TName extends NameType>
   if (!active || payload.length === 0) {
     return null;
   }
+
+  const cardConfig = useBentoConfig().card;
   return (
     <Box
+      className={cardRecipe({ elevation: "small" })}
       padding={16}
-      background="backgroundPrimary"
-      borderWidth={1}
-      borderStyle="solid"
-      borderColor="outlineContainer"
-      borderRadius={4}
+      borderRadius={cardConfig.defaultRadius}
       tabIndex={-1}
     >
       <Stack space={8}>
@@ -49,3 +50,9 @@ export const tooltipContent = <TValue extends ValueType, TName extends NameType>
     </Box>
   );
 };
+
+//note(fede): the internal tooltip wrapper of recharts gets automatically focused
+//on every render, which happen on mouse movement. focus is needed for accessibility,
+//in order to allow users to dismiss the tooltip with the ESC key, but is also quite ugly,
+//so we hide it.
+export const tooltipStyle = { outline: "none" };

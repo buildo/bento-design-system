@@ -5,8 +5,8 @@ import { ChartDataColor } from "./Config";
 export type ChartProps = {
   dataColors?: ChartDataColor[];
   disableAnimation?: boolean;
-  hideLegend?: boolean;
   hideTooltip?: boolean;
+  hideLegend?: boolean;
   children?: Children;
 } & Pick<
   ResponsiveContainerProps,

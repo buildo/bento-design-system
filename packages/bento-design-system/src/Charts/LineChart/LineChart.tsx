@@ -12,7 +12,7 @@ import { bodyRecipe } from "../../Typography/Body/Body.css";
 import { allColors } from "../../util/atoms";
 import { ChartProps } from "../ChartProps";
 import { legendContent } from "../Legend/Legend";
-import { tooltipContent } from "../Tooltip/Tooltip";
+import { tooltipContent, tooltipStyle } from "../Tooltip/Tooltip";
 import { ValueFormatter } from "../ValueFormatter";
 
 type Props<D extends string, C extends string> = ChartProps & {
@@ -88,7 +88,13 @@ export function LineChart<D extends string, C extends string>({
         ))}
         {!hideXAxis && <XAxis dataKey={dataKey} tickFormatter={xAxisValueFormatter} />}
         {!hideYAxis && <YAxis tickFormatter={yAxisValueFormatter} />}
-        {!hideTooltip && <Tooltip content={tooltipContent} formatter={yAxisValueFormatter} />}
+        {!hideTooltip && (
+          <Tooltip
+            wrapperStyle={tooltipStyle}
+            content={tooltipContent}
+            formatter={yAxisValueFormatter}
+          />
+        )}
         {!hideLegend && <Legend content={legendContent} />}
         {children}
       </RechartLineChart>
