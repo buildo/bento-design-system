@@ -14,7 +14,7 @@ import { useOverlay, usePreventScroll, useModal } from "@react-aria/overlays";
 import { useDialog } from "@react-aria/dialog";
 import { FocusScope } from "@react-aria/focus";
 import { modalRecipe, underlay, modalBody } from "./Modal.css";
-import useKeyPressEvent from "react-use/lib/useKeyPressEvent";
+import { useKeyPressEvent } from "react-use";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButton } from "../IconButton/IconButton";
 import { createPortal } from "../util/createPortal";

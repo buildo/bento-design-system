@@ -7,9 +7,21 @@
     "lib"
   ],
   "sideEffects": [
-    "*.css",
-    "*.css.ts"
+    "global.css.ts",
+    "reset.css.ts",
+    "defaultTheme.css.ts"
   ],
+  "exports": {
+    ".": {
+      "node": "./lib/index.cjs",
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs"
+    },
+    "./index.css": "./lib/index.css",
+    "./defaultTheme.css": "./lib/defaultTheme.css"
+  },
+  "types": "lib/index.d.ts",
+  "type": "module",
   "scripts": {
     "build": "tsup --minify --clean",
     "prepublishOnly": "pnpm build",
