@@ -1,5 +1,7 @@
+import { match, __, not } from "ts-pattern";
 import { useBentoConfig } from "../BentoConfigContext";
 import { IconButton } from "../IconButton/IconButton";
+import { Columns } from "../Layout/Columns";
 import { TextField, TextFieldProps } from "../TextField/TextField";
 import { useToast } from "../Toast/useToast";
 import { LocalizedString } from "../util/ConfigurableTypes";
@@ -28,8 +30,9 @@ type Props = Omit<
 export function ReadOnlyField(props: Props) {
   const { showToast } = useToast();
   const config = useBentoConfig().readOnlyField;
+  const inputConfig = useBentoConfig().input;
 
-  const rightAccessory = props.withCopyButton ? (
+  const copyButtonAccessory = props.withCopyButton ? (
     <IconButton
       icon={config.copyIcon}
       onPress={async () => {
@@ -52,6 +55,18 @@ export function ReadOnlyField(props: Props) {
       size={config.copyIconSize}
     />
   ) : undefined;
+
+  const rightAccessory = match([props.rightAccessory, copyButtonAccessory] as const)
+    .with([__.nullish, __.nullish], () => undefined)
+    .with([__.nullish, not(__.nullish)], () => copyButtonAccessory)
+    .with([not(__.nullish), __.nullish], () => props.rightAccessory)
+    .with([not(__.nullish), not(__.nullish)], () => (
+      <Columns space={inputConfig.paddingX} alignY="center">
+        {props.rightAccessory}
+        {copyButtonAccessory}
+      </Columns>
+    ))
+    .exhaustive();
 
   return (
     <TextField

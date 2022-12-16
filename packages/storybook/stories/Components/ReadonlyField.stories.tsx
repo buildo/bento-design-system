@@ -27,3 +27,10 @@ export const WithCopyButton = createStory({
   copyButtonLabel: "Copy to clipboard",
   copySuccessMessage: "Copied to clipboard",
 });
+
+export const WithCopyButtonAndRightAccessory = createStory({
+  withCopyButton: true,
+  copyButtonLabel: "Copy to clipboard",
+  copySuccessMessage: "Copied to clipboard",
+  rightAccessory: "👍",
+});
