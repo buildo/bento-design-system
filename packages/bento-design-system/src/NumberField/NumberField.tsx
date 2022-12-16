@@ -2,7 +2,7 @@ import { useLocale } from "@react-aria/i18n";
 import { useNumberField } from "@react-aria/numberfield";
 import { NumberFieldStateOptions, useNumberFieldState } from "@react-stately/numberfield";
 import { useRef } from "react";
-import { LocalizedString } from "..";
+import { Children, LocalizedString } from "..";
 import { FieldProps } from "../Field/FieldProps";
 import { FormatProps } from "../NumberInput/FormatProps";
 import { useFormatOptions } from "../NumberInput/formatOptions";
@@ -12,6 +12,7 @@ import { NumberInput } from "../NumberInput/NumberInput";
 type Props = FieldProps<number | undefined, number> & {
   placeholder: LocalizedString;
   isReadOnly?: boolean;
+  rightAccessory?: Children;
 } & FormatProps &
   Pick<NumberFieldStateOptions, "minValue" | "maxValue" | "step">;
 

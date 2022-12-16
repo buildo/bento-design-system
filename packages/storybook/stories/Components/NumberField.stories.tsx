@@ -47,3 +47,13 @@ export const MinMaxAndStep = createControlledStory(5, {
   maxValue: 10,
   step: 0.5,
 });
+
+export const RightAccessory = createControlledStory(0, {
+  rightAccessory: "👍",
+});
+
+export const KindAndRightAccessory = createControlledStory(0, {
+  rightAccessory: "💰",
+  kind: "currency",
+  currency: "EUR",
+});

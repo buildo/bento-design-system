@@ -1,11 +1,12 @@
 import { useLocale } from "@react-aria/i18n";
 import { useMemo } from "react";
 import useDimensions from "react-cool-dimensions";
-import { Label, LocalizedString, Box } from "..";
+import { Label, LocalizedString, Box, Children, Columns } from "..";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { FormatProps } from "./FormatProps";
 import { useBentoConfig } from "../BentoConfigContext";
+import { match, not, __ } from "ts-pattern";
 
 type Props = {
   inputProps: React.InputHTMLAttributes<HTMLInputElement>;
@@ -14,6 +15,7 @@ type Props = {
   validationState: "valid" | "invalid";
   disabled?: boolean;
   isReadOnly?: boolean;
+  rightAccessory?: Children;
 } & FormatProps;
 
 export function NumberInput(props: Props) {
@@ -47,17 +49,37 @@ export function NumberInput(props: Props) {
     props.kind,
   ]);
 
-  const rightAccessoryContent = ((): LocalizedString | undefined => {
+  const rightAccessoryContent = ((): Children | undefined => {
     switch (props.kind) {
       case "currency":
-        return currencyCode;
+        return (
+          <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
+            {currencyCode}
+          </Label>
+        );
       case "percentage":
-        return "%";
+        return (
+          <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
+            %
+          </Label>
+        );
       case "decimal":
       case undefined:
         return undefined;
     }
   })();
+
+  const rightAccessory = match([props.rightAccessory, rightAccessoryContent] as const)
+    .with([__.nullish, __.nullish], () => undefined)
+    .with([__.nullish, not(__.nullish)], () => rightAccessoryContent)
+    .with([not(__.nullish), __.nullish], () => props.rightAccessory)
+    .with([not(__.nullish), not(__.nullish)], () => (
+      <Columns space={config.paddingX} alignY="center">
+        {props.rightAccessory}
+        {rightAccessoryContent}
+      </Columns>
+    ))
+    .exhaustive();
 
   return (
     <Box position="relative" display="flex">
@@ -84,7 +106,7 @@ export function NumberInput(props: Props) {
         display="flex"
         style={{ paddingRight: rightAccessoryWidth, flexGrow: 1 }}
       />
-      {rightAccessoryContent && (
+      {rightAccessory && (
         <Box
           ref={rightAccessoryRef}
           position="absolute"
@@ -96,9 +118,7 @@ export function NumberInput(props: Props) {
           bottom={0}
           right={0}
         >
-          <Label size="large" color={props.disabled ? "disabled" : "secondary"}>
-            {rightAccessoryContent}
-          </Label>
+          {rightAccessory}
         </Box>
       )}
     </Box>
