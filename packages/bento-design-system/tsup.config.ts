@@ -6,7 +6,5 @@ export default defineConfig({
   outDir: "lib",
   esbuildPlugins: [vanillaExtractPlugin()],
   dts: true,
-  // See https://esbuild.github.io/content-types/#auto-import-for-jsx
-  inject: ["./jsxShim.ts"],
   noExternal: ["@fontsource"],
 });
