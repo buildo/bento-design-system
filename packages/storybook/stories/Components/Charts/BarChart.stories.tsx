@@ -64,6 +64,10 @@ export default defaultExport;
 
 export const barChart = createStory({});
 
+export const barChartWithXAxisFormatter = createStory({
+  xAxisValueFormatter: (value: number | string) => `${value.toString().replace("Page ", "")}`,
+});
+
 export const barChartWithYAxisFormatter = createStory({
   yAxisValueFormatter: (value: number | string) => `$${value.toString()}`,
 });

@@ -63,3 +63,11 @@ const { defaultExport, createStory } = createComponentStories({
 export default defaultExport;
 
 export const lineChart = createStory({});
+
+export const lineChartWithXAxisFormatter = createStory({
+  xAxisValueFormatter: (value: number | string) => `${value.toString().replace("Page ", "")}`,
+});
+
+export const lineChartWithYAxisFormatter = createStory({
+  yAxisValueFormatter: (value: number | string) => `$${value}`,
+});
