@@ -3,21 +3,14 @@ import { Box } from "../../Box/Box";
 import { Column, Columns } from "../../Layout/Columns";
 import { Stack } from "../../Layout/Stack";
 import { Body } from "../../Typography/Body/Body";
-import { NameType, ValueFormatter, ValueType } from "../utils";
+import { NameType, ValueType } from "../ValueFormatter";
 
-type TooltipProps<TValue extends ValueType, TName extends NameType> = RechartsTooltipProps<
-  TValue,
-  TName
-> & {
-  valueFormatter?: ValueFormatter;
-};
-
-export function TooltipContent<TValue extends ValueType, TName extends NameType>({
+export const tooltipContent = <TValue extends ValueType, TName extends NameType>({
   active,
   payload = [],
   label,
-  valueFormatter,
-}: TooltipProps<TValue, TName>) {
+  formatter,
+}: RechartsTooltipProps<TValue, TName>) => {
   if (!active || payload.length === 0) {
     return null;
   }
@@ -34,18 +27,25 @@ export function TooltipContent<TValue extends ValueType, TName extends NameType>
       <Stack space={8}>
         <Body size="medium">{label}</Body>
         <Stack space={4}>
-          {payload.map(({ value, name, color }) => (
-            <Columns key={name} space={4} alignY="center">
-              <Column width="content">
-                <Box height={16} width={16} borderRadius={4} style={{ backgroundColor: color }} />
-              </Column>
-              <Body size="small">{`${name}: ${
-                valueFormatter && value !== undefined ? valueFormatter(value) : value
-              }`}</Body>
-            </Columns>
-          ))}
+          {payload.map(({ value, name, color, payload: item }, index) => {
+            const formatterResult =
+              formatter && name && value ? formatter(value, name, item, index, payload) : value;
+            const formattedText = Array.isArray(formatterResult)
+              ? `${formatterResult[1]}: ${formatterResult[0]}`
+              : typeof formatterResult === "string" || typeof formatterResult === "number"
+              ? `${name}: ${formatterResult}`
+              : `${name}: ${value}`;
+            return (
+              <Columns key={name} space={4} alignY="center">
+                <Column width="content">
+                  <Box height={16} width={16} borderRadius={4} style={{ backgroundColor: color }} />
+                </Column>
+                <Body size="small">{formattedText}</Body>
+              </Columns>
+            );
+          })}
         </Stack>
       </Stack>
     </Box>
   );
-}
+};

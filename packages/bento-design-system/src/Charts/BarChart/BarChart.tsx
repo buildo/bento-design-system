@@ -13,8 +13,8 @@ import { allColors } from "../../util/atoms";
 import { vars } from "../../vars.css";
 import { ChartProps } from "../ChartProps";
 import { legendContent } from "../Legend/Legend";
-import { TooltipContent } from "../Tooltip/Tooltip";
-import { ValueFormatter, defaultValueFormatter, ValueType, NameType } from "../utils";
+import { tooltipContent } from "../Tooltip/Tooltip";
+import { ValueFormatter } from "../ValueFormatter";
 
 type Props<D extends string, C extends string> = ChartProps & {
   data: Record<D | C, unknown>[];
@@ -48,8 +48,8 @@ export function BarChart<D extends string, C extends string>({
   stacked = false,
   dataColors,
   children,
-  xAxisValueFormatter = defaultValueFormatter,
-  yAxisValueFormatter = defaultValueFormatter,
+  xAxisValueFormatter,
+  yAxisValueFormatter,
 }: Props<D, C>) {
   const config = useBentoConfig();
   const colors = (dataColors ?? config.chart.defaultDataColors).map(
@@ -71,16 +71,10 @@ export function BarChart<D extends string, C extends string>({
         {!hideXAxis && <XAxis dataKey={dataKey} tickFormatter={xAxisValueFormatter} />}
         {!hideYAxis && <YAxis tickFormatter={yAxisValueFormatter} />}
         {!hideTooltip && (
-          <Tooltip<ValueType, NameType>
-            content={({ active, payload, label }) => (
-              <TooltipContent
-                active={active}
-                payload={payload}
-                label={label}
-                valueFormatter={yAxisValueFormatter}
-              />
-            )}
+          <Tooltip
+            content={tooltipContent}
             cursor={{ fill: vars.backgroundColor.backgroundSecondary }}
+            formatter={yAxisValueFormatter}
           />
         )}
         {!hideLegend && <Legend content={legendContent} />}
