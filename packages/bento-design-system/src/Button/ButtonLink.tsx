@@ -28,6 +28,7 @@ export function ButtonLink({
   isDisabled,
   label,
   active = false,
+  icon,
   ...props
 }: Props) {
   const config = useBentoConfig().button;
@@ -59,9 +60,9 @@ export function ButtonLink({
       borderRadius={config.radius}
     >
       <Columns space={config.internalSpacing} alignY="center">
-        {props.icon && (
+        {icon && (
           <Column width="content">
-            {props.icon({
+            {icon({
               size: config.iconSize[size],
               color: "inherit",
             })}
