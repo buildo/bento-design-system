@@ -11,7 +11,7 @@ import { bodyRecipe } from "../../Typography/Body/Body.css";
 import { allColors } from "../../util/atoms";
 import { ChartProps } from "../ChartProps";
 import { legendContent } from "../Legend/Legend";
-import { tooltipContent, tooltipStyle } from "../Tooltip/Tooltip";
+import { useTooltip } from "../Tooltip/Tooltip";
 import { ValueFormatter } from "../ValueFormatter";
 
 type Props<D extends string, C extends string> = ChartProps & {
@@ -42,6 +42,7 @@ export function DonutChart<D extends string, C extends string>({
   tooltipFormatter,
 }: Props<D, C>) {
   const config = useBentoConfig();
+  const { tooltipContent, tooltipStyle } = useTooltip();
   const colors = (dataColors ?? config.chart.defaultDataColors).map(
     (colorName) => allColors[colorName]
   );
