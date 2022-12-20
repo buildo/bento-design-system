@@ -3,7 +3,6 @@ import {
   BarChart as RechartBarChart,
   Legend,
   ResponsiveContainer,
-  Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
@@ -52,7 +51,10 @@ export function BarChart<D extends string, C extends string>({
   yAxisValueFormatter,
 }: Props<D, C>) {
   const config = useBentoConfig();
-  const { tooltipContent, tooltipStyle } = useTooltip();
+  const tooltip = useTooltip({
+    cursor: { fill: vars.backgroundColor.backgroundSecondary },
+    formatter: yAxisValueFormatter,
+  });
   const colors = (dataColors ?? config.chart.defaultDataColors).map(
     (colorName) => allColors[colorName]
   );
@@ -71,14 +73,7 @@ export function BarChart<D extends string, C extends string>({
       <RechartBarChart data={data}>
         {!hideXAxis && <XAxis dataKey={dataKey} tickFormatter={xAxisValueFormatter} />}
         {!hideYAxis && <YAxis tickFormatter={yAxisValueFormatter} />}
-        {!hideTooltip && (
-          <Tooltip
-            wrapperStyle={tooltipStyle}
-            content={tooltipContent}
-            cursor={{ fill: vars.backgroundColor.backgroundSecondary }}
-            formatter={yAxisValueFormatter}
-          />
-        )}
+        {!hideTooltip && tooltip}
         {!hideLegend && <Legend content={legendContent} />}
         {categories.map((category, i) => (
           <Bar

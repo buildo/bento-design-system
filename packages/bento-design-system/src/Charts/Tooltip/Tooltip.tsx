@@ -1,4 +1,4 @@
-import { TooltipProps as RechartsTooltipProps } from "recharts";
+import { Tooltip, TooltipProps } from "recharts";
 import { useBentoConfig } from "../../BentoConfigContext";
 import { Box } from "../../Box/Box";
 import { cardRecipe } from "../../Card/Card.css";
@@ -7,15 +7,17 @@ import { Stack } from "../../Layout/Stack";
 import { Body } from "../../Typography/Body/Body";
 import { NameType, ValueType } from "../ValueFormatter";
 
-export const useTooltip = () => {
+export const useTooltip = <TValue extends ValueType, TName extends NameType>(
+  options: Omit<TooltipProps<TValue, TName>, "wrapperStyle" | "content">
+) => {
   const cardConfig = useBentoConfig().card;
 
-  const tooltipContent = <TValue extends ValueType, TName extends NameType>({
+  const tooltipContent = ({
     active,
     payload = [],
     label,
     formatter,
-  }: RechartsTooltipProps<TValue, TName>) => {
+  }: TooltipProps<TValue, TName>) => {
     if (!active || payload.length === 0) {
       return null;
     }
@@ -64,5 +66,5 @@ export const useTooltip = () => {
   //so we hide it.
   const tooltipStyle = { outline: "none" };
 
-  return { tooltipContent, tooltipStyle };
+  return <Tooltip wrapperStyle={tooltipStyle} content={tooltipContent} {...options} />;
 };
