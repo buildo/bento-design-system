@@ -6,7 +6,6 @@ const { defaultExport, createStory } = createComponentStories({
   component: LineChart,
   args: {
     height: 300,
-    categories: ["uv", "pv", "amt"],
     hideXAxis: false,
     hideYAxis: false,
     hideLegend: false,
@@ -62,12 +61,20 @@ const { defaultExport, createStory } = createComponentStories({
 
 export default defaultExport;
 
-export const lineChart = createStory({});
+export const lineChart = createStory({
+  categories: ["uv", "pv", "amt"],
+});
 
 export const lineChartWithXAxisFormatter = createStory({
+  categories: ["uv", "pv", "amt"],
   xAxisValueFormatter: (value: number | string) => `${value.toString().replace("Page ", "")}`,
 });
 
 export const lineChartWithYAxisFormatter = createStory({
+  categories: ["uv", "pv", "amt"],
   yAxisValueFormatter: (value: number | string) => `$${value}`,
+});
+
+export const biaxialLineChart = createStory({
+  categories: { left: ["uv", "pv"], right: ["amt"] },
 });

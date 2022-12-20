@@ -16,7 +16,7 @@ import { ValueFormatter } from "../ValueFormatter";
 
 type Props<D extends string, C extends string> = ChartProps & {
   data: Record<D | C, unknown>[];
-  categories: C[];
+  categories: C[] | { left: C[]; right: C[] };
   dataKey: D;
   hideXAxis?: boolean;
   hideYAxis?: boolean;
@@ -63,6 +63,30 @@ export function LineChart<D extends string, C extends string>({
     (colorName) => allColors[colorName]
   );
 
+  const makeLine = (yAxisId: "left-axis" | "right-axis") => (category: C, i: number) =>
+    (
+      <Line
+        type={lineType}
+        key={category}
+        dataKey={category}
+        yAxisId={yAxisId}
+        isAnimationActive={!disableAnimation}
+        stroke={colors[i % colors.length]}
+        strokeWidth={2}
+        dot={false}
+      />
+    );
+
+  const isBiaxial = !Array.isArray(categories);
+  const lines = isBiaxial ? (
+    <>
+      {categories.left.map(makeLine("left-axis"))}
+      {categories.right.map(makeLine("right-axis"))}
+    </>
+  ) : (
+    categories.map(makeLine("left-axis"))
+  );
+
   return (
     <ResponsiveContainer
       className={bodyRecipe({ size: "medium", weight: "default", color: "default" })}
@@ -75,19 +99,12 @@ export function LineChart<D extends string, C extends string>({
       debounce={debounce}
     >
       <RechartLineChart data={data}>
-        {categories.map((category, i) => (
-          <Line
-            type={lineType}
-            key={category}
-            dataKey={category}
-            isAnimationActive={!disableAnimation}
-            stroke={colors[i % colors.length]}
-            strokeWidth={2}
-            dot={false}
-          />
-        ))}
+        {lines}
         {!hideXAxis && <XAxis dataKey={dataKey} tickFormatter={xAxisValueFormatter} />}
-        {!hideYAxis && <YAxis tickFormatter={yAxisValueFormatter} />}
+        {!hideYAxis && <YAxis yAxisId="left-axis" tickFormatter={yAxisValueFormatter} />}
+        {!hideYAxis && isBiaxial && (
+          <YAxis yAxisId="right-axis" orientation="right" tickFormatter={yAxisValueFormatter} />
+        )}
         {!hideTooltip && tooltip}
         {!hideLegend && <Legend content={legendContent} />}
         {children}
