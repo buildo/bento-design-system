@@ -14,6 +14,7 @@ import { vars } from "../../vars.css";
 import { ChartProps } from "../ChartProps";
 import { legendContent } from "../Legend/Legend";
 import { tooltipContent } from "../Tooltip/Tooltip";
+import { ValueFormatter } from "../ValueFormatter";
 
 type Props<D extends string, C extends string> = ChartProps & {
   data: Record<D | C, unknown>[];
@@ -22,6 +23,8 @@ type Props<D extends string, C extends string> = ChartProps & {
   hideXAxis?: boolean;
   hideYAxis?: boolean;
   stacked?: boolean;
+  xAxisValueFormatter?: ValueFormatter;
+  yAxisValueFormatter?: ValueFormatter;
 };
 
 export type { Props as BarChartProps };
@@ -45,6 +48,8 @@ export function BarChart<D extends string, C extends string>({
   stacked = false,
   dataColors,
   children,
+  xAxisValueFormatter,
+  yAxisValueFormatter,
 }: Props<D, C>) {
   const config = useBentoConfig();
   const colors = (dataColors ?? config.chart.defaultDataColors).map(
@@ -63,12 +68,13 @@ export function BarChart<D extends string, C extends string>({
       debounce={debounce}
     >
       <RechartBarChart data={data}>
-        {!hideXAxis && <XAxis dataKey={dataKey} />}
-        {!hideYAxis && <YAxis />}
+        {!hideXAxis && <XAxis dataKey={dataKey} tickFormatter={xAxisValueFormatter} />}
+        {!hideYAxis && <YAxis tickFormatter={yAxisValueFormatter} />}
         {!hideTooltip && (
           <Tooltip
             content={tooltipContent}
             cursor={{ fill: vars.backgroundColor.backgroundSecondary }}
+            formatter={yAxisValueFormatter}
           />
         )}
         {!hideLegend && <Legend content={legendContent} />}

@@ -43,3 +43,7 @@ const { defaultExport, createStory } = createComponentStories({
 export default defaultExport;
 
 export const donutChart = createStory({});
+
+export const donutChartWithTooltipFormatter = createStory({
+  tooltipFormatter: (value: number | string) => `$${value}`,
+});

@@ -12,11 +12,13 @@ import { allColors } from "../../util/atoms";
 import { ChartProps } from "../ChartProps";
 import { legendContent } from "../Legend/Legend";
 import { tooltipContent } from "../Tooltip/Tooltip";
+import { ValueFormatter } from "../ValueFormatter";
 
 type Props<D extends string, C extends string> = ChartProps & {
   data: Record<C | D, unknown>[];
   category: C;
   dataKey: D;
+  tooltipFormatter?: ValueFormatter;
 };
 
 export type { Props as DonutChartProps };
@@ -37,6 +39,7 @@ export function DonutChart<D extends string, C extends string>({
   debounce,
   dataColors,
   children,
+  tooltipFormatter,
 }: Props<D, C>) {
   const config = useBentoConfig();
   const colors = (dataColors ?? config.chart.defaultDataColors).map(
@@ -74,7 +77,7 @@ export function DonutChart<D extends string, C extends string>({
             <Cell key={`cell-${i}`} fill={colors[i % colors.length]} />
           ))}
         </Pie>
-        {!hideTooltip && <Tooltip content={tooltipContent} />}
+        {!hideTooltip && <Tooltip content={tooltipContent} formatter={tooltipFormatter} />}
         {!hideLegend && <Legend content={legendContent} />}
         {children}
       </RechartPieChart>
