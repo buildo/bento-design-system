@@ -1,6 +1,7 @@
 import { Legend, LegendProps, LineChart, Line, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import { Box, Columns, Column, Inline, useChart } from "../..";
 import { createComponentStories } from "../../util";
+import isChromatic from "chromatic/isChromatic";
 
 function CustomChart({ data }: { data: { name: unknown; uv: unknown; pv: unknown }[] }) {
   const { makeLegendEntry, makeLineProps, containerProps, tooltip } = useChart({});
@@ -36,14 +37,14 @@ function CustomChart({ data }: { data: { name: unknown; uv: unknown; pv: unknown
           type="monotone"
           yAxisId="yAxis1"
           dataKey="uv"
-          isAnimationActive={true}
+          isAnimationActive={!isChromatic()}
         />
         <Line
           {...makeLineProps(1)}
           type="monotone"
           yAxisId="yAxis2"
           dataKey="pv"
-          isAnimationActive={true}
+          isAnimationActive={!isChromatic()}
         />
         <XAxis dataKey="name" />
         <YAxis yAxisId="yAxis1" />
