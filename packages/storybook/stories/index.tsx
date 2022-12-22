@@ -35,7 +35,7 @@ const FeedbackBackground = (
   </svg>
 );
 
-export { BarChart, DonutChart, LineChart } from "@buildo/bento-design-system";
+export { BarChart, DonutChart, LineChart, useChart } from "@buildo/bento-design-system";
 
 // NOTE(gabro): we're still using createBentoComponents instead of exporting the
 // components directly from @buildo/bento-design-system due to
