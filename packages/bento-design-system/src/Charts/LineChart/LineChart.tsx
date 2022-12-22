@@ -6,12 +6,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useBentoConfig } from "../../BentoConfigContext";
-import { bodyRecipe } from "../../Typography/Body/Body.css";
-import { allColors } from "../../util/atoms";
 import { ChartProps } from "../ChartProps";
-import { legendContent } from "../Legend/Legend";
-import { useTooltip } from "../Tooltip/Tooltip";
+import { useChart } from "../useChart";
 import { ValueFormatter } from "../ValueFormatter";
 
 type Props<D extends string, C extends string> = ChartProps & {
@@ -57,15 +53,14 @@ export function LineChart<D extends string, C extends string>({
   xAxisValueFormatter,
   yAxisValueFormatter,
 }: Props<D, C>) {
-  const config = useBentoConfig();
-  const tooltip = useTooltip({ formatter: yAxisValueFormatter });
-  const colors = (dataColors ?? config.chart.defaultDataColors).map(
-    (colorName) => allColors[colorName]
-  );
+  const { legendContent, makeLineProps, containerProps, tooltip } = useChart({
+    customColors: dataColors,
+    tooltipOptions: { formatter: yAxisValueFormatter },
+  });
 
   return (
     <ResponsiveContainer
-      className={bodyRecipe({ size: "medium", weight: "default", color: "default" })}
+      {...containerProps}
       width={width}
       height={height}
       minWidth={minWidth}
@@ -81,9 +76,7 @@ export function LineChart<D extends string, C extends string>({
             key={category}
             dataKey={category}
             isAnimationActive={!disableAnimation}
-            stroke={colors[i % colors.length]}
-            strokeWidth={2}
-            dot={false}
+            {...makeLineProps(i)}
           />
         ))}
         {!hideXAxis && <XAxis dataKey={dataKey} tickFormatter={xAxisValueFormatter} />}

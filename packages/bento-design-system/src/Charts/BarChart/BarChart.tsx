@@ -6,13 +6,9 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useBentoConfig } from "../../BentoConfigContext";
-import { bodyRecipe } from "../../Typography/Body/Body.css";
-import { allColors } from "../../util/atoms";
 import { vars } from "../../vars.css";
 import { ChartProps } from "../ChartProps";
-import { legendContent } from "../Legend/Legend";
-import { useTooltip } from "../Tooltip/Tooltip";
+import { useChart } from "../useChart";
 import { ValueFormatter } from "../ValueFormatter";
 
 type Props<D extends string, C extends string> = ChartProps & {
@@ -50,18 +46,17 @@ export function BarChart<D extends string, C extends string>({
   xAxisValueFormatter,
   yAxisValueFormatter,
 }: Props<D, C>) {
-  const config = useBentoConfig();
-  const tooltip = useTooltip({
-    cursor: { fill: vars.backgroundColor.backgroundSecondary },
-    formatter: yAxisValueFormatter,
+  const { legendContent, containerProps, makeBarProps, tooltip } = useChart({
+    customColors: dataColors,
+    tooltipOptions: {
+      cursor: { fill: vars.backgroundColor.backgroundSecondary },
+      formatter: yAxisValueFormatter,
+    },
   });
-  const colors = (dataColors ?? config.chart.defaultDataColors).map(
-    (colorName) => allColors[colorName]
-  );
 
   return (
     <ResponsiveContainer
-      className={bodyRecipe({ size: "medium", weight: "default", color: "default" })}
+      {...containerProps}
       width={width}
       height={height}
       minWidth={minWidth}
@@ -79,9 +74,9 @@ export function BarChart<D extends string, C extends string>({
           <Bar
             key={category}
             dataKey={category}
-            fill={colors[i % colors.length]}
             isAnimationActive={!disableAnimation}
             stackId={stacked ? "stack" : undefined}
+            {...makeBarProps(i)}
           />
         ))}
         {children}
