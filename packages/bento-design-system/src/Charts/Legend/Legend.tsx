@@ -10,27 +10,19 @@ export const legendContent: Required<RechartsLegendProps>["content"] = ({ payloa
   return (
     <Box paddingTop={8} width="full">
       <Inline space={16} alignY="center" align="center">
-        {payload.map((entry) =>
-          match(entry.type ?? "square")
-            .with("plainline", "line", () => <LegendItemLine key={entry.value} {...entry} />)
-            .with(
-              "rect",
-              "square",
-              "circle",
-              "cross",
-              "diamond",
-              "star",
-              "triangle",
-              "wye",
-              "none",
-              () => <LegendItemArea key={entry.value} {...entry} />
-            )
-            .exhaustive()
-        )}
+        {payload.map(makeLegendEntry)}
       </Inline>
     </Box>
   );
 };
+
+export const makeLegendEntry = (entry: Payload) =>
+  match(entry.type ?? "square")
+    .with("plainline", "line", () => <LegendItemLine key={entry.value} {...entry} />)
+    .with("rect", "square", "circle", "cross", "diamond", "star", "triangle", "wye", "none", () => (
+      <LegendItemArea key={entry.value} {...entry} />
+    ))
+    .exhaustive();
 
 function LegendItemArea({ color, value }: Payload) {
   return (

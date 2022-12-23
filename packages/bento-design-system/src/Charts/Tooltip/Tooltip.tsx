@@ -7,6 +7,12 @@ import { Stack } from "../../Layout/Stack";
 import { Body } from "../../Typography/Body/Body";
 import { NameType, ValueType } from "../ValueFormatter";
 
+//note(fede): the internal tooltip wrapper of recharts gets automatically focused
+//on every render, which happen on mouse movement. focus is needed for accessibility,
+//in order to allow users to dismiss the tooltip with the ESC key, but is also quite ugly,
+//so we hide it.
+export const tooltipStyle = { outline: "none" };
+
 export const useTooltip = <TValue extends ValueType, TName extends NameType>(
   options: Omit<TooltipProps<TValue, TName>, "wrapperStyle" | "content">
 ) => {
@@ -59,12 +65,6 @@ export const useTooltip = <TValue extends ValueType, TName extends NameType>(
       </Box>
     );
   };
-
-  //note(fede): the internal tooltip wrapper of recharts gets automatically focused
-  //on every render, which happen on mouse movement. focus is needed for accessibility,
-  //in order to allow users to dismiss the tooltip with the ESC key, but is also quite ugly,
-  //so we hide it.
-  const tooltipStyle = { outline: "none" };
 
   return <Tooltip wrapperStyle={tooltipStyle} content={tooltipContent} {...options} />;
 };

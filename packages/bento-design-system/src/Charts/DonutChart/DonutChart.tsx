@@ -1,10 +1,6 @@
 import { PieChart as RechartPieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
-import { useBentoConfig } from "../../BentoConfigContext";
-import { bodyRecipe } from "../../Typography/Body/Body.css";
-import { allColors } from "../../util/atoms";
 import { ChartProps } from "../ChartProps";
-import { legendContent } from "../Legend/Legend";
-import { useTooltip } from "../Tooltip/Tooltip";
+import { useChart } from "../useChart";
 import { ValueFormatter } from "../ValueFormatter";
 
 type Props<D extends string, C extends string> = ChartProps & {
@@ -34,15 +30,14 @@ export function DonutChart<D extends string, C extends string>({
   children,
   tooltipFormatter,
 }: Props<D, C>) {
-  const config = useBentoConfig();
-  const tooltip = useTooltip({ formatter: tooltipFormatter });
-  const colors = (dataColors ?? config.chart.defaultDataColors).map(
-    (colorName) => allColors[colorName]
-  );
+  const { legendContent, containerProps, pieProps, makePieCellProps, tooltip } = useChart({
+    customColors: dataColors,
+    tooltipOptions: { formatter: tooltipFormatter },
+  });
 
   return (
     <ResponsiveContainer
-      className={bodyRecipe({ size: "medium", weight: "default", color: "default" })}
+      {...containerProps}
       width={width}
       height={height}
       minWidth={minWidth}
@@ -57,18 +52,10 @@ export function DonutChart<D extends string, C extends string>({
           dataKey={category}
           nameKey={dataKey}
           isAnimationActive={!disableAnimation}
-          cx="50%"
-          cy="50%"
-          startAngle={90}
-          endAngle={-270}
-          innerRadius="75%"
-          outerRadius="100%"
-          paddingAngle={0}
-          // Remove 1px gap between slices
-          stroke=""
+          {...pieProps}
         >
           {data.map((_entry, i) => (
-            <Cell key={`cell-${i}`} fill={colors[i % colors.length]} />
+            <Cell key={`cell-${i}`} {...makePieCellProps(i)} />
           ))}
         </Pie>
         {!hideTooltip && tooltip}
