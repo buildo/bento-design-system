@@ -1,5 +1,5 @@
 import { Legend, LegendProps, LineChart, Line, ResponsiveContainer, XAxis, YAxis } from "recharts";
-import { Box, Columns, Column, Inline, useChart } from "../..";
+import { Box, Inline, useChart } from "../..";
 import { createComponentStories } from "../../util";
 import isChromatic from "chromatic/isChromatic";
 
@@ -14,17 +14,11 @@ function CustomChart({ data }: { data: { name: unknown; uv: unknown; pv: unknown
       (entry) => entry.payload?.["yAxisId" as keyof typeof entry.payload] === "yAxis2"
     );
     return (
-      <Box paddingTop={8} width="full">
-        <Columns space={0} alignY="center">
-          <Inline space={16} alignY="center">
-            {leftPayload.map(makeLegendEntry)}
-          </Inline>
-          <Column width="content">
-            <Inline space={16} alignY="center" align="center">
-              {rightPayload.map(makeLegendEntry)}
-            </Inline>
-          </Column>
-        </Columns>
+      <Box paddingTop={8} width="full" display="flex" style={{ justifyContent: "space-between" }}>
+        <>{leftPayload.map(makeLegendEntry)}</>
+        <Inline space={0} align="right">
+          {rightPayload.map(makeLegendEntry)}
+        </Inline>
       </Box>
     );
   };
