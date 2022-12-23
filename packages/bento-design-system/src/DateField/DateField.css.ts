@@ -10,6 +10,9 @@ export const calendar = bentoSprinkles({
   display: "flex",
   outline: "none",
   overflowY: "auto",
+  borderColor: "outlineContainer",
+  borderStyle: "solid",
+  borderWidth: 1,
 });
 
 export const dateFieldRecipe = strictRecipe({
