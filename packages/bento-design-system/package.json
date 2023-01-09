@@ -121,7 +121,7 @@
     "@vanilla-extract/esbuild-plugin": "2.1.0",
     "@vanilla-extract/private": "1.0.3",
     "@vanilla-extract/webpack-plugin": "2.1.12",
-    "css-loader": "6.7.2",
+    "css-loader": "6.7.3",
     "esbuild-loader": "2.19.0",
     "eslint": "8.20.0",
     "eslint-config-react-app": "7.0.1",
