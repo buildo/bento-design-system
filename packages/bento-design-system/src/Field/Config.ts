@@ -44,4 +44,5 @@ export type SelectionControlConfig = {
   controlLabelSpacing: BentoSprinkles["gap"];
   labelPaddingTop: number;
   labelSize: BodyProps["size"];
+  checkboxBorderRadius: BentoSprinkles["borderRadius"];
 };

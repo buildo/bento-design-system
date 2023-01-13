@@ -15,8 +15,12 @@ type CheckboxUIProps = {
 };
 
 function CheckboxUI({ value, isFocusVisible, isDisabled }: CheckboxUIProps) {
+  const config = useBentoConfig().selectionControl.element;
   return (
-    <Box className={checkboxRecipe({ isSelected: value, isFocused: isFocusVisible, isDisabled })}>
+    <Box
+      className={checkboxRecipe({ isSelected: value, isFocused: isFocusVisible, isDisabled })}
+      borderRadius={config.checkboxBorderRadius}
+    >
       {value && <CheckboxMark isDisabled={isDisabled} />}
     </Box>
   );

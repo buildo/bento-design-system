@@ -282,6 +282,7 @@ export const selectionControl: {
     labelPaddingTop: 2,
     controlLabelSpacing: 8,
     labelSize: "large",
+    checkboxBorderRadius: 4,
   },
 };
 
