@@ -6,6 +6,7 @@ import { inputRecipe } from "../Field/Field.css";
 import { FieldProps } from "../Field/FieldProps";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { useBentoConfig } from "../BentoConfigContext";
+import { getReadOnlyBackgroundStyle } from "../Field/utils";
 
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;
@@ -48,7 +49,7 @@ export function TextArea(props: Props) {
         borderRadius={config.radius}
         paddingX={config.paddingX}
         paddingY={config.paddingY}
-        background={config.background}
+        background={config.background.default}
         rows={props.rows}
         className={[
           inputRecipe({ validation: validationState || "notSet" }),
@@ -58,6 +59,7 @@ export function TextArea(props: Props) {
             size: config.fontSize,
           }),
         ]}
+        style={getReadOnlyBackgroundStyle(config)}
       />
     </Field>
   );

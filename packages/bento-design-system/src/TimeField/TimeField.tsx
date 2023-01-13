@@ -10,6 +10,7 @@ import { useBentoConfig } from "../BentoConfigContext";
 import { DateSegment } from "./DateSegment";
 import { Time } from "@internationalized/date";
 import { TimeValue } from "@react-types/datepicker";
+import { getReadOnlyBackgroundStyle } from "../Field/utils";
 
 type Props = FieldProps<Time | undefined, Time> & {
   isReadOnly?: boolean;
@@ -73,9 +74,10 @@ export function TimeField(props: Props) {
         borderRadius={config.radius}
         paddingX={config.paddingX}
         paddingY={config.paddingY}
-        background={config.background}
+        background={config.background.default}
         className={inputRecipe({ validation: validationState || "notSet" })}
         disabled={props.disabled}
+        style={getReadOnlyBackgroundStyle(config)}
         {...fieldProps}
       >
         {state.segments.map((segment, i) => (

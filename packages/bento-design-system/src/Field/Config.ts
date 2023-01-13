@@ -27,7 +27,10 @@ export type InputConfig = {
   paddingX: BentoSprinkles["paddingX"];
   paddingY: BentoSprinkles["paddingY"];
   radius: BentoSprinkles["borderRadius"];
-  background: BentoSprinkles["background"];
+  background: {
+    default: BentoSprinkles["background"];
+    readOnly: BentoSprinkles["background"] & string;
+  };
   fontSize: BodyProps["size"];
   passwordShowIcon: (props: IconProps) => Children;
   passwordHideIcon: (props: IconProps) => Children;

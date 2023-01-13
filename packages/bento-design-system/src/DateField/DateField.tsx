@@ -12,6 +12,7 @@ import { dateFieldRecipe } from "./DateField.css";
 import clsx from "clsx";
 import { LocalizedString } from "../util/LocalizedString";
 import { useBentoConfig } from "../BentoConfigContext";
+import { getReadOnlyBackgroundStyle } from "../Field/utils";
 
 export type ShortcutProps<Value> = {
   label: LocalizedString;
@@ -157,7 +158,7 @@ export function DateField(props: Props) {
         borderRadius={inputConfig.radius}
         paddingX={inputConfig.paddingX}
         paddingY={inputConfig.paddingY}
-        background={inputConfig.background}
+        background={inputConfig.background.default}
         className={clsx(
           inputRecipe({ validation: validationState || "notSet" }),
           bodyRecipe({
@@ -170,6 +171,7 @@ export function DateField(props: Props) {
             readOnly: props.readOnly,
           }
         )}
+        style={getReadOnlyBackgroundStyle(inputConfig)}
         disabled={props.disabled}
       >
         <Columns space={16} alignY="center">

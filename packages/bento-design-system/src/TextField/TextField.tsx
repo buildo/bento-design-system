@@ -9,6 +9,7 @@ import useDimensions from "react-cool-dimensions";
 import { defaultMessages } from "../../test/util/defaultMessages";
 import { useBentoConfig } from "../BentoConfigContext";
 import { match } from "ts-pattern";
+import { getReadOnlyBackgroundStyle } from "../Field/utils";
 
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;
@@ -87,7 +88,7 @@ export function TextField(props: Props) {
           borderRadius={config.radius}
           paddingX={config.paddingX}
           paddingY={config.paddingY}
-          background={config.background}
+          background={config.background.default}
           className={[
             inputRecipe({ validation: validationState || "notSet" }),
             bodyRecipe({
@@ -96,7 +97,11 @@ export function TextField(props: Props) {
               size: config.fontSize,
             }),
           ]}
-          style={{ paddingRight: rightAccessory ? rightAccessoryWidth : undefined, flexGrow: 1 }}
+          style={{
+            paddingRight: rightAccessory ? rightAccessoryWidth : undefined,
+            flexGrow: 1,
+            ...getReadOnlyBackgroundStyle(config),
+          }}
         />
         {rightAccessory && (
           <Box
