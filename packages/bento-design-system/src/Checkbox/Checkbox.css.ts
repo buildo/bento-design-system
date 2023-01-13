@@ -13,7 +13,6 @@ export const checkboxRecipe = strictRecipe({
       display: "flex",
       alignItems: "center",
       padding: 4,
-      borderRadius: 4,
       boxShadow: "outlineInputEnabled",
     }),
   ],
