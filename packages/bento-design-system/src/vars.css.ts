@@ -55,6 +55,7 @@ export const vars = createGlobalThemeContract(
       0: null,
       4: null,
       8: null,
+      12: null,
       16: null,
       24: null,
       32: null,
@@ -67,6 +68,7 @@ export const vars = createGlobalThemeContract(
       // https://github.com/Swatinem/rollup-plugin-dts/issues/201
       negative4: null,
       negative8: null,
+      negative12: null,
       negative16: null,
       negative24: null,
       negative32: null,
