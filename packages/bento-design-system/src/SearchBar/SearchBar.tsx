@@ -103,6 +103,7 @@ export function SearchBar(props: Props) {
           }}
           borderRadius={config.radius}
           paddingY={config.paddingY}
+          background={config.background}
         />
         {rightAccessoryContent && (
           <Box

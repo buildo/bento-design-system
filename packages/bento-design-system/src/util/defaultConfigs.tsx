@@ -263,6 +263,7 @@ export const input: InputConfig = {
   paddingY: 16,
   fontSize: "large",
   internalSpacing: 16,
+  background: "backgroundPrimary",
   passwordIconSize: 24,
   passwordShowIcon: IconEye,
   passwordHideIcon: IconEyeClosed,

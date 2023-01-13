@@ -48,6 +48,7 @@ export function TextArea(props: Props) {
         borderRadius={config.radius}
         paddingX={config.paddingX}
         paddingY={config.paddingY}
+        background={config.background}
         rows={props.rows}
         className={[
           inputRecipe({ validation: validationState || "notSet" }),

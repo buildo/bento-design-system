@@ -103,6 +103,7 @@ export function NumberInput(props: Props) {
         borderRadius={config.radius}
         paddingX={config.paddingX}
         paddingY={config.paddingY}
+        background={config.background}
         display="flex"
         style={{ paddingRight: rightAccessoryWidth, flexGrow: 1 }}
       />

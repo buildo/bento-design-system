@@ -73,6 +73,7 @@ export function TimeField(props: Props) {
         borderRadius={config.radius}
         paddingX={config.paddingX}
         paddingY={config.paddingY}
+        background={config.background}
         className={inputRecipe({ validation: validationState || "notSet" })}
         disabled={props.disabled}
         {...fieldProps}

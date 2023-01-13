@@ -87,6 +87,7 @@ export function TextField(props: Props) {
           borderRadius={config.radius}
           paddingX={config.paddingX}
           paddingY={config.paddingY}
+          background={config.background}
           className={[
             inputRecipe({ validation: validationState || "notSet" }),
             bodyRecipe({

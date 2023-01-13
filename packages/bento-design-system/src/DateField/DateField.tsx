@@ -157,6 +157,7 @@ export function DateField(props: Props) {
         borderRadius={inputConfig.radius}
         paddingX={inputConfig.paddingX}
         paddingY={inputConfig.paddingY}
+        background={inputConfig.background}
         className={clsx(
           inputRecipe({ validation: validationState || "notSet" }),
           bodyRecipe({
