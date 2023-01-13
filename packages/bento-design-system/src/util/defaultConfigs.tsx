@@ -160,7 +160,7 @@ export const chart: ChartConfig = {
 export const chip: ChipConfig = {
   paddingX: 8,
   paddingY: 4,
-  labelSize: "small",
+  label: { kind: "label", size: "small" },
   iconSize: 12,
   closeIcon: IconClose,
   closeIconSize: 8,

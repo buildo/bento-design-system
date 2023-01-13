@@ -1,11 +1,22 @@
 import { FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
-import { Label, LocalizedString, Columns, Column, Box, IconButton, ChipCustomColors } from "..";
+import {
+  Label,
+  LocalizedString,
+  Columns,
+  Column,
+  Box,
+  IconButton,
+  ChipCustomColors,
+  Body,
+} from "..";
 import { BentoSprinkles } from "../internal";
 import { chip, ellipsedLabel, maxWidth } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { useBentoConfig } from "../BentoConfigContext";
+import { ChipConfig } from "./Config";
+import { match } from "ts-pattern";
 
 type DismissProps =
   | {
@@ -85,8 +96,7 @@ export function Chip({ color, label: _label, icon, maxCharacters, ...dismissProp
             {icon && (
               <Column width="content">{icon({ size: config.iconSize, color: "secondary" })}</Column>
             )}
-
-            <Label size={config.labelSize}>{label}</Label>
+            {renderLabel(label, config)}
           </Columns>
           {dismissProps.onDismiss && (
             <Column width="content">
@@ -104,6 +114,13 @@ export function Chip({ color, label: _label, icon, maxCharacters, ...dismissProp
       </Box>
     </Box>
   );
+}
+
+function renderLabel(label: string | JSX.Element, config: ChipConfig) {
+  return match(config.label)
+    .with({ kind: "body" }, ({ size }) => <Body size={size}>{label}</Body>)
+    .with({ kind: "label" }, ({ size }) => <Label size={size}>{label}</Label>)
+    .exhaustive();
 }
 
 export type { Props as ChipProps };
