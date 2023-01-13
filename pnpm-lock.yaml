@@ -76,7 +76,7 @@ importers:
       '@types/react': ^18
       '@types/react-dom': 18.0.10
       '@types/react-input-mask': 2.0.5
-      '@types/react-table': 7.7.12
+      '@types/react-table': 7.7.14
       '@vanilla-extract/babel-plugin': 1.1.7
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/dynamic': 2.0.3
@@ -199,7 +199,7 @@ importers:
       '@types/react': 18.0.15
       '@types/react-dom': 18.0.10
       '@types/react-input-mask': 2.0.5
-      '@types/react-table': 7.7.12
+      '@types/react-table': 7.7.14
       '@vanilla-extract/babel-plugin': 1.1.7
       '@vanilla-extract/esbuild-plugin': 2.1.0
       '@vanilla-extract/private': 1.0.3
@@ -247,7 +247,7 @@ importers:
       '@storybook/testing-library': 0.0.13
       '@types/lodash.orderby': 4.6.7
       '@types/react': ^18
-      '@types/react-table': 7.7.12
+      '@types/react-table': 7.7.14
       '@vanilla-extract/babel-plugin': 1.1.7
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/private': 1.0.3
@@ -287,7 +287,7 @@ importers:
       '@storybook/testing-library': 0.0.13_biqbaboplfbrettd7655fr4n2y
       '@types/lodash.orderby': 4.6.7
       '@types/react': 18.0.15
-      '@types/react-table': 7.7.12
+      '@types/react-table': 7.7.14
       '@vanilla-extract/babel-plugin': 1.1.7
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/private': 1.0.3
@@ -10026,8 +10026,8 @@ packages:
       '@types/react': 18.0.15
     dev: true
 
-  /@types/react-table/7.7.12:
-    resolution: {integrity: sha512-bRUent+NR/WwtDGwI/BqhZ8XnHghwHw0HUKeohzB5xN3K2qKWYE5w19e7GCuOkL1CXD9Gi1HFy7TIm2AvgWUHg==}
+  /@types/react-table/7.7.14:
+    resolution: {integrity: sha512-TYrv7onCiakaG1uAu/UpQ9FojNEt/4/ht87EgJQaEGFoWV606ZLWUZAcUHzMxgc3v1mywP1cDyz3qB4ho3hWOw==}
     dependencies:
       '@types/react': 18.0.15
     dev: true
