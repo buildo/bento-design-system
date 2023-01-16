@@ -18,6 +18,7 @@ export const divider = strictRecipe({
         {
           width: 1,
         },
+        bentoSprinkles({ height: "full" }),
       ]),
     },
   },
