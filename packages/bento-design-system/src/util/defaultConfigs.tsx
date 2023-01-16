@@ -138,6 +138,7 @@ export const button: ButtonConfig = {
   },
   uppercaseLabel: true,
   defaultSize: "medium",
+  defaultIconPosition: "leading",
 };
 
 export const card: CardConfig = {

@@ -93,3 +93,10 @@ export const WithIcon = createStory({
   hierarchy: "primary",
   icon: IconCheck,
 });
+
+export const WithIconTrailing = createStory({
+  kind: "solid",
+  hierarchy: "primary",
+  icon: IconCheck,
+  iconPosition: "trailing",
+});
