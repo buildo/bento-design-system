@@ -56,10 +56,6 @@ export const cellContainerRecipe = strictRecipe({
     justifyContent: "center",
   }),
   variants: {
-    even: {
-      true: bentoSprinkles({ background: "backgroundSecondary" }),
-      false: bentoSprinkles({ background: "backgroundPrimary" }),
-    },
     firstColumn: {
       true: bentoSprinkles({ paddingLeft: 8 }),
     },

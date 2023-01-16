@@ -10,4 +10,5 @@ export type TableConfig = {
   headerForegroundColor: BentoSprinkles["color"];
   hintPlacement: TooltipPlacement;
   cellTooltipPlacement: TooltipPlacement;
+  evenRowsBackgroundColor: BentoSprinkles["background"];
 };
