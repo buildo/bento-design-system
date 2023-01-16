@@ -4,6 +4,7 @@ import { BodyProps } from "../Typography/Body/Body";
 import { LabelProps } from "../Typography/Label/Label";
 import { Children } from "../util/Children";
 import { TooltipPlacement } from "./FieldProps";
+import { statusProperties } from "../util/atoms";
 
 export type FieldConfig = {
   label: {
@@ -29,7 +30,10 @@ export type InputConfig = {
   radius: BentoSprinkles["borderRadius"];
   background: {
     default: BentoSprinkles["background"];
-    readOnly: BentoSprinkles["background"] & string;
+    // NOTE(gabro): not using BentoSprinkles["background"] because we only want
+    // "plain" values to use directly in CSS and not conditional objects like
+    // { default: ..., hover: ... }
+    readOnly: keyof typeof statusProperties.background;
   };
   fontSize: BodyProps["size"];
   passwordShowIcon: (props: IconProps) => Children;
