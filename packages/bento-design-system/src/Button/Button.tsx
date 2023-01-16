@@ -18,6 +18,7 @@ type Props = {
   isDisabled?: boolean;
   size?: ButtonSize;
   icon?: (props: IconProps) => JSX.Element;
+  iconPosition?: "leading" | "trailing";
 } & Omit<AriaButtonProps<"button">, "onPress">;
 
 /**
@@ -25,6 +26,7 @@ type Props = {
  */
 export function Button(props: Props) {
   const config = useBentoConfig().button;
+  const iconPosition = props.iconPosition ?? config.defaultIconPosition;
   const ref = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(props, ref);
   const {
@@ -61,7 +63,7 @@ export function Button(props: Props) {
       onPointerDown={internal_unsafe__bypassUsePress ? undefined : buttonProps.onPointerDown}
       onClick={internal_unsafe__bypassUsePress ? props.onPress : buttonProps.onClick}
     >
-      <Columns space={config.internalSpacing} alignY="center">
+      <Columns space={config.internalSpacing} alignY="center" reverse={iconPosition === "trailing"}>
         {props.icon && (
           <Column width="content">
             {props.icon({
