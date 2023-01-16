@@ -4,6 +4,7 @@ import { Title } from "../Typography/Title/Title";
 import { Headline } from "../Typography/Headline/Headline";
 import type { FeedbackConfig } from "./Config";
 import { useBentoConfig } from "../BentoConfigContext";
+import { match } from "ts-pattern";
 
 type Status = "positive" | "negative";
 export type FeedbackSize = "medium" | "large";
@@ -80,35 +81,41 @@ export function Feedback({
 }
 
 function renderTitle(size: FeedbackSize, title: LocalizedString, config: FeedbackConfig) {
-  switch (size) {
-    case "medium":
-      return (
-        <Title size={config.title.medium} align="center">
-          {title}
-        </Title>
-      );
-    case "large":
-      switch (config.title.large.kind) {
-        case "display":
-          return (
-            <Display size={config.title.large.size} align="center">
-              {title}
-            </Display>
-          );
-        case "title":
-          return (
-            <Title size={config.title.large.size} align="center">
-              {title}
-            </Title>
-          );
-        case "headline":
-          return (
-            <Headline size={config.title.large.size} align="center">
-              {title}
-            </Headline>
-          );
-      }
-  }
+  return match(size)
+    .with("medium", () =>
+      match(config.title.medium.kind)
+        .with("body", () => (
+          <Body size={config.title.medium.size} align="center">
+            {title}
+          </Body>
+        ))
+        .with("title", () => (
+          <Title size={config.title.medium.size} align="center">
+            {title}
+          </Title>
+        ))
+        .exhaustive()
+    )
+    .with("large", () =>
+      match(config.title.large.kind)
+        .with("display", () => (
+          <Display size={config.title.large.size} align="center">
+            {title}
+          </Display>
+        ))
+        .with("headline", () => (
+          <Headline size={config.title.large.size} align="center">
+            {title}
+          </Headline>
+        ))
+        .with("title", () => (
+          <Title size={config.title.large.size} align="center">
+            {title}
+          </Title>
+        ))
+        .exhaustive()
+    )
+    .exhaustive();
 }
 
 function illustrationElement(

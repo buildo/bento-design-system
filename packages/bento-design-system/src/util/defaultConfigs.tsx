@@ -204,7 +204,7 @@ export const feedback: FeedbackConfig = {
   positiveIllustration: IllustrationPositive,
   negativeIllustration: IllustrationNegative,
   title: {
-    medium: "large",
+    medium: { kind: "title", size: "large" },
     large: { kind: "display", size: "small" },
   },
   descriptionSize: {

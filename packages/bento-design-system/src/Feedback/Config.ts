@@ -14,7 +14,7 @@ export type FeedbackConfig = {
   negativeIllustration: (props: IllustrationProps) => Children;
   illustrationSize: SizeConfig<IllustrationProps["size"]>;
   title: {
-    medium: TitleProps["size"];
+    medium: { kind: "title"; size: TitleProps["size"] } | { kind: "body"; size: BodyProps["size"] };
     large:
       | { kind: "display"; size: DisplayProps["size"] }
       | { kind: "title"; size: TitleProps["size"] }
