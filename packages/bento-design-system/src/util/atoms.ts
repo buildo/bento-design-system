@@ -3,6 +3,7 @@ import { vars } from "../vars.css";
 const radius = {
   ...vars.radius,
   0: 0,
+  12: 12,
   circled: "50%",
   // dirty trick to make the border-radius look good regardless of the width of the container
   circledX: "100vh",
