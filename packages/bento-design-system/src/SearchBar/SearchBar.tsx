@@ -8,6 +8,7 @@ import { input } from "./SearchBar.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { useBentoConfig } from "../BentoConfigContext";
 import { AtLeast } from "../util/AtLeast";
+import { getReadOnlyBackgroundStyle } from "../Field/utils";
 
 type Props = AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "aria-labelledby">> & {
   value: string;
@@ -100,9 +101,11 @@ export function SearchBar(props: Props) {
             flexGrow: 1,
             paddingLeft: leftAccessoryWidth,
             paddingRight: rightAccessoryWidth,
+            ...getReadOnlyBackgroundStyle(config),
           }}
           borderRadius={config.radius}
           paddingY={config.paddingY}
+          background={config.background.default}
         />
         {rightAccessoryContent && (
           <Box

@@ -1,6 +1,9 @@
+import { createVar } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal/sprinkles.css";
 import { strictRecipe } from "../util/strictRecipe";
 import { vars } from "../vars.css";
+
+export const readOnlyBackground = createVar();
 
 export const inputRecipe = strictRecipe({
   base: [
@@ -13,12 +16,11 @@ export const inputRecipe = strictRecipe({
           color: vars.textColor.textDisabled,
         },
         "input&:read-only, textarea&:read-only, &.readOnly, &[readonly]": {
-          background: vars.backgroundColor.backgroundSecondary,
+          background: readOnlyBackground,
         },
       },
     },
     bentoSprinkles({
-      background: "backgroundPrimary",
       boxShadow: {
         disabled: "outlineInputDisabled",
       },

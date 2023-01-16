@@ -7,6 +7,7 @@ import { bodyRecipe } from "../Typography/Body/Body.css";
 import { FormatProps } from "./FormatProps";
 import { useBentoConfig } from "../BentoConfigContext";
 import { match, not, __ } from "ts-pattern";
+import { getReadOnlyBackgroundStyle } from "../Field/utils";
 
 type Props = {
   inputProps: React.InputHTMLAttributes<HTMLInputElement>;
@@ -103,8 +104,13 @@ export function NumberInput(props: Props) {
         borderRadius={config.radius}
         paddingX={config.paddingX}
         paddingY={config.paddingY}
+        background={config.background.default}
         display="flex"
-        style={{ paddingRight: rightAccessoryWidth, flexGrow: 1 }}
+        style={{
+          paddingRight: rightAccessoryWidth,
+          flexGrow: 1,
+          ...getReadOnlyBackgroundStyle(config),
+        }}
       />
       {rightAccessory && (
         <Box
