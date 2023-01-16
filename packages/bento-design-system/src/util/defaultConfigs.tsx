@@ -374,6 +374,7 @@ export const modal: ModalConfig = {
   },
   titleIconSize: 24,
   defaultErrorBannerWidth: "content",
+  actionsSize: "large",
 };
 
 export const navigation: NavigationConfig = {

@@ -18,4 +18,5 @@ export type ModalConfig = {
   titleIcon: { [k in Exclude<ModalKind, "normal">]: (props: IconProps) => Children };
   titleIconSize: IconProps["size"];
   defaultErrorBannerWidth: NonNullable<ActionsProps["errorBannerWidth"]>;
+  actionsSize: NonNullable<ActionsProps["size"]>;
 };
