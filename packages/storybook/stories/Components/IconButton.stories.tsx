@@ -57,3 +57,24 @@ export const TransparentDisabled = createStory({
   hierarchy: "primary",
   isDisabled: true,
 });
+
+export const PrimaryOutline = createStory({
+  kind: "outline",
+  hierarchy: "primary",
+});
+
+export const SecondaryOutline = createStory({
+  kind: "outline",
+  hierarchy: "secondary",
+});
+
+export const DangerOutline = createStory({
+  kind: "outline",
+  hierarchy: "danger",
+});
+
+export const OutlineDisabled = createStory({
+  kind: "outline",
+  hierarchy: "primary",
+  isDisabled: true,
+});

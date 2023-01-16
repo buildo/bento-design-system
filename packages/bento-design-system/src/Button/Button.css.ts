@@ -207,7 +207,12 @@ export const buttonRecipe = strictRecipe({
           hover: "primaryTransparentHoverBackground",
           focus: "primaryTransparentFocusBackground",
         },
-        boxShadow: "inherit",
+        boxShadow: {
+          default: "outlineInteractivePrimaryEnabled",
+          hover: "outlineInteractivePrimaryHover",
+          focus: "outlineInteractivePrimaryFocus",
+          disabled: "outlineInteractiveDisabled",
+        },
       }),
     },
     {
@@ -231,7 +236,12 @@ export const buttonRecipe = strictRecipe({
           hover: "secondaryTransparentHoverBackground",
           focus: "secondaryTransparentFocusBackground",
         },
-        boxShadow: "inherit",
+        boxShadow: {
+          default: "outlineInteractiveSecondaryEnabled",
+          hover: "outlineInteractiveSecondaryHover",
+          focus: "outlineInteractiveSecondaryFocus",
+          disabled: "outlineInteractiveDisabled",
+        },
       }),
     },
     {
@@ -255,7 +265,12 @@ export const buttonRecipe = strictRecipe({
           hover: "dangerTransparentHoverBackground",
           focus: "dangerTransparentFocusBackground",
         },
-        boxShadow: "inherit",
+        boxShadow: {
+          default: "outlineInteractiveDangerEnabled",
+          hover: "outlineInteractiveDangerHover",
+          focus: "outlineInteractiveDangerFocus",
+          disabled: "outlineInteractiveDisabled",
+        },
       }),
     },
   ],
