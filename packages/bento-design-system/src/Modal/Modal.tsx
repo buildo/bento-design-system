@@ -132,7 +132,7 @@ export function Modal(props: Props) {
               : undefined
           }
           secondaryAction={props.secondaryAction}
-          size="large"
+          size={config.actionsSize}
           loadingMessage={props.loadingMessage}
           error={props.error}
           errorBannerWidth={props.errorBannerWidth || config.defaultErrorBannerWidth}
