@@ -7,9 +7,10 @@ import { iconButtonRecipe } from "./IconButton.css";
 import { buttonRecipe } from "../Button/Button.css";
 import { LocalizedString } from "../util/LocalizedString";
 import { useBentoConfig } from "../BentoConfigContext";
+import { match } from "ts-pattern";
 
 type Props = {
-  kind: "solid" | "transparent";
+  kind: "solid" | "transparent" | "outline";
   hierarchy: "primary" | "secondary" | "danger";
   label: LocalizedString;
   onPress: () => void;
@@ -55,7 +56,10 @@ export function IconButton(props: Props) {
       alignItems="center"
       justifyContent="center"
       borderRadius={config.radius}
-      padding={props.kind === "solid" ? config.padding[props.size] : undefined}
+      padding={match(props.kind)
+        .with("solid", "outline", () => config.padding[props.size])
+        .with("transparent", () => undefined)
+        .exhaustive()}
     >
       {props.icon({ size: props.size, color: "inherit" })}
     </Box>

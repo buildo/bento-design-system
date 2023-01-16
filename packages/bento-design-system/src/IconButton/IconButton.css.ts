@@ -11,6 +11,7 @@ export const iconButtonRecipe = strictRecipe({
       transparent: bentoSprinkles({
         borderRadius: "circled",
       }),
+      outline: {},
     },
     size: {
       8: {},
