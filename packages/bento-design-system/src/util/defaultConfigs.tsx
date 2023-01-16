@@ -453,6 +453,8 @@ export const dropdown: DropdownConfig = {
     },
   },
   defaultMenuSize: "medium",
+  openIndicatorIcon: IconChevronDown,
+  openIndicatorIconSize: 16,
 };
 
 export const table: TableConfig = {

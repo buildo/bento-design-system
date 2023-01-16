@@ -18,7 +18,6 @@ import {
 } from "react-select/dist/declarations/src/components/Menu";
 import {
   Body,
-  IconChevronDown,
   Children,
   IconCheck,
   IconProps,
@@ -113,10 +112,15 @@ export function DropdownIndicator<A>({
   isDisabled,
   selectProps: { isReadOnly },
 }: DropdownIndicatorProps<A>) {
+  const config = useBentoConfig().dropdown;
+
   if (isReadOnly) return null;
   return (
     <Box paddingLeft={16}>
-      <IconChevronDown size={16} color={isDisabled ? "disabled" : "default"} />
+      {config.openIndicatorIcon({
+        size: config.openIndicatorIconSize,
+        color: isDisabled ? "disabled" : "default",
+      })}
     </Box>
   );
 }
