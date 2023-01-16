@@ -59,6 +59,7 @@ import {
   StepperStep,
   useComponentsShowcase,
   List,
+  Divider,
 } from ".";
 import * as icons from "./Icons";
 import * as illustrations from "./Illustrations";
@@ -137,6 +138,7 @@ function internalCreateBentoComponents(
     Disclosure,
     DisclosureGroup,
     Display,
+    Divider,
     Feedback,
     Field,
     FileUploaderField,

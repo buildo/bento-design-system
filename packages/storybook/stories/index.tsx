@@ -77,6 +77,7 @@ export const {
   Disclosure,
   DisclosureGroup,
   Display,
+  Divider,
   Feedback,
   Field,
   FileUploaderField,
