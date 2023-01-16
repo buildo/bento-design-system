@@ -487,14 +487,12 @@ function CellContainer({
   first: boolean;
   last: boolean;
 } & TableCellProps) {
+  const tableConfig = useBentoConfig().table;
   return (
     <Box className={lastLeftSticky && lastLeftStickyColumn} style={style}>
       <Box
-        className={cellContainerRecipe({
-          even: index % 2 === 0,
-          firstColumn: first,
-          lastColumn: last,
-        })}
+        background={index % 2 === 0 ? tableConfig.evenRowsBackgroundColor : "backgroundPrimary"}
+        className={cellContainerRecipe({ firstColumn: first, lastColumn: last })}
         {...props}
       >
         {children}
