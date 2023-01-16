@@ -467,6 +467,10 @@ export const table: TableConfig = {
   hintPlacement: "top",
   cellTooltipPlacement: "bottom",
   evenRowsBackgroundColor: "backgroundSecondary",
+  paddingHeader: { paddingX: 16, paddingY: 8 },
+  paddingCell: { paddingX: 16, paddingY: 16 },
+  firstColumnExtraLeftPadding: 8,
+  lastColumnExtraRightPadding: 8,
 };
 
 export const toast: ToastConfig = {

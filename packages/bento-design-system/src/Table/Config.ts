@@ -11,4 +11,8 @@ export type TableConfig = {
   hintPlacement: TooltipPlacement;
   cellTooltipPlacement: TooltipPlacement;
   evenRowsBackgroundColor: BentoSprinkles["background"];
+  paddingHeader: { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] };
+  paddingCell: { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] };
+  firstColumnExtraLeftPadding: BentoSprinkles["padding"];
+  lastColumnExtraRightPadding: BentoSprinkles["padding"];
 };
