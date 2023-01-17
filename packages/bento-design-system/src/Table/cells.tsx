@@ -34,7 +34,7 @@ export function ButtonCell({
   const buttonConfig = useBentoConfig().button;
   const buttonSize = size ?? "medium";
   return (
-    <Bleed spaceX={buttonConfig.paddingX[buttonSize]} spaceY={buttonConfig.paddingY[buttonSize]}>
+    <Bleed spaceY={buttonConfig.paddingY[buttonSize]}>
       <Box {...tableConfig.paddingCell}>
         <Inline space={0} align={align} alignY="center">
           <Button size={buttonSize} {...buttonProps} />
@@ -55,7 +55,7 @@ export function ButtonLinkCell({
   const buttonConfig = useBentoConfig().button;
   const buttonSize = size ?? "medium";
   return (
-    <Bleed spaceX={buttonConfig.paddingX[buttonSize]} spaceY={buttonConfig.paddingY[buttonSize]}>
+    <Bleed spaceY={buttonConfig.paddingY[buttonSize]}>
       <Box {...tableConfig.paddingCell}>
         <Inline space={0} align={align}>
           <ButtonLink size={buttonSize} {...buttonProps} />
