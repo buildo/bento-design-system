@@ -11,8 +11,40 @@ export type TableConfig = {
   hintPlacement: TooltipPlacement;
   cellTooltipPlacement: TooltipPlacement;
   evenRowsBackgroundColor: BentoSprinkles["background"];
-  paddingHeader: { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] };
-  paddingCell: { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] };
+  padding: {
+    header: { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] };
+    defaultCell: { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] };
+    buttonCell:
+      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
+      | undefined;
+    buttonLinkCell:
+      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
+      | undefined;
+    textCell:
+      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
+      | undefined;
+    textWithIconCell:
+      | {
+          paddingX: BentoSprinkles["paddingX"];
+          paddingY: BentoSprinkles["paddingY"];
+        }
+      | undefined;
+    chipCell:
+      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
+      | undefined;
+    labelCell:
+      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
+      | undefined;
+    linkCell:
+      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
+      | undefined;
+    iconCell:
+      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
+      | undefined;
+    iconButtonCell:
+      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
+      | undefined;
+  };
   firstColumnExtraLeftPadding: BentoSprinkles["padding"];
   lastColumnExtraRightPadding: BentoSprinkles["padding"];
 };

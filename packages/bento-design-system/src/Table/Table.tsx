@@ -403,7 +403,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
         color={config.headerForegroundColor}
         {...column.getHeaderProps(column.getSortByToggleProps())}
         textAlign={column.align}
-        {...config.paddingHeader}
+        {...config.padding.header}
       >
         <Box
           paddingLeft={first ? config.firstColumnExtraLeftPadding : 0}
