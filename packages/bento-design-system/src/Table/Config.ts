@@ -45,6 +45,5 @@ export type TableConfig = {
       | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
       | undefined;
   };
-  firstColumnExtraLeftPadding: BentoSprinkles["padding"];
-  lastColumnExtraRightPadding: BentoSprinkles["padding"];
+  boundaryPadding: BentoSprinkles["padding"];
 };

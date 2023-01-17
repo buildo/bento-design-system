@@ -480,8 +480,7 @@ export const table: TableConfig = {
     iconCell: undefined,
     iconButtonCell: undefined,
   },
-  firstColumnExtraLeftPadding: 8,
-  lastColumnExtraRightPadding: 8,
+  boundaryPadding: 8,
 };
 
 export const toast: ToastConfig = {
