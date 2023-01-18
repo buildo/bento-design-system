@@ -314,10 +314,10 @@ export const formLayout: FormLayoutConfig = {
 export const iconButton: IconButtonConfig = {
   radius: 4,
   padding: {
-    8: { paddingX: 8, paddingY: 8 },
-    12: { paddingX: 8, paddingY: 8 },
-    16: { paddingX: 16, paddingY: 16 },
-    24: { paddingX: 16, paddingY: 16 },
+    8: 8,
+    12: 8,
+    16: 16,
+    24: 16,
   },
 };
 

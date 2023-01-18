@@ -37,6 +37,9 @@ export function IconButton(props: Props) {
     },
     ref
   );
+
+  const paddingConfig = config.padding[props.size];
+
   return (
     <Box
       as="button"
@@ -57,7 +60,11 @@ export function IconButton(props: Props) {
       justifyContent="center"
       borderRadius={config.radius}
       {...match(props.kind)
-        .with("solid", "outline", () => config.padding[props.size])
+        .with("solid", "outline", () =>
+          paddingConfig && typeof paddingConfig === "object" && "paddingX" in paddingConfig
+            ? paddingConfig
+            : { padding: paddingConfig }
+        )
         .with("transparent", () => {})
         .exhaustive()}
     >
