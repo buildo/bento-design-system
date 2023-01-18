@@ -26,13 +26,16 @@ import {
   IconButton,
   Tooltip,
   FeedbackProps,
+  vars,
 } from "..";
 import {
-  cellContainer,
+  cellContainerRecipe,
   columnHeader,
   lastLeftStickyColumn,
+  rowContainer,
   sectionHeader,
   sectionHeaderContainer,
+  selectedRowBackgroundColor,
   sortIconContainer,
   stickyColumnHeader,
   table,
@@ -42,6 +45,7 @@ import { useLayoutEffect, useMemo, useState, CSSProperties, useEffect } from "re
 import { IconHelp, IconInfo } from "../Icons";
 import { match, __ } from "ts-pattern";
 import { useBentoConfig } from "../BentoConfigContext";
+import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
   a: Row<RowType<C>>,
@@ -80,6 +84,7 @@ type Props<C extends ReadonlyArray<ColumnType<string, {}, any>>> = {
   initialSorting?: Array<SortingRule<C>>;
   stickyHeaders?: boolean;
   height?: { custom: string | number };
+  onRowPress?: (row: Row<RowType<C>>) => void;
 } & SortingProps<C>;
 
 /**
@@ -113,6 +118,7 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
   initialSorting,
   stickyHeaders,
   height,
+  onRowPress,
 }: Props<C>) {
   const config = useBentoConfig().table;
   const customOrderByFn = useMemo(
@@ -273,7 +279,11 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
     .map(({ gridWidth = "fit-content" }) => gridWidthStyle(gridWidth))
     .join(" ");
 
-  function renderCells<D extends Record<string, unknown>>(cells: Array<Cell<D>>, rowIndex: number) {
+  function renderCells<D extends Record<string, unknown>>(
+    cells: Array<Cell<D>>,
+    rowIndex: number,
+    interactiveRow: boolean
+  ) {
     return cells.map((cell, index) => (
       <CellContainer
         {...cell.getCellProps()}
@@ -282,6 +292,7 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
         style={stickyLeftColumnStyle[cell.column.id]}
         first={index === 0}
         last={(index + 1) % columns.length === 0}
+        interactiveRow={interactiveRow}
       >
         {cell.render("Cell")}
       </CellContainer>
@@ -321,14 +332,41 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
             />,
             ...row.leafRows.map((row, index) => {
               prepareRow(row);
-              return renderCells(row.cells, index);
+              return renderCells(row.cells, index, false);
             }),
           ];
         } else {
           prepareRow(row);
-          return [renderCells(row.cells, index)];
+          return (
+            <RowContainer key={index} row={row} onPress={onRowPress}>
+              {renderCells(row.cells, index, onRowPress !== undefined)}
+            </RowContainer>
+          );
         }
       })}
+    </Box>
+  );
+}
+
+function RowContainer<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
+  row,
+  children,
+  onPress,
+}: {
+  row: Row<RowType<C>>;
+  onPress: ((row: Row<RowType<C>>) => void) | undefined;
+  children: Children;
+}) {
+  const config = useBentoConfig().table;
+  return (
+    <Box
+      className={rowContainer}
+      style={assignInlineVars({
+        [selectedRowBackgroundColor]: vars.backgroundColor[config.selectedRowBackgroundColor],
+      })}
+      onClick={() => onPress?.(row)}
+    >
+      {children}
     </Box>
   );
 }
@@ -484,6 +522,7 @@ function CellContainer({
   lastLeftSticky,
   first,
   last,
+  interactiveRow,
   ...props
 }: {
   children: any;
@@ -492,6 +531,7 @@ function CellContainer({
   lastLeftSticky: boolean;
   first: boolean;
   last: boolean;
+  interactiveRow: boolean;
 } & TableCellProps) {
   const tableConfig = useBentoConfig().table;
 
@@ -499,7 +539,7 @@ function CellContainer({
     <Box className={lastLeftSticky && lastLeftStickyColumn} style={style}>
       <Box
         background={index % 2 === 0 ? tableConfig.evenRowsBackgroundColor : "backgroundPrimary"}
-        className={cellContainer}
+        className={cellContainerRecipe({ interactiveRow })}
         paddingLeft={first ? tableConfig.boundaryPadding : undefined}
         paddingRight={last ? tableConfig.boundaryPadding : undefined}
         {...props}
