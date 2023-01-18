@@ -406,8 +406,8 @@ function ColumnHeader<D extends Record<string, unknown>>({
         {...config.padding.header}
       >
         <Box
-          paddingLeft={first ? config.boundaryPadding : 0}
-          paddingRight={last ? config.boundaryPadding : 0}
+          paddingLeft={first ? config.boundaryPadding : undefined}
+          paddingRight={last ? config.boundaryPadding : undefined}
         >
           {hasHeaderContent && (
             <Columns space={8} alignY="center" align={column.align}>
@@ -500,8 +500,8 @@ function CellContainer({
       <Box
         background={index % 2 === 0 ? tableConfig.evenRowsBackgroundColor : "backgroundPrimary"}
         className={cellContainer}
-        paddingLeft={first ? tableConfig.boundaryPadding : 0}
-        paddingRight={last ? tableConfig.boundaryPadding : 0}
+        paddingLeft={first ? tableConfig.boundaryPadding : undefined}
+        paddingRight={last ? tableConfig.boundaryPadding : undefined}
         {...props}
       >
         {children}

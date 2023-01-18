@@ -3,6 +3,11 @@ import { IconProps } from "../Icons";
 import { IllustrationProps } from "../Illustrations";
 import { BentoSprinkles } from "../internal";
 
+type CellPaddingConfig = {
+  paddingX: BentoSprinkles["paddingX"];
+  paddingY: BentoSprinkles["paddingY"];
+};
+
 export type TableConfig = {
   headerInfoIcon: (props: IconProps) => JSX.Element;
   emptyIllustration: (props: IllustrationProps) => JSX.Element;
@@ -12,38 +17,17 @@ export type TableConfig = {
   cellTooltipPlacement: TooltipPlacement;
   evenRowsBackgroundColor: BentoSprinkles["background"];
   padding: {
-    header: { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] };
-    defaultCell: { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] };
-    buttonCell:
-      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
-      | undefined;
-    buttonLinkCell:
-      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
-      | undefined;
-    textCell:
-      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
-      | undefined;
-    textWithIconCell:
-      | {
-          paddingX: BentoSprinkles["paddingX"];
-          paddingY: BentoSprinkles["paddingY"];
-        }
-      | undefined;
-    chipCell:
-      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
-      | undefined;
-    labelCell:
-      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
-      | undefined;
-    linkCell:
-      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
-      | undefined;
-    iconCell:
-      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
-      | undefined;
-    iconButtonCell:
-      | { paddingX: BentoSprinkles["paddingX"]; paddingY: BentoSprinkles["paddingY"] }
-      | undefined;
+    header: CellPaddingConfig;
+    defaultCell: CellPaddingConfig;
+    buttonCell: CellPaddingConfig | undefined;
+    buttonLinkCell: CellPaddingConfig | undefined;
+    textCell: CellPaddingConfig | undefined;
+    textWithIconCell: CellPaddingConfig | undefined;
+    chipCell: CellPaddingConfig | undefined;
+    labelCell: CellPaddingConfig | undefined;
+    linkCell: CellPaddingConfig | undefined;
+    iconCell: CellPaddingConfig | undefined;
+    iconButtonCell: CellPaddingConfig | undefined;
   };
   boundaryPadding: BentoSprinkles["padding"];
 };
