@@ -56,9 +56,9 @@ export function IconButton(props: Props) {
       alignItems="center"
       justifyContent="center"
       borderRadius={config.radius}
-      padding={match(props.kind)
+      {...match(props.kind)
         .with("solid", "outline", () => config.padding[props.size])
-        .with("transparent", () => undefined)
+        .with("transparent", () => {})
         .exhaustive()}
     >
       {props.icon({ size: props.size, color: "inherit" })}
