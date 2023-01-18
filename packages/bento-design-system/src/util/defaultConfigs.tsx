@@ -467,6 +467,20 @@ export const table: TableConfig = {
   hintPlacement: "top",
   cellTooltipPlacement: "bottom",
   evenRowsBackgroundColor: "backgroundSecondary",
+  padding: {
+    header: { paddingX: 16, paddingY: 8 },
+    defaultCell: { paddingX: 16, paddingY: 16 },
+    buttonCell: { paddingX: 8, paddingY: 8 },
+    buttonLinkCell: { paddingX: 8, paddingY: 8 },
+    textCell: undefined,
+    textWithIconCell: undefined,
+    chipCell: undefined,
+    labelCell: undefined,
+    linkCell: undefined,
+    iconCell: undefined,
+    iconButtonCell: undefined,
+  },
+  boundaryPadding: 8,
 };
 
 export const toast: ToastConfig = {

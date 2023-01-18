@@ -28,8 +28,8 @@ import {
   FeedbackProps,
 } from "..";
 import {
-  cellContainerRecipe,
-  columnHeaderRecipe,
+  cellContainer,
+  columnHeader,
   lastLeftStickyColumn,
   sectionHeader,
   sectionHeaderContainer,
@@ -398,29 +398,35 @@ function ColumnHeader<D extends Record<string, unknown>>({
       style={{ ...style, zIndex: sticky ? zIndexes.leftStickyHeader : zIndexes.header }}
     >
       <Box
-        className={columnHeaderRecipe({ firstColumn: first, lastColumn: last })}
+        className={columnHeader}
         background={config.headerBackgroundColor}
         color={config.headerForegroundColor}
         {...column.getHeaderProps(column.getSortByToggleProps())}
         textAlign={column.align}
+        {...config.padding.header}
       >
-        {hasHeaderContent && (
-          <Columns space={8} alignY="center" align={column.align}>
-            {column.Header ? (
-              <Column width="content">
-                <Label size="large">{column.render("Header") as any}</Label>
-              </Column>
-            ) : null}
-            {hint && <Column width="content">{hint}</Column>}
-            {sortIcon && (
-              <Column width="content">
-                <Box className={sortIconContainer}>
-                  {sortIcon({ size: 8, color: "currentColor" })}
-                </Box>
-              </Column>
-            )}
-          </Columns>
-        )}
+        <Box
+          paddingLeft={first ? config.boundaryPadding : undefined}
+          paddingRight={last ? config.boundaryPadding : undefined}
+        >
+          {hasHeaderContent && (
+            <Columns space={8} alignY="center" align={column.align}>
+              {column.Header ? (
+                <Column width="content">
+                  <Label size="large">{column.render("Header") as any}</Label>
+                </Column>
+              ) : null}
+              {hint && <Column width="content">{hint}</Column>}
+              {sortIcon && (
+                <Column width="content">
+                  <Box className={sortIconContainer}>
+                    {sortIcon({ size: 8, color: "currentColor" })}
+                  </Box>
+                </Column>
+              )}
+            </Columns>
+          )}
+        </Box>
       </Box>
     </Box>
   );
@@ -488,11 +494,14 @@ function CellContainer({
   last: boolean;
 } & TableCellProps) {
   const tableConfig = useBentoConfig().table;
+
   return (
     <Box className={lastLeftSticky && lastLeftStickyColumn} style={style}>
       <Box
         background={index % 2 === 0 ? tableConfig.evenRowsBackgroundColor : "backgroundPrimary"}
-        className={cellContainerRecipe({ firstColumn: first, lastColumn: last })}
+        className={cellContainer}
+        paddingLeft={first ? tableConfig.boundaryPadding : undefined}
+        paddingRight={last ? tableConfig.boundaryPadding : undefined}
         {...props}
       >
         {children}

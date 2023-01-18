@@ -30,8 +30,10 @@ export function ButtonCell({
 }: CellProps<{}, Omit<ButtonProps, "size">> & {
   options: Partial<Pick<ButtonProps, "size">>;
 }) {
+  const config = useBentoConfig().table;
+  const padding = config.padding.buttonCell ?? config.padding.defaultCell;
   return (
-    <Inset space={8}>
+    <Inset spaceX={padding.paddingX} spaceY={padding.paddingY}>
       <Inline space={0} align={align} alignY="center">
         <Button size={size ?? "medium"} {...buttonProps} />
       </Inline>
@@ -46,8 +48,10 @@ export function ButtonLinkCell({
 }: CellProps<{}, Omit<ButtonLinkProps, "size">> & {
   options: Partial<Pick<ButtonLinkProps, "size">>;
 }) {
+  const config = useBentoConfig().table;
+  const padding = config.padding.buttonLinkCell ?? config.padding.defaultCell;
   return (
-    <Inset space={8}>
+    <Inset spaceX={padding.paddingX} spaceY={padding.paddingY}>
       <Inline space={0} align={align}>
         <ButtonLink size={size ?? "medium"} {...buttonProps} />
       </Inline>
@@ -62,8 +66,10 @@ export function TextCell({
 }: CellProps<{}, LocalizedString> & {
   options: Partial<Pick<BodyProps, "size" | "weight" | "color">>;
 }) {
+  const config = useBentoConfig().table;
+  const padding = config.padding.textCell ?? config.padding.defaultCell;
   return (
-    <Box padding={16} textAlign={align}>
+    <Box {...padding} textAlign={align}>
       <Body size={size ?? "medium"} weight={weight} color={color}>
         {value}
       </Body>
@@ -90,10 +96,11 @@ export function TextWithIconCell({
   };
 }) {
   const config = useBentoConfig().table;
+  const padding = config.padding.textWithIconCell ?? config.padding.defaultCell;
   const icon_ = icon && icon({ size: iconSize ?? 12, color: iconColor });
 
   return (
-    <Inset space={16}>
+    <Inset spaceX={padding.paddingX} spaceY={padding.paddingY}>
       <Inline space={8} alignY="center" align={align} reverse={iconPosition === "right"}>
         {tooltipContent ? (
           <Tooltip
@@ -117,8 +124,10 @@ export function TextWithIconCell({
 }
 
 export function ChipCell({ value: chipProps, column: { align } }: CellProps<{}, ChipProps>) {
+  const config = useBentoConfig().table;
+  const padding = config.padding.chipCell ?? config.padding.defaultCell;
   return (
-    <Inset space={16}>
+    <Inset spaceX={padding.paddingX} spaceY={padding.paddingY}>
       <Inline space={0} align={align} alignY="center">
         <Chip {...chipProps} />
       </Inline>
@@ -127,8 +136,10 @@ export function ChipCell({ value: chipProps, column: { align } }: CellProps<{}, 
 }
 
 export function LabelCell({ value, column: { align } }: CellProps<{}, LocalizedString>) {
+  const config = useBentoConfig().table;
+  const padding = config.padding.labelCell ?? config.padding.defaultCell;
   return (
-    <Box padding={16} textAlign={align}>
+    <Box {...padding} textAlign={align}>
       <Label size="large">{value}</Label>
     </Box>
   );
@@ -141,8 +152,10 @@ export function LinkCell({
 }: CellProps<{}, ComponentProps<typeof Link>> & {
   options: Partial<Pick<BodyProps, "size" | "weight">>;
 }) {
+  const config = useBentoConfig().table;
+  const padding = config.padding.linkCell ?? config.padding.defaultCell;
   return (
-    <Box padding={16} textAlign={align}>
+    <Box {...padding} textAlign={align}>
       <Body size={size ?? "medium"} weight={weight}>
         <Link {...value} />
       </Body>
@@ -157,8 +170,10 @@ export function IconCell({
 }: CellProps<{}, { icon: (props: IconProps) => JSX.Element; label: LocalizedString }> & {
   options: Partial<Pick<IconProps, "size" | "color">>;
 }) {
+  const config = useBentoConfig().table;
+  const padding = config.padding.iconCell ?? config.padding.defaultCell;
   return (
-    <Box padding={16} textAlign={align} aria-label={value.label}>
+    <Box {...padding} textAlign={align} aria-label={value.label}>
       {value.icon({ size: size ?? 16, color: color ?? "default" })}
     </Box>
   );
@@ -171,8 +186,10 @@ export function IconButtonCell({
 }: CellProps<{}, Omit<IconButtonProps, "size" | "kind" | "hierarchy">> & {
   options: Partial<Pick<IconButtonProps, "size" | "kind" | "hierarchy">>;
 }) {
+  const config = useBentoConfig().table;
+  const padding = config.padding.iconButtonCell ?? config.padding.defaultCell;
   return (
-    <Inset space={16}>
+    <Inset spaceX={padding.paddingX} spaceY={padding.paddingY}>
       <Inline space={0} align={align} alignY="center">
         <IconButton
           kind={kind ?? "transparent"}
