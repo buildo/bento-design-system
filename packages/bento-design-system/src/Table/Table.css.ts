@@ -1,5 +1,6 @@
-import { style } from "@vanilla-extract/css";
+import { createVar, style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal";
+import { strictRecipe } from "../util/strictRecipe";
 
 export const table = style({
   gridAutoRows: "max-content",
@@ -29,11 +30,34 @@ export const stickyColumnHeader = bentoSprinkles({
   top: 0,
 });
 
-export const cellContainer = bentoSprinkles({
-  height: "full",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
+export const rowContainer = style({
+  // NOTE(gabro): this allows us to use the entire row as a parent selector,
+  // for applying a hover effect on all of its children or clicking on row,
+  // without intrucing a DOM container that would break the grid layout.
+  display: "contents",
+});
+
+export const selectedRowBackgroundColor = createVar();
+
+export const cellContainerRecipe = strictRecipe({
+  base: bentoSprinkles({
+    height: "full",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  }),
+  variants: {
+    interactiveRow: {
+      true: {
+        selectors: {
+          [`${rowContainer}:hover &`]: {
+            cursor: "pointer",
+            background: selectedRowBackgroundColor,
+          },
+        },
+      },
+    },
+  },
 });
 
 export const sectionHeaderContainer = style([

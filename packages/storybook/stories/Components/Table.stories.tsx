@@ -438,3 +438,10 @@ export const CustomizedColumns = createStory({
   columns: customizedColumns,
   data: exampleData,
 });
+
+export const InteractiveRow = createStory({
+  columns: exampleColumns,
+  data: exampleData,
+  initialSorting: [{ id: "name" }],
+  onRowPress: action("onRowPress"),
+});

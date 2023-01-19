@@ -467,6 +467,7 @@ export const table: TableConfig = {
   hintPlacement: "top",
   cellTooltipPlacement: "bottom",
   evenRowsBackgroundColor: "backgroundSecondary",
+  selectedRowBackgroundColor: "backgroundInteractiveOverlay",
   padding: {
     header: { paddingX: 16, paddingY: 8 },
     defaultCell: { paddingX: 16, paddingY: 16 },

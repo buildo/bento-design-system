@@ -2,6 +2,7 @@ import { TooltipPlacement } from "../Field/FieldProps";
 import { IconProps } from "../Icons";
 import { IllustrationProps } from "../Illustrations";
 import { BentoSprinkles } from "../internal";
+import { vars } from "../vars.css";
 
 type CellPaddingConfig = {
   paddingX: BentoSprinkles["paddingX"];
@@ -16,6 +17,10 @@ export type TableConfig = {
   hintPlacement: TooltipPlacement;
   cellTooltipPlacement: TooltipPlacement;
   evenRowsBackgroundColor: BentoSprinkles["background"];
+  // NOTE(gabro): not using BentoSprinkles["background"] because we only want
+  // "plain" values to use directly in CSS and not conditional objects like
+  // { default: ..., hover: ... }
+  selectedRowBackgroundColor: keyof typeof vars.backgroundColor;
   padding: {
     header: CellPaddingConfig;
     defaultCell: CellPaddingConfig;
