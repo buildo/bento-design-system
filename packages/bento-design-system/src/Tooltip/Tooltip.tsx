@@ -36,14 +36,17 @@ export function Tooltip(props: Props) {
   const config = useBentoConfig().tooltip;
   const arrowRef = useRef<HTMLElement | null>(null);
 
-  const commonMiddleware = [shift(), offset(8), arrow({ element: arrowRef })];
+  const commonMiddleware = [shift(), offset(8)];
+  const arrowMiddleware = arrow({ element: arrowRef });
   const floatingProps: UseFloatingProps = props.placement
     ? {
         placement: props.placement,
-        middleware: commonMiddleware.concat([flip()]),
+        middleware: commonMiddleware.concat([flip(), arrowMiddleware]),
       }
     : {
-        middleware: commonMiddleware.concat([autoPlacement()]),
+        // NOTE(gabro): it's important that arrow comes after autoPlacement, otherwise the arrow will be positioned incorrectly
+        // See https://github.com/buildo/bento-design-system/issues/513
+        middleware: commonMiddleware.concat([autoPlacement(), arrowMiddleware]),
       };
   const {
     x,
