@@ -23,6 +23,7 @@ import {
   IconButtonCell,
 } from "./cells";
 import { ComponentProps, FunctionComponent } from "react";
+import { useBentoConfig } from "../BentoConfigContext";
 
 export type { CellProps } from "react-table";
 
@@ -48,10 +49,11 @@ export function custom<A extends string, V, D extends Record<string, unknown>>({
     gridWidth: width,
     Cell: (props) => {
       const { defaultMessages } = useDefaultMessages();
+      const config = useBentoConfig().table;
       if (props.value == null) {
         const value = missingValue ?? defaultMessages.Table.missingValue;
         return (
-          <Box padding={16} textAlign={options.align}>
+          <Box {...config.padding.defaultCell} textAlign={options.align}>
             <Body size="medium">{value}</Body>
           </Box>
         );
