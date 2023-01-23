@@ -6,7 +6,7 @@ import { AtLeast } from "../util/AtLeast";
 export type IllustrationProps = {
   size: 24 | 32 | 40 | 80 | 160 | { custom: number };
 } & (
-  | AtLeast<
+  | (AtLeast<
       {
         kind: "color";
         /**
@@ -15,7 +15,7 @@ export type IllustrationProps = {
         style: "color";
       },
       "kind" | "style"
-    >
+    > & { color: never })
   | (AtLeast<
       {
         kind: "outline";

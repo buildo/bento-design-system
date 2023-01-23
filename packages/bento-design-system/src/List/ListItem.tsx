@@ -19,6 +19,7 @@ import { element } from "../reset.css";
 import { Children } from "../util/Children";
 import { useBentoConfig } from "../BentoConfigContext";
 import type { ListItemConfig } from "./Config";
+import { BentoSprinkles } from "../internal";
 
 type Kind =
   | {
@@ -55,6 +56,7 @@ type RightItem = {
 };
 
 type CommonItemProps = {
+  borderRadius: BentoSprinkles["borderRadius"];
   disabled?: boolean;
   isFocused?: boolean;
   isSelected?: boolean;
@@ -105,6 +107,7 @@ export const ListItem = forwardRef<HTMLElement, Props>((props, ref) => {
         focused: !!props.isFocused,
         selected: !!props.isSelected,
       })}
+      borderRadius={props.borderRadius ?? config.borderRadius}
       disabled={props.disabled}
     >
       <Box
@@ -136,7 +139,7 @@ function renderLeft(props: Props, config: ListItemConfig) {
         {props.illustration({
           size: config.iconSize.illustration,
           kind: "outline",
-          color: props.disabled ? "disabled" : "default",
+          color: props.disabled ? "disabled" : config.iconColor.illustration,
         })}
       </Column>
     );
@@ -147,7 +150,7 @@ function renderLeft(props: Props, config: ListItemConfig) {
       <Column width="content">
         {props.icon({
           size: config.iconSize.leading,
-          color: props.disabled ? "disabled" : "default",
+          color: props.disabled ? "disabled" : config.iconColor.leading,
         })}
       </Column>
     );
@@ -162,7 +165,7 @@ function renderRight(props: Props, config: ListItemConfig) {
       <Column width="content">
         {props.trailingIcon({
           size: config.iconSize.trailing,
-          color: props.disabled ? "disabled" : "default",
+          color: props.disabled ? "disabled" : config.iconColor.trailing,
         })}
       </Column>
     );
