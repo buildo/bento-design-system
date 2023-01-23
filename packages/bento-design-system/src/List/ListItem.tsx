@@ -56,7 +56,7 @@ type RightItem = {
 };
 
 type CommonItemProps = {
-  borderRadius: BentoSprinkles["borderRadius"];
+  borderRadius?: BentoSprinkles["borderRadius"];
   disabled?: boolean;
   isFocused?: boolean;
   isSelected?: boolean;
