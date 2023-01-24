@@ -1,5 +1,7 @@
 import { AtLeast } from "../util/AtLeast";
 
+export type IllustrationColor = "default" | "disabled" | "inherit";
+
 // NOTE(gabro): we deprecated the `style` prop due to false positive warnings in
 // popular ESLint configs, which expect `style` to be an object.
 // We're still keeping the old props around for backwards compatibility.
@@ -25,5 +27,5 @@ export type IllustrationProps = {
         style: "outline";
       },
       "kind" | "style"
-    > & { color: "default" | "disabled" | "inherit" })
+    > & { color: IllustrationColor })
 );

@@ -155,3 +155,23 @@ export const OverlineIllustration = createStory({
     },
   ],
 });
+
+export const WithSpacing = createStory({
+  items: [
+    { kind: "single-line", label, href },
+    { kind: "single-line", label: labelLong, href },
+    { kind: "single-line", label, href },
+    { kind: "single-line", label: labelRich, href },
+  ],
+  space: 8,
+});
+
+export const WithRoundBorders = createStory({
+  items: [
+    { kind: "single-line", borderRadius: 8, label, href },
+    { kind: "single-line", borderRadius: 8, label: labelLong, href },
+    { kind: "single-line", borderRadius: 8, label, href },
+    { kind: "single-line", borderRadius: 8, label: labelRich, href },
+  ],
+  space: 8,
+});

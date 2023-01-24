@@ -1,5 +1,5 @@
 import { IconProps } from "../Icons";
-import { IllustrationProps } from "../Illustrations";
+import { IllustrationColor, IllustrationProps } from "../Illustrations";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";
 import { LabelProps } from "../Typography/Label/Label";
@@ -10,6 +10,7 @@ type ListItemSizeConfig<T> = {
 };
 
 export type ListItemConfig = {
+  borderRadius: BentoSprinkles["borderRadius"];
   paddingX: ListItemSizeConfig<BentoSprinkles["paddingX"]>;
   paddingY: ListItemSizeConfig<BentoSprinkles["paddingY"]>;
   fontSize: {
@@ -23,8 +24,14 @@ export type ListItemConfig = {
     trailing: IconProps["size"];
     illustration: IllustrationProps["size"];
   };
+  iconColor: {
+    leading: IconProps["color"];
+    trailing: IconProps["color"];
+    illustration: IllustrationColor;
+  };
 };
 
 export type ListConfig = {
   item: ListItemConfig;
+  spacing: BentoSprinkles["gap"];
 };

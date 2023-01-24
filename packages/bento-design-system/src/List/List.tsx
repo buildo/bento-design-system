@@ -1,10 +1,12 @@
 import { ListItem, ListItemProps } from "./ListItem";
 import { InternalList } from "./InternalList";
+import { BentoSprinkles } from "../internal";
 
 export type ListSize = "medium" | "large";
 type Props = {
   size: ListSize;
   items: ListItemProps[];
+  space?: BentoSprinkles["gap"];
   dividers?: boolean;
 };
 

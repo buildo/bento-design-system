@@ -323,6 +323,7 @@ export const iconButton: IconButtonConfig = {
 
 export const list: ListConfig = {
   item: {
+    borderRadius: 0,
     paddingX: {
       medium: 16,
       large: 16,
@@ -342,7 +343,13 @@ export const list: ListConfig = {
       trailing: 16,
       illustration: 32,
     },
+    iconColor: {
+      leading: "default",
+      trailing: "default",
+      illustration: "default",
+    },
   },
+  spacing: 0,
 };
 
 export const menu: MenuConfig = {
@@ -433,6 +440,7 @@ export const dropdown: DropdownConfig = {
   menuPaddingY: 8,
   list: {
     item: {
+      borderRadius: 0,
       paddingX: {
         medium: 16,
         large: 16,
@@ -452,7 +460,13 @@ export const dropdown: DropdownConfig = {
         trailing: 16,
         illustration: 32,
       },
+      iconColor: {
+        leading: "default",
+        trailing: "default",
+        illustration: "default",
+      },
     },
+    spacing: 0,
   },
   defaultMenuSize: "medium",
   openIndicatorIcon: IconChevronDown,
