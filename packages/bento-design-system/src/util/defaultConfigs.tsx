@@ -169,6 +169,7 @@ export const chip: ChipConfig = {
   spacingAfterLabel: 8,
   customColors: {},
   radius: "circledX",
+  uppercase: true,
 };
 
 export const decorativeDivider: DecorativeDividerConfig = {

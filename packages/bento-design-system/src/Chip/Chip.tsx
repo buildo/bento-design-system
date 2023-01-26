@@ -11,7 +11,7 @@ import {
   Body,
 } from "..";
 import { BentoSprinkles } from "../internal";
-import { chip, ellipsedLabel, maxWidth } from "./Chip.css";
+import { chipRecipe, ellipsedLabel, maxWidth } from "./Chip.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { useBentoConfig } from "../BentoConfigContext";
@@ -46,6 +46,7 @@ type Props = {
   icon?: FunctionComponent<IconProps>;
   /** Truncate and show ellipsis after a number of characters */
   maxCharacters?: number;
+  uppercase?: boolean;
 } & DismissProps;
 
 const defaultColorsMapping: Record<DefaultColor, BentoSprinkles["background"]> = {
@@ -61,7 +62,14 @@ const defaultColorsMapping: Record<DefaultColor, BentoSprinkles["background"]> =
   pink: "softPink",
 };
 
-export function Chip({ color, label: _label, icon, maxCharacters, ...dismissProps }: Props) {
+export function Chip({
+  color,
+  label: _label,
+  icon,
+  maxCharacters,
+  uppercase,
+  ...dismissProps
+}: Props) {
   const config = useBentoConfig().chip;
   const colorsMapping = { ...defaultColorsMapping, ...config.customColors };
 
@@ -87,7 +95,7 @@ export function Chip({ color, label: _label, icon, maxCharacters, ...dismissProp
       <Box
         paddingX={config.paddingX}
         paddingY={config.paddingY}
-        className={chip}
+        className={chipRecipe({ uppercase: uppercase ?? config.uppercase })}
         background={colorsMapping[color]}
         borderRadius={config.radius}
       >
