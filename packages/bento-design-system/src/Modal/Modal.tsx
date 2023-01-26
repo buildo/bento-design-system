@@ -10,6 +10,7 @@ import {
   Columns,
   Inset,
   Actions,
+  Stack,
 } from "..";
 import { useOverlay, usePreventScroll, useModal } from "@react-aria/overlays";
 import { useDialog } from "@react-aria/dialog";
@@ -103,40 +104,38 @@ export function Modal(props: Props) {
   return (
     <CustomModal {...props} aria-label={props.title}>
       <Inset spaceX={config.paddingX} spaceY={config.paddingY}>
-        <Columns space={16} alignY="top">
-          <Columns space={16} alignY="center">
-            {icon && <Column width="content">{icon}</Column>}
-            <Title size={config.titleSize}>{props.title}</Title>
+        <Stack space={config.internalSpacing}>
+          <Columns space={16} alignY="top">
+            <Columns space={16} alignY="center">
+              {icon && <Column width="content">{icon}</Column>}
+              <Title size={config.titleSize}>{props.title}</Title>
+            </Columns>
+            <Column width="content">
+              <IconButton
+                icon={config.closeIcon}
+                label={props.closeButtonLabel ?? defaultMessages.Modal.closeButtonLabel}
+                onPress={props.onClose}
+                size={config.closeIconSize}
+                tabIndex={-1}
+                kind="transparent"
+                hierarchy="secondary"
+              />
+            </Column>
           </Columns>
-          <Column width="content">
-            <IconButton
-              icon={config.closeIcon}
-              label={props.closeButtonLabel ?? defaultMessages.Modal.closeButtonLabel}
-              onPress={props.onClose}
-              size={config.closeIconSize}
-              tabIndex={-1}
-              kind="transparent"
-              hierarchy="secondary"
-            />
-          </Column>
-        </Columns>
-      </Inset>
-      <Box className={modalBody} paddingX={config.paddingX}>
-        {props.children}
-      </Box>
-      <Inset spaceX={config.paddingX} spaceY={config.paddingY}>
-        <Actions
-          primaryAction={
-            props.primaryAction
-              ? { ...props.primaryAction, isDestructive: kind === "destructive" }
-              : undefined
-          }
-          secondaryAction={props.secondaryAction}
-          size={config.actionsSize}
-          loadingMessage={props.loadingMessage}
-          error={props.error}
-          errorBannerWidth={props.errorBannerWidth || config.defaultErrorBannerWidth}
-        />
+          <Box className={modalBody}>{props.children}</Box>
+          <Actions
+            primaryAction={
+              props.primaryAction
+                ? { ...props.primaryAction, isDestructive: kind === "destructive" }
+                : undefined
+            }
+            secondaryAction={props.secondaryAction}
+            size={config.actionsSize}
+            loadingMessage={props.loadingMessage}
+            error={props.error}
+            errorBannerWidth={props.errorBannerWidth || config.defaultErrorBannerWidth}
+          />
+        </Stack>
       </Inset>
     </CustomModal>
   );

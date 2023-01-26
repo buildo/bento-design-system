@@ -383,6 +383,7 @@ export const modal: ModalConfig = {
   titleIconSize: 24,
   defaultErrorBannerWidth: "content",
   actionsSize: "large",
+  internalSpacing: 24,
 };
 
 export const navigation: NavigationConfig = {

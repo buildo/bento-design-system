@@ -19,4 +19,5 @@ export type ModalConfig = {
   titleIconSize: IconProps["size"];
   defaultErrorBannerWidth: NonNullable<ActionsProps["errorBannerWidth"]>;
   actionsSize: NonNullable<ActionsProps["size"]>;
+  internalSpacing: BentoSprinkles["gap"];
 };
