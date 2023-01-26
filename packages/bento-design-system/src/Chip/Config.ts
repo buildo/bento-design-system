@@ -18,4 +18,5 @@ export type ChipConfig = {
     [k in ChipCustomColors]: BentoSprinkles["background"];
   };
   radius: BentoSprinkles["borderRadius"];
+  uppercase: boolean;
 };

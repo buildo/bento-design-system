@@ -8,7 +8,6 @@ import {
   Box,
   Column,
   Columns,
-  Inset,
   Actions,
 } from "..";
 import { useOverlay, usePreventScroll, useModal } from "@react-aria/overlays";
@@ -102,7 +101,11 @@ export function Modal(props: Props) {
 
   return (
     <CustomModal {...props} aria-label={props.title}>
-      <Inset spaceX={config.paddingX} spaceY={config.paddingY}>
+      <Box
+        paddingX={config.paddingX}
+        paddingTop={config.paddingY}
+        paddingBottom={config.internalSpacing}
+      >
         <Columns space={16} alignY="top">
           <Columns space={16} alignY="center">
             {icon && <Column width="content">{icon}</Column>}
@@ -120,11 +123,15 @@ export function Modal(props: Props) {
             />
           </Column>
         </Columns>
-      </Inset>
+      </Box>
       <Box className={modalBody} paddingX={config.paddingX}>
         {props.children}
       </Box>
-      <Inset spaceX={config.paddingX} spaceY={config.paddingY}>
+      <Box
+        paddingX={config.paddingX}
+        paddingTop={config.internalSpacing}
+        paddingBottom={config.paddingY}
+      >
         <Actions
           primaryAction={
             props.primaryAction
@@ -137,7 +144,7 @@ export function Modal(props: Props) {
           error={props.error}
           errorBannerWidth={props.errorBannerWidth || config.defaultErrorBannerWidth}
         />
-      </Inset>
+      </Box>
     </CustomModal>
   );
 }

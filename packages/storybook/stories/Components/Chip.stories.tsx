@@ -39,3 +39,8 @@ export const MaxWidth = createStory({
   color: "blue",
   maxCharacters: 10,
 });
+
+export const LowerCase = createStory({
+  color: "blue",
+  uppercase: false,
+});
