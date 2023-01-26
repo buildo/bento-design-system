@@ -11,9 +11,9 @@ export const chipRecipe = strictRecipe({
   }),
   variants: {
     uppercase: {
-      true: {
+      true: bentoSprinkles({
         textTransform: "uppercase",
-      },
+      }),
     },
   },
 });
