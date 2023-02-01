@@ -62,7 +62,7 @@ export function Menu({
                 {header}
               </Box>
             )}
-            <Inset spaceY={config.paddingY}>
+            <Inset spaceX={config.paddingX} spaceY={config.paddingY}>
               <MenuList
                 items={items}
                 closeMenu={state.close}
