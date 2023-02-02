@@ -17,6 +17,7 @@ type Props = {
   size?: ButtonProps["size"];
   active?: boolean;
   icon?: (props: IconProps) => JSX.Element;
+  iconPosition?: "leading" | "trailing";
 } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "color">;
 
 export function ButtonLink({
@@ -29,6 +30,7 @@ export function ButtonLink({
   label,
   active = false,
   icon,
+  iconPosition,
   ...props
 }: Props) {
   const config = useBentoConfig().button;
@@ -59,7 +61,7 @@ export function ButtonLink({
       paddingY={config.paddingY[size]}
       borderRadius={config.radius}
     >
-      <Columns space={config.internalSpacing} alignY="center">
+      <Columns space={config.internalSpacing} alignY="center" reverse={iconPosition === "trailing"}>
         {icon && (
           <Column width="content">
             {icon({

@@ -354,6 +354,7 @@ export const list: ListConfig = {
 };
 
 export const menu: MenuConfig = {
+  paddingX: 0,
   paddingY: 8,
   radius: 8,
   elevation: "medium",
