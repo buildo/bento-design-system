@@ -19,7 +19,12 @@
       "require": "./lib/index.cjs"
     },
     "./index.css": "./lib/index.css",
-    "./defaultTheme.css": "./lib/defaultTheme.css"
+    "./defaultTheme.css": "./lib/defaultTheme.css",
+    "./defaultMessages/en": {
+      "node": "./lib/defaultMessages/en.cjs",
+      "import": "./lib/defaultMessages/en.js",
+      "require": "./lib/defaultMessages/en.cjs"
+    }
   },
   "types": "lib/index.d.ts",
   "type": "module",
