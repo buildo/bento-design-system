@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import flattenChildren from "react-keyed-flatten-children";
+import { flattenChildren } from "../util/flattenChildren";
 import { Divider } from "../Divider/Divider";
 import { ResponsiveAlign, alignToFlexAlign } from "../util/align";
 import { childKey } from "../util/childKey";

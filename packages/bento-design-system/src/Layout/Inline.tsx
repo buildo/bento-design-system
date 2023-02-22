@@ -1,4 +1,4 @@
-import flattenChildren from "react-keyed-flatten-children";
+import { flattenChildren } from "../util/flattenChildren";
 import { Box, AsProp } from "../Box/Box";
 import { ResponsiveSpace } from "../internal";
 import { Children } from "../util/Children";
