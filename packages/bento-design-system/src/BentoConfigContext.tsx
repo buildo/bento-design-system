@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import * as defaultConfigs from "./util/defaultConfigs";
 import type { BentoConfig, PartialBentoConfig } from "./BentoConfig";
-import merge from "ts-deepmerge";
+import { deepmerge } from "deepmerge-ts";
 import { Children } from "./util/Children";
 
 const BentoConfigContext = createContext<BentoConfig>(defaultConfigs);
@@ -23,7 +23,7 @@ export function BentoConfigProvider({
   // in case this is the top level provider.
   const parentConfig = useBentoConfig();
   return (
-    <BentoConfigContext.Provider value={merge(parentConfig, config)}>
+    <BentoConfigContext.Provider value={deepmerge(config, parentConfig)}>
       {children}
     </BentoConfigContext.Provider>
   );

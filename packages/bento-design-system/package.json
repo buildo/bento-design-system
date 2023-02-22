@@ -96,6 +96,7 @@
     "@vanilla-extract/recipes": "0.2.5",
     "@vanilla-extract/sprinkles": "1.5.1",
     "clsx": "^1.2.1",
+    "deepmerge-ts": "^4.3.0",
     "react-cool-dimensions": "^2.0.7",
     "react-dropzone": "^14.2.3",
     "react-input-mask": "^2.0.4",
@@ -104,7 +105,6 @@
     "react-table": "^7.8.0",
     "react-use": "^17.4.0",
     "recharts": "^2.1.16",
-    "ts-deepmerge": "^2.0.3",
     "ts-pattern": "^3.3.5"
   },
   "devDependencies": {
