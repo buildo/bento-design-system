@@ -54,9 +54,6 @@ export const Loading = () => {
     </Stack>
   );
 };
-Loading.parameters = {
-  chromatic: { pauseAnimationAtEnd: true },
-};
 
 export const withOutlineButton = createControlledStory(undefined, fileUploaderProps);
 withOutlineButton.decorators = [
