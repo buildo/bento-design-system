@@ -475,6 +475,8 @@ export const dropdown: DropdownConfig = {
   defaultMenuSize: "medium",
   openIndicatorIcon: IconChevronDown,
   openIndicatorIconSize: 16,
+  chipColor: "blue",
+  chipSpacing: 8,
 };
 
 export const table: TableConfig = {

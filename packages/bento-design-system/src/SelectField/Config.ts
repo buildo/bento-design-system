@@ -1,3 +1,4 @@
+import { ChipProps } from "../Chip/Chip";
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { ListConfig } from "../List/Config";
@@ -11,4 +12,6 @@ export type DropdownConfig = {
   defaultMenuSize: "medium" | "large";
   openIndicatorIcon: (props: IconProps) => Children;
   openIndicatorIconSize: IconProps["size"];
+  chipColor: ChipProps["color"];
+  chipSpacing: BentoSprinkles["gap"];
 };

@@ -24,7 +24,6 @@ export type SelectOption<A> = Omit<
 
 type MultiProps<A> = {
   isMulti: true;
-  multiValueMessage?: (numberOfSelectedOptions: number) => LocalizedString;
   showMultiSelectBulkActions?: boolean;
   selectAllButtonLabel?: LocalizedString;
   clearAllButtonLabel?: LocalizedString;
@@ -36,6 +35,7 @@ type MultiProps<A> = {
       }
     | {
         multiSelectMode: "chips";
+        multiValueMessage?: never;
       }
   );
 
@@ -207,6 +207,7 @@ export function SelectField<A>(props: Props<A>) {
 // See: https://github.com/JedWatson/react-select/issues/2239#issuecomment-861848975
 function MultiValue<A extends SelectOption<unknown>>(props: MultiValueProps<A>) {
   const inputConfig = useBentoConfig().input;
+  const dropdownConfig = useBentoConfig().dropdown;
   switch (props.selectProps.multiSelectMode ?? "summary") {
     case "summary":
       const numberOfSelectedOptions = props.getValue().length;
@@ -227,7 +228,7 @@ function MultiValue<A extends SelectOption<unknown>>(props: MultiValueProps<A>) 
     case "chips":
       return (
         <Chip
-          color="blue"
+          color={dropdownConfig.chipColor}
           label={props.data.label as LocalizedString}
           onDismiss={props.removeProps.onClick as () => void}
         />

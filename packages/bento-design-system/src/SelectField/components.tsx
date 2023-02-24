@@ -65,11 +65,12 @@ export function Control<A>({
 
 export function ValueContainer<A>(props: ValueContainerProps<A>) {
   const sprinkles = useSprinkles();
+  const dropdownConfig = useBentoConfig().dropdown;
   return (
     <defaultComponents.ValueContainer
       {...props}
       className={sprinkles({
-        gap: 8,
+        gap: dropdownConfig.chipSpacing,
         overflowX: "auto",
         flexWrap: "nowrap",
       })}
@@ -77,7 +78,7 @@ export function ValueContainer<A>(props: ValueContainerProps<A>) {
   );
 }
 
-export function SingleValue<A>({ children, isDisabled, data }: SingleValueProps<A>) {
+export function SingleValue<A extends object>({ children, isDisabled, data }: SingleValueProps<A>) {
   const inputConfig = useBentoConfig().input;
 
   return (

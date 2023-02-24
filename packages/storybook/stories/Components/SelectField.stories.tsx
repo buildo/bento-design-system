@@ -129,8 +129,6 @@ export const MultiSelectModeChipsSelected = createControlledStory(manyColors, {
   isMulti: true,
   multiSelectMode: "chips",
   showMultiSelectBulkActions: true,
-  multiValueMessage: (numberOfSelectedOptions: number) =>
-    `${numberOfSelectedOptions} options selected`,
   options: manyColors.map((color) => ({
     value: color,
     label: color,
