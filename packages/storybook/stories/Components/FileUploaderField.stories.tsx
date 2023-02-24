@@ -1,4 +1,5 @@
-import { FileUploaderField } from "..";
+import { StoryFn } from "@storybook/react";
+import { FileUploaderField, BentoConfigProvider } from "..";
 import { createComponentStories } from "../util";
 
 const { defaultExport, createControlledStory } = createComponentStories({
@@ -39,3 +40,18 @@ export const loading = createControlledStory(undefined, {
 loading.parameters = {
   chromatic: { pauseAnimationAtEnd: true },
 };
+
+export const withOutlineButton = createControlledStory(undefined, fileUploaderProps);
+withOutlineButton.decorators = [
+  (Story: StoryFn) => (
+    <BentoConfigProvider
+      value={{
+        fileUploaderField: {
+          buttonKind: "outline",
+        },
+      }}
+    >
+      <Story />
+    </BentoConfigProvider>
+  ),
+];
