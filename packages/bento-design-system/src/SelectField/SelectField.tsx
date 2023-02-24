@@ -52,6 +52,8 @@ type Props<A> = {
   searchable?: boolean;
 } & (SingleProps<A> | MultiProps<A>);
 
+export type { Props as SelectFieldProps };
+
 declare module "react-select/dist/declarations/src/Select" {
   export interface Props<Option, IsMulti extends boolean, Group extends GroupBase<Option>> {
     menuSize?: ListSize;
