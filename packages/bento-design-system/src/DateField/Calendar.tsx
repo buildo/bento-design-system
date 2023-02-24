@@ -35,6 +35,8 @@ type Props = CommonCalendarProps & {
   selectActiveDate: (date: Date) => void;
   onClose: () => void;
   shortcuts?: Children;
+  minDate?: Date;
+  maxDate?: Date;
 };
 
 function boxShadowFromElevation(config: "none" | "small" | "medium" | "large") {

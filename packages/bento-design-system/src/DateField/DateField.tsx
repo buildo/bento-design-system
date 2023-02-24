@@ -238,6 +238,8 @@ export function DateField(props: Props) {
             onDateFocus((props.type === "range" ? props.value[0] : props.value) || new Date());
           }}
           shortcuts={shortcuts}
+          maxDate={props.maxDate}
+          minDate={props.minDate}
         />
       )}
     </Field>
