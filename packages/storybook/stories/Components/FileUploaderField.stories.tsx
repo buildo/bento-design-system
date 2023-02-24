@@ -8,7 +8,7 @@ const { defaultExport, createControlledStory } = createComponentStories({
 
 export default defaultExport;
 
-export const fileUploaderField = createControlledStory(undefined, {
+const fileUploaderProps = {
   label: "Upload a file",
   allowedFileTypes: {
     "text/csv": [".csv"],
@@ -21,10 +21,21 @@ export const fileUploaderField = createControlledStory(undefined, {
     uploadAgainMessage: "Upload another file: ",
     uploadingMessage: "Uploading...",
     uploadButtonLabel: "Choose a file",
-    assistiveTextFileTypes: (fileTypes) =>
+    assistiveTextFileTypes: (fileTypes?: Record<string, string[]>) =>
       fileTypes ? "Allowed file types: " + Object.values(fileTypes).flat().join(", ") : "",
-    assistiveTextMaxSize: (maxSizeMb) => (maxSizeMb ? "Max file size: " + maxSizeMb + "MB" : ""),
+    assistiveTextMaxSize: (maxSizeMb?: number) =>
+      maxSizeMb ? "Max file size: " + maxSizeMb + "MB" : "",
   },
   renderIssue: () => "error",
   maxFileSize: 1000,
+};
+
+export const fileUploaderField = createControlledStory(undefined, fileUploaderProps);
+
+export const loading = createControlledStory(undefined, {
+  ...fileUploaderProps,
+  isUploading: true,
 });
+loading.parameters = {
+  chromatic: { pauseAnimationAtEnd: true },
+};
