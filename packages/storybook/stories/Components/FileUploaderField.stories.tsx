@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { StoryFn } from "@storybook/react";
-import { FileUploaderField, BentoConfigProvider } from "..";
+import { FileUploaderField, BentoConfigProvider, Button, Stack } from "..";
 import { createComponentStories } from "../util";
 
 const { defaultExport, createControlledStory } = createComponentStories({
@@ -33,11 +34,27 @@ const fileUploaderProps = {
 
 export const fileUploaderField = createControlledStory(undefined, fileUploaderProps);
 
-export const loading = createControlledStory(undefined, {
-  ...fileUploaderProps,
-  isUploading: true,
-});
-loading.parameters = {
+export const Loading = () => {
+  const [loading, setLoading] = useState(false);
+
+  return (
+    <Stack space={16}>
+      <FileUploaderField
+        {...fileUploaderProps}
+        value={undefined}
+        onChange={() => {}}
+        isUploading={loading}
+      />
+      <Button
+        kind="solid"
+        hierarchy="primary"
+        label={loading ? "Stop loading" : "Start loading"}
+        onPress={() => setLoading(!loading)}
+      />
+    </Stack>
+  );
+};
+Loading.parameters = {
   chromatic: { pauseAnimationAtEnd: true },
 };
 

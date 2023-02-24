@@ -144,7 +144,11 @@ export function FileUploaderField<E extends string>({
 }: Props<E>) {
   const config = useBentoConfig().fileUploaderField;
   const height = height_ ?? config.defaultHeight;
+
   const [uploading, setUploading] = useState<boolean>(isUploading ?? false);
+  useEffect(() => {
+    isUploading !== undefined && setUploading(isUploading);
+  }, [isUploading]);
 
   // note(Fede): useDropzone already exposes a `isDragActive` flag, but it is true
   // only when a file is dragged over the component, not the whole window, which is what we prefer.
