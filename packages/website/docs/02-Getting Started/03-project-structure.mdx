@@ -114,6 +114,15 @@ export default defineConfig({
 });
 ```
 
+:::info
+For most recent projects, `vanillaExtractPlugin()` type is incompatible with `esbuildPlugins`.
+If the compiler is giving you an incompability error over the `Plugin` type, you can safely suppress
+it in most of the cases via `@ts-ignore`.
+
+For more info, see [this feature](https://github.com/evanw/esbuild/commit/01efc056ac5bd0eed987c9dd592b443e6974742c#diff-53664fbdfc62af3b722184289b51ff956243fc8f7e81fb9d0548219307587f7cR136)
+introduced in `esbuild` version [0.17.1](https://github.com/evanw/esbuild/releases/tag/v0.17.1)
+:::
+
 And a file named `jsxShim.ts` in your project root:
 
 ```ts
