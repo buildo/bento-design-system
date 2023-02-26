@@ -102,7 +102,7 @@ export default defineConfig({
   inject: ["./jsxShim.ts"],
   // Include here the css files coming from external dependencies, which we
   // recommend to bundle in your design system package.
-  noExternals: [
+  noExternal: [
     "@buildo/bento-design-system/lib/index.css",
     // e.g. here's how to include fonts from Fontsource, a popular library for self-hosting fonts
     // "@fontsource",
@@ -138,7 +138,7 @@ my-project/
 ├─ packages/
 │  ├─ design-system/
 │  │  ├─ src/
-│  │  │  ├─ index.tsx
+│  │  │  ├─ index.ts
 │  │  ├─ package.json
 │  │  ├─ tsup.config.ts
 │  │  ├─ jsxShim.ts
@@ -147,11 +147,11 @@ my-project/
 ├─ pnpm-workspaces.yaml
 ```
 
-`packages/design-system/src/index.tsx` is where you configure and export Bento components.
+`packages/design-system/src/index.ts` is where you configure and export Bento components.
 
 Your `index.ts` will look something like this:
 
-```tsx title="my-project/packages/design-system/src/index.tsx"
+```tsx title="my-project/packages/design-system/src/index.ts"
 import { createBentoProvider } from "@buildo/bento-design-system";
 
 // Export the Bento components you want to use in your app
