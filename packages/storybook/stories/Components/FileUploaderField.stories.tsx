@@ -1,4 +1,6 @@
-import { FileUploaderField } from "..";
+import { useState } from "react";
+import { StoryFn } from "@storybook/react";
+import { FileUploaderField, BentoConfigProvider, Button, Stack } from "..";
 import { createComponentStories } from "../util";
 
 const { defaultExport, createControlledStory } = createComponentStories({
@@ -8,7 +10,7 @@ const { defaultExport, createControlledStory } = createComponentStories({
 
 export default defaultExport;
 
-export const fileUploaderField = createControlledStory(undefined, {
+const fileUploaderProps = {
   label: "Upload a file",
   allowedFileTypes: {
     "text/csv": [".csv"],
@@ -21,10 +23,49 @@ export const fileUploaderField = createControlledStory(undefined, {
     uploadAgainMessage: "Upload another file: ",
     uploadingMessage: "Uploading...",
     uploadButtonLabel: "Choose a file",
-    assistiveTextFileTypes: (fileTypes) =>
+    assistiveTextFileTypes: (fileTypes?: Record<string, string[]>) =>
       fileTypes ? "Allowed file types: " + Object.values(fileTypes).flat().join(", ") : "",
-    assistiveTextMaxSize: (maxSizeMb) => (maxSizeMb ? "Max file size: " + maxSizeMb + "MB" : ""),
+    assistiveTextMaxSize: (maxSizeMb?: number) =>
+      maxSizeMb ? "Max file size: " + maxSizeMb + "MB" : "",
   },
   renderIssue: () => "error",
   maxFileSize: 1000,
-});
+};
+
+export const fileUploaderField = createControlledStory(undefined, fileUploaderProps);
+
+export const Loading = () => {
+  const [loading, setLoading] = useState(false);
+
+  return (
+    <Stack space={16}>
+      <FileUploaderField
+        {...fileUploaderProps}
+        value={undefined}
+        onChange={() => {}}
+        isUploading={loading}
+      />
+      <Button
+        kind="solid"
+        hierarchy="primary"
+        label={loading ? "Stop loading" : "Start loading"}
+        onPress={() => setLoading(!loading)}
+      />
+    </Stack>
+  );
+};
+
+export const withOutlineButton = createControlledStory(undefined, fileUploaderProps);
+withOutlineButton.decorators = [
+  (Story: StoryFn) => (
+    <BentoConfigProvider
+      value={{
+        fileUploaderField: {
+          buttonKind: "outline",
+        },
+      }}
+    >
+      <Story />
+    </BentoConfigProvider>
+  ),
+];

@@ -34,7 +34,7 @@ const errorCodes = [
 type KnownDropzoneErrorCode = typeof errorCodes[number];
 
 export type ErrorCode =
-  | `${DropzoneErrorCode}`
+  | `${KnownDropzoneErrorCode}`
   | "generic-error"
   | "wrong-structure"
   | "unable-to-read";
@@ -42,11 +42,6 @@ export type ErrorCode =
 function isDropzoneKnownError(error: string): error is KnownDropzoneErrorCode {
   return errorCodes.find((c) => c === error) !== undefined;
 }
-
-export type ErrorMessages<E extends string> = Record<
-  E | ErrorCode,
-  Children | ((file: File | undefined) => Children)
->;
 
 export type FileUploaderTexts = {
   title: LocalizedString;
@@ -100,6 +95,10 @@ type Props<E extends string> = {
    * The field height
    */
   height?: string | number;
+  /**
+   * A parameter that allows external control of the uploading status.
+   */
+  isUploading?: boolean;
 } & Omit<FieldProps<FileResult<E> | undefined>, "assistiveText" | "issues">;
 
 export type { Props as FileUploaderProps };
@@ -141,10 +140,15 @@ export function FileUploaderField<E extends string>({
   maxFileSize,
   allowedFileTypes,
   height: height_,
+  isUploading,
 }: Props<E>) {
   const config = useBentoConfig().fileUploaderField;
   const height = height_ ?? config.defaultHeight;
-  const [uploading, setUploading] = useState<boolean>(false);
+
+  const [uploading, setUploading] = useState<boolean>(isUploading ?? false);
+  useEffect(() => {
+    isUploading !== undefined && setUploading(isUploading);
+  }, [isUploading]);
 
   // note(Fede): useDropzone already exposes a `isDragActive` flag, but it is true
   // only when a file is dragged over the component, not the whole window, which is what we prefer.
@@ -340,7 +344,7 @@ export function FileUploaderField<E extends string>({
                 </Stack>
               </ContentBlock>
               <Button
-                kind="solid"
+                kind={config.buttonKind}
                 hierarchy="secondary"
                 label={texts.uploadButtonLabel}
                 onPress={open}
