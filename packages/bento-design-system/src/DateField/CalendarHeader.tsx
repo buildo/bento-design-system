@@ -9,6 +9,8 @@ type Props = {
   goToPreviousMonth: () => void;
   goToNextMonth: () => void;
   selectActiveDate: (date: Date) => void;
+  minDate?: Date;
+  maxDate?: Date;
 };
 
 export function CalendarHeader({
@@ -16,6 +18,8 @@ export function CalendarHeader({
   goToNextMonth,
   selectActiveDate,
   activeDate,
+  minDate,
+  maxDate,
 }: Props) {
   const { defaultMessages } = useDefaultMessages();
   return (
@@ -32,7 +36,13 @@ export function CalendarHeader({
           />
         </Column>
         <Selector datePart="month" activeMonth={activeDate} onSelect={selectActiveDate} />
-        <Selector datePart="year" activeMonth={activeDate} onSelect={selectActiveDate} />
+        <Selector
+          datePart="year"
+          activeMonth={activeDate}
+          onSelect={selectActiveDate}
+          minDate={minDate}
+          maxDate={maxDate}
+        />
         <Column width="content">
           <IconButton
             label={defaultMessages.DateField.nextMonthLabel}

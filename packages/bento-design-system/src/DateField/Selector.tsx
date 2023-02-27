@@ -7,7 +7,7 @@ import { ListProps } from "../List/List";
 import { Label } from "../Typography/Label/Label";
 import { selector } from "./DateField.css";
 
-function getYears(activeDate: Date): Date[] {
+function getYears(activeDate: Date, minDate?: Date, maxDate?: Date): Date[] {
   const firstYear = new Date().getFullYear() - 100;
   return Array(200)
     .fill(0)
@@ -15,7 +15,12 @@ function getYears(activeDate: Date): Date[] {
       const yearDate = new Date(activeDate);
       yearDate.setFullYear(firstYear + diff);
       return yearDate;
-    });
+    })
+    .filter(
+      (year) =>
+        (minDate === undefined || year.getFullYear() >= minDate.getFullYear()) &&
+        (maxDate === undefined || year.getFullYear() <= maxDate.getFullYear())
+    );
 }
 
 function getMonths(activeDate: Date): Date[] {
@@ -28,31 +33,43 @@ function getMonths(activeDate: Date): Date[] {
     });
 }
 
-export function Selector(props: {
-  datePart: "month" | "year";
+type Props = {
   activeMonth: MonthType;
   onSelect: (date: Date) => void;
-}) {
+} & (
+  | {
+      datePart: "year";
+      maxDate?: Date;
+      minDate?: Date;
+    }
+  | {
+      datePart: "month";
+      maxDate?: never;
+      minDate?: never;
+    }
+);
+
+export function Selector({ datePart, activeMonth, maxDate, minDate, onSelect }: Props) {
   const config = useBentoConfig().dateField;
   const formatter = useDateFormatter(
-    props.datePart === "month" ? { month: "long" } : { year: "numeric" }
+    datePart === "month" ? { month: "long" } : { year: "numeric" }
   );
 
   const values =
-    props.datePart === "month"
-      ? getMonths(props.activeMonth.date)
-      : getYears(props.activeMonth.date);
+    datePart === "month"
+      ? getMonths(activeMonth.date)
+      : getYears(activeMonth.date, minDate, maxDate);
 
   const options: ListProps["items"] = useMemo(
     () =>
       values.map((value) => {
         return {
           label: formatter.format(value),
-          onPress: () => props.onSelect(value),
-          isSelected: value.getTime() === props.activeMonth.date.getTime(),
+          onPress: () => onSelect(value),
+          isSelected: value.getTime() === activeMonth.date.getTime(),
         };
       }),
-    [values, props.activeMonth]
+    [values, activeMonth, onSelect, formatter]
   );
 
   return (
@@ -63,7 +80,7 @@ export function Selector(props: {
           <Columns space={8} align="center" alignY="center">
             <Column width="content">
               <Label size={config.monthYearLabelSize} color="secondary" uppercase>
-                {formatter.format(props.activeMonth.date)}
+                {formatter.format(activeMonth.date)}
               </Label>
             </Column>
             <Column width="content">
