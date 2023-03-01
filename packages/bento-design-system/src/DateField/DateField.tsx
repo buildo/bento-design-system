@@ -9,7 +9,6 @@ import { useField } from "@react-aria/label";
 import { Input } from "./Input";
 import { IconMinus } from "../Icons";
 import { dateFieldRecipe } from "./DateField.css";
-import clsx from "clsx";
 import { LocalizedString } from "../util/LocalizedString";
 import { useBentoConfig } from "../BentoConfigContext";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
@@ -159,7 +158,7 @@ export function DateField(props: Props) {
         paddingX={inputConfig.paddingX}
         paddingY={inputConfig.paddingY}
         background={inputConfig.background.default}
-        className={clsx(
+        className={[
           inputRecipe({ validation: validationState || "notSet" }),
           bodyRecipe({
             color: props.disabled ? "disabled" : "primary",
@@ -169,8 +168,8 @@ export function DateField(props: Props) {
           dateFieldRecipe({ validation: validationState || "notSet", isFocused }),
           {
             readOnly: props.readOnly,
-          }
-        )}
+          },
+        ]}
         style={getReadOnlyBackgroundStyle(inputConfig)}
         disabled={props.disabled}
       >

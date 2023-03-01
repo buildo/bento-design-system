@@ -1,7 +1,7 @@
 import { extractAtomsFromProps } from "@dessert-box/core";
 import * as resetStyles from "../reset.css";
 import { forwardRef, createElement } from "react";
-import clsx, { ClassValue } from "clsx";
+import { ClassValue, clsx } from "clsx";
 import { useSprinkles } from "../SprinklesContext";
 import { SprinklesFn } from "../util/ConfigurableTypes";
 
