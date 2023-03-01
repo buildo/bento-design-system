@@ -8,7 +8,7 @@ export function withBentoConfig<Props>(
   return (props: Props) => {
     return (
       <BentoConfigProvider value={config}>
-        <Component {...props} />{" "}
+        <Component {...props} />
       </BentoConfigProvider>
     );
   };
