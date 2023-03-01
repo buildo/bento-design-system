@@ -3,8 +3,7 @@ const { ProvidePlugin } = require("webpack");
 const { ESBuildMinifyPlugin } = require("esbuild-loader");
 
 module.exports = {
-  components: "../storybook/stories/index.tsx",
-  typeScriptFiles: ["../storybook/stories/index.tsx"],
+  components: "./src/index.ts",
   outputPath: "./dist/playroom",
   title: "Bento 🍱",
   widths: [320, 425, 768, 1024, 1440, 2560],
@@ -34,7 +33,9 @@ module.exports = {
         {
           test: /\.css$/,
           use: ["style-loader", "css-loader"],
-          exclude: /node_modules/,
+          exclude: (modulePath) => {
+            return /node_modules/.test(modulePath) && !modulePath.includes("@fontsource");
+          },
         },
       ],
     },

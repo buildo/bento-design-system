@@ -2815,20 +2815,6 @@ packages:
       '@babel/plugin-syntax-jsx': 7.18.6_@babel+core@7.18.10
       '@babel/types': 7.21.0
 
-  /@babel/plugin-transform-react-jsx/7.21.0_@babel+core@7.18.10:
-    resolution: {integrity: sha512-6OAWljMvQrZjR2DaNhVfRz6dkCAVV+ymcLUmaf8bccGOHn2v5rHJK3tTpij0BuhdYWP4LLaqj5lwcdlpAAPuvg==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.18.10
-      '@babel/helper-annotate-as-pure': 7.18.6
-      '@babel/helper-module-imports': 7.18.6
-      '@babel/helper-plugin-utils': 7.20.2
-      '@babel/plugin-syntax-jsx': 7.18.6_@babel+core@7.18.10
-      '@babel/types': 7.21.2
-    dev: true
-
   /@babel/plugin-transform-react-jsx/7.21.0_@babel+core@7.21.0:
     resolution: {integrity: sha512-6OAWljMvQrZjR2DaNhVfRz6dkCAVV+ymcLUmaf8bccGOHn2v5rHJK3tTpij0BuhdYWP4LLaqj5lwcdlpAAPuvg==}
     engines: {node: '>=6.9.0'}
@@ -6228,7 +6214,7 @@ packages:
       error-stack-parser: 2.1.4
       string-width: 4.2.3
       strip-ansi: 6.0.1
-      webpack: 5.75.0
+      webpack: 5.75.0_vzofj4bpbxofaygozqm2nrzkza
 
   /@storybook/addon-actions/6.5.16_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-aADjilFmuD6TNGz2CRPSupnyiA/IGkPJHDBTqMpsDXTUr8xnuD122xkIhg6UxmCM2y1c+ncwYXy3WPK2xXK57g==}
@@ -9956,7 +9942,7 @@ packages:
       '@babel/core': 7.21.0
       find-cache-dir: 3.3.2
       schema-utils: 4.0.0
-      webpack: 5.75.0
+      webpack: 5.75.0_vzofj4bpbxofaygozqm2nrzkza
 
   /babel-plugin-add-module-exports/0.2.1:
     resolution: {integrity: sha512-3AN/9V/rKuv90NG65m4tTHsI04XrCKsWbztIcW7a8H5iIN7WlvWucRtVV0V/rT4QvtA11n5Vmp20fLwfMWqp6g==}
@@ -11691,7 +11677,7 @@ packages:
       postcss-modules-values: 4.0.0_postcss@8.4.21
       postcss-value-parser: 4.2.0
       semver: 7.3.8
-      webpack: 5.75.0
+      webpack: 5.75.0_vzofj4bpbxofaygozqm2nrzkza
 
   /css-minimizer-webpack-plugin/4.0.0_zvbyxxpfojwcdldcsxjlwltq7e:
     resolution: {integrity: sha512-7ZXXRzRHvofv3Uac5Y+RkWRNo0ZMlcg8e9/OtrqUYmwDWJo+qs67GvdeFrXLsFb7czKNwjQhPkM0avlIYl+1nA==}
@@ -13221,8 +13207,8 @@ packages:
       '@babel/plugin-transform-react-jsx': ^7.14.9
       eslint: ^8.1.0
     dependencies:
-      '@babel/plugin-syntax-flow': 7.18.6_@babel+core@7.18.10
-      '@babel/plugin-transform-react-jsx': 7.21.0_@babel+core@7.18.10
+      '@babel/plugin-syntax-flow': 7.18.6_@babel+core@7.21.0
+      '@babel/plugin-transform-react-jsx': 7.21.0_@babel+core@7.21.0
       eslint: 8.20.0
       lodash: 4.17.21
       string-natural-compare: 3.0.1
@@ -14960,7 +14946,7 @@ packages:
       lodash: 4.17.21
       pretty-error: 4.0.0
       tapable: 2.2.1
-      webpack: 5.75.0
+      webpack: 5.75.0_vzofj4bpbxofaygozqm2nrzkza
 
   /htmlparser2/6.1.0:
     resolution: {integrity: sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==}
@@ -17495,7 +17481,7 @@ packages:
       webpack: ^5.0.0
     dependencies:
       schema-utils: 4.0.0
-      webpack: 5.75.0
+      webpack: 5.75.0_vzofj4bpbxofaygozqm2nrzkza
 
   /minimalistic-assert/1.0.1:
     resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}
@@ -18629,6 +18615,7 @@ packages:
       - uglify-js
       - utf-8-validate
       - webpack-cli
+    dev: false
 
   /playroom/0.29.0_taymje5yisqjfw3s7gk6a2jk44:
     resolution: {integrity: sha512-X6/zOdPD6Mw1mOm2xOM+czToKWKGFmIV1L/H6fUnjox8XjYCDXzlsQl1ZDdusGzUMHw52H4cqj+CpsJYly6SxQ==}
@@ -22258,7 +22245,6 @@ packages:
       serialize-javascript: 6.0.0
       terser: 5.14.1
       webpack: 5.75.0_vzofj4bpbxofaygozqm2nrzkza
-    dev: true
 
   /terser-webpack-plugin/5.3.3_j4uvqfvp5iq2kua6b7hbkcb72a:
     resolution: {integrity: sha512-Fx60G5HNYknNTNQnzQ1VePRuu89ZVYWfjRAeT5rITuCY/1b08s49e5kSQwHDirKZWuoKOBRFS98EUUoZ9kLEwQ==}
@@ -22323,7 +22309,7 @@ packages:
       uglify-js:
         optional: true
     dependencies:
-      '@jridgewell/trace-mapping': 0.3.17
+      '@jridgewell/trace-mapping': 0.3.14
       jest-worker: 27.5.1
       schema-utils: 3.1.1
       serialize-javascript: 6.0.0
@@ -23707,7 +23693,7 @@ packages:
       mime-types: 2.1.35
       range-parser: 1.2.1
       schema-utils: 4.0.0
-      webpack: 5.75.0
+      webpack: 5.75.0_vzofj4bpbxofaygozqm2nrzkza
 
   /webpack-dev-server/4.11.1_pda42hcaj7d62cr262fr632kue:
     resolution: {integrity: sha512-lILVz9tAUy1zGFwieuaQtYiadImb5M3d+H+L1zDYalYoDl0cksAB1UNyuE5MMWJrG6zR1tXkCP2fitl7yoUJiw==}
@@ -24114,7 +24100,6 @@ packages:
       - '@swc/core'
       - esbuild
       - uglify-js
-    dev: true
 
   /webpackbar/5.0.2_webpack@5.74.0:
     resolution: {integrity: sha512-BmFJo7veBDgQzfWXl/wwYXr/VFus0614qZ8i9znqcl9fnEdiVkdbi0TedLQ6xAK92HZHDJ0QmyQ0fmuZPAgCYQ==}
