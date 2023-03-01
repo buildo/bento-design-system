@@ -22,8 +22,9 @@ export function BentoConfigProvider({
   // So we retrieve the parent config via useBentoConfig(), which will default to the default config
   // in case this is the top level provider.
   const parentConfig = useBentoConfig();
+
   return (
-    <BentoConfigContext.Provider value={deepmerge(parentConfig, config)}>
+    <BentoConfigContext.Provider value={deepmerge(parentConfig, config) as BentoConfig}>
       {children}
     </BentoConfigContext.Provider>
   );
