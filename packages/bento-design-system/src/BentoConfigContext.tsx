@@ -23,7 +23,7 @@ export function BentoConfigProvider({
   // in case this is the top level provider.
   const parentConfig = useBentoConfig();
   return (
-    <BentoConfigContext.Provider value={deepmerge(config, parentConfig)}>
+    <BentoConfigContext.Provider value={deepmerge(parentConfig, config)}>
       {children}
     </BentoConfigContext.Provider>
   );
