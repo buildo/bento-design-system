@@ -30,7 +30,7 @@ import {
 } from "..";
 import { singleValue, placeholder, menu, control } from "./SelectField.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import type { SelectOption } from "./SelectField";
 import { InternalList } from "../List/InternalList";
 import { ListItem } from "../List/ListItem";

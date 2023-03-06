@@ -1,5 +1,5 @@
 import { ReactChild, ReactElement } from "react";
-import flattenChildren from "react-keyed-flatten-children";
+import { flattenChildren } from "../util/flattenChildren";
 import { BoxProps, Box } from "../Box/Box";
 import { ResponsiveSpace } from "../internal";
 import { normalizeResponsiveValue, OptionalResponsiveValue } from "../internal/sprinkles.css";

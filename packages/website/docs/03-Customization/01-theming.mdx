@@ -89,13 +89,13 @@ This option is available but not recommended, as it's easy to forget or misspell
 You can either import the default theme and then override some of the default values using an additional stylesheet, or completely replace `defaultTheme.css` with your own stylesheet defining a value for each of the Bento variables.
 
 ```ts title="my-project/design-system/src/index.tsx"
-import "@buildo/bento-design-system/lib/index.css";
+import "@buildo/bento-design-system/index.css";
 import "./theme.css";
 ```
 
 ```css title="my-project/design-system/src/theme.css"
 /* Import this file if you want to start from the defaultTheme and only override some variables */
-@import "@buildo/bento-design-system/lib/defaultTheme.css";
+@import "@buildo/bento-design-system/defaultTheme.css";
 
 :root {
   /* change the brand primary color */

@@ -1,5 +1,4 @@
 import React from "react";
-import clsx from "clsx";
 import styles from "./HomepageFeatures.module.css";
 
 type FeatureItem = {
@@ -44,7 +43,7 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({ title, image, description }: FeatureItem) {
   return (
-    <div className={clsx("col col--4")}>
+    <div className={"col col--4"}>
       <div className="text--center padding-vert--md">
         <img className={styles.featureSvg} alt={title} src={image} />
       </div>

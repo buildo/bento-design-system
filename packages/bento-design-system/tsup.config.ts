@@ -3,10 +3,10 @@ import { vanillaExtractPlugin } from "@vanilla-extract/esbuild-plugin";
 
 export default defineConfig({
   entry: ["src/index.ts", "src/defaultTheme.ts"],
+  sourcemap: true,
   outDir: "lib",
+  format: ["esm", "cjs"],
   esbuildPlugins: [vanillaExtractPlugin()],
   dts: true,
-  // See https://esbuild.github.io/content-types/#auto-import-for-jsx
-  inject: ["./jsxShim.ts"],
   noExternal: ["@fontsource"],
 });
