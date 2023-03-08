@@ -95,7 +95,7 @@
     "@vanilla-extract/css": "1.7.2",
     "@vanilla-extract/dynamic": "2.0.3",
     "@vanilla-extract/recipes": "0.2.5",
-    "@vanilla-extract/sprinkles": "1.5.1",
+    "@vanilla-extract/sprinkles": "1.4.1",
     "clsx": "^1.2.1",
     "deepmerge-ts": "^4.3.0",
     "react-cool-dimensions": "^2.0.7",

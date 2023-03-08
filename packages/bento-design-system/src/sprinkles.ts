@@ -1,5 +1,6 @@
 import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
 import { addFunctionSerializer } from "@vanilla-extract/css/functionSerializer";
+import { SprinklesProperties } from "@vanilla-extract/sprinkles/dist/declarations/src/types";
 import {
   responsiveProperties as bentoResponsiveProperties,
   statusProperties as bentoStatusProperties,
@@ -7,9 +8,6 @@ import {
 } from "./util/atoms";
 import { breakpoints } from "./util/breakpoints";
 import { statusConditions } from "./util/conditions";
-
-type VarargParameters<T extends (args: any) => any> = T extends (args: infer P) => any ? P : never;
-type SprinklesProperties = VarargParameters<typeof createSprinkles>;
 
 export function createDefineBentoSprinklesFn() {
   function defineBentoSprinkles<
