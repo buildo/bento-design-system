@@ -1,4 +1,4 @@
-import { Children, PartialBentoConfig } from ".";
+import { Children, PartialBentoConfig, SSRProvider } from ".";
 import { bentoSprinkles } from "./internal";
 import { ToastProvider } from "./Toast/ToastProvider";
 import { OverlayProvider } from "@react-aria/overlays";
@@ -38,6 +38,7 @@ type Props = {
   locale?: string;
   config?: PartialBentoConfig;
   sprinkles?: SprinklesFn;
+  ssr?: boolean;
 } & DefaultMessages;
 
 export function createBentoProvider(
@@ -50,11 +51,12 @@ export function createBentoProvider(
     defaultMessages,
     linkComponent,
     locale,
+    ssr = false,
     ...props
   }: Props) {
     const linkComponentFromContext = useContext(LinkComponentContext);
 
-    return (
+    const providers = (
       <I18nProvider locale={locale}>
         <OverlayProvider style={{ height: "100%" }}>
           <DefaultMessagesContext.Provider value={{ defaultMessages }}>
@@ -69,6 +71,8 @@ export function createBentoProvider(
         </OverlayProvider>
       </I18nProvider>
     );
+
+    return ssr ? <SSRProvider>{providers}</SSRProvider> : providers;
   };
 }
 

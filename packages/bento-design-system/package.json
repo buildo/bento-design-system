@@ -75,6 +75,7 @@
     "@react-aria/radio": "3.4.0",
     "@react-aria/separator": "3.2.4",
     "@react-aria/slider": "3.2.2",
+    "@react-aria/ssr": "3.5.0",
     "@react-aria/switch": "3.2.4",
     "@react-aria/textfield": "3.7.2",
     "@react-aria/tooltip": "3.3.2",
