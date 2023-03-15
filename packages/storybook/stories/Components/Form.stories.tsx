@@ -90,10 +90,14 @@ export const multipleSections = createStory({
   submitButton: {
     onPress: action("Submit"),
     label: "Sign up",
+    name: "action",
+    value: "submit",
   },
   secondaryButton: {
     onPress: action("Cancel"),
     label: "Never mind",
+    name: "action",
+    value: "cancel",
   },
   children: [
     <FormSection title="Personal information">

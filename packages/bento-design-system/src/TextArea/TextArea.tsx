@@ -12,7 +12,7 @@ type Props = FieldProps<string> & {
   placeholder: LocalizedString;
   isReadOnly?: boolean;
   rows?: number;
-};
+} & Pick<React.HTMLProps<HTMLTextAreaElement>, "onKeyDown" | "onKeyUp">;
 
 export function TextArea(props: Props) {
   const config = useBentoConfig().input;

@@ -8,6 +8,7 @@ import { Label } from "../Typography/Label/Label";
 import { Column, Columns } from "../Layout/Columns";
 import { IconProps } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
+import { FormButtonProps, useFormButtonProps } from "./utils";
 
 export type ButtonSize = "small" | "medium" | "large";
 type Props = {
@@ -19,7 +20,8 @@ type Props = {
   size?: ButtonSize;
   icon?: (props: IconProps) => JSX.Element;
   iconPosition?: "leading" | "trailing";
-} & Omit<AriaButtonProps<"button">, "onPress">;
+} & Omit<AriaButtonProps<"button">, "onPress"> &
+  FormButtonProps;
 
 /**
  * A button
@@ -40,6 +42,7 @@ export function Button(props: Props) {
     // @ts-expect-error
     internal_unsafe__bypassUsePress,
   } = props;
+  const { formButtonProps } = useFormButtonProps(props);
 
   const size = props.size ?? config.defaultSize;
 
@@ -54,6 +57,7 @@ export function Button(props: Props) {
         active: false,
       })}
       {...buttonProps}
+      {...formButtonProps}
       color={undefined}
       onKeyDown={onKeyDown}
       onKeyUp={onKeyUp}
