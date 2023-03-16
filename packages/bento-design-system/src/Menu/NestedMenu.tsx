@@ -7,6 +7,7 @@ import { Box, Inset, MenuItemProps, Popover, ListProps, MenuTriggerState } from 
 import { useBentoConfig } from "../BentoConfigContext";
 import { menuRecipe } from "./Menu.css";
 import { MenuList } from "./MenuList";
+import { useIsSSR } from "@react-aria/ssr";
 
 type Props = {
   items: MenuItemProps[];
@@ -37,6 +38,7 @@ export function NestedMenu({
 }: Props) {
   const config = useBentoConfig().menu;
   const overlayRef = useRef(null);
+  const isSSR = useIsSSR();
 
   const { menuProps } = useMenuTrigger({}, state, triggerRef);
   const { overlayProps: positionProps } = useOverlayPosition({
@@ -48,7 +50,7 @@ export function NestedMenu({
     offset,
   });
 
-  return state.isOpen
+  return state.isOpen && !isSSR
     ? createPortal(
         <FocusScope restoreFocus>
           <Box

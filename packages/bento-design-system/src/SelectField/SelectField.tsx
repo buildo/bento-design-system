@@ -6,7 +6,7 @@ import Select, {
 } from "react-select";
 import { Body, Chip, ListSize, LocalizedString } from "..";
 import { useField } from "@react-aria/label";
-import { useEffect, useMemo } from "react";
+import { useEffect, useRef } from "react";
 import { FieldProps } from "../Field/FieldProps";
 import { Field } from "../Field/Field";
 import * as selectComponents from "./components";
@@ -98,13 +98,16 @@ export function SelectField<A>(props: Props<A>) {
     validationState,
   });
 
-  const menuPortalTarget = useMemo(() => document.createElement("div"), []);
+  const menuPortalTarget = useRef<HTMLDivElement>();
   useEffect(() => {
-    document.body.appendChild(menuPortalTarget);
+    if (!menuPortalTarget.current) {
+      menuPortalTarget.current = document.createElement("div");
+    }
+    document.body.appendChild(menuPortalTarget.current);
 
     return () => {
-      if (document.body.contains(menuPortalTarget)) {
-        document.body.removeChild(menuPortalTarget);
+      if (document.body.contains(menuPortalTarget.current!)) {
+        document.body.removeChild(menuPortalTarget.current!);
       }
     };
   }, [menuPortalTarget]);
@@ -165,7 +168,7 @@ export function SelectField<A>(props: Props<A>) {
               return 0;
             })}
           placeholder={placeholder}
-          menuPortalTarget={menuPortalTarget}
+          menuPortalTarget={menuPortalTarget.current}
           components={{
             ...selectComponents,
             MultiValue,

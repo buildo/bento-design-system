@@ -12,7 +12,7 @@ import {
 import { useTooltipTriggerState } from "@react-stately/tooltip";
 import { useTooltipTrigger, useTooltip } from "@react-aria/tooltip";
 import { tooltip, arrow as arrowStyle } from "./Tooltip.css";
-import { createPortal } from "../util/createPortal";
+import { useCreatePortal } from "../util/useCreatePortal";
 import { useBentoConfig } from "../BentoConfigContext";
 import { TooltipPlacement } from "../Field/FieldProps";
 
@@ -35,6 +35,7 @@ type Props = {
 export function Tooltip(props: Props) {
   const config = useBentoConfig().tooltip;
   const arrowRef = useRef<HTMLElement | null>(null);
+  const createPortal = useCreatePortal();
 
   const commonMiddleware = [shift(), offset(8)];
   const arrowMiddleware = arrow({ element: arrowRef });
