@@ -4,7 +4,7 @@ import {
   withBentoConfig,
 } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
-import { defaultMessages } from "@buildo/bento-design-system/defaultMessages/en";
+import { defaultMessages } from "@buildo/bento-design-system/lib/defaultMessages/en";
 
 export default {};
 

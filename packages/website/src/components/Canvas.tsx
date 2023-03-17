@@ -9,7 +9,7 @@ import prettier from "prettier/standalone";
 import parserTypeScript from "prettier/parser-typescript";
 import { useEffect, useState, lazy, Suspense } from "react";
 import { DesignSystemProvider } from "../snippets";
-import { defaultMessages } from "@buildo/bento-design-system/defaultMessages/en";
+import { defaultMessages } from "@buildo/bento-design-system/lib/defaultMessages/en";
 import { createUrl } from "playroom/utils";
 import styles from "./Canvas.module.css";
 const babelPresetTypescript = require("@babel/preset-typescript");
