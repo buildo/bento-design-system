@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Box, DesignSystemProvider, Inline, Stack, vars } from "../snippets";
-import { defaultMessages } from "../snippets/defaultMessages";
+import { defaultMessages } from "@buildo/bento-design-system/defaultMessages/en";
 
 const SpacePoint = ({ space }: { space: string }) => (
   <Box style={{ height: 20, width: space }} background="primarySolidEnabledBackground" />

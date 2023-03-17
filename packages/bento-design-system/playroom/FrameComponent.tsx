@@ -6,7 +6,7 @@ import "../src/defaultTheme.css";
 import "@fontsource/ibm-plex-sans/400.css";
 import "@fontsource/ibm-plex-sans/500.css";
 import "@fontsource/ibm-plex-sans/600.css";
-import { defaultMessages } from "../../storybook/stories/defaultMessages";
+import { defaultMessages } from "../src/defaultMessages/en";
 
 export default function FrameComponent({ theme, children }) {
   return (
