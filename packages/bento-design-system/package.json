@@ -34,8 +34,9 @@
   "types": "lib/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "tsup --minify --clean",
+    "build": "tsup --minify --clean && pnpm patch-esm-ts",
     "prepublishOnly": "pnpm build",
+    "patch-esm-ts": "find ./lib -type f -name \"*.d.ts\" -exec sh -c 'cp \"$1\" \"${1%.d.ts}.d.cts\"' _ {} \\;",
     "prettier-check": "prettier --parser=typescript \"src/**/*.{ts,tsx}\" --check",
     "prettier-write": "prettier --parser=typescript \"src/**/*.{ts,tsx}\" --write",
     "eslint-check": "eslint \"src/**/*.{js,ts,tsx}\"",
