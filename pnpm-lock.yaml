@@ -42,6 +42,7 @@ importers:
       '@react-aria/radio': 3.4.0
       '@react-aria/separator': 3.2.4
       '@react-aria/slider': 3.2.2
+      '@react-aria/ssr': 3.5.0
       '@react-aria/switch': 3.2.4
       '@react-aria/textfield': 3.7.2
       '@react-aria/tooltip': 3.3.2
@@ -147,6 +148,7 @@ importers:
       '@react-aria/radio': 3.4.0_react@18.2.0
       '@react-aria/separator': 3.2.4_react@18.2.0
       '@react-aria/slider': 3.2.2_react@18.2.0
+      '@react-aria/ssr': 3.5.0_react@18.2.0
       '@react-aria/switch': 3.2.4_react@18.2.0
       '@react-aria/textfield': 3.7.2_react@18.2.0
       '@react-aria/tooltip': 3.3.2_react@18.2.0
@@ -5561,7 +5563,7 @@ packages:
       '@internationalized/message': 3.0.9
       '@internationalized/number': 3.1.1
       '@internationalized/string': 3.0.0
-      '@react-aria/ssr': 3.3.0_react@18.2.0
+      '@react-aria/ssr': 3.5.0_react@18.2.0
       '@react-aria/utils': 3.14.0_react@18.2.0
       '@react-types/shared': 3.15.0_react@18.2.0
       react: 18.2.0
@@ -5663,7 +5665,7 @@ packages:
       '@react-aria/focus': 3.9.0_react@18.2.0
       '@react-aria/i18n': 3.6.1_react@18.2.0
       '@react-aria/interactions': 3.12.0_react@18.2.0
-      '@react-aria/ssr': 3.3.0_react@18.2.0
+      '@react-aria/ssr': 3.5.0_react@18.2.0
       '@react-aria/utils': 3.14.0_react@18.2.0
       '@react-aria/visually-hidden': 3.5.0_react@18.2.0
       '@react-stately/overlays': 3.4.2_react@18.2.0
@@ -5767,12 +5769,12 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@react-aria/ssr/3.3.0_react@18.2.0:
-    resolution: {integrity: sha512-yNqUDuOVZIUGP81R87BJVi/ZUZp/nYOBXbPsRe7oltJOfErQZD+UezMpw4vM2KRz18cURffvmC8tJ6JTeyDtaQ==}
+  /@react-aria/ssr/3.5.0_react@18.2.0:
+    resolution: {integrity: sha512-h0MJdSWOd1qObLnJ8mprU31wI8tmKFJMuwT22MpWq6psisOOZaga6Ml4u6Ee6M6duWWISjXvqO4Sb/J0PBA+nQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || 18
     dependencies:
-      '@babel/runtime': 7.18.9
+      '@swc/helpers': 0.4.14
       react: 18.2.0
 
   /@react-aria/switch/3.2.4_react@18.2.0:
@@ -5838,7 +5840,7 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || 18
     dependencies:
       '@babel/runtime': 7.18.9
-      '@react-aria/ssr': 3.3.0_react@18.2.0
+      '@react-aria/ssr': 3.5.0_react@18.2.0
       '@react-stately/utils': 3.5.1_react@18.2.0
       '@react-types/shared': 3.15.0_react@18.2.0
       clsx: 1.2.1
@@ -8052,6 +8054,11 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /@swc/helpers/0.4.14:
+    resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
+    dependencies:
+      tslib: 2.4.0
+
   /@szmarczak/http-timer/1.1.2:
     resolution: {integrity: sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==}
     engines: {node: '>=6'}
@@ -8918,7 +8925,6 @@ packages:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
       '@vanilla-extract/css': 1.7.2
-    dev: false
 
   /@vanilla-extract/sprinkles/1.4.1_@vanilla-extract+css@1.9.5:
     resolution: {integrity: sha512-aW6CfMMToX4a+baLuVxwcT0FSACjX3xrNt8wdi/3LLRlLAfhyue8OK7kJxhcYNZfydBeWTP59aRy8p5FUTIeew==}

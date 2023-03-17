@@ -6,7 +6,7 @@ import { RefObject, useRef } from "react";
 import { Box, Stack, Tiles } from "..";
 import { Label } from "../Typography/Label/Label";
 import { Children } from "../util/Children";
-import { createPortal } from "../util/createPortal";
+import { useCreatePortal } from "../util/useCreatePortal";
 import { CalendarHeader } from "./CalendarHeader";
 import { calendar, weekDay } from "./DateField.css";
 import { Day } from "./Day";
@@ -58,6 +58,7 @@ export function Calendar(props: Props) {
     weekday: "narrow",
   });
   const overlayRef = useRef(null);
+  const createPortal = useCreatePortal();
 
   const { days, weekdayLabels } = useMonth({
     year: props.activeDate.year,

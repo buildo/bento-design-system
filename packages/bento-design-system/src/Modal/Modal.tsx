@@ -17,7 +17,7 @@ import { modalRecipe, underlay, modalBody } from "./Modal.css";
 import { useKeyPressEvent } from "react-use";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButton } from "../IconButton/IconButton";
-import { createPortal } from "../util/createPortal";
+import { useCreatePortal } from "../util/useCreatePortal";
 import { match } from "ts-pattern";
 import { useBentoConfig } from "../BentoConfigContext";
 
@@ -48,6 +48,7 @@ export function CustomModal(props: CustomModalProps) {
   const config = useBentoConfig().modal;
   const ref = useRef<HTMLDivElement>(null);
   const { overlayProps, underlayProps } = useOverlay({ ...props, isOpen: true }, ref);
+  const createPortal = useCreatePortal();
 
   usePreventScroll();
 

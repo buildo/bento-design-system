@@ -119,3 +119,6 @@ export { useComponentsShowcase } from "./useComponentsShowcase";
 export type { ClassValue } from "clsx";
 
 export { Time } from "@internationalized/date";
+
+export { SSRProvider } from "@react-aria/ssr";
+export type { SSRProviderProps } from "@react-aria/ssr";
