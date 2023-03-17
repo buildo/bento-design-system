@@ -337,7 +337,7 @@ importers:
       assert: 2.0.0
       buffer: 6.0.3
       clsx: 1.2.1
-      docusaurus-plugin-react-docgen-typescript: 1.0.2
+      docusaurus-plugin-react-docgen-typescript: 1.1.0
       eslint-config-react-app: 7.0.1
       lint-staged: 13.0.3
       playroom: 0.29.0
@@ -366,7 +366,7 @@ importers:
       assert: 2.0.0
       buffer: 6.0.3
       clsx: 1.2.1
-      docusaurus-plugin-react-docgen-typescript: 1.0.2_vy67b2njtce6aph6izod4nkvpe
+      docusaurus-plugin-react-docgen-typescript: 1.1.0_vy67b2njtce6aph6izod4nkvpe
       playroom: 0.29.0_biqbaboplfbrettd7655fr4n2y
       prettier: 2.7.1
       prism-react-renderer: 1.3.5_react@18.2.0
@@ -9353,10 +9353,8 @@ packages:
       ajv: 6.12.6
     dev: true
 
-  /ajv-formats/2.1.1_ajv@8.10.0:
+  /ajv-formats/2.1.1:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
-    peerDependencies:
-      ajv: ^8.0.0
     peerDependenciesMeta:
       ajv:
         optional: true
@@ -12342,8 +12340,8 @@ packages:
     dependencies:
       esutils: 2.0.3
 
-  /docusaurus-plugin-react-docgen-typescript/1.0.2_vy67b2njtce6aph6izod4nkvpe:
-    resolution: {integrity: sha512-7+lRLHHW1BjvDLHR2CjsZtGHX/fKFIqcMCTiEwgZAfi8Mqua3VMUae4sn5iKAHlQmuMr7L0o/zNGzPNA/IeUCQ==}
+  /docusaurus-plugin-react-docgen-typescript/1.1.0_vy67b2njtce6aph6izod4nkvpe:
+    resolution: {integrity: sha512-vdGSiTeqR3ww/83TjfQUMhjzKnk+L9Af1jtirrnMmjmSwX4o6WEL99goXSxhucW0qtOmF30+nEnmsjGsZIhbkw==}
     peerDependencies:
       react: '>=16.8.0 || 18'
       react-docgen-typescript: ^2.0.0
@@ -19956,12 +19954,6 @@ packages:
   /react-dev-utils/12.0.1_tiznjf5nhx33zi6yzxsw5k7spq:
     resolution: {integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==}
     engines: {node: '>=14'}
-    peerDependencies:
-      typescript: '>=2.7'
-      webpack: '>=4'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
     dependencies:
       '@babel/code-frame': 7.18.6
       address: 1.2.0
@@ -19992,7 +19984,9 @@ packages:
     transitivePeerDependencies:
       - eslint
       - supports-color
+      - typescript
       - vue-template-compiler
+      - webpack
 
   /react-docgen-typescript/2.2.2_typescript@4.7.4:
     resolution: {integrity: sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==}
@@ -21191,7 +21185,7 @@ packages:
     dependencies:
       '@types/json-schema': 7.0.11
       ajv: 8.10.0
-      ajv-formats: 2.1.1_ajv@8.10.0
+      ajv-formats: 2.1.1
       ajv-keywords: 5.1.0_ajv@8.10.0
 
   /scope-eval/1.0.0:
