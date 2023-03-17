@@ -1,5 +1,5 @@
 import { PackageManagerCommand } from "@site/src/components/PackageManagerCommand";
-import defaultMessages from "!!raw-loader!@site/src/snippets/defaultMessages.ts";
+import defaultMessages from "!!raw-loader!../../../bento-design-system/src/defaultMessages/en.ts";
 import CodeBlock from "@theme/CodeBlock";
 
 # Quick start
@@ -16,39 +16,50 @@ Add the Bento package to your project:
 
 Here's how an hello world looks like:
 
-```ts
+```tsx
 import "@buildo/bento-design-system/index.css";
 import "@buildo/bento-design-system/defaultTheme.css";
+import { defaultMessages } from "@buildo/bento-design-system/defaultMessages/en";
 import { BentoProvider, Title } from "@buildo/bento-design-system";
-import { defaultMessages } from "./defaultMessages";
 
-<BentoProvider defaultMessages={defaultMessages}>
-  <Title size="large">Hello, World!</Title>
-</BentoProvider>;
+function App() {
+  return (
+    <BentoProvider defaultMessages={defaultMessages}>
+      <Title size="large">Hello, World!</Title>
+    </BentoProvider>
+  );
+}
 ```
 
 Let's break this down:
 
-- in the first line we're importing Bento's own stylesheet. This is required for Bento to work correctly
-- in the second line we're importing the default theme. This is the same theme used by the documentation,
-  and it's useful to get started right away. We will see in the next secions how to customize the theme.
-- in the third line we're importing some components from Bento.
-- in the fourth line we're importing the default messages. This is not something provided by Bento, so we're assuming a `defaultMessages.ts` file exists in this case. More about this soon.
-- finally we're putting this together and showing "Hello, World" on screen!
+```ts
+import "@buildo/bento-design-system/index.css";
+```
 
-`BentoProvider` is a React context provider that is required for Bento components to work. You must wrap your application with it in order to use Bento.
+Here we are importing Bento's own stylesheet. This is required for Bento to work correctly and it must be imported only once in your application, generally near the root of your app.
 
-`BentoProvider` has a required `defaultMessages` parameter: this is used to provide standard localized messages for some components.
+```ts
+import "@buildo/bento-design-system/defaultTheme.css";
+```
+
+This imports the default theme. This is the same theme used by the documentation, and it's useful to get started right away. We will see in the next secions how to customize the theme.
+
+```ts
+import { defaultMessages } from "@buildo/bento-design-system/defaultMessages/en";
+```
+
+Here we're importing the default messages, used by some of Bento components. Bento provides default messages for the English language, so that you can use them for a quick start, but in a localized application you will likely provide your own so to support multiple languages.
 
 <details>
-  <summary>Why using default messages?</summary>
+  <summary>What are default messages?</summary>
 
 Bento components are entirely agnostic when it comes to localization: all components accept the
 text to be display to the user as props.
 
 Some specific props, however, are very repetitive and would be too tedious to pass them as props
 every time you use the component. Think of messages like `"No options"` when a `SelectField` has no options to show or
-accessibility labels like "Close", which are used to describe actions on icons.
+accessibility labels like `"Close"`, which are used to describe actions on icons.
 
 Without the default messages, for example, you would need to pass `dismissButtonLabel` every time you use `Chip`:
 
@@ -69,10 +80,31 @@ whereas default messages allow Bento to make `dismissButtonLabel` optional, and 
 </details>
 
 <details>
-  <summary>Here's some sample default messages you can use to get started:</summary>
+  <summary>Here are some sample default messages you can use as a starting point, once you're ready to customize them:</summary>
 
 <CodeBlock language="tsx" title="my-project/app/src/defaultMessages.ts">
   {defaultMessages}
 </CodeBlock>
 
 </details>
+
+```ts
+import { BentoProvider, Title } from "@buildo/bento-design-system";
+```
+
+In the last import, we're importing some components from Bento:
+
+- `BentoProvider` is a React context provider that is required for Bento components to work. You must wrap your application with it in order to use Bento.
+- `Title` is a typography component which is used for title text.
+
+```tsx
+function App() {
+  return (
+    <BentoProvider defaultMessages={defaultMessages}>
+      <Title size="large">Hello, World!</Title>
+    </BentoProvider>
+  );
+}
+```
+
+Here we're finally rendering our first Bento component, showing "Hello, World!" on screen.

@@ -1,12 +1,11 @@
 import { useTextField } from "@react-aria/textfield";
 import { useRef, useState } from "react";
-import { Box, IconButton, Field, Children, Columns } from "..";
+import { Box, IconButton, Field, Children, Columns, useDefaultMessages } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { inputRecipe } from "../Field/Field.css";
 import { FieldProps } from "../Field/FieldProps";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import useDimensions from "react-cool-dimensions";
-import { defaultMessages } from "../../test/util/defaultMessages";
 import { useBentoConfig } from "../BentoConfigContext";
 import { match } from "ts-pattern";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
@@ -23,6 +22,7 @@ type Props = FieldProps<string> & {
 export function TextField(props: Props) {
   const config = useBentoConfig().input;
   const inputRef = useRef<HTMLInputElement>(null);
+  const { defaultMessages } = useDefaultMessages();
 
   const { observe: rightAccessoryRef, width: rightAccessoryWidth } = useDimensions({
     // This is needed to include the padding in the width

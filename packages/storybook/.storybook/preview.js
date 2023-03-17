@@ -1,4 +1,4 @@
-import { defaultMessages } from "../stories/defaultMessages";
+import { defaultMessages } from "@buildo/bento-design-system/defaultMessages/en";
 import { BentoProvider } from "../stories/";
 
 export const decorators = [

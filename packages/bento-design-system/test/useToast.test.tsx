@@ -2,7 +2,7 @@ import { render, screen, waitFor, waitForElementToBeRemoved } from "@testing-lib
 import user from "@testing-library/user-event";
 import { DefaultMessagesContext } from "../src/DefaultMessagesContext";
 import { ToastProvider, unsafeLocalizedString, useToast } from "../src";
-import { defaultMessages } from "./util/defaultMessages";
+import { defaultMessages } from "../src/defaultMessages/en";
 
 const message = unsafeLocalizedString("This is a message for you");
 const kind = "informative";

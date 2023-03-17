@@ -3,7 +3,7 @@ import { createComponentStories, textArgType } from "../util";
 import { action } from "@storybook/addon-actions";
 import { ComponentProps, useEffect } from "react";
 import { Meta, StoryFn } from "@storybook/react";
-import { defaultMessages } from "../defaultMessages";
+import { defaultMessages } from "@buildo/bento-design-system/lib/defaultMessages/en";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Toast,
