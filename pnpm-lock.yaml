@@ -115,7 +115,7 @@ importers:
       recharts: ^2.1.16
       smooth-release: 8.0.9
       storybook-addon-themes: 6.1.0
-      style-loader: 3.3.1
+      style-loader: 3.3.2
       ts-jest: 28.0.8
       ts-loader: 9.3.1
       ts-pattern: ^3.3.5
@@ -226,7 +226,7 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       smooth-release: 8.0.9
       storybook-addon-themes: 6.1.0_bb2bxwco6ptpubzwpazr52qf6i
-      style-loader: 3.3.1_webpack@5.76.2
+      style-loader: 3.3.2_webpack@5.76.2
       ts-jest: 28.0.8_n5rr6fgzvmm4crk4i75bonkttq
       ts-loader: 9.3.1_zqnsb7wjznnhhpymnxorlihday
       tsup: 6.6.3_a2jjuwtpe5wwe66qqyuhpvyeky
@@ -22028,8 +22028,8 @@ packages:
       webpack: 5.76.2
     dev: true
 
-  /style-loader/3.3.1_webpack@5.76.2:
-    resolution: {integrity: sha512-GPcQ+LDJbrcxHORTRes6Jy2sfvK2kS6hpSfI/fXhPt+spVzxF6LJ1dHLN9zIGmVaaP044YKaIatFaufENRiDoQ==}
+  /style-loader/3.3.2_webpack@5.76.2:
+    resolution: {integrity: sha512-RHs/vcrKdQK8wZliteNK4NKzxvLBzpuHMqYmUVWeKa6MkaIQ97ZTOS0b+zapZhy6GcrgWnvWYCMHRirC3FsUmw==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
