@@ -30,3 +30,38 @@ import { ComponentHeader } from "@site/src/components/ComponentHeader";
     </>
   )}
 </>
+
+<>
+  {props.alternativeNames && props.alternativeNames.length > 0 && (
+    <>
+      <h3>Also known as</h3>
+      This component may also be known in other UI libraries as {new Intl.ListFormat("en", { type: "disjunction", style: "long" }).formatToParts(props.alternativeNames).map((part, i) => (
+          part.type === "element" ? (
+            <strong key={i}>
+              {part.value}
+            </strong>
+          ) : (
+            <React.Fragment key={i}>{part.value}</React.Fragment>
+          )
+        ))}
+    </>
+)}
+
+</>
+
+<>
+  {props.relatedComponents && props.relatedComponents.length > 0 && (
+    <>
+      <h3>Related components</h3>
+      <ul>
+        {props.relatedComponents.map((component) => (
+          <li key={component}>
+            <code>
+              <a href={`./${component}`}>{component}</a>
+            </code>
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+</>
