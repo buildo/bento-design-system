@@ -8,7 +8,17 @@ import { Label } from "../Typography/Label/Label";
 import { Column, Columns } from "../Layout/Columns";
 import { IconProps } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
-import { FormButtonProps, useFormButtonProps } from "./utils";
+import pick from "lodash.pick";
+
+export type OtherButtonKeys =
+  | "name"
+  | "value"
+  | "form"
+  | "formAction"
+  | "formEncType"
+  | "formMethod"
+  | "formNoValidate"
+  | "formTarget";
 
 export type ButtonSize = "small" | "medium" | "large";
 type Props = {
@@ -21,7 +31,7 @@ type Props = {
   icon?: (props: IconProps) => JSX.Element;
   iconPosition?: "leading" | "trailing";
 } & Omit<AriaButtonProps<"button">, "onPress"> &
-  FormButtonProps;
+  Pick<React.HTMLProps<HTMLButtonElement>, OtherButtonKeys>;
 
 /**
  * A button
@@ -42,7 +52,19 @@ export function Button(props: Props) {
     // @ts-expect-error
     internal_unsafe__bypassUsePress,
   } = props;
-  const { formButtonProps } = useFormButtonProps(props);
+
+  const otherButtonProps = pick(props, [
+    "name",
+    "value",
+    "form",
+    "formAction",
+    "formEncType",
+    "formMethod",
+    "formNoValidate",
+    "formTarget",
+    "onKeyDown",
+    "onKeyUp",
+  ]);
 
   const size = props.size ?? config.defaultSize;
 
@@ -57,7 +79,7 @@ export function Button(props: Props) {
         active: false,
       })}
       {...buttonProps}
-      {...formButtonProps}
+      {...otherButtonProps}
       color={undefined}
       onKeyDown={onKeyDown}
       onKeyUp={onKeyUp}

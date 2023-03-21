@@ -74,6 +74,7 @@ importers:
       '@testing-library/react-hooks': 8.0.1
       '@testing-library/user-event': 14.4.3
       '@types/jest': 28.1.8
+      '@types/lodash.pick': 4.4.7
       '@types/react': ^18
       '@types/react-dom': 18.0.11
       '@types/react-input-mask': 2.0.5
@@ -98,6 +99,7 @@ importers:
       jest: 28.1.3
       jest-environment-jsdom: 28.1.3
       lint-staged: 13.0.3
+      lodash.pick: 4.4.0
       madge: ^5.0.1
       mini-css-extract-plugin: 2.6.1
       playroom: 0.29.0
@@ -172,6 +174,7 @@ importers:
       '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.2
       clsx: 1.2.1
       deepmerge-ts: 4.3.0
+      lodash.pick: 4.4.0
       react-cool-dimensions: 2.0.7_react@18.2.0
       react-dropzone: 14.2.3_react@18.2.0
       react-input-mask: 2.0.4_biqbaboplfbrettd7655fr4n2y
@@ -199,6 +202,7 @@ importers:
       '@testing-library/react-hooks': 8.0.1_bb2bxwco6ptpubzwpazr52qf6i
       '@testing-library/user-event': 14.4.3_yxlyej73nftwmh2fiao7paxmlm
       '@types/jest': 28.1.8
+      '@types/lodash.pick': 4.4.7
       '@types/react': 18.0.15
       '@types/react-dom': 18.0.11
       '@types/react-input-mask': 2.0.5
@@ -5418,7 +5422,7 @@ packages:
       error-stack-parser: 2.1.4
       find-up: 5.0.0
       html-entities: 2.3.3
-      loader-utils: 2.0.2
+      loader-utils: 2.0.4
       react-refresh: 0.11.0
       schema-utils: 3.1.1
       source-map: 0.7.4
@@ -7495,9 +7499,9 @@ packages:
       '@babel/preset-env': 7.18.10_@babel+core@7.18.10
       '@babel/types': 7.21.0
       '@mdx-js/mdx': 1.6.22
-      '@types/lodash': 4.14.182
+      '@types/lodash': 4.14.191
       js-string-escape: 1.0.1
-      loader-utils: 2.0.2
+      loader-utils: 2.0.4
       lodash: 4.17.21
       prettier: 2.3.0
       ts-dedent: 2.2.0
@@ -7514,9 +7518,9 @@ packages:
       '@babel/preset-env': 7.18.10_@babel+core@7.21.0
       '@babel/types': 7.21.0
       '@mdx-js/mdx': 1.6.22
-      '@types/lodash': 4.14.182
+      '@types/lodash': 4.14.191
       js-string-escape: 1.0.1
-      loader-utils: 2.0.2
+      loader-utils: 2.0.4
       lodash: 4.17.21
       prettier: 2.3.0
       ts-dedent: 2.2.0
@@ -8399,12 +8403,14 @@ packages:
       '@types/lodash': 4.14.179
     dev: true
 
-  /@types/lodash/4.14.179:
-    resolution: {integrity: sha512-uwc1x90yCKqGcIOAT6DwOSuxnrAbpkdPsUOZtwrXb4D/6wZs+6qG7QnIawDuZWg0sWpxl+ltIKCaLoMlna678w==}
+  /@types/lodash.pick/4.4.7:
+    resolution: {integrity: sha512-HgdyKz7/1+oeoVzbpu1XiX/Bti9AUksHtOILH38T07aKvqoirzcdOsrO2+Yg3L51Hv/8m1MetvHZEUGeABiTiQ==}
+    dependencies:
+      '@types/lodash': 4.14.191
     dev: true
 
-  /@types/lodash/4.14.182:
-    resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
+  /@types/lodash/4.14.179:
+    resolution: {integrity: sha512-uwc1x90yCKqGcIOAT6DwOSuxnrAbpkdPsUOZtwrXb4D/6wZs+6qG7QnIawDuZWg0sWpxl+ltIKCaLoMlna678w==}
     dev: true
 
   /@types/lodash/4.14.191:
@@ -8919,7 +8925,6 @@ packages:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
       '@vanilla-extract/css': 1.7.2
-    dev: false
 
   /@vanilla-extract/sprinkles/1.4.1_@vanilla-extract+css@1.9.5:
     resolution: {integrity: sha512-aW6CfMMToX4a+baLuVxwcT0FSACjX3xrNt8wdi/3LLRlLAfhyue8OK7kJxhcYNZfydBeWTP59aRy8p5FUTIeew==}
@@ -9862,7 +9867,7 @@ packages:
     dependencies:
       '@babel/core': 7.21.0
       find-cache-dir: 3.3.2
-      loader-utils: 2.0.2
+      loader-utils: 2.0.4
       make-dir: 3.1.0
       schema-utils: 2.7.1
       webpack: 4.46.0
@@ -9877,7 +9882,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.10
       find-cache-dir: 3.3.2
-      loader-utils: 2.0.2
+      loader-utils: 2.0.4
       make-dir: 3.1.0
       schema-utils: 2.7.1
       webpack: 5.76.2
@@ -9891,7 +9896,7 @@ packages:
     dependencies:
       '@babel/core': 7.21.0
       find-cache-dir: 3.3.2
-      loader-utils: 2.0.2
+      loader-utils: 2.0.4
       make-dir: 3.1.0
       schema-utils: 2.7.1
       webpack: 5.76.2
@@ -11584,7 +11589,7 @@ packages:
       webpack: ^4.27.0 || ^5.0.0
     dependencies:
       icss-utils: 5.1.0_postcss@8.4.21
-      loader-utils: 2.0.2
+      loader-utils: 2.0.4
       postcss: 8.4.21
       postcss-modules-extract-imports: 3.0.0_postcss@8.4.21
       postcss-modules-local-by-default: 4.0.0_postcss@8.4.21
@@ -16860,6 +16865,10 @@ packages:
     resolution: {integrity: sha1-5pfwTOXXhSL1TZM4syuBozk+TrM=}
     dev: true
 
+  /lodash.pick/4.4.0:
+    resolution: {integrity: sha512-hXt6Ul/5yWjfklSGvLQl8vM//l3FtyHZeuelpzK6mm99pNvN9yTDruNZPEJZD1oWrqo+izBmB7oUfWgcCX7s4Q==}
+    dev: false
+
   /lodash.sortby/4.7.0:
     resolution: {integrity: sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==}
     dev: true
@@ -22017,7 +22026,7 @@ packages:
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
     dependencies:
-      loader-utils: 2.0.2
+      loader-utils: 2.0.4
       schema-utils: 3.1.1
       webpack: 5.76.2
     dev: true
@@ -22597,7 +22606,7 @@ packages:
       chalk: 4.1.2
       enhanced-resolve: 5.10.0
       micromatch: 4.0.5
-      semver: 7.3.7
+      semver: 7.3.8
       typescript: 4.7.4
       webpack: 5.76.2_vzofj4bpbxofaygozqm2nrzkza
     dev: true
