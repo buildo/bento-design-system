@@ -10,16 +10,18 @@ import { IconProps } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
 import pick from "lodash.pick";
 
-export type OtherButtonKeys =
-  | "name"
-  | "value"
-  | "form"
-  | "formAction"
-  | "formEncType"
-  | "formMethod"
-  | "formNoValidate"
-  | "formTarget";
+const otherButtonKeys = [
+  "name",
+  "value",
+  "form",
+  "formAction",
+  "formEncType",
+  "formMethod",
+  "formNoValidate",
+  "formTarget",
+] as const;
 
+export type OtherButtonKeys = typeof otherButtonKeys[number];
 export type ButtonSize = "small" | "medium" | "large";
 type Props = {
   label: LocalizedString;
@@ -53,18 +55,7 @@ export function Button(props: Props) {
     internal_unsafe__bypassUsePress,
   } = props;
 
-  const otherButtonProps = pick(props, [
-    "name",
-    "value",
-    "form",
-    "formAction",
-    "formEncType",
-    "formMethod",
-    "formNoValidate",
-    "formTarget",
-    "onKeyDown",
-    "onKeyUp",
-  ]);
+  const otherButtonProps = pick(props, otherButtonKeys);
 
   const size = props.size ?? config.defaultSize;
 
