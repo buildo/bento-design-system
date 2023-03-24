@@ -17,7 +17,7 @@ type Props = FieldProps<string> & {
   rightAccessory?: Children;
   showPasswordLabel?: never;
   hidePasswordLabel?: never;
-};
+} & Pick<React.HTMLProps<HTMLInputElement>, "onKeyDown" | "onKeyUp">;
 
 export function TextField(props: Props) {
   const config = useBentoConfig().input;

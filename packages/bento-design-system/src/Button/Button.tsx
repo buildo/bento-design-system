@@ -8,7 +8,20 @@ import { Label } from "../Typography/Label/Label";
 import { Column, Columns } from "../Layout/Columns";
 import { IconProps } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
+import pick from "lodash.pick";
 
+const otherButtonKeys = [
+  "name",
+  "value",
+  "form",
+  "formAction",
+  "formEncType",
+  "formMethod",
+  "formNoValidate",
+  "formTarget",
+] as const;
+
+export type OtherButtonKeys = typeof otherButtonKeys[number];
 export type ButtonSize = "small" | "medium" | "large";
 type Props = {
   label: LocalizedString;
@@ -19,7 +32,8 @@ type Props = {
   size?: ButtonSize;
   icon?: (props: IconProps) => JSX.Element;
   iconPosition?: "leading" | "trailing";
-} & Omit<AriaButtonProps<"button">, "onPress">;
+} & Omit<AriaButtonProps<"button">, "onPress"> &
+  Pick<React.HTMLProps<HTMLButtonElement>, OtherButtonKeys>;
 
 /**
  * A button
@@ -41,6 +55,8 @@ export function Button(props: Props) {
     internal_unsafe__bypassUsePress,
   } = props;
 
+  const otherButtonProps = pick(props, otherButtonKeys);
+
   const size = props.size ?? config.defaultSize;
 
   return (
@@ -54,6 +70,7 @@ export function Button(props: Props) {
         active: false,
       })}
       {...buttonProps}
+      {...otherButtonProps}
       color={undefined}
       onKeyDown={onKeyDown}
       onKeyUp={onKeyUp}
