@@ -352,7 +352,7 @@ importers:
       react: 18.2.0
       react-docgen-typescript: 2.2.2
       react-dom: 18.2.0
-      react-markdown: 8.0.5
+      react-markdown: 8.0.6
       typescript: 4.7.4
       webpack: 5.76.2
     dependencies:
@@ -378,7 +378,7 @@ importers:
       react: 18.2.0
       react-docgen-typescript: 2.2.2_typescript@4.7.4
       react-dom: 18.2.0_react@18.2.0
-      react-markdown: 8.0.5_3hx2ussxxho4jajbwrd6gq34qe
+      react-markdown: 8.0.6_3hx2ussxxho4jajbwrd6gq34qe
     devDependencies:
       '@babel/types': 7.18.10
       '@docusaurus/module-type-aliases': 2.0.1_biqbaboplfbrettd7655fr4n2y
@@ -8925,6 +8925,7 @@ packages:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
       '@vanilla-extract/css': 1.7.2
+    dev: false
 
   /@vanilla-extract/sprinkles/1.4.1_@vanilla-extract+css@1.9.5:
     resolution: {integrity: sha512-aW6CfMMToX4a+baLuVxwcT0FSACjX3xrNt8wdi/3LLRlLAfhyue8OK7kJxhcYNZfydBeWTP59aRy8p5FUTIeew==}
@@ -9353,8 +9354,10 @@ packages:
       ajv: 6.12.6
     dev: true
 
-  /ajv-formats/2.1.1:
+  /ajv-formats/2.1.1_ajv@8.10.0:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependencies:
+      ajv: ^8.0.0
     peerDependenciesMeta:
       ajv:
         optional: true
@@ -19958,6 +19961,12 @@ packages:
   /react-dev-utils/12.0.1_g6zqrfqntxkr4dzqjtuo7zwh6u:
     resolution: {integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==}
     engines: {node: '>=14'}
+    peerDependencies:
+      typescript: '>=2.7'
+      webpack: '>=4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dependencies:
       '@babel/code-frame': 7.18.6
       address: 1.2.0
@@ -19988,9 +19997,7 @@ packages:
     transitivePeerDependencies:
       - eslint
       - supports-color
-      - typescript
       - vue-template-compiler
-      - webpack
 
   /react-docgen-typescript/2.2.2_typescript@4.7.4:
     resolution: {integrity: sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==}
@@ -20165,8 +20172,8 @@ packages:
       react-loadable: /@docusaurus/react-loadable/5.5.2_react@18.2.0
       webpack: 5.76.2
 
-  /react-markdown/8.0.5_3hx2ussxxho4jajbwrd6gq34qe:
-    resolution: {integrity: sha512-jGJolWWmOWAvzf+xMdB9zwStViODyyFQhNB/bwCerbBKmrTmgmA599CGiOlP58OId1IMoIRsA8UdI1Lod4zb5A==}
+  /react-markdown/8.0.6_3hx2ussxxho4jajbwrd6gq34qe:
+    resolution: {integrity: sha512-KgPWsYgHuftdx510wwIzpwf+5js/iHqBR+fzxefv8Khk3mFbnioF1bmL2idHN3ler0LMQmICKeDrWnZrX9mtbQ==}
     peerDependencies:
       '@types/react': '>=16 || 18'
       react: '>=16 || 18'
@@ -21189,7 +21196,7 @@ packages:
     dependencies:
       '@types/json-schema': 7.0.11
       ajv: 8.10.0
-      ajv-formats: 2.1.1
+      ajv-formats: 2.1.1_ajv@8.10.0
       ajv-keywords: 5.1.0_ajv@8.10.0
 
   /scope-eval/1.0.0:
