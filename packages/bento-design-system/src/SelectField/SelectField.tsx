@@ -76,6 +76,7 @@ export function SelectField<A>(props: Props<A>) {
     options,
     onBlur,
     label,
+    name,
     hint,
     hintPlacement,
     assistiveText,
@@ -131,6 +132,7 @@ export function SelectField<A>(props: Props<A>) {
       >
         <Select
           id={fieldProps.id}
+          name={name}
           aria-label={fieldProps["aria-label"]}
           aria-labelledby={fieldProps["aria-labelledby"]}
           isDisabled={disabled}
