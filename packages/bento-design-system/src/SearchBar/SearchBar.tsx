@@ -94,6 +94,7 @@ export function SearchBar(props: Props) {
               color: props.disabled ? "disabled" : "primary",
               weight: "default",
               size: config.fontSize,
+              ellipsis: false,
             }),
           ]}
           display="flex"

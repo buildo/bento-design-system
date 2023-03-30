@@ -99,6 +99,7 @@ export function NumberInput(props: Props) {
             color: props.disabled ? "disabled" : "primary",
             weight: "default",
             size: config.fontSize,
+            ellipsis: false,
           }),
         ]}
         borderRadius={config.radius}

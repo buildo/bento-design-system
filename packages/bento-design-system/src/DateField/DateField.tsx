@@ -164,6 +164,7 @@ export function DateField(props: Props) {
             color: props.disabled ? "disabled" : "primary",
             weight: "default",
             size: inputConfig.fontSize,
+            ellipsis: false,
           }),
           dateFieldRecipe({ validation: validationState || "notSet", isFocused }),
           {

@@ -95,6 +95,7 @@ export function TextField(props: Props) {
               color: props.disabled ? "disabled" : "primary",
               weight: "default",
               size: config.fontSize,
+              ellipsis: false,
             }),
           ]}
           style={{
