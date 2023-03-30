@@ -1,5 +1,5 @@
 import { createComponentStories, textArgType } from "../../util";
-import { Title } from "../..";
+import { Box, Title } from "../..";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Title,
@@ -24,3 +24,11 @@ export const Medium = createStory({
 export const Large = createStory({
   size: "large",
 });
+
+export const Ellipsis = () => (
+  <Box style={{ width: 100 }}>
+    <Title size="medium" ellipsis>
+      The quick brown fox
+    </Title>
+  </Box>
+);

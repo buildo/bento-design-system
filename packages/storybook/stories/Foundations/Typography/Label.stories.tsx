@@ -1,5 +1,5 @@
 import { createComponentStories, textArgType } from "../../util";
-import { Label } from "../..";
+import { Label, Box } from "../..";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Label,
@@ -29,3 +29,11 @@ export const Uppercase = createStory({
   size: "medium",
   uppercase: true,
 });
+
+export const Ellipsis = () => (
+  <Box style={{ width: 100 }}>
+    <Label size="medium" ellipsis>
+      The quick brown fox
+    </Label>
+  </Box>
+);
