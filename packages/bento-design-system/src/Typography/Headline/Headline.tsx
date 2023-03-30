@@ -1,23 +1,16 @@
-import { LocalizedString, Box } from "../..";
-import { TypographyColor } from "../TypographyColor";
+import { Box, LocalizedString } from "../..";
+import { TypographyColor, TypographyProps } from "../TypographyProps";
 import { headlineRecipe } from "./Headline.css";
 
-type Size = "small" | "medium" | "large";
-type Align = "left" | "center" | "right";
 type Color =
   | Extract<TypographyColor, "primary" | "secondary" | "primaryInverse" | "secondaryInverse">
   | "inherit";
 
-type Props = {
-  children: LocalizedString;
-  size: Size;
-  color?: Color;
-  align?: Align;
-};
+type Props = TypographyProps<LocalizedString, Color>;
 
-export function Headline({ children, size, color = "primary", align }: Props) {
+export function Headline({ children, size, color = "primary", align, ellipsis = false }: Props) {
   return (
-    <Box as="span" className={headlineRecipe({ size, color })} textAlign={align}>
+    <Box as="span" className={headlineRecipe({ size, color, ellipsis })} textAlign={align}>
       {children}
     </Box>
   );

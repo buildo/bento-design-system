@@ -1,9 +1,7 @@
 import { LocalizedString, Box, AsProp } from "../..";
-import { TypographyColor } from "../TypographyColor";
+import { TypographyColor, TypographyProps } from "../TypographyProps";
 import { titleRecipe } from "./Title.css";
 
-type Size = "small" | "medium" | "large";
-type Align = "left" | "center" | "right";
 type Color =
   | "default"
   | Extract<
@@ -19,16 +17,18 @@ type Color =
     >
   | "inherit";
 
-type Props = {
-  children: LocalizedString;
-  size: Size;
-  color?: Color;
-  align?: Align;
-} & AsProp;
+type Props = TypographyProps<LocalizedString, Color> & AsProp;
 
-export function Title({ children, size, align, color = "primary", ...boxProps }: Props) {
+export function Title({
+  children,
+  size,
+  align,
+  color = "primary",
+  ellipsis = false,
+  ...boxProps
+}: Props) {
   return (
-    <Box {...boxProps} className={titleRecipe({ size, color })} textAlign={align}>
+    <Box {...boxProps} className={titleRecipe({ size, color, ellipsis })} textAlign={align}>
       {children}
     </Box>
   );

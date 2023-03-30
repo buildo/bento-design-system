@@ -1,5 +1,6 @@
 import { strictRecipe } from "../../util/strictRecipe";
 import { bentoSprinkles } from "../../internal/sprinkles.css";
+import { style } from "@vanilla-extract/css";
 
 export const titleRecipe = strictRecipe({
   base: bentoSprinkles({ fontFamily: "default", fontWeight: "title" }),
@@ -24,6 +25,16 @@ export const titleRecipe = strictRecipe({
       warning: bentoSprinkles({ color: "textWarning" }),
       negative: bentoSprinkles({ color: "textNegative" }),
       inherit: { color: "inherit" },
+    },
+    ellipsis: {
+      false: {},
+      true: style({
+        display: "inline-block",
+        width: "inherit",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
+      }),
     },
   },
 });
