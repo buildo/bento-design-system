@@ -6,12 +6,9 @@ import { SimpleBentoConfig } from "./util/SimpleBentoConfig.js";
 export function chipConfig(
   ctx: Ctx
 ): Omit<SimpleBentoConfig["chip"], "closeIcon" | "customColors" | "uppercase"> {
-  const { findWithVariants } = ctx.findComponentsInPage("Chip");
+  const { components } = ctx.findComponentsInPage("Chip");
 
-  const chip = findWithVariants({
-    Icon: "True",
-    Dismissable: "True",
-  });
+  const chip = components[0];
 
   const iconLabelContainer = chip.children[0] as Figma.Node<"FRAME">;
   const label = findChildByName(chip, "Label", "TEXT");

@@ -31,11 +31,15 @@ export class Ctx {
       .filter((component) => component.containing_frame?.pageName?.match(/Iconography$/))
       .filter((component) => component.name.includes("➕"))
       .map((component) => component.node_id);
-    const iconNodes = (
-      (await figma.getFileNodes(fileKey, iconNodeIds, {
-        geometry: "paths",
-      })) as GetFileNodesResult<"COMPONENT">
-    ).nodes;
+
+    const iconNodes =
+      iconNodeIds.length > 0
+        ? (
+            (await figma.getFileNodes(fileKey, iconNodeIds, {
+              geometry: "paths",
+            })) as GetFileNodesResult<"COMPONENT">
+          ).nodes
+        : {};
     iconsLoader.succeed();
 
     return new Ctx(nodes, styles, styleNodes, iconNodes, components);
