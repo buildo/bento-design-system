@@ -31,6 +31,8 @@ import { navigationConfig } from "./navigationConfig.js";
 import { listConfig } from "./listConfig.js";
 import { menuConfig } from "./menuConfig.js";
 import { progressBarConfig } from "./progressBarConfig.js";
+import { searchBarConfig } from "./searchBarConfig.js";
+import { sliderConfig } from "./sliderConfig.js";
 
 export async function syncConfig({
   ctx,
@@ -75,11 +77,9 @@ export async function syncConfig({
     progressBar: progressBarConfig(ctx),
     // TODO
     readOnlyField: {},
-    // TODO
-    searchBar: {},
+    searchBar: searchBarConfig(ctx),
     selectionControl: selectionControlConfig(ctx),
-    // TODO
-    slider: {},
+    slider: sliderConfig(ctx),
     // TODO
     stepper: {},
     // TODO

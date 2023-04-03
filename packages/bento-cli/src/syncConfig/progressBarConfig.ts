@@ -8,8 +8,6 @@ export function progressBarConfig(ctx: Ctx): SimpleBentoConfig["progressBar"] {
   const discrete = findWithVariants({ Kind: "Discrete" });
   const discreteTrail = findChildByName(discrete, "Trail", "RECTANGLE");
 
-  console.log(discreteTrail);
-
   return {
     discreteInternalSpacing: discrete.itemSpacing,
     height: discreteTrail.absoluteBoundingBox.height,
