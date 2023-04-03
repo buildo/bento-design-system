@@ -1,10 +1,14 @@
 import { Ctx } from "../util/Ctx.js";
 import { findChildByName } from "./util/findChildByName.js";
+import { nameToVariantProperties } from "./util/nameToVariantProperties.js";
 import { SimpleBentoConfig } from "./util/SimpleBentoConfig.js";
 
 export function modalConfig(
   ctx: Ctx
-): Omit<SimpleBentoConfig["modal"], "closeIcon" | "defaultErrorBannerWidth" | "titleIcon" | ""> {
+): Omit<
+  SimpleBentoConfig["modal"],
+  "closeIcon" | "defaultErrorBannerWidth" | "titleIcon" | "internalSpacing"
+> {
   const { findWithVariants } = ctx.findComponentsInPage("Modal");
 
   const normalSmallModal = findWithVariants({
@@ -36,6 +40,8 @@ export function modalConfig(
   const closeIcon = findChildByName(normalSmallModal, "Icon Button");
   const header = findChildByName(normalSmallModal, "Modal Header");
   const titleIcon = findChildByName(warningSmallModal, "Icon");
+  const actionsInstance = findChildByName(normalSmallModal, "Actions", "INSTANCE");
+  const actions = ctx.componentFromInstance(actionsInstance);
 
   return {
     elevation: ctx.elevationVariant(normalSmallModal),
@@ -51,5 +57,6 @@ export function modalConfig(
       large: normalLargeModal.absoluteBoundingBox.width,
       wide: normalWideModal.absoluteBoundingBox.width,
     },
+    actionsSize: nameToVariantProperties(actions.name)["Button size"].toLowerCase(),
   };
 }

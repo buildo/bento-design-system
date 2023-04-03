@@ -4,7 +4,10 @@ import { Ctx } from "../util/Ctx.js";
 
 export function inputConfig(
   ctx: Ctx
-): Omit<SimpleBentoConfig["input"], "passwordShowIcon" | "passwordHideIcon" | "iconSize"> {
+): Omit<
+  SimpleBentoConfig["input"],
+  "passwordShowIcon" | "passwordHideIcon" | "iconSize" | "background"
+> {
   const { findWithVariants } = ctx.findComponentsInPage("Input", "Password Field");
 
   const passwordField = findWithVariants({

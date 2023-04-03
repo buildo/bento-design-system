@@ -5,7 +5,7 @@ import { SimpleBentoConfig } from "./util/SimpleBentoConfig.js";
 
 export function chipConfig(
   ctx: Ctx
-): Omit<SimpleBentoConfig["chip"], "closeIcon" | "customColors"> {
+): Omit<SimpleBentoConfig["chip"], "closeIcon" | "customColors" | "uppercase"> {
   const { findWithVariants } = ctx.findComponentsInPage("Chip");
 
   const chip = findWithVariants({
@@ -24,7 +24,7 @@ export function chipConfig(
   return {
     paddingX: chip?.paddingLeft,
     paddingY: chip?.paddingTop,
-    labelSize: ctx.typographyVariant(label)?.size,
+    label: { kind: ctx.typographyVariant(label).kind, size: ctx.typographyVariant(label).size },
     iconSize: icon?.absoluteBoundingBox.width,
     closeIconSize: closeIcon?.absoluteBoundingBox.width,
     spacingAfterIcon: iconLabelContainer.itemSpacing,

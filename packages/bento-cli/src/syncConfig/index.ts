@@ -49,7 +49,7 @@ export async function syncConfig({
     button: buttonConfig(ctx),
     card: {},
     // TODO
-    // chart: {},
+    chart: {},
     chip: chipConfig(ctx),
     dateField: dateFieldConfig(ctx),
     decorativeDivider: decorativeDividerConfig(ctx),
@@ -59,6 +59,8 @@ export async function syncConfig({
     dropdown: {},
     feedback: feedbackConfig(ctx),
     field: fieldConfig(ctx),
+    // TODO
+    fileUploaderField: {},
     formLayout: formLayoutConfig(ctx),
     iconButton: iconButtonConfig(ctx),
     inlineLoader: inlineLoaderConfig(ctx),
@@ -72,6 +74,8 @@ export async function syncConfig({
     navigation: navigationConfig(ctx),
     // TODO
     progressBar: {},
+    // TODO
+    readOnlyField: {},
     // TODO
     searchBar: {},
     selectionControl: selectionControlConfig(ctx),

@@ -4,40 +4,41 @@ import { SimpleBentoConfig } from "./util/SimpleBentoConfig.js";
 import * as Figma from "figma-api";
 
 export function selectionControlConfig(ctx: Ctx): SimpleBentoConfig["selectionControl"] {
-  const { findWithVariants } = ctx.findComponentsInPage("Input", "Radio Group");
+  const { findWithVariants } = ctx.findComponentsInPage("Input", "Checkbox Group");
 
-  const radioGroupHorizontal = findWithVariants({
+  const checkboxGroupHorizontal = findWithVariants({
     Orientation: "Horizontal",
     "Assistive text": "True",
     State: "Enabled",
   });
 
-  const radioGroupVertical = findWithVariants({
+  const checkboxGroupVertical = findWithVariants({
     Orientation: "Vertical",
     "Assistive text": "True",
     State: "Enabled",
   });
 
-  const radio = findChildByName(radioGroupHorizontal, "Radio", "INSTANCE");
-  const radioLabelContainer = radio.children[1] as Figma.Node<"FRAME">;
+  const checkbox = findChildByName(checkboxGroupHorizontal, "Checkbox", "INSTANCE");
+  const checkboxLabelContainer = checkbox.children[1] as Figma.Node<"FRAME">;
 
-  const radioContainerHorizontal = radioGroupHorizontal.children[1] as Figma.Node<"FRAME">;
+  const checkboxContainerHorizontal = checkboxGroupHorizontal.children[1] as Figma.Node<"FRAME">;
 
-  const radioContainerVertical = radioGroupVertical.children[1] as Figma.Node<"FRAME">;
+  const checkboxContainerVertical = checkboxGroupVertical.children[1] as Figma.Node<"FRAME">;
 
-  const radioLabel = findChildByName(radio, "Label", "TEXT");
+  const checkboxLabel = findChildByName(checkbox, "Label", "TEXT");
 
   return {
     group: {
       internalSpacing: {
-        vertical: radioContainerVertical.itemSpacing,
-        horizontal: radioContainerHorizontal.itemSpacing,
+        vertical: checkboxContainerVertical.itemSpacing,
+        horizontal: checkboxContainerHorizontal.itemSpacing,
       },
     },
     element: {
-      controlLabelSpacing: radio.itemSpacing,
-      labelPaddingTop: radioLabelContainer.paddingTop,
-      labelSize: ctx.typographyVariant(radioLabel).size,
+      controlLabelSpacing: checkbox.itemSpacing,
+      labelPaddingTop: checkboxLabelContainer.paddingTop,
+      labelSize: ctx.typographyVariant(checkboxLabel).size,
+      checkboxBorderRadius: checkbox.cornerRadius,
     },
   };
 }

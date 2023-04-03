@@ -2,7 +2,9 @@ import { Ctx } from "../util/Ctx.js";
 import { findChildByName } from "./util/findChildByName.js";
 import { SimpleBentoConfig } from "./util/SimpleBentoConfig.js";
 
-export function buttonConfig(ctx: Ctx): Omit<SimpleBentoConfig["button"], "defaultSize"> {
+export function buttonConfig(
+  ctx: Ctx
+): Omit<SimpleBentoConfig["button"], "defaultSize" | "defaultIconPosition"> {
   const { findWithVariants } = ctx.findComponentsInPage("Button");
 
   const smallButton = findWithVariants({

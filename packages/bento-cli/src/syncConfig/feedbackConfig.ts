@@ -48,7 +48,10 @@ export function feedbackConfig(
         size: ctx.typographyVariant(titleLarge).size,
         kind: ctx.typographyVariant(titleLarge).kind,
       },
-      medium: ctx.typographyVariant(titleMedium).size,
+      medium: {
+        size: ctx.typographyVariant(titleMedium).size,
+        kind: ctx.typographyVariant(titleMedium).kind,
+      },
     },
     descriptionSize: {
       large: ctx.typographyVariant(descriptionLarge).size,
