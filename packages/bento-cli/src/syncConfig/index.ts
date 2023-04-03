@@ -28,6 +28,7 @@ import { areaLoaderConfig } from "./areaLoaderConfig.js";
 import { decorativeDividerConfig } from "./decorativeDividerConfig.js";
 import { modalConfig } from "./modalConfig.js";
 import { navigationConfig } from "./navigationConfig.js";
+import { listConfig } from "./listConfig.js";
 
 export async function syncConfig({
   ctx,
@@ -66,7 +67,7 @@ export async function syncConfig({
     inlineLoader: inlineLoaderConfig(ctx),
     input: inputConfig(ctx),
     // TODO
-    list: {},
+    list: listConfig(ctx),
     // TODO
     menu: {},
     modal: modalConfig(ctx),

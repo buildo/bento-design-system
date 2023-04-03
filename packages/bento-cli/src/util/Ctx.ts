@@ -2,9 +2,10 @@ import * as Figma from "figma-api";
 import { ComponentMetadata, GetFileNodesResult, StyleMetadata } from "figma-api/lib/api-types.js";
 import { FigmaNodeWithChildren } from "../syncConfig/util/FigmaNodeWithChildren.js";
 import { stripEmojis } from "./stripEmojis.js";
-import { Body, Display, Headline, Label, Title } from "@buildo/bento-design-system";
+import { Body, Display, Headline, IconProps, Label, Title } from "@buildo/bento-design-system";
 import { nameToVariantProperties } from "../syncConfig/util/nameToVariantProperties.js";
 import ora from "ora";
+import { findChildByName } from "../syncConfig/util/findChildByName.js";
 
 export class Ctx {
   static async fromFigma(fileKey: string, personalAccessToken: string): Promise<Ctx> {
@@ -214,6 +215,41 @@ export class Ctx {
 
     const [prefix, variant] = fillStyle.name.split("/");
     return `${prefix.toLowerCase()}${variant.split(" ").join("")}`;
+  }
+
+  iconColorVariant(node: Figma.Node): IconProps["color"] {
+    const vector = findChildByName(node, "Vector", "VECTOR");
+    const colorVariant = this.colorVariant(vector);
+    switch (colorVariant) {
+      case "foregroundPrimary":
+        return "primary";
+      case "foregroundSecondary":
+        return "default";
+      case "foregroundPrimaryInverse":
+        return "primaryInverse";
+      case "foregroundSecondaryInverse":
+        return "secondaryInverse";
+      case "brandPrimary":
+        return "brandPrimary";
+      case "brandSecondary":
+        return "brandSecondary";
+      case "brandTertiary":
+        return "brandTertiary";
+      case "foregroundInformative":
+        return "informative";
+      case "foregroundPositive":
+        return "positive";
+      case "foregroundWarning":
+        return "warning";
+      case "foregroundNegative":
+        return "negative";
+      case "foregroundDisabled":
+        return "disabled";
+      case "foregroundInteractive":
+        return "interactive";
+      default:
+        throw Error(`Unexpected background color ${colorVariant}`);
+    }
   }
 
   componentFromInstance(instance: Figma.Node<"INSTANCE">): ComponentMetadata {
