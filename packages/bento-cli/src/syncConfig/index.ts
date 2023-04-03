@@ -30,6 +30,7 @@ import { modalConfig } from "./modalConfig.js";
 import { navigationConfig } from "./navigationConfig.js";
 import { listConfig } from "./listConfig.js";
 import { menuConfig } from "./menuConfig.js";
+import { progressBarConfig } from "./progressBarConfig.js";
 
 export async function syncConfig({
   ctx,
@@ -67,15 +68,11 @@ export async function syncConfig({
     iconButton: iconButtonConfig(ctx),
     inlineLoader: inlineLoaderConfig(ctx),
     input: inputConfig(ctx),
-    // TODO
     list: listConfig(ctx),
-    // TODO
     menu: menuConfig(ctx),
     modal: modalConfig(ctx),
-    // TODO
     navigation: navigationConfig(ctx),
-    // TODO
-    progressBar: {},
+    progressBar: progressBarConfig(ctx),
     // TODO
     readOnlyField: {},
     // TODO
