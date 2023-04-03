@@ -29,6 +29,7 @@ import { decorativeDividerConfig } from "./decorativeDividerConfig.js";
 import { modalConfig } from "./modalConfig.js";
 import { navigationConfig } from "./navigationConfig.js";
 import { listConfig } from "./listConfig.js";
+import { menuConfig } from "./menuConfig.js";
 
 export async function syncConfig({
   ctx,
@@ -69,7 +70,7 @@ export async function syncConfig({
     // TODO
     list: listConfig(ctx),
     // TODO
-    menu: {},
+    menu: menuConfig(ctx),
     modal: modalConfig(ctx),
     // TODO
     navigation: navigationConfig(ctx),
