@@ -113,7 +113,6 @@ importers:
       react-is: 18.2.0
       react-select: ^5.4.0
       react-table: ^7.8.0
-      react-use: ^17.4.0
       recharts: ^2.1.16
       smooth-release: 8.0.9
       storybook-addon-themes: 6.1.0
@@ -181,7 +180,6 @@ importers:
       react-is: 18.2.0
       react-select: 5.4.0_zlkr355vuqapsh7ngap6ljrwsi
       react-table: 7.8.0_react@18.2.0
-      react-use: 17.4.0_biqbaboplfbrettd7655fr4n2y
       recharts: 2.1.16_v2m5e27vhdewzwhryxwfaorcca
       ts-pattern: 3.3.5
     devDependencies:

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   ActionsProps,
   ButtonProps,
@@ -14,7 +14,6 @@ import { useOverlay, usePreventScroll, useModal } from "@react-aria/overlays";
 import { useDialog } from "@react-aria/dialog";
 import { FocusScope } from "@react-aria/focus";
 import { modalRecipe, underlay, modalBody } from "./Modal.css";
-import { useKeyPressEvent } from "react-use";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { IconButton } from "../IconButton/IconButton";
 import { useCreatePortal } from "../util/useCreatePortal";
@@ -83,10 +82,11 @@ export function CustomModal(props: CustomModalProps) {
 export function Modal(props: Props) {
   const config = useBentoConfig().modal;
   // Trigger the primary action on 'Enter' if there is one
-  useKeyPressEvent(
-    (key) => key.code === "Enter",
-    () => props.primaryAction?.onPress()
-  );
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => e.code === "Enter" && props.primaryAction?.onPress();
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  });
 
   const { defaultMessages } = useDefaultMessages();
 
