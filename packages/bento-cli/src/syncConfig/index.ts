@@ -34,6 +34,7 @@ import { progressBarConfig } from "./progressBarConfig.js";
 import { searchBarConfig } from "./searchBarConfig.js";
 import { sliderConfig } from "./sliderConfig.js";
 import { stepperConfig } from "./stepperConfig.js";
+import { tableConfig } from "./tableConfig.js";
 
 export async function syncConfig({
   ctx,
@@ -82,8 +83,7 @@ export async function syncConfig({
     selectionControl: selectionControlConfig(ctx),
     slider: sliderConfig(ctx),
     stepper: stepperConfig(ctx),
-    // TODO
-    table: {},
+    table: tableConfig(ctx),
     // TODO
     tabs: {},
     // TODO
