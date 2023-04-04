@@ -35,6 +35,7 @@ import { searchBarConfig } from "./searchBarConfig.js";
 import { sliderConfig } from "./sliderConfig.js";
 import { stepperConfig } from "./stepperConfig.js";
 import { tableConfig } from "./tableConfig.js";
+import { tabsConfig } from "./tabsConfig.js";
 
 export async function syncConfig({
   ctx,
@@ -84,8 +85,7 @@ export async function syncConfig({
     slider: sliderConfig(ctx),
     stepper: stepperConfig(ctx),
     table: tableConfig(ctx),
-    // TODO
-    tabs: {},
+    tabs: tabsConfig(ctx),
     // TODO
     toast: {},
     // TODO

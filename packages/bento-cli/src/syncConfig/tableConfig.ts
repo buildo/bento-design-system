@@ -18,7 +18,6 @@ export function tableConfig(
 
   const { components: cellComponents, findWithVariants: findCellWithVariants } =
     ctx.findComponentsInPage("Table", "Cell");
-  console.log(cellComponents.map((c) => c.name));
   const headerCell = findCellWithVariants({
     Kind: "Not sorted",
     "Tooltip info": "False",
