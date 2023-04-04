@@ -1,23 +1,23 @@
 import { LocalizedString, Box, AsProp } from "../..";
-import { TypographyColor, TypographyProps } from "../TypographyProps";
+import { TypographyAlign, TypographyColor, TypographyProps } from "../TypographyProps";
 import { titleRecipe } from "./Title.css";
 
-type Color =
+type Align = Extract<TypographyAlign, "left" | "center" | "right">;
+type Color = Extract<
+  TypographyColor,
   | "default"
-  | Extract<
-      TypographyColor,
-      | "primary"
-      | "secondary"
-      | "primaryInverse"
-      | "secondaryInverse"
-      | "informative"
-      | "positive"
-      | "warning"
-      | "negative"
-    >
-  | "inherit";
+  | "inherit"
+  | "primary"
+  | "secondary"
+  | "primaryInverse"
+  | "secondaryInverse"
+  | "informative"
+  | "positive"
+  | "warning"
+  | "negative"
+>;
 
-type Props = TypographyProps<LocalizedString, Color> & AsProp;
+type Props = TypographyProps<Align, LocalizedString, Color> & AsProp;
 
 export function Title({
   children,

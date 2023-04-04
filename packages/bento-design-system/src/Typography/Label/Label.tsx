@@ -1,12 +1,11 @@
-import { Children } from "../../util/Children";
 import { Box, BoxProps } from "../..";
 import { labelRecipe } from "./Label.css";
 import { BentoSprinkles } from "../../internal";
-import { TypographyColor, TypographyProps } from "../TypographyProps";
+import { TypographyAlign, TypographyProps } from "../TypographyProps";
 
-type Color = "default" | TypographyColor | "inherit";
+type Align = Extract<TypographyAlign, "left" | "center" | "right">;
 
-export type LabelProps = TypographyProps<Children, Color> & {
+export type LabelProps = TypographyProps<Align> & {
   uppercase?: boolean;
 } & Omit<BoxProps, keyof BentoSprinkles | "className" | "size">;
 

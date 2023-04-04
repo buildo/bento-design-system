@@ -1,6 +1,6 @@
 import { strictRecipe } from "../../util/strictRecipe";
 import { bentoSprinkles } from "../../internal/sprinkles.css";
-import { style } from "@vanilla-extract/css";
+import { ellipsis } from "../typography.css";
 
 export const bodyRecipe = strictRecipe({
   base: bentoSprinkles({ fontFamily: "default" }),
@@ -30,13 +30,7 @@ export const bodyRecipe = strictRecipe({
     },
     ellipsis: {
       false: {},
-      true: style({
-        display: "inline-block",
-        width: "inherit",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        whiteSpace: "nowrap",
-      }),
+      true: ellipsis,
     },
   },
 });

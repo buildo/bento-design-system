@@ -1,12 +1,8 @@
 import { AsProp, Box } from "../../";
-import { Children } from "../../util/Children";
-import { TypographyAlign, TypographyColor, TypographyProps } from "../TypographyProps";
+import { TypographyProps } from "../TypographyProps";
 import { bodyRecipe } from "./Body.css";
 
-type Align = TypographyAlign | "justify";
-type Color = "default" | TypographyColor | "inherit";
-
-type Props = TypographyProps<Children, Color, Align> & {
+type Props = TypographyProps & {
   id?: string;
   weight?: "default" | "strong";
 } & AsProp;

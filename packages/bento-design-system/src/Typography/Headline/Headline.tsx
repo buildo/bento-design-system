@@ -1,12 +1,14 @@
 import { Box, LocalizedString } from "../..";
-import { TypographyColor, TypographyProps } from "../TypographyProps";
+import { TypographyAlign, TypographyColor, TypographyProps } from "../TypographyProps";
 import { headlineRecipe } from "./Headline.css";
 
-type Color =
-  | Extract<TypographyColor, "primary" | "secondary" | "primaryInverse" | "secondaryInverse">
-  | "inherit";
+type Align = Extract<TypographyAlign, "left" | "center" | "right">;
+type Color = Extract<
+  TypographyColor,
+  "primary" | "secondary" | "primaryInverse" | "secondaryInverse" | "inherit"
+>;
 
-type Props = TypographyProps<LocalizedString, Color>;
+type Props = TypographyProps<Align, LocalizedString, Color>;
 
 export function Headline({ children, size, color = "primary", align, ellipsis = false }: Props) {
   return (

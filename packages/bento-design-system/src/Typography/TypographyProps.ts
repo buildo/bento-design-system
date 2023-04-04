@@ -1,9 +1,11 @@
-import { Children as Children_ } from "..";
+import { Children as Children_ } from "../util/Children";
 
 export type TypographySize = "small" | "medium" | "large";
-export type TypographyAlign = "left" | "center" | "right";
+export type TypographyAlign = "left" | "center" | "right" | "justify";
 
 export type TypographyColor =
+  | "default"
+  | "inherit"
   | "primary"
   | "secondary"
   | "primaryInverse"
@@ -16,9 +18,9 @@ export type TypographyColor =
   | "disabled";
 
 export type TypographyProps<
-  Children extends Children_,
-  Color extends string,
-  Align extends string = TypographyAlign
+  Align extends TypographyAlign = TypographyAlign,
+  Children extends Children_ = Children_,
+  Color extends TypographyColor = TypographyColor
 > = {
   children: Children;
   size: TypographySize;
