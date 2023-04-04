@@ -36,6 +36,8 @@ import { sliderConfig } from "./sliderConfig.js";
 import { stepperConfig } from "./stepperConfig.js";
 import { tableConfig } from "./tableConfig.js";
 import { tabsConfig } from "./tabsConfig.js";
+import { toastConfig } from "./toastConfig.js";
+import { tooltipConfig } from "./tooltipConfig.js";
 
 export async function syncConfig({
   ctx,
@@ -86,10 +88,8 @@ export async function syncConfig({
     stepper: stepperConfig(ctx),
     table: tableConfig(ctx),
     tabs: tabsConfig(ctx),
-    // TODO
-    toast: {},
-    // TODO
-    tooltip: {},
+    toast: toastConfig(ctx),
+    tooltip: tooltipConfig(ctx),
   };
 
   const minimalConfig = pruneEmptyObjects(diff(defaultConfigs, config));
