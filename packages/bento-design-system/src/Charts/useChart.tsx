@@ -119,7 +119,7 @@ export function useChart<TValue extends ValueType, TName extends NameType>({
   );
 
   const containerProps = {
-    className: bodyRecipe({ size: "medium", weight: "default", color: "default" }),
+    className: bodyRecipe({ size: "medium", weight: "default", color: "default", ellipsis: false }),
   };
   const makeBarProps = (i: number) => ({
     fill: colorPalette[i % colorPalette.length],

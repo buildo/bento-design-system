@@ -1,5 +1,6 @@
 import { createComponentStories, textArgType } from "../../util";
 import { Headline } from "../..";
+import { Box } from "@buildo/bento-design-system";
 
 const { defaultExport, createStory } = createComponentStories({
   component: Headline,
@@ -24,3 +25,11 @@ export const Medium = createStory({
 export const Large = createStory({
   size: "large",
 });
+
+export const Ellipsis = () => (
+  <Box style={{ width: 200 }}>
+    <Headline size="medium" ellipsis>
+      The quick brown fox
+    </Headline>
+  </Box>
+);

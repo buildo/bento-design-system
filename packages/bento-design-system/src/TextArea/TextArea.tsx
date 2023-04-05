@@ -57,6 +57,7 @@ export function TextArea(props: Props) {
             color: props.disabled ? "disabled" : "primary",
             weight: "default",
             size: config.fontSize,
+            ellipsis: false,
           }),
         ]}
         style={getReadOnlyBackgroundStyle(config)}

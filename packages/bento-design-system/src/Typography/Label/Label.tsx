@@ -1,18 +1,11 @@
-import { Children } from "../../util/Children";
 import { Box, BoxProps } from "../..";
 import { labelRecipe } from "./Label.css";
 import { BentoSprinkles } from "../../internal";
-import { TypographyColor } from "../TypographyColor";
+import { TypographyAlign, TypographyProps } from "../TypographyProps";
 
-type Size = "small" | "medium" | "large";
-type Align = "left" | "center" | "right";
-type Color = "default" | TypographyColor | "inherit";
+type Align = Extract<TypographyAlign, "left" | "center" | "right">;
 
-export type LabelProps = {
-  children: Children;
-  size: Size;
-  color?: Color;
-  align?: Align;
+export type LabelProps = TypographyProps<Align> & {
   uppercase?: boolean;
 } & Omit<BoxProps, keyof BentoSprinkles | "className" | "size">;
 
@@ -21,11 +14,16 @@ export function Label({
   size,
   align,
   color = "default",
+  ellipsis = false,
   uppercase = false,
   ...boxProps
 }: LabelProps) {
   return (
-    <Box {...boxProps} className={labelRecipe({ size, color, uppercase })} textAlign={align}>
+    <Box
+      {...boxProps}
+      className={labelRecipe({ size, color, ellipsis, uppercase })}
+      textAlign={align}
+    >
       {children}
     </Box>
   );

@@ -1,5 +1,6 @@
 import { strictRecipe } from "../../util/strictRecipe";
 import { bentoSprinkles } from "../../internal/sprinkles.css";
+import { ellipsis } from "../typography.css";
 
 export const labelRecipe = strictRecipe({
   base: bentoSprinkles({ fontFamily: "default", fontWeight: "label" }),
@@ -37,6 +38,10 @@ export const labelRecipe = strictRecipe({
       negative: bentoSprinkles({ color: "textNegative", fill: "textNegative" }),
       disabled: bentoSprinkles({ color: "textDisabled", fill: "textDisabled" }),
       inherit: { color: "inherit", fill: "inherit" },
+    },
+    ellipsis: {
+      false: {},
+      true: ellipsis,
     },
     uppercase: {
       false: {},

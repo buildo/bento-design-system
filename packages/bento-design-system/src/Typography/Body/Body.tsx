@@ -1,21 +1,11 @@
-import { Box, BoxProps } from "../../";
-import { Children } from "../../util/Children";
-import { TypographyColor } from "../TypographyColor";
+import { AsProp, Box } from "../../";
+import { TypographyProps } from "../TypographyProps";
 import { bodyRecipe } from "./Body.css";
 
-type Size = "small" | "medium" | "large";
-type Align = "left" | "center" | "right" | "justify";
-type Color = "default" | TypographyColor | "inherit";
-
-type Props = {
+type Props = TypographyProps & {
   id?: string;
-  children: Children;
-  size: Size;
   weight?: "default" | "strong";
-  color?: Color;
-  align?: Align;
-  as?: BoxProps["as"];
-};
+} & AsProp;
 
 export function Body({
   children,
@@ -23,12 +13,13 @@ export function Body({
   weight = "default",
   color = "primary",
   align,
+  ellipsis = false,
   as = "span",
 }: Props) {
   return (
     <Box
       as={as}
-      className={bodyRecipe({ weight, size, color })}
+      className={bodyRecipe({ weight, size, color, ellipsis })}
       textAlign={align}
       fontFamily="default"
     >

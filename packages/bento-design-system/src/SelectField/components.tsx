@@ -138,6 +138,7 @@ export function Input<A>(props: InputProps<A>) {
         size: inputConfig.fontSize,
         weight: "default",
         color: "primary",
+        ellipsis: false,
       })}
     />
   );
