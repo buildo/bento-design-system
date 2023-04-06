@@ -5,6 +5,10 @@
     "build": {
       "dependsOn": [
         "^build"
+      ],
+      "outputs": [
+        "lib",
+        "storybook-static"
       ]
     },
     "typecheck": {
@@ -13,7 +17,11 @@
       ]
     },
     "start": {
-      "outputs": []
+      "persistent": true,
+      "cache": false,
+      "dependsOn": [
+        "^wait"
+      ]
     },
     "prettier-check": {},
     "prettier-write": {},
@@ -26,21 +34,38 @@
       ]
     },
     "playroom-start": {
-      "dependsOn": ["build"]
+      "dependsOn": [
+        "@buildo/bento-design-system#build"
+      ],
+      "persistent": true,
+      "cache": false
     },
     "playroom-build": {
-      "dependsOn": ["build"]
+      "dependsOn": [
+        "@buildo/bento-design-system#build"
+      ],
+      "outputs": [
+        "dist"
+      ]
     },
     "website-start": {
       "dependsOn": [
         "^build"
-      ]
+      ],
+      "persistent": true,
+      "cache": false
     },
     "website-build": {
       "dependsOn": [
         "^build"
+      ],
+      "outputs": [
+        "build"
       ]
     },
-    "check-circular-deps": {}
+    "check-circular-deps": {},
+    "wait": {
+      "cache": false
+    }
   }
 }
