@@ -1,0 +1,33 @@
+{
+  "name": "@buildo/bento-builder",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "prettier-check": "prettier --parser=typescript \"src/**/*.{ts,tsx}\" --check",
+    "prettier-write": "prettier --parser=typescript \"src/**/*.{ts,tsx}\" --write",
+    "eslint-check": "eslint \"src/**/*.{ts,tsx}\""
+  },
+  "dependencies": {
+    "@buildo/bento-design-system": "workspace:*",
+    "@vanilla-extract/dynamic": "^2.0.3",
+    "deepmerge-ts": "^5.1.0",
+    "react": "^18.2.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-color": "^3.0.6",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "eslint": "^8.38.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-sort-export-all": "^1.2.2",
+    "prettier": "^2.8.7",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0"
+  }
+}
