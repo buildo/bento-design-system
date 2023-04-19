@@ -61,6 +61,7 @@ import {
   useComponentsShowcase,
   List,
   Divider,
+  PartialBentoTheme,
 } from ".";
 import * as icons from "./Icons";
 import { PartialBentoConfig } from "./BentoConfig";
@@ -76,6 +77,7 @@ import { SliderField } from "./SliderField/SliderField";
 import { TextArea } from "./TextArea/TextArea";
 import { TextField } from "./TextField/TextField";
 import { TimeField } from "./TimeField/TimeField";
+import { defaultTheme } from "./util/defaultTheme";
 
 /** @deprecated Import components directly from "@buildo/bento-design-system" instead */
 export function createBentoComponents(): R;
@@ -94,19 +96,21 @@ export function createBentoComponents<
 /** @deprecated Import components directly from "@buildo/bento-design-system" instead */
 export function createBentoComponents<SprinklesFn extends typeof bentoSprinkles>(
   sprinkles?: SprinklesFn | PartialBentoConfig,
-  config: PartialBentoConfig = defaultConfigs
+  config: PartialBentoConfig = defaultConfigs,
+  theme: PartialBentoTheme = defaultTheme
 ): R {
   if (typeof sprinkles === "function") {
-    return internalCreateBentoComponents(sprinkles, config);
+    return internalCreateBentoComponents(sprinkles, config, theme);
   }
-  return internalCreateBentoComponents(bentoSprinkles, config);
+  return internalCreateBentoComponents(bentoSprinkles, config, theme);
 }
 
 function internalCreateBentoComponents(
   sprinkles: SprinklesFn,
-  config: PartialBentoConfig = defaultConfigs
+  config: PartialBentoConfig = defaultConfigs,
+  theme: PartialBentoTheme = defaultTheme
 ) {
-  const DesignSystemProvider = createBentoProvider(config, sprinkles);
+  const DesignSystemProvider = createBentoProvider(config, theme, sprinkles);
 
   const components = {
     ...icons,

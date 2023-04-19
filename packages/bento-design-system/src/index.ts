@@ -95,6 +95,7 @@ export * from "./util/link";
 export * from "./util/strictRecipe";
 export * from "./util/useDefaultMessages";
 export * from "./util/withBentoConfig";
+export * from "./util/withBentoTheme";
 
 export { icons };
 
@@ -107,6 +108,7 @@ export { inputRecipe } from "./Field/Field.css";
 export * from "./vars.css";
 
 export type { BentoConfig, PartialBentoConfig } from "./BentoConfig";
+export type { BentoTheme, PartialBentoTheme } from "./BentoTheme";
 export { defaultConfigs };
 export { BentoConfigProvider } from "./BentoConfigContext";
 

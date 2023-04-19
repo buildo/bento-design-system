@@ -1,5 +1,4 @@
-import { vars } from "../vars.css";
-import { MapLeafNodes } from "@vanilla-extract/private";
+import { BentoTheme } from "../BentoTheme";
 
 const remBaseSize = 16;
 const pixelToRem = (px: number) => `${px / remBaseSize}rem`;
@@ -65,7 +64,7 @@ const colors = {
   pink30: "#E648A4",
 };
 
-export const defaultThemeConsts: MapLeafNodes<typeof vars, string> = {
+export const defaultTheme: BentoTheme = {
   fontFamily: {
     default: "Lexend, Arial, sans-serif",
   },
