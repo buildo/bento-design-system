@@ -1,11 +1,11 @@
 import "@buildo/bento-design-system/index.css";
-import "@buildo/bento-design-system/defaultTheme.css";
 import "./theme.css";
 import {
   createBentoProvider,
   defaultConfigs,
   withBentoConfig,
   createBentoComponents,
+  defaultTheme,
 } from "@buildo/bento-design-system";
 import { sprinkles } from "./sprinkles.css";
 

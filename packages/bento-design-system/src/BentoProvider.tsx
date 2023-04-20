@@ -1,4 +1,4 @@
-import { Children, PartialBentoConfig, PartialBentoTheme } from ".";
+import { BentoTheme, Children, PartialBentoConfig } from ".";
 import { bentoSprinkles } from "./internal";
 import { ToastProvider } from "./Toast/ToastProvider";
 import { OverlayProvider } from "@react-aria/overlays";
@@ -38,13 +38,13 @@ type Props = {
   linkComponent?: ComponentType<LinkComponentProps>;
   locale?: string;
   config?: PartialBentoConfig;
-  theme?: PartialBentoTheme;
+  theme?: BentoTheme | null;
   sprinkles?: SprinklesFn;
 } & DefaultMessages;
 
 export function createBentoProvider(
   config: PartialBentoConfig = {},
-  theme: PartialBentoTheme = {},
+  theme?: BentoTheme | null,
   sprinkles: SprinklesFn = bentoSprinkles
 ) {
   return function BentoProvider({

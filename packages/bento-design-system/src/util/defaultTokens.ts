@@ -1,4 +1,4 @@
-import { BentoTheme } from "../BentoTheme";
+import { BentoTokens } from "./bentoTokens";
 
 const remBaseSize = 16;
 const pixelToRem = (px: number) => `${px / remBaseSize}rem`;
@@ -64,7 +64,7 @@ const colors = {
   pink30: "#E648A4",
 };
 
-export const defaultTheme: BentoTheme = {
+export const defaultTokens: BentoTokens = {
   fontFamily: {
     default: "Lexend, Arial, sans-serif",
   },

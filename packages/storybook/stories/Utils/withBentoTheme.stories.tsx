@@ -7,6 +7,7 @@ import { action } from "@storybook/addon-actions";
 import { defaultMessages } from "@buildo/bento-design-system/lib/defaultMessages/en";
 import { useState } from "react";
 import { Button } from "..";
+import { newTheme } from "./withBentoTheme.css";
 
 export default {};
 
@@ -19,16 +20,7 @@ export default {};
 export const ConfiguredModal = () => {
   const [open, setOpen] = useState(false);
 
-  const Modal = withBentoTheme(
-    {
-      interactiveBackgroundColor: {
-        primarySolidEnabledBackground: "red",
-        primarySolidFocusBackground: "red",
-        primarySolidHoverBackground: "red",
-      },
-    },
-    BentoModal
-  );
+  const Modal = withBentoTheme(newTheme, BentoModal);
 
   return (
     <DesignSystemProvider

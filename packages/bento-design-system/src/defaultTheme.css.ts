@@ -1,5 +1,5 @@
 import { createGlobalTheme } from "@vanilla-extract/css";
-import { defaultTheme } from "./util/defaultTheme";
+import { defaultTokens } from "./util/defaultTokens";
 import { vars as bentoVars } from "./vars.css";
 
-createGlobalTheme(":root", bentoVars, defaultTheme);
+createGlobalTheme(":root", bentoVars, defaultTokens);

@@ -2,6 +2,7 @@ import {
   DesignSystemProvider,
   Modal as BentoModal,
   withBentoConfig,
+  defaultTheme,
 } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
 import { defaultMessages } from "@buildo/bento-design-system/lib/defaultMessages/en";
@@ -35,6 +36,7 @@ export const ConfiguredModal = () => {
           radius: 16,
         },
       }}
+      theme={defaultTheme}
     >
       <Modal
         title="Custom Modal"

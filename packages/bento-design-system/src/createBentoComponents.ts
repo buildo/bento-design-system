@@ -61,7 +61,7 @@ import {
   useComponentsShowcase,
   List,
   Divider,
-  PartialBentoTheme,
+  BentoTheme,
 } from ".";
 import * as icons from "./Icons";
 import { PartialBentoConfig } from "./BentoConfig";
@@ -77,7 +77,6 @@ import { SliderField } from "./SliderField/SliderField";
 import { TextArea } from "./TextArea/TextArea";
 import { TextField } from "./TextField/TextField";
 import { TimeField } from "./TimeField/TimeField";
-import { defaultTheme } from "./util/defaultTheme";
 
 /** @deprecated Import components directly from "@buildo/bento-design-system" instead */
 export function createBentoComponents(): R;
@@ -91,13 +90,13 @@ export function createBentoComponents<ChipCustomColor extends string = never>(
 export function createBentoComponents<
   SprinklesFn extends typeof bentoSprinkles,
   ChipCustomColor extends string = never
->(sprinkles: SprinklesFn, config?: PartialBentoConfig): R;
+>(sprinkles: SprinklesFn, config?: PartialBentoConfig, theme?: BentoTheme): R;
 
 /** @deprecated Import components directly from "@buildo/bento-design-system" instead */
 export function createBentoComponents<SprinklesFn extends typeof bentoSprinkles>(
   sprinkles?: SprinklesFn | PartialBentoConfig,
   config: PartialBentoConfig = defaultConfigs,
-  theme: PartialBentoTheme = defaultTheme
+  theme?: BentoTheme
 ): R {
   if (typeof sprinkles === "function") {
     return internalCreateBentoComponents(sprinkles, config, theme);
@@ -108,7 +107,7 @@ export function createBentoComponents<SprinklesFn extends typeof bentoSprinkles>
 function internalCreateBentoComponents(
   sprinkles: SprinklesFn,
   config: PartialBentoConfig = defaultConfigs,
-  theme: PartialBentoTheme = defaultTheme
+  theme?: BentoTheme
 ) {
   const DesignSystemProvider = createBentoProvider(config, theme, sprinkles);
 

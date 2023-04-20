@@ -92,6 +92,7 @@ export * from "./util/atoms";
 export * from "./util/breakpoints";
 export * from "./util/conditions";
 export * from "./util/link";
+export * from "./util/makeBentoTheme";
 export * from "./util/strictRecipe";
 export * from "./util/useDefaultMessages";
 export * from "./util/withBentoConfig";
@@ -106,9 +107,9 @@ export { headlineRecipe } from "./Typography/Headline/Headline.css";
 export { displayRecipe } from "./Typography/Display/Display.css";
 export { inputRecipe } from "./Field/Field.css";
 export * from "./vars.css";
+export { defaultTheme } from "./defaultThemeClass.css";
 
 export type { BentoConfig, PartialBentoConfig } from "./BentoConfig";
-export type { BentoTheme, PartialBentoTheme } from "./BentoTheme";
 export { defaultConfigs };
 export { BentoConfigProvider } from "./BentoConfigContext";
 
