@@ -36,7 +36,6 @@ export const ConfiguredModal = () => {
           radius: 16,
         },
       }}
-      theme={defaultTheme}
     >
       <Modal
         title="Custom Modal"
