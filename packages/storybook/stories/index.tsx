@@ -5,7 +5,6 @@ import {
   defaultConfigs,
   withBentoConfig,
   createBentoComponents,
-  defaultTheme,
 } from "@buildo/bento-design-system";
 import { sprinkles } from "./sprinkles.css";
 
