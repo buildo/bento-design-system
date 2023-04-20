@@ -108,6 +108,7 @@ export { displayRecipe } from "./Typography/Display/Display.css";
 export { inputRecipe } from "./Field/Field.css";
 export * from "./vars.css";
 export { defaultTheme } from "./defaultThemeClass.css";
+export { defaultTokens } from "./util/defaultTokens";
 
 export type { BentoConfig, PartialBentoConfig } from "./BentoConfig";
 export { defaultConfigs };
