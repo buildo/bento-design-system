@@ -5,7 +5,7 @@ import { mergeProps } from "@react-aria/utils";
 import { forwardRef, RefObject, useImperativeHandle, useRef } from "react";
 import { Box, Children } from "..";
 import { Placement } from "@react-types/overlays";
-import { BentoThemeProvider, useBentoTheme } from "../BentoThemeContext";
+import { BentoThemeProvider } from "../BentoThemeContext";
 
 type Props = {
   children: Children;
@@ -56,11 +56,9 @@ export const Popover = forwardRef<HTMLElement, Props>(
       isOpen: true,
     });
 
-    const theme = useBentoTheme();
-
     return (
       <OverlayContainer>
-        <BentoThemeProvider value={theme}>
+        <BentoThemeProvider>
           <FocusScope restoreFocus>
             <Box
               ref={overlayRef}

@@ -1,32 +1,67 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useMemo } from "react";
 import { Children } from "./util/Children";
-import { Box } from "./Box/Box";
-import { BentoTheme } from "./util/makeBentoTheme";
+import { Box, BoxProps } from "./Box/Box";
+import { makeBentoTheme } from "./util/makeBentoTheme";
 import { defaultTheme } from "./defaultThemeClass.css";
+import clsx from "clsx";
+import { bentoThemeProvider } from "./BentoThemeProvider.css";
+import { BentoTokens } from "./util/bentoTokens";
+import { assignInlineVars } from "@vanilla-extract/dynamic";
+import { vars } from "./vars.css";
+import { PartialDeep } from "./util/PartialDeep";
+import { deepmerge } from "deepmerge-ts";
 
-const BentoThemeContext = createContext<BentoTheme | null>(defaultTheme);
+export type BentoTheme = {
+  theme: ReturnType<typeof makeBentoTheme>;
+  tokenOverrides?: PartialDeep<BentoTokens>;
+};
+
+export type BentoThemeOverride =
+  | BentoTheme
+  | {
+      theme?: never;
+      tokenOverrides: PartialDeep<BentoTokens>;
+    };
+
+const BentoThemeContext = createContext<BentoTheme>({
+  theme: defaultTheme,
+});
 
 export function useBentoTheme() {
   return useContext(BentoThemeContext);
 }
 
 export function BentoThemeProvider({
-  value,
+  theme: _theme,
   children,
+  as,
+  className,
 }: {
-  value?: BentoTheme | null;
+  theme?: BentoThemeOverride;
   children: Children;
+  as?: BoxProps["as"];
+  className?: string;
 }) {
-  const theme = value === undefined ? defaultTheme : value;
+  const parentTheme = useBentoTheme();
+  const theme = useMemo(
+    () =>
+      _theme
+        ? {
+            theme: _theme.theme ?? parentTheme.theme,
+            tokenOverrides: deepmerge(parentTheme.tokenOverrides, _theme.tokenOverrides),
+          }
+        : parentTheme,
+    [_theme, parentTheme]
+  );
+  const styles =
+    theme?.tokenOverrides && Object.keys(theme?.tokenOverrides).length > 0
+      ? assignInlineVars<PartialDeep<typeof vars>>(vars, theme.tokenOverrides as any)
+      : undefined;
   return (
     <BentoThemeContext.Provider value={theme}>
-      {theme ? (
-        <Box className={theme} style={{ display: "contents" }}>
-          {children}
-        </Box>
-      ) : (
-        children
-      )}
+      <Box as={as} className={clsx(bentoThemeProvider, className, theme.theme)} style={styles}>
+        {children}
+      </Box>
     </BentoThemeContext.Provider>
   );
 }

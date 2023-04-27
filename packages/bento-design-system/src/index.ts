@@ -8,6 +8,7 @@ export * from "./AreaLoader/AreaLoader";
 export * from "./Avatar/Avatar";
 export * from "./Banner/Banner";
 export * from "./BentoProvider";
+export * from "./BentoThemeContext";
 export * from "./Box/Box";
 export * from "./Breadcrumb/Breadcrumb";
 export * from "./Button/Button";

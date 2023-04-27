@@ -9,5 +9,3 @@ export function makeBentoTheme(tokens: PartialDeep<BentoTokens>) {
   const themeTokens = deepmerge(defaultTokens, tokens) as BentoTokens;
   return createTheme(vars, themeTokens);
 }
-
-export type BentoTheme = ReturnType<typeof makeBentoTheme>;
