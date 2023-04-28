@@ -48,7 +48,10 @@ export function BentoThemeProvider({
       _theme
         ? {
             theme: _theme.theme ?? parentTheme.theme,
-            tokenOverrides: deepmerge(parentTheme.tokenOverrides, _theme.tokenOverrides),
+            tokenOverrides:
+              _theme.theme !== parentTheme.theme
+                ? _theme.tokenOverrides
+                : deepmerge(parentTheme.tokenOverrides, _theme.tokenOverrides),
           }
         : parentTheme,
     [_theme, parentTheme]
