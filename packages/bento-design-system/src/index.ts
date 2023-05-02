@@ -94,6 +94,7 @@ export * from "./util/breakpoints";
 export * from "./util/conditions";
 export * from "./util/link";
 export * from "./util/makeBentoTheme";
+export * from "./util/makeGlobalBentoTheme";
 export * from "./util/strictRecipe";
 export * from "./util/useDefaultMessages";
 export * from "./util/withBentoConfig";
