@@ -54,9 +54,9 @@ export function createBentoProvider(
   sprinkles: SprinklesFn = bentoSprinkles
 ) {
   function OptionalThemeWrapper(props: { children: Children; theme?: BentoTheme | null }) {
-    if (theme === null) return <>{props.children}</>;
+    if (props.theme === null) return <>{props.children}</>;
     const _theme = props.theme ?? defaultTheme;
-    return <BentoThemeProvider theme={_theme || defaultTheme}>{props.children}</BentoThemeProvider>;
+    return <BentoThemeProvider theme={_theme}>{props.children}</BentoThemeProvider>;
   }
 
   return function BentoProvider({
