@@ -1,7 +1,6 @@
 import { createContext, useContext, useMemo } from "react";
 import { Children } from "./util/Children";
 import { Box, BoxProps } from "./Box/Box";
-import { defaultTheme } from "./defaultThemeClass.css";
 import { bentoThemeProvider } from "./BentoThemeProvider.css";
 import { BentoTokens } from "./util/bentoTokens";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
@@ -18,7 +17,7 @@ export type BentoTheme = string | PartialDeep<BentoTokens>;
  * what theme is currently applied in any component using the useBentoTheme hook.
  */
 export type BentoThemeContext = {
-  className: string;
+  className?: string;
   tokenOverrides: PartialDeep<BentoTokens>;
 };
 
@@ -45,7 +44,7 @@ export function BentoThemeProvider({
       return { className: theme, tokenOverrides: {} };
     }
     return {
-      className: parentContext?.className ?? defaultTheme,
+      className: parentContext?.className,
       tokenOverrides: deepmerge(parentContext?.tokenOverrides, theme) as PartialDeep<BentoTokens>,
     };
   }, [theme, parentContext]);
@@ -78,10 +77,12 @@ export function BentoThemeProvider({
 export function BentoThemePortalProvider({ children }: { children: Children }) {
   const theme = useBentoTheme();
   if (theme) {
-    return (
+    return theme.className ? (
       <BentoThemeProvider theme={theme.className}>
         <BentoThemeProvider theme={theme.tokenOverrides}>{children}</BentoThemeProvider>
       </BentoThemeProvider>
+    ) : (
+      <BentoThemeProvider theme={theme.tokenOverrides}>{children}</BentoThemeProvider>
     );
   }
   return <>{children}</>;
