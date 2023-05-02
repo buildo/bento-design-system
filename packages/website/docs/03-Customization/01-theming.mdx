@@ -8,75 +8,119 @@ In the [quick start instructions](../Getting%20Started/quick-start) we imported 
 - `index.css` contains the style for all the Bento components and it references the theme CSS variables. This file must always be imported in your app.
 - `defaultTheme.css` defines a default theme for the library, i.e. it assigns a default value to each of those variables (this is the theme that is also used by the examples in the documentation).
 
-You can customize the theme in two ways:
+:::info
+By importing the `defaultTheme.css` stylesheet, we're setting a global theme, i.e. the values for the
+theme CSS variables will be attached to the `:root` CSS pseudo-class.
+:::
 
-- (recommended) using Vanilla Extract
+There are different ways to define a theme for your DS created using Bento:
+
+- defining a global theme using the `makeGlobalBentoTheme` utility
+- using the BentoProvider/BentoThemeProvider utilities
 - using CSS variables directly
 
-### Customizing the theme using Vanilla Extract
+### Defining a global theme using the `makeGlobalBentoTheme` utility
 
-Bento is written using [Vanilla Extract](https://vanilla-extract.style/), a CSS library which uses TypeScript to author styles.
-Using the `createTheme` or `createGlobalTheme` functions, you have a type-safe way of implementing a theme. Since theme is typed, TypeScript can check that you did not forget or misspell any of the variables, and that's why we highly recommend this approach.
+Bento offers a `makeGlobalBentoTheme` utility that can be used to create a new .css theme file that can be imported globally as we did previously with the `defaultTheme.css`.
+The `makeGlobalBentoTheme` utility is just a wrapper around the `createGlobalTheme` function provided by [Vanilla Extract](https://vanilla-extract.style/), a CSS library used internally by Bento, which uses TypeScript to author styles.
 
 :::note
 We will assume you already set-up Vanilla Extract for you project following [its official documentation](https://vanilla-extract.style/documentation/setup/).
 :::
 
-For example, here's how to define a theme:
+Using the `makeGlobalBentoTheme` utility in a `.css.ts` file, you can create a new theme by setting a value for each of the design tokens bento defines:
 
 ```ts title="my-project/design-system/src/theme.css.ts"
-import { createGlobalTheme } from "@vanilla-extract/css";
-import { vars } from "@buildo/bento-design-system";
+import { makeGlobalBentoTheme } from "@buildo/bento-design-system";
 
-createGlobalTheme(":root", vars, {
+makeGlobalBentoTheme({
   fontFamily: {
     default: "Arial",
   },
-  // ...
 });
 ```
 
-:::tip
-You may be wondering whether to use `createTheme` or `createGlobalTheme`.
+:::note
+You're not forced to set a value for each of the design tokens Bento defines.
+For each of the design tokens that are not explicitly set in the `makeGlobalBentoTheme` call, Bento will use the value defined by the default theme.
+:::
 
-The short answer is: use `createGlobalTheme` if your app has only one theme, use `createTheme` otherwise.
+If you correctly set-up Vanilla Extract in your build pipeline as described in the [suggested project structure](../Getting%20Started/project-structure), the build of your design-system package will produce a `theme.css` file you can import in your final app in place of the `defaultTheme.css` file.
 
-<details>
-<summary>Discover more</summary>
+### Customizing the theme using BentoProvider and BentoThemeProvider
 
-`createGlobalTheme` will attach a set of variables to the given element (`:root` in the example above). This works fine if this the only theme of the application.
+The `BentoProvider` component accepts an optional `theme` prop you can use to pass a custom theme for your DS.
+When a value for the `theme` prop is provided, the app will be wrapped in a `Box` element defining the theme CSS variables for all its descendents.
 
-Suppose you have a light and a dark theme instead: in this scenario you want to selectively apply one theme or the other based on some logic.
-Instead of directly attaching the variables to an element, `createTheme` gives you a class name instead, and it's your responsibility to apply it. For example:
+Similar to the `makeGlobalBentoTheme` utility, Bento offers also a `makeBentoTheme` utility that can be use to create a local theme to be passed to the `BentoProvider`.
 
 ```ts title="my-project/design-system/src/theme.css.ts"
-import { createTheme } from "@vanilla-extract/css";
+import { makeBentoTheme } from "@buildo/bento-design-system";
+
+export const theme = makeBentoTheme({
+  fontFamily: {
+    default: "Arial",
+  },
+});
+```
+
+Unlike the global themes created with `makeGlobalBentoTheme`, the theme created with `makeBentoTheme` will not be applied globally.
+The utility will instead return a className that can be passed to the `BentoProvider` component and that will be applied to the `Box` element created by it.
+
+```tsx title="my-project/src/App.tsx"
+import { BentoProvider } from "@buildo/bento-design-system";
+import { theme } from "design-system/lib/theme.css.ts";
+
+export function App() {
+  return <BentoProvider theme={theme}>...</BentoProvider>;
+}
+```
+
+Using the `BentoProvider` to apply the theme instead of importing a global theme is recommended in case you need an easy way to switch between different themes created for your DS.
+You can indeed create multiple versions (e.g. a light and a dark version) of your theme using `makeBentoTheme`:
+
+```ts title="my-project/design-system/src/theme.css.ts"
+import { makeBentoTheme } from "@buildo/bento-design-system";
 import { vars } from "@buildo/bento-design-system";
 
-export const lightTheme = createTheme(vars, {
+export const lightTheme = makeBentoTheme({
   /*...*/
 });
 
-export const darkTheme = createTheme(vars, {
+export const darkTheme = makeBentoTheme({
   /*...*/
 });
 ```
 
-And then in your app:
+and then switch between them in your app by changing the `theme` prop passed to the `BentoProvider` component:
 
-```tsx title="my-project/app/src/components/App.tsx
+```tsx title="my-project/app/src/App.tsx
 import { lightTheme, darkTheme } from "design-system";
 // Hypothetical utility for retrieving the user preferences
 import { useUserPreferences } from "../utils/useUserPreferences";
 
 export function App() {
   const { colorScheme } = useUserPreferences();
-  return <div className={colorScheme === "dark" ? darkTheme : lightTheme}>Hello!</div>;
+  return (
+    <BentoProvider theme={colorScheme === "dark" ? darkTheme : lightTheme}>Hello!</BentoProvider>
+  );
 }
 ```
 
-</details>
-:::
+You can also use the `BentoProvider` to partially override a global theme imported in your app, by passing an object to the `theme` prop with the partial definition of the design tokens you want to override:
+
+```tsx title="my-project/app/src/App.tsx
+import "@buildo/bento-design-system/defaultTheme.css";
+import { BentoProvider } from "@buildo/bento-design-system";
+
+export function App() {
+  return <BentoProvider theme={{ fontFamily: { default: "Arial" } }}>Hello!</BentoProvider>;
+}
+```
+
+In addition to the `BentoProvider`, Bento also offers a `BentoThemeProvider` component which can be used to apply a theme to a single component or a subtree of components.
+You can have multiple theme providers in your app, each one applying a different theme to a different part of the app.
+Similar to the `BentoProvider` component, the `BentoThemeProvider` accepts a `theme` prop which can be either a theme className created with `makeBentoTheme`, or a partial definition of the design tokens that will override the theme defined in the parent providers.
 
 ### Customizing the theme using plain CSS
 
