@@ -1,6 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { useRef, useState } from "react";
 import { Box, Button, Placeholder, Popover } from "..";
+import { createComponentStories } from "../util";
+import { BentoThemeProvider } from "@buildo/bento-design-system";
 
 const meta = {
   component: Popover,
@@ -23,15 +25,19 @@ export const popover = {
       const [isOpen, setIsOpen] = useState(false);
       const triggerRef = useRef(null);
       return (
-        <Box ref={triggerRef} display="inline-block">
-          <Button
-            kind="solid"
-            hierarchy="primary"
-            label={`${isOpen ? "Close" : "Open"} popover`}
-            onPress={() => setIsOpen(!isOpen)}
-          />
-          {isOpen && <Story args={{ ...ctx.args, triggerRef, onClose: () => setIsOpen(false) }} />}
-        </Box>
+        <BentoThemeProvider theme={{ outlineColor: { outlineDecorative: "red" } }}>
+          <Box ref={triggerRef} display="inline-block">
+            <Button
+              kind="solid"
+              hierarchy="primary"
+              label={`${isOpen ? "Close" : "Open"} popover`}
+              onPress={() => setIsOpen(!isOpen)}
+            />
+            {isOpen && (
+              <Story args={{ ...ctx.args, triggerRef, onClose: () => setIsOpen(false) }} />
+            )}
+          </Box>
+        </BentoThemeProvider>
       );
     },
   ],

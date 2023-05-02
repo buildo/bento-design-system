@@ -1,10 +1,9 @@
 import {
-  DesignSystemProvider,
   Modal as BentoModal,
   withBentoTheme,
+  BentoThemeProvider,
 } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
-import { defaultMessages } from "@buildo/bento-design-system/lib/defaultMessages/en";
 import { useState } from "react";
 import { Button, Inline } from "..";
 import { newTheme } from "./withBentoTheme.css";
@@ -19,26 +18,24 @@ export default {};
 export const UsingTokenOverrides = () => {
   const [open, setOpen] = useState(false);
 
+  // We override some of the DS tokens inside the Modal. These overrides will be applied in addition to the overrides defined in the
+  // BentoThemeProvider below.
   const Modal = withBentoTheme(
     {
-      tokenOverrides: {
-        interactiveBackgroundColor: {
-          primarySolidFocusBackground: "red",
-        },
+      interactiveBackgroundColor: {
+        primarySolidFocusBackground: "red",
       },
     },
     BentoModal
   );
 
   return (
-    <DesignSystemProvider
-      defaultMessages={defaultMessages}
+    <BentoThemeProvider
       theme={{
-        tokenOverrides: {
-          interactiveBackgroundColor: {
-            primarySolidHoverBackground: "purple",
-            primarySolidFocusBackground: "purple",
-          },
+        // We apply token overrides on top of the default theme, applied by the global DesignSystemProvider
+        interactiveBackgroundColor: {
+          primarySolidHoverBackground: "purple",
+          primarySolidFocusBackground: "purple",
         },
       }}
     >
@@ -55,33 +52,54 @@ export const UsingTokenOverrides = () => {
           Modal content
         </Modal>
       )}
-    </DesignSystemProvider>
+    </BentoThemeProvider>
   );
 };
 
 export const UsingNewStaticTheme = () => {
+  // We use a completely new static theme for the Custom Button.
+  // This will totally replace the default theme applied by the parent DesignSystemProvider, only for the CustomButton.
+  const CustomButton = withBentoTheme(newTheme, Button);
+  return (
+    <Inline space={16}>
+      <Button kind="solid" hierarchy="primary" onPress={action("onPress")} label="Click me!" />
+      <CustomButton
+        kind="solid"
+        hierarchy="primary"
+        onPress={action("onPress")}
+        label="Click me!"
+      />
+    </Inline>
+  );
+};
+
+export const WithNestedTokenOverrides = () => {
+  // In this case, we apply the overrides with two nested withBentoTheme hooks.
+  // The resulting theme will be the default theme applied by the parent DesignSystemProvider,
+  // with both the overrides applied on top of it.
   const CustomButton = withBentoTheme(
     {
-      theme: newTheme,
-      tokenOverrides: {
-        interactiveBackgroundColor: {
-          primarySolidHoverBackground: "purple",
-        },
+      interactiveBackgroundColor: {
+        primarySolidEnabledBackground: "red",
       },
     },
-    Button
+    withBentoTheme(
+      {
+        interactiveBackgroundColor: {
+          primarySolidHoverBackground: "green",
+        },
+      },
+      Button
+    )
   );
   return (
-    <DesignSystemProvider defaultMessages={defaultMessages}>
-      <Inline space={16}>
-        <Button kind="solid" hierarchy="primary" onPress={action("onPress")} label="Click me!" />
-        <CustomButton
-          kind="solid"
-          hierarchy="primary"
-          onPress={action("onPress")}
-          label="Click me!"
-        />
-      </Inline>
-    </DesignSystemProvider>
+    <Inline space={16}>
+      <CustomButton
+        kind="solid"
+        hierarchy="primary"
+        onPress={action("onPress")}
+        label="Click me!"
+      />
+    </Inline>
   );
 };

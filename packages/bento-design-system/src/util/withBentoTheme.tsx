@@ -1,4 +1,4 @@
-import { BentoThemeOverride, BentoThemeProvider } from "../BentoThemeContext";
+import { BentoTheme, BentoThemeProvider } from "../BentoThemeContext";
 import { BoxProps } from "../Box/Box";
 
 type WrapperProps = {
@@ -7,7 +7,7 @@ type WrapperProps = {
 };
 
 export function withBentoTheme<Props>(
-  theme: BentoThemeOverride,
+  theme: BentoTheme,
   Component: (props: Props) => JSX.Element,
   wrapper?: WrapperProps
 ): (props: Props) => JSX.Element {

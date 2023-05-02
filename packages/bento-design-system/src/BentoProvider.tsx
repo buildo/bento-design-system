@@ -1,4 +1,4 @@
-import { Children, PartialBentoConfig } from ".";
+import { Children, PartialBentoConfig, defaultTheme } from ".";
 import { bentoSprinkles } from "./internal";
 import { ToastProvider } from "./Toast/ToastProvider";
 import { OverlayProvider } from "@react-aria/overlays";
@@ -9,7 +9,7 @@ import { I18nProvider } from "@react-aria/i18n";
 import { BentoConfigProvider } from "./BentoConfigContext";
 import { SprinklesFn } from "./util/ConfigurableTypes";
 import { SprinklesContext } from "./SprinklesContext";
-import { BentoThemeOverride, BentoThemeProvider } from "./BentoThemeContext";
+import { BentoTheme, BentoThemeProvider } from "./BentoThemeContext";
 
 type Props = {
   children?: Children;
@@ -38,15 +38,27 @@ type Props = {
   linkComponent?: ComponentType<LinkComponentProps>;
   locale?: string;
   config?: PartialBentoConfig;
-  theme?: BentoThemeOverride;
+  /**
+   * The theme to apply to the children.
+   * If not provided, the defaultTheme will be used.
+   * If explicitly set to `null`, no theme wrapper will be applied. This is useful when you want to
+   * manually load your global theme, e.g. created with vanilla-extract's createGlobalTheme.
+   */
+  theme?: BentoTheme | null;
   sprinkles?: SprinklesFn;
 } & DefaultMessages;
 
 export function createBentoProvider(
   config: PartialBentoConfig = {},
-  theme?: BentoThemeOverride,
+  theme?: BentoTheme | null,
   sprinkles: SprinklesFn = bentoSprinkles
 ) {
+  function OptionalThemeWrapper(props: { children: Children; theme?: BentoTheme | null }) {
+    if (theme === null) return <>{props.children}</>;
+    const _theme = props.theme ?? defaultTheme;
+    return <BentoThemeProvider theme={_theme || defaultTheme}>{props.children}</BentoThemeProvider>;
+  }
+
   return function BentoProvider({
     children,
     toastDismissAfterMs = 5000,
@@ -55,20 +67,21 @@ export function createBentoProvider(
     locale,
     ...props
   }: Props) {
-    const linkComponentFromContext = useContext(LinkComponentContext);
+    const _theme = props.theme === null ? null : props.theme ?? theme;
 
+    const linkComponentFromContext = useContext(LinkComponentContext);
     return (
       <I18nProvider locale={locale}>
         <OverlayProvider style={{ height: "100%" }}>
           <DefaultMessagesContext.Provider value={{ defaultMessages }}>
             <BentoConfigProvider value={props.config ?? config}>
-              <BentoThemeProvider theme={props.theme ?? theme}>
+              <OptionalThemeWrapper theme={_theme}>
                 <SprinklesContext.Provider value={props.sprinkles ?? sprinkles}>
                   <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
                     <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
                   </LinkComponentContext.Provider>
                 </SprinklesContext.Provider>
-              </BentoThemeProvider>
+              </OptionalThemeWrapper>
             </BentoConfigProvider>
           </DefaultMessagesContext.Provider>
         </OverlayProvider>
