@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useMemo } from "react";
 import { Children } from "./util/Children";
 import { Box, BoxProps } from "./Box/Box";
 import { defaultTheme } from "./defaultThemeClass.css";
@@ -14,18 +14,15 @@ export type BentoTheme = string | PartialDeep<BentoTokens>;
 /**
  * The theme context is mainly used to keep track of the theme overrides eventually applied by various nested theme providers.
  * Token overrides are always applied on top of a main theme, represented by the `className` property.
- * This context is useful to reapply the whole theme in Portals, or to know
- * in any component what theme is currently applied using the useBentoTheme hook.
+ * This context is useful to reapply the whole theme in Portals, or to know exactly
+ * what theme is currently applied in any component using the useBentoTheme hook.
  */
 export type BentoThemeContext = {
   className: string;
   tokenOverrides: PartialDeep<BentoTokens>;
 };
 
-const BentoThemeContext = createContext<BentoThemeContext>({
-  className: defaultTheme,
-  tokenOverrides: {},
-});
+const BentoThemeContext = createContext<BentoThemeContext | null>(null);
 
 export function useBentoTheme() {
   return useContext(BentoThemeContext);
@@ -43,30 +40,23 @@ export function BentoThemeProvider({
   className?: string;
 }) {
   const parentContext = useBentoTheme();
-  const {
-    context,
-    style,
-    themeClassName,
-  }: {
-    context: BentoThemeContext;
-    style: React.CSSProperties | undefined;
-    themeClassName: string | undefined;
-  } =
+  const context: BentoThemeContext = useMemo(() => {
+    if (typeof theme === "string") {
+      return { className: theme, tokenOverrides: {} };
+    }
+    return {
+      className: parentContext?.className ?? defaultTheme,
+      tokenOverrides: deepmerge(parentContext?.tokenOverrides, theme) as PartialDeep<BentoTokens>,
+    };
+  }, [theme, parentContext]);
+
+  const { style, themeClassName } =
     typeof theme === "string"
       ? {
-          // whenever a new theme is applied via a className, all the token overrides referring to the old theme are cleared out.
-          context: { className: theme, tokenOverrides: {} },
           style: undefined,
           themeClassName: theme,
         }
       : {
-          context: {
-            className: parentContext.className,
-            tokenOverrides: deepmerge(
-              parentContext.tokenOverrides,
-              theme
-            ) as PartialDeep<BentoTokens>,
-          },
           style: assignInlineVars(vars, theme as any),
           themeClassName: undefined,
         };
@@ -87,9 +77,12 @@ export function BentoThemeProvider({
  */
 export function BentoThemePortalProvider({ children }: { children: Children }) {
   const theme = useBentoTheme();
-  return (
-    <BentoThemeProvider theme={theme.className}>
-      <BentoThemeProvider theme={theme.tokenOverrides}>{children}</BentoThemeProvider>
-    </BentoThemeProvider>
-  );
+  if (theme) {
+    return (
+      <BentoThemeProvider theme={theme.className}>
+        <BentoThemeProvider theme={theme.tokenOverrides}>{children}</BentoThemeProvider>
+      </BentoThemeProvider>
+    );
+  }
+  return <>{children}</>;
 }
