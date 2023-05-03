@@ -96,3 +96,7 @@ export const RangeWithShortcuts = createControlledStory([null, null], {
     },
   ],
 });
+
+export const DisabledDates = createControlledStory(null, {
+  shouldDisableDate: (date: Date) => date.getDay() === 0,
+});

@@ -28,6 +28,7 @@ type RangeDateFieldProps = {
 type Props = (SingleDateFieldProps | RangeDateFieldProps) & {
   minDate?: UseDatepickerProps["minBookingDate"];
   maxDate?: UseDatepickerProps["maxBookingDate"];
+  shouldDisableDate?: UseDatepickerProps["isDateBlocked"];
   readOnly?: boolean;
 };
 
@@ -77,6 +78,7 @@ export function DateField(props: Props) {
     },
     startDate: props.type === "range" ? props.value[0] : props.value,
     endDate: props.type === "range" ? props.value[1] : null,
+    isDateBlocked: props.shouldDisableDate,
     focusedInput,
     numberOfMonths: 1,
     minBookingDate: props.minDate,
