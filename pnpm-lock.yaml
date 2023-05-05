@@ -352,7 +352,7 @@ importers:
       react: 18.2.0
       react-docgen-typescript: 2.2.2
       react-dom: 18.2.0
-      react-markdown: 8.0.6
+      react-markdown: 8.0.7
       typescript: 4.7.4
       webpack: 5.76.3
     dependencies:
@@ -378,7 +378,7 @@ importers:
       react: 18.2.0
       react-docgen-typescript: 2.2.2_typescript@4.7.4
       react-dom: 18.2.0_react@18.2.0
-      react-markdown: 8.0.6_3hx2ussxxho4jajbwrd6gq34qe
+      react-markdown: 8.0.7_3hx2ussxxho4jajbwrd6gq34qe
     devDependencies:
       '@babel/types': 7.18.10
       '@docusaurus/module-type-aliases': 2.0.1_biqbaboplfbrettd7655fr4n2y
@@ -19723,8 +19723,8 @@ packages:
       react-loadable: /@docusaurus/react-loadable/5.5.2_react@18.2.0
       webpack: 5.76.3
 
-  /react-markdown/8.0.6_3hx2ussxxho4jajbwrd6gq34qe:
-    resolution: {integrity: sha512-KgPWsYgHuftdx510wwIzpwf+5js/iHqBR+fzxefv8Khk3mFbnioF1bmL2idHN3ler0LMQmICKeDrWnZrX9mtbQ==}
+  /react-markdown/8.0.7_3hx2ussxxho4jajbwrd6gq34qe:
+    resolution: {integrity: sha512-bvWbzG4MtOU62XqBx3Xx+zB2raaFFsq4mYiAzfjXJMEz2sixgeAfraA3tvzULF02ZdOMUOKTBFFaZJDDrq+BJQ==}
     peerDependencies:
       '@types/react': '>=16 || 18'
       react: '>=16 || 18'
