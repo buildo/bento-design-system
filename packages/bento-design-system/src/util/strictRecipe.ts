@@ -1,8 +1,7 @@
 import { recipe } from "@vanilla-extract/recipes";
-import {
-  PatternOptions,
-  VariantGroups,
-} from "@vanilla-extract/recipes/dist/declarations/src/types";
+
+type VariantGroups = NonNullable<Parameters<typeof recipe>[0]["variants"]>;
+type PatternOptions<Variants extends VariantGroups> = Parameters<typeof recipe<Variants>>[0];
 
 declare type BooleanMap<T> = T extends "true" | "false" ? boolean : T;
 
