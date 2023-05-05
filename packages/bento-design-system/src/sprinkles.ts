@@ -1,6 +1,5 @@
 import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
 import { addFunctionSerializer } from "@vanilla-extract/css/functionSerializer";
-import { SprinklesProperties } from "@vanilla-extract/sprinkles/dist/declarations/src/types";
 import {
   responsiveProperties as bentoResponsiveProperties,
   statusProperties as bentoStatusProperties,
@@ -14,7 +13,7 @@ export function createDefineBentoSprinklesFn() {
     UP extends typeof bentoUnconditionalProperties = typeof bentoUnconditionalProperties,
     RP extends typeof bentoResponsiveProperties = typeof bentoResponsiveProperties,
     SP extends typeof bentoStatusProperties = typeof bentoStatusProperties,
-    OP extends ReadonlyArray<SprinklesProperties> = []
+    OP extends ReadonlyArray<Parameters<typeof createSprinkles>[0]> = []
   >(
     unconditionalProperties: UP = bentoUnconditionalProperties as any,
     responsiveProperties: RP = bentoResponsiveProperties as any,
