@@ -14,6 +14,7 @@ caches:
 params:
   NPM_TOKEN: ((npm_token))
   SSH_PRIVATE_KEY: ((private-key))
+  GITHUB_TOKEN: ((github-token))
 
 run:
   path: ci/tasks/release.sh

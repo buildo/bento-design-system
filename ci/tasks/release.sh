@@ -5,6 +5,7 @@ set -e
 LATEST_TAG=$(git describe --tags)
 VERSION=${LATEST_TAG#v}
 
+
 mkdir -p $HOME/.ssh
 ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 echo "$SSH_PRIVATE_KEY" > $HOME/.ssh/id_rsa
@@ -25,3 +26,6 @@ git push origin HEAD:main
 
 echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> $HOME/.npmrc
 pnpm publish --git-checks false
+
+pnpm config set '//npm.pkg.github.com/:_authToken' "$GITHUB_TOKEN"
+pnpm publish --git-checks false --access public --registry=https://npm.pkg.github.com
