@@ -34,7 +34,7 @@ import {
   Tabs,
 } from ".";
 import { CheckboxField } from "./CheckboxField/CheckboxField";
-import { IconIdea, IconCheck, IconSearch, IconUser, IconInformative } from "./Icons";
+import { IconLightbulb, IconCheck, IconSearch, IconUser, IconInfoCircle } from "./Icons";
 import { RadioGroupField } from "./RadioGroupField/RadioGroupField";
 import { SelectField } from "./SelectField/SelectField";
 import { TextField } from "./TextField/TextField";
@@ -130,7 +130,7 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
   const iconButtonSharedProps = {
     label: "Icon Button",
     onPress: action("onPress"),
-    icon: IconIdea,
+    icon: IconLightbulb,
     size: 16,
   } as const;
 
@@ -424,7 +424,7 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                   {
                     kind: "single-line",
                     label: "Item 1 - Single line",
-                    icon: IconIdea,
+                    icon: IconLightbulb,
                     trailingIcon: IconCheck,
                   },
                   {
@@ -437,7 +437,7 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                     kind: "overline",
                     label: "Item 3 - Overline",
                     overline: "Overline",
-                    icon: IconIdea,
+                    icon: IconLightbulb,
                   },
                 ],
               },
@@ -465,10 +465,10 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                 kind: "icon",
                 size: "large",
                 destinations: [
-                  { href: "", label: "Home", active: true, icon: IconIdea },
+                  { href: "", label: "Home", active: true, icon: IconLightbulb },
                   { href: "", label: "Experiments", icon: IconSearch },
                   { href: "", label: "Users", icon: IconUser },
-                  { href: "", label: "Profile", icon: IconInformative },
+                  { href: "", label: "Profile", icon: IconInfoCircle },
                 ],
               },
             ],

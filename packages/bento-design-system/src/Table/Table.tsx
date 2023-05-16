@@ -42,7 +42,7 @@ import {
 } from "./Table.css";
 import { Column as ColumnType, GridWidth, Row as RowType } from "./types";
 import { useLayoutEffect, useMemo, useState, CSSProperties, useEffect } from "react";
-import { IconHelp, IconInfo } from "../Icons";
+import { IconQuestionSolid, IconInfo } from "../Icons";
 import { match, __ } from "ts-pattern";
 import { useBentoConfig } from "../BentoConfigContext";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
@@ -408,7 +408,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
   const hint = column.hint ? (
     typeof column.hint === "object" ? (
       <IconButton
-        icon={IconHelp}
+        icon={IconQuestionSolid}
         onPress={column.hint.onPress}
         kind="transparent"
         hierarchy="primary"

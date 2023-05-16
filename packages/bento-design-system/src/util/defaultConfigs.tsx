@@ -4,14 +4,10 @@ import type { AvatarConfig } from "../Avatar/Config";
 import type { BannerConfig } from "../Banner/Config";
 import type { BreadcrumbConfig } from "../Breadcrumb/Config";
 import {
-  IconPositive,
   IconChevronRight,
   IconClose,
-  IconIdea,
-  IconInformative,
   IconNegative,
   IconUser,
-  IconWarning,
   IconSearch,
   IconChevronUp,
   IconChevronDown,
@@ -20,7 +16,12 @@ import {
   IconSpinner,
   IconEyeClosed,
   IconEye,
-  IconCopyLight,
+  IconLightbulbSolid,
+  IconInfoSolid,
+  IconPositiveSolid,
+  IconWarningSolid,
+  IconNegativeSolid,
+  IconPositiveCircle,
 } from "../Icons";
 import type { ButtonConfig } from "../Button/Config";
 import type { CardConfig } from "../Card/Config";
@@ -56,6 +57,7 @@ import type { DateFieldConfig } from "../DateField/Config";
 import type { ReadOnlyFieldConfig } from "../ReadOnlyField/Config";
 import type { FileUploaderFieldConfig } from "../FileUploaderField/Config";
 import type { ChartConfig } from "../Charts/Config";
+import { IconCopy } from "../Icons/IconCopy";
 
 export const actions: ActionsConfig = {
   primaryActionButtonKind: "solid",
@@ -95,11 +97,11 @@ export const banner: BannerConfig = {
   closeIcon: IconClose,
   closeIconSize: 16,
   semanticIcons: {
-    informative: IconInformative,
-    positive: IconPositive,
-    warning: IconWarning,
-    negative: IconNegative,
-    secondary: IconIdea,
+    informative: IconInfoSolid,
+    positive: IconPositiveSolid,
+    warning: IconWarningSolid,
+    negative: IconNegativeSolid,
+    secondary: IconLightbulbSolid,
   },
   semanticIconSize: {
     withoutTitle: 24,
@@ -380,7 +382,7 @@ export const modal: ModalConfig = {
   },
   elevation: "large",
   titleIcon: {
-    warning: IconWarning,
+    warning: IconWarningSolid,
     destructive: IconNegative,
   },
   titleIconSize: 24,
@@ -426,7 +428,7 @@ export const navigation: NavigationConfig = {
 };
 
 export const readOnlyField: ReadOnlyFieldConfig = {
-  copyIcon: IconCopyLight,
+  copyIcon: IconCopy,
   copyIconSize: 24,
 };
 
@@ -481,7 +483,7 @@ export const dropdown: DropdownConfig = {
 };
 
 export const table: TableConfig = {
-  headerInfoIcon: IconInformative,
+  headerInfoIcon: IconInfo,
   emptyIllustration: IllustrationSearch,
   headerBackgroundColor: "backgroundPrimary",
   headerForegroundColor: "foregroundPrimary",
@@ -594,7 +596,7 @@ export const stepper: StepperConfig = {
   labelSize: "large",
   numberSize: "large",
   labelUppercase: false,
-  doneIcon: IconPositive,
+  doneIcon: IconPositiveCircle,
 };
 
 export const tooltip: TooltipConfig = {

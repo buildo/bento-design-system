@@ -4,11 +4,7 @@ import { svgIconProps } from "./svgIconProps";
 export function IconMinus(props: IconProps) {
   return (
     <svg {...svgIconProps(props)}>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M0 12a2 2 0 0 1 2-2h20a2 2 0 1 1 0 4H2a2 2 0 0 1-2-2Z"
-      />
+      <path d="M21.997 12a.75.75 0 0 1-.75.75h-16.5a.75.75 0 1 1 0-1.5h16.5a.75.75 0 0 1 .75.75Z" />
     </svg>
   );
 }

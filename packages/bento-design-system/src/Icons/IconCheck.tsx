@@ -4,11 +4,7 @@ import { svgIconProps } from "./svgIconProps";
 export function IconCheck(props: IconProps) {
   return (
     <svg {...svgIconProps(props)}>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M23.498 3.502a1.716 1.716 0 0 1 0 2.427L9.77 19.658a1.716 1.716 0 0 1-2.426 0L.482 12.793a1.716 1.716 0 0 1 2.426-2.426l5.65 5.65L21.072 3.503a1.716 1.716 0 0 1 2.426 0Z"
-      />
+      <path d="m21.53 7.28-12 12a.748.748 0 0 1-1.06 0l-5.25-5.25a.75.75 0 1 1 1.06-1.06L9 17.69 20.47 6.22a.75.75 0 1 1 1.06 1.06Z" />
     </svg>
   );
 }
