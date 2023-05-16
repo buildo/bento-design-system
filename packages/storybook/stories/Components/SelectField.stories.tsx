@@ -1,6 +1,6 @@
 import { StoryFn } from "@storybook/react";
 import {
-  IconIdea,
+  IconLightbulb,
   IconUser,
   IllustrationProps,
   Modal,
@@ -138,7 +138,7 @@ export const MultiSelectModeChipsSelected = createControlledStory(manyColors, {
 
 export const WithIconSelected = createControlledStory(1, {
   options: [
-    { value: 1, label: "Idea", icon: IconIdea },
+    { value: 1, label: "Idea", icon: IconLightbulb },
     { value: 2, label: "User", icon: IconUser },
   ],
 });
@@ -146,7 +146,7 @@ export const WithIconSelected = createControlledStory(1, {
 export const ReadOnly = createStory({
   value: 1,
   options: [
-    { value: 1, label: "Idea", icon: IconIdea },
+    { value: 1, label: "Idea", icon: IconLightbulb },
     { value: 2, label: "User", icon: IconUser },
   ],
   isReadOnly: true,

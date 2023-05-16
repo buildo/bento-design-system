@@ -1,5 +1,5 @@
 import { createComponentStories } from "../../util";
-import { IconInformative, IconNegative, UnderlineTabs } from "../..";
+import { IconInfoSolid, IconNegative, UnderlineTabs } from "../..";
 
 const { defaultExport, createControlledStory } = createComponentStories({
   component: UnderlineTabs,
@@ -30,7 +30,7 @@ export const medium = createControlledStory("tab1", {
     {
       label: "Tab 4",
       value: "tab4",
-      icon: IconInformative,
+      icon: IconInfoSolid,
       hasNotification: true,
     },
   ],
@@ -57,7 +57,7 @@ export const large = createControlledStory("tab1", {
     {
       label: "Tab 4",
       value: "tab4",
-      icon: IconInformative,
+      icon: IconInfoSolid,
       hasNotification: true,
     },
   ],
@@ -96,13 +96,13 @@ export const scrollable = createControlledStory(
       {
         label: "Tab 5",
         value: "tab5",
-        icon: IconInformative,
+        icon: IconInfoSolid,
         hasNotification: true,
       },
       {
         label: "Tab 6",
         value: "tab6",
-        icon: IconInformative,
+        icon: IconInfoSolid,
         hasNotification: true,
       },
     ],
