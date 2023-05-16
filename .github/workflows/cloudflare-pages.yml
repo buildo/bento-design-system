@@ -20,7 +20,7 @@ jobs:
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           projectName: bento-website
           directory: packages/website/build
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -28,7 +28,7 @@ jobs:
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           projectName: bento-playroom
           directory: packages/bento-design-system/dist/playroom
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
