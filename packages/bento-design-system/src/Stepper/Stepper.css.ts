@@ -22,8 +22,8 @@ export const stepIconRecipe = strictRecipe({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: 24,
-    height: 24,
+    width: 32,
+    height: 32,
     borderRadius: "circled",
   }),
   variants: {
