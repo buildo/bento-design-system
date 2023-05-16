@@ -15,7 +15,7 @@ import {
   Inset,
   Link,
   Stack,
-  IconClose,
+  IconX,
   ContentBlock,
 } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
@@ -316,7 +316,7 @@ export function FileUploaderField<E extends string>({
                     hierarchy="secondary"
                     size={12}
                     label={unsafeLocalizedString("remove")}
-                    icon={IconClose}
+                    icon={IconX}
                     onPress={() => onChange(undefined)}
                     isDisabled={disabled}
                   />

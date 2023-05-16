@@ -12,7 +12,7 @@ import {
 } from "../";
 import { createComponentStories } from "../util";
 import orderBy from "lodash.orderby";
-import { IconClose } from "@buildo/bento-design-system";
+import { IconX } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
 
 const { defaultExport, createStory } = createComponentStories({
@@ -161,7 +161,7 @@ const customizedColumns = [
 
 const deleteAction = {
   label: "Delete",
-  icon: IconClose,
+  icon: IconX,
   onPress: () => {},
 };
 

@@ -5,7 +5,7 @@ import type { BannerConfig } from "../Banner/Config";
 import type { BreadcrumbConfig } from "../Breadcrumb/Config";
 import {
   IconChevronRight,
-  IconClose,
+  IconX,
   IconNegative,
   IconUser,
   IconSearch,
@@ -94,7 +94,7 @@ export const banner: BannerConfig = {
   titleSize: "medium",
   descriptionSize: "medium",
   radius: 16,
-  closeIcon: IconClose,
+  closeIcon: IconX,
   closeIconSize: 16,
   semanticIcons: {
     informative: IconInfoSolid,
@@ -165,7 +165,7 @@ export const chip: ChipConfig = {
   paddingY: 4,
   label: { kind: "label", size: "small" },
   iconSize: 16,
-  closeIcon: IconClose,
+  closeIcon: IconX,
   closeIconSize: 16,
   spacingAfterIcon: 4,
   spacingAfterLabel: 8,
@@ -372,7 +372,7 @@ export const modal: ModalConfig = {
   paddingY: 24,
   radius: 24,
   titleSize: "large",
-  closeIcon: IconClose,
+  closeIcon: IconX,
   closeIconSize: 16,
   width: {
     small: 400,
@@ -434,7 +434,7 @@ export const readOnlyField: ReadOnlyFieldConfig = {
 
 export const searchBar: SearchBarConfig = {
   ...input,
-  clearIcon: IconClose,
+  clearIcon: IconX,
   clearIconSize: 16,
   searchIcon: IconSearch,
   searchIconSize: 24,
@@ -512,7 +512,7 @@ export const toast: ToastConfig = {
   paddingY: 12,
   radius: 16,
   messageSize: "medium",
-  closeIcon: IconClose,
+  closeIcon: IconX,
   closeIconSize: 16,
   outline: false,
   internalSpacing: 16,
