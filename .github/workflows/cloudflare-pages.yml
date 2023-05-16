@@ -1,5 +1,7 @@
 on: [push]
 
+name: Publish Website and Playroom
+
 jobs:
   publish:
     runs-on: ubuntu-latest
