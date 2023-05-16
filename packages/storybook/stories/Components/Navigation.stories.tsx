@@ -1,6 +1,6 @@
 import { createComponentStories } from "../util";
 import { Navigation } from "../";
-import { IconInformative, IllustrationIdea } from "..";
+import { IconInfoSolid, IllustrationIdea } from "..";
 import { Box, NavigationProps, withBentoConfig } from "@buildo/bento-design-system";
 
 const destinations: NavigationProps<"none">["destinations"] = [
@@ -41,7 +41,7 @@ export const medium = createControlledStory("destination1", { size: "medium" });
 export const large = createControlledStory("destination1", {});
 export const withIcons = createControlledStory("destination1", {
   kind: "icon",
-  destinations: destinations.map((d) => ({ ...d, icon: IconInformative })) as any,
+  destinations: destinations.map((d) => ({ ...d, icon: IconInfoSolid })) as any,
 });
 export const withIllustrations = createControlledStory("destination1", {
   kind: "illustration",
