@@ -22,6 +22,7 @@ import {
   IconWarningSolid,
   IconNegativeSolid,
   IconPositiveCircle,
+  IconQuestionCircle,
 } from "../Icons";
 import type { ButtonConfig } from "../Button/Config";
 import type { CardConfig } from "../Card/Config";
@@ -245,7 +246,7 @@ export const field: FieldConfig = {
   },
   internalSpacing: 4,
   tip: {
-    icon: IconInfo,
+    icon: IconQuestionCircle,
     iconSize: 12,
     placement: "right",
   },
