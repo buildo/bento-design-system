@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IconInfo, IconWarningSolid, Table, tableColumn, IconClose, IconInfoSolid } from "..";
+import { IconInfo, IconWarningSolid, Table, tableColumn, IconX, IconInfoSolid } from "..";
 
 export default function TableExample() {
   return (
@@ -27,7 +27,7 @@ export default function TableExample() {
           group: "Group 1",
           deleteAction: {
             label: "Delete",
-            icon: IconClose,
+            icon: IconX,
             onPress: () => {},
           },
         },
@@ -53,7 +53,7 @@ export default function TableExample() {
           group: "Group 2",
           deleteAction: {
             label: "Delete",
-            icon: IconClose,
+            icon: IconX,
             onPress: () => {},
           },
         },

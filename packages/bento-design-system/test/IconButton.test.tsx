@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
-import { IconClose, unsafeLocalizedString, IconButton } from "../src";
+import { IconX, unsafeLocalizedString, IconButton } from "../src";
 import { act } from "react-dom/test-utils";
 import { ignoreWarnings } from "./util/ignoreWarnings";
 
@@ -13,7 +13,7 @@ describe("IconButton", () => {
         hierarchy="primary"
         size={8}
         onPress={onPress}
-        icon={IconClose}
+        icon={IconX}
         label={unsafeLocalizedString("Close")}
       />
     );
