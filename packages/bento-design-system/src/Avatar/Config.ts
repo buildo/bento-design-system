@@ -5,8 +5,8 @@ import { BentoSprinkles } from "../internal";
 import { Children } from "../util/Children";
 
 export type AvatarConfig = {
-  width: BentoSprinkles["width"];
-  height: BentoSprinkles["height"];
+  width: number;
+  height: number;
   radius: BentoSprinkles["borderRadius"];
   labelSize: ComponentProps<typeof Label>["size"];
   icon: (props: IconProps) => Children;

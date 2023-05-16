@@ -94,7 +94,7 @@ export function Modal(props: Props) {
 
   const icon = match(kind)
     .with("normal", () => null)
-    .with("warning", (k) => config.titleIcon[k]({ color: "warning", size: config.titleIconSize }))
+    .with("warning", (k) => config.titleIcon[k]({ color: "primary", size: config.titleIconSize }))
     .with("destructive", (k) =>
       config.titleIcon[k]({ color: "negative", size: config.titleIconSize })
     )

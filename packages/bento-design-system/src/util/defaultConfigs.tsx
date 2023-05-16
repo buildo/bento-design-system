@@ -69,31 +69,31 @@ export const actions: ActionsConfig = {
 
 export const areaLoader: AreaLoaderConfig = {
   dots: [{ color: "brandPrimary" }, { color: "brandSecondary" }, { color: "brandTertiary" }],
-  scrimColor: "light",
+  scrimColor: "dark",
   messageColor: "primary",
   messageSize: "medium",
   readabilityAreaColor: "primary",
-  readabilityAreaBorderRadius: undefined,
+  readabilityAreaBorderRadius: 24,
 };
 
 export const avatar: AvatarConfig = {
-  width: 40,
-  height: 40,
+  width: 48,
+  height: 48,
   radius: "circled",
   labelSize: "large",
   icon: IconUser,
-  iconSize: 16,
+  iconSize: 24,
   outline: "none",
 };
 
 export const banner: BannerConfig = {
   paddingX: 16,
   paddingY: 16,
-  titleSize: "small",
-  descriptionSize: "small",
-  radius: 8,
+  titleSize: "medium",
+  descriptionSize: "medium",
+  radius: 16,
   closeIcon: IconClose,
-  closeIconSize: 12,
+  closeIconSize: 16,
   semanticIcons: {
     informative: IconInformative,
     positive: IconPositive,
@@ -102,7 +102,7 @@ export const banner: BannerConfig = {
     secondary: IconIdea,
   },
   semanticIconSize: {
-    withoutTitle: 16,
+    withoutTitle: 24,
     withTitle: 24,
   },
   outline: false,
@@ -113,36 +113,36 @@ export const banner: BannerConfig = {
 export const breadcrumb: BreadcrumbConfig = {
   fontSize: "medium",
   separator: IconChevronRight,
-  separatorSize: 8,
+  separatorSize: 12,
   space: 16,
 };
 
 export const button: ButtonConfig = {
   paddingX: {
-    small: 8,
+    small: 16,
     medium: 16,
-    large: 16,
+    large: 24,
   },
   paddingY: {
-    small: 4,
-    medium: 8,
-    large: 16,
-  },
-  labelSize: "large",
-  radius: 4,
-  internalSpacing: 8,
-  iconSize: {
-    small: 12,
+    small: 8,
     medium: 12,
     large: 16,
   },
-  uppercaseLabel: true,
+  labelSize: "large",
+  radius: 16,
+  internalSpacing: 12,
+  iconSize: {
+    small: 24,
+    medium: 24,
+    large: 24,
+  },
+  uppercaseLabel: false,
   defaultSize: "medium",
   defaultIconPosition: "leading",
 };
 
 export const card: CardConfig = {
-  defaultRadius: 8,
+  defaultRadius: 24,
 };
 
 export const chart: ChartConfig = {
@@ -159,17 +159,17 @@ export const chart: ChartConfig = {
 };
 
 export const chip: ChipConfig = {
-  paddingX: 8,
+  paddingX: 12,
   paddingY: 4,
   label: { kind: "label", size: "small" },
-  iconSize: 12,
+  iconSize: 16,
   closeIcon: IconClose,
-  closeIconSize: 8,
+  closeIconSize: 16,
   spacingAfterIcon: 4,
   spacingAfterLabel: 8,
   customColors: {},
   radius: "circledX",
-  uppercase: true,
+  uppercase: false,
 };
 
 export const decorativeDivider: DecorativeDividerConfig = {
@@ -190,7 +190,7 @@ export const disclosure: DisclosureConfig = {
     closed: IconChevronDown,
   },
   iconSize: {
-    1: 16,
+    1: 24,
     2: 16,
   },
 };
@@ -251,7 +251,7 @@ export const field: FieldConfig = {
 
 export const fileUploaderField: FileUploaderFieldConfig = {
   defaultHeight: "8rem",
-  buttonKind: "solid",
+  buttonKind: "outline",
 };
 
 export const inlineLoader: InlineLoaderConfig = {
@@ -261,9 +261,9 @@ export const inlineLoader: InlineLoaderConfig = {
 };
 
 export const input: InputConfig = {
-  radius: 4,
+  radius: 16,
   paddingX: 16,
-  paddingY: 16,
+  paddingY: 12,
   fontSize: "large",
   internalSpacing: 16,
   background: { default: "backgroundPrimary", readOnly: "backgroundSecondary" },
@@ -283,10 +283,10 @@ export const selectionControl: {
     },
   },
   element: {
-    labelPaddingTop: 2,
+    labelPaddingTop: 0,
     controlLabelSpacing: 8,
     labelSize: "large",
-    checkboxBorderRadius: 4,
+    checkboxBorderRadius: 8,
   },
 };
 
@@ -299,7 +299,7 @@ export const formLayout: FormLayoutConfig = {
     headerDescriptionSize: "medium",
     formSpacing: 40,
     headerSpacing: 16,
-    defaultActionsSize: "large",
+    defaultActionsSize: "medium",
     defaultErrorBannerWidth: "content",
   },
   section: {
@@ -314,7 +314,7 @@ export const formLayout: FormLayoutConfig = {
 };
 
 export const iconButton: IconButtonConfig = {
-  radius: 4,
+  radius: 16,
   padding: {
     8: 8,
     12: 8,
@@ -325,42 +325,42 @@ export const iconButton: IconButtonConfig = {
 
 export const list: ListConfig = {
   item: {
-    borderRadius: 0,
+    borderRadius: 16,
     paddingX: {
-      medium: 16,
-      large: 16,
+      medium: 12,
+      large: 12,
     },
     paddingY: {
       medium: 8,
-      large: 16,
+      large: 12,
     },
     fontSize: {
       firstLine: "medium",
       secondLine: "small",
       overline: "small",
     },
-    internalSpacing: 16,
+    internalSpacing: 12,
     iconSize: {
       leading: 24,
-      trailing: 16,
+      trailing: 24,
       illustration: 32,
     },
     iconColor: {
-      leading: "default",
-      trailing: "default",
+      leading: "primary",
+      trailing: "primary",
       illustration: "default",
     },
   },
-  spacing: 0,
+  spacing: 4,
 };
 
 export const menu: MenuConfig = {
-  paddingX: 0,
+  paddingX: 8,
   paddingY: 8,
-  radius: 8,
+  radius: 24,
   elevation: "medium",
-  headerPaddingX: 16,
-  headerPaddingY: 16,
+  headerPaddingX: 24,
+  headerPaddingY: 24,
   defaultOffset: 4,
   nestedMenuIcon: IconChevronRight,
 };
@@ -368,7 +368,7 @@ export const menu: MenuConfig = {
 export const modal: ModalConfig = {
   paddingX: 24,
   paddingY: 24,
-  radius: 8,
+  radius: 24,
   titleSize: "large",
   closeIcon: IconClose,
   closeIconSize: 16,
@@ -385,7 +385,7 @@ export const modal: ModalConfig = {
   },
   titleIconSize: 24,
   defaultErrorBannerWidth: "content",
-  actionsSize: "large",
+  actionsSize: "medium",
   internalSpacing: 24,
 };
 
@@ -395,13 +395,13 @@ export const navigation: NavigationConfig = {
     large: 24,
   },
   destinationPaddingY: {
-    medium: 8,
+    medium: 12,
     large: 16,
   },
   destinationsSpacing: 0,
   iconSize: {
-    medium: 16,
-    large: 16,
+    medium: 24,
+    large: 24,
   },
   illustrationSize: {
     medium: 24,
@@ -412,14 +412,14 @@ export const navigation: NavigationConfig = {
     large: 8,
   },
   labelSize: {
-    medium: "large",
+    medium: "medium",
     large: "large",
   },
   activeVisualElement: {
-    lineColor: "brandPrimary",
+    lineColor: "foregroundInteractive",
     lineHeight: {
-      medium: 2,
-      large: 2,
+      medium: 4,
+      large: 4,
     },
   },
   uppercaseLabel: false,
@@ -433,57 +433,58 @@ export const readOnlyField: ReadOnlyFieldConfig = {
 export const searchBar: SearchBarConfig = {
   ...input,
   clearIcon: IconClose,
-  clearIconSize: 12,
+  clearIconSize: 16,
   searchIcon: IconSearch,
-  searchIconSize: 16,
+  searchIconSize: 24,
 };
 
 export const dropdown: DropdownConfig = {
   elevation: "medium",
-  radius: 8,
+  radius: 24,
+  menuPaddingX: 8,
   menuPaddingY: 8,
   list: {
     item: {
-      borderRadius: 0,
+      borderRadius: 16,
       paddingX: {
-        medium: 16,
-        large: 16,
+        medium: 12,
+        large: 12,
       },
       paddingY: {
         medium: 8,
-        large: 16,
+        large: 12,
       },
       fontSize: {
         firstLine: "medium",
         secondLine: "small",
         overline: "small",
       },
-      internalSpacing: 16,
+      internalSpacing: 12,
       iconSize: {
         leading: 24,
-        trailing: 16,
+        trailing: 24,
         illustration: 32,
       },
       iconColor: {
-        leading: "default",
-        trailing: "default",
+        leading: "primary",
+        trailing: "primary",
         illustration: "default",
       },
     },
-    spacing: 0,
+    spacing: 4,
   },
-  defaultMenuSize: "medium",
+  defaultMenuSize: "large",
   openIndicatorIcon: IconChevronDown,
-  openIndicatorIconSize: 16,
-  chipColor: "blue",
-  chipSpacing: 8,
+  openIndicatorIconSize: 24,
+  chipColor: "indigo",
+  chipSpacing: 4,
 };
 
 export const table: TableConfig = {
   headerInfoIcon: IconInformative,
   emptyIllustration: IllustrationSearch,
   headerBackgroundColor: "backgroundPrimary",
-  headerForegroundColor: undefined,
+  headerForegroundColor: "foregroundPrimary",
   hintPlacement: "top",
   cellTooltipPlacement: "bottom",
   evenRowsBackgroundColor: "backgroundSecondary",
@@ -493,24 +494,24 @@ export const table: TableConfig = {
     defaultCell: { paddingX: 16, paddingY: 16 },
     buttonCell: { paddingX: 8, paddingY: 8 },
     buttonLinkCell: { paddingX: 8, paddingY: 8 },
-    textCell: undefined,
-    textWithIconCell: undefined,
-    chipCell: undefined,
-    labelCell: undefined,
-    linkCell: undefined,
-    iconCell: undefined,
-    iconButtonCell: undefined,
+    textCell: { paddingX: 16, paddingY: 16 },
+    textWithIconCell: { paddingX: 16, paddingY: 16 },
+    chipCell: { paddingX: 16, paddingY: 16 },
+    labelCell: { paddingX: 16, paddingY: 16 },
+    linkCell: { paddingX: 16, paddingY: 16 },
+    iconCell: { paddingX: 16, paddingY: 16 },
+    iconButtonCell: { paddingX: 16, paddingY: 16 },
   },
   boundaryPadding: 8,
 };
 
 export const toast: ToastConfig = {
-  paddingX: 16,
-  paddingY: 16,
-  radius: 8,
+  paddingX: 24,
+  paddingY: 12,
+  radius: 16,
   messageSize: "medium",
   closeIcon: IconClose,
-  closeIconSize: 12,
+  closeIconSize: 16,
   outline: false,
   internalSpacing: 16,
   elevation: "none",
@@ -524,7 +525,7 @@ const tabsBaseConfig = {
   spaceBetweenTabs: 0,
   internalSpacing: 8,
   paddingY: {
-    medium: 8,
+    medium: 12,
     large: 16,
   },
   labelSize: {
@@ -532,15 +533,15 @@ const tabsBaseConfig = {
     large: "large",
   },
   uppercaseLabel: false,
-  iconSize: 16,
-  notificationSize: 6,
+  iconSize: 24,
+  notificationSize: 8,
   notificationColor: "foregroundInteractive",
 } as const;
 
 export const folderTabs: TabsConfig = {
   ...tabsBaseConfig,
   kind: "folder",
-  radius: 4,
+  radius: 16,
   paddingX: {
     medium: 40,
     large: 40,
@@ -551,8 +552,8 @@ export const underlineTabs: TabsConfig = {
   ...tabsBaseConfig,
   kind: "underline",
   paddingX: {
-    medium: 16,
-    large: 32,
+    medium: 24,
+    large: 24,
   },
   lineHeight: {
     medium: 2,
@@ -560,9 +561,9 @@ export const underlineTabs: TabsConfig = {
   },
   lineColor: {
     default: "transparent",
-    hover: "foregroundSecondaryInverse",
-    focus: "foregroundSecondaryInverse",
-    active: "brandPrimary",
+    hover: "foregroundSecondary",
+    focus: "foregroundSecondary",
+    active: "foregroundInteractive",
   },
 };
 
@@ -577,7 +578,7 @@ export const progressBar: ProgressBarConfig = {
 export const slider: SliderConfig = {
   valueSize: "large",
   labelsSize: "large",
-  internalSpacing: 24,
+  internalSpacing: 16,
   trailColor: "brandPrimary",
   trailRadius: "circledX",
   trailHeight: 8,
@@ -599,12 +600,12 @@ export const stepper: StepperConfig = {
 export const tooltip: TooltipConfig = {
   paddingX: 16,
   paddingY: 8,
-  radius: 4,
-  labelSize: "medium",
+  radius: 12,
+  labelSize: "small",
 };
 
 export const dateField: DateFieldConfig = {
-  radius: 8,
+  radius: 24,
   padding: 24,
   elevation: "medium",
   monthYearLabelSize: "large",
@@ -617,6 +618,6 @@ export const dateField: DateFieldConfig = {
   },
   dayWidth: 40,
   dayHeight: 40,
-  dayRadius: 4,
+  dayRadius: 16,
   daySize: "medium",
 };

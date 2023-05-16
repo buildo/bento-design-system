@@ -8,6 +8,7 @@ export type DropdownConfig = {
   elevation: "small" | "medium" | "large";
   radius: BentoSprinkles["borderRadius"];
   list: ListConfig;
+  menuPaddingX: BentoSprinkles["paddingX"];
   menuPaddingY: BentoSprinkles["paddingY"];
   defaultMenuSize: "medium" | "large";
   openIndicatorIcon: (props: IconProps) => Children;
