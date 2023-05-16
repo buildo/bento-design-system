@@ -1,0 +1,37 @@
+on: [push]
+
+name: Publish Website and Playroom
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    name: Cloudflare Pages
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - uses: pnpm/action-setup@v2
+        with:
+          run_install: true
+      - run: pnpm website-build
+      - run: pnpm playroom-build
+      - name: Publish Website
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: bento-website
+          directory: packages/website/build
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish Playroom
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: bento-playroom
+          directory: packages/bento-design-system/dist/playroom
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
