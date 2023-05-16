@@ -8,7 +8,7 @@ jobs:
     permissions:
       contents: read
       deployments: write
-    name: Publish to Cloudflare Pages
+    name: Cloudflare Pages
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
