@@ -17,7 +17,8 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           run_install: true
-      - run: pnpm build
+      - run: pnpm website-build
+      - run: pnpm playroom-build
       - name: Publish Website
         uses: cloudflare/pages-action@v1
         with:
