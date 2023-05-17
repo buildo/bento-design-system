@@ -1,4 +1,5 @@
 import { ButtonProps } from "../Button/Button";
+import { IconButtonProps } from "../IconButton/IconButton";
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";
@@ -10,7 +11,7 @@ export type ToastConfig = {
   radius: BentoSprinkles["borderRadius"];
   messageSize: BodyProps["size"];
   closeIcon: (props: IconProps) => Children;
-  closeIconSize: IconProps["size"];
+  closeIconSize: IconButtonProps["size"];
   outline: boolean;
   internalSpacing: BentoSprinkles["gap"];
   elevation: "none" | "small" | "medium" | "large";
