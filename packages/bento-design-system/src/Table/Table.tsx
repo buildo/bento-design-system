@@ -248,8 +248,7 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
       >
         <Feedback
           size={noResultsFeedbackSize}
-          illustration={config.emptyIllustration}
-          background
+          icon={config.emptyIcon}
           title={noResultsTitle ?? defaultMessages.Table.noResultsTitle}
           description={noResultsDescription ?? defaultMessages.Table.noResultsDescription}
         />

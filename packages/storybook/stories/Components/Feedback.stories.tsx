@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { Feedback, IconLightbulb, IllustrationIdea } from "..";
+import { Feedback, IconLightbulb } from "..";
 import { createComponentStories, textArgType } from "../util";
 
 const { defaultExport, createStory } = createComponentStories({

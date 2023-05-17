@@ -29,7 +29,6 @@ import type { CardConfig } from "../Card/Config";
 import type { ChipConfig } from "../Chip/Config";
 import type { DisclosureConfig } from "../Disclosure/Config";
 import type { DisclosureGroupConfig } from "../DisclosureGroup/Config";
-import { IllustrationSearch } from "../Illustrations";
 import type { FeedbackConfig } from "../Feedback/Config";
 import type {
   FieldConfig,
@@ -484,7 +483,7 @@ export const dropdown: DropdownConfig = {
 
 export const table: TableConfig = {
   headerInfoIcon: IconInfo,
-  emptyIllustration: IllustrationSearch,
+  emptyIcon: IconSearch,
   headerBackgroundColor: "backgroundPrimary",
   headerForegroundColor: "foregroundPrimary",
   hintPlacement: "top",
