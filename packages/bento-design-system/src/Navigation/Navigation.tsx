@@ -1,4 +1,4 @@
-import { Box, Columns, Column, IconProps, IllustrationProps, Label, useLinkComponent } from "..";
+import { Box, Columns, Column, IconProps, Label, useLinkComponent } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { destinationRecipe } from "./Navigation.css";
 import { AnchorHTMLAttributes, useRef } from "react";
@@ -8,21 +8,14 @@ import { useBentoConfig } from "../BentoConfigContext";
 
 export type NavigationSize = "medium" | "large";
 
-type Kind = "none" | "icon" | "illustration";
+type Kind = "none" | "icon";
 
 type DestinationIconProps<T extends Kind> = T extends "none"
   ? {
       icon?: never;
-      illustration?: never;
-    }
-  : T extends "icon"
-  ? {
-      icon: (props: IconProps) => JSX.Element;
-      illustration?: never;
     }
   : {
-      icon?: never;
-      illustration: (props: IllustrationProps) => JSX.Element;
+      icon: (props: IconProps) => JSX.Element;
     };
 
 type Props<T extends Kind> = {
@@ -46,7 +39,6 @@ type DestinationProps = {
   active?: boolean;
   disabled?: boolean;
   icon?: (props: IconProps) => JSX.Element;
-  illustration?: (props: IllustrationProps) => JSX.Element;
   target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
 };
 function Destination({
@@ -54,7 +46,6 @@ function Destination({
   label,
   disabled,
   icon,
-  illustration,
   size,
   href,
   target,
@@ -101,16 +92,8 @@ function Destination({
       paddingY={config.destinationPaddingY[size]}
     >
       <Columns space={config.internalSpacing[size]} alignY="center" align="center">
-        {(icon || illustration) && (
-          <Column width="content">
-            {icon && icon({ size: config.iconSize[size], color: "inherit" })}
-            {illustration &&
-              illustration({
-                size: config.illustrationSize[size],
-                kind: "outline",
-                color: "inherit",
-              })}
-          </Column>
+        {icon && (
+          <Column width="content">{icon({ size: config.iconSize[size], color: "inherit" })}</Column>
         )}
         <Label size={config.labelSize[size]} uppercase={config.uppercaseLabel}>
           {label}
@@ -136,7 +119,6 @@ export function Navigation<T extends Kind>({ destinations, size }: Props<T>) {
               disabled={d.disabled}
               size={size}
               icon={d.icon}
-              illustration={d.illustration}
             />
           </Column>
         );

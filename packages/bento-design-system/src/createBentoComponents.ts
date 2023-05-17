@@ -62,7 +62,6 @@ import {
   Divider,
 } from ".";
 import * as icons from "./Icons";
-import * as illustrations from "./Illustrations";
 import { PartialBentoConfig } from "./BentoConfig";
 import { SprinklesFn } from "./util/ConfigurableTypes";
 import { CheckboxField } from "./CheckboxField/CheckboxField";
@@ -110,7 +109,6 @@ function internalCreateBentoComponents(
 
   const components = {
     ...icons,
-    ...illustrations,
     Actions,
     AreaLoader,
     Avatar,

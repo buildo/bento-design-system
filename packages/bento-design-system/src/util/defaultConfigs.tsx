@@ -344,12 +344,10 @@ export const list: ListConfig = {
     iconSize: {
       leading: 24,
       trailing: 24,
-      illustration: 32,
     },
     iconColor: {
       leading: "primary",
       trailing: "primary",
-      illustration: "default",
     },
   },
   spacing: 4,
@@ -401,10 +399,6 @@ export const navigation: NavigationConfig = {
   },
   destinationsSpacing: 0,
   iconSize: {
-    medium: 24,
-    large: 24,
-  },
-  illustrationSize: {
     medium: 24,
     large: 24,
   },
@@ -464,12 +458,10 @@ export const dropdown: DropdownConfig = {
       iconSize: {
         leading: 24,
         trailing: 24,
-        illustration: 32,
       },
       iconColor: {
         leading: "primary",
         trailing: "primary",
-        illustration: "default",
       },
     },
     spacing: 4,
