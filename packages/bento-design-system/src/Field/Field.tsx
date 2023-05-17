@@ -4,7 +4,7 @@ import { Label } from "../Typography/Label/Label";
 import { Stack, Box, Columns, Column, Tooltip } from "..";
 import { Children } from "../util/Children";
 import { FieldProps } from "./FieldProps";
-import { IconNegative } from "../Icons";
+import { IconNegativeSolid } from "../Icons";
 import { FocusableElement } from "@react-types/shared";
 import { useBentoConfig } from "../BentoConfigContext";
 
@@ -95,7 +95,7 @@ export function Field({
               {issues.map((errorMessage, index) => (
                 <Columns space={4} alignY="center" key={index}>
                   <Column width="content">
-                    <IconNegative size={12} color="negative" />
+                    <IconNegativeSolid size={12} color="negative" />
                   </Column>
                   <Box {...errorMessageProps}>
                     <Body size={config.assistiveText.size} color="negative">

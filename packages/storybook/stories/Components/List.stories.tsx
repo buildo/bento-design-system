@@ -1,7 +1,7 @@
 import { createComponentStories } from "../util";
 import {
   IconInfoSolid,
-  IconNegative,
+  IconNegativeSolid,
   IconWarningSolid,
   List,
   IconCheck,
@@ -61,7 +61,7 @@ export const SingleLine = createStory({
 export const SingleLineIcon = createStory({
   items: [
     { kind: "single-line", label, icon: IconInfoSolid, href },
-    { kind: "single-line", label: labelLong, icon: IconNegative, href },
+    { kind: "single-line", label: labelLong, icon: IconNegativeSolid, href },
     { kind: "single-line", label, icon: IconWarningSolid, href },
     {
       kind: "single-line",
@@ -76,7 +76,7 @@ export const SingleLineIcon = createStory({
 export const SingleLineTrailingIcon = createStory({
   items: [
     { kind: "single-line", label, trailingIcon: IconInfoSolid, href },
-    { kind: "single-line", label: labelLong, trailingIcon: IconNegative, href },
+    { kind: "single-line", label: labelLong, trailingIcon: IconNegativeSolid, href },
     { kind: "single-line", label, trailingIcon: IconWarningSolid, href },
   ],
 });
