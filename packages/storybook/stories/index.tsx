@@ -128,6 +128,7 @@ export const {
   IconInfoSolid,
   IconMinus,
   IconNegative,
+  IconNegativeSolid,
   IconPlaceholder,
   IconPositiveSolid,
   IconSearch,

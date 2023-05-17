@@ -6,7 +6,6 @@ import type { BreadcrumbConfig } from "../Breadcrumb/Config";
 import {
   IconChevronRight,
   IconX,
-  IconNegative,
   IconUser,
   IconSearch,
   IconChevronUp,
@@ -384,7 +383,7 @@ export const modal: ModalConfig = {
   elevation: "large",
   titleIcon: {
     warning: IconWarningSolid,
-    destructive: IconNegative,
+    destructive: IconNegativeSolid,
   },
   titleIconSize: 24,
   defaultErrorBannerWidth: "content",

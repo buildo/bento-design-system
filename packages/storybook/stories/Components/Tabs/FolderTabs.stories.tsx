@@ -1,5 +1,5 @@
 import { createComponentStories } from "../../util";
-import { IconInfoSolid, IconNegative, FolderTabs, Chip } from "../..";
+import { IconInfoSolid, IconNegativeSolid, FolderTabs, Chip } from "../..";
 
 const { defaultExport, createControlledStory } = createComponentStories({
   component: FolderTabs,
@@ -15,7 +15,7 @@ export const medium = createControlledStory("tab1", {
     {
       label: "Tab 1",
       value: "tab1",
-      icon: IconNegative,
+      icon: IconNegativeSolid,
       hasNotification: true,
     },
     {
@@ -49,7 +49,7 @@ export const large = createControlledStory("tab1", {
     {
       label: "Tab 1",
       value: "tab1",
-      icon: IconNegative,
+      icon: IconNegativeSolid,
       hasNotification: true,
     },
     {
@@ -78,26 +78,26 @@ export const scrollable = createControlledStory(
       {
         label: "Tab 1",
         value: "tab1",
-        icon: IconNegative,
+        icon: IconNegativeSolid,
         hasNotification: true,
       },
       {
         label: "Tab 2",
         value: "tab2",
-        icon: IconNegative,
+        icon: IconNegativeSolid,
         hasNotification: true,
       },
       {
         label: "Tab 3",
         value: "tab3",
         disabled: true,
-        icon: IconNegative,
+        icon: IconNegativeSolid,
         hasNotification: true,
       },
       {
         label: "Tab 4",
         value: "tab4",
-        icon: IconNegative,
+        icon: IconNegativeSolid,
         hasNotification: true,
       },
       {
