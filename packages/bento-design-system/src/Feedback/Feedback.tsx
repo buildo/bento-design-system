@@ -1,5 +1,14 @@
-import { Body, ButtonProps, Children, Display, LocalizedString, Box, Stack, Button } from "..";
-import { IllustrationProps } from "../Illustrations/IllustrationProps";
+import {
+  Body,
+  ButtonProps,
+  Children,
+  Display,
+  LocalizedString,
+  Box,
+  Stack,
+  Button,
+  IconProps,
+} from "..";
 import { Title } from "../Typography/Title/Title";
 import { Headline } from "../Typography/Headline/Headline";
 import type { FeedbackConfig } from "./Config";
@@ -13,51 +22,37 @@ type Props = {
   title: LocalizedString;
   description?: Children;
   action?: Pick<ButtonProps, "label" | "onPress">;
-  background?: boolean;
   size: FeedbackSize;
 } & (
   | {
       /** Use as:
        * ```tsx
        *  <Feedback
-       *    illustration={IllustrationIdea}
+       *    icon={IconLightbulb}
        *    // ...
        *  />
        * ```
        */
-      illustration: (props: IllustrationProps) => Children;
+      icon: (props: IconProps) => Children;
       status?: never;
     }
   | {
       status: Status;
-      illustration?: never;
+      icon?: never;
     }
 );
 
 /**
- * Feedback can render a predefined feedback status (when using the `status` prop) or render a custom illustration
- * (when using the `illustration` prop).
+ * Feedback can render a predefined feedback status (when using the `status` prop) or render a custom icon
+ * (when using the `icon` prop).
  */
-export function Feedback({
-  title,
-  description,
-  action,
-  background,
-  status,
-  illustration,
-  size,
-}: Props) {
+export function Feedback({ title, description, action, status, icon, size }: Props) {
   const config = useBentoConfig().feedback;
 
   return (
     <Box style={{ width: config.maxWidth[size] }}>
       <Stack space={size === "large" ? 24 : 16} align="center">
-        {renderIllustration(
-          size,
-          illustrationElement(status, illustration, config),
-          background,
-          config
-        )}
+        {renderIcon(size, iconElement(status, icon, config), status, config)}
         <Stack space={size === "large" ? 8 : 4}>
           {renderTitle(size, title, config)}
           {description && (
@@ -118,52 +113,58 @@ function renderTitle(size: FeedbackSize, title: LocalizedString, config: Feedbac
     .exhaustive();
 }
 
-function illustrationElement(
+function iconElement(
   status: Props["status"],
-  illustration: Props["illustration"],
+  icon: Props["icon"],
   config: FeedbackConfig
-): ((props: IllustrationProps) => Children) | undefined {
-  if (illustration) {
-    return illustration;
+): ((props: IconProps) => Children) | undefined {
+  if (icon) {
+    return icon;
   } else if (status) {
-    return illustrationForStatus(status!, config);
+    return iconForStatus(status!, config);
   }
   return undefined;
 }
 
-function illustrationForStatus(status: Status, config: FeedbackConfig) {
+function iconForStatus(status: Status, config: FeedbackConfig) {
   switch (status) {
     case "positive":
-      return config.positiveIllustration;
+      return config.positiveIcon;
     case "negative":
-      return config.negativeIllustration;
+      return config.negativeIcon;
   }
 }
 
-function renderIllustration(
+function renderIcon(
   size: "medium" | "large",
-  illustration: ((props: IllustrationProps) => Children) | undefined,
-  background: boolean | undefined,
+  icon: ((props: IconProps) => Children) | undefined,
+  status: Props["status"] | undefined,
   config: FeedbackConfig
 ): Children {
-  const illustrationProps: IllustrationProps = {
-    size: config.illustrationSize[size],
-    kind: "color",
+  const iconProps: IconProps = {
+    size: config.iconSize[size],
+    color: match(status)
+      .with("positive", () => "positive" as const)
+      .with("negative", () => "negative" as const)
+      .with(undefined, () => "interactive" as const)
+      .exhaustive(),
   };
-  if (background && config.background) {
-    // NOTE(gabro): when we have a background, the overall size of the illustration is the one of
-    // the background so the background has position relative and the illustration has position absolute.
-    return (
-      <Box position="relative" width="full">
-        <Box position="relative">{config.background}</Box>
-        <Box position="absolute" top={40} width="full" display="flex" justifyContent="center">
-          {illustration && illustration(illustrationProps)}
-        </Box>
-      </Box>
-    );
-  } else {
-    return illustration && illustration(illustrationProps);
-  }
+  return (
+    <Box
+      display="flex"
+      borderRadius="circled"
+      background={match(status)
+        .with("positive", () => "backgroundPositive" as const)
+        .with("negative", () => "backgroundNegative" as const)
+        .with(undefined, () => "backgroundInteractiveOverlay" as const)
+        .exhaustive()}
+      padding={size === "medium" ? 12 : 16}
+      alignItems="center"
+      justifyContent="center"
+    >
+      {icon && icon(iconProps)}
+    </Box>
+  );
 }
 
 export type { Props as FeedbackProps };

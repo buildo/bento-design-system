@@ -9,12 +9,14 @@ export const iconRecipe = recipe({
       12: style({ width: "12px" }),
       16: bentoSprinkles({ width: 16 }),
       24: bentoSprinkles({ width: 24 }),
+      40: bentoSprinkles({ width: 40 }),
     },
     height: {
       8: bentoSprinkles({ height: 8 }),
       12: style({ height: "12px" }),
       16: bentoSprinkles({ height: 16 }),
       24: bentoSprinkles({ height: 24 }),
+      40: bentoSprinkles({ height: 40 }),
     },
     color: {
       default: bentoSprinkles({ fill: "foregroundSecondary" }),

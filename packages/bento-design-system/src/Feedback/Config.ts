@@ -1,5 +1,5 @@
 import { ButtonProps } from "../Button/Button";
-import { IllustrationProps } from "../Illustrations";
+import { IconProps } from "../Icons";
 import { BodyProps } from "../Typography/Body/Body";
 import { DisplayProps } from "../Typography/Display/Display";
 import { HeadlineProps } from "../Typography/Headline/Headline";
@@ -9,10 +9,9 @@ import { FeedbackSize } from "./Feedback";
 
 type SizeConfig<T> = Record<FeedbackSize, T>;
 export type FeedbackConfig = {
-  background: JSX.Element | null;
-  positiveIllustration: (props: IllustrationProps) => Children;
-  negativeIllustration: (props: IllustrationProps) => Children;
-  illustrationSize: SizeConfig<IllustrationProps["size"]>;
+  positiveIcon: (props: IconProps) => Children;
+  negativeIcon: (props: IconProps) => Children;
+  iconSize: SizeConfig<IconProps["size"]>;
   title: {
     medium: { kind: "title"; size: TitleProps["size"] } | { kind: "body"; size: BodyProps["size"] };
     large:

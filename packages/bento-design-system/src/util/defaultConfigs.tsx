@@ -22,13 +22,14 @@ import {
   IconNegativeSolid,
   IconPositiveCircle,
   IconQuestionCircle,
+  IconNegative,
 } from "../Icons";
 import type { ButtonConfig } from "../Button/Config";
 import type { CardConfig } from "../Card/Config";
 import type { ChipConfig } from "../Chip/Config";
 import type { DisclosureConfig } from "../Disclosure/Config";
 import type { DisclosureGroupConfig } from "../DisclosureGroup/Config";
-import { IllustrationNegative, IllustrationPositive, IllustrationSearch } from "../Illustrations";
+import { IllustrationSearch } from "../Illustrations";
 import type { FeedbackConfig } from "../Feedback/Config";
 import type {
   FieldConfig,
@@ -204,31 +205,30 @@ export const disclosureGroup: DisclosureGroupConfig = {
 };
 
 export const feedback: FeedbackConfig = {
-  background: null,
-  positiveIllustration: IllustrationPositive,
-  negativeIllustration: IllustrationNegative,
+  positiveIcon: IconPositiveCircle,
+  negativeIcon: IconNegative,
   title: {
     medium: { kind: "title", size: "large" },
-    large: { kind: "display", size: "small" },
+    large: { kind: "headline", size: "medium" },
   },
   descriptionSize: {
     medium: "medium",
     large: "medium",
   },
-  illustrationSize: {
-    medium: 80,
-    large: 160,
+  iconSize: {
+    medium: 24,
+    large: 40,
   },
   action: {
     medium: {
       kind: "transparent",
       hierarchy: "primary",
-      size: "medium",
+      size: "small",
     },
     large: {
       kind: "solid",
       hierarchy: "primary",
-      size: "large",
+      size: "medium",
     },
   },
   maxWidth: {

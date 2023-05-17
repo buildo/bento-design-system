@@ -14,7 +14,7 @@ type Props = {
   hierarchy: "primary" | "secondary" | "danger";
   label: LocalizedString;
   onPress: () => void;
-  size: IconProps["size"];
+  size: Exclude<IconProps["size"], 40>;
   tabIndex?: number;
   isDisabled?: boolean;
   icon: (props: IconProps) => Children;
