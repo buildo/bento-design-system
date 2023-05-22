@@ -148,7 +148,7 @@
     "@vanilla-extract/babel-plugin": "1.2.0",
     "@vanilla-extract/esbuild-plugin": "2.1.0",
     "@vanilla-extract/private": "1.0.3",
-    "@vanilla-extract/webpack-plugin": "2.1.12",
+    "@vanilla-extract/webpack-plugin": "2.2.0",
     "css-loader": "6.7.4",
     "esbuild-loader": "2.19.0",
     "eslint": "8.20.0",
