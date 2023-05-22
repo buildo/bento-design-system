@@ -259,7 +259,7 @@ importers:
       '@vanilla-extract/babel-plugin': 1.2.0
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/private': 1.0.3
-      '@vanilla-extract/sprinkles': 1.4.1
+      '@vanilla-extract/sprinkles': 1.6.0
       '@vanilla-extract/webpack-plugin': 2.2.0
       chromatic: 6.7.2
       date-fns: 2.29.3
@@ -277,7 +277,7 @@ importers:
       typescript: 4.7.4
     dependencies:
       '@buildo/bento-design-system': link:../bento-design-system
-      '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.2
+      '@vanilla-extract/sprinkles': 1.6.0_@vanilla-extract+css@1.7.2
       date-fns: 2.29.3
       recharts: 2.1.16_v2m5e27vhdewzwhryxwfaorcca
     devDependencies:
@@ -337,7 +337,7 @@ importers:
       '@types/babel__traverse': 7.18.5
       '@types/node': 18.16.4
       '@types/react': ^18
-      '@vanilla-extract/sprinkles': 1.4.1
+      '@vanilla-extract/sprinkles': 1.6.0
       assert: 2.0.0
       buffer: 6.0.3
       clsx: 1.2.1
@@ -391,7 +391,7 @@ importers:
       '@types/babel__traverse': 7.18.5
       '@types/node': 18.16.4
       '@types/react': 18.0.15
-      '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.2
+      '@vanilla-extract/sprinkles': 1.6.0_@vanilla-extract+css@1.7.2
       eslint-config-react-app: 7.0.1_qov3uxrlfsj6amljq2ujm4ue5a
       lint-staged: 13.0.3
       raw-loader: 4.0.2_webpack@5.76.3
@@ -3345,8 +3345,8 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.21.0
-      '@babel/helper-plugin-utils': 7.20.2
-      '@babel/helper-validator-option': 7.21.0
+      '@babel/helper-plugin-utils': 7.18.6
+      '@babel/helper-validator-option': 7.18.6
       '@babel/plugin-transform-react-display-name': 7.18.6_@babel+core@7.21.0
       '@babel/plugin-transform-react-jsx': 7.18.6_@babel+core@7.21.0
       '@babel/plugin-transform-react-jsx-development': 7.18.6_@babel+core@7.21.0
@@ -8916,20 +8916,12 @@ packages:
       '@vanilla-extract/css': 1.7.2
     dev: false
 
-  /@vanilla-extract/sprinkles/1.4.1_@vanilla-extract+css@1.7.2:
-    resolution: {integrity: sha512-aW6CfMMToX4a+baLuVxwcT0FSACjX3xrNt8wdi/3LLRlLAfhyue8OK7kJxhcYNZfydBeWTP59aRy8p5FUTIeew==}
-    peerDependencies:
-      '@vanilla-extract/css': ^1.0.0
-    dependencies:
-      '@vanilla-extract/css': 1.7.2
-
   /@vanilla-extract/sprinkles/1.6.0_@vanilla-extract+css@1.7.2:
     resolution: {integrity: sha512-TDc/bKyYmt6PDd7/39a5HXUa+4mBI9PO0uw0jmxFMqe9EzrFEVevyRsjJ9KGK09ACItvVUotz98LIJTeliCbpQ==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
       '@vanilla-extract/css': 1.7.2
-    dev: false
 
   /@vanilla-extract/sprinkles/1.6.0_@vanilla-extract+css@1.9.5:
     resolution: {integrity: sha512-TDc/bKyYmt6PDd7/39a5HXUa+4mBI9PO0uw0jmxFMqe9EzrFEVevyRsjJ9KGK09ACItvVUotz98LIJTeliCbpQ==}
