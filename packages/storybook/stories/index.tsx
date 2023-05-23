@@ -109,18 +109,12 @@ export const {
   IconUser,
   IconWarningSolid,
   IconX,
-  IllustrationIdea,
-  IllustrationPositive,
-  IllustrationNegative,
-  IllustrationSearch,
   useComponentsShowcase,
 } = createBentoComponents();
 
 export {
   useToast,
-  svgIllustrationProps,
   svgIconProps,
-  illustrations,
   icons,
   BentoConfigProvider,
   Time,
@@ -128,7 +122,6 @@ export {
 
 export type {
   IconProps,
-  IllustrationProps,
   Omit,
   SelectFieldProps,
   SliderFieldProps,

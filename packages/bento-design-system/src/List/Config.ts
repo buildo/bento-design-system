@@ -1,5 +1,4 @@
 import { IconProps } from "../Icons";
-import { IllustrationColor, IllustrationProps } from "../Illustrations";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";
 import { LabelProps } from "../Typography/Label/Label";
@@ -22,12 +21,10 @@ export type ListItemConfig = {
   iconSize: {
     leading: IconProps["size"];
     trailing: IconProps["size"];
-    illustration: IllustrationProps["size"];
   };
   iconColor: {
     leading: IconProps["color"];
     trailing: IconProps["color"];
-    illustration: IllustrationColor;
   };
 };
 

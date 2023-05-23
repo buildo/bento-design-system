@@ -12,7 +12,6 @@ import {
   Stack,
 } from "..";
 import { IconProps } from "../Icons/IconProps";
-import { IllustrationProps } from "../Illustrations/IllustrationProps";
 import { listItemRecipe } from "./ListItem.css";
 import type { ListSize } from "./List";
 import { element } from "../reset.css";
@@ -37,19 +36,9 @@ type Kind =
       secondLine: Children;
     };
 
-type LeftItem =
-  | {
-      icon?: never;
-      illustration?: never;
-    }
-  | {
-      icon: (props: IconProps) => JSX.Element;
-      illustration?: never;
-    }
-  | {
-      icon?: never;
-      illustration: (props: IllustrationProps) => JSX.Element;
-    };
+type LeftItem = {
+  icon?: (props: IconProps) => JSX.Element;
+};
 
 type RightItem = {
   trailingIcon?: (props: IconProps) => JSX.Element;
@@ -133,18 +122,6 @@ export const ListItem = forwardRef<HTMLElement, Props>((props, ref) => {
 });
 
 function renderLeft(props: Props, config: ListItemConfig) {
-  if (props.illustration) {
-    return (
-      <Column width="content">
-        {props.illustration({
-          size: config.iconSize.illustration,
-          kind: "outline",
-          color: props.disabled ? "disabled" : config.iconColor.illustration,
-        })}
-      </Column>
-    );
-  }
-
   if (props.icon) {
     return (
       <Column width="content">

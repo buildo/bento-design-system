@@ -1,6 +1,6 @@
 import { createComponentStories } from "../util";
 import { Navigation } from "../";
-import { IconInfoSolid, IllustrationIdea } from "..";
+import { IconInfoSolid } from "..";
 import { Box, NavigationProps, withBentoConfig } from "@buildo/bento-design-system";
 
 const destinations: NavigationProps<"none">["destinations"] = [
@@ -42,10 +42,6 @@ export const large = createControlledStory("destination1", {});
 export const withIcons = createControlledStory("destination1", {
   kind: "icon",
   destinations: destinations.map((d) => ({ ...d, icon: IconInfoSolid })) as any,
-});
-export const withIllustrations = createControlledStory("destination1", {
-  kind: "illustration",
-  destinations: destinations.map((d) => ({ ...d, illustration: IllustrationIdea })) as any,
 });
 
 // Note(vince): test that the nested activeVisualElement completely replace the parent one,

@@ -1,7 +1,6 @@
 import "./reset.css";
 import "./global.css";
 import * as icons from "./Icons";
-import * as illustrations from "./Illustrations";
 import * as defaultConfigs from "./util/defaultConfigs";
 
 export * from "./Actions/Actions";
@@ -34,8 +33,6 @@ export * from "./Form/FormSection";
 export * from "./IconButton/IconButton";
 export * from "./Icons";
 export * from "./Icons/svgIconProps";
-export * from "./Illustrations";
-export * from "./Illustrations/svgIllustrationProps";
 export * from "./InlineLoader/InlineLoader";
 export * from "./Layout/Bleed";
 export * from "./Layout/Columns";
@@ -98,7 +95,7 @@ export * from "./util/strictRecipe";
 export * from "./util/useDefaultMessages";
 export * from "./util/withBentoConfig";
 
-export { icons, illustrations };
+export { icons };
 
 export { bodyRecipe } from "./Typography/Body/Body.css";
 export { labelRecipe } from "./Typography/Label/Label.css";

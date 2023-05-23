@@ -1,5 +1,4 @@
 import { IconProps } from "../Icons";
-import { IllustrationProps } from "../Illustrations";
 import { BentoSprinkles } from "../internal";
 import { LabelProps } from "../Typography/Label/Label";
 import { NavigationSize } from "./Navigation";
@@ -12,7 +11,6 @@ export type NavigationConfig = {
   destinationPaddingY: SizeConfig<BentoSprinkles["paddingY"]>;
   labelSize: SizeConfig<LabelProps["size"]>;
   iconSize: SizeConfig<IconProps["size"]>;
-  illustrationSize: SizeConfig<IllustrationProps["size"]>;
   internalSpacing: SizeConfig<BentoSprinkles["gap"]>;
   activeVisualElement: ActiveVisualElementConfig | JSX.Element;
   uppercaseLabel: boolean;
