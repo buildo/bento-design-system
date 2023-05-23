@@ -316,7 +316,7 @@ export const WithFilter = (_args: Parameters<typeof createStory>[0]) => {
     { label: "Paused", value: "Paused" } as const,
     { label: "Pending", value: "Pending" } as const,
   ];
-  type Status = typeof statusOptions[number]["value"];
+  type Status = (typeof statusOptions)[number]["value"];
 
   const [nameFilter, setNameFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState<Status | undefined>(undefined);
