@@ -51,7 +51,7 @@
     "@docusaurus/theme-classic": "2.0.1",
     "@docusaurus/theme-live-codeblock": "2.0.1",
     "@docusaurus/types": "2.0.1",
-    "@tsconfig/docusaurus": "1.0.6",
+    "@tsconfig/docusaurus": "1.0.7",
     "@types/babel__generator": "7.6.4",
     "@types/babel__standalone": "7.1.4",
     "@types/babel__traverse": "7.18.5",

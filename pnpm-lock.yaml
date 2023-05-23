@@ -331,7 +331,7 @@ importers:
       '@docusaurus/theme-live-codeblock': 2.0.1
       '@docusaurus/types': 2.0.1
       '@mdx-js/react': 1.6.22
-      '@tsconfig/docusaurus': 1.0.6
+      '@tsconfig/docusaurus': 1.0.7
       '@types/babel__generator': 7.6.4
       '@types/babel__standalone': 7.1.4
       '@types/babel__traverse': 7.18.5
@@ -385,7 +385,7 @@ importers:
       '@docusaurus/theme-classic': 2.0.1_4lh2t7x4c6vf3ubvrfnyjyabzq
       '@docusaurus/theme-live-codeblock': 2.0.1_423yrk44wdnfbvrmrtj5pfrfea
       '@docusaurus/types': 2.0.1_biqbaboplfbrettd7655fr4n2y
-      '@tsconfig/docusaurus': 1.0.6
+      '@tsconfig/docusaurus': 1.0.7
       '@types/babel__generator': 7.6.4
       '@types/babel__standalone': 7.1.4
       '@types/babel__traverse': 7.18.5
@@ -764,6 +764,24 @@ packages:
       browserslist: 4.21.5
       lru-cache: 5.1.1
       semver: 6.3.0
+
+  /@babel/helper-create-class-features-plugin/7.18.6_@babel+core@7.21.0:
+    resolution: {integrity: sha512-YfDzdnoxHGV8CzqHGyCbFvXg5QESPFkXlHtvdCkesLjjVMT2Adxe4FGUR5ChIb3DxSaXO12iIOCWoXdsUVwnqw==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+    dependencies:
+      '@babel/core': 7.21.0
+      '@babel/helper-annotate-as-pure': 7.18.6
+      '@babel/helper-environment-visitor': 7.21.5
+      '@babel/helper-function-name': 7.21.0
+      '@babel/helper-member-expression-to-functions': 7.21.0
+      '@babel/helper-optimise-call-expression': 7.18.6
+      '@babel/helper-replace-supers': 7.20.7
+      '@babel/helper-split-export-declaration': 7.18.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /@babel/helper-create-class-features-plugin/7.18.6_@babel+core@7.21.8:
     resolution: {integrity: sha512-YfDzdnoxHGV8CzqHGyCbFvXg5QESPFkXlHtvdCkesLjjVMT2Adxe4FGUR5ChIb3DxSaXO12iIOCWoXdsUVwnqw==}
@@ -1177,7 +1195,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.21.0
-      '@babel/helper-create-class-features-plugin': 7.21.8_@babel+core@7.21.0
+      '@babel/helper-create-class-features-plugin': 7.18.6_@babel+core@7.21.0
       '@babel/helper-plugin-utils': 7.21.5
     transitivePeerDependencies:
       - supports-color
@@ -1463,7 +1481,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.21.0
-      '@babel/helper-create-class-features-plugin': 7.21.8_@babel+core@7.21.0
+      '@babel/helper-create-class-features-plugin': 7.18.6_@babel+core@7.21.0
       '@babel/helper-plugin-utils': 7.21.5
     transitivePeerDependencies:
       - supports-color
@@ -2472,7 +2490,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.21.0
-      '@babel/helper-plugin-utils': 7.21.5
+      '@babel/helper-plugin-utils': 7.20.2
     dev: true
 
   /@babel/plugin-transform-react-display-name/7.18.6_@babel+core@7.21.8:
@@ -3048,8 +3066,8 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.21.0
-      '@babel/helper-plugin-utils': 7.21.5
-      '@babel/helper-validator-option': 7.21.0
+      '@babel/helper-plugin-utils': 7.18.6
+      '@babel/helper-validator-option': 7.18.6
       '@babel/plugin-transform-react-display-name': 7.18.6_@babel+core@7.21.0
       '@babel/plugin-transform-react-jsx': 7.18.6_@babel+core@7.21.0
       '@babel/plugin-transform-react-jsx-development': 7.18.6_@babel+core@7.21.0
@@ -7802,8 +7820,8 @@ packages:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
 
-  /@tsconfig/docusaurus/1.0.6:
-    resolution: {integrity: sha512-1QxDaP54hpzM6bq9E+yFEo4F9WbWHhsDe4vktZXF/iDlc9FqGr9qlg+3X/nuKQXx8QxHV7ue8NXFazzajsxFBA==}
+  /@tsconfig/docusaurus/1.0.7:
+    resolution: {integrity: sha512-ffTXxGIP/IRMCjuzHd6M4/HdIrw1bMfC7Bv8hMkTadnePkpe0lG0oDSdbRpSDZb2rQMAgpbWiR10BvxvNYwYrg==}
     dev: true
 
   /@types/aria-query/5.0.1:
