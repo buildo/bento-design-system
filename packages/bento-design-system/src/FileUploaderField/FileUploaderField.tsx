@@ -31,7 +31,7 @@ const errorCodes = [
   DropzoneErrorCode.TooManyFiles,
 ] as const;
 
-type KnownDropzoneErrorCode = typeof errorCodes[number];
+type KnownDropzoneErrorCode = (typeof errorCodes)[number];
 
 export type ErrorCode =
   | `${KnownDropzoneErrorCode}`
