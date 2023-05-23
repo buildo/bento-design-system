@@ -166,7 +166,7 @@ export const Custom = () => {
             status="negative"
             title="Something went wrong"
             description="Wait a few minutes and retry"
-            action={{ label: "retry", onPress: action("onPress") }}
+            action={{ label: "Retry", onPress: action("onPress") }}
           />
         </Stack>
       </Inset>

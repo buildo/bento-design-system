@@ -4,7 +4,7 @@ import { svgIconProps } from "./svgIconProps";
 export function IconChevronDown(props: IconProps) {
   return (
     <svg {...svgIconProps(props)}>
-      <path d="M.699 5.556a2.14 2.14 0 0 0 0 3.029l9.858 9.858a2.14 2.14 0 0 0 3.028 0l9.859-9.858a2.14 2.14 0 1 0-3.029-3.029l-8.354 8.334-8.334-8.334a2.158 2.158 0 0 0-3.028 0Z" />
+      <path d="m20.03 9.53-7.5 7.5a.748.748 0 0 1-1.06 0l-7.5-7.5a.75.75 0 1 1 1.06-1.06L12 15.44l6.97-6.97a.75.75 0 1 1 1.06 1.06Z" />
     </svg>
   );
 }

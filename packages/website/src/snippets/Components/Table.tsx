@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IconInformative, IconWarning, Table, tableColumn, IconClose } from "..";
+import { IconInfo, IconWarningSolid, Table, tableColumn, IconX, IconInfoSolid } from "..";
 
 export default function TableExample() {
   return (
@@ -8,7 +8,7 @@ export default function TableExample() {
         {
           name: "Amazon",
           country: {
-            icon: IconInformative,
+            icon: IconInfo,
             text: "US",
           },
           button: {
@@ -20,21 +20,21 @@ export default function TableExample() {
           status: { label: "Active", color: "green" } as const,
           value: {
             numericValue: 100,
-            icon: IconInformative,
+            icon: IconInfo,
           },
           website: { href: "http://www.amazon.com", label: "Link" },
-          alerts: { icon: IconWarning, label: "Warning" },
+          alerts: { icon: IconWarningSolid, label: "Warning" },
           group: "Group 1",
           deleteAction: {
             label: "Delete",
-            icon: IconClose,
+            icon: IconX,
             onPress: () => {},
           },
         },
         {
           name: "Google",
           country: {
-            icon: IconInformative,
+            icon: IconInfoSolid,
             text: "US",
           },
           button: {
@@ -47,13 +47,13 @@ export default function TableExample() {
           status: { label: "Paused", color: "blue" } as const,
           value: {
             numericValue: 150,
-            icon: IconInformative,
+            icon: IconInfoSolid,
           },
           website: { href: "http://www.google.com", label: "Link" },
           group: "Group 2",
           deleteAction: {
             label: "Delete",
-            icon: IconClose,
+            icon: IconX,
             onPress: () => {},
           },
         },

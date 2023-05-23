@@ -1,4 +1,4 @@
-import { CheckboxField, IconIdea, Body } from "../";
+import { CheckboxField, IconLightbulb, Body } from "../";
 import { createComponentStories, textArgType } from "../util";
 
 const { defaultExport, createControlledStory } = createComponentStories({
@@ -38,7 +38,7 @@ export const ComplexLabel = createControlledStory(false, {
       <Body size="large" weight="strong">
         bold words
       </Body>
-      , then some more text and an icon <IconIdea size={16} />
+      , then some more text and an icon <IconLightbulb size={16} />
     </>
   ),
 });

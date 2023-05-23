@@ -183,7 +183,7 @@ export function MenuList<A extends { disabled?: boolean }>(props: MenuListProps<
 
   return (
     <defaultComponents.MenuList {...props}>
-      <Inset spaceY={dropdownConfig.menuPaddingY}>
+      <Inset spaceX={dropdownConfig.menuPaddingX} spaceY={dropdownConfig.menuPaddingY}>
         {props.isMulti && props.selectProps.showMultiSelectBulkActions && (
           <Inset space={8}>
             <Inline space={0} align="right">

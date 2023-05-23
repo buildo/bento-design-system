@@ -6,13 +6,13 @@ import {
   Stack,
   Table,
   TextField,
-  IconInformative,
-  IconWarning,
+  IconInfoSolid,
+  IconWarningSolid,
   NumberField,
 } from "../";
 import { createComponentStories } from "../util";
 import orderBy from "lodash.orderby";
-import { IconClose } from "@buildo/bento-design-system";
+import { IconX } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
 
 const { defaultExport, createStory } = createComponentStories({
@@ -161,7 +161,7 @@ const customizedColumns = [
 
 const deleteAction = {
   label: "Delete",
-  icon: IconClose,
+  icon: IconX,
   onPress: () => {},
 };
 
@@ -170,7 +170,7 @@ const exampleData = [
     name: "Amazon",
     address: "Theodore Lowe Ap #867-859 Sit Rd. Azusa New York 39531",
     country: {
-      icon: IconInformative,
+      icon: IconInfoSolid,
       text: "US",
       tooltipContent: "United States",
     },
@@ -183,11 +183,11 @@ const exampleData = [
     status: { label: "Active", color: "green" } as const,
     value: {
       numericValue: 100,
-      icon: IconInformative,
+      icon: IconInfoSolid,
     },
     type: "Private",
     website: { href: "http://www.amazon.com", label: "Link" },
-    alerts: { icon: IconWarning, label: "Warning" },
+    alerts: { icon: IconWarningSolid, label: "Warning" },
     group: "Group 1",
     deleteAction,
   },
@@ -195,7 +195,7 @@ const exampleData = [
     name: "Google",
     address: "Cecilia Chapman 711-2880 Nulla St.  Mankato Mississippi 96522",
     country: {
-      icon: IconInformative,
+      icon: IconInfoSolid,
       text: "US",
       tooltipContent: "United States",
     },
@@ -209,7 +209,7 @@ const exampleData = [
     status: { label: "Paused", color: "blue" } as const,
     value: {
       numericValue: 150,
-      icon: IconInformative,
+      icon: IconInfoSolid,
     },
     type: "Private",
     website: { href: "http://www.google.com", label: "Link" },
@@ -220,7 +220,7 @@ const exampleData = [
     name: "Microsoft",
     address: "Iris Watson P.O. Box 283 8562 Fusce Rd.  Frederick Nebraska 20620",
     country: {
-      icon: IconInformative,
+      icon: IconInfoSolid,
       text: "US",
       tooltipContent: "United States",
     },
@@ -234,11 +234,11 @@ const exampleData = [
     status: { label: "Pending", color: "yellow" } as const,
     value: {
       numericValue: 120,
-      icon: IconInformative,
+      icon: IconInfoSolid,
     },
     type: "Private",
     website: { href: "http://www.microsoft.com", label: "Link" },
-    alerts: { icon: IconWarning, label: "Warning" },
+    alerts: { icon: IconWarningSolid, label: "Warning" },
     group: "Group 1",
     deleteAction,
   },
@@ -266,7 +266,7 @@ const exampleData = [
     name: "Twitter",
     address: "Theodore Lowe Ap #867-859 Sit Rd. Azusa New York 39531",
     country: {
-      icon: IconInformative,
+      icon: IconInfoSolid,
       text: "US",
       tooltipContent: "United States",
     },
@@ -280,7 +280,7 @@ const exampleData = [
     status: { label: "Paused", color: "blue" } as const,
     value: {
       numericValue: 137,
-      icon: IconInformative,
+      icon: IconInfoSolid,
     },
     type: "Private",
     website: { href: "http://www.twitter.com", label: "Link" },

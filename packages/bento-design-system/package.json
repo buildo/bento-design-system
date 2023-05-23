@@ -68,7 +68,7 @@
     "@floating-ui/core": "1.1.0",
     "@floating-ui/dom": "1.0.12",
     "@floating-ui/react-dom": "1.0.1",
-    "@fontsource/ibm-plex-sans": "^4.5.11",
+    "@fontsource/lexend": "^4.5.15",
     "@internationalized/date": "^3.0.0",
     "@react-aria/breadcrumbs": "3.3.2",
     "@react-aria/button": "3.6.2",

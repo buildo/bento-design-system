@@ -29,10 +29,12 @@ export function Avatar({ color, name }: Props) {
         className={avatarRecipe({
           color,
         })}
-        width={config.width}
-        height={config.height}
         borderRadius={config.radius}
         boxShadow={config.outline}
+        style={{
+          width: config.width,
+          height: config.height,
+        }}
       >
         {initial ? (
           <Label size={config.labelSize}>{initial}</Label>

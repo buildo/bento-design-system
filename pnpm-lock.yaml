@@ -23,7 +23,7 @@ importers:
       '@floating-ui/core': 1.1.0
       '@floating-ui/dom': 1.0.12
       '@floating-ui/react-dom': 1.0.1
-      '@fontsource/ibm-plex-sans': ^4.5.11
+      '@fontsource/lexend': ^4.5.15
       '@internationalized/date': ^3.0.0
       '@react-aria/breadcrumbs': 3.3.2
       '@react-aria/button': 3.6.2
@@ -131,7 +131,7 @@ importers:
       '@floating-ui/core': 1.1.0
       '@floating-ui/dom': 1.0.12
       '@floating-ui/react-dom': 1.0.1_biqbaboplfbrettd7655fr4n2y
-      '@fontsource/ibm-plex-sans': 4.5.11
+      '@fontsource/lexend': 4.5.15
       '@internationalized/date': 3.0.0
       '@react-aria/breadcrumbs': 3.3.2_react@18.2.0
       '@react-aria/button': 3.6.2_react@18.2.0
@@ -4550,8 +4550,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@fontsource/ibm-plex-sans/4.5.11:
-    resolution: {integrity: sha512-WOX1VjLbeum0ocHXrm5zdDHMbTXUKXnFG/Ba0hjoAz45/H2NQHgmc8MsugG6Q51DQTFlm/l5Xo04+QKj0i6umw==}
+  /@fontsource/lexend/4.5.15:
+    resolution: {integrity: sha512-6edLmDmte8pJWtQ1NIahcJq0iWlf6b0/JLwkd7WbDQ3C5tZWnxjvbP4RSklMv4MPzGjpuYuYnc+QANbjUws1oA==}
     dev: false
 
   /@formatjs/ecma402-abstract/1.11.8:
