@@ -5,6 +5,7 @@ import { LabelProps } from "../Typography/Label/Label";
 import { Children } from "../util/Children";
 import { TooltipPlacement } from "./FieldProps";
 import { statusProperties } from "../util/atoms";
+import { IconButtonProps } from "../IconButton/IconButton";
 
 export type FieldConfig = {
   label: {
@@ -38,7 +39,7 @@ export type InputConfig = {
   fontSize: BodyProps["size"];
   passwordShowIcon: (props: IconProps) => Children;
   passwordHideIcon: (props: IconProps) => Children;
-  passwordIconSize: IconProps["size"];
+  passwordIconSize: IconButtonProps["size"];
 };
 
 export type SelectionControlGroupConfig = {

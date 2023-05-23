@@ -6,6 +6,7 @@ import { IconProps } from "../Icons";
 import { Kind } from "./Banner";
 import { ButtonProps } from "../Button/Button";
 import { Children } from "../util/Children";
+import { IconButtonProps } from "../IconButton/IconButton";
 
 type KindConfig<T> = {
   [k in Kind]: T;
@@ -17,7 +18,7 @@ export type BannerConfig = {
   titleSize: ComponentProps<typeof Title>["size"];
   descriptionSize: ComponentProps<typeof Body>["size"];
   closeIcon: (props: IconProps) => Children;
-  closeIconSize: IconProps["size"];
+  closeIconSize: IconButtonProps["size"];
   semanticIcons: KindConfig<(props: IconProps) => Children>;
   semanticIconSize: {
     withoutTitle: IconProps["size"];

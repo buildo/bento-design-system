@@ -1,3 +1,4 @@
+import { IconButtonProps } from "../IconButton/IconButton";
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";
@@ -11,7 +12,7 @@ export type ChipConfig = {
   label: { kind: "label"; size: LabelProps["size"] } | { kind: "body"; size: BodyProps["size"] };
   iconSize: IconProps["size"];
   closeIcon: (props: IconProps) => Children;
-  closeIconSize: IconProps["size"];
+  closeIconSize: IconButtonProps["size"];
   spacingAfterIcon: BentoSprinkles["gap"];
   spacingAfterLabel: BentoSprinkles["gap"];
   customColors: {
