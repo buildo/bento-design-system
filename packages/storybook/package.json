@@ -45,7 +45,7 @@
     "lint-staged": "13.0.3",
     "lodash.orderby": "4.6.0",
     "mini-css-extract-plugin": "2.6.1",
-    "prettier": "2.7.1",
+    "prettier": "2.8.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "storybook-addon-themes": "6.1.0",

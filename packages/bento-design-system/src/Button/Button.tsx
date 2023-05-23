@@ -21,7 +21,7 @@ const otherButtonKeys = [
   "formTarget",
 ] as const;
 
-export type OtherButtonKeys = typeof otherButtonKeys[number];
+export type OtherButtonKeys = (typeof otherButtonKeys)[number];
 export type ButtonSize = "small" | "medium" | "large";
 type Props = {
   label: LocalizedString;

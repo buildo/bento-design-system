@@ -104,7 +104,7 @@ importers:
       mini-css-extract-plugin: 2.6.1
       playroom: 0.29.0
       postcss: 8.4.23
-      prettier: 2.7.1
+      prettier: 2.8.8
       react: 18.2.0
       react-cool-dimensions: ^2.0.7
       react-dom: 18.2.0
@@ -224,7 +224,7 @@ importers:
       mini-css-extract-plugin: 2.6.1_webpack@5.76.3
       playroom: 0.29.0_taymje5yisqjfw3s7gk6a2jk44
       postcss: 8.4.23
-      prettier: 2.7.1
+      prettier: 2.8.8
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       smooth-release: 8.0.9
@@ -269,7 +269,7 @@ importers:
       lint-staged: 13.0.3
       lodash.orderby: 4.6.0
       mini-css-extract-plugin: 2.6.1
-      prettier: 2.7.1
+      prettier: 2.8.8
       react: 18.2.0
       react-dom: 18.2.0
       recharts: ^2.1.16
@@ -307,7 +307,7 @@ importers:
       lint-staged: 13.0.3
       lodash.orderby: 4.6.0
       mini-css-extract-plugin: 2.6.1_webpack@5.76.3
-      prettier: 2.7.1
+      prettier: 2.8.8
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       storybook-addon-themes: 6.1.0_bb2bxwco6ptpubzwpazr52qf6i
@@ -345,7 +345,7 @@ importers:
       eslint-config-react-app: 7.0.1
       lint-staged: 13.0.3
       playroom: 0.29.0
-      prettier: 2.7.1
+      prettier: 2.8.8
       prism-react-renderer: 1.3.5
       process: 0.11.10
       raw-loader: 4.0.2
@@ -372,7 +372,7 @@ importers:
       clsx: 1.2.1
       docusaurus-plugin-react-docgen-typescript: 1.1.0_vy67b2njtce6aph6izod4nkvpe
       playroom: 0.29.0_biqbaboplfbrettd7655fr4n2y
-      prettier: 2.7.1
+      prettier: 2.8.8
       prism-react-renderer: 1.3.5_react@18.2.0
       process: 0.11.10
       react: 18.2.0
@@ -18303,7 +18303,7 @@ packages:
       parse-prop-types: 0.3.0_prop-types@15.8.1
       polished: 4.2.2
       portfinder: 1.0.32
-      prettier: 2.8.4
+      prettier: 2.8.8
       prop-types: 15.8.1
       query-string: 7.1.3
       re-resizable: 6.9.9_biqbaboplfbrettd7655fr4n2y
@@ -18377,7 +18377,7 @@ packages:
       parse-prop-types: 0.3.0_prop-types@15.8.1
       polished: 4.2.2
       portfinder: 1.0.32
-      prettier: 2.8.4
+      prettier: 2.8.8
       prop-types: 15.8.1
       query-string: 7.1.3
       re-resizable: 6.9.9_biqbaboplfbrettd7655fr4n2y
@@ -18952,13 +18952,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.7.1:
-    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-
-  /prettier/2.8.4:
-    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
+  /prettier/2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
     hasBin: true
 
