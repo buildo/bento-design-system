@@ -81,7 +81,7 @@ importers:
       '@types/react-is': ^17.0.3
       '@types/react-table': 7.7.14
       '@vanilla-extract/babel-plugin': 1.2.0
-      '@vanilla-extract/css': 1.7.2
+      '@vanilla-extract/css': 1.11.0
       '@vanilla-extract/dynamic': 2.0.3
       '@vanilla-extract/esbuild-plugin': 2.1.0
       '@vanilla-extract/private': 1.0.3
@@ -168,10 +168,10 @@ importers:
       '@react-types/overlays': 3.6.4_react@18.2.0
       '@react-types/radio': 3.3.0_react@18.2.0
       '@react-types/shared': 3.15.0_react@18.2.0
-      '@vanilla-extract/css': 1.7.2
+      '@vanilla-extract/css': 1.11.0
       '@vanilla-extract/dynamic': 2.0.3
-      '@vanilla-extract/recipes': 0.2.5_@vanilla-extract+css@1.7.2
-      '@vanilla-extract/sprinkles': 1.6.0_@vanilla-extract+css@1.7.2
+      '@vanilla-extract/recipes': 0.2.5_sj7ql4kjoy7ivqenazaubmmhp4
+      '@vanilla-extract/sprinkles': 1.6.0_sj7ql4kjoy7ivqenazaubmmhp4
       clsx: 1.2.1
       deepmerge-ts: 4.3.0
       lodash.pick: 4.4.0
@@ -257,7 +257,7 @@ importers:
       '@types/react': ^18
       '@types/react-table': 7.7.14
       '@vanilla-extract/babel-plugin': 1.2.0
-      '@vanilla-extract/css': 1.7.2
+      '@vanilla-extract/css': 1.11.0
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/sprinkles': 1.6.0
       '@vanilla-extract/webpack-plugin': 2.2.0
@@ -277,7 +277,7 @@ importers:
       typescript: 4.7.4
     dependencies:
       '@buildo/bento-design-system': link:../bento-design-system
-      '@vanilla-extract/sprinkles': 1.6.0_@vanilla-extract+css@1.7.2
+      '@vanilla-extract/sprinkles': 1.6.0_sj7ql4kjoy7ivqenazaubmmhp4
       date-fns: 2.29.3
       recharts: 2.1.16_v2m5e27vhdewzwhryxwfaorcca
     devDependencies:
@@ -297,7 +297,7 @@ importers:
       '@types/react': 18.0.15
       '@types/react-table': 7.7.14
       '@vanilla-extract/babel-plugin': 1.2.0
-      '@vanilla-extract/css': 1.7.2
+      '@vanilla-extract/css': 1.11.0
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/webpack-plugin': 2.2.0_webpack@5.76.3
       chromatic: 6.7.2
@@ -391,7 +391,7 @@ importers:
       '@types/babel__traverse': 7.18.5
       '@types/node': 18.16.14
       '@types/react': 18.0.15
-      '@vanilla-extract/sprinkles': 1.6.0_@vanilla-extract+css@1.7.2
+      '@vanilla-extract/sprinkles': 1.6.0_sj7ql4kjoy7ivqenazaubmmhp4
       eslint-config-react-app: 7.0.1_qov3uxrlfsj6amljq2ujm4ue5a
       lint-staged: 13.0.3
       raw-loader: 4.0.2_webpack@5.76.3
@@ -8824,37 +8824,6 @@ packages:
       deepmerge: 4.2.2
       media-query-parser: 2.0.2
       outdent: 0.8.0
-    dev: true
-
-  /@vanilla-extract/css/1.7.2:
-    resolution: {integrity: sha512-wRsV9sSD4qN6+dbS1ywExw5kEU4Fk/UipNKFsGwwUsHLyuPKK8BaZUmzfyAQex6POHYQboYv6Ajbqpvhx2KhfQ==}
-    dependencies:
-      '@emotion/hash': 0.8.0
-      '@vanilla-extract/private': 1.0.3
-      chalk: 4.1.2
-      css-what: 5.1.0
-      cssesc: 3.0.0
-      csstype: 3.1.0
-      deep-object-diff: 1.1.7
-      deepmerge: 4.2.2
-      escape-string-regexp: 4.0.0
-      media-query-parser: 2.0.2
-      outdent: 0.8.0
-
-  /@vanilla-extract/css/1.9.5:
-    resolution: {integrity: sha512-aVSv6q24zelKRtWx/l9yshU3gD1uCDMZ2ZGcIiYnAcPfyLryrG/1X5DxtyiPKcyI/hZWoteHofsN//2q9MvzOA==}
-    dependencies:
-      '@emotion/hash': 0.9.0
-      '@vanilla-extract/private': 1.0.3
-      ahocorasick: 1.0.2
-      chalk: 4.1.2
-      css-what: 5.1.0
-      cssesc: 3.0.0
-      csstype: 3.1.0
-      deep-object-diff: 1.1.9
-      deepmerge: 4.2.2
-      media-query-parser: 2.0.2
-      outdent: 0.8.0
 
   /@vanilla-extract/dynamic/2.0.3:
     resolution: {integrity: sha512-Rglfw2gXAYiBzAQ4jgUG7rBgE2c88e/zcG27ZVoIqMHVq56wf2C1katGMm1yFMNBgzqM7oBNYzz4YOMzznydkg==}
@@ -8871,7 +8840,7 @@ packages:
   /@vanilla-extract/integration/5.0.0:
     resolution: {integrity: sha512-HwglsIxGYtV4IXFfyQ6GzZLFoaWaW+QkNx8UhXbgsCWUoPqpSbioukCOA+SuSuzsIcEZ3hkD0Y5ixITQNtnzjQ==}
     dependencies:
-      '@vanilla-extract/css': 1.7.2
+      '@vanilla-extract/css': 1.11.0
       esbuild: 0.11.23
       eval: 0.1.6
       find-up: 5.0.0
@@ -8908,27 +8877,20 @@ packages:
   /@vanilla-extract/private/1.0.3:
     resolution: {integrity: sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==}
 
-  /@vanilla-extract/recipes/0.2.5_@vanilla-extract+css@1.7.2:
+  /@vanilla-extract/recipes/0.2.5_sj7ql4kjoy7ivqenazaubmmhp4:
     resolution: {integrity: sha512-OWXUUiFJdswD3+Xg8f8avuw/vAHZRFS4oHqFeoV1TcO8cfbDQ0zmkreBHvyspoJU+qsyWK48yPHKSptqNRPy9Q==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
-      '@vanilla-extract/css': 1.7.2
+      '@vanilla-extract/css': 1.11.0
     dev: false
 
-  /@vanilla-extract/sprinkles/1.6.0_@vanilla-extract+css@1.7.2:
+  /@vanilla-extract/sprinkles/1.6.0_sj7ql4kjoy7ivqenazaubmmhp4:
     resolution: {integrity: sha512-TDc/bKyYmt6PDd7/39a5HXUa+4mBI9PO0uw0jmxFMqe9EzrFEVevyRsjJ9KGK09ACItvVUotz98LIJTeliCbpQ==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
-      '@vanilla-extract/css': 1.7.2
-
-  /@vanilla-extract/sprinkles/1.6.0_@vanilla-extract+css@1.9.5:
-    resolution: {integrity: sha512-TDc/bKyYmt6PDd7/39a5HXUa+4mBI9PO0uw0jmxFMqe9EzrFEVevyRsjJ9KGK09ACItvVUotz98LIJTeliCbpQ==}
-    peerDependencies:
-      '@vanilla-extract/css': ^1.0.0
-    dependencies:
-      '@vanilla-extract/css': 1.9.5
+      '@vanilla-extract/css': 1.11.0
 
   /@vanilla-extract/webpack-plugin/2.1.12_webpack@5.76.3:
     resolution: {integrity: sha512-8mAbIDEh9r7a5cgb3wcILzuhEbGNddV4/qvwogOlxhoGrP4deUKJHEtPURDviWZ+x/FzFZtZ3glWU7WD8+WN8A==}
@@ -11967,9 +11929,6 @@ packages:
 
   /deep-is/0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
-
-  /deep-object-diff/1.1.7:
-    resolution: {integrity: sha512-QkgBca0mL08P6HiOjoqvmm6xOAl2W6CT2+34Ljhg0OeFan8cwlcdq8jrLKsBBuUFAZLsN5b6y491KdKEoSo9lg==}
 
   /deep-object-diff/1.1.9:
     resolution: {integrity: sha512-Rn+RuwkmkDwCi2/oXOFS9Gsr5lJZu/yTGpK7wAaAIE75CC+LCGEZHpY6VQJa/RoJcrmaA/docWJZvYohlNkWPA==}
@@ -18659,9 +18618,9 @@ packages:
       '@types/prettier': 2.7.2
       '@types/react': 18.0.15
       '@types/react-dom': 18.2.1
-      '@vanilla-extract/css': 1.9.5
+      '@vanilla-extract/css': 1.11.0
       '@vanilla-extract/css-utils': 0.1.3
-      '@vanilla-extract/sprinkles': 1.6.0_@vanilla-extract+css@1.9.5
+      '@vanilla-extract/sprinkles': 1.6.0_sj7ql4kjoy7ivqenazaubmmhp4
       '@vanilla-extract/webpack-plugin': 2.1.12_webpack@5.76.3
       babel-loader: 9.1.2_4xnmuwebvb2aqltewj7ixrj3jy
       classnames: 2.3.2
@@ -18733,9 +18692,9 @@ packages:
       '@types/prettier': 2.7.2
       '@types/react': 18.0.15
       '@types/react-dom': 18.2.1
-      '@vanilla-extract/css': 1.9.5
+      '@vanilla-extract/css': 1.11.0
       '@vanilla-extract/css-utils': 0.1.3
-      '@vanilla-extract/sprinkles': 1.6.0_@vanilla-extract+css@1.9.5
+      '@vanilla-extract/sprinkles': 1.6.0_sj7ql4kjoy7ivqenazaubmmhp4
       '@vanilla-extract/webpack-plugin': 2.1.12_webpack@5.76.3
       babel-loader: 9.1.2_4xnmuwebvb2aqltewj7ixrj3jy
       classnames: 2.3.2
