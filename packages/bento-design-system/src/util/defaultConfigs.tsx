@@ -245,7 +245,7 @@ export const field: FieldConfig = {
   internalSpacing: 4,
   tip: {
     icon: IconQuestionCircle,
-    iconSize: 12,
+    iconSize: 16,
     placement: "right",
   },
 };
