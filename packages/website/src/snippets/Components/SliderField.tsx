@@ -7,7 +7,8 @@ export default function SliderFieldExample() {
     <SliderField
       type="double"
       name="value"
-      label="Value"
+      labels={["Min Value", "Max Value"]}
+      placeholders={["Insert min", "Insert max"]}
       value={value}
       onChange={setValue}
       minValue={0}

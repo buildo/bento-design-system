@@ -65,7 +65,7 @@ export function BarChart<D extends string, C extends string>({
       aspect={aspect}
       debounce={debounce}
     >
-      <RechartBarChart data={data}>
+      <RechartBarChart data={data} layout="horizontal">
         {!hideXAxis && <XAxis dataKey={dataKey} tickFormatter={xAxisValueFormatter} />}
         {!hideYAxis && <YAxis tickFormatter={yAxisValueFormatter} />}
         {!hideTooltip && tooltip}

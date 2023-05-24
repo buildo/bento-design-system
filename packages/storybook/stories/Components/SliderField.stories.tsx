@@ -7,8 +7,6 @@ const args = {
   name: "slider-field",
   minValue: 0,
   maxValue: 100,
-  label: "Label",
-  hint: "Some hint that is very useful to you",
 } as const;
 
 const { defaultExport, createControlledStory: createControlledStory_ } = createComponentStories<
@@ -31,37 +29,58 @@ function createControlledStory<S>(
 
 export default defaultExport;
 
-export const Single = createControlledStory(30, {
-  type: "single",
+const singleArgs = {
+  type: "single" as const,
   assistiveText: "Assistive text",
-});
+  label: "Label",
+  placeholder: "Insert a value",
+  hint: "Some hint that is very useful to you",
+};
 
-export const Double = createControlledStory([30, 80], {
+const doubleArgs = {
   type: "double",
-});
+  labels: ["Min", "Max"],
+  placeholders: ["Insert min", "Insert max"],
+  assistiveTexts: ["Min value", "Max value"],
+  hints: ["Some hint that is very useful to you", "Some hint that is very useful to you"],
+};
+
+export const Single = createControlledStory(30, singleArgs);
+
+export const Double = createControlledStory([30, 80], doubleArgs);
 
 export const SingleDisabled = createControlledStory(30, {
-  type: "single",
+  ...singleArgs,
   disabled: true,
+});
+
+export const SingleError = createControlledStory(30, {
+  ...singleArgs,
+  issues: ["Something went wrong"],
 });
 
 export const DoubleDisabled = createControlledStory([30, 80], {
-  type: "double",
+  ...doubleArgs,
   disabled: true,
 });
 
+export const DoubleErrors = createControlledStory([30, 80], {
+  ...doubleArgs,
+  issues: [["Something went wrong"], ["Something went wrong"]],
+});
+
 export const CustomStep = createControlledStory(30, {
-  type: "single",
+  ...singleArgs,
   step: 0.5,
 });
 
 export const CustomDragStep = createControlledStory(28, {
-  type: "single",
+  ...singleArgs,
   step: 2,
   dragStep: 9,
 });
 
 export const WithoutThumbValue = createControlledStory([30, 80], {
-  type: "double",
+  ...doubleArgs,
   hideThumbValue: true,
 });
