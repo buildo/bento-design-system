@@ -1,3 +1,4 @@
+import { LocalizedString } from "@buildo/bento-design-system";
 import { SliderField, SliderFieldProps, Omit } from "..";
 import { Actions, createComponentStories } from "../util";
 import { Parameters } from "@storybook/addons";
@@ -38,11 +39,14 @@ const singleArgs = {
 };
 
 const doubleArgs = {
-  type: "double",
-  labels: ["Min", "Max"],
-  placeholders: ["Insert min", "Insert max"],
-  assistiveTexts: ["Min value", "Max value"],
-  hints: ["Some hint that is very useful to you", "Some hint that is very useful to you"],
+  type: "double" as const,
+  labels: ["Min", "Max"] as [LocalizedString, LocalizedString],
+  placeholders: ["Insert min", "Insert max"] as [LocalizedString, LocalizedString],
+  assistiveTexts: ["Min value", "Max value"] as [LocalizedString, LocalizedString],
+  hints: ["Some hint that is very useful to you", "Some hint that is very useful to you"] as [
+    LocalizedString,
+    LocalizedString
+  ],
 };
 
 export const Single = createControlledStory(30, singleArgs);

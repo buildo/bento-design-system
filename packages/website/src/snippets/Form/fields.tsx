@@ -87,6 +87,7 @@ export const ExampleSliderField = (
       minValue={props.minValue}
       maxValue={props.maxValue}
       label={props.label}
+      placeholder={props.placeholder}
       name="slider"
       type="single"
       kind="decimal"

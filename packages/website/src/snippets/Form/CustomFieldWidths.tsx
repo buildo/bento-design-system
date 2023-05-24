@@ -57,6 +57,7 @@ export default function CustomFieldWidths() {
           <ExampleSliderField
             initialValue={4}
             label="How would you rate yourself from 1 to 10?"
+            placeholder="Insert a value"
             minValue={1}
             maxValue={10}
           />
