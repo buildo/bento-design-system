@@ -418,6 +418,10 @@ export const navigation: NavigationConfig = {
     },
   },
   uppercaseLabel: false,
+  radius: {
+    medium: 16,
+    large: 16,
+  },
 };
 
 export const readOnlyField: ReadOnlyFieldConfig = {

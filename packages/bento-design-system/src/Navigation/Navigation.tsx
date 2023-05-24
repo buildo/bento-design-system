@@ -90,6 +90,7 @@ function Destination({
       disabled={disabled}
       paddingX={config.destinationPaddingX[size]}
       paddingY={config.destinationPaddingY[size]}
+      borderRadius={config.radius[size]}
     >
       <Columns space={config.internalSpacing[size]} alignY="center" align="center">
         {icon && (
