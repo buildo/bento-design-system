@@ -70,11 +70,15 @@ function Destination({
       <Box
         position="absolute"
         left={0}
+        right={0}
         bottom={0}
-        width="full"
         background="currentColor"
         color={config.activeVisualElement.lineColor}
-        style={{ height: config.activeVisualElement.lineHeight[size] }}
+        style={{
+          height: config.activeVisualElement.lineHeight[size],
+          width: config.activeVisualElement.lineWidth[size],
+          margin: "0 auto",
+        }}
       />
     );
 

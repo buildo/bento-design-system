@@ -18,6 +18,7 @@ export type NavigationConfig = {
 };
 
 type ActiveVisualElementConfig = {
+  lineWidth: SizeConfig<number | "100%">;
   lineHeight: SizeConfig<number>;
   lineColor: BentoSprinkles["decoration"];
 };
