@@ -7,6 +7,7 @@ import { Kind } from "./Banner";
 import { ButtonProps } from "../Button/Button";
 import { Children } from "../util/Children";
 import { IconButtonProps } from "../IconButton/IconButton";
+import { BorderRadiusConfig } from "../util/BorderRadiusConfig";
 
 type KindConfig<T> = {
   [k in Kind]: T;
@@ -14,7 +15,7 @@ type KindConfig<T> = {
 export type BannerConfig = {
   paddingX: BentoSprinkles["paddingX"];
   paddingY: BentoSprinkles["paddingY"];
-  radius: BentoSprinkles["borderRadius"];
+  radius: BorderRadiusConfig;
   titleSize: ComponentProps<typeof Title>["size"];
   descriptionSize: ComponentProps<typeof Body>["size"];
   closeIcon: (props: IconProps) => Children;

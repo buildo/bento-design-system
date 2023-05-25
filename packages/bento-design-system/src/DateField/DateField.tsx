@@ -12,6 +12,7 @@ import { dateFieldRecipe } from "./DateField.css";
 import { LocalizedString } from "../util/LocalizedString";
 import { useBentoConfig } from "../BentoConfigContext";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 export type ShortcutProps<Value> = {
   label: LocalizedString;
@@ -156,7 +157,7 @@ export function DateField(props: Props) {
       errorMessageProps={errorMessageProps}
     >
       <Box
-        borderRadius={inputConfig.radius}
+        {...getRadiusPropsFromConfig(inputConfig.radius)}
         paddingX={inputConfig.paddingX}
         paddingY={inputConfig.paddingY}
         background={inputConfig.background.default}

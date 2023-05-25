@@ -12,6 +12,7 @@ import {
 } from "..";
 import { toastRecipe } from "./Toast.css";
 import { useBentoConfig } from "../BentoConfigContext";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = {
   kind: "informative" | "positive" | "warning" | "negative" | "secondary";
@@ -33,7 +34,7 @@ export function Toast({ kind, message, action, onDismiss }: Props) {
       as="aside"
       aria-live="polite"
       className={toastRecipe({ kind, hasOutline: config.outline, elevation: config.elevation })}
-      borderRadius={config.radius}
+      {...getRadiusPropsFromConfig(config.radius)}
       paddingY={config.paddingY}
       paddingX={config.paddingX}
     >

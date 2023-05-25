@@ -61,11 +61,23 @@ const { defaultExport, createStory } = createComponentStories({
 
 export default defaultExport;
 
+const children = (
+  <Stack space={8}>
+    <Title size="large">Campaign type</Title>
+    <Body size="large">Drive-traffic advanced</Body>
+  </Stack>
+);
+
 export const card = createStory({
-  children: (
-    <Stack space={8}>
-      <Title size="large">Campaign type</Title>
-      <Body size="large">Drive-traffic advanced</Body>
-    </Stack>
-  ),
+  children,
+});
+
+export const cardWithDiffernetRadius = createStory({
+  children,
+  borderRadius: {
+    topLeft: 40,
+    bottomRight: 40,
+    topRight: 0,
+    bottomLeft: 0,
+  },
 });

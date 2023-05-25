@@ -2,6 +2,7 @@ import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";
 import { LabelProps } from "../Typography/Label/Label";
+import { BorderRadiusConfig } from "../util/BorderRadiusConfig";
 import type { ListSize } from "./List";
 
 type ListItemSizeConfig<T> = {
@@ -9,7 +10,7 @@ type ListItemSizeConfig<T> = {
 };
 
 export type ListItemConfig = {
-  borderRadius: BentoSprinkles["borderRadius"];
+  borderRadius: BorderRadiusConfig;
   paddingX: ListItemSizeConfig<BentoSprinkles["paddingX"]>;
   paddingY: ListItemSizeConfig<BentoSprinkles["paddingY"]>;
   fontSize: {

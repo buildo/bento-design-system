@@ -15,6 +15,7 @@ import {
 import { bannerRecipe } from "./Banner.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { useBentoConfig } from "../BentoConfigContext";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 export type Kind = "informative" | "positive" | "warning" | "negative" | "secondary";
 
@@ -63,7 +64,7 @@ export function Banner({ title, description, kind, action, ...dismissProps }: Pr
     <Box
       paddingX={config.paddingX}
       paddingY={config.paddingY}
-      borderRadius={config.radius}
+      {...getRadiusPropsFromConfig(config.radius)}
       className={bannerRecipe({ kind, hasOutline: config.outline })}
     >
       <Stack space={4}>

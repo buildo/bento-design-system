@@ -75,7 +75,7 @@ export const areaLoader: AreaLoaderConfig = {
   messageColor: "primary",
   messageSize: "medium",
   readabilityAreaColor: "primary",
-  readabilityAreaBorderRadius: 24,
+  readabilityAreaBorderRadius: 16,
 };
 
 export const avatar: AvatarConfig = {

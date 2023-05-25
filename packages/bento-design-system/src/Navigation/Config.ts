@@ -1,6 +1,7 @@
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { LabelProps } from "../Typography/Label/Label";
+import { BorderRadiusConfig } from "../util/BorderRadiusConfig";
 import { NavigationSize } from "./Navigation";
 
 type SizeConfig<A> = Record<NavigationSize, A>;
@@ -14,7 +15,7 @@ export type NavigationConfig = {
   internalSpacing: SizeConfig<BentoSprinkles["gap"]>;
   activeVisualElement: ActiveVisualElementConfig | JSX.Element;
   uppercaseLabel: boolean;
-  radius: SizeConfig<BentoSprinkles["borderRadius"]>;
+  radius: SizeConfig<BorderRadiusConfig>;
 };
 
 type ActiveVisualElementConfig = {

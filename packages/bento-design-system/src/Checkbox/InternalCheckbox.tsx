@@ -7,6 +7,7 @@ import { vars } from "../vars.css";
 import { useLabel } from "@react-aria/label";
 import { InputHTMLAttributes, Ref } from "react";
 import { useBentoConfig } from "../BentoConfigContext";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type CheckboxUIProps = {
   value: boolean;
@@ -19,7 +20,7 @@ function CheckboxUI({ value, isFocusVisible, isDisabled }: CheckboxUIProps) {
   return (
     <Box
       className={checkboxRecipe({ isSelected: value, isFocused: isFocusVisible, isDisabled })}
-      borderRadius={config.checkboxBorderRadius}
+      {...getRadiusPropsFromConfig(config.checkboxBorderRadius)}
     >
       {value && <CheckboxMark isDisabled={isDisabled} />}
     </Box>

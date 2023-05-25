@@ -9,6 +9,7 @@ import { Column, Columns } from "../Layout/Columns";
 import { IconProps } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
 import pick from "lodash.pick";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 const otherButtonKeys = [
   "name",
@@ -76,7 +77,7 @@ export function Button(props: Props) {
       onKeyUp={onKeyUp}
       paddingX={config.paddingX[size]}
       paddingY={config.paddingY[size]}
-      borderRadius={config.radius}
+      {...getRadiusPropsFromConfig(config.radius)}
       onPointerDown={internal_unsafe__bypassUsePress ? undefined : buttonProps.onPointerDown}
       onClick={internal_unsafe__bypassUsePress ? props.onPress : buttonProps.onClick}
     >

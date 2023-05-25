@@ -1,8 +1,9 @@
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
+import { BorderRadiusConfig } from "../util/BorderRadiusConfig";
 
 export type IconButtonConfig = {
-  radius: BentoSprinkles["borderRadius"];
+  radius: BorderRadiusConfig;
   padding: Record<
     Exclude<IconProps["size"], 40>,
     | BentoSprinkles["padding"]

@@ -3,7 +3,13 @@ import { useEffect, useRef } from "react";
 import { Box } from "..";
 import { Body } from "../Typography/Body/Body";
 import type { CommonCalendarProps } from "./Calendar";
-import { dayRadius, dayRecipe } from "./DateField.css";
+import {
+  topLeftRadius,
+  topRightRadius,
+  bottomLeftRadius,
+  bottomRightRadius,
+  dayRecipe,
+} from "./DateField.css";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { useBentoConfig } from "../BentoConfigContext";
 
@@ -100,9 +106,21 @@ export function Day(props: Props) {
 
   return (
     <Box
-      style={assignInlineVars({
-        [dayRadius]: `${config.dayRadius}px`,
-      })}
+      style={assignInlineVars(
+        typeof config.radius === "object"
+          ? {
+              [topLeftRadius]: `${config.radius.topLeft}px`,
+              [topRightRadius]: `${config.radius.topRight}px`,
+              [bottomLeftRadius]: `${config.radius.bottomLeft}px`,
+              [bottomRightRadius]: `${config.radius.bottomRight}px`,
+            }
+          : {
+              [topLeftRadius]: `${config.radius}px`,
+              [topRightRadius]: `${config.radius}px`,
+              [bottomLeftRadius]: `${config.radius}px`,
+              [bottomRightRadius]: `${config.radius}px`,
+            }
+      )}
       className={dayRecipe({ style })}
       width={config.dayWidth}
       height={config.dayHeight}

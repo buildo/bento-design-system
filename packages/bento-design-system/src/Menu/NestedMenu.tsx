@@ -8,6 +8,7 @@ import { useBentoConfig } from "../BentoConfigContext";
 import { menuRecipe } from "./Menu.css";
 import { MenuList } from "./MenuList";
 import { useIsSSR } from "@react-aria/ssr";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = {
   items: MenuItemProps[];
@@ -57,7 +58,7 @@ export function NestedMenu({
             ref={overlayRef}
             className={menuRecipe({ elevation: config.elevation })}
             {...(menuProps as DOMAttributes<HTMLDivElement>)}
-            borderRadius={config.radius}
+            {...getRadiusPropsFromConfig(config.radius)}
             style={{ maxHeight, ...positionProps.style }}
           >
             <Inset spaceY={config.paddingY}>

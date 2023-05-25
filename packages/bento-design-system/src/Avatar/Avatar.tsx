@@ -1,5 +1,6 @@
 import { Label, Box } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 import { avatarRecipe } from "./Avatar.css";
 
 type Props = {
@@ -29,7 +30,7 @@ export function Avatar({ color, name }: Props) {
         className={avatarRecipe({
           color,
         })}
-        borderRadius={config.radius}
+        {...getRadiusPropsFromConfig(config.radius)}
         boxShadow={config.outline}
         style={{
           width: config.width,

@@ -5,6 +5,9 @@ const radius = {
   0: 0,
   12: 12,
   24: 24,
+  32: 32,
+  40: 40,
+  80: 80,
   circled: "50%",
   // dirty trick to make the border-radius look good regardless of the width of the container
   circledX: "100vh",

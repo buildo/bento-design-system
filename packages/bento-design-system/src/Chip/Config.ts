@@ -3,6 +3,7 @@ import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";
 import { LabelProps } from "../Typography/Label/Label";
+import { BorderRadiusConfig } from "../util/BorderRadiusConfig";
 import { Children } from "../util/Children";
 import { ChipCustomColors } from "../util/ConfigurableTypes";
 
@@ -18,6 +19,6 @@ export type ChipConfig = {
   customColors: {
     [k in ChipCustomColors]: BentoSprinkles["background"];
   };
-  radius: BentoSprinkles["borderRadius"];
+  radius: BorderRadiusConfig;
   uppercase: boolean;
 };

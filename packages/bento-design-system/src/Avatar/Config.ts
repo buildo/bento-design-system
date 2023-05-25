@@ -3,11 +3,12 @@ import { IconProps } from "../Icons";
 import { Label } from "../Typography/Label/Label";
 import { BentoSprinkles } from "../internal";
 import { Children } from "../util/Children";
+import { BorderRadiusConfig } from "../util/BorderRadiusConfig";
 
 export type AvatarConfig = {
   width: number;
   height: number;
-  radius: BentoSprinkles["borderRadius"];
+  radius: BorderRadiusConfig;
   labelSize: ComponentProps<typeof Label>["size"];
   icon: (props: IconProps) => Children;
   iconSize: IconProps["size"];

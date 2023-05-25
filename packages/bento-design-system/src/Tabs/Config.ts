@@ -18,7 +18,9 @@ type TabsWidthConfig =
 type TabsKindConfig =
   | {
       kind: "folder";
-      radius: BentoSprinkles["borderRadius"];
+      radius:
+        | BentoSprinkles["borderRadius"]
+        | { topLeft: BentoSprinkles["borderRadius"]; topRight: BentoSprinkles["borderRadius"] };
     }
   | {
       kind: "underline";

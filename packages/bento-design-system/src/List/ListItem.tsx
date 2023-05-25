@@ -18,7 +18,7 @@ import { element } from "../reset.css";
 import { Children } from "../util/Children";
 import { useBentoConfig } from "../BentoConfigContext";
 import type { ListItemConfig } from "./Config";
-import { BentoSprinkles } from "../internal";
+import { BorderRadiusConfig, getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Kind =
   | {
@@ -45,7 +45,7 @@ type RightItem = {
 };
 
 type CommonItemProps = {
-  borderRadius?: BentoSprinkles["borderRadius"];
+  borderRadius?: BorderRadiusConfig;
   disabled?: boolean;
   isFocused?: boolean;
   isSelected?: boolean;
@@ -96,7 +96,7 @@ export const ListItem = forwardRef<HTMLElement, Props>((props, ref) => {
         focused: !!props.isFocused,
         selected: !!props.isSelected,
       })}
-      borderRadius={props.borderRadius ?? config.borderRadius}
+      {...getRadiusPropsFromConfig(props.borderRadius ?? config.borderRadius)}
       disabled={props.disabled}
     >
       <Box

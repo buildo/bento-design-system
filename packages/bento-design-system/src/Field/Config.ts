@@ -6,6 +6,7 @@ import { Children } from "../util/Children";
 import { TooltipPlacement } from "./FieldProps";
 import { statusProperties } from "../util/atoms";
 import { IconButtonProps } from "../IconButton/IconButton";
+import { BorderRadiusConfig } from "../util/BorderRadiusConfig";
 
 export type FieldConfig = {
   label: {
@@ -28,7 +29,7 @@ export type InputConfig = {
   internalSpacing: BentoSprinkles["gap"];
   paddingX: BentoSprinkles["paddingX"];
   paddingY: BentoSprinkles["paddingY"];
-  radius: BentoSprinkles["borderRadius"];
+  radius: BorderRadiusConfig;
   background: {
     default: BentoSprinkles["background"];
     // NOTE(gabro): not using BentoSprinkles["background"] because we only want
@@ -53,5 +54,5 @@ export type SelectionControlConfig = {
   controlLabelSpacing: BentoSprinkles["gap"];
   labelPaddingTop: number;
   labelSize: BodyProps["size"];
-  checkboxBorderRadius: BentoSprinkles["borderRadius"];
+  checkboxBorderRadius: BorderRadiusConfig;
 };

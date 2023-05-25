@@ -3,12 +3,13 @@ import { IconButtonProps } from "../IconButton/IconButton";
 import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";
+import { BorderRadiusConfig } from "../util/BorderRadiusConfig";
 import { Children } from "../util/Children";
 
 export type ToastConfig = {
   paddingX: BentoSprinkles["paddingX"];
   paddingY: BentoSprinkles["paddingY"];
-  radius: BentoSprinkles["borderRadius"];
+  radius: BorderRadiusConfig;
   messageSize: BodyProps["size"];
   closeIcon: (props: IconProps) => Children;
   closeIconSize: IconButtonProps["size"];

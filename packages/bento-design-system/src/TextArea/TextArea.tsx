@@ -7,6 +7,7 @@ import { FieldProps } from "../Field/FieldProps";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { useBentoConfig } from "../BentoConfigContext";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;
@@ -46,7 +47,7 @@ export function TextArea(props: Props) {
         color={undefined}
         width={undefined}
         height={undefined}
-        borderRadius={config.radius}
+        {...getRadiusPropsFromConfig(config.radius)}
         paddingX={config.paddingX}
         paddingY={config.paddingY}
         background={config.background.default}
