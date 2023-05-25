@@ -14,9 +14,11 @@ export type NavigationConfig = {
   internalSpacing: SizeConfig<BentoSprinkles["gap"]>;
   activeVisualElement: ActiveVisualElementConfig | JSX.Element;
   uppercaseLabel: boolean;
+  radius: SizeConfig<BentoSprinkles["borderRadius"]>;
 };
 
 type ActiveVisualElementConfig = {
+  lineWidth: SizeConfig<number | "100%">;
   lineHeight: SizeConfig<number>;
   lineColor: BentoSprinkles["decoration"];
 };

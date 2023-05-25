@@ -416,8 +416,16 @@ export const navigation: NavigationConfig = {
       medium: 4,
       large: 4,
     },
+    lineWidth: {
+      medium: 16,
+      large: 16,
+    },
   },
   uppercaseLabel: false,
+  radius: {
+    medium: 16,
+    large: 16,
+  },
 };
 
 export const readOnlyField: ReadOnlyFieldConfig = {
