@@ -7,6 +7,7 @@ import { useLink } from "@react-aria/link";
 import { element } from "../reset.css";
 import { IconProps } from "../Icons";
 import { useBentoConfig } from "../BentoConfigContext";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = {
   href: string;
@@ -59,7 +60,7 @@ export function ButtonLink({
       display="inline-block"
       paddingX={config.paddingX[size]}
       paddingY={config.paddingY[size]}
-      borderRadius={config.radius}
+      {...getRadiusPropsFromConfig(config.radius)}
     >
       <Columns space={config.internalSpacing} alignY="center" reverse={iconPosition === "trailing"}>
         {icon && (

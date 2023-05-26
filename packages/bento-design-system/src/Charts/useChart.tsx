@@ -21,6 +21,7 @@ import { ChartConfig, ChartDataColor } from "./Config";
 import { legendContent, makeLegendEntry } from "./Legend/Legend";
 import { tooltipStyle, useTooltip } from "./Tooltip/Tooltip";
 import { NameType, ValueType } from "./ValueFormatter";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type ChartTools<TValue extends ValueType, TName extends NameType> = {
   /**
@@ -149,7 +150,7 @@ export function useChart<TValue extends ValueType, TName extends NameType>({
     return (
       <Box
         className={cardRecipe({ elevation: "small" })}
-        borderRadius={bentoConfig.card.defaultRadius}
+        {...getRadiusPropsFromConfig(bentoConfig.card.defaultRadius)}
         padding={16}
         tabIndex={-1}
       >

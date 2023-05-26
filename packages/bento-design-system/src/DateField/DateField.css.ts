@@ -2,7 +2,10 @@ import { createVar, style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
 
-export const dayRadius = createVar();
+export const topLeftRadius = createVar();
+export const topRightRadius = createVar();
+export const bottomLeftRadius = createVar();
+export const bottomRightRadius = createVar();
 
 export const calendar = bentoSprinkles({
   background: "backgroundPrimary",
@@ -93,8 +96,8 @@ export const dayRecipe = strictRecipe({
           background: { default: "backgroundInteractive", hover: "backgroundSecondary" },
         }),
         style({
-          borderTopLeftRadius: dayRadius,
-          borderBottomLeftRadius: dayRadius,
+          borderTopLeftRadius: topLeftRadius,
+          borderBottomLeftRadius: bottomLeftRadius,
         }),
       ],
       selectedEnd: [
@@ -103,8 +106,8 @@ export const dayRecipe = strictRecipe({
           background: { default: "backgroundInteractive", hover: "backgroundSecondary" },
         }),
         style({
-          borderTopRightRadius: dayRadius,
-          borderBottomRightRadius: dayRadius,
+          borderTopRightRadius: topRightRadius,
+          borderBottomRightRadius: bottomRightRadius,
         }),
       ],
       selectedRange: bentoSprinkles({
@@ -117,7 +120,10 @@ export const dayRecipe = strictRecipe({
           background: { default: "backgroundInteractive", hover: "backgroundSecondary" },
         }),
         style({
-          borderRadius: dayRadius,
+          borderTopLeftRadius: topLeftRadius,
+          borderBottomLeftRadius: bottomLeftRadius,
+          borderTopRightRadius: topRightRadius,
+          borderBottomRightRadius: bottomRightRadius,
         }),
       ],
       inHoverRange: bentoSprinkles({

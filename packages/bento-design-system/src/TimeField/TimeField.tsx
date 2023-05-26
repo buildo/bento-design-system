@@ -11,6 +11,7 @@ import { DateSegment } from "./DateSegment";
 import { Time } from "@internationalized/date";
 import { TimeValue } from "@react-types/datepicker";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = FieldProps<Time | undefined, Time> & {
   isReadOnly?: boolean;
@@ -71,7 +72,7 @@ export function TimeField(props: Props) {
         ref={ref}
         display="flex"
         readOnly={props.isReadOnly}
-        borderRadius={config.radius}
+        {...getRadiusPropsFromConfig(config.radius)}
         paddingX={config.paddingX}
         paddingY={config.paddingY}
         background={config.background.default}

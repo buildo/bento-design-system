@@ -11,6 +11,7 @@ import { CalendarHeader } from "./CalendarHeader";
 import { calendar, weekDay } from "./DateField.css";
 import { Day } from "./Day";
 import { useBentoConfig } from "../BentoConfigContext";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 export type CommonCalendarProps = {
   inputRef: RefObject<HTMLInputElement>;
@@ -86,7 +87,7 @@ export function Calendar(props: Props) {
   return createPortal(
     <Box
       className={calendar}
-      borderRadius={config.radius}
+      {...getRadiusPropsFromConfig(config.radius)}
       padding={config.padding}
       boxShadow={boxShadowFromElevation(config.elevation)}
       {...mergeProps(overlayProps, positionProps)}

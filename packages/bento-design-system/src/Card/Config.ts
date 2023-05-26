@@ -1,5 +1,5 @@
-import { BentoSprinkles } from "../internal";
+import { BorderRadiusConfig } from "../util/BorderRadiusConfig";
 
 export type CardConfig = {
-  defaultRadius: Exclude<BentoSprinkles["borderRadius"], "circled">;
+  defaultRadius: BorderRadiusConfig;
 };

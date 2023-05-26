@@ -8,6 +8,7 @@ import { buttonRecipe } from "../Button/Button.css";
 import { LocalizedString } from "../util/LocalizedString";
 import { useBentoConfig } from "../BentoConfigContext";
 import { match } from "ts-pattern";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = {
   kind: "solid" | "transparent" | "outline";
@@ -58,7 +59,7 @@ export function IconButton(props: Props) {
       tabIndex={props.tabIndex ?? buttonProps.tabIndex}
       alignItems="center"
       justifyContent="center"
-      borderRadius={config.radius}
+      {...getRadiusPropsFromConfig(config.radius)}
       {...match(props.kind)
         .with("solid", "outline", () =>
           paddingConfig && typeof paddingConfig === "object" && "paddingX" in paddingConfig

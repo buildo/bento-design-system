@@ -17,6 +17,7 @@ import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { useBentoConfig } from "../BentoConfigContext";
 import { ChipConfig } from "./Config";
 import { match } from "ts-pattern";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type DismissProps =
   | {
@@ -97,7 +98,7 @@ export function Chip({
         paddingY={config.paddingY}
         className={chipRecipe({ uppercase: uppercase ?? config.uppercase })}
         background={colorsMapping[color]}
-        borderRadius={config.radius}
+        {...getRadiusPropsFromConfig(config.radius)}
       >
         <Columns space={config.spacingAfterLabel} align="center" alignY="center">
           <Columns space={config.spacingAfterIcon} alignY="center">

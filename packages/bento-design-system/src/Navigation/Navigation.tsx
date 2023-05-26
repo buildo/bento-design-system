@@ -5,6 +5,7 @@ import { AnchorHTMLAttributes, useRef } from "react";
 import { useLink } from "@react-aria/link";
 import { element } from "../reset.css";
 import { useBentoConfig } from "../BentoConfigContext";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 export type NavigationSize = "medium" | "large";
 
@@ -94,7 +95,7 @@ function Destination({
       disabled={disabled}
       paddingX={config.destinationPaddingX[size]}
       paddingY={config.destinationPaddingY[size]}
-      borderRadius={config.radius[size]}
+      {...getRadiusPropsFromConfig(config.radius[size])}
     >
       <Columns space={config.internalSpacing[size]} alignY="center" align="center">
         {icon && (

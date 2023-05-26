@@ -8,6 +8,7 @@ import { FormatProps } from "./FormatProps";
 import { useBentoConfig } from "../BentoConfigContext";
 import { match, not, __ } from "ts-pattern";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = {
   inputProps: React.InputHTMLAttributes<HTMLInputElement>;
@@ -102,7 +103,7 @@ export function NumberInput(props: Props) {
             ellipsis: false,
           }),
         ]}
-        borderRadius={config.radius}
+        {...getRadiusPropsFromConfig(config.radius)}
         paddingX={config.paddingX}
         paddingY={config.paddingY}
         background={config.background.default}

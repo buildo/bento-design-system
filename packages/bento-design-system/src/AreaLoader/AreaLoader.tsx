@@ -4,6 +4,7 @@ import { BentoSprinkles } from "../internal";
 import { AreaLoaderConfig } from "./Config";
 import { BodyProps } from "../Typography/Body/Body";
 import { useBentoConfig } from "../BentoConfigContext";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 function readabilityAreaColorToBackground(
   color: AreaLoaderConfig["readabilityAreaColor"]
@@ -62,7 +63,7 @@ export function AreaLoader({ message }: Props) {
       <Box
         padding={80}
         background={readabilityAreaColorToBackground(config.readabilityAreaColor)}
-        borderRadius={config.readabilityAreaBorderRadius}
+        {...getRadiusPropsFromConfig(config.readabilityAreaBorderRadius)}
       >
         <Stack space={32}>
           <Inline space={8} align="center">

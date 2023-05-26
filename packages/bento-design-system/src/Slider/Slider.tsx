@@ -9,6 +9,7 @@ import { Box, Column, Columns, Stack } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
 import { Label } from "../Typography/Label/Label";
 import { slider, thumbRecipe, trackActive, trackContainer, trackInactive } from "./Slider.css";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = {
   type: "single" | "double";
@@ -45,7 +46,7 @@ export function Slider(props: Props) {
             <Box
               className={trackInactive}
               disabled={props.disabled}
-              borderRadius={config.trailRadius}
+              {...getRadiusPropsFromConfig(config.trailRadius)}
               style={{
                 height: config.trailHeight,
                 top: (config.thumbHeight - config.trailHeight) / 2,
@@ -56,7 +57,7 @@ export function Slider(props: Props) {
               color={config.trailColor}
               background="currentColor"
               disabled={props.disabled}
-              borderRadius={config.trailRadius}
+              {...getRadiusPropsFromConfig(config.trailRadius)}
               style={{
                 height: config.trailHeight,
                 top: (config.thumbHeight - config.trailHeight) / 2,
@@ -144,7 +145,7 @@ function Thumb(props: ThumbProps) {
           {...thumbProps}
           color={undefined}
           disabled={props.disabled}
-          borderRadius={config.thumbRadius}
+          {...getRadiusPropsFromConfig(config.thumbRadius)}
           width={config.thumbWidth}
           height={config.thumbHeight}
           autoFocus={props.autoFocus}

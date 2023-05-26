@@ -19,6 +19,7 @@ import { IconButton } from "../IconButton/IconButton";
 import { useCreatePortal } from "../util/useCreatePortal";
 import { match } from "ts-pattern";
 import { useBentoConfig } from "../BentoConfigContext";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 export type ModalSize = "small" | "medium" | "large" | "wide";
 export type ModalKind = "normal" | "warning" | "destructive";
@@ -69,7 +70,7 @@ export function CustomModal(props: CustomModalProps) {
           {...overlayProps}
           {...modalProps}
           {...dialogProps}
-          borderRadius={config.radius}
+          {...getRadiusPropsFromConfig(config.radius)}
           style={{ width: config.width[props.size || "medium"] }}
         >
           {props.children}

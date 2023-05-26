@@ -50,7 +50,20 @@ function Tab({
       className={tabRecipe({ active, kind: config.kind })}
       {...pressProps}
       disabled={disabled}
-      borderTopRadius={config.kind === "folder" ? config.radius : undefined}
+      borderTopLeftRadius={
+        config.kind === "folder"
+          ? typeof config.radius === "object"
+            ? config.radius.topLeft
+            : config.radius
+          : undefined
+      }
+      borderTopRightRadius={
+        config.kind === "folder"
+          ? typeof config.radius === "object"
+            ? config.radius.topRight
+            : config.radius
+          : undefined
+      }
       paddingX={config.paddingX[size]}
       paddingY={config.paddingY[size]}
       position="relative"

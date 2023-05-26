@@ -7,6 +7,7 @@ import { useButton } from "@react-aria/button";
 import { useBentoConfig } from "../BentoConfigContext";
 import { MenuProps } from "./MenuProps";
 import { MenuList } from "./MenuList";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 export function Menu({
   items,
@@ -50,7 +51,7 @@ export function Menu({
             className={menuRecipe({ elevation: config.elevation })}
             // NOTE(gabro): the type of `autoFocus` does not match otherwise
             {...(menuProps as DOMAttributes<HTMLDivElement>)}
-            borderRadius={config.radius}
+            {...getRadiusPropsFromConfig(config.radius)}
             style={{ maxHeight }}
           >
             {header && (

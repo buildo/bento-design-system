@@ -9,6 +9,7 @@ import useDimensions from "react-cool-dimensions";
 import { useBentoConfig } from "../BentoConfigContext";
 import { match } from "ts-pattern";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = FieldProps<string> & {
   placeholder: LocalizedString;
@@ -85,7 +86,7 @@ export function TextField(props: Props) {
           color={undefined}
           width={undefined}
           height={undefined}
-          borderRadius={config.radius}
+          {...getRadiusPropsFromConfig(config.radius)}
           paddingX={config.paddingX}
           paddingY={config.paddingY}
           background={config.background.default}

@@ -36,6 +36,7 @@ import { InternalList } from "../List/InternalList";
 import { ListItem } from "../List/ListItem";
 import { useBentoConfig } from "../BentoConfigContext";
 import { useSprinkles } from "../SprinklesContext";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 export function Control<A>({
   selectProps: { validationState: validation, isDisabled, isReadOnly = false },
@@ -54,7 +55,7 @@ export function Control<A>({
       display="flex"
       className={control({ validation, menuIsOpen, isReadOnly })}
       disabled={isDisabled}
-      borderRadius={inputConfig.radius}
+      {...getRadiusPropsFromConfig(inputConfig.radius)}
       paddingX={inputConfig.paddingX}
       paddingY={inputConfig.paddingY}
     >
@@ -169,7 +170,7 @@ export function Menu<A>(props: MenuProps<A>) {
           borderStyle: "solid",
           borderColor: "outlineContainer",
           borderWidth: 1,
-          borderRadius: dropdownConfig.radius,
+          ...getRadiusPropsFromConfig(dropdownConfig.radius),
         })
       )}
     >

@@ -6,6 +6,7 @@ import { Column, Columns } from "../../Layout/Columns";
 import { Stack } from "../../Layout/Stack";
 import { Body } from "../../Typography/Body/Body";
 import { NameType, ValueType } from "../ValueFormatter";
+import { getRadiusPropsFromConfig } from "../../util/BorderRadiusConfig";
 
 //note(fede): the internal tooltip wrapper of recharts gets automatically focused
 //on every render, which happen on mouse movement. focus is needed for accessibility,
@@ -31,7 +32,7 @@ export const useTooltip = <TValue extends ValueType, TName extends NameType>(
     return (
       <Box
         className={cardRecipe({ elevation: "small" })}
-        borderRadius={cardConfig.defaultRadius}
+        {...getRadiusPropsFromConfig(cardConfig.defaultRadius)}
         padding={16}
         tabIndex={-1}
       >

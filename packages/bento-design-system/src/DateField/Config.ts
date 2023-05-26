@@ -2,11 +2,12 @@ import { IconProps } from "../Icons";
 import { BentoSprinkles } from "../internal";
 import { BodyProps } from "../Typography/Body/Body";
 import { LabelProps } from "../Typography/Label/Label";
+import { BorderRadiusConfig } from "../util/BorderRadiusConfig";
 import { Children } from "../util/Children";
 import { vars } from "../vars.css";
 
 export type DateFieldConfig = {
-  radius: NonNullable<BentoSprinkles["borderRadius"]>;
+  radius: BorderRadiusConfig;
   padding: NonNullable<BentoSprinkles["padding"]>;
   elevation: "none" | "small" | "medium" | "large";
   monthYearLabelSize: LabelProps["size"];
@@ -19,6 +20,6 @@ export type DateFieldConfig = {
   };
   dayWidth: keyof typeof vars.space;
   dayHeight: keyof typeof vars.space;
-  dayRadius: NonNullable<BentoSprinkles["borderRadius"]>;
+  dayRadius: BorderRadiusConfig;
   daySize: BodyProps["size"];
 };

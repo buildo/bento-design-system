@@ -4,6 +4,7 @@ import { useBentoConfig } from "../BentoConfigContext";
 import { LocalizedString } from "../util/LocalizedString";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { barRecipe } from "./ProgressBar.css";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = {
   label?: LocalizedString;
@@ -20,7 +21,7 @@ function Bar(props: BarProps) {
   const config = useBentoConfig().progressBar;
   return (
     <Box
-      borderRadius={props.discrete ? config.radius : undefined}
+      {...(props.discrete ? getRadiusPropsFromConfig(config.radius) : {})}
       className={barRecipe({ active: props.active ?? false })}
       style={{ width: props.discrete ? undefined : `${props.width}%`, height: config.height }}
     />
@@ -41,7 +42,12 @@ export function ProgressBar(props: Props) {
       ))}
     </Columns>
   ) : (
-    <Box {...progressBarProps} display="flex" borderRadius={config.radius} overflow="hidden">
+    <Box
+      {...progressBarProps}
+      display="flex"
+      {...getRadiusPropsFromConfig(config.radius)}
+      overflow="hidden"
+    >
       <Bar active width={(props.value / props.maxValue) * 100} />
       <Bar width={((props.maxValue - props.value) / props.maxValue) * 100} />
     </Box>

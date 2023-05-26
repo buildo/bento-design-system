@@ -15,6 +15,7 @@ import { tooltip, arrow as arrowStyle } from "./Tooltip.css";
 import { useCreatePortal } from "../util/useCreatePortal";
 import { useBentoConfig } from "../BentoConfigContext";
 import { TooltipPlacement } from "../Field/FieldProps";
+import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = {
   content: Children;
@@ -87,7 +88,7 @@ export function Tooltip(props: Props) {
         createPortal(
           <Box
             className={tooltip}
-            borderRadius={config.radius}
+            {...getRadiusPropsFromConfig(config.radius)}
             ref={floating}
             style={{
               position: strategy,

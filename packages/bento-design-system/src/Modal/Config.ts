@@ -5,12 +5,13 @@ import { ModalKind, ModalSize } from "./Modal";
 import { Children } from "../util/Children";
 import { ActionsProps } from "../Actions/Actions";
 import { IconButtonProps } from "../IconButton/IconButton";
+import { BorderRadiusConfig } from "../util/BorderRadiusConfig";
 
 type SizeConfig<T> = { [k in ModalSize]: T };
 export type ModalConfig = {
   paddingX: BentoSprinkles["paddingX"];
   paddingY: BentoSprinkles["paddingY"];
-  radius: BentoSprinkles["borderRadius"];
+  radius: BorderRadiusConfig;
   titleSize: TitleProps["size"];
   closeIcon: (props: IconProps) => Children;
   closeIconSize: IconButtonProps["size"];
