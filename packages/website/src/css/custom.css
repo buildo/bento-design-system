@@ -1,5 +1,6 @@
 @import "@buildo/bento-design-system/index.css";
 @import "@buildo/bento-design-system/defaultTheme.css";
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 
 /**
  * Any CSS included here will be global. The classic template
@@ -8,17 +9,18 @@
  */
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: black;
-  --ifm-color-primary-dark: #4d4d4d;
-  --ifm-color-primary-darker: black;
-  --ifm-color-primary-darkest: black;
-  --ifm-color-primary-light: black;
-  --ifm-color-primary-lighter: black;
-  --ifm-color-primary-lightest: black;
+  --ifm-color-primary: #242424;
+  --ifm-color-primary-dark: #797979;
+  --ifm-color-primary-darker: #242424;
+  --ifm-color-primary-darkest: #242424;
+  --ifm-color-primary-light: #242424;
+  --ifm-color-primary-lighter: #242424;
+  --ifm-color-primary-lightest: #242424;
   --ifm-code-font-size: 95%;
-  --ifm-background-color: white;
+  --ifm-background-color: #fbfbfb;
+  --ifm-font-family-base: "DM Sans", sans-serif;
 }
-html[data-theme='dark'] {
+html[data-theme="dark"] {
   --ifm-color-primary: white;
   --ifm-color-primary-dark: #e3e3e3;
   --ifm-color-primary-darker: white;
@@ -26,16 +28,8 @@ html[data-theme='dark'] {
   --ifm-color-primary-light: white;
   --ifm-color-primary-lighter: white;
   --ifm-color-primary-lightest: white;
-  --ifm-background-color: #1a212b;
-  --ifm-navbar-background-color: #1a212b;
-}
-
-.hero--primary {
-  --ifm-hero-text-color: black;
-}
-
-html[data-theme="dark"] .hero--primary {
-  --ifm-hero-text-color: white;
+  --ifm-background-color: #242424;
+  --ifm-navbar-background-color: #1a1a1a;
 }
 
 .docusaurus-highlight-code-line {
@@ -51,4 +45,17 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 
 html[data-theme="dark"] {
   --docsearch-highlight-color: var(--docsearch-muted-color);
+}
+
+.navbar__logo img {
+  height: 24px;
+  vertical-align: middle;
+}
+
+.footer--dark {
+  --ifm-footer-background-color: #1a1a1a;
+}
+
+.footer__links {
+  margin-bottom: 0;
 }
