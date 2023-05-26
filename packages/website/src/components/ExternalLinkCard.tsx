@@ -30,7 +30,7 @@ export function ExternalLinkCard(props: Props) {
       case "zeroheight":
         return `https://zeroheight.com/1424b583b/p/${props.slug}`;
       case "storybook":
-        return `https://storybook.bento.our.buildo.io/?path=/story/${props.storyId}`;
+        return `https://storybook.bento-ds.com/?path=/story/${props.storyId}`;
     }
   })();
 
