@@ -11,7 +11,7 @@ const config = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/logo.svg",
+  favicon: "img/favicon.svg",
   organizationName: "buildo",
   projectName: "bento-design-system",
   presets: [
@@ -20,9 +20,11 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       {
         docs: {
+          routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/buildo/bento-design-system/tree/main/packages/website/",
         },
+        blog: false,
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -83,10 +85,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
       navbar: {
-        title: "Bento DS",
         logo: {
           alt: "Bento DS",
           src: "img/logo.svg",
+          srcDark: "img/logo-dark.svg",
         },
         items: [
           {
@@ -112,31 +114,12 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Docs",
-            items: [
-              {
-                label: "Tutorial",
-                to: "/docs/intro",
-              },
-            ],
+            label: "Twitter",
+            href: "https://twitter.com/buildoHQ",
           },
           {
-            title: "Community",
-            items: [
-              {
-                label: "Twitter",
-                href: "https://twitter.com/buildoHQ",
-              },
-            ],
-          },
-          {
-            title: "More",
-            items: [
-              {
-                label: "GitHub",
-                href: "https://github.com/buildo/bento-design-system",
-              },
-            ],
+            label: "GitHub",
+            href: "https://github.com/buildo/bento-design-system",
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} buildo`,
