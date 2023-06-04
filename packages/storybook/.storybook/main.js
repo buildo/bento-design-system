@@ -7,6 +7,8 @@ module.exports = {
   stories: [
     "../stories/Components/Actions/*.stories.*",
     "../stories/Components/AreaLoader.stories.*",
+    "../stories/Components/Avatar.stories.*",
+    "../stories/Components/Banner.stories.*",
   ],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials", "storybook-addon-themes"],
   framework: {

@@ -1,20 +1,23 @@
 import { Avatar } from "../";
-import { createComponentStories } from "../util";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Avatar,
-  args: {},
-  argTypes: {},
-});
+} satisfies Meta<typeof Avatar>;
 
-export default defaultExport;
+export default meta;
 
-export const Default = createStory({
-  color: "blue",
-  name: " Alberto",
-});
+type Story = StoryObj<typeof meta>;
 
-export const WithoutName = createStory({
-  color: "blue",
-  name: undefined,
-});
+export const Default: Story = {
+  args: {
+    color: "blue",
+    name: " Alberto",
+  },
+};
+
+export const WithoutName: Story = {
+  args: {
+    color: "blue",
+    name: undefined,
+  },
+};
