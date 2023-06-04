@@ -1,25 +1,30 @@
 import { LeftActions } from "../..";
-import { createComponentStories } from "../../util";
 import { asyncPrimaryAction, secondaryAction } from "./Actions.stories";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: LeftActions,
   args: {
     size: "medium",
   },
-});
+} satisfies Meta<typeof LeftActions>;
 
-export default defaultExport;
+export default meta;
 
-export const FillError = createStory({
-  primaryAction: asyncPrimaryAction,
-  secondaryAction,
-  errorBannerWidth: "fill",
-  error: "Something went wrong",
-});
+type Story = StoryObj<typeof meta>;
 
-export const ContentWidthError = createStory({
-  primaryAction: asyncPrimaryAction,
-  secondaryAction,
-  error: "Something went wrong",
-});
+export const FillError: Story = {
+  args: {
+    primaryAction: asyncPrimaryAction,
+    secondaryAction,
+    errorBannerWidth: "fill",
+    error: "Something went wrong",
+  },
+};
+
+export const ContentWidthError: Story = {
+  args: {
+    primaryAction: asyncPrimaryAction,
+    secondaryAction,
+    error: "Something went wrong",
+  },
+};
