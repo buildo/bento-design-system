@@ -5,9 +5,9 @@ const path = require("path");
 module.exports = {
   stories: ["../stories/**/*.stories.*"],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials", "storybook-addon-themes"],
-  framework: "@storybook/react",
-  core: {
-    builder: "webpack5",
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {},
   },
   webpackFinal: (baseConfig) => {
     const { module = {}, plugins = {} } = baseConfig;
@@ -18,10 +18,12 @@ module.exports = {
     tsxRules.forEach((rule) => {
       rule.include = [path.resolve(__dirname, "../")];
     });
-
     return {
       ...baseConfig,
       plugins: [...plugins, new VanillaExtractPlugin(), new MiniCssExtractPlugin()],
     };
+  },
+  docs: {
+    autodocs: true,
   },
 };
