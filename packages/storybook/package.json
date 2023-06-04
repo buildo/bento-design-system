@@ -1,5 +1,5 @@
 {
-  "name": "storybook",
+  "name": "bento-storybook",
   "private": true,
   "scripts": {
     "build": "build-storybook",
