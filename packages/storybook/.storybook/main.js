@@ -22,6 +22,8 @@ module.exports = {
     "../stories/Components/DecorativeDivider.stories.*",
     "../stories/Components/Disclosure.stories.*",
     "../stories/Components/DisclosureGroup.stories.*",
+    "../stories/Components/Feedback.stories.*",
+    "../stories/Components/FileUploaderField.stories.*",
   ],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials", "storybook-addon-themes"],
   framework: {
