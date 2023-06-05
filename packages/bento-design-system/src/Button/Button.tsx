@@ -90,7 +90,10 @@ export function Button(props: Props) {
             })}
           </Column>
         )}
-        <Label size={config.labelSize} uppercase={config.uppercaseLabel}>
+        <Label
+          size={typeof config.labelSize === "string" ? config.labelSize : config.labelSize[size]}
+          uppercase={config.uppercaseLabel}
+        >
           {props.label}
         </Label>
       </Columns>

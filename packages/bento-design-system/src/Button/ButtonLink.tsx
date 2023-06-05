@@ -71,7 +71,11 @@ export function ButtonLink({
             })}
           </Column>
         )}
-        <Label as="span" size={config.labelSize} uppercase={config.uppercaseLabel}>
+        <Label
+          as="span"
+          size={typeof config.labelSize === "string" ? config.labelSize : config.labelSize[size]}
+          uppercase={config.uppercaseLabel}
+        >
           {label}
         </Label>
       </Columns>
