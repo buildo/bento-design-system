@@ -31,6 +31,15 @@ const config = {
       },
     ],
   ],
+  themes: [
+    [
+      "@easyops-cn/docusaurus-search-local",
+      /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+      {
+        docsRouteBasePath: "/",
+      },
+    ],
+  ],
   plugins: [
     () => ({
       name: "webpack-config-plugin",
@@ -127,12 +136,6 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-      },
-      algolia: {
-        appId: "SHRTHVI32H",
-        apiKey: "607bebbf572fe79f2e1c67c517993edc",
-        indexName: "bento",
-        contextualSearch: true,
       },
     },
 };
