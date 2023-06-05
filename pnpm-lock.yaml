@@ -20,7 +20,7 @@ importers:
       '@babel/preset-typescript': 7.21.5
       '@datepicker-react/hooks': ^2.8.4
       '@dessert-box/core': 0.2.0
-      '@floating-ui/core': 1.1.0
+      '@floating-ui/core': 1.2.6
       '@floating-ui/dom': 1.0.12
       '@floating-ui/react-dom': 1.0.1
       '@fontsource/lexend': ^4.5.15
@@ -128,7 +128,7 @@ importers:
     dependencies:
       '@datepicker-react/hooks': 2.8.4_react@18.2.0
       '@dessert-box/core': 0.2.0
-      '@floating-ui/core': 1.1.0
+      '@floating-ui/core': 1.2.6
       '@floating-ui/dom': 1.0.12
       '@floating-ui/react-dom': 1.0.1_biqbaboplfbrettd7655fr4n2y
       '@fontsource/lexend': 4.5.15
@@ -4764,14 +4764,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@floating-ui/core/1.1.0:
-    resolution: {integrity: sha512-zbsLwtnHo84w1Kc8rScAo5GMk1GdecSlrflIbfnEBJwvTSj1SL6kkOYV+nHraMCPEy+RNZZUaZyL8JosDGCtGQ==}
+  /@floating-ui/core/1.2.6:
+    resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
     dev: false
 
   /@floating-ui/dom/1.0.12:
     resolution: {integrity: sha512-HeG/wHoa2laUHlDX3xkzqlUqliAfa+zqV04LaKIwNCmCNaW2p0fQi4/Kd0LB4GdFoJ2UllLFq5gWnXAd67lg7w==}
     dependencies:
-      '@floating-ui/core': 1.1.0
+      '@floating-ui/core': 1.2.6
     dev: false
 
   /@floating-ui/react-dom/1.0.1_biqbaboplfbrettd7655fr4n2y:
