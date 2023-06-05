@@ -30,6 +30,7 @@
     "@storybook/react": "7.0.18",
     "@storybook/react-webpack5": "7.0.18",
     "@storybook/testing-library": "0.1.0",
+    "@storybook/types": "^7.0.18",
     "@types/lodash.orderby": "4.6.7",
     "@types/react": "18.2.0",
     "@types/react-table": "7.7.14",
@@ -51,6 +52,7 @@
     "react-dom": "18.2.0",
     "storybook": "7.0.18",
     "storybook-addon-themes": "6.1.0",
+    "type-fest": "^3.11.1",
     "typescript": "5.1.3"
   }
 }
