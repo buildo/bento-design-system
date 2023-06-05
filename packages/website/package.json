@@ -23,10 +23,10 @@
   "dependencies": {
     "@babel/core": "7.22.1",
     "@babel/generator": "7.22.3",
-    "@babel/parser": "7.22.3",
+    "@babel/parser": "7.22.4",
     "@babel/preset-typescript": "7.21.5",
-    "@babel/standalone": "7.22.2",
-    "@babel/traverse": "7.22.1",
+    "@babel/standalone": "7.22.4",
+    "@babel/traverse": "7.22.4",
     "@buildo/bento-design-system": "workspace:*",
     "@docusaurus/core": "2.0.1",
     "@docusaurus/preset-classic": "2.0.1",
@@ -46,7 +46,7 @@
     "react-markdown": "8.0.7"
   },
   "devDependencies": {
-    "@babel/types": "7.22.3",
+    "@babel/types": "7.22.4",
     "@docusaurus/module-type-aliases": "2.0.1",
     "@docusaurus/theme-classic": "2.0.1",
     "@docusaurus/theme-live-codeblock": "2.0.1",
