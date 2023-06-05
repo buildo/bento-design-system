@@ -1,7 +1,7 @@
-import { createComponentStories } from "../util";
 import { Navigation } from "../";
 import { IconInfoSolid } from "..";
 import { Box, NavigationProps, withBentoConfig } from "@buildo/bento-design-system";
+import { Meta, StoryObj } from "@storybook/react";
 
 const destinations: NavigationProps<"none">["destinations"] = [
   {
@@ -26,23 +26,39 @@ const destinations: NavigationProps<"none">["destinations"] = [
   },
 ];
 
-const { defaultExport, createControlledStory } = createComponentStories({
+const meta = {
   component: Navigation,
   args: {
     kind: "none",
     destinations,
     size: "large",
   },
-});
+} satisfies Meta<typeof Navigation>;
 
-export default defaultExport;
+export default meta;
 
-export const medium = createControlledStory("destination1", { size: "medium" });
-export const large = createControlledStory("destination1", {});
-export const withIcons = createControlledStory("destination1", {
-  kind: "icon",
-  destinations: destinations.map((d) => ({ ...d, icon: IconInfoSolid })) as any,
-});
+type Story = StoryObj<typeof meta>;
+
+export const medium = {
+  args: {
+    value: "destination1",
+    size: "medium",
+  },
+} satisfies Story;
+
+export const large = {
+  args: {
+    value: "destination1",
+  },
+} satisfies Story;
+
+export const withIcons = {
+  args: {
+    value: "destination1",
+    kind: "icon",
+    destinations: destinations.map((d) => ({ ...d, icon: IconInfoSolid })),
+  },
+} satisfies Story;
 
 // Note(vince): test that the nested activeVisualElement completely replace the parent one,
 // and their props are not merged, i.e. the resulting activeVisualElement
@@ -62,6 +78,6 @@ const CustomNavigation = withBentoConfig(
     Navigation
   )
 );
-export const withCustomActiveVisualElement = () => {
-  return <CustomNavigation kind="none" destinations={destinations} size="large" />;
-};
+export const withCustomActiveVisualElement = {
+  render: (args) => <CustomNavigation {...args} />,
+} satisfies Story;

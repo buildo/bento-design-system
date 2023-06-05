@@ -31,6 +31,8 @@ module.exports = {
     "../stories/Components/List.stories.*",
     "../stories/Components/Menu.stories.*",
     "../stories/Components/Modal.stories.*",
+    "../stories/Components/Navigation.stories.*",
+    "../stories/Components/NumberField.stories.*",
   ],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials", "storybook-addon-themes"],
   framework: {
