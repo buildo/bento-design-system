@@ -1,83 +1,101 @@
 import { action } from "@storybook/addon-actions";
-import React from "react";
 import { Body, Box, Label, Link } from "..";
-import { createComponentStories } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Link,
   args: {
     label: "I'm a link",
   },
   decorators: [
-    (Story: React.FC) => (
+    (Story) => (
       <Body size="medium">
         <Story />
       </Body>
     ),
   ],
-});
+} satisfies Meta<typeof Link>;
 
-export default defaultExport;
+export default meta;
 
-export const link = createStory({
-  href: "http://www.example.com",
-  target: "_blank",
-});
+type Story = StoryObj<typeof meta>;
 
-export const Strong = createStory({
-  href: "http://www.example.com",
-  target: "_blank",
-});
-Strong.decorators = [
-  (Story: React.FC) => (
-    <Body size="medium" weight="strong">
-      <Story />
-    </Body>
-  ),
-];
+export const link = {
+  args: {
+    href: "http://www.example.com",
+    target: "_blank",
+  },
+} satisfies Story;
 
-export const Inverse = createStory(
-  {
+export const Strong = {
+  args: {
+    href: "http://www.example.com",
+    target: "_blank",
+  },
+  decorators: [
+    (Story) => (
+      <Body size="medium" weight="strong">
+        <Story />
+      </Body>
+    ),
+  ],
+} satisfies Story;
+
+export const Inverse = {
+  args: {
     href: "http://www.example.com",
     target: "_blank",
     kind: "inverse",
   },
-  {
+  parameters: {
     backgrounds: { default: "dark" },
-  }
-);
+  },
+} satisfies Story;
 
-export const Disabled = createStory({
-  href: "http://www.example.com",
-  target: "_blank",
-  isDisabled: true,
-});
+export const Disabled = {
+  args: {
+    href: "http://www.example.com",
+    target: "_blank",
+    isDisabled: true,
+  },
+} satisfies Story;
 
-export const LinkButton = createStory({
-  href: "http://www.example.com",
-  target: "_blank",
-  onClick: action("onClick"),
-});
+export const LinkButton = {
+  args: {
+    href: "http://www.example.com",
+    target: "_blank",
+    onClick: action("onClick"),
+  },
+} satisfies Story;
 
-export const InLabel = createStory({
-  href: "http://www.example.com",
-  target: "_blank",
-});
-InLabel.decorators = [
-  (Story: React.FC) => (
-    <Label size="large">
-      <Story />
-    </Label>
-  ),
-];
+export const InLabel = {
+  args: {
+    href: "http://www.example.com",
+    target: "_blank",
+  },
+  decorators: [
+    (Story) => (
+      <Label size="large">
+        <Story />
+      </Label>
+    ),
+  ],
+} satisfies Story;
 
-export const ComplexChildren = createStory({
-  href: "http://www.example.com",
-  target: "_blank",
-  label: undefined,
-  children: (
-    <Box background="backgroundPositive" padding={40} borderRadius={16} boxShadow="outlinePositive">
-      <Body size="large">The entire box is a link!</Body>
-    </Box>
-  ),
-});
+export const ComplexChildren = {
+  args: {
+    href: "http://www.example.com",
+    target: "_blank",
+    label: undefined,
+    children: (
+      <Box
+        background="backgroundPositive"
+        padding={40}
+        borderRadius={16}
+        boxShadow="outlinePositive"
+      >
+        <Body size="large">The entire box is a link!</Body>
+      </Box>
+    ),
+  },
+} satisfies Story;

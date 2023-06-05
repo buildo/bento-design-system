@@ -1,13 +1,15 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { InlineLoader } from "../";
-import { createComponentStories } from "../util";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: InlineLoader,
   args: {
     message: "This may take several minutes...",
   },
-});
+} satisfies Meta<typeof InlineLoader>;
 
-export default defaultExport;
+export default meta;
 
-export const Standalone = createStory({});
+type Story = StoryObj<typeof meta>;
+
+export const Standalone = {} satisfies Story;

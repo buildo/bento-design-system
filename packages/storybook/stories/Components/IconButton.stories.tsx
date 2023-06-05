@@ -1,80 +1,102 @@
-import { createComponentStories, textArgType } from "../util";
 import { IconButton } from "../";
 import { IconPlaceholder } from "@buildo/bento-design-system";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: IconButton,
   args: {
     label: "Button",
     icon: IconPlaceholder,
     size: 12,
   },
-  argTypes: {
-    label: textArgType,
+} satisfies Meta<typeof IconButton>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const PrimarySolid = {
+  args: {
+    kind: "solid",
+    hierarchy: "primary",
   },
-});
+} satisfies Story;
 
-export default defaultExport;
+export const SecondarySolid = {
+  args: {
+    kind: "solid",
+    hierarchy: "secondary",
+  },
+} satisfies Story;
 
-export const PrimarySolid = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-});
+export const DangerSolid = {
+  args: {
+    kind: "solid",
+    hierarchy: "danger",
+  },
+} satisfies Story;
 
-export const SecondarySolid = createStory({
-  kind: "solid",
-  hierarchy: "secondary",
-});
+export const PrimaryTransparent = {
+  args: {
+    kind: "transparent",
+    hierarchy: "primary",
+  },
+} satisfies Story;
 
-export const DangerSolid = createStory({
-  kind: "solid",
-  hierarchy: "danger",
-});
+export const SecondaryTransparent = {
+  args: {
+    kind: "transparent",
+    hierarchy: "secondary",
+  },
+} satisfies Story;
 
-export const PrimaryTransparent = createStory({
-  kind: "transparent",
-  hierarchy: "primary",
-});
+export const DangerTransparent = {
+  args: {
+    kind: "transparent",
+    hierarchy: "danger",
+  },
+} satisfies Story;
 
-export const SecondaryTransparent = createStory({
-  kind: "transparent",
-  hierarchy: "secondary",
-});
+export const SolidDisabled = {
+  args: {
+    kind: "solid",
+    hierarchy: "primary",
+    isDisabled: true,
+  },
+} satisfies Story;
 
-export const DangerTransparent = createStory({
-  kind: "transparent",
-  hierarchy: "danger",
-});
+export const TransparentDisabled = {
+  args: {
+    kind: "transparent",
+    hierarchy: "primary",
+    isDisabled: true,
+  },
+} satisfies Story;
 
-export const SolidDisabled = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-  isDisabled: true,
-});
+export const PrimaryOutline = {
+  args: {
+    kind: "outline",
+    hierarchy: "primary",
+  },
+} satisfies Story;
 
-export const TransparentDisabled = createStory({
-  kind: "transparent",
-  hierarchy: "primary",
-  isDisabled: true,
-});
+export const SecondaryOutline = {
+  args: {
+    kind: "outline",
+    hierarchy: "secondary",
+  },
+} satisfies Story;
 
-export const PrimaryOutline = createStory({
-  kind: "outline",
-  hierarchy: "primary",
-});
+export const DangerOutline = {
+  args: {
+    kind: "outline",
+    hierarchy: "danger",
+  },
+} satisfies Story;
 
-export const SecondaryOutline = createStory({
-  kind: "outline",
-  hierarchy: "secondary",
-});
-
-export const DangerOutline = createStory({
-  kind: "outline",
-  hierarchy: "danger",
-});
-
-export const OutlineDisabled = createStory({
-  kind: "outline",
-  hierarchy: "primary",
-  isDisabled: true,
-});
+export const OutlineDisabled = {
+  args: {
+    kind: "outline",
+    hierarchy: "primary",
+    isDisabled: true,
+  },
+} satisfies Story;
