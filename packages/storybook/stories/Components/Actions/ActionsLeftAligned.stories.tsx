@@ -1,5 +1,6 @@
 import { LeftActions } from "../..";
 import { asyncPrimaryAction, secondaryAction } from "./Actions.stories";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: LeftActions,

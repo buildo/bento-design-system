@@ -1,6 +1,7 @@
 import { SpaceBetweenActions } from "../..";
 import { createComponentStories } from "../../util";
 import { asyncPrimaryAction, secondaryAction } from "./Actions.stories";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: SpaceBetweenActions,
