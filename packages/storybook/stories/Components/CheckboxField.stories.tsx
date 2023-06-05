@@ -1,44 +1,63 @@
 import { CheckboxField, IconLightbulb, Body } from "../";
-import { createComponentStories, textArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createControlledStory } = createComponentStories({
+const meta = {
   component: CheckboxField,
   args: {
     label: "I agree with the terms and conditions",
     name: "terms-and-conditions",
   },
-  argTypes: {
-    label: textArgType,
+} satisfies Meta<typeof CheckboxField>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Unchecked = {
+  args: {
+    value: false,
   },
-});
+} satisfies Story;
 
-export default defaultExport;
+export const Checked = {
+  args: {
+    value: true,
+  },
+} satisfies Story;
 
-export const Unchecked = createControlledStory(false, {});
+export const Error = {
+  args: {
+    value: false,
+    issues: ["This field is required"],
+  },
+} satisfies Story;
 
-export const Checked = createControlledStory(true, {});
+export const Disabled = {
+  args: {
+    value: false,
+    disabled: true,
+  },
+} satisfies Story;
 
-export const Error = createControlledStory(false, {
-  issues: ["This field is required"],
-});
+export const LongLabel = {
+  args: {
+    value: false,
+    label:
+      "Very very very very very very very very long label. Did I say this label is very long? Well let me say it again, it's loooooong, very looooooooong. Maybe we should say it again, let's go! Very very very very very very very very long label.",
+  },
+} satisfies Story;
 
-export const Disabled = createControlledStory(false, {
-  disabled: true,
-});
-
-export const LongLabel = createControlledStory(false, {
-  label:
-    "Very very very very very very very very long label. Did I say this label is very long? Well let me say it again, it's loooooong, very looooooooong. Maybe we should say it again, let's go! Very very very very very very very very long label.",
-});
-
-export const ComplexLabel = createControlledStory(false, {
-  label: (
-    <>
-      Some text, some{" "}
-      <Body size="large" weight="strong">
-        bold words
-      </Body>
-      , then some more text and an icon <IconLightbulb size={16} />
-    </>
-  ),
-});
+export const ComplexLabel = {
+  args: {
+    value: false,
+    label: (
+      <>
+        Some text, some{" "}
+        <Body size="large" weight="strong">
+          bold words
+        </Body>
+        , then some more text and an icon <IconLightbulb size={16} />
+      </>
+    ),
+  },
+} satisfies Story;

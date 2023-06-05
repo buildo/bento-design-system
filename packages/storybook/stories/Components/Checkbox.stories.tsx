@@ -1,13 +1,10 @@
 import { Body, Box, Card, Checkbox, Column, Columns, Stack, Title } from "..";
-import { createComponentStories, textArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createControlledStory } = createComponentStories({
+const meta = {
   component: Checkbox,
   args: {
     "aria-label": "Toggle card selection",
-  },
-  argTypes: {
-    label: textArgType,
   },
   decorators: [
     (Story) => (
@@ -33,14 +30,27 @@ const { defaultExport, createControlledStory } = createComponentStories({
       </Card>
     ),
   ],
-});
+} satisfies Meta<typeof Checkbox>;
 
-export default defaultExport;
+export default meta;
 
-export const Unchecked = createControlledStory(false, {});
+type Story = StoryObj<typeof meta>;
 
-export const Checked = createControlledStory(true, {});
+export const Unchecked = {
+  args: {
+    value: false,
+  },
+} satisfies Story;
 
-export const Disabled = createControlledStory(false, {
-  disabled: true,
-});
+export const Checked = {
+  args: {
+    value: true,
+  },
+} satisfies Story;
+
+export const Disabled = {
+  args: {
+    value: false,
+    disabled: true,
+  },
+} satisfies Story;

@@ -1,31 +1,33 @@
 import { DisclosureGroup, Placeholder } from "..";
-import { createComponentStories } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: DisclosureGroup,
-  args: {},
-  argTypes: {},
-});
+} satisfies Meta<typeof DisclosureGroup>;
 
-export default defaultExport;
+export default meta;
 
-export const Linear = createStory({
-  items: [
-    {
-      title: "Title",
-      children: <Placeholder />,
-    },
-    {
-      title: "Title",
-      children: <Placeholder />,
-      initialIsOpen: true,
-    },
-    {
-      title: "Title",
-      children: <Placeholder />,
-    },
-  ],
-});
+type Story = StoryObj<typeof meta>;
+
+export const Linear = {
+  args: {
+    items: [
+      {
+        title: "Title",
+        children: <Placeholder />,
+      },
+      {
+        title: "Title",
+        children: <Placeholder />,
+        initialIsOpen: true,
+      },
+      {
+        title: "Title",
+        children: <Placeholder />,
+      },
+    ],
+  },
+} satisfies Story;
 
 const nestedItems = [
   {
@@ -53,11 +55,15 @@ const nestedItems = [
   },
 ];
 
-export const Nested = createStory({
-  items: nestedItems,
-});
+export const Nested = {
+  args: {
+    items: nestedItems,
+  },
+} satisfies Story;
 
-export const LeadingIcon = createStory({
-  items: nestedItems,
-  iconPosition: "leading",
-});
+export const LeadingIcon = {
+  args: {
+    items: nestedItems,
+    iconPosition: "leading",
+  },
+} satisfies Story;

@@ -1,46 +1,55 @@
 import { IconPlaceholder } from "@buildo/bento-design-system";
 import { Chip } from "../";
-import { createComponentStories, textArgType } from "../util";
+import { StoryObj, Meta } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Chip,
   args: {
     label: "Label",
   },
-  argTypes: {
-    label: textArgType,
-  },
-});
+} satisfies Meta<typeof Chip>;
 
-export default defaultExport;
+export default meta;
 
-export const NonDismissable = createStory(
-  {
+type Story = StoryObj<typeof meta>;
+
+export const NonDismissable = {
+  args: {
     color: "blue",
   },
-  { actions: { argTypesRegex: "" } }
-);
+  parameters: { actions: { argTypesRegex: "" } },
+} satisfies Story;
 
-export const Dismissable = createStory({
-  color: "blue",
-});
+export const Dismissable = {
+  args: {
+    color: "blue",
+  },
+} satisfies Story;
 
-export const CustomColor = createStory({
-  color: "custom",
-});
+export const CustomColor = {
+  args: {
+    color: "custom",
+  },
+} satisfies Story;
 
-export const WithIcon = createStory({
-  color: "blue",
-  icon: IconPlaceholder,
-});
+export const WithIcon = {
+  args: {
+    color: "blue",
+    icon: IconPlaceholder,
+  },
+} satisfies Story;
 
-export const MaxWidth = createStory({
-  label: "Very very long label",
-  color: "blue",
-  maxCharacters: 10,
-});
+export const MaxWidth = {
+  args: {
+    label: "Very very long label",
+    color: "blue",
+    maxCharacters: 10,
+  },
+} satisfies Story;
 
-export const LowerCase = createStory({
-  color: "blue",
-  uppercase: false,
-});
+export const Uppercase = {
+  args: {
+    color: "blue",
+    uppercase: true,
+  },
+} satisfies Story;

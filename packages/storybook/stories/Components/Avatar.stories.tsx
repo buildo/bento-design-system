@@ -1,5 +1,5 @@
 import { Avatar } from "../";
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Avatar,
@@ -9,16 +9,16 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = {
   args: {
     color: "blue",
     name: " Alberto",
   },
-};
+} satisfies Story;
 
-export const WithoutName: Story = {
+export const WithoutName = {
   args: {
     color: "blue",
     name: undefined,
   },
-};
+} satisfies Story;

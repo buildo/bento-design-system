@@ -3,7 +3,6 @@ import { Breadcrumb } from "..";
 
 const meta = {
   component: Breadcrumb,
-  args: {},
 } satisfies Meta<typeof Breadcrumb>;
 
 export default meta;
