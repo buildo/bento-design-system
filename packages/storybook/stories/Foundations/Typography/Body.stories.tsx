@@ -1,43 +1,60 @@
-import { createComponentStories, textArgType } from "../../util";
 import { Body, Box } from "../..";
+import { Meta, StoryObj } from "@storybook/react";
+import { textArgType } from "../../utils/utils";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Body,
   args: {
     children: "The quick brown fox jumps over the lazy dog",
   },
   argTypes: {
-    children: textArgType,
+    children: { control: { type: "text" } },
   },
-});
+} satisfies Meta<typeof Body>;
 
-export default defaultExport;
+export default meta;
 
-export const SizeSmall = createStory({
-  size: "small",
-});
+type Story = StoryObj<typeof meta>;
 
-export const SizeMedium = createStory({
-  size: "medium",
-});
+export const SizeSmall = {
+  args: {
+    size: "small",
+  },
+} satisfies Story;
 
-export const SizeLarge = createStory({
-  size: "large",
-});
+export const SizeMedium = {
+  args: {
+    size: "medium",
+  },
+} satisfies Story;
 
-export const WeightDefault = createStory({
-  size: "large",
-});
+export const SizeLarge = {
+  args: {
+    size: "large",
+  },
+} satisfies Story;
 
-export const WeightStrong = createStory({
-  weight: "strong",
-  size: "large",
-});
+export const WeightDefault = {
+  args: {
+    size: "large",
+  },
+} satisfies Story;
 
-export const Ellipsis = () => (
-  <Box style={{ width: 200 }}>
-    <Body size="medium" ellipsis>
-      The quick brown fox jumps over the lazy dog
-    </Body>
-  </Box>
-);
+export const WeightStrong = {
+  args: {
+    weight: "strong",
+    size: "large",
+  },
+} satisfies Story;
+
+export const Ellipsis = {
+  args: {
+    size: "medium",
+    ellipsis: true,
+  },
+  render: (args) => (
+    <Box style={{ width: 200 }}>
+      <Body {...args} />
+    </Box>
+  ),
+} satisfies Story;

@@ -1,26 +1,46 @@
-import { Meta } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import { Box, Inline, Stack, Body, IconProps, icons } from "..";
 
 const meta = {
+  title: "Icons",
   args: {
     size: 24,
   },
   argTypes: {
     size: {
-      options: [8, 12, 16, 24],
+      options: [8, 12, 16, 24, 40],
       control: { type: "select" },
     },
     color: {
-      options: ["default", "informative", "positive", "warning", "negative", "disabled"],
+      options: [
+        "default",
+        "primary",
+        "secondary",
+        "primaryInverse",
+        "secondaryInverse",
+        "brandPrimary",
+        "brandSecondary",
+        "brandTertiary",
+        "informative",
+        "positive",
+        "warning",
+        "negative",
+        "disabled",
+        "inherit",
+        "interactive",
+        "currentColor",
+      ],
       control: { type: "select" },
     },
   },
-} as Meta<IconProps>;
+} satisfies Meta<IconProps>;
 
 export default meta;
 
-export const Icons = (args: IconProps) => {
-  return (
+type Story = StoryObj<typeof meta>;
+
+export const Icons = {
+  render: (args: IconProps) => (
     <Stack space={32}>
       <Inline space={32}>
         {Object.entries(icons).map(([name, Icon]) => (
@@ -35,5 +55,5 @@ export const Icons = (args: IconProps) => {
         ))}
       </Inline>
     </Stack>
-  );
-};
+  ),
+} satisfies Story;

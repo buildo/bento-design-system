@@ -1,39 +1,53 @@
-import { createComponentStories, textArgType } from "../../util";
+import { Meta, StoryObj } from "@storybook/react";
 import { Label, Box } from "../..";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Label,
   args: {
-    children: "The quick brown fox",
+    children: "The quick brown fox jumps over the lazy dog",
   },
   argTypes: {
-    children: textArgType,
+    children: { control: { type: "text" } },
   },
-});
+} satisfies Meta<typeof Label>;
 
-export default defaultExport;
+export default meta;
 
-export const Small = createStory({
-  size: "small",
-});
+type Story = StoryObj<typeof meta>;
 
-export const Medium = createStory({
-  size: "medium",
-});
+export const Small = {
+  args: {
+    size: "small",
+  },
+} satisfies Story;
 
-export const Large = createStory({
-  size: "large",
-});
+export const Medium = {
+  args: {
+    size: "medium",
+  },
+} satisfies Story;
 
-export const Uppercase = createStory({
-  size: "medium",
-  uppercase: true,
-});
+export const Large = {
+  args: {
+    size: "large",
+  },
+} satisfies Story;
 
-export const Ellipsis = () => (
-  <Box style={{ width: 100 }}>
-    <Label size="medium" ellipsis>
-      The quick brown fox
-    </Label>
-  </Box>
-);
+export const Uppercase = {
+  args: {
+    size: "medium",
+    uppercase: true,
+  },
+} satisfies Story;
+
+export const Ellipsis = {
+  args: {
+    size: "medium",
+    ellipsis: true,
+  },
+  render: (args) => (
+    <Box style={{ width: 200 }}>
+      <Label {...args} />
+    </Box>
+  ),
+} satisfies Story;

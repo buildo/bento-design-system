@@ -5,6 +5,8 @@ const path = require("path");
 module.exports = {
   // TODO(gabro): restore this to "../stories/**/*.stories.*" once all stories are migrated
   stories: [
+    "../stories/Foundations/*.stories.*",
+    "../stories/Foundations/**/*.stories.*",
     "../stories/Components/Actions/*.stories.*",
     "../stories/Components/AreaLoader.stories.*",
     "../stories/Components/Avatar.stories.*",
