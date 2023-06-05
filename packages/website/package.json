@@ -58,6 +58,7 @@
     "@types/babel__traverse": "7.18.5",
     "@types/node": "18.16.16",
     "@types/react": "18.2.0",
+    "@typescript-eslint/parser": "^5.59.8",
     "@vanilla-extract/sprinkles": "1.6.0",
     "eslint-config-react-app": "7.0.1",
     "lint-staged": "13.0.3",
