@@ -1,102 +1,133 @@
-import { createComponentStories, textArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 import { Button, IconCheck } from "../";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Button,
   args: {
     label: "Button",
   },
-  argTypes: {
-    label: textArgType,
+} satisfies Meta<typeof Button>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const PrimarySolid = {
+  args: {
+    kind: "solid",
+    hierarchy: "primary",
   },
-});
+} satisfies Story;
 
-export default defaultExport;
+export const SecondarySolid = {
+  args: {
+    kind: "solid",
+    hierarchy: "secondary",
+  },
+} satisfies Story;
 
-export const PrimarySolid = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-});
+export const DangerSolid = {
+  args: {
+    kind: "solid",
+    hierarchy: "danger",
+  },
+} satisfies Story;
 
-export const SecondarySolid = createStory({
-  kind: "solid",
-  hierarchy: "secondary",
-});
+export const PrimaryTransparent = {
+  args: {
+    kind: "transparent",
+    hierarchy: "primary",
+  },
+} satisfies Story;
 
-export const DangerSolid = createStory({
-  kind: "solid",
-  hierarchy: "danger",
-});
+export const SecondaryTransparent = {
+  args: {
+    kind: "transparent",
+    hierarchy: "secondary",
+  },
+} satisfies Story;
 
-export const PrimaryTransparent = createStory({
-  kind: "transparent",
-  hierarchy: "primary",
-});
+export const DangerTransparent = {
+  args: {
+    kind: "transparent",
+    hierarchy: "danger",
+  },
+} satisfies Story;
 
-export const SecondaryTransparent = createStory({
-  kind: "transparent",
-  hierarchy: "secondary",
-});
+export const PrimaryOutline = {
+  args: {
+    kind: "outline",
+    hierarchy: "primary",
+  },
+} satisfies Story;
 
-export const DangerTransparent = createStory({
-  kind: "transparent",
-  hierarchy: "danger",
-});
+export const SecondaryOutline = {
+  args: {
+    kind: "outline",
+    hierarchy: "secondary",
+  },
+} satisfies Story;
 
-export const PrimaryOutline = createStory({
-  kind: "outline",
-  hierarchy: "primary",
-});
+export const DangerOutline = {
+  args: {
+    kind: "outline",
+    hierarchy: "danger",
+  },
+} satisfies Story;
 
-export const SecondaryOutline = createStory({
-  kind: "outline",
-  hierarchy: "secondary",
-});
+export const SolidDisabled = {
+  args: {
+    kind: "solid",
+    hierarchy: "primary",
+    isDisabled: true,
+  },
+} satisfies Story;
 
-export const DangerOutline = createStory({
-  kind: "outline",
-  hierarchy: "danger",
-});
+export const TransparentDisabled = {
+  args: {
+    kind: "transparent",
+    hierarchy: "primary",
+    isDisabled: true,
+  },
+} satisfies Story;
 
-export const SolidDisabled = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-  isDisabled: true,
-});
+export const OutlineDisabled = {
+  args: {
+    kind: "outline",
+    hierarchy: "primary",
+    isDisabled: true,
+  },
+} satisfies Story;
 
-export const TransparentDisabled = createStory({
-  kind: "transparent",
-  hierarchy: "primary",
-  isDisabled: true,
-});
+export const PrimarySmall = {
+  args: {
+    kind: "solid",
+    hierarchy: "primary",
+    size: "small",
+  },
+} satisfies Story;
 
-export const OutlineDisabled = createStory({
-  kind: "outline",
-  hierarchy: "primary",
-  isDisabled: true,
-});
+export const PrimaryLarge = {
+  args: {
+    kind: "solid",
+    hierarchy: "primary",
+    size: "large",
+  },
+} satisfies Story;
 
-export const PrimarySmall = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-  size: "small",
-});
+export const WithIcon = {
+  args: {
+    kind: "solid",
+    hierarchy: "primary",
+    icon: IconCheck,
+  },
+} satisfies Story;
 
-export const PrimaryLarge = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-  size: "large",
-});
-
-export const WithIcon = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-  icon: IconCheck,
-});
-
-export const WithIconTrailing = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-  icon: IconCheck,
-  iconPosition: "trailing",
-});
+export const WithIconTrailing = {
+  args: {
+    kind: "solid",
+    hierarchy: "primary",
+    icon: IconCheck,
+    iconPosition: "trailing",
+  },
+} satisfies Story;

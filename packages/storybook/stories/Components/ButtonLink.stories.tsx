@@ -1,34 +1,39 @@
-import { createComponentStories, textArgType } from "../util";
 import { ButtonLink } from "../";
 import { IconCheck } from "@buildo/bento-design-system";
+import { StoryObj, Meta } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: ButtonLink,
   args: {
     label: "Button",
     href: "https://google.com",
     target: "blank",
   },
-  argTypes: {
-    label: textArgType,
+} satisfies Meta<typeof ButtonLink>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Primary = {
+  args: {
+    kind: "solid",
+    hierarchy: "primary",
   },
-});
+} satisfies Story;
 
-export default defaultExport;
+export const Active = {
+  args: {
+    kind: "solid",
+    hierarchy: "primary",
+    active: true,
+  },
+} satisfies Story;
 
-export const Primary = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-});
-
-export const Active = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-  active: true,
-});
-
-export const WithIcon = createStory({
-  kind: "solid",
-  hierarchy: "primary",
-  icon: IconCheck,
-});
+export const WithIcon = {
+  args: {
+    kind: "solid",
+    hierarchy: "primary",
+    icon: IconCheck,
+  },
+} satisfies Story;

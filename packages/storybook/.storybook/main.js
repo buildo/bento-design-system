@@ -9,6 +9,10 @@ module.exports = {
     "../stories/Components/AreaLoader.stories.*",
     "../stories/Components/Avatar.stories.*",
     "../stories/Components/Banner.stories.*",
+    "../stories/Components/Breadcrumb.stories.*",
+    "../stories/Components/Button.stories.*",
+    "../stories/Components/ButtonLink.stories.*",
+    "../stories/Components/Card.stories.*",
   ],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials", "storybook-addon-themes"],
   framework: {
