@@ -1,7 +1,7 @@
 import { Placeholder, Stack } from "..";
 import { alignArgType, createComponentStories, disableControlArgType, spaceArgType } from "../util";
 
-const { createStory, defaultExport } = createComponentStories({
+const meta = {
   component: Stack,
   args: {
     space: 32,
@@ -16,31 +16,43 @@ const { createStory, defaultExport } = createComponentStories({
     children: disableControlArgType,
     align: alignArgType,
   },
-});
+} satisfies Meta<typeof Stack>;
 
-export default defaultExport;
+export default meta;
 
-export const basic = createStory({});
+type Story = StoryObj<typeof meta>;
 
-export const alignLeft = createStory({
-  align: "left",
-});
+export const basic = {} satisfies Story;
 
-export const alignCenter = createStory({
-  align: "center",
-});
-
-export const alignRight = createStory({
-  align: "right",
-});
-
-export const responsiveAlign = createStory({
-  align: {
-    mobile: "center",
-    desktop: "left",
+export const alignLeft = {
+  args: {
+    align: "left",
   },
-});
+} satisfies Story;
 
-export const dividers = createStory({
-  dividers: true,
-});
+export const alignCenter = {
+  args: {
+    align: "center",
+  },
+} satisfies Story;
+
+export const alignRight = {
+  args: {
+    align: "right",
+  },
+} satisfies Story;
+
+export const responsiveAlign = {
+  args: {
+    align: {
+      mobile: "center",
+      desktop: "left",
+    },
+  },
+} satisfies Story;
+
+export const dividers = {
+  args: {
+    dividers: true,
+  },
+};

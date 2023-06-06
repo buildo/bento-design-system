@@ -1,13 +1,8 @@
 import { Card, Column, Columns, Display, Placeholder } from "..";
-import {
-  alignArgType,
-  alignYArgType,
-  createComponentStories,
-  disableControlArgType,
-  spaceArgType,
-} from "../util";
+import { alignArgType, alignYArgType, disableControlArgType, spaceArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Columns,
   subcomponents: { Column },
   args: {
@@ -19,52 +14,70 @@ const { defaultExport, createStory } = createComponentStories({
     align: alignArgType,
     alignY: alignYArgType,
   },
-});
+} satisfies Meta<typeof Columns>;
 
-export default defaultExport;
+export default meta;
 
-export const twoColumn = createStory({
-  children: [<Placeholder height={200} />, <Placeholder height={200} />],
-});
+type Story = StoryObj<typeof meta>;
 
-export const twoColumn1_3 = createStory({
-  children: [
-    <Column width="1/3">
-      <Placeholder height={200} label="1/3" />
-    </Column>,
-    <Column>
-      <Placeholder height={200} />
-    </Column>,
-  ],
-});
+export const twoColumn = {
+  args: {
+    children: (
+      <>
+        <Placeholder height={200} />, <Placeholder height={200} />
+      </>
+    ),
+  },
+} satisfies Story;
 
-export const threeColumn = createStory({
-  children: [
-    <Column width="1/5">
-      <Placeholder height={200} label="1/5" />
-    </Column>,
-    <Column>
-      <Placeholder height={200} />
-    </Column>,
-    <Column width="1/5">
-      <Placeholder height={200} label="1/5" />
-    </Column>,
-  ],
-});
+export const twoColumn1_3 = {
+  args: {
+    children: (
+      <>
+        <Column width="1/3">
+          <Placeholder height={200} label="1/3" />
+        </Column>
+        ,
+        <Column>
+          <Placeholder height={200} />
+        </Column>
+        ,
+      </>
+    ),
+  },
+} satisfies Story;
 
-export const contentSizedColumn = createStory({
-  children: [
-    <Column width="content">
-      <Placeholder height={200} label="I'm a content-sized column" />
-    </Column>,
-    <Column>
-      <Placeholder height={200} />
-    </Column>,
-  ],
-});
+export const threeColumn = {
+  args: {
+    children: [
+      <Column width="1/5">
+        <Placeholder height={200} label="1/5" />
+      </Column>,
+      <Column>
+        <Placeholder height={200} />
+      </Column>,
+      <Column width="1/5">
+        <Placeholder height={200} label="1/5" />
+      </Column>,
+    ],
+  },
+} satisfies Story;
 
-export const collapseBelow = createStory(
-  {
+export const contentSizedColumn = {
+  args: {
+    children: [
+      <Column width="content">
+        <Placeholder height={200} label="I'm a content-sized column" />
+      </Column>,
+      <Column>
+        <Placeholder height={200} />
+      </Column>,
+    ],
+  },
+} satisfies Story;
+
+export const collapseBelow = {
+  args: {
     collapseBelow: "desktop",
     align: {
       mobile: "center",
@@ -76,44 +89,52 @@ export const collapseBelow = createStory(
       <Placeholder height={100} />,
     ],
   },
-  {
+  parameters: {
     viewport: { defaultViewport: "mobile1" },
-  }
-);
+  },
+} satisfies Story;
 
-export const alignY = createStory({
-  alignY: "bottom",
-  children: [<Placeholder height={50} />, <Placeholder height={100} />],
-});
+export const alignY = {
+  args: {
+    alignY: "bottom",
+    children: [<Placeholder height={50} />, <Placeholder height={100} />],
+  },
+} satisfies Story;
 
-export const alignYStretch = createStory({
-  alignY: "stretch",
-  children: [<Placeholder height={100} />, <Placeholder height="100%" />],
-});
+export const alignYStretch = {
+  args: {
+    alignY: "stretch",
+    children: [<Placeholder height={100} />, <Placeholder height="100%" />],
+  },
+} satisfies Story;
 
-export const alignYBaseline = createStory({
-  alignY: "baseline",
-  children: [
-    <Column width="content">
-      <Card padding={24}>
-        <Display size="large">Hello</Display>
-      </Card>
-    </Column>,
-    <Column width="content">
-      <Card padding={24}>
-        <Display size="small">World</Display>
-      </Card>
-    </Column>,
-  ],
-});
+export const alignYBaseline = {
+  args: {
+    alignY: "baseline",
+    children: [
+      <Column width="content">
+        <Card padding={24}>
+          <Display size="large">Hello</Display>
+        </Card>
+      </Column>,
+      <Column width="content">
+        <Card padding={24}>
+          <Display size="small">World</Display>
+        </Card>
+      </Column>,
+    ],
+  },
+} satisfies Story;
 
-export const reverse = createStory({
-  children: [<Placeholder label="1" />, <Placeholder label="2" />, <Placeholder label="3" />],
-  reverse: true,
-});
+export const reverse = {
+  args: {
+    children: [<Placeholder label="1" />, <Placeholder label="2" />, <Placeholder label="3" />],
+    reverse: true,
+  },
+} satisfies Story;
 
-export const responsiveReverse = createStory(
-  {
+export const responsiveReverse = {
+  args: {
     children: [
       <Placeholder background="brandPrimary" />,
       <Column width={{ wide: "content", desktop: "content", tablet: "full", mobile: "full" }}>
@@ -126,11 +147,11 @@ export const responsiveReverse = createStory(
       mobile: false,
     },
   },
-  { viewport: { defaultViewport: "tablet" } }
-);
+  parameters: { viewport: { defaultViewport: "tablet" } },
+} satisfies Story;
 
-export const sticky = createStory(
-  {
+export const sticky = {
+  args: {
     collapseBelow: "desktop",
     reverse: { tablet: true },
     children: [
@@ -143,5 +164,5 @@ export const sticky = createStory(
       </Column>,
     ],
   },
-  { viewport: { defaultViewport: "mobile1" } }
-);
+  parameters: { viewport: { defaultViewport: "mobile1" } },
+} satisfies Story;

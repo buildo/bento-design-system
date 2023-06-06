@@ -5,10 +5,10 @@ import {
   disableControlArgType,
   spaceArgType,
 } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Tiles,
-  args: {},
   argTypes: {
     space: spaceArgType,
     columns: {
@@ -17,37 +17,45 @@ const { defaultExport, createStory } = createComponentStories({
     children: disableControlArgType,
     alignY: alignYArgType,
   },
-});
+} satisfies Meta<typeof Tiles>;
 
-export default defaultExport;
+export default meta;
 
-export const threeColumns = createStory({
-  space: 32,
-  columns: 3,
-  children: [<Placeholder key={1} />, <Placeholder key={2} />, <Placeholder key={3} />],
-});
+type Story = StoryObj<typeof meta>;
 
-export const responsive = createStory({
-  space: { mobile: 8, tablet: 16, desktop: 32, wide: 32 },
-  columns: { mobile: 1, tablet: 2, desktop: 4, wide: 6 },
-  children: [
-    <Placeholder key={1} />,
-    <Placeholder key={2} />,
-    <Placeholder key={3} />,
-    <Placeholder key={4} />,
-    <Placeholder key={5} />,
-    <Placeholder key={6} />,
-  ],
-});
+export const threeColumns = {
+  args: {
+    space: 32,
+    columns: 3,
+    children: [<Placeholder key={1} />, <Placeholder key={2} />, <Placeholder key={3} />],
+  },
+} satisfies Story;
 
-export const alignY = createStory({
-  columns: 4,
-  space: 32,
-  alignY: "bottom",
-  children: [
-    <Placeholder key={1} />,
-    <Placeholder height={400} key={2} />,
-    <Placeholder key={3} />,
-    <Placeholder key={4} />,
-  ],
-});
+export const responsive = {
+  args: {
+    space: { mobile: 8, tablet: 16, desktop: 32, wide: 32 },
+    columns: { mobile: 1, tablet: 2, desktop: 4, wide: 6 },
+    children: [
+      <Placeholder key={1} />,
+      <Placeholder key={2} />,
+      <Placeholder key={3} />,
+      <Placeholder key={4} />,
+      <Placeholder key={5} />,
+      <Placeholder key={6} />,
+    ],
+  },
+} satisfies Story;
+
+export const alignY = {
+  args: {
+    columns: 4,
+    space: 32,
+    alignY: "bottom",
+    children: [
+      <Placeholder key={1} />,
+      <Placeholder height={400} key={2} />,
+      <Placeholder key={3} />,
+      <Placeholder key={4} />,
+    ],
+  },
+} satisfies Story;

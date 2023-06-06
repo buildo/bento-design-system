@@ -1,11 +1,13 @@
 import { useComponentsShowcase } from ".";
 import { action } from "@storybook/addon-actions";
 
-export default {};
-
-export const Showcase = () => {
-  return useComponentsShowcase({ action });
+export default {
+  title: "Showcase",
 };
-Showcase.parameters = {
-  chromatic: { pauseAnimationAtEnd: true },
+
+export const Showcase = {
+  render: () => useComponentsShowcase({ action }),
+  parameters: {
+    chromatic: { pauseAnimationAtEnd: true },
+  },
 };

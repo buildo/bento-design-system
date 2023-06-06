@@ -3,12 +3,7 @@ const { VanillaExtractPlugin } = require("@vanilla-extract/webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  // TODO(gabro): restore this to "../stories/**/*.stories.*" once all stories are migrated
-  stories: [
-    "../stories/Foundations/*.stories.*",
-    "../stories/Foundations/**/*.stories.*",
-    "../stories/Components/**/*.stories.*",
-  ],
+  stories: [{ directory: "../stories", files: "**/*.stories.*" }],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials", "storybook-addon-themes"],
   framework: {
     name: "@storybook/react-webpack5",
