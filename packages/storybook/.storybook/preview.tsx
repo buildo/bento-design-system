@@ -1,8 +1,9 @@
-import { defaultMessages } from "@buildo/bento-design-system/defaultMessages/en";
-import { BentoProvider } from "../stories/";
+import { defaultMessages } from "@buildo/bento-design-system/lib/defaultMessages/en";
+import { BentoProvider } from "../stories";
 import { useArgs } from "@storybook/addons";
+import { Decorator } from "@storybook/react";
 
-export const decorators = [
+export const decorators: Decorator[] = [
   (Story) => (
     <BentoProvider dismissAfterMs={1000000} defaultMessages={defaultMessages}>
       <Story />
