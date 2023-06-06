@@ -23,7 +23,4 @@ module.exports = {
       plugins: [...plugins, new VanillaExtractPlugin(), new MiniCssExtractPlugin()],
     };
   },
-  docs: {
-    autodocs: true,
-  },
 };
