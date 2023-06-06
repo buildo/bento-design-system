@@ -5,7 +5,7 @@ import { Decorator } from "@storybook/react";
 
 export const decorators: Decorator[] = [
   (Story) => (
-    <BentoProvider dismissAfterMs={1000000} defaultMessages={defaultMessages}>
+    <BentoProvider toastDismissAfterMs={1000000} defaultMessages={defaultMessages}>
       <Story />
     </BentoProvider>
   ),
@@ -15,8 +15,8 @@ export const decorators: Decorator[] = [
   (Story, ctx) => {
     const [, setArgs] = useArgs();
 
-    const onChange = (value) => {
-      ctx.args.onChange?.(value);
+    const onChange = (value: unknown) => {
+      (ctx.args.onChange as (value: unknown) => void)?.(value);
 
       // Check if the component is controlled
       if (ctx.args.value !== undefined) {
