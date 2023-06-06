@@ -1,17 +1,20 @@
 import { SearchBar } from "../";
-import { createComponentStories, textArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createControlledStory } = createComponentStories({
+const meta = {
   component: SearchBar,
   args: {
     "aria-label": "Search for anything",
     placeholder: "Search for anything",
   },
-  argTypes: {
-    placeholder: textArgType,
+} satisfies Meta<typeof SearchBar>;
+
+export default meta;
+
+type Story = StoryObj<typeof SearchBar>;
+
+export const searchBar = {
+  args: {
+    value: "design systems",
   },
-});
-
-export default defaultExport;
-
-export const searchBar = createControlledStory("design systems", {});
+} satisfies Story;

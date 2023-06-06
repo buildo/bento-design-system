@@ -1,7 +1,7 @@
 import { Legend, LegendProps, LineChart, Line, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import { Box, Inline, useChart } from "../..";
-import { createComponentStories } from "../../util";
 import isChromatic from "chromatic/isChromatic";
+import { Meta, StoryObj } from "@storybook/react";
 
 function CustomChart({ data }: { data: { name: unknown; uv: unknown; pv: unknown }[] }) {
   const { makeLegendEntry, makeLineProps, containerProps, tooltip } = useChart({});
@@ -50,7 +50,7 @@ function CustomChart({ data }: { data: { name: unknown; uv: unknown; pv: unknown
   );
 }
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: CustomChart,
   args: {
     data: [
@@ -91,8 +91,10 @@ const { defaultExport, createStory } = createComponentStories({
       },
     ],
   },
-});
+} satisfies Meta<typeof CustomChart>;
 
-export default defaultExport;
+export default meta;
 
-export const Chart = createStory({});
+type Story = StoryObj<typeof meta>;
+
+export const Chart = {} satisfies Story;

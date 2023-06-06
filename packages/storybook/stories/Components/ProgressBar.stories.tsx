@@ -1,21 +1,26 @@
 import { ProgressBar } from "..";
-import { createComponentStories } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { createStory, defaultExport } = createComponentStories({
+const meta = {
   component: ProgressBar,
-  args: {},
-});
+} satisfies Meta<typeof ProgressBar>;
 
-export default defaultExport;
+export default meta;
 
-export const Continue = createStory({
-  kind: "continuous",
-  value: 55,
-  maxValue: 100,
-});
+type Story = StoryObj<typeof ProgressBar>;
 
-export const Discrete = createStory({
-  kind: "discrete",
-  value: 3,
-  maxValue: 5,
-});
+export const Continue = {
+  args: {
+    kind: "continuous",
+    value: 55,
+    maxValue: 100,
+  },
+} satisfies Story;
+
+export const Discrete = {
+  args: {
+    kind: "discrete",
+    value: 3,
+    maxValue: 5,
+  },
+} satisfies Story;

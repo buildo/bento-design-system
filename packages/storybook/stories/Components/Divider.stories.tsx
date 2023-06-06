@@ -1,34 +1,42 @@
-import { StoryFn } from "@storybook/addons";
+import { StoryObj, Meta } from "@storybook/addons";
 import { Column, Columns, Divider, Placeholder, Stack } from "..";
-import { createComponentStories } from "../util";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Divider,
-  args: {},
-});
+} satisfies Meta<typeof Divider>;
 
-export default defaultExport;
+export default meta;
 
-export const Vertical = createStory({ orientation: "vertical" });
-Vertical.decorators = [
-  (Story: StoryFn) => (
-    <Columns space={16} alignY="stretch">
-      <Placeholder />
-      <Column width="content">
+type Story = StoryObj<typeof meta>;
+
+export const Vertical = {
+  args: {
+    orientation: "vertical",
+  },
+  decorators: [
+    (Story) => (
+      <Columns space={16} alignY="stretch">
+        <Placeholder />
+        <Column width="content">
+          <Story />
+        </Column>
+        <Placeholder />
+      </Columns>
+    ),
+  ],
+};
+
+export const Horizontal = {
+  args: {
+    orientation: "horizontal",
+  },
+  decorators: [
+    (Story) => (
+      <Stack space={16}>
+        <Placeholder />
         <Story />
-      </Column>
-      <Placeholder />
-    </Columns>
-  ),
-];
-
-export const Horizontal = createStory({ orientation: "horizontal" });
-Horizontal.decorators = [
-  (Story: StoryFn) => (
-    <Stack space={16}>
-      <Placeholder />
-      <Story />
-      <Placeholder />
-    </Stack>
-  ),
-];
+        <Placeholder />
+      </Stack>
+    ),
+  ],
+};

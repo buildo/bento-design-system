@@ -1,14 +1,16 @@
 import { Box, IconWarningSolid, Tooltip, TooltipProps } from "..";
-import { createComponentStories } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Tooltip,
   args: {
     content: "Tooltip content",
   },
-});
+} satisfies Meta<typeof Tooltip>;
 
-export default defaultExport;
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 const trigger: TooltipProps["trigger"] = (ref, props) => (
   <Box ref={ref} {...props} display="inline-block">
@@ -16,11 +18,15 @@ const trigger: TooltipProps["trigger"] = (ref, props) => (
   </Box>
 );
 
-export const Basic = createStory({
-  trigger,
-});
+export const Basic = {
+  args: {
+    trigger,
+  },
+} satisfies Story;
 
-export const ForcedPlacement = createStory({
-  trigger,
-  placement: "bottom",
-});
+export const ForcedPlacement = {
+  args: {
+    trigger,
+    placement: "bottom",
+  },
+} satisfies Story;

@@ -7,9 +7,9 @@ import {
   SelectField,
   BentoConfigProvider,
 } from "../";
-import { createComponentStories, fieldArgTypes, textArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory, createControlledStory } = createComponentStories({
+const meta = {
   component: SelectField,
   args: {
     menuSize: "large",
@@ -49,49 +49,63 @@ const { defaultExport, createStory, createControlledStory } = createComponentSto
     ],
     noOptionsMessage: "No options",
   },
-  argTypes: {
-    ...fieldArgTypes,
-    placeholder: textArgType,
+} satisfies Meta<typeof SelectField>;
+
+export default meta;
+
+type Story = StoryFn<typeof SelectField>;
+
+export const LargeMenu = { args: {} } satisfies Story;
+
+export const MediumMenu = {
+  args: {
+    menuSize: "medium",
   },
-});
+} satisfies Story;
 
-export default defaultExport;
+export const Disabled = {
+  args: {
+    disabled: true,
+  },
+} satisfies Story;
 
-export const LargeMenu = createControlledStory(undefined, {});
+export const Error = {
+  args: {
+    issues: ["Please select a color"],
+  },
+} satisfies Story;
 
-export const MediumMenu = createControlledStory(undefined, { menuSize: "medium" });
+export const InModal = {
+  args: {
+    hint: "Something useful",
+  },
+  decorators: [
+    (Story: StoryFn) => (
+      <Modal title="Title" onClose={() => {}} closeButtonLabel="Close">
+        <Story />
+      </Modal>
+    ),
+  ],
+} satisfies Story;
 
-export const Disabled = createControlledStory(undefined, {
-  disabled: true,
-});
+export const MultiSelectOneOptionSelected = {
+  args: {
+    value: [1],
+    isMulti: true,
+    multiValueMessage: (numberOfSelectedOptions: number) =>
+      `${numberOfSelectedOptions} options selected`,
+    showMultiSelectBulkActions: true,
+  },
+} satisfies Story;
 
-export const Error = createControlledStory(undefined, {
-  issues: ["Please select a color"],
-});
-
-export const InModal = createControlledStory(undefined, {
-  hint: "Something useful",
-});
-InModal.decorators = [
-  (Story: StoryFn) => (
-    <Modal title="Title" onClose={() => {}} closeButtonLabel="Close">
-      <Story />
-    </Modal>
-  ),
-];
-
-export const MultiSelectOneOptionSelected = createControlledStory([1], {
-  isMulti: true,
-  multiValueMessage: (numberOfSelectedOptions: number) =>
-    `${numberOfSelectedOptions} options selected`,
-  showMultiSelectBulkActions: true,
-});
-
-export const MultiSelectMultipleOptionsSelected = createControlledStory([1, 2], {
-  isMulti: true,
-  multiValueMessage: (numberOfSelectedOptions: number) =>
-    `${numberOfSelectedOptions} options selected`,
-});
+export const MultiSelectMultipleOptionsSelected = {
+  args: {
+    value: [1, 2],
+    isMulti: true,
+    multiValueMessage: (numberOfSelectedOptions: number) =>
+      `${numberOfSelectedOptions} options selected`,
+  },
+} satisfies Story;
 
 const manyColors = [
   "red",
@@ -116,53 +130,63 @@ const manyColors = [
   "fuchsia",
 ];
 
-export const MultiSelectModeChipsSelected = createControlledStory(manyColors, {
-  isMulti: true,
-  multiSelectMode: "chips",
-  showMultiSelectBulkActions: true,
-  options: manyColors.map((color) => ({
-    value: color,
-    label: color,
-    kind: "single-line",
-  })),
-});
+export const MultiSelectModeChipsSelected = {
+  args: {
+    value: manyColors,
+    isMulti: true,
+    multiSelectMode: "chips",
+    showMultiSelectBulkActions: true,
+    options: manyColors.map((color) => ({
+      value: color,
+      label: color,
+      kind: "single-line",
+    })),
+  },
+} satisfies Story;
 
-export const WithIconSelected = createControlledStory(1, {
-  options: [
-    { value: 1, label: "Idea", icon: IconLightbulb },
-    { value: 2, label: "User", icon: IconUser },
-  ],
-});
+export const WithIconSelected = {
+  args: {
+    value: 1,
+    options: [
+      { value: 1, label: "Idea", icon: IconLightbulb },
+      { value: 2, label: "User", icon: IconUser },
+    ],
+  },
+} satisfies Story;
 
-export const ReadOnly = createStory({
-  value: 1,
-  options: [
-    { value: 1, label: "Idea", icon: IconLightbulb },
-    { value: 2, label: "User", icon: IconUser },
-  ],
-  isReadOnly: true,
-});
+export const ReadOnly = {
+  args: {
+    value: 1,
+    options: [
+      { value: 1, label: "Idea", icon: IconLightbulb },
+      { value: 2, label: "User", icon: IconUser },
+    ],
+    isReadOnly: true,
+  },
+} satisfies Story;
 
 // This story tests that we can configure List specifically for SelectField
-export const CustomListConfig = createStory({
-  autoFocus: true,
-});
-CustomListConfig.decorators = [
-  (Story: StoryFn) => (
-    <BentoConfigProvider
-      value={{
-        dropdown: {
-          list: {
-            item: {
-              paddingX: { large: 80, medium: 80 },
+export const CustomListConfig = {
+  args: {
+    autoFocus: true,
+  },
+  decorators: [
+    (Story: StoryFn) => (
+      <BentoConfigProvider
+        value={{
+          dropdown: {
+            list: {
+              item: {
+                paddingX: { large: 80, medium: 80 },
+              },
             },
           },
-        },
-      }}
-    >
-      <Modal title="Title" onClose={() => {}}>
-        <Story />
-      </Modal>
-    </BentoConfigProvider>
-  ),
-];
+        }}
+      >
+        <Modal title="Title" onClose={() => {}}>
+          <Story />
+        </Modal>
+      </BentoConfigProvider>
+    ),
+  ],
+} satisfies Story;

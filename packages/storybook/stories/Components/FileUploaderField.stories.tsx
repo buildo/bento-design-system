@@ -43,7 +43,7 @@ export const Loading = {
   },
   decorators: [
     (Story, ctx) => {
-      const [args, setArgs] = useArgs();
+      const [, setArgs] = useArgs();
 
       return (
         <Stack space={16}>
@@ -51,13 +51,13 @@ export const Loading = {
             {...fileUploaderProps}
             value={undefined}
             onChange={() => {}}
-            isUploading={args.isUploading}
+            isUploading={ctx.args.isUploading}
           />
           <Button
             kind="solid"
             hierarchy="primary"
-            label={args.isUploading ? "Stop loading" : "Start loading"}
-            onPress={() => setArgs({ isUploading: !args.isUploading })}
+            label={ctx.args.isUploading ? "Stop loading" : "Start loading"}
+            onPress={() => setArgs({ isUploading: !ctx.args.isUploading })}
           />
         </Stack>
       );

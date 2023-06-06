@@ -1,7 +1,7 @@
 import { TextField } from "..";
-import { createComponentStories, fieldArgTypes, textArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory, createControlledStory } = createComponentStories({
+const meta = {
   component: TextField,
   args: {
     name: "nickname",
@@ -9,30 +9,36 @@ const { defaultExport, createStory, createControlledStory } = createComponentSto
     placeholder: "Insert your nickname",
     assistiveText: "Your nickname is the name people commonly use to informally refer to you",
   },
-  argTypes: {
-    ...fieldArgTypes,
-    placeholder: textArgType,
+};
+
+export default meta;
+
+type Story = StoryObj<typeof TextField>;
+
+export const Default = {} satisfies Story;
+
+export const Disabled = {
+  args: {
+    disabled: true,
   },
-});
+} satisfies Story;
 
-export default defaultExport;
+export const Error = {
+  args: {
+    issues: ["Please insert at least 3 characters"],
+  },
+} satisfies Story;
 
-export const Default = createControlledStory("", {});
+export const ReadOnly = {
+  args: {
+    value: "MyNickname",
+    isReadOnly: true,
+  },
+} satisfies Story;
 
-export const Disabled = createControlledStory("", {
-  disabled: true,
-});
-
-export const Error = createControlledStory("", {
-  issues: ["Please insert at least 3 characters"],
-});
-
-export const ReadOnly = createStory({
-  value: "MyNickname",
-  isReadOnly: true,
-});
-
-export const CustomAccessory = createStory({
-  value: "With a custom accessory",
-  rightAccessory: "👍",
-});
+export const CustomAccessory = {
+  args: {
+    value: "With a custom accessory",
+    rightAccessory: "👍",
+  },
+} satisfies Story;

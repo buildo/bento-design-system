@@ -1,7 +1,7 @@
 import { ReadOnlyField } from "..";
-import { createComponentStories, fieldArgTypes } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: ReadOnlyField,
   args: {
     name: "nickname",
@@ -9,28 +9,39 @@ const { defaultExport, createStory } = createComponentStories({
     assistiveText: "Your nickname is the name people commonly use to informally refer to you",
     value: "myNickname",
   },
-  argTypes: {
-    ...fieldArgTypes,
+} satisfies Meta<typeof ReadOnlyField>;
+
+export default meta;
+
+type Story = StoryObj<typeof ReadOnlyField>;
+
+export const Default = {} satisfies Story;
+
+export const Password = {
+  args: {
+    type: "password",
   },
-});
+} satisfies Story;
 
-export default defaultExport;
+export const RightAccessory = {
+  args: {
+    rightAccessory: "👍",
+  },
+} satisfies Story;
 
-export const Default = createStory({});
+export const WithCopyButton = {
+  args: {
+    withCopyButton: true,
+    copyButtonLabel: "Copy to clipboard",
+    copySuccessMessage: "Copied to clipboard",
+  },
+} satisfies Story;
 
-export const Password = createStory({ type: "password" });
-
-export const RightAccessory = createStory({ rightAccessory: "👍" });
-
-export const WithCopyButton = createStory({
-  withCopyButton: true,
-  copyButtonLabel: "Copy to clipboard",
-  copySuccessMessage: "Copied to clipboard",
-});
-
-export const WithCopyButtonAndRightAccessory = createStory({
-  withCopyButton: true,
-  copyButtonLabel: "Copy to clipboard",
-  copySuccessMessage: "Copied to clipboard",
-  rightAccessory: "👍",
-});
+export const WithCopyButtonAndRightAccessory = {
+  args: {
+    withCopyButton: true,
+    copyButtonLabel: "Copy to clipboard",
+    copySuccessMessage: "Copied to clipboard",
+    rightAccessory: "👍",
+  },
+} satisfies Story;

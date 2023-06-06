@@ -1,105 +1,116 @@
 import { BentoProvider, Toast, useToast } from "..";
-import { createComponentStories, textArgType } from "../util";
 import { action } from "@storybook/addon-actions";
 import { ComponentProps, useEffect } from "react";
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import { defaultMessages } from "@buildo/bento-design-system/lib/defaultMessages/en";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Toast,
   args: {
     message: "This is a message for you",
   },
-  argTypes: {
-    message: textArgType,
-  },
-});
+} satisfies Meta<typeof Toast>;
 
-export default defaultExport;
+export default meta;
 
-export const Message = createStory({
-  kind: "informative",
-});
+type Story = ComponentProps<typeof Toast>;
 
-export const NonDismissable = createStory(
-  {
+export const Message = {
+  args: {
     kind: "informative",
   },
-  { actions: { argTypesRegex: "" } }
-);
+} satisfies Story;
 
-export const MessageAndAction = createStory({
-  kind: "informative",
-  action: {
-    label: "Action",
-    onPress: action("onPress"),
+export const NonDismissable = {
+  args: {
+    kind: "informative",
   },
-});
+  parameters: { actions: { argTypesRegex: "" } },
+} satisfies Story;
 
-export const NonDismissableAndAction = createStory(
-  {
+export const MessageAndAction = {
+  args: {
     kind: "informative",
     action: {
       label: "Action",
       onPress: action("onPress"),
     },
   },
-  { actions: { argTypesRegex: "" } }
-);
+} satisfies Story;
 
-export const Positive = createStory({
-  kind: "positive",
-  action: {
-    label: "Action",
-    onPress: action("onPress"),
+export const NonDismissableAndAction = {
+  args: {
+    kind: "informative",
+    action: {
+      label: "Action",
+      onPress: action("onPress"),
+    },
   },
-});
+  parameters: { actions: { argTypesRegex: "" } },
+} satisfies Story;
 
-export const Negative = createStory({
-  kind: "negative",
-  action: {
-    label: "Action",
-    onPress: action("onPress"),
+export const Positive = {
+  args: {
+    kind: "positive",
+    action: {
+      label: "Action",
+      onPress: action("onPress"),
+    },
   },
-});
+} satisfies Story;
 
-export const Warning = createStory({
-  kind: "warning",
-  action: {
-    label: "Action",
-    onPress: action("onPress"),
+export const Negative = {
+  args: {
+    kind: "negative",
+    action: {
+      label: "Action",
+      onPress: action("onPress"),
+    },
   },
-});
+} satisfies Story;
 
-export const Secondary = createStory({
-  kind: "secondary",
-  action: {
-    label: "Action",
-    onPress: action("onPress"),
+export const Warning = {
+  args: {
+    kind: "warning",
+    action: {
+      label: "Action",
+      onPress: action("onPress"),
+    },
   },
-});
+} satisfies Story;
 
-export const WithProvider = ({
-  message,
-  kind = "informative",
-}: Meta<ComponentProps<typeof Toast>>["args"]) => {
-  const { showToast } = useToast();
-  useEffect(() => {
-    showToast({
-      message,
-      kind,
-      action: { label: "Action", onPress: action("onPress") },
-      dismissable: true,
-    });
-  }, [message, kind, showToast]);
+export const Secondary = {
+  args: {
+    kind: "secondary",
+    action: {
+      label: "Action",
+      onPress: action("onPress"),
+    },
+  },
+} satisfies Story;
 
-  return <div />;
+export const WithProvider = {
+  args: {
+    kind: "informative",
+  },
+  render: ({ message, kind }) => {
+    const { showToast } = useToast();
+    useEffect(() => {
+      showToast({
+        message,
+        kind,
+        action: { label: "Action", onPress: action("onPress") },
+        dismissable: true,
+      });
+    }, [message, kind, showToast]);
+
+    return <div />;
+  },
+  decorators: [
+    (Story) => (
+      <BentoProvider toastDismissAfterMs={1000000} defaultMessages={defaultMessages}>
+        <Story />
+      </BentoProvider>
+    ),
+  ],
 };
-
-WithProvider.decorators = [
-  (StoryFn: StoryFn) => (
-    <BentoProvider toastDismissAfterMs={1000000} defaultMessages={defaultMessages}>
-      <StoryFn />
-    </BentoProvider>
-  ),
-];
