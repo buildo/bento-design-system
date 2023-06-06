@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Box, Inline, Stack, Body, IconProps, icons } from "..";
 
 const meta = {
-  title: "Icons",
+  title: "Foundations/Icons",
   args: {
     size: 24,
   },
