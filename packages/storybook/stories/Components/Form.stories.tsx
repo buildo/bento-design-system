@@ -19,7 +19,7 @@ const meta = {
 
 export default meta;
 
-type Story = ComponentProps<typeof Form>;
+type Story = StoryObj<typeof meta>;
 
 const ExampleTextField = (
   props: Omit<

@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from "@storybook/addons";
+import { StoryObj, Meta } from "@storybook/react";
 import { Column, Columns, Divider, Placeholder, Stack } from "..";
 
 const meta = {
@@ -24,7 +24,7 @@ export const Vertical = {
       </Columns>
     ),
   ],
-};
+} satisfies Story;
 
 export const Horizontal = {
   args: {
@@ -39,4 +39,4 @@ export const Horizontal = {
       </Stack>
     ),
   ],
-};
+} satisfies Story;

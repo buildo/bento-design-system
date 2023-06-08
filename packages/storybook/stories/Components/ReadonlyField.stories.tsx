@@ -13,7 +13,7 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof ReadOnlyField>;
+type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
 

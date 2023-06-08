@@ -34,3 +34,5 @@ export function Checkbox({ value, disabled, ...props }: Props) {
     />
   );
 }
+
+export type { Props as CheckboxProps };

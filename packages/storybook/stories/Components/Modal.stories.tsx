@@ -1,6 +1,7 @@
 import { Modal, Body, Placeholder, Stack, CustomModal, Feedback, Inset } from "../";
 import { action } from "@storybook/addon-actions";
 import { screen } from "@storybook/testing-library";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Modal,
@@ -120,11 +121,11 @@ export const WithAsyncPrimaryAction = {
       onPress: action("Cancel"),
     },
   },
+  play: async () => {
+    const button = screen.getByRole("button", { name: /create new item/i });
+    await button.click();
+  },
 } satisfies Story;
-WithAsyncPrimaryAction.play = async () => {
-  const button = screen.getByRole("button", { name: /create new item/i });
-  await button.click();
-};
 
 export const Small = {
   args: {
@@ -173,12 +174,11 @@ export const Wide = {
 
 export const Custom = {
   args: {
-    "aria-label": "Custom modal",
     isDestructive: true,
     size: "medium",
   },
   render: (args) => (
-    <CustomModal {...args}>
+    <CustomModal {...args} aria-label="Custom modal">
       <Inset space={24}>
         <Stack space={0} align="center">
           <Feedback

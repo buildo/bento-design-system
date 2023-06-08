@@ -11,11 +11,11 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Standalone: Story = {};
+export const Standalone = {} satisfies Story;
 
-export const InCard: Story = {
+export const InCard = {
   decorators: [
-    (Story: Story) => (
+    (Story) => (
       <Card padding={0} elevation="small">
         <Box position="relative">
           <Inset space={24}>
@@ -29,11 +29,11 @@ export const InCard: Story = {
       </Card>
     ),
   ],
-};
+} satisfies Story;
 
-export const LongLoading: Story = {
+export const LongLoading = {
   decorators: [
-    (Story: Story) => {
+    (Story) => {
       const [_, updateArgs] = useArgs();
 
       useEffect(() => {
@@ -49,4 +49,4 @@ export const LongLoading: Story = {
   parameters: {
     chromatic: { delay: 3000 },
   },
-};
+} satisfies Story;

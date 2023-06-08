@@ -1,4 +1,4 @@
-import { StoryFn } from "@storybook/react";
+import { StoryFn, Meta, StoryObj } from "@storybook/react";
 import {
   IconLightbulb,
   IconUser,
@@ -6,12 +6,13 @@ import {
   Modal,
   SelectField,
   BentoConfigProvider,
+  SelectFieldProps,
 } from "../";
-import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: SelectField,
   args: {
+    value: undefined,
     menuSize: "large",
     name: "color",
     label: "What's your favorite color?",
@@ -49,13 +50,13 @@ const meta = {
     ],
     noOptionsMessage: "No options",
   },
-} satisfies Meta<typeof SelectField>;
+} satisfies Meta<SelectFieldProps<number>>;
 
 export default meta;
 
-type Story = StoryFn<typeof SelectField>;
+type Story = StoryObj<typeof meta>;
 
-export const LargeMenu = { args: {} } satisfies Story;
+export const LargeMenu = {} satisfies Story;
 
 export const MediumMenu = {
   args: {

@@ -1,6 +1,5 @@
 import { Body, Box } from "../..";
 import { Meta, StoryObj } from "@storybook/react";
-import { textArgType } from "../../utils/utils";
 
 const meta = {
   component: Body,

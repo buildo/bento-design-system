@@ -1,10 +1,5 @@
 import { Placeholder, Tiles } from "..";
-import {
-  alignYArgType,
-  createComponentStories,
-  disableControlArgType,
-  spaceArgType,
-} from "../util";
+import { alignYArgType, disableControlArgType, spaceArgType } from "../util";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

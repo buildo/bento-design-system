@@ -1,7 +1,6 @@
-import { JSXElementConstructor } from "react";
 import { Bleed, Box, Inset, Placeholder } from "..";
-import { S } from "@buildo/bento-design-system/lib/BentoConfig-4a95eb92";
 import { Meta, StoryObj } from "@storybook/react";
+import { spaceArgType } from "../util";
 
 const meta = {
   component: Bleed,
@@ -32,23 +31,23 @@ export const allAxis = {
   args: {
     space: 40,
   },
-};
+} satisfies Story;
 
 export const horizontal = {
   args: {
     spaceX: 40,
   },
-};
+} satisfies Story;
 
 export const vertical = {
   args: {
     spaceY: 40,
   },
-};
+} satisfies Story;
 
 export const horizontalAndVertical = {
   args: {
     spaceX: 40,
     spaceY: 16,
   },
-};
+} satisfies Story;

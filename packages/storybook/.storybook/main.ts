@@ -1,5 +1,6 @@
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { VanillaExtractPlugin } from "@vanilla-extract/webpack-plugin";
+// @ts-expect-error
 import * as path from "path";
 import type { StorybookConfig } from "@storybook/react-webpack5";
 
@@ -15,9 +16,12 @@ const config: StorybookConfig = {
 
     // by default, the rules for jsx|tsx files are including the whole monorepo root,
     // but it's enough to check only the storybook package
-    const tsxRules = rules.filter((rule) => (rule as any)?.test?.test("test.tsx"));
-    tsxRules?.forEach((rule) => {
-      (rule as any).include = [path.resolve(__dirname, "../")];
+    const tsxRules = rules.filter((rule: any) => rule?.test?.test("test.tsx"));
+    tsxRules?.forEach((rule: any) => {
+      rule.include = [
+        // @ts-expect-error
+        path.resolve(__dirname, "../"),
+      ];
     });
     return {
       ...baseConfig,

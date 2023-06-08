@@ -4,6 +4,7 @@ import { Meta, StoryObj } from "@storybook/react";
 const meta = {
   component: TimeField,
   args: {
+    value: undefined,
     name: "time",
     label: "Time",
     assistiveText: "Choose the appointment time",
@@ -12,7 +13,7 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof TimeField>;
+type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
 

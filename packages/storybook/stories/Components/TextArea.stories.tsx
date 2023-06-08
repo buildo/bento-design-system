@@ -4,6 +4,7 @@ import { Meta, StoryObj } from "@storybook/react";
 const meta = {
   component: TextArea,
   args: {
+    value: "",
     name: "description",
     label: "Description",
     placeholder: "Insert description",
@@ -13,7 +14,7 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof TextArea>;
+type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
 

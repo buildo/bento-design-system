@@ -1,5 +1,4 @@
 import { SliderField } from "..";
-import { ComponentStory } from "@storybook/react";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
@@ -15,7 +14,7 @@ const meta = {
 
 export default meta;
 
-type Story = ComponentStory<typeof SliderField>;
+type Story = StoryObj<typeof meta>;
 
 export const Single = {
   args: { value: 30, type: "single", assistiveText: "Assistive text" },

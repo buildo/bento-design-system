@@ -1,4 +1,5 @@
 import { DateField } from "../";
+import type { DateFieldProps } from "@buildo/bento-design-system";
 import {
   startOfWeek,
   endOfWeek,
@@ -20,15 +21,15 @@ const meta = {
   args: {
     name: "date",
     label: "Date",
-    placeholder: "Select a date",
     assistiveText: "This is your favorite date",
     hint: "Some hint that is very useful to you",
   },
-} satisfies Meta<typeof DateField>;
+} satisfies Meta<DateFieldProps>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+//   ^?
 
 const today = startOfToday();
 const value = new Date(2021, 1, 4);
@@ -41,6 +42,7 @@ export const SingleDate = {
 
 export const Disabled = {
   args: {
+    value: null,
     disabled: true,
   },
 } satisfies Story;
@@ -62,6 +64,7 @@ export const Range = {
 const inOneWeek = addWeeks(today, 1);
 export const SingleWithMinMax = {
   args: {
+    value: null,
     minDate: today,
     maxDate: inOneWeek,
     assistiveText: "You can select a date between today and one week from now",
@@ -81,6 +84,7 @@ export const RangeWithMinMax = {
 
 export const SingleWithShortcuts = {
   args: {
+    value: null,
     shortcuts: [
       {
         label: "Today",

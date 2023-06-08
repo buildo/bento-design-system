@@ -13,19 +13,19 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const FillError: Story = {
+export const FillError = {
   args: {
     primaryAction: asyncPrimaryAction,
     secondaryAction,
     errorBannerWidth: "fill",
     error: "Something went wrong",
   },
-};
+} satisfies Story;
 
-export const ContentWidthError: Story = {
+export const ContentWidthError = {
   args: {
     primaryAction: asyncPrimaryAction,
     secondaryAction,
     error: "Something went wrong",
   },
-};
+} satisfies Story;

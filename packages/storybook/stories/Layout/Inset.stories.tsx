@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { Box, Inset, Placeholder } from "..";
-import { createComponentStories, spaceArgType } from "../util";
+import { spaceArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Inset,

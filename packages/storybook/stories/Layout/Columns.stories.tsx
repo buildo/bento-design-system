@@ -4,7 +4,6 @@ import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Columns,
-  subcomponents: { Column },
   args: {
     space: 32,
   },

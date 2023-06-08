@@ -1,6 +1,6 @@
 import { Placeholder } from "@buildo/bento-design-system";
 import { DecorativeDivider, Stack } from "../";
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryObj, Meta } from "@storybook/react";
 
 const meta = {
   component: DecorativeDivider,
@@ -17,6 +17,6 @@ const meta = {
 
 export default meta;
 
-type Story = StoryFn<typeof meta>;
+type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;

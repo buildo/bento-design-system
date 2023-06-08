@@ -9,20 +9,13 @@ import {
   IconInfoSolid,
   IconWarningSolid,
   NumberField,
+  TableProps,
 } from "../";
 import orderBy from "lodash.orderby";
 import { IconX } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
-
-const meta = {
-  component: Table,
-  parameters: { actions: { argTypesRegex: "" } },
-} satisfies Meta<typeof Table>;
-
-export default meta;
-
-type Story = StoryObj<typeof meta>;
+import { useArgs } from "@storybook/addons";
 
 const exampleColumns = [
   tableColumn.button({
@@ -83,7 +76,7 @@ const exampleColumns = [
     align: "center",
     disableSortBy: true,
   }),
-];
+] as const;
 
 const customizedColumns = [
   tableColumn.button({
@@ -158,7 +151,7 @@ const customizedColumns = [
     kind: "solid",
     hierarchy: "danger",
   }),
-];
+] as const;
 
 const deleteAction = {
   label: "Delete",
@@ -290,33 +283,40 @@ const exampleData = [
   },
 ];
 
-export const Simple = {
+const meta = {
+  component: Table,
   args: {
     columns: exampleColumns,
     data: exampleData,
+  },
+  parameters: { actions: { argTypesRegex: "" } },
+} satisfies Meta<TableProps<typeof exampleColumns>>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Simple = {
+  args: {
     initialSorting: [{ id: "name" }],
   },
 } satisfies Story;
 
 export const Empty = {
   args: {
-    columns: exampleColumns,
     data: [],
   },
 } satisfies Story;
 
 export const EmptyMediumSize = {
   args: {
-    columns: exampleColumns,
     data: [],
     noResultsFeedbackSize: "medium",
   },
 } satisfies Story;
 
 export const WithFilter = {
-  args: {
-    columns: exampleColumns,
-  },
+  args: {},
   decorators: [
     (Story, ctx) => {
       function filterIfDefined<F>(
@@ -372,53 +372,53 @@ export const WithFilter = {
 
 export const WithControlledSorting = {
   args: {
-    columns: exampleColumns,
+    onSort: action("onSort"),
   },
-  decorators: [
-    (Story, ctx) => {
-      const [data, setData] = useState(exampleData);
+  render: (args) => {
+    const [, setArgs] = useArgs();
 
-      const [numberOfRows, setNumberOfRows] = useState(2);
+    const [numberOfRows, setNumberOfRows] = useState(2);
 
-      const onSort: NonNullable<ComponentProps<typeof Table>["onSort"]> = useCallback(
-        (sortBy) => {
-          const newData = orderBy(
-            exampleData,
-            sortBy.map((a) => {
-              switch (a.id) {
-                case "country":
-                  return "country.text";
-                case "status":
-                  return "status.label";
-                case "value":
-                  return "value.numericValue";
-                default:
-                  return a.id;
-              }
-            }),
-            sortBy.map((a) => (a.desc ? "desc" : "asc"))
-          ).slice(0, numberOfRows);
-          setData(newData);
-        },
-        [numberOfRows]
-      );
+    const onSort: NonNullable<ComponentProps<typeof Table>["onSort"]> = useCallback(
+      (sortBy) => {
+        const newData = orderBy(
+          args.data,
+          sortBy.map((a) => {
+            switch (a.id) {
+              case "country":
+                return "country.text";
+              case "status":
+                return "status.label";
+              case "value":
+                return "value.numericValue";
+              default:
+                return a.id;
+            }
+          }),
+          sortBy.map((a) => (a.desc ? "desc" : "asc"))
+        ).slice(0, numberOfRows);
+        setArgs({ data: newData });
+      },
+      [numberOfRows, setArgs, args.data]
+    );
 
-      return (
-        <Stack space={40}>
-          <FormRow>
-            <NumberField
-              name="numberOfRows"
-              label="Number of rows"
-              placeholder="Number of rows"
-              value={numberOfRows}
-              onChange={setNumberOfRows}
-            />
-          </FormRow>
-          <Story args={{ ...ctx.args, data, onSort }} />
-        </Stack>
-      );
-    },
-  ],
+    return (
+      <Stack space={40}>
+        <FormRow>
+          <NumberField
+            name="numberOfRows"
+            label="Number of rows"
+            placeholder="Number of rows"
+            value={numberOfRows}
+            onChange={setNumberOfRows}
+          />
+        </FormRow>
+        {/* NOTE(gabro): no idea why TS complains on the onSort type here */}
+        {/* @ts-expect-error */}
+        <Table {...args} onSort={onSort} />
+      </Stack>
+    );
+  },
 } satisfies Story;
 
 export const Grouped = {
@@ -430,7 +430,6 @@ export const Grouped = {
         accessor: "group",
       }),
     ] as const,
-    data: exampleData,
     groupBy: "group",
   },
 } satisfies Story;
@@ -456,8 +455,6 @@ export const WithFillColumn = {
 
 export const StickyHeaders = {
   args: {
-    columns: exampleColumns,
-    data: exampleData,
     initialSorting: [{ id: "name" }],
     stickyHeaders: true,
     height: { custom: 320 },
@@ -467,14 +464,11 @@ export const StickyHeaders = {
 export const CustomizedColumns = {
   args: {
     columns: customizedColumns,
-    data: exampleData,
   },
 } satisfies Story;
 
 export const InteractiveRow = {
   args: {
-    columns: exampleColumns,
-    data: exampleData,
     initialSorting: [{ id: "name" }],
     onRowPress: action("onRowPress"),
   },

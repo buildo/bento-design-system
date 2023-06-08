@@ -1,4 +1,4 @@
-import { Body, Box, Card, Checkbox, Column, Columns, Stack, Title } from "..";
+import { Body, Box, Card, Checkbox, Column, Columns, Stack, Title, CheckboxProps } from "..";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
@@ -7,7 +7,7 @@ const meta = {
     "aria-label": "Toggle card selection",
   },
   decorators: [
-    (Story) => (
+    (Story: any) => (
       <Card>
         <Box background="softOrange" padding={24}>
           <Columns space={16}>
@@ -30,7 +30,7 @@ const meta = {
       </Card>
     ),
   ],
-} satisfies Meta<typeof Checkbox>;
+} satisfies Meta<CheckboxProps>;
 
 export default meta;
 

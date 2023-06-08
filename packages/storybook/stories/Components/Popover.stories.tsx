@@ -1,14 +1,17 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ComponentProps, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Box, Button, Placeholder, Popover } from "..";
 
 const meta = {
   component: Popover,
+  args: {
+    triggerRef: { current: null },
+  },
 } satisfies Meta<typeof Popover>;
 
 export default meta;
 
-type Story = ComponentProps<typeof Popover>;
+type Story = StoryObj<typeof meta>;
 
 export const popover = {
   args: {

@@ -2,15 +2,8 @@ import { StoryObj, Meta } from "@storybook/react";
 import { FileUploaderField, BentoConfigProvider, Button, Stack } from "..";
 import { useArgs } from "@storybook/addons";
 
-const meta = {
-  component: FileUploaderField,
-} satisfies Meta<typeof FileUploaderField>;
-
-export default meta;
-
-type Story = StoryObj<typeof meta>;
-
 const fileUploaderProps = {
+  value: undefined,
   label: "Upload a file",
   allowedFileTypes: {
     "text/csv": [".csv"],
@@ -32,27 +25,26 @@ const fileUploaderProps = {
   maxFileSize: 1000,
 };
 
-export const fileUploaderField = {
+const meta = {
+  component: FileUploaderField,
   args: fileUploaderProps,
-} satisfies Story;
+} satisfies Meta<typeof FileUploaderField>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const fileUploaderField = {} satisfies Story;
 
 export const Loading = {
-  args: {
-    ...fileUploaderProps,
-    isUploading: false,
-  },
+  args: { isUploading: false },
   decorators: [
     (Story, ctx) => {
       const [, setArgs] = useArgs();
 
       return (
         <Stack space={16}>
-          <FileUploaderField
-            {...fileUploaderProps}
-            value={undefined}
-            onChange={() => {}}
-            isUploading={ctx.args.isUploading}
-          />
+          <Story args={ctx.args} />
           <Button
             kind="solid"
             hierarchy="primary"
@@ -66,7 +58,6 @@ export const Loading = {
 } satisfies Story;
 
 export const withOutlineButton = {
-  args: fileUploaderProps,
   decorators: [
     (Story) => (
       <BentoConfigProvider

@@ -1,6 +1,6 @@
 import { BentoProvider, Toast, useToast } from "..";
 import { action } from "@storybook/addon-actions";
-import { ComponentProps, useEffect } from "react";
+import { useEffect } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { defaultMessages } from "@buildo/bento-design-system/lib/defaultMessages/en";
 
@@ -13,7 +13,7 @@ const meta = {
 
 export default meta;
 
-type Story = ComponentProps<typeof Toast>;
+type Story = StoryObj<typeof meta>;
 
 export const Message = {
   args: {
@@ -113,4 +113,4 @@ export const WithProvider = {
       </BentoProvider>
     ),
   ],
-};
+} satisfies Story;

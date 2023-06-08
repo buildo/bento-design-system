@@ -1,5 +1,6 @@
 import { Placeholder, Stack } from "..";
-import { alignArgType, createComponentStories, disableControlArgType, spaceArgType } from "../util";
+import { alignArgType, disableControlArgType, spaceArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Stack,

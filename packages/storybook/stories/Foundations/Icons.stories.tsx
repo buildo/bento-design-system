@@ -5,6 +5,7 @@ const meta = {
   title: "Foundations/Icons",
   args: {
     size: 24,
+    color: "default",
   },
   argTypes: {
     size: {
@@ -33,14 +34,14 @@ const meta = {
       control: { type: "select" },
     },
   },
-} satisfies Meta<IconProps>;
+} as Meta<IconProps>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 export const Icons = {
-  render: (args: IconProps) => (
+  render: (args) => (
     <Stack space={32}>
       <Inline space={32}>
         {Object.entries(icons).map(([name, Icon]) => (
