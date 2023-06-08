@@ -116,7 +116,7 @@ export function Calendar(props: Props) {
             }
           })}
         </Tiles>
-        <Box style={{ maxWidth: config.dayWidth * 7 }}>{props.shortcuts}</Box>
+        {props.shortcuts && <Box style={{ maxWidth: config.dayWidth * 7 }}>{props.shortcuts}</Box>}
       </Stack>
     </Box>
   );
