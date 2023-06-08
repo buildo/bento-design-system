@@ -4,7 +4,7 @@ import { Meta, StoryObj } from "@storybook/react";
 const meta = {
   component: NumberField,
   args: {
-    value: 0,
+    value: undefined,
     name: "applications",
     label: "Applications",
     placeholder: "Number of target applications",

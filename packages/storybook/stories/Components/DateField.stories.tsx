@@ -32,7 +32,7 @@ type Story = StoryObj<typeof meta>;
 //   ^?
 
 const today = startOfToday();
-const value = new Date(2021, 1, 4);
+const value = new Date(2022, 1, 4);
 
 export const SingleDate = {
   args: {
