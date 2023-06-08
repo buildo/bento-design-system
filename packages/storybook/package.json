@@ -2,7 +2,7 @@
   "name": "bento-storybook",
   "private": true,
   "scripts": {
-    "build": "build-storybook",
+    "build": "storybook build",
     "prettier-check": "prettier --parser=typescript \"stories/**/*.{ts,tsx}\" --check",
     "prettier-write": "prettier --parser=typescript \"stories/**/*.{ts,tsx}\" --write",
     "eslint-check": "eslint \"stories/**/*.{js,ts,tsx}\"",
