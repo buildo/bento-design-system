@@ -12,6 +12,7 @@ import {
   addWeeks,
   addDays,
 } from "date-fns";
+import { screen } from "@storybook/testing-library";
 
 const { defaultExport, createControlledStory } = createComponentStories({
   component: DateField,
@@ -100,3 +101,9 @@ export const RangeWithShortcuts = createControlledStory([null, null], {
 export const DisabledDates = createControlledStory(null, {
   shouldDisableDate: (date: Date) => date.getDay() === 0,
 });
+
+export const CalendarOpen = createControlledStory(value, {});
+CalendarOpen.play = async () => {
+  const input = screen.getByRole("textbox");
+  await input.click();
+};
