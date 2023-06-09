@@ -1,6 +1,8 @@
 module.exports = {
   extends: ["react-app"],
+  parser: "@typescript-eslint/parser",
   plugins: ["sort-export-all"],
+  root: true,
   rules: {
     "array-callback-return": "off",
     "no-fallthrough": "off",

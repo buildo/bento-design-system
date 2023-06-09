@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "incremental": true,
     // NOTE(gabro): without this, atoms.ts does not compile.
     // This implements the fix suggested at https://github.com/microsoft/TypeScript/issues/29808#issuecomment-540292885
     "paths": {
@@ -8,5 +9,5 @@
     },
     "baseUrl": "."
   },
-  "include": ["stories/**/*"]
+  "include": ["stories/**/*", "./.storybook/**/*"]
 }

@@ -1,17 +1,14 @@
-import { createComponentStories, textArgType } from "../util";
 import { Banner } from "../";
 import { action } from "@storybook/addon-actions";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Banner,
-  args: {},
-  argTypes: {
-    title: textArgType,
-    description: textArgType,
-  },
-});
+} satisfies Meta<typeof Banner>;
 
-export default defaultExport;
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 const title = "Title";
 const shortDescription = "Description";
@@ -22,79 +19,103 @@ should overfill the screen and break into several lines. It's really a long desc
 Extensively long description, this is so big that it
 should overfill the screen and break into several lines. It's really a long description, not gonna lie.`;
 
-export const Dismissable = createStory({
-  kind: "informative",
-  title,
-  description: shortDescription,
-});
-
-export const DismissableWithAction = createStory({
-  kind: "informative",
-  title,
-  description: shortDescription,
-  action: {
-    label: "Close",
-    onPress: action("onAction"),
-  },
-});
-
-export const NonDismissable = createStory(
-  {
+export const Dismissable: Story = {
+  args: {
     kind: "informative",
     title,
     description: shortDescription,
   },
-  { actions: { argTypesRegex: "" } }
-);
+};
 
-export const Informative = createStory({
-  kind: "informative",
-  title,
-  description: shortDescription,
-});
+export const DismissableWithAction: Story = {
+  args: {
+    kind: "informative",
+    title,
+    description: shortDescription,
+    action: {
+      label: "Close",
+      onPress: action("onAction"),
+    },
+  },
+};
 
-export const Positive = createStory({
-  kind: "positive",
-  title,
-  description: shortDescription,
-});
+export const NonDismissable: Story = {
+  args: {
+    kind: "informative",
+    title,
+    description: shortDescription,
+  },
+  parameters: {
+    actions: { argTypesRegex: "" },
+  },
+};
 
-export const Warning = createStory({
-  kind: "warning",
-  title,
-  description: shortDescription,
-});
+export const Informative: Story = {
+  args: {
+    kind: "informative",
+    title,
+    description: shortDescription,
+  },
+};
 
-export const Negative = createStory({
-  kind: "negative",
-  title,
-  description: shortDescription,
-});
+export const Positive: Story = {
+  args: {
+    kind: "positive",
+    title,
+    description: shortDescription,
+  },
+};
 
-export const Secondary = createStory({
-  kind: "secondary",
-  title,
-  description: shortDescription,
-});
+export const Warning: Story = {
+  args: {
+    kind: "warning",
+    title,
+    description: shortDescription,
+  },
+};
 
-export const NoDescription = createStory({
-  kind: "informative",
-  title,
-});
+export const Negative: Story = {
+  args: {
+    kind: "negative",
+    title,
+    description: shortDescription,
+  },
+};
 
-export const NoTitle = createStory({
-  kind: "informative",
-  description: shortDescription,
-});
+export const Secondary: Story = {
+  args: {
+    kind: "secondary",
+    title,
+    description: shortDescription,
+  },
+};
 
-export const ShortDescription = createStory({
-  kind: "informative",
-  title,
-  description: shortDescription,
-});
+export const NoDescription: Story = {
+  args: {
+    kind: "informative",
+    title,
+  },
+};
 
-export const LongDescription = createStory({
-  kind: "informative",
-  title,
-  description: longDescription,
-});
+export const NoTitle: Story = {
+  args: {
+    kind: "informative",
+    description: shortDescription,
+  },
+};
+
+export const ShortDescription: Story = {
+  args: {
+    kind: "informative",
+    title,
+    description: shortDescription,
+  },
+};
+
+export const LongDescription: Story = {
+  args: {
+    kind: "informative",
+    title,
+    description: longDescription,
+  },
+};

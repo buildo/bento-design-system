@@ -1,14 +1,18 @@
-import { createComponentStories } from "../../util";
 import { Actions } from "../..";
 import { action } from "@storybook/addon-actions";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Actions,
   args: {
     size: "medium",
   },
   excludeStories: ["primaryAction", "secondaryAction", "asyncPrimaryAction"],
-});
+} satisfies Meta<typeof Actions>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 export const primaryAction = {
   label: "Primary Action",
@@ -31,62 +35,80 @@ export const secondaryAction = {
   onPress: action("onPress"),
 };
 
-export default defaultExport;
-
-export const OnePrimaryAction = createStory({
-  primaryAction,
-});
-
-export const OnePrimaryActionDestructive = createStory({
-  primaryAction: {
-    ...primaryAction,
-    isDestructive: true,
+export const OnePrimaryAction: Story = {
+  args: {
+    primaryAction,
   },
-});
+};
 
-export const OneSecondaryAction = createStory({
-  secondaryAction,
-});
-
-export const TwoActions = createStory({
-  primaryAction,
-  secondaryAction,
-});
-
-export const TwoActionsWithErrorHug = createStory({
-  primaryAction,
-  secondaryAction,
-  error: "Something went wrong",
-});
-
-export const TwoActionsWithErrorFit = createStory({
-  primaryAction,
-  secondaryAction,
-  errorBannerWidth: "fill",
-  error: "Something went wrong",
-});
-
-export const TwoActionsDestructive = createStory({
-  primaryAction: {
-    ...primaryAction,
-    isDestructive: true,
+export const OnePrimaryActionDestructive: Story = {
+  args: {
+    primaryAction: {
+      ...primaryAction,
+      isDestructive: true,
+    },
   },
-  secondaryAction,
-});
+};
 
-export const TwoActionsSmall = createStory({
-  primaryAction,
-  secondaryAction,
-  size: "small",
-});
+export const OneSecondaryAction: Story = {
+  args: {
+    secondaryAction,
+  },
+};
 
-export const TwoActionsLarge = createStory({
-  primaryAction,
-  secondaryAction,
-  size: "large",
-});
+export const TwoActions: Story = {
+  args: {
+    primaryAction,
+    secondaryAction,
+  },
+};
 
-export const AsyncPrimaryAction = createStory({
-  primaryAction: asyncPrimaryAction,
-  secondaryAction,
-});
+export const TwoActionsWithErrorHug: Story = {
+  args: {
+    primaryAction,
+    secondaryAction,
+    error: "Something went wrong",
+  },
+};
+
+export const TwoActionsWithErrorFit: Story = {
+  args: {
+    primaryAction,
+    secondaryAction,
+    errorBannerWidth: "fill",
+    error: "Something went wrong",
+  },
+};
+
+export const TwoActionsDestructive: Story = {
+  args: {
+    primaryAction: {
+      ...primaryAction,
+      isDestructive: true,
+    },
+    secondaryAction,
+  },
+};
+
+export const TwoActionsSmall: Story = {
+  args: {
+    primaryAction,
+    secondaryAction,
+    size: "small",
+  },
+};
+
+export const TwoActionsLarge: Story = {
+  args: {
+    primaryAction,
+    secondaryAction,
+    size: "large",
+  },
+};
+
+export const AsyncPrimaryAction: Story = {
+  args: {
+    primaryAction: asyncPrimaryAction,
+    secondaryAction,
+  },
+};

@@ -1,6 +1,6 @@
-import { createComponentStories } from "../util";
 import { Body, Card, Stack, Title } from "../";
 import { unconditionalProperties, vars } from "@buildo/bento-design-system";
+import { StoryObj, Meta } from "@storybook/react";
 
 const elevationType = {
   options: Object.keys(vars.boxShadow)
@@ -36,7 +36,7 @@ const borderRadiusType = {
   control: { type: "select" },
 };
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Card,
   args: {
     paddingLeft: 24,
@@ -57,9 +57,11 @@ const { defaultExport, createStory } = createComponentStories({
     elevation: elevationType,
     borderRadius: borderRadiusType,
   },
-});
+} satisfies Meta<typeof Card>;
 
-export default defaultExport;
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 const children = (
   <Stack space={8}>
@@ -68,16 +70,19 @@ const children = (
   </Stack>
 );
 
-export const card = createStory({
-  children,
-});
+// eslint-disable-next-line storybook/prefer-pascal-case
+export const card = {
+  args: { children },
+} satisfies Story;
 
-export const cardWithDiffernetRadius = createStory({
-  children,
-  borderRadius: {
-    topLeft: 40,
-    bottomRight: 40,
-    topRight: 0,
-    bottomLeft: 0,
+export const CardWithDifferentRadius = {
+  args: {
+    children,
+    borderRadius: {
+      topLeft: 40,
+      bottomRight: 40,
+      topRight: 0,
+      bottomLeft: 0,
+    },
   },
-});
+} satisfies Story;

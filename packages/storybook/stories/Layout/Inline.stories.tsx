@@ -1,13 +1,8 @@
 import { Inline, Placeholder } from "..";
-import {
-  alignArgType,
-  alignYArgType,
-  createComponentStories,
-  disableControlArgType,
-  spaceArgType,
-} from "../util";
+import { alignArgType, alignYArgType, disableControlArgType, spaceArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { createStory, defaultExport } = createComponentStories({
+const meta = {
   component: Inline,
   args: {
     space: 32,
@@ -23,67 +18,77 @@ const { createStory, defaultExport } = createComponentStories({
     align: alignArgType,
     alignY: alignYArgType,
   },
-});
+} satisfies Meta<typeof Inline>;
 
-export default defaultExport;
+export default meta;
 
-export const basic = createStory({});
+type Story = StoryObj<typeof meta>;
 
-export const alignLeft = createStory({
-  align: "left",
-});
+export const Basic = {} satisfies Story;
 
-export const alignCenter = createStory({
-  align: "center",
-});
+export const AlignLeft = {
+  args: {
+    align: "left",
+  },
+} satisfies Story;
 
-export const alignRight = createStory({
-  align: "right",
-});
+export const AlignCenter = {
+  args: {
+    align: "center",
+  },
+} satisfies Story;
 
-export const multipleLines = createStory({
-  children: [
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={60} />,
-    <Placeholder height={100} width={80} />,
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={90} />,
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={40} />,
-    <Placeholder height={100} width={50} />,
-    <Placeholder height={100} width={70} />,
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={70} />,
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={60} />,
-    <Placeholder height={100} width={80} />,
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={90} />,
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={40} />,
-    <Placeholder height={100} width={50} />,
-    <Placeholder height={100} width={70} />,
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={70} />,
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={60} />,
-    <Placeholder height={100} width={80} />,
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={90} />,
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={40} />,
-    <Placeholder height={100} width={50} />,
-    <Placeholder height={100} width={70} />,
-    <Placeholder height={100} width={100} />,
-    <Placeholder height={100} width={70} />,
-    <Placeholder height={100} width={100} />,
-  ],
-});
+export const AlignRight = {
+  args: {
+    align: "right",
+  },
+} satisfies Story;
 
-export const collapseBelow = createStory(
-  {
+export const MultipleLines = {
+  args: {
+    children: [
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={60} />,
+      <Placeholder height={100} width={80} />,
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={90} />,
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={40} />,
+      <Placeholder height={100} width={50} />,
+      <Placeholder height={100} width={70} />,
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={70} />,
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={60} />,
+      <Placeholder height={100} width={80} />,
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={90} />,
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={40} />,
+      <Placeholder height={100} width={50} />,
+      <Placeholder height={100} width={70} />,
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={70} />,
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={60} />,
+      <Placeholder height={100} width={80} />,
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={90} />,
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={40} />,
+      <Placeholder height={100} width={50} />,
+      <Placeholder height={100} width={70} />,
+      <Placeholder height={100} width={100} />,
+      <Placeholder height={100} width={70} />,
+      <Placeholder height={100} width={100} />,
+    ],
+  },
+} satisfies Story;
+
+export const CollapseBelow = {
+  args: {
     collapseBelow: "tablet",
     align: {
       mobile: "center",
@@ -95,27 +100,31 @@ export const collapseBelow = createStory(
       <Placeholder height={100} width={100} />,
     ],
   },
-  { viewport: { defaultViewport: "mobile1" } }
-);
+  parameters: { viewport: { defaultViewport: "mobile1" } },
+} satisfies Story;
 
-export const responsiveAlign = createStory({
-  align: {
-    mobile: "center",
-    desktop: "left",
+export const ResponsiveAlign = {
+  args: {
+    align: {
+      mobile: "center",
+      desktop: "left",
+    },
   },
-});
+} satisfies Story;
 
-export const reverse = createStory({
-  reverse: true,
-  children: [
-    <Placeholder label="1" width={100} />,
-    <Placeholder label="2" width={100} />,
-    <Placeholder label="3" width={100} />,
-  ],
-});
+export const Reverse = {
+  args: {
+    reverse: true,
+    children: [
+      <Placeholder label="1" width={100} />,
+      <Placeholder label="2" width={100} />,
+      <Placeholder label="3" width={100} />,
+    ],
+  },
+} satisfies Story;
 
-export const responsiveReverse = createStory(
-  {
+export const ResponsiveReverse = {
+  args: {
     reverse: {
       tablet: true,
     },
@@ -125,5 +134,5 @@ export const responsiveReverse = createStory(
       <Placeholder label="3" width={100} background="brandTertiary" />,
     ],
   },
-  { viewport: { defaultViewport: "tablet" } }
-);
+  parameters: { viewport: { defaultViewport: "tablet" } },
+} satisfies Story;

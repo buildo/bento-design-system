@@ -1,7 +1,8 @@
 import { Placeholder, Stack } from "..";
-import { alignArgType, createComponentStories, disableControlArgType, spaceArgType } from "../util";
+import { alignArgType, disableControlArgType, spaceArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { createStory, defaultExport } = createComponentStories({
+const meta = {
   component: Stack,
   args: {
     space: 32,
@@ -16,31 +17,43 @@ const { createStory, defaultExport } = createComponentStories({
     children: disableControlArgType,
     align: alignArgType,
   },
-});
+} satisfies Meta<typeof Stack>;
 
-export default defaultExport;
+export default meta;
 
-export const basic = createStory({});
+type Story = StoryObj<typeof meta>;
 
-export const alignLeft = createStory({
-  align: "left",
-});
+export const Basic = {} satisfies Story;
 
-export const alignCenter = createStory({
-  align: "center",
-});
-
-export const alignRight = createStory({
-  align: "right",
-});
-
-export const responsiveAlign = createStory({
-  align: {
-    mobile: "center",
-    desktop: "left",
+export const AlignLeft = {
+  args: {
+    align: "left",
   },
-});
+} satisfies Story;
 
-export const dividers = createStory({
-  dividers: true,
-});
+export const AlignCenter = {
+  args: {
+    align: "center",
+  },
+} satisfies Story;
+
+export const AlignRight = {
+  args: {
+    align: "right",
+  },
+} satisfies Story;
+
+export const ResponsiveAlign = {
+  args: {
+    align: {
+      mobile: "center",
+      desktop: "left",
+    },
+  },
+} satisfies Story;
+
+export const Dividers = {
+  args: {
+    dividers: true,
+  },
+};

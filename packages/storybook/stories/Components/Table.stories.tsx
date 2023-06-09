@@ -9,19 +9,13 @@ import {
   IconInfoSolid,
   IconWarningSolid,
   NumberField,
+  TableProps,
 } from "../";
-import { createComponentStories } from "../util";
 import orderBy from "lodash.orderby";
 import { IconX } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
-
-const { defaultExport, createStory } = createComponentStories({
-  component: Table,
-  args: {},
-  parameters: { actions: { argTypesRegex: "" } },
-});
-
-export default defaultExport;
+import { Meta, StoryObj } from "@storybook/react";
+import { useArgs } from "@storybook/addons";
 
 const exampleColumns = [
   tableColumn.button({
@@ -82,7 +76,7 @@ const exampleColumns = [
     align: "center",
     disableSortBy: true,
   }),
-];
+] as const;
 
 const customizedColumns = [
   tableColumn.button({
@@ -157,7 +151,7 @@ const customizedColumns = [
     kind: "solid",
     hierarchy: "danger",
   }),
-];
+] as const;
 
 const deleteAction = {
   label: "Delete",
@@ -289,159 +283,193 @@ const exampleData = [
   },
 ];
 
-export const Simple = createStory({
-  columns: exampleColumns,
-  data: exampleData,
-  initialSorting: [{ id: "name" }],
-});
+const meta = {
+  component: Table,
+  args: {
+    columns: exampleColumns,
+    data: exampleData,
+  },
+  parameters: { actions: { argTypesRegex: "" } },
+} satisfies Meta<TableProps<typeof exampleColumns>>;
 
-export const Empty = createStory({
-  columns: exampleColumns,
-  data: [],
-});
+export default meta;
 
-export const EmptyMediumSize = createStory({
-  columns: exampleColumns,
-  data: [],
-  noResultsFeedbackSize: "medium",
-});
+type Story = StoryObj<typeof meta>;
 
-export const WithFilter = (_args: Parameters<typeof createStory>[0]) => {
-  function filterIfDefined<F>(filterValue: F | undefined, f: (filterValue: F) => boolean): boolean {
-    return !filterValue || f(filterValue);
-  }
+export const Simple = {
+  args: {
+    initialSorting: [{ id: "name" }],
+  },
+} satisfies Story;
 
-  const statusOptions = [
-    { label: "Active", value: "Active" } as const,
-    { label: "Paused", value: "Paused" } as const,
-    { label: "Pending", value: "Pending" } as const,
-  ];
-  type Status = (typeof statusOptions)[number]["value"];
+export const Empty = {
+  args: {
+    data: [],
+  },
+} satisfies Story;
 
-  const [nameFilter, setNameFilter] = useState("");
-  const [statusFilter, setStatusFilter] = useState<Status | undefined>(undefined);
+export const EmptyMediumSize = {
+  args: {
+    data: [],
+    noResultsFeedbackSize: "medium",
+  },
+} satisfies Story;
 
-  const data = exampleData.filter(
-    (row) =>
-      filterIfDefined(statusFilter, (f) => row.status.label === f) &&
-      filterIfDefined(nameFilter, (f) =>
-        row.name.toLocaleLowerCase().includes(f.toLocaleLowerCase())
-      )
-  );
+export const WithFilter = {
+  args: {},
+  decorators: [
+    (Story, ctx) => {
+      function filterIfDefined<F>(
+        filterValue: F | undefined,
+        f: (filterValue: F) => boolean
+      ): boolean {
+        return !filterValue || f(filterValue);
+      }
 
-  return (
-    <Stack space={40}>
-      <FormRow>
-        <TextField
-          name="name"
-          label="Name"
-          placeholder="Search by name"
-          value={nameFilter}
-          onChange={setNameFilter}
-        />
-        <SelectField
-          name="status"
-          label="Status"
-          placeholder="Select a status to filter"
-          value={statusFilter}
-          onChange={setStatusFilter}
-          options={statusOptions}
-        />
-      </FormRow>
-      <Table columns={exampleColumns} data={data} />
-    </Stack>
-  );
-};
+      const statusOptions = [
+        { label: "Active", value: "Active" } as const,
+        { label: "Paused", value: "Paused" } as const,
+        { label: "Pending", value: "Pending" } as const,
+      ];
+      type Status = (typeof statusOptions)[number]["value"];
 
-export const WithControlledSorting = (_args: Parameters<typeof createStory>[0]) => {
-  const [data, setData] = useState(exampleData);
+      const [nameFilter, setNameFilter] = useState("");
+      const [statusFilter, setStatusFilter] = useState<Status | undefined>(undefined);
 
-  const [numberOfRows, setNumberOfRows] = useState(2);
+      const data = exampleData.filter(
+        (row) =>
+          filterIfDefined(statusFilter, (f) => row.status.label === f) &&
+          filterIfDefined(nameFilter, (f) =>
+            row.name.toLocaleLowerCase().includes(f.toLocaleLowerCase())
+          )
+      );
 
-  const onSort: NonNullable<ComponentProps<typeof Table>["onSort"]> = useCallback(
-    (sortBy) => {
-      const newData = orderBy(
-        exampleData,
-        sortBy.map((a) => {
-          switch (a.id) {
-            case "country":
-              return "country.text";
-            case "status":
-              return "status.label";
-            case "value":
-              return "value.numericValue";
-            default:
-              return a.id;
-          }
-        }),
-        sortBy.map((a) => (a.desc ? "desc" : "asc"))
-      ).slice(0, numberOfRows);
-      setData(newData);
+      return (
+        <Stack space={40}>
+          <FormRow>
+            <TextField
+              name="name"
+              label="Name"
+              placeholder="Search by name"
+              value={nameFilter}
+              onChange={setNameFilter}
+            />
+            <SelectField
+              name="status"
+              label="Status"
+              placeholder="Select a status to filter"
+              value={statusFilter}
+              onChange={setStatusFilter}
+              options={statusOptions}
+            />
+          </FormRow>
+          <Story args={{ ...ctx.args, data }} />
+        </Stack>
+      );
     },
-    [numberOfRows]
-  );
+  ],
+} satisfies Story;
 
-  return (
-    <Stack space={40}>
-      <FormRow>
-        <NumberField
-          name="numberOfRows"
-          label="Number of rows"
-          placeholder="Number of rows"
-          value={numberOfRows}
-          onChange={setNumberOfRows}
-        />
-      </FormRow>
-      <Table columns={exampleColumns} data={data} onSort={onSort} />
-    </Stack>
-  );
-};
+export const WithControlledSorting = {
+  args: {
+    onSort: action("onSort"),
+  },
+  render: (args) => {
+    const [, setArgs] = useArgs();
 
-export const Grouped = createStory({
-  columns: [
-    ...exampleColumns,
-    tableColumn.text({
-      headerLabel: "Group",
-      accessor: "group",
-    }),
-  ] as const,
-  data: exampleData,
-  groupBy: "group",
-});
+    const [numberOfRows, setNumberOfRows] = useState(2);
 
-export const WithFillColumn = createStory({
-  columns: [
-    tableColumn.text({
-      headerLabel: "Name",
-      accessor: "name",
-      width: "fill-available",
-    }),
-    tableColumn.textWithIcon({
-      headerLabel: "Country",
-      accessor: "country",
-      iconPosition: "right",
-      hint: "This is a hint",
-    }),
-  ] as const,
-  data: exampleData,
-});
+    const onSort: NonNullable<ComponentProps<typeof Table>["onSort"]> = useCallback(
+      (sortBy) => {
+        const newData = orderBy(
+          args.data,
+          sortBy.map((a) => {
+            switch (a.id) {
+              case "country":
+                return "country.text";
+              case "status":
+                return "status.label";
+              case "value":
+                return "value.numericValue";
+              default:
+                return a.id;
+            }
+          }),
+          sortBy.map((a) => (a.desc ? "desc" : "asc"))
+        ).slice(0, numberOfRows);
+        setArgs({ data: newData });
+      },
+      [numberOfRows, setArgs, args.data]
+    );
 
-export const StickyHeaders = createStory({
-  columns: exampleColumns,
-  data: exampleData,
-  initialSorting: [{ id: "name" }],
-  stickyHeaders: true,
-  height: { custom: 320 },
-});
+    return (
+      <Stack space={40}>
+        <FormRow>
+          <NumberField
+            name="numberOfRows"
+            label="Number of rows"
+            placeholder="Number of rows"
+            value={numberOfRows}
+            onChange={setNumberOfRows}
+          />
+        </FormRow>
+        {/* NOTE(gabro): no idea why TS complains on the onSort type here */}
+        {/* @ts-expect-error */}
+        <Table {...args} onSort={onSort} />
+      </Stack>
+    );
+  },
+} satisfies Story;
 
-export const CustomizedColumns = createStory({
-  columns: customizedColumns,
-  data: exampleData,
-});
+export const Grouped = {
+  args: {
+    columns: [
+      ...exampleColumns,
+      tableColumn.text({
+        headerLabel: "Group",
+        accessor: "group",
+      }),
+    ] as const,
+    groupBy: "group",
+  },
+} satisfies Story;
 
-export const InteractiveRow = createStory({
-  columns: exampleColumns,
-  data: exampleData,
-  initialSorting: [{ id: "name" }],
-  onRowPress: action("onRowPress"),
-});
+export const WithFillColumn = {
+  args: {
+    columns: [
+      tableColumn.text({
+        headerLabel: "Name",
+        accessor: "name",
+        width: "fill-available",
+      }),
+      tableColumn.textWithIcon({
+        headerLabel: "Country",
+        accessor: "country",
+        iconPosition: "right",
+        hint: "This is a hint",
+      }),
+    ] as const,
+    data: exampleData,
+  },
+} satisfies Story;
+
+export const StickyHeaders = {
+  args: {
+    initialSorting: [{ id: "name" }],
+    stickyHeaders: true,
+    height: { custom: 320 },
+  },
+} satisfies Story;
+
+export const CustomizedColumns = {
+  args: {
+    columns: customizedColumns,
+  },
+} satisfies Story;
+
+export const InteractiveRow = {
+  args: {
+    initialSorting: [{ id: "name" }],
+    onRowPress: action("onRowPress"),
+  },
+} satisfies Story;

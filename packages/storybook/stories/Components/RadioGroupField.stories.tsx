@@ -1,7 +1,7 @@
-import { createComponentStories, fieldArgTypes } from "../util";
 import { RadioGroupField } from "..";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createControlledStory } = createComponentStories({
+const meta = {
   component: RadioGroupField,
   args: {
     label: "Budget options",
@@ -28,23 +28,37 @@ const { defaultExport, createControlledStory } = createComponentStories({
       },
     ],
   },
-  argTypes: fieldArgTypes,
-});
+} satisfies Meta<typeof RadioGroupField>;
 
-export default defaultExport;
+export default meta;
 
-export const Vertical = createControlledStory("unlimited", {});
+type Story = StoryObj<typeof meta>;
 
-export const Horizontal = createControlledStory("unlimited", {
-  orientation: "horizontal",
-});
+export const Vertical = {
+  args: {
+    value: "unlimited",
+  },
+} satisfies Story;
 
-export const Disabled = createControlledStory("unlimited", {
-  disabled: true,
-});
+export const Horizontal = {
+  args: {
+    value: "unlimited",
+    orientation: "horizontal",
+  },
+} satisfies Story;
 
-export const WrappingLabel = createControlledStory(
-  "unlimited",
-  {},
-  { viewport: { defaultViewport: "tablet" } }
-);
+export const Disabled = {
+  args: {
+    value: "unlimited",
+    disabled: true,
+  },
+} satisfies Story;
+
+export const WrappingLabel = {
+  args: {
+    value: "unlimited",
+  },
+  parameters: {
+    viewport: { defaultViewport: "tablet" },
+  },
+};

@@ -1,8 +1,8 @@
 import { LineChart } from "../..";
-import { createComponentStories } from "../../util";
 import isChromatic from "chromatic/isChromatic";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: LineChart,
   args: {
     height: 300,
@@ -58,16 +58,23 @@ const { defaultExport, createStory } = createComponentStories({
     ],
     dataKey: "name",
   },
-});
+} satisfies Meta<typeof LineChart>;
 
-export default defaultExport;
+export default meta;
 
-export const lineChart = createStory({});
+type Story = StoryObj<typeof meta>;
 
-export const lineChartWithXAxisFormatter = createStory({
-  xAxisValueFormatter: (value: number | string) => `${value.toString().replace("Page ", "")}`,
-});
+// eslint-disable-next-line storybook/prefer-pascal-case
+export const lineChart = {} satisfies Story;
 
-export const lineChartWithYAxisFormatter = createStory({
-  yAxisValueFormatter: (value: number | string) => `$${value}`,
-});
+export const LineChartWithXAxisFormatter = {
+  args: {
+    xAxisValueFormatter: (value: number | string) => `${value.toString().replace("Page ", "")}`,
+  },
+} satisfies Story;
+
+export const LineChartWithYAxisFormatter = {
+  args: {
+    yAxisValueFormatter: (value: number | string) => `$${value}`,
+  },
+} satisfies Story;

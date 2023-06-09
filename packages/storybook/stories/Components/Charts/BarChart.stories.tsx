@@ -1,8 +1,8 @@
 import { BarChart } from "../..";
-import { createComponentStories } from "../../util";
 import isChromatic from "chromatic/isChromatic";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: BarChart,
   args: {
     height: 300,
@@ -58,18 +58,25 @@ const { defaultExport, createStory } = createComponentStories({
     ],
     dataKey: "name",
   },
-});
+} satisfies Meta<typeof BarChart>;
 
-export default defaultExport;
+export default meta;
 
-export const barChart = createStory({});
+type Story = StoryObj<typeof meta>;
 
-export const stackedBarChart = createStory({ stacked: true });
+// eslint-disable-next-line storybook/prefer-pascal-case
+export const barChart = {} satisfies Story;
 
-export const barChartWithXAxisFormatter = createStory({
-  xAxisValueFormatter: (value: number | string) => `${value.toString().replace("Page ", "")}`,
-});
+export const StackedBarChart = { args: { stacked: true } } satisfies Story;
 
-export const barChartWithYAxisFormatter = createStory({
-  yAxisValueFormatter: (value: number | string) => `$${value.toString()}`,
-});
+export const BarChartWithXAxisFormatter = {
+  args: {
+    xAxisValueFormatter: (value: number | string) => `${value.toString().replace("Page ", "")}`,
+  },
+} satisfies Story;
+
+export const BarChartWithYAxisFormatter = {
+  args: {
+    yAxisValueFormatter: (value: number | string) => `$${value.toString()}`,
+  },
+} satisfies Story;

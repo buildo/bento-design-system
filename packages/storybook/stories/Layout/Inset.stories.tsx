@@ -1,8 +1,9 @@
 import { FunctionComponent } from "react";
 import { Box, Inset, Placeholder } from "..";
-import { createComponentStories, spaceArgType } from "../util";
+import { spaceArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Inset,
   args: {
     children: <Placeholder height={100} width={100} />,
@@ -19,23 +20,33 @@ const { defaultExport, createStory } = createComponentStories({
       </Box>
     ),
   ],
-});
+} satisfies Meta<typeof Inset>;
 
-export default defaultExport;
+export default meta;
 
-export const allAxis = createStory({
-  space: 16,
-});
+type Story = StoryObj<typeof meta>;
 
-export const horizontal = createStory({
-  spaceX: 16,
-});
+export const AllAxis = {
+  args: {
+    space: 16,
+  },
+} satisfies Story;
 
-export const vertical = createStory({
-  spaceY: 16,
-});
+export const Horizontal = {
+  args: {
+    spaceX: 16,
+  },
+} satisfies Story;
 
-export const horizontalAndVertical = createStory({
-  spaceX: 40,
-  spaceY: 16,
-});
+export const Vertical = {
+  args: {
+    spaceY: 16,
+  },
+} satisfies Story;
+
+export const HorizontalAndVertical = {
+  args: {
+    spaceX: 40,
+    spaceY: 16,
+  },
+} satisfies Story;

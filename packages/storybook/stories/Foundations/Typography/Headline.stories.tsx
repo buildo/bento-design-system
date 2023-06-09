@@ -1,35 +1,47 @@
-import { createComponentStories, textArgType } from "../../util";
+import { Meta, StoryObj } from "@storybook/react";
 import { Headline } from "../..";
 import { Box } from "@buildo/bento-design-system";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Headline,
   args: {
     children: "The quick brown fox",
   },
   argTypes: {
-    children: textArgType,
+    children: { control: { type: "text" } },
   },
-});
+} satisfies Meta<typeof Headline>;
 
-export default defaultExport;
+export default meta;
 
-export const Small = createStory({
-  size: "small",
-});
+type Story = StoryObj<typeof meta>;
 
-export const Medium = createStory({
-  size: "medium",
-});
+export const Small = {
+  args: {
+    size: "small",
+  },
+};
 
-export const Large = createStory({
-  size: "large",
-});
+export const Medium = {
+  args: {
+    size: "medium",
+  },
+};
 
-export const Ellipsis = () => (
-  <Box style={{ width: 200 }}>
-    <Headline size="medium" ellipsis>
-      The quick brown fox
-    </Headline>
-  </Box>
-);
+export const Large = {
+  args: {
+    size: "large",
+  },
+};
+
+export const Ellipsis = {
+  args: {
+    size: "medium",
+    ellipsis: true,
+  },
+  render: (args) => (
+    <Box style={{ width: 200 }}>
+      <Headline {...args} />
+    </Box>
+  ),
+} satisfies Story;

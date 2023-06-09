@@ -1,59 +1,81 @@
 import { NumberField } from "../";
-import { createComponentStories, fieldArgTypes, textArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory, createControlledStory } = createComponentStories({
+const meta = {
   component: NumberField,
   args: {
+    value: undefined,
     name: "applications",
     label: "Applications",
     placeholder: "Number of target applications",
     assistiveText: "The number of applications this campaign is targeting",
   },
-  argTypes: {
-    ...fieldArgTypes,
-    placeholder: textArgType,
+} satisfies Meta<typeof NumberField>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default = {} satisfies Story;
+
+export const Disabled = {
+  args: {
+    value: 0,
+    disabled: true,
   },
-});
+} satisfies Story;
 
-export default defaultExport;
+export const Error = {
+  args: {
+    value: 0,
+    issues: ["Please insert a number greater than 2"],
+  },
+} satisfies Story;
 
-export const Default = createControlledStory<number | undefined>(undefined, {});
+export const Currency = {
+  args: {
+    value: 0,
+    kind: "currency",
+    currency: "EUR",
+  },
+} satisfies Story;
 
-export const Disabled = createControlledStory(0, {
-  disabled: true,
-});
+export const Percentage = {
+  args: {
+    value: 0,
+    kind: "percentage",
+  },
+} satisfies Story;
 
-export const Error = createControlledStory(0, {
-  issues: ["Please insert a number greater than 2"],
-});
+export const ReadOnly = {
+  args: {
+    value: 50,
+    kind: "percentage",
+    isReadOnly: true,
+  },
+} satisfies Story;
 
-export const Currency = createControlledStory(0, {
-  kind: "currency",
-  currency: "EUR",
-});
+export const MinMaxAndStep = {
+  args: {
+    value: 5,
+    minValue: 0.1,
+    maxValue: 10,
+    step: 0.5,
+  },
+} satisfies Story;
 
-export const Percentage = createControlledStory(0, {
-  kind: "percentage",
-});
+export const RightAccessory = {
+  args: {
+    value: 0,
+    rightAccessory: "👍",
+  },
+} satisfies Story;
 
-export const ReadOnly = createStory({
-  value: 50,
-  kind: "percentage",
-  isReadOnly: true,
-});
-
-export const MinMaxAndStep = createControlledStory(5, {
-  minValue: 0.1,
-  maxValue: 10,
-  step: 0.5,
-});
-
-export const RightAccessory = createControlledStory(0, {
-  rightAccessory: "👍",
-});
-
-export const KindAndRightAccessory = createControlledStory(0, {
-  rightAccessory: "💰",
-  kind: "currency",
-  currency: "EUR",
-});
+export const KindAndRightAccessory = {
+  args: {
+    value: 0,
+    rightAccessory: "💰",
+    kind: "currency",
+    currency: "EUR",
+  },
+} satisfies Story;

@@ -1,8 +1,8 @@
 import { DonutChart } from "../..";
-import { createComponentStories } from "../../util";
 import isChromatic from "chromatic/isChromatic";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: DonutChart,
   args: {
     height: 300,
@@ -38,12 +38,17 @@ const { defaultExport, createStory } = createComponentStories({
       },
     ],
   },
-});
+} satisfies Meta<typeof DonutChart>;
 
-export default defaultExport;
+export default meta;
 
-export const donutChart = createStory({});
+type Story = StoryObj<typeof meta>;
 
-export const donutChartWithTooltipFormatter = createStory({
-  tooltipFormatter: (value: number | string) => `$${value}`,
-});
+// eslint-disable-next-line storybook/prefer-pascal-case
+export const donutChart = {} satisfies Story;
+
+export const DonutChartWithTooltipFormatter = {
+  args: {
+    tooltipFormatter: (value: number | string) => `$${value}`,
+  },
+} satisfies Story;

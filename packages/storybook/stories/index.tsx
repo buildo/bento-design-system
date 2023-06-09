@@ -121,10 +121,12 @@ export {
 } from "@buildo/bento-design-system";
 
 export type {
+  CheckboxProps,
   IconProps,
   Omit,
   SelectFieldProps,
   SliderFieldProps,
+  TableProps,
   TooltipProps,
 } from "@buildo/bento-design-system";
 

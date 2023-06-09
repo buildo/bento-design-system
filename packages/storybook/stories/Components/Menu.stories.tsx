@@ -2,7 +2,7 @@ import { Body, Title } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
 import { ComponentProps } from "react";
 import { Avatar, Box, Button, Menu, Stack } from "..";
-import { createComponentStories } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
 const items: ComponentProps<typeof Menu>["items"] = [
   {
@@ -53,75 +53,85 @@ const items: ComponentProps<typeof Menu>["items"] = [
   },
 ];
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Menu,
   args: {
     size: "medium",
     initialIsOpen: true,
     items,
   },
-});
+} satisfies Meta<typeof Menu>;
 
-export default defaultExport;
+export default meta;
 
-export const ButtonTrigger = createStory({
-  trigger: (ref, triggerProps, { toggle }) => (
-    <Box ref={ref} display="inline-block" {...triggerProps}>
-      <Button kind="solid" hierarchy="primary" label="Open menu" onPress={() => toggle()} />
-    </Box>
-  ),
-});
+type Story = StoryObj<typeof meta>;
 
-export const AvatarTrigger = createStory({
-  header: (
-    <Stack space={4}>
-      <Title size="medium">Jane Doe</Title>
-      <Body size="medium">hello@example.com</Body>
-      <Body size="small" color="secondary">
-        Admin
-      </Body>
-    </Stack>
-  ),
-  trigger: (ref, triggerProps, { toggle }) => (
-    <Box
-      ref={ref}
-      display="inline-block"
-      onClick={() => toggle()}
-      cursor="pointer"
-      {...triggerProps}
-    >
-      <Avatar color="violet" />
-    </Box>
-  ),
-  offset: 20,
-});
+export const ButtonTrigger = {
+  args: {
+    trigger: (ref, triggerProps, { toggle }) => (
+      <Box ref={ref} display="inline-block" {...triggerProps}>
+        <Button kind="solid" hierarchy="primary" label="Open menu" onPress={() => toggle()} />
+      </Box>
+    ),
+  },
+} satisfies Story;
 
-export const Large = createStory({
-  size: "large",
-  trigger: (ref, triggerProps, { toggle }) => (
-    <Box
-      ref={ref}
-      display="inline-block"
-      onClick={() => toggle()}
-      cursor="pointer"
-      {...triggerProps}
-    >
-      <Avatar color="violet" />
-    </Box>
-  ),
-});
+export const AvatarTrigger = {
+  args: {
+    header: (
+      <Stack space={4}>
+        <Title size="medium">Jane Doe</Title>
+        <Body size="medium">hello@example.com</Body>
+        <Body size="small" color="secondary">
+          Admin
+        </Body>
+      </Stack>
+    ),
+    trigger: (ref, triggerProps, { toggle }) => (
+      <Box
+        ref={ref}
+        display="inline-block"
+        onClick={() => toggle()}
+        cursor="pointer"
+        {...triggerProps}
+      >
+        <Avatar color="violet" />
+      </Box>
+    ),
+    offset: 20,
+  },
+} satisfies Story;
 
-export const WithDividers = createStory({
-  dividers: true,
-  trigger: (ref, triggerProps, { toggle }) => (
-    <Box
-      ref={ref}
-      display="inline-block"
-      onClick={() => toggle()}
-      cursor="pointer"
-      {...triggerProps}
-    >
-      <Avatar color="violet" />
-    </Box>
-  ),
-});
+export const Large = {
+  args: {
+    size: "large",
+    trigger: (ref, triggerProps, { toggle }) => (
+      <Box
+        ref={ref}
+        display="inline-block"
+        onClick={() => toggle()}
+        cursor="pointer"
+        {...triggerProps}
+      >
+        <Avatar color="violet" />
+      </Box>
+    ),
+  },
+} satisfies Story;
+
+export const WithDividers = {
+  args: {
+    dividers: true,
+    trigger: (ref, triggerProps, { toggle }) => (
+      <Box
+        ref={ref}
+        display="inline-block"
+        onClick={() => toggle()}
+        cursor="pointer"
+        {...triggerProps}
+      >
+        <Avatar color="violet" />
+      </Box>
+    ),
+  },
+} satisfies Story;

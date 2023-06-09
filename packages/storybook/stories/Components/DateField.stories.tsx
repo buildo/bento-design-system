@@ -1,5 +1,5 @@
-import { createComponentStories, fieldArgTypes, textArgType } from "../util";
 import { DateField } from "../";
+import type { DateFieldProps } from "@buildo/bento-design-system";
 import {
   startOfWeek,
   endOfWeek,
@@ -14,109 +14,137 @@ import {
 } from "date-fns";
 import { screen, waitFor } from "@storybook/testing-library";
 import isChromatic from "chromatic/isChromatic";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createControlledStory } = createComponentStories({
+const meta = {
   component: DateField,
   args: {
     name: "date",
     label: "Date",
-    placeholder: "Select a date",
     assistiveText: "This is your favorite date",
     hint: "Some hint that is very useful to you",
   },
-  argTypes: {
-    ...fieldArgTypes,
-    placeholder: textArgType,
-  },
-});
+} satisfies Meta<DateFieldProps>;
 
-export default defaultExport;
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 const today = startOfToday();
 const value = new Date(2022, 1, 4);
 
-export const SingleDate = createControlledStory(value, {});
+export const SingleDate = {
+  args: {
+    value,
+  },
+} satisfies Story;
 
-export const Disabled = createControlledStory(null, {
-  disabled: true,
-});
+export const Disabled = {
+  args: {
+    value: null,
+    disabled: true,
+  },
+} satisfies Story;
 
-export const ReadOnly = createControlledStory(value, {
-  readOnly: true,
-});
+export const ReadOnly = {
+  args: {
+    value,
+    readOnly: true,
+  },
+} satisfies Story;
 
-export const Range = createControlledStory([value, addDays(value, 2)], {
-  type: "range",
-});
+export const Range = {
+  args: {
+    value: [value, addDays(value, 2)],
+    type: "range",
+  },
+} satisfies Story;
 
 const inOneWeek = addWeeks(today, 1);
-export const SingleWithMinMax = createControlledStory(null, {
-  minDate: today,
-  maxDate: inOneWeek,
-  assistiveText: "You can select a date between today and one week from now",
-});
+export const SingleWithMinMax = {
+  args: {
+    value: null,
+    minDate: today,
+    maxDate: inOneWeek,
+    assistiveText: "You can select a date between today and one week from now",
+  },
+} satisfies Story;
 
 const inOneMonth = addMonths(today, 1);
-export const RangeWithMinMax = createControlledStory([null, null], {
-  type: "range",
-  minDate: today,
-  maxDate: inOneMonth,
-  assistiveText: "You can select a date between today and one month from now",
-});
+export const RangeWithMinMax = {
+  args: {
+    value: [null, null],
+    type: "range",
+    minDate: today,
+    maxDate: inOneMonth,
+    assistiveText: "You can select a date between today and one month from now",
+  },
+} satisfies Story;
 
-export const SingleWithShortcuts = createControlledStory(null, {
-  shortcuts: [
-    {
-      label: "Today",
-      value: new Date(),
-    },
-    {
-      label: "In a week",
-      value: inOneWeek,
-    },
-    {
-      label: "In a month",
-      value: inOneMonth,
-    },
-  ],
-});
+export const SingleWithShortcuts = {
+  args: {
+    value: null,
+    shortcuts: [
+      {
+        label: "Today",
+        value: new Date(),
+      },
+      {
+        label: "In a week",
+        value: inOneWeek,
+      },
+      {
+        label: "In a month",
+        value: inOneMonth,
+      },
+    ],
+  },
+} satisfies Story;
 
-export const RangeWithShortcuts = createControlledStory([null, null], {
-  type: "range",
-  shortcuts: [
-    {
-      label: "This Week",
-      value: [startOfWeek(today), endOfWeek(today)],
-    },
-    {
-      label: "This Month",
-      value: [startOfMonth(today), endOfMonth(today)],
-    },
-    {
-      label: "This Year",
-      value: [startOfYear(today), endOfYear(today)],
-    },
-  ],
-});
-
-export const DisabledDates = createControlledStory(null, {
-  shouldDisableDate: (date: Date) => date.getDay() === 0,
-});
-
-export const CalendarOpen = createControlledStory(value, {});
-CalendarOpen.play = async () => {
-  const input = screen.getByRole("textbox");
-  await waitFor(async () => {
-    await input.click();
-  });
+export const RangeWithShortcuts = {
+  args: {
+    value: [null, null],
+    type: "range",
+    shortcuts: [
+      {
+        label: "This Week",
+        value: [startOfWeek(today), endOfWeek(today)],
+      },
+      {
+        label: "This Month",
+        value: [startOfMonth(today), endOfMonth(today)],
+      },
+      {
+        label: "This Year",
+        value: [startOfYear(today), endOfYear(today)],
+      },
+    ],
+  },
 };
-if (isChromatic()) {
-  CalendarOpen.decorators = [
-    (Story: any) => (
-      // This is to make the calendar visible in Chromatic
-      <div style={{ paddingBottom: "600px" }}>
-        <Story />
-      </div>
-    ),
-  ];
-}
+
+export const DisabledDates = {
+  args: {
+    shouldDisableDate: (date: Date) => date.getDay() === 0,
+  },
+};
+
+export const CalendarOpen = {
+  args: {
+    value,
+  },
+  play: async () => {
+    const input = screen.getByRole("textbox");
+    await waitFor(async () => {
+      await input.click();
+    });
+  },
+  decorators: isChromatic()
+    ? [
+        (Story) => (
+          <div style={{ paddingBottom: "600px" }}>
+            <Story />
+          </div>
+        ),
+      ]
+    : [],
+} satisfies Story;

@@ -1,8 +1,8 @@
-import { JSXElementConstructor } from "react";
 import { Bleed, Box, Inset, Placeholder } from "..";
-import { createComponentStories, spaceArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
+import { spaceArgType } from "../util";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Bleed,
   args: {
     children: <Placeholder height={100} width={100} />,
@@ -13,7 +13,7 @@ const { defaultExport, createStory } = createComponentStories({
     spaceY: spaceArgType,
   },
   decorators: [
-    (Story: JSXElementConstructor<unknown>) => (
+    (Story) => (
       <Box background="softViolet" style={{ width: "fit-content" }}>
         <Inset space={24}>
           <Story />
@@ -21,23 +21,33 @@ const { defaultExport, createStory } = createComponentStories({
       </Box>
     ),
   ],
-});
+} satisfies Meta<typeof Bleed>;
 
-export default defaultExport;
+export default meta;
 
-export const allAxis = createStory({
-  space: 40,
-});
+type Story = StoryObj<typeof meta>;
 
-export const horizontal = createStory({
-  spaceX: 40,
-});
+export const AllAxis = {
+  args: {
+    space: 40,
+  },
+} satisfies Story;
 
-export const vertical = createStory({
-  spaceY: 40,
-});
+export const Horizontal = {
+  args: {
+    spaceX: 40,
+  },
+} satisfies Story;
 
-export const horizontalAndVertical = createStory({
-  spaceX: 40,
-  spaceY: 16,
-});
+export const Vertical = {
+  args: {
+    spaceY: 40,
+  },
+} satisfies Story;
+
+export const HorizontalAndVertical = {
+  args: {
+    spaceX: 40,
+    spaceY: 16,
+  },
+} satisfies Story;

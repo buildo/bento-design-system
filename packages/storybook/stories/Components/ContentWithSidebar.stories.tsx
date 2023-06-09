@@ -1,5 +1,5 @@
 import { Body, Box, ContentWithSidebar } from "..";
-import { createComponentStories } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
 const content = (
   <Box display="flex" height="full" justifyContent="center" alignItems="center">
@@ -17,7 +17,7 @@ const sidebar = (
   </Box>
 );
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: ContentWithSidebar,
   args: {
     children: [content, sidebar],
@@ -32,25 +32,33 @@ const { defaultExport, createStory } = createComponentStories({
   parameters: {
     layout: "fullscreen",
   },
-});
+} satisfies Meta<typeof ContentWithSidebar>;
 
-export default defaultExport;
+export default meta;
 
-export const StandardWidth = createStory({
-  sidebarPosition: "right",
-  sidebarWidth: "1/5",
-  sidebarBackground: "backgroundOverlay",
-});
+type Story = StoryObj<typeof meta>;
 
-export const CustomWidth = createStory({
-  sidebarPosition: "right",
-  sidebarWidth: { custom: 200 },
-  sidebarBackground: "backgroundOverlay",
-});
+export const StandardWidth = {
+  args: {
+    sidebarPosition: "right",
+    sidebarWidth: "1/5",
+    sidebarBackground: "backgroundOverlay",
+  },
+} satisfies Story;
 
-export const LeftSidebar = createStory({
-  sidebarPosition: "left",
-  sidebarWidth: "1/5",
-  sidebarBackground: "backgroundOverlay",
-  children: [sidebar, content],
-});
+export const CustomWidth = {
+  args: {
+    sidebarPosition: "right",
+    sidebarWidth: { custom: 200 },
+    sidebarBackground: "backgroundOverlay",
+  },
+} satisfies Story;
+
+export const LeftSidebar = {
+  args: {
+    sidebarPosition: "left",
+    sidebarWidth: "1/5",
+    sidebarBackground: "backgroundOverlay",
+    children: [sidebar, content],
+  },
+} satisfies Story;

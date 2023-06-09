@@ -1,50 +1,52 @@
 import { Body, Box, Card, AreaLoader, Stack, Title, Inset } from "../";
-import { createComponentStories } from "../util";
-import { Story } from "@storybook/react";
 import { useArgs } from "@storybook/addons";
 import { useEffect } from "react";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: AreaLoader,
-  args: {},
-});
+} satisfies Meta<typeof AreaLoader>;
 
-export default defaultExport;
+export default meta;
 
-export const Standalone = createStory({});
+type Story = StoryObj<typeof meta>;
 
-export const InCard = createStory({});
-InCard.decorators = [
-  (Story: Story) => (
-    <Card padding={0} elevation="small">
-      <Box position="relative">
-        <Inset space={24}>
-          <Stack space={8}>
-            <Title size="large">Campaign type</Title>
-            <Body size="large">Drive-traffic advanced</Body>
-          </Stack>
-        </Inset>
-        <Story />
-      </Box>
-    </Card>
-  ),
-];
+export const Standalone = {} satisfies Story;
 
-export const LongLoading = createStory({});
-LongLoading.decorators = [
-  (Story: Story) => {
-    const [_, updateArgs] = useArgs();
+export const InCard = {
+  decorators: [
+    (Story) => (
+      <Card padding={0} elevation="small">
+        <Box position="relative">
+          <Inset space={24}>
+            <Stack space={8}>
+              <Title size="large">Campaign type</Title>
+              <Body size="large">Drive-traffic advanced</Body>
+            </Stack>
+          </Inset>
+          <Story />
+        </Box>
+      </Card>
+    ),
+  ],
+} satisfies Story;
 
-    useEffect(() => {
-      const timeout = setTimeout(() => {
-        updateArgs({ message: "This may take several minutes..." });
-      }, 2000);
-      return () => clearTimeout(timeout);
-    }, [updateArgs]);
+export const LongLoading = {
+  decorators: [
+    (Story) => {
+      const [_, updateArgs] = useArgs();
 
-    return <Story />;
+      useEffect(() => {
+        const timeout = setTimeout(() => {
+          updateArgs({ message: "This may take several minutes..." });
+        }, 2000);
+        return () => clearTimeout(timeout);
+      }, [updateArgs]);
+
+      return <Story />;
+    },
+  ],
+  parameters: {
+    chromatic: { delay: 3000 },
   },
-];
-LongLoading.parameters = {
-  chromatic: { delay: 3000 },
-};
+} satisfies Story;

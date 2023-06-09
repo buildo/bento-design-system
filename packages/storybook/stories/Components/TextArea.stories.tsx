@@ -1,34 +1,39 @@
 import { TextArea } from "..";
-import { createComponentStories, fieldArgTypes, textArgType } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory, createControlledStory } = createComponentStories({
+const meta = {
   component: TextArea,
   args: {
+    value: "",
     name: "description",
     label: "Description",
     placeholder: "Insert description",
     assistiveText: "Add a description",
   },
-  argTypes: {
-    ...fieldArgTypes,
-    placeholder: textArgType,
+} satisfies Meta<typeof TextArea>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default = {} satisfies Story;
+
+export const Disabled = {
+  args: {
+    disabled: true,
   },
-});
+} satisfies Story;
 
-export default defaultExport;
+export const Error = {
+  args: {
+    issues: ["Please insert at least 3 words"],
+  },
+} satisfies Story;
 
-export const Default = createControlledStory("", {});
-
-export const Disabled = createControlledStory("", {
-  disabled: true,
-});
-
-export const Error = createControlledStory("", {
-  issues: ["Please insert at least 3 words"],
-});
-
-export const ReadOnly = createStory({
-  value: "This is a description",
-  assistiveText: "",
-  isReadOnly: true,
-});
+export const ReadOnly = {
+  args: {
+    value: "This is a description",
+    assistiveText: "",
+    isReadOnly: true,
+  },
+} satisfies Story;

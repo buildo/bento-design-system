@@ -1,37 +1,41 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { Breadcrumb } from "..";
-import { createComponentStories } from "../util";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Breadcrumb,
-  args: {},
-});
+} satisfies Meta<typeof Breadcrumb>;
 
-export default defaultExport;
+export default meta;
 
-export const breadcrumb = createStory({
-  items: [
-    {
-      label: "Root",
-      href: "https://www.example.com",
-    },
-    {
-      label: "1st Level",
-      href: "https://www.example.com",
-    },
-    {
-      label: "2nd Level",
-      href: "https://www.example.com",
-    },
-    {
-      label: "3rd Level",
-      href: "https://www.example.com",
-    },
-    {
-      label: "4th Level",
-      href: "https://www.example.com",
-    },
-    {
-      label: "5th Level",
-    },
-  ],
-});
+type Story = StoryObj<typeof meta>;
+
+// eslint-disable-next-line storybook/prefer-pascal-case
+export const breadcrumb = {
+  args: {
+    items: [
+      {
+        label: "Root",
+        href: "https://www.example.com",
+      },
+      {
+        label: "1st Level",
+        href: "https://www.example.com",
+      },
+      {
+        label: "2nd Level",
+        href: "https://www.example.com",
+      },
+      {
+        label: "3rd Level",
+        href: "https://www.example.com",
+      },
+      {
+        label: "4th Level",
+        href: "https://www.example.com",
+      },
+      {
+        label: "5th Level",
+      },
+    ],
+  },
+} satisfies Story;

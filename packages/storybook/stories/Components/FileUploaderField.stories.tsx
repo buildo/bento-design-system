@@ -1,16 +1,9 @@
-import { useState } from "react";
-import { StoryFn } from "@storybook/react";
+import { StoryObj, Meta } from "@storybook/react";
 import { FileUploaderField, BentoConfigProvider, Button, Stack } from "..";
-import { createComponentStories } from "../util";
-
-const { defaultExport, createControlledStory } = createComponentStories({
-  component: FileUploaderField,
-  args: {},
-});
-
-export default defaultExport;
+import { useArgs } from "@storybook/addons";
 
 const fileUploaderProps = {
+  value: undefined,
   label: "Upload a file",
   allowedFileTypes: {
     "text/csv": [".csv"],
@@ -32,40 +25,51 @@ const fileUploaderProps = {
   maxFileSize: 1000,
 };
 
-export const fileUploaderField = createControlledStory(undefined, fileUploaderProps);
+const meta = {
+  component: FileUploaderField,
+  args: fileUploaderProps,
+} satisfies Meta<typeof FileUploaderField>;
 
-export const Loading = () => {
-  const [loading, setLoading] = useState(false);
+export default meta;
 
-  return (
-    <Stack space={16}>
-      <FileUploaderField
-        {...fileUploaderProps}
-        value={undefined}
-        onChange={() => {}}
-        isUploading={loading}
-      />
-      <Button
-        kind="solid"
-        hierarchy="primary"
-        label={loading ? "Stop loading" : "Start loading"}
-        onPress={() => setLoading(!loading)}
-      />
-    </Stack>
-  );
-};
+type Story = StoryObj<typeof meta>;
 
-export const withOutlineButton = createControlledStory(undefined, fileUploaderProps);
-withOutlineButton.decorators = [
-  (Story: StoryFn) => (
-    <BentoConfigProvider
-      value={{
-        fileUploaderField: {
-          buttonKind: "outline",
-        },
-      }}
-    >
-      <Story />
-    </BentoConfigProvider>
-  ),
-];
+// eslint-disable-next-line storybook/prefer-pascal-case
+export const fileUploaderField = {} satisfies Story;
+
+export const Loading = {
+  args: { isUploading: false },
+  decorators: [
+    (Story, ctx) => {
+      const [, setArgs] = useArgs();
+
+      return (
+        <Stack space={16}>
+          <Story args={ctx.args} />
+          <Button
+            kind="solid"
+            hierarchy="primary"
+            label={ctx.args.isUploading ? "Stop loading" : "Start loading"}
+            onPress={() => setArgs({ isUploading: !ctx.args.isUploading })}
+          />
+        </Stack>
+      );
+    },
+  ],
+} satisfies Story;
+
+export const WithOutlineButton = {
+  decorators: [
+    (Story) => (
+      <BentoConfigProvider
+        value={{
+          fileUploaderField: {
+            buttonKind: "outline",
+          },
+        }}
+      >
+        <Story />
+      </BentoConfigProvider>
+    ),
+  ],
+} satisfies Story;

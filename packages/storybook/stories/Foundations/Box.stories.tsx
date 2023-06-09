@@ -1,23 +1,29 @@
 import { Box } from "..";
-import { createComponentStories } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Box,
   args: {
     children: "Test",
   },
-});
+} satisfies Meta<typeof Box>;
 
-export default defaultExport;
+export default meta;
 
-export const Primary = createStory({
-  color: "textPrimary",
-  fontFamily: "default",
-  padding: 16,
-});
+type Story = StoryObj<typeof meta>;
 
-export const CustomTokens = createStory({
-  color: "customColor1",
-  fontFamily: "customFontFamily",
-  padding: 12,
-});
+export const Primary = {
+  args: {
+    color: "textPrimary",
+    fontFamily: "default",
+    padding: 16,
+  },
+} satisfies Story;
+
+export const CustomTokens = {
+  args: {
+    color: "customColor1",
+    fontFamily: "customFontFamily",
+    padding: 12,
+  },
+} satisfies Story;

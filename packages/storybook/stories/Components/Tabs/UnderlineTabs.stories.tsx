@@ -1,71 +1,79 @@
-import { createComponentStories } from "../../util";
 import { IconInfoSolid, IconNegative, UnderlineTabs } from "../..";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createControlledStory } = createComponentStories({
+const meta = {
   component: UnderlineTabs,
   args: {
     size: "medium",
   },
-});
+} satisfies Meta<typeof UnderlineTabs>;
 
-export default defaultExport;
+export default meta;
 
-export const medium = createControlledStory("tab1", {
-  tabs: [
-    {
-      label: "Tab 1",
-      value: "tab1",
-      icon: IconNegative,
-      hasNotification: true,
-    },
-    {
-      label: "Tab 2",
-      value: "tab2",
-    },
-    {
-      label: "Tab 3",
-      value: "tab3",
-      disabled: true,
-    },
-    {
-      label: "Tab 4",
-      value: "tab4",
-      icon: IconInfoSolid,
-      hasNotification: true,
-    },
-  ],
-});
+type Story = StoryObj<typeof meta>;
 
-export const large = createControlledStory("tab1", {
-  size: "large",
-  tabs: [
-    {
-      label: "Tab 1",
-      value: "tab1",
-      icon: IconNegative,
-      hasNotification: true,
-    },
-    {
-      label: "Tab 2",
-      value: "tab2",
-    },
-    {
-      label: "Tab 3",
-      value: "tab3",
-      disabled: true,
-    },
-    {
-      label: "Tab 4",
-      value: "tab4",
-      icon: IconInfoSolid,
-      hasNotification: true,
-    },
-  ],
-});
+export const Medium = {
+  args: {
+    value: "tab1",
+    tabs: [
+      {
+        label: "Tab 1",
+        value: "tab1",
+        icon: IconNegative,
+        hasNotification: true,
+      },
+      {
+        label: "Tab 2",
+        value: "tab2",
+      },
+      {
+        label: "Tab 3",
+        value: "tab3",
+        disabled: true,
+      },
+      {
+        label: "Tab 4",
+        value: "tab4",
+        icon: IconInfoSolid,
+        hasNotification: true,
+      },
+    ],
+  },
+} satisfies Story;
 
-export const scrollable = createControlledStory(
-  "tab1",
-  {
+export const Large = {
+  args: {
+    value: "tab1",
+    size: "large",
+    tabs: [
+      {
+        label: "Tab 1",
+        value: "tab1",
+        icon: IconNegative,
+        hasNotification: true,
+      },
+      {
+        label: "Tab 2",
+        value: "tab2",
+      },
+      {
+        label: "Tab 3",
+        value: "tab3",
+        disabled: true,
+      },
+      {
+        label: "Tab 4",
+        value: "tab4",
+        icon: IconInfoSolid,
+        hasNotification: true,
+      },
+    ],
+  },
+} satisfies Story;
+
+export const Scrollable = {
+  args: {
+    value: "tab1",
     size: "large",
     tabs: [
       {
@@ -107,5 +115,5 @@ export const scrollable = createControlledStory(
       },
     ],
   },
-  { viewport: { defaultViewport: "tablet" } }
-);
+  parameters: { viewport: { defaultViewport: "tablet" } },
+} satisfies Story;

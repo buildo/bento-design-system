@@ -11,15 +11,15 @@ import {
   RadioGroupField,
   Omit,
 } from "..";
-import { createComponentStories } from "../util";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Form,
-  args: {},
-  argTypes: {},
-});
+} satisfies Meta<typeof Form>;
 
-export default defaultExport;
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 const ExampleTextField = (
   props: Omit<
@@ -84,65 +84,69 @@ const ExampleRadioGroupField = (
   return <RadioGroupField value={value} onChange={onChange} name="radioGroupField" {...props} />;
 };
 
-export const multipleSections = createStory({
-  title: "Sign-up",
-  description: "We will ask you some data in order to sign you up",
-  submitButton: {
-    onPress: action("Submit"),
-    label: "Sign up",
-    name: "action",
-    value: "submit",
+export const MultipleSections = {
+  args: {
+    title: "Sign-up",
+    description: "We will ask you some data in order to sign you up",
+    submitButton: {
+      onPress: action("Submit"),
+      label: "Sign up",
+      name: "action",
+      value: "submit",
+    },
+    secondaryButton: {
+      onPress: action("Cancel"),
+      label: "Never mind",
+      name: "action",
+      value: "cancel",
+    },
+    children: (
+      <>
+        <FormSection title="Personal information">
+          <FormRow>
+            <ExampleTextField label="First name" />
+            <ExampleTextField label="Last name" />
+          </FormRow>
+        </FormSection>
+        <FormSection title="Address" description="We need this data for invoicing purposes">
+          <FormRow>
+            <ExampleTextField label="Street" />
+            <ExampleTextField label="Number" />
+          </FormRow>
+          <FormRow>
+            <ExampleTextField label="City" />
+          </FormRow>
+          <FormRow>
+            <ExampleTextField label="Country" />
+          </FormRow>
+        </FormSection>
+        <FormSection title="Tell us more about you">
+          <FormRow>
+            <ExampleNumberField label="Average income" kind="currency" currency="EUR" />
+            <ExampleNumberField label="% of income spent on candies" kind="percentage" />
+          </FormRow>
+          <FormRow>
+            <ExampleSelectField
+              label="Select your gender"
+              options={[
+                { label: "Male", value: "M", kind: "single-line" },
+                { label: "Female", value: "F", kind: "single-line" },
+                { label: "Other", value: "O", kind: "single-line" },
+              ]}
+            />
+          </FormRow>
+          <FormRow>
+            <ExampleRadioGroupField
+              label={"What's your main income source?"}
+              options={[
+                { label: "Working", value: "W" },
+                { label: "Inheritance", value: "I" },
+                { label: "Other", value: "O" },
+              ]}
+            />
+          </FormRow>
+        </FormSection>
+      </>
+    ),
   },
-  secondaryButton: {
-    onPress: action("Cancel"),
-    label: "Never mind",
-    name: "action",
-    value: "cancel",
-  },
-  children: [
-    <FormSection title="Personal information">
-      <FormRow>
-        <ExampleTextField label="First name" />
-        <ExampleTextField label="Last name" />
-      </FormRow>
-    </FormSection>,
-    <FormSection title="Address" description="We need this data for invoicing purposes">
-      <FormRow>
-        <ExampleTextField label="Street" />
-        <ExampleTextField label="Number" />
-      </FormRow>
-      <FormRow>
-        <ExampleTextField label="City" />
-      </FormRow>
-      <FormRow>
-        <ExampleTextField label="Country" />
-      </FormRow>
-    </FormSection>,
-    <FormSection title="Tell us more about you">
-      <FormRow>
-        <ExampleNumberField label="Average income" kind="currency" currency="EUR" />
-        <ExampleNumberField label="% of income spent on candies" kind="percentage" />
-      </FormRow>
-      <FormRow>
-        <ExampleSelectField
-          label="Select your gender"
-          options={[
-            { label: "Male", value: "M", kind: "single-line" },
-            { label: "Female", value: "F", kind: "single-line" },
-            { label: "Other", value: "O", kind: "single-line" },
-          ]}
-        />
-      </FormRow>
-      <FormRow>
-        <ExampleRadioGroupField
-          label={"What's your main income source?"}
-          options={[
-            { label: "Working", value: "W" },
-            { label: "Inheritance", value: "I" },
-            { label: "Other", value: "O" },
-          ]}
-        />
-      </FormRow>
-    </FormSection>,
-  ],
-});
+} satisfies Story;

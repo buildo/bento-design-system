@@ -1,34 +1,44 @@
 import { Card, Disclosure, Placeholder } from "../";
-import { createComponentStories } from "../util";
-import { Story } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: Disclosure,
   args: {
     title: "Title",
     children: <Placeholder />,
   },
-  argTypes: {},
   parameters: {
     actions: {
       argTypesRegex: "",
     },
   },
-});
+} satisfies Meta<typeof Disclosure>;
 
-export default defaultExport;
+export default meta;
 
-export const Level1 = createStory({});
+type Story = StoryObj<typeof meta>;
 
-export const Level2 = createStory({ level: 2 });
+export const Level1 = {} satisfies Story;
 
-export const LeadingIcon = createStory({ iconPosition: "leading" });
+export const Level2 = {
+  args: {
+    level: 2,
+  },
+} satisfies Story;
 
-export const InCard = createStory({ level: 2 });
-InCard.decorators = [
-  (Story: Story) => (
-    <Card paddingX={40} paddingY={24} elevation="small">
-      <Story />
-    </Card>
-  ),
-];
+export const LeadingIcon = {
+  args: {
+    iconPosition: "leading",
+  },
+} satisfies Story;
+
+export const InCard = {
+  args: { level: 2 },
+  decorators: [
+    (Story) => (
+      <Card paddingX={40} paddingY={24} elevation="small">
+        <Story />
+      </Card>
+    ),
+  ],
+} satisfies Story;

@@ -1,44 +1,38 @@
-import { Story } from "@storybook/react";
-import { ComponentProps, useRef, useState } from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import { useRef, useState } from "react";
 import { Box, Button, Placeholder, Popover } from "..";
-import { createComponentStories } from "../util";
 
-const { defaultExport } = createComponentStories({
+const meta = {
   component: Popover,
-  args: {},
-});
-
-export default defaultExport;
-
-const Template = ({ isOpen, ...props }: ComponentProps<typeof Popover> & { isOpen: boolean }) => {
-  return (
-    isOpen && (
-      <Popover {...props}>
-        <Placeholder width={300} />
-      </Popover>
-    )
-  );
-};
-
-export const popover: Story = Template.bind({});
-
-popover.decorators = [
-  (story: Story) => {
-    const [isOpen, setIsOpen] = useState(true);
-    const triggerRef = useRef(null);
-
-    return (
-      <Box ref={triggerRef} display="inline-block">
-        <Button
-          kind="solid"
-          hierarchy="primary"
-          label={`${isOpen ? "Close" : "Open"} popover`}
-          onPress={() => setIsOpen(!isOpen)}
-        />
-        {story({
-          args: { isOpen, onClose: () => setIsOpen(false), triggerRef },
-        })}
-      </Box>
-    );
+  args: {
+    triggerRef: { current: null },
   },
-];
+} satisfies Meta<typeof Popover>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+// eslint-disable-next-line storybook/prefer-pascal-case
+export const popover = {
+  args: {
+    children: <Placeholder width={300} />,
+  },
+  decorators: [
+    (Story, ctx) => {
+      const [isOpen, setIsOpen] = useState(false);
+      const triggerRef = useRef(null);
+      return (
+        <Box ref={triggerRef} display="inline-block">
+          <Button
+            kind="solid"
+            hierarchy="primary"
+            label={`${isOpen ? "Close" : "Open"} popover`}
+            onPress={() => setIsOpen(!isOpen)}
+          />
+          {isOpen && <Story args={{ ...ctx.args, triggerRef, onClose: () => setIsOpen(false) }} />}
+        </Box>
+      );
+    },
+  ],
+} satisfies Story;

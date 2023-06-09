@@ -1,13 +1,11 @@
 import { Placeholder } from "@buildo/bento-design-system";
-import { StoryFn } from "@storybook/addons";
 import { DecorativeDivider, Stack } from "../";
-import { createComponentStories } from "../util";
+import { StoryObj, Meta } from "@storybook/react";
 
-const { defaultExport, createStory } = createComponentStories({
+const meta = {
   component: DecorativeDivider,
-  args: {},
   decorators: [
-    (Story: StoryFn) => (
+    (Story) => (
       <Stack space={16}>
         <Placeholder />
         <Story />
@@ -15,8 +13,10 @@ const { defaultExport, createStory } = createComponentStories({
       </Stack>
     ),
   ],
-});
+} satisfies Meta<typeof DecorativeDivider>;
 
-export default defaultExport;
+export default meta;
 
-export const Default = createStory({});
+type Story = StoryObj<typeof meta>;
+
+export const Default = {} satisfies Story;
