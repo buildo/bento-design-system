@@ -13,6 +13,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+// eslint-disable-next-line storybook/prefer-pascal-case
 export const searchBar = {
   args: {
     value: "design systems",

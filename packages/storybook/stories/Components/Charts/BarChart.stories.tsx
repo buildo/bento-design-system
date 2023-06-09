@@ -64,17 +64,18 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+// eslint-disable-next-line storybook/prefer-pascal-case
 export const barChart = {} satisfies Story;
 
-export const stackedBarChart = { args: { stacked: true } } satisfies Story;
+export const StackedBarChart = { args: { stacked: true } } satisfies Story;
 
-export const barChartWithXAxisFormatter = {
+export const BarChartWithXAxisFormatter = {
   args: {
     xAxisValueFormatter: (value: number | string) => `${value.toString().replace("Page ", "")}`,
   },
 } satisfies Story;
 
-export const barChartWithYAxisFormatter = {
+export const BarChartWithYAxisFormatter = {
   args: {
     yAxisValueFormatter: (value: number | string) => `$${value.toString()}`,
   },

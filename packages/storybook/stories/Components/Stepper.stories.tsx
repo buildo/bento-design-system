@@ -9,6 +9,7 @@ export default meta;
 
 type Story = StoryObj<typeof Stepper>;
 
+// eslint-disable-next-line storybook/prefer-pascal-case
 export const stepper = {
   args: {
     currentStep: 2,

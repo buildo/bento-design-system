@@ -34,6 +34,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+// eslint-disable-next-line storybook/prefer-pascal-case
 export const fileUploaderField = {} satisfies Story;
 
 export const Loading = {
@@ -57,7 +58,7 @@ export const Loading = {
   ],
 } satisfies Story;
 
-export const withOutlineButton = {
+export const WithOutlineButton = {
   decorators: [
     (Story) => (
       <BentoConfigProvider

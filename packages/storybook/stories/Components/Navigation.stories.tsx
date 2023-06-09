@@ -39,17 +39,17 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const medium = {
+export const Medium = {
   args: {
     size: "medium",
   },
 } satisfies Story;
 
-export const large = {
+export const Large = {
   args: {},
 } satisfies Story;
 
-export const withIcons = {
+export const WithIcons = {
   args: {
     kind: "icon",
     destinations: destinations.map((d) => ({ ...d, icon: IconInfoSolid })),
@@ -75,6 +75,6 @@ const CustomNavigation = withBentoConfig(
   )
 );
 
-export const withCustomActiveVisualElement = {
+export const WithCustomActiveVisualElement = {
   render: (args) => <CustomNavigation {...args} />,
 } satisfies Story;

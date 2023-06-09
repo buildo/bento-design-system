@@ -12,7 +12,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const medium = {
+export const Medium = {
   args: {
     value: "tab1",
     tabs: [
@@ -48,7 +48,7 @@ export const medium = {
   },
 } satisfies Story;
 
-export const large = {
+export const Large = {
   args: {
     value: "tab1",
     size: "large",
@@ -78,7 +78,7 @@ export const large = {
   },
 } satisfies Story;
 
-export const scrollable = {
+export const Scrollable = {
   args: {
     value: "tab1",
     size: "large",

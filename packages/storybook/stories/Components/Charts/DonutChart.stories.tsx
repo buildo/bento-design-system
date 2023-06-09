@@ -44,9 +44,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+// eslint-disable-next-line storybook/prefer-pascal-case
 export const donutChart = {} satisfies Story;
 
-export const donutChartWithTooltipFormatter = {
+export const DonutChartWithTooltipFormatter = {
   args: {
     tooltipFormatter: (value: number | string) => `$${value}`,
   },

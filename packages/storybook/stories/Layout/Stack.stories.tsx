@@ -23,27 +23,27 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const basic = {} satisfies Story;
+export const Basic = {} satisfies Story;
 
-export const alignLeft = {
+export const AlignLeft = {
   args: {
     align: "left",
   },
 } satisfies Story;
 
-export const alignCenter = {
+export const AlignCenter = {
   args: {
     align: "center",
   },
 } satisfies Story;
 
-export const alignRight = {
+export const AlignRight = {
   args: {
     align: "right",
   },
 } satisfies Story;
 
-export const responsiveAlign = {
+export const ResponsiveAlign = {
   args: {
     align: {
       mobile: "center",
@@ -52,7 +52,7 @@ export const responsiveAlign = {
   },
 } satisfies Story;
 
-export const dividers = {
+export const Dividers = {
   args: {
     dividers: true,
   },

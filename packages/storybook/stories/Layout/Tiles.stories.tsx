@@ -18,7 +18,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const threeColumns = {
+export const ThreeColumns = {
   args: {
     space: 32,
     columns: 3,
@@ -26,7 +26,7 @@ export const threeColumns = {
   },
 } satisfies Story;
 
-export const responsive = {
+export const Responsive = {
   args: {
     space: { mobile: 8, tablet: 16, desktop: 32, wide: 32 },
     columns: { mobile: 1, tablet: 2, desktop: 4, wide: 6 },
@@ -41,7 +41,7 @@ export const responsive = {
   },
 } satisfies Story;
 
-export const alignY = {
+export const AlignY = {
   args: {
     columns: 4,
     space: 32,

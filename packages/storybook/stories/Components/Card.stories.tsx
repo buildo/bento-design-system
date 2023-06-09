@@ -70,11 +70,12 @@ const children = (
   </Stack>
 );
 
+// eslint-disable-next-line storybook/prefer-pascal-case
 export const card = {
   args: { children },
 } satisfies Story;
 
-export const cardWithDifferentRadius = {
+export const CardWithDifferentRadius = {
   args: {
     children,
     borderRadius: {

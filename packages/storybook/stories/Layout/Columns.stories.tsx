@@ -19,7 +19,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const twoColumn = {
+export const TwoColumn = {
   args: {
     children: (
       <>
@@ -29,24 +29,22 @@ export const twoColumn = {
   },
 } satisfies Story;
 
-export const twoColumn1_3 = {
+export const TwoColumn1_3 = {
   args: {
     children: (
       <>
         <Column width="1/3">
           <Placeholder height={200} label="1/3" />
         </Column>
-        ,
         <Column>
           <Placeholder height={200} />
         </Column>
-        ,
       </>
     ),
   },
 } satisfies Story;
 
-export const threeColumn = {
+export const ThreeColumn = {
   args: {
     children: [
       <Column width="1/5">
@@ -62,7 +60,7 @@ export const threeColumn = {
   },
 } satisfies Story;
 
-export const contentSizedColumn = {
+export const ContentSizedColumn = {
   args: {
     children: [
       <Column width="content">
@@ -75,7 +73,7 @@ export const contentSizedColumn = {
   },
 } satisfies Story;
 
-export const collapseBelow = {
+export const CollapseBelow = {
   args: {
     collapseBelow: "desktop",
     align: {
@@ -93,21 +91,21 @@ export const collapseBelow = {
   },
 } satisfies Story;
 
-export const alignY = {
+export const AlignY = {
   args: {
     alignY: "bottom",
     children: [<Placeholder height={50} />, <Placeholder height={100} />],
   },
 } satisfies Story;
 
-export const alignYStretch = {
+export const AlignYStretch = {
   args: {
     alignY: "stretch",
     children: [<Placeholder height={100} />, <Placeholder height="100%" />],
   },
 } satisfies Story;
 
-export const alignYBaseline = {
+export const AlignYBaseline = {
   args: {
     alignY: "baseline",
     children: [
@@ -125,14 +123,14 @@ export const alignYBaseline = {
   },
 } satisfies Story;
 
-export const reverse = {
+export const Reverse = {
   args: {
     children: [<Placeholder label="1" />, <Placeholder label="2" />, <Placeholder label="3" />],
     reverse: true,
   },
 } satisfies Story;
 
-export const responsiveReverse = {
+export const ResponsiveReverse = {
   args: {
     children: [
       <Placeholder background="brandPrimary" />,
@@ -149,7 +147,7 @@ export const responsiveReverse = {
   parameters: { viewport: { defaultViewport: "tablet" } },
 } satisfies Story;
 
-export const sticky = {
+export const Sticky = {
   args: {
     collapseBelow: "desktop",
     reverse: { tablet: true },

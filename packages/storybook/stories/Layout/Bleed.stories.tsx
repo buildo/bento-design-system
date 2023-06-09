@@ -27,25 +27,25 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const allAxis = {
+export const AllAxis = {
   args: {
     space: 40,
   },
 } satisfies Story;
 
-export const horizontal = {
+export const Horizontal = {
   args: {
     spaceX: 40,
   },
 } satisfies Story;
 
-export const vertical = {
+export const Vertical = {
   args: {
     spaceY: 40,
   },
 } satisfies Story;
 
-export const horizontalAndVertical = {
+export const HorizontalAndVertical = {
   args: {
     spaceX: 40,
     spaceY: 16,

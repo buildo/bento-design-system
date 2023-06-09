@@ -84,7 +84,7 @@ const ExampleRadioGroupField = (
   return <RadioGroupField value={value} onChange={onChange} name="radioGroupField" {...props} />;
 };
 
-export const multipleSections = {
+export const MultipleSections = {
   args: {
     title: "Sign-up",
     description: "We will ask you some data in order to sign you up",

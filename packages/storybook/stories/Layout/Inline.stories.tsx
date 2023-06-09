@@ -24,27 +24,27 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const basic = {} satisfies Story;
+export const Basic = {} satisfies Story;
 
-export const alignLeft = {
+export const AlignLeft = {
   args: {
     align: "left",
   },
 } satisfies Story;
 
-export const alignCenter = {
+export const AlignCenter = {
   args: {
     align: "center",
   },
 } satisfies Story;
 
-export const alignRight = {
+export const AlignRight = {
   args: {
     align: "right",
   },
 } satisfies Story;
 
-export const multipleLines = {
+export const MultipleLines = {
   args: {
     children: [
       <Placeholder height={100} width={100} />,
@@ -87,7 +87,7 @@ export const multipleLines = {
   },
 } satisfies Story;
 
-export const collapseBelow = {
+export const CollapseBelow = {
   args: {
     collapseBelow: "tablet",
     align: {
@@ -103,7 +103,7 @@ export const collapseBelow = {
   parameters: { viewport: { defaultViewport: "mobile1" } },
 } satisfies Story;
 
-export const responsiveAlign = {
+export const ResponsiveAlign = {
   args: {
     align: {
       mobile: "center",
@@ -112,7 +112,7 @@ export const responsiveAlign = {
   },
 } satisfies Story;
 
-export const reverse = {
+export const Reverse = {
   args: {
     reverse: true,
     children: [
@@ -123,7 +123,7 @@ export const reverse = {
   },
 } satisfies Story;
 
-export const responsiveReverse = {
+export const ResponsiveReverse = {
   args: {
     reverse: {
       tablet: true,

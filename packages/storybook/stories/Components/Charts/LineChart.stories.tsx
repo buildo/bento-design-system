@@ -64,15 +64,16 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+// eslint-disable-next-line storybook/prefer-pascal-case
 export const lineChart = {} satisfies Story;
 
-export const lineChartWithXAxisFormatter = {
+export const LineChartWithXAxisFormatter = {
   args: {
     xAxisValueFormatter: (value: number | string) => `${value.toString().replace("Page ", "")}`,
   },
 } satisfies Story;
 
-export const lineChartWithYAxisFormatter = {
+export const LineChartWithYAxisFormatter = {
   args: {
     yAxisValueFormatter: (value: number | string) => `$${value}`,
   },
