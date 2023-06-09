@@ -23,7 +23,7 @@ export function CalendarHeader({
 }: Props) {
   const { defaultMessages } = useDefaultMessages();
   return (
-    <Box paddingBottom={16} style={{ paddingLeft: 12, paddingRight: 12 }} width="full">
+    <Box paddingX={12} width="full">
       <Columns space={4} alignY="center">
         <Column width="content">
           <IconButton

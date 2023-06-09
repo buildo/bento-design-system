@@ -12,6 +12,8 @@ import {
   addWeeks,
   addDays,
 } from "date-fns";
+import { screen, waitFor } from "@storybook/testing-library";
+import isChromatic from "chromatic/isChromatic";
 
 const { defaultExport, createControlledStory } = createComponentStories({
   component: DateField,
@@ -100,3 +102,21 @@ export const RangeWithShortcuts = createControlledStory([null, null], {
 export const DisabledDates = createControlledStory(null, {
   shouldDisableDate: (date: Date) => date.getDay() === 0,
 });
+
+export const CalendarOpen = createControlledStory(value, {});
+CalendarOpen.play = async () => {
+  const input = screen.getByRole("textbox");
+  await waitFor(async () => {
+    await input.click();
+  });
+};
+if (isChromatic()) {
+  CalendarOpen.decorators = [
+    (Story: any) => (
+      // This is to make the calendar visible in Chromatic
+      <div style={{ paddingBottom: "600px" }}>
+        <Story />
+      </div>
+    ),
+  ];
+}
