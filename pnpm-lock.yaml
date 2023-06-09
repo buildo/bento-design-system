@@ -3,6 +3,11 @@ lockfileVersion: 5.4
 overrides:
   '@types/react': ^18
 
+patchedDependencies:
+  '@vanilla-extract/sprinkles@1.6.0':
+    hash: tudhbyyv4ny3z7rjvvzcz3ffue
+    path: patches/@vanilla-extract__sprinkles@1.6.0.patch
+
 importers:
 
   .:

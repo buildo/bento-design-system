@@ -1,0 +1,10 @@
+diff --git a/dist/vanilla-extract-sprinkles.cjs.d.ts b/dist/vanilla-extract-sprinkles.cjs.d.ts
+index 62e38f5e20ed9036a1306d05caa1ed7d496b3e41..9d8449538a601b295c055f89e74bccfbb0fe741f 100644
+--- a/dist/vanilla-extract-sprinkles.cjs.d.ts
++++ b/dist/vanilla-extract-sprinkles.cjs.d.ts
+@@ -222,4 +222,4 @@ declare const createAtomicStyles: typeof defineProperties;
+ /** @deprecated - Use `createSprinkles` */
+ declare const createAtomsFn: typeof createSprinkles;
+ 
+-export { ConditionalValue, RequiredConditionalValue, ResponsiveArray, createAtomicStyles, createAtomsFn, createMapValueFn, createNormalizeValueFn, createSprinkles, defineProperties };
++export { ConditionalValue, RequiredConditionalValue, ResponsiveArray, SprinklesProperties, createAtomicStyles, createAtomsFn, createMapValueFn, createNormalizeValueFn, createSprinkles, defineProperties };

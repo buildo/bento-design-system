@@ -36,6 +36,9 @@
         "react-dom": "18",
         "@types/react": "18"
       }
+    },
+    "patchedDependencies": {
+      "@vanilla-extract/sprinkles@1.6.0": "patches/@vanilla-extract__sprinkles@1.6.0.patch"
     }
   }
 }
