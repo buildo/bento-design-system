@@ -20,18 +20,21 @@ export const Default = {} satisfies Story;
 
 export const Disabled = {
   args: {
+    value: 0,
     disabled: true,
   },
 } satisfies Story;
 
 export const Error = {
   args: {
+    value: 0,
     issues: ["Please insert a number greater than 2"],
   },
 } satisfies Story;
 
 export const Currency = {
   args: {
+    value: 0,
     kind: "currency",
     currency: "EUR",
   },
@@ -39,6 +42,7 @@ export const Currency = {
 
 export const Percentage = {
   args: {
+    value: 0,
     kind: "percentage",
   },
 } satisfies Story;
@@ -62,12 +66,14 @@ export const MinMaxAndStep = {
 
 export const RightAccessory = {
   args: {
+    value: 0,
     rightAccessory: "👍",
   },
 } satisfies Story;
 
 export const KindAndRightAccessory = {
   args: {
+    value: 0,
     rightAccessory: "💰",
     kind: "currency",
     currency: "EUR",

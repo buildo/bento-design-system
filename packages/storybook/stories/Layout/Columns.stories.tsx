@@ -23,7 +23,8 @@ export const TwoColumn = {
   args: {
     children: (
       <>
-        <Placeholder height={200} />, <Placeholder height={200} />
+        <Placeholder height={200} />
+        <Placeholder height={200} />
       </>
     ),
   },
