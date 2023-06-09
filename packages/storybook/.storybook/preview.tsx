@@ -24,7 +24,7 @@ export const decorators: Decorator[] = [
       }
     };
 
-    return <Story args={{ ...ctx.args, onChange }} />;
+    return <Story args={{ onChange, ...ctx.args }} />;
   },
 ];
 
