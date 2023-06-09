@@ -29,7 +29,6 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-//   ^?
 
 const today = startOfToday();
 const value = new Date(2022, 1, 4);
