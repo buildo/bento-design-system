@@ -13,6 +13,7 @@ import {
   addDays,
 } from "date-fns";
 import { screen, waitFor } from "@storybook/testing-library";
+import isChromatic from "chromatic/isChromatic";
 
 const { defaultExport, createControlledStory } = createComponentStories({
   component: DateField,
@@ -109,3 +110,13 @@ CalendarOpen.play = async () => {
     await input.click();
   });
 };
+if (isChromatic()) {
+  CalendarOpen.decorators = [
+    (Story: any) => (
+      // This is to make the calendar visible in Chromatic
+      <div style={{ paddingBottom: "600px" }}>
+        <Story />
+      </div>
+    ),
+  ];
+}
