@@ -2,8 +2,8 @@
   "name": "@buildo/bento-design-system",
   "version": "0.17.2",
   "description": "The buildo DS",
-  "main": "lib/index.cjs",
-  "module": "lib/index.js",
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
   "files": [
     "lib"
   ],
@@ -14,25 +14,24 @@
   ],
   "exports": {
     ".": {
-      "node": "./lib/index.cjs",
-      "import": "./lib/index.js",
-      "require": "./lib/index.cjs"
+      "node": "./lib/index.js",
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.js"
     },
     "./index.css": "./lib/index.css",
     "./defaultTheme.css": "./lib/defaultTheme.css",
     "./defaultMessages/en": {
-      "node": "./lib/defaultMessages/en.cjs",
-      "import": "./lib/defaultMessages/en.js",
-      "require": "./lib/defaultMessages/en.cjs"
+      "node": "./lib/defaultMessages/en.js",
+      "import": "./lib/defaultMessages/en.mjs",
+      "require": "./lib/defaultMessages/en.js"
     },
     "./lib/defaultMessages/en": {
-      "node": "./lib/defaultMessages/en.cjs",
-      "import": "./lib/defaultMessages/en.js",
-      "require": "./lib/defaultMessages/en.cjs"
+      "node": "./lib/defaultMessages/en.js",
+      "import": "./lib/defaultMessages/en.mjs",
+      "require": "./lib/defaultMessages/en.js"
     }
   },
   "types": "lib/index.d.ts",
-  "type": "module",
   "scripts": {
     "build": "tsup --minify --clean && pnpm patch-esm-ts",
     "prepublishOnly": "pnpm build",
