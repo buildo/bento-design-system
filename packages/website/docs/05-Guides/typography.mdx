@@ -32,6 +32,18 @@ All typography components support an optional `ellipsis` prop (defaulted to `fal
 
 This feature uses standard CSS, so the truncation will be accessible (the entire text is still visible in the DOM node) and standard browser feature work as expected (e.g. try copy-pasting the truncated text and you'll see you'll get the full text).
 
+## Semantic HTML
+
+All typography components render as `<span>` by default. This behavior can be customized using the optional `as` prop.
+
+For example, you may want to render `Body` as a `<p>`:
+
+<Canvas path="Typography/BodyP" />
+
+Another example is using `Title` as a `<h2>`:
+
+<Canvas path="Typography/TitleH2" />
+
 ## Localization and rich formatting
 
 Typography components accept either a `LocalizedString` (see [Type-safe localization](../Advanced/strict-localization)) or a complex React Node as children.
