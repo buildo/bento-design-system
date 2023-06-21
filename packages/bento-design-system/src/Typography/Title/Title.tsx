@@ -28,7 +28,12 @@ export function Title({
   ...boxProps
 }: Props) {
   return (
-    <Box {...boxProps} className={titleRecipe({ size, color, ellipsis })} textAlign={align}>
+    <Box
+      as="span"
+      {...boxProps}
+      className={titleRecipe({ size, color, ellipsis })}
+      textAlign={align}
+    >
       {children}
     </Box>
   );
