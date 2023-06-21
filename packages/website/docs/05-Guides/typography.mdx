@@ -1,0 +1,51 @@
+import { Canvas } from "@site/src/components/Canvas";
+
+# Typography
+
+Bento type scale organizes styles into five roles, semantically named to describe their purposes:
+
+- [Display](../components/Display): reserved for short, important text or numerals. Usually, they work best on large screens.
+- [Headline](../components/Headline): best suited for short, high-emphasis text. These styles can be suitable for marking primary text passages or important content regions.
+- [Title](../components/Title): used to divide secondary text passages or content regions.
+- [Body](../components/Body): used for longer passages of text and paragraphs.
+- [Label](../components/Label): utilitarian styles used for text inside of components or very small supporting text in the content body, like captions.
+
+## Usage
+
+You can use any of the typography components like this:
+
+<Canvas path="Typography/All" />
+
+## Font weight
+
+All typography components support a single (configurable) font weight, with the exception of `Body`, which has two weights: `"default"` and `"strong"`.
+
+`"default"` is the default weight, and `"strong"` is a heavier weight that can be used to emphasize certain parts of the text.
+
+<Canvas path="Typography/BodyWeights" />
+
+## Truncation
+
+All typography components support an optional `ellipsis` prop (defaulted to `false`), which causes the text to be truncated with an ellipsis when it overflows its container.
+
+<Canvas path="Typography/Ellipsis" />
+
+This feature uses standard CSS, so the truncation will be accessible (the entire text is still visible in the DOM node) and standard browser feature work as expected (e.g. try copy-pasting the truncated text and you'll see you'll get the full text).
+
+## Localization and rich formatting
+
+Typography components accept either a `LocalizedString` (see [Type-safe localization](../Advanced/strict-localization)) or a complex React Node as children.
+
+If you need rich formatting, you can typically rely on the localization library you are using to create a React children node.
+
+For example, if you are using [react-i18next](https://react.i18next.com/), you can use the `Trans` component to create a React node:
+
+```tsx
+<Body size="medium">
+  <Trans i18nKey="My.Localization.Key" />
+</Body>
+```
+
+where the string matching `My.Localization.Key` can be along the lines of `Hello <b>World</b>!`
+
+You can read more about `Trans` component in the official [react-i18next documentation](https://react.i18next.com/latest/trans-component)
