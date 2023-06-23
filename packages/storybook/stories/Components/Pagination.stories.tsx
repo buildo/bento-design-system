@@ -1,5 +1,5 @@
 import { StoryObj } from "@storybook/react";
-import { ItemsPerPage, Pagination } from "../";
+import { PaginationItemsPerPage as ItemsPerPage, Pagination } from "../";
 import { action } from "@storybook/addon-actions";
 
 const meta = {

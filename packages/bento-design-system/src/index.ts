@@ -70,6 +70,7 @@ export type {
   TypeOverrides,
   LocalizedString,
   ChipCustomColors as CustomChipColors,
+  PaginationItemsPerPage,
   SprinklesFn,
 } from "./util/ConfigurableTypes";
 export * from "./Toast/Toast";
