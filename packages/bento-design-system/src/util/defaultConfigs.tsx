@@ -58,6 +58,7 @@ import type { ReadOnlyFieldConfig } from "../ReadOnlyField/Config";
 import type { FileUploaderFieldConfig } from "../FileUploaderField/Config";
 import type { ChartConfig } from "../Charts/Config";
 import { IconCopy } from "../Icons/IconCopy";
+import { PaginationConfig } from "../Pagination/Config";
 
 export const actions: ActionsConfig = {
   primaryActionButtonKind: "solid",
@@ -426,6 +427,15 @@ export const navigation: NavigationConfig = {
     medium: 16,
     large: 16,
   },
+};
+
+export const pagination: PaginationConfig = {
+  paddingY: 12,
+  itemsPerPageOptions: [10, 25, 50, 100],
+  dropdownButtonKind: "transparent",
+  navigationButtonKind: "transparent",
+  navigationButtonSpacing: 24,
+  showDivider: true,
 };
 
 export const readOnlyField: ReadOnlyFieldConfig = {

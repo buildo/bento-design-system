@@ -71,6 +71,7 @@ export const {
   Modal,
   Navigation,
   NumberField,
+  Pagination,
   Placeholder,
   ProgressBar,
   Popover,
@@ -123,6 +124,7 @@ export {
 export type {
   CheckboxProps,
   IconProps,
+  ItemsPerPage,
   Omit,
   SelectFieldProps,
   SliderFieldProps,

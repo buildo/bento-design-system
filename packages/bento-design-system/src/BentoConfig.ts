@@ -26,6 +26,7 @@ import { ListConfig } from "./List/Config";
 import { MenuConfig } from "./Menu/Config";
 import { ModalConfig } from "./Modal/Config";
 import { NavigationConfig } from "./Navigation/Config";
+import { PaginationConfig } from "./Pagination/Config";
 import { ProgressBarConfig } from "./ProgressBar/Config";
 import { ReadOnlyFieldConfig } from "./ReadOnlyField/Config";
 import { SearchBarConfig } from "./SearchBar/Config";
@@ -67,6 +68,7 @@ export type BentoConfig = {
   menu: MenuConfig;
   modal: ModalConfig;
   navigation: NavigationConfig;
+  pagination: PaginationConfig;
   readOnlyField: ReadOnlyFieldConfig;
   searchBar: SearchBarConfig;
   dropdown: DropdownConfig;
