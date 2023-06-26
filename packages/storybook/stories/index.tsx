@@ -140,6 +140,9 @@ export const BentoProvider = createBentoProvider(
         custom: "customColor1",
       },
     },
+    pagination: {
+      itemsPerPageOptions: [5, 10, 20, 50],
+    },
   },
   sprinkles
 );
