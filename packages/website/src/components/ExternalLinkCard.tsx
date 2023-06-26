@@ -28,7 +28,7 @@ export function ExternalLinkCard(props: Props) {
       case "github":
         return `https://github.com/${config.organizationName}/${config.projectName}/tree/main/packages/bento-design-system/src/${props.componentName}`;
       case "zeroheight":
-        return `https://zeroheight.com/1424b583b/p/${props.slug}`;
+        return `https://zeroheight.com/8626c6305/p/${props.slug}`;
       case "storybook":
         return `https://storybook.bento-ds.com/?path=/story/${props.storyId}`;
     }
