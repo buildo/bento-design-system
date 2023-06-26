@@ -10,6 +10,20 @@ export function useBentoConfig() {
   return useContext(BentoConfigContext);
 }
 
+export const deepmerge = deepmergeCustom({
+  mergeRecords: (value, utils) => {
+    // NOTE(vince): in case of a JSX.Element in the config (like the Navigation's activeVisualElement),
+    // we don't want to merge the props of the two elements, but we want to take just the second element instead.
+    if (React.isValidElement(value[0]) || React.isValidElement(value[1])) {
+      return value[1];
+    }
+    return utils.actions.defaultMerge;
+  },
+  // NOTE(fede): in case of an array in the config (like AreaLoader's dots),
+  // we don't want to merge the two arrays, but we want to take just the second one instead.
+  mergeArrays: (value) => value[1],
+});
+
 export function BentoConfigProvider({
   value: config,
   children,
@@ -22,17 +36,6 @@ export function BentoConfigProvider({
   // So we retrieve the parent config via useBentoConfig(), which will default to the default config
   // in case this is the top level provider.
   const parentConfig = useBentoConfig();
-
-  const deepmerge = deepmergeCustom({
-    mergeRecords: (value, utils) => {
-      // NOTE(vince): in case of a JSX.Element in the config (like the Navigation's activeVisualElement),
-      // we don't want to merge the props of the two elements, but we want to take just the second element instead.
-      if (React.isValidElement(value[0]) || React.isValidElement(value[1])) {
-        return value[1];
-      }
-      return utils.actions.defaultMerge;
-    },
-  });
 
   return (
     <BentoConfigContext.Provider value={deepmerge(parentConfig, config) as BentoConfig}>

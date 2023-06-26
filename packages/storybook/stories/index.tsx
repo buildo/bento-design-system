@@ -71,6 +71,7 @@ export const {
   Modal,
   Navigation,
   NumberField,
+  Pagination,
   Placeholder,
   ProgressBar,
   Popover,
@@ -124,6 +125,8 @@ export type {
   CheckboxProps,
   IconProps,
   Omit,
+  PaginationItemsPerPage,
+  PaginationProps,
   SelectFieldProps,
   SliderFieldProps,
   TableProps,
@@ -136,6 +139,9 @@ export const BentoProvider = createBentoProvider(
       customColors: {
         custom: "customColor1",
       },
+    },
+    pagination: {
+      itemsPerPageOptions: [5, 10, 20, 50],
     },
   },
   sprinkles
