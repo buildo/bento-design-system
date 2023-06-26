@@ -5,7 +5,7 @@ interface ConfigurableTypes {
   LocalizedString: string;
   SprinklesFn: typeof bentoSprinkles;
   ChipCustomColors: never;
-  PaginationItemsPerPage: 10 | 25 | 50 | 100;
+  PaginationItemsPerPage: [10, 25, 50, 100];
 }
 
 /**
@@ -28,4 +28,4 @@ export type SprinklesFn = typeof bentoSprinkles & ConfiguredTypes["SprinklesFn"]
 
 export type ChipCustomColors = string & ConfiguredTypes["ChipCustomColors"];
 
-export type PaginationItemsPerPage = number & ConfiguredTypes["PaginationItemsPerPage"];
+export type PaginationItemsPerPage = Array<number> & ConfiguredTypes["PaginationItemsPerPage"];

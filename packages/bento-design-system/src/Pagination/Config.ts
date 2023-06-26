@@ -3,9 +3,9 @@ import { BentoSprinkles } from "../internal";
 
 export type PaginationConfig = {
   paddingY: BentoSprinkles["paddingY"];
-  itemsPerPageOptions: Array<PaginationItemsPerPage>;
+  itemsPerPageOptions: PaginationItemsPerPage;
   dropdownButtonKind: ButtonProps["kind"];
   navigationButtonKind: ButtonProps["kind"];
   navigationButtonSpacing: BentoSprinkles["gap"];
-  showDivider: boolean; //true
+  showDivider: boolean;
 };

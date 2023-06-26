@@ -6,5 +6,6 @@ declare module "@buildo/bento-design-system" {
     LocalizedString: StrictLocalizedString;
     SprinklesFn: typeof sprinkles;
     ChipCustomColors: "custom";
+    PaginationItemsPerPage: [5, 10, 20, 50];
   }
 }

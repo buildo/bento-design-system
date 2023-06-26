@@ -124,8 +124,9 @@ export {
 export type {
   CheckboxProps,
   IconProps,
-  PaginationItemsPerPage,
   Omit,
+  PaginationItemsPerPage,
+  PaginationProps,
   SelectFieldProps,
   SliderFieldProps,
   TableProps,

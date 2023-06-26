@@ -2,6 +2,7 @@ import {
   Body,
   Box,
   Button,
+  ButtonProps,
   Column,
   Columns,
   Divider,
@@ -27,23 +28,23 @@ export type PaginationMessages = {
   nextPageButtonLabel: LocalizedString;
 };
 
+export type ItemsPerPageOption = PaginationItemsPerPage[number];
+
 type Props = {
   page: number;
   pageCount: number;
-  itemsPerPage: PaginationItemsPerPage;
-  itemsPerPageOptions: Record<PaginationItemsPerPage, LocalizedString>;
+  itemsPerPage: ItemsPerPageOption;
+  itemsPerPageOptions: Record<ItemsPerPageOption, LocalizedString>;
   onPageChange: (page: number) => void;
-  onItemsPerPageChange: (itemsPerPage: PaginationItemsPerPage) => void;
+  onItemsPerPageChange: (itemsPerPage: ItemsPerPageOption) => void;
   messages: PaginationMessages;
 };
 
-type DropdownButtonProps = {
-  label: LocalizedString;
-  onPress: () => void;
-  disabled?: boolean;
-};
+export type { Props as PaginationProps };
 
-function DropdownButton({ label, onPress, disabled }: DropdownButtonProps) {
+type DropdownButtonProps = Pick<ButtonProps, "label" | "onPress" | "isDisabled">;
+
+function DropdownButton({ label, onPress, isDisabled }: DropdownButtonProps) {
   const config = useBentoConfig().pagination;
   return (
     <Button
@@ -53,7 +54,7 @@ function DropdownButton({ label, onPress, disabled }: DropdownButtonProps) {
       icon={IconChevronDown}
       iconPosition="trailing"
       onPress={onPress}
-      isDisabled={disabled}
+      isDisabled={isDisabled}
     />
   );
 }
@@ -92,7 +93,7 @@ export function Pagination(props: Props) {
                 )}
                 items={Object.entries(itemsPerPageOptions).map(([n, label]) => ({
                   label,
-                  onPress: () => onItemsPerPageChange(parseInt(n) as PaginationItemsPerPage),
+                  onPress: () => onItemsPerPageChange(parseInt(n) as ItemsPerPageOption),
                 }))}
                 closeOnSelect
               />
@@ -135,7 +136,7 @@ export function Pagination(props: Props) {
                       <DropdownButton
                         label={unsafeLocalizedString(page)}
                         onPress={toggle}
-                        disabled={pageCount === 1}
+                        isDisabled={pageCount === 1}
                       />
                     </Box>
                   )}
