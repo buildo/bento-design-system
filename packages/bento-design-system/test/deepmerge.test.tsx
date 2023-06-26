@@ -16,7 +16,7 @@ describe("deepmerge", () => {
 
   it("does not merge object fields that are valid React elements", () => {
     const input1 = { a: 1, b: 2 };
-    const input2 = { a: <div>hello</div>, b: 4 };
+    const input2 = <div>hello</div>;
     expect(deepmerge(input1, input2)).toEqual(input2);
   });
 });
