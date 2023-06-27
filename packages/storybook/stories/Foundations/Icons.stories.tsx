@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Box, Inline, Stack, Body, IconProps, icons } from "..";
+import { Box, Inline, Stack, Body, IconProps, icons, svgIconProps } from "..";
+import { Horse, Icon as PhosphorIcon } from "@phosphor-icons/react";
 
 const meta = {
   title: "Foundations/Icons",
@@ -57,4 +58,23 @@ export const Icons = {
       </Inline>
     </Stack>
   ),
+} satisfies Story;
+
+function phosphorToBento(Icon: PhosphorIcon) {
+  return (props: IconProps) => {
+    const { viewBox, ...svgProps } = svgIconProps(props);
+    return <Icon width={undefined} height={undefined} {...svgProps} />;
+  };
+}
+
+const IconHorse = phosphorToBento(Horse);
+
+export const PhosphorIcons = {
+  args: {
+    color: "brandPrimary",
+    size: 40,
+  },
+  render: (args) => {
+    return <IconHorse {...args} />;
+  },
 } satisfies Story;
