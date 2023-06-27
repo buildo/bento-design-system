@@ -1,8 +1,0 @@
-{
-  "preset": "ts-jest",
-  "testEnvironment": "jsdom",
-  "transform": {
-    "\\.tsx?$": ["babel-jest", { "configFile": "./babel-jest.config.cjs" }]
-  },
-  "setupFilesAfterEnv": ["<rootDir>/test/setupTests.ts"]
-}

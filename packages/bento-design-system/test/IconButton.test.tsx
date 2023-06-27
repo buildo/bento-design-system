@@ -6,7 +6,7 @@ import { ignoreWarnings } from "./util/ignoreWarnings";
 
 describe("IconButton", () => {
   test("onPress fires once", async () => {
-    const onPress = jest.fn();
+    const onPress = vi.fn();
     render(
       <IconButton
         kind="solid"
