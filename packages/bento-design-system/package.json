@@ -131,7 +131,7 @@
     "@react-types/numberfield": "3.3.4",
     "@react-types/slider": "3.3.0",
     "@react-types/textfield": "3.6.0",
-    "@testing-library/dom": "8.20.0",
+    "@testing-library/dom": "8.20.1",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
     "@testing-library/react-hooks": "8.0.1",
