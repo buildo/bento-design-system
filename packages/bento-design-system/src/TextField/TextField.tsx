@@ -12,7 +12,7 @@ import { getReadOnlyBackgroundStyle } from "../Field/utils";
 import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = FieldProps<string> & {
-  placeholder: LocalizedString;
+  placeholder?: LocalizedString;
   isReadOnly?: boolean;
   type?: "text" | "email" | "url" | "password";
   rightAccessory?: Children;

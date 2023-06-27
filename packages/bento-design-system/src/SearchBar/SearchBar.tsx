@@ -15,7 +15,7 @@ type Props = AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "aria
   value: string;
   onChange: (value: string) => unknown;
   onBlur?: () => unknown;
-  placeholder: LocalizedString;
+  placeholder?: LocalizedString;
   disabled?: boolean;
   clearButtonLabel?: LocalizedString;
   autoFocus?: boolean;
