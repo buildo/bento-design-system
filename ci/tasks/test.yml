@@ -9,6 +9,9 @@ image_resource:
 inputs:
   - name: bento
 
+params:
+  CI: true
+
 run:
   dir: bento
   path: ash
