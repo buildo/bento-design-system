@@ -349,7 +349,7 @@ importers:
       '@docusaurus/types': 2.0.1
       '@easyops-cn/docusaurus-search-local': 0.35.0
       '@mdx-js/react': 1.6.22
-      '@tsconfig/docusaurus': 1.0.6
+      '@tsconfig/docusaurus': 1.0.7
       '@types/babel__generator': 7.6.4
       '@types/babel__standalone': 7.1.4
       '@types/babel__traverse': 7.18.5
@@ -405,7 +405,7 @@ importers:
       '@docusaurus/theme-classic': 2.0.1_s52ybowt6qpgipj3uio3aaawoi
       '@docusaurus/theme-live-codeblock': 2.0.1_bkd3aj7tjhqctjwdqpwgfbyjiy
       '@docusaurus/types': 2.0.1_biqbaboplfbrettd7655fr4n2y
-      '@tsconfig/docusaurus': 1.0.6
+      '@tsconfig/docusaurus': 1.0.7
       '@types/babel__generator': 7.6.4
       '@types/babel__standalone': 7.1.4
       '@types/babel__traverse': 7.18.5
@@ -8934,8 +8934,8 @@ packages:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
 
-  /@tsconfig/docusaurus/1.0.6:
-    resolution: {integrity: sha512-1QxDaP54hpzM6bq9E+yFEo4F9WbWHhsDe4vktZXF/iDlc9FqGr9qlg+3X/nuKQXx8QxHV7ue8NXFazzajsxFBA==}
+  /@tsconfig/docusaurus/1.0.7:
+    resolution: {integrity: sha512-ffTXxGIP/IRMCjuzHd6M4/HdIrw1bMfC7Bv8hMkTadnePkpe0lG0oDSdbRpSDZb2rQMAgpbWiR10BvxvNYwYrg==}
     dev: true
 
   /@types/aria-query/5.0.1:
