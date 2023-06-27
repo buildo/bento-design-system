@@ -19,6 +19,7 @@
   --ifm-code-font-size: 95%;
   --ifm-background-color: #fbfbfb;
   --ifm-font-family-base: "DM Sans", sans-serif;
+  --docusaurus-highlighted-code-line-bg: #eadbf0de;
 }
 html[data-theme="dark"] {
   --ifm-color-primary: white;
@@ -30,6 +31,7 @@ html[data-theme="dark"] {
   --ifm-color-primary-lightest: white;
   --ifm-background-color: #242424;
   --ifm-navbar-background-color: #1a1a1a;
+  --docusaurus-highlighted-code-line-bg: #c97fe740;
 }
 
 .docusaurus-highlight-code-line {
