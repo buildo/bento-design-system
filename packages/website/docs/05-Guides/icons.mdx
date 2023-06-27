@@ -1,0 +1,87 @@
+import { Canvas } from "../../src/components/Canvas";
+
+# Icons
+
+Bento comes with a default set of icons, which are React components accepting a set of common props, specifically:
+
+- `size`
+- `color`
+- `className` (optional)
+
+`size` and `color` are limited to specific semantic values, so to ensure consistency in their usage.
+
+## Changing the icons used in components
+
+You can change any icon used by Bento components using the configuration.
+
+For example here's how you can change the default icon used by the `Chip` component:
+
+<Canvas path="Icons/Configuration" />
+
+For more information on how to configure Bento components, please refer to the [configuration documentation](../Customization/configuration).
+
+## Adding new icons
+
+If you want to add a new icon, you generally proceed as follows:
+
+- create a svg asset with a viewport of `0 0 24 24`
+- run it through something like https://react-svgr.com/ to cleanup the markup
+- remove all props from the `svg` tag
+- remove all `fill` attributes from the svg
+- create a component following this template
+
+```tsx
+import { IconProps, svgIconProps } from "@buildo/bento-design-system";
+
+export function IconMyCustomName(props: IconProps) {
+  return <svg {...svgIconProps(props)}>{/* SVG markup gos here*/}</svg>;
+}
+```
+
+A few things to notice:
+
+- stripping all default props from the `svg` tag is important so that `svgIconProps` can correctly set the icon size and viewbox
+- this is true also for `fill` attributes, which are removed so that `svgIconProps` can correctly set the icon color
+- it's good practice to name icons with the `Icon` prefix, so that they're easy to lookup in autocompletion
+- using `IconProps` ensures that you can directly pass your custom icons to any Bento component that accepts an `icon` prop, for example
+
+```tsx
+<Button
+  kind="solid"
+  hierarchy="primary"
+  label="Hello"
+  onPress={() => window.alert("Hello!")}
+  // highlight-next-line
+  icon={IconMyCustomName}
+/>
+```
+
+## Adding icons from existing icons sets
+
+You can use a similar strategy when adding icons from existing icon sets.
+The main thing to look out for is that some icon sets may use different viewbox and set some other props, which may interact badly with `svgIconProps`.
+Here's an example of how you can add an icon from the [Phosphor icon set](https://phosphoricons.com/).
+
+First define a utility to convert any icon from the `@phosphor-icons/react` package to a Bento icon:
+
+```tsx
+import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
+
+function phosphorToBento(Icon: PhosphorIcon) {
+  return (props: IconProps) => {
+    const { viewBox, ...svgProps } = svgIconProps(props);
+    return <Icon width={undefined} height={undefined} {...svgProps} />;
+  };
+}
+```
+
+Then use it to create a Bento icon:
+
+```tsx
+import { Horse } from "@phosphor-icons/react";
+const IconHorse = phosphorToBento(Horse);
+```
+
+Now you can use it as a standalone component or pass it as a prop to a Bento component:
+
+<Canvas path="Icons/Phosphor" showLinkToPlayroom={false} initialShowSource />

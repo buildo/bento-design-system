@@ -17,9 +17,11 @@ const babelPresetTypescript = require("@babel/preset-typescript");
 export function Canvas({
   path,
   initialShowSource = false,
+  showLinkToPlayroom = true,
 }: {
   path: string;
   initialShowSource: boolean;
+  showLinkToPlayroom: boolean;
 }) {
   const [showSource, setShowSource] = useState(initialShowSource);
 
@@ -70,7 +72,9 @@ export function Canvas({
                   onClick={() => setShowSource((s) => !s)}
                   label={showSource ? "▲ Hide code" : "▼ View code"}
                 />
-                <OpenInPlayroom ast={ast} componentSource={componentSource} />
+                {showLinkToPlayroom && (
+                  <OpenInPlayroom ast={ast} componentSource={componentSource} />
+                )}
               </div>
             </>
           )}
