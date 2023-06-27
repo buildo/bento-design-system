@@ -97,32 +97,41 @@ export function useFormatMessage(): (
 <details>
   <summary><code>react-i18next</code> + <code>LocalizedString</code></summary>
 
-```ts title="my-project/app/src/utils/useTranslation.ts"
-import { StringMap, TOptions } from "i18next";
-import { useTranslation as nativeUseTranslation } from "react-i18next";
-import { LocalizedString } from "@buildo/bento-react-components";
+```ts title="my-project/app/src/i18n/i18n.ts"
+import enMessages from "./locales/en.json";
 
-export const useTranslation = () => {
-  const { t, i18n } = nativeUseTranslation();
-
-  type i18nextParameters = Parameters<typeof t>;
-
-  interface TFunction {
-    (key: i18nextParameters[0], options?: TOptions<StringMap> | string): LocalizedString;
-    (
-      key: i18nextParameters[0],
-      defaultValue?: LocalizedString,
-      options?: TOptions<StringMap> | string
-    ): LocalizedString;
-  }
-
-  const translate: TFunction = (...args) => t(...(args as [any]));
-
-  return {
-    t: translate,
-    i18n,
-  };
+type Primitive = string | boolean | number | null | undefined;
+type MapLeafNodes<Obj, LeafType> = {
+  [Prop in keyof Obj]: Obj[Prop] extends Primitive
+    ? LeafType
+    : Obj[Prop] extends Record<string | number, any>
+    ? MapLeafNodes<Obj[Prop], LeafType>
+    : never;
 };
+
+// We cast the type of messages to LocalizedString
+const enResources = enMessages as MapLeafNodes<typeof enMessages, LocalizedString>;
+
+export const resources = {
+  en: enResources
+} as const;
+
+i18next
+  .use(initReactI18next)
+  .init({
+    resources,
+    ...
+  });
+```
+
+```ts title="my-project/app/src/i18next.d.ts"
+import { resources } from "./i18n/i18n";
+
+declare module "i18next" {
+  interface CustomTypeOptions {
+    resources: (typeof resources)["en"];
+  }
+}
 ```
 
 </details>
