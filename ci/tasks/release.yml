@@ -13,6 +13,7 @@ caches:
   - path: bento/.pnpm-store
 
 params:
+  CI: true
   NPM_TOKEN: ((npm_token))
   SSH_PRIVATE_KEY: ((private-key))
   GITHUB_TOKEN: ((github-token))
