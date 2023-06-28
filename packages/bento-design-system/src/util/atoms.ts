@@ -13,6 +13,10 @@ const radius = {
   circledX: "100vh",
 };
 
+export * from "./conditions";
+
+export * from "./shorthands";
+
 export const unconditionalProperties = {
   borderRadius: radius,
   borderTopLeftRadius: radius,

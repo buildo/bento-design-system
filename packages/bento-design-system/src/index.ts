@@ -82,7 +82,6 @@ export * from "./Typography/Display/Display";
 export * from "./Typography/Headline/Headline";
 export * from "./Typography/Label/Label";
 export * from "./Typography/Title/Title";
-export * from "./sprinkles";
 export * from "./util/Children";
 export * from "./util/ConfigurableTypes";
 export * from "./util/LocalizedString";
