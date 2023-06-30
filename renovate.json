@@ -6,5 +6,6 @@
       "matchPackagePatterns": ["@react-aria", "@react-types", "@react-stately"],
       "groupName": "react-aria monorepo"
     }
-  ]
+  ],
+  "prHourlyLimit": 0
 }
