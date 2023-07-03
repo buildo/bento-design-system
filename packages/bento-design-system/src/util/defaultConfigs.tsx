@@ -437,7 +437,9 @@ export const pagination: PaginationConfig = {
   paddingY: 12,
   itemsPerPageOptions: [10, 25, 50, 100],
   dropdownButtonKind: "transparent",
+  dropdownButtonSize: "medium",
   navigationButtonKind: "transparent",
+  navigationButtonSize: 24,
   navigationButtonSpacing: 24,
   showDivider: true,
 };

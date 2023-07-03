@@ -50,6 +50,7 @@ function DropdownButton({ label, onPress, isDisabled }: DropdownButtonProps) {
     <Button
       kind={config.dropdownButtonKind}
       hierarchy="secondary"
+      size={config.dropdownButtonSize}
       label={label}
       icon={IconChevronDown}
       iconPosition="trailing"
@@ -158,7 +159,7 @@ export function Pagination(props: Props) {
                   hierarchy="secondary"
                   icon={IconChevronLeft}
                   label={messages.previousPageButtonLabel}
-                  size={24}
+                  size={config.navigationButtonSize}
                   onPress={() => onPageChange(page - 1)}
                   isDisabled={page === 1}
                 />
@@ -167,7 +168,7 @@ export function Pagination(props: Props) {
                   hierarchy="secondary"
                   icon={IconChevronRight}
                   label={messages.nextPageButtonLabel}
-                  size={24}
+                  size={config.navigationButtonSize}
                   onPress={() => onPageChange(page + 1)}
                   isDisabled={page === pageCount}
                 />
