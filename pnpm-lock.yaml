@@ -87,7 +87,7 @@ importers:
       '@types/testing-library__jest-dom': ^5.14.6
       '@typescript-eslint/parser': ^5.59.8
       '@vanilla-extract/babel-plugin': 1.2.0
-      '@vanilla-extract/css': 1.11.1
+      '@vanilla-extract/css': 1.12.0
       '@vanilla-extract/dynamic': 2.0.3
       '@vanilla-extract/esbuild-plugin': 2.1.0
       '@vanilla-extract/private': 1.0.3
@@ -174,10 +174,10 @@ importers:
       '@react-types/overlays': 3.8.0_react@18.2.0
       '@react-types/radio': 3.4.2_react@18.2.0
       '@react-types/shared': 3.18.1_react@18.2.0
-      '@vanilla-extract/css': 1.11.1
+      '@vanilla-extract/css': 1.12.0
       '@vanilla-extract/dynamic': 2.0.3
-      '@vanilla-extract/recipes': 0.2.5_sqr63gfwi5yqhik3spxs63sakq
-      '@vanilla-extract/sprinkles': 1.6.0_tudhbyyv4ny3z7rjvvzcz3ffue_sqr63gfwi5yqhik3spxs63sakq
+      '@vanilla-extract/recipes': 0.2.5_zd2pmj2rl4fq6dchynq6tm4lty
+      '@vanilla-extract/sprinkles': 1.6.0_tudhbyyv4ny3z7rjvvzcz3ffue_zd2pmj2rl4fq6dchynq6tm4lty
       clsx: 1.2.1
       deepmerge-ts: 4.3.0
       lodash.pick: 4.4.0
@@ -267,7 +267,7 @@ importers:
       '@types/react-table': 7.7.14
       '@typescript-eslint/parser': ^5.59.8
       '@vanilla-extract/babel-plugin': 1.2.0
-      '@vanilla-extract/css': 1.11.1
+      '@vanilla-extract/css': 1.12.0
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/sprinkles': 1.6.0
       '@vanilla-extract/webpack-plugin': 2.2.0
@@ -291,7 +291,7 @@ importers:
     dependencies:
       '@buildo/bento-design-system': link:../bento-design-system
       '@phosphor-icons/react': 2.0.10_biqbaboplfbrettd7655fr4n2y
-      '@vanilla-extract/sprinkles': 1.6.0_tudhbyyv4ny3z7rjvvzcz3ffue_sqr63gfwi5yqhik3spxs63sakq
+      '@vanilla-extract/sprinkles': 1.6.0_tudhbyyv4ny3z7rjvvzcz3ffue_zd2pmj2rl4fq6dchynq6tm4lty
       date-fns: 2.29.3
       recharts: 2.1.16_v2m5e27vhdewzwhryxwfaorcca
     devDependencies:
@@ -313,7 +313,7 @@ importers:
       '@types/react-table': 7.7.14
       '@typescript-eslint/parser': 5.59.8_tizxnkcvjrb4cldxgwq5h3lj5u
       '@vanilla-extract/babel-plugin': 1.2.0
-      '@vanilla-extract/css': 1.11.1
+      '@vanilla-extract/css': 1.12.0
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/webpack-plugin': 2.2.0_webpack@5.88.0
       chromatic: 6.7.2
@@ -416,7 +416,7 @@ importers:
       '@types/node': 18.16.18
       '@types/react': 18.0.15
       '@typescript-eslint/parser': 5.59.8_crcblhegqyzje32iiurvcssltm
-      '@vanilla-extract/sprinkles': 1.6.0_tudhbyyv4ny3z7rjvvzcz3ffue_sqr63gfwi5yqhik3spxs63sakq
+      '@vanilla-extract/sprinkles': 1.6.0_tudhbyyv4ny3z7rjvvzcz3ffue_zd2pmj2rl4fq6dchynq6tm4lty
       eslint-config-react-app: 7.0.1_emibkfwdksnkvmjx6ot64n3hem
       lint-staged: 13.0.3
       raw-loader: 4.0.2_webpack@5.76.3
@@ -3615,7 +3615,7 @@ packages:
     resolution: {integrity: sha512-t9wi7/AW6XtKahAe20Yw0/mMljKq0B1r2fPdvaAdV/KPDZewFXdaaa6K7lxmZBZ8FBNpCiAT6iHPmd6QO9bKfQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      regenerator-runtime: 0.13.9
+      regenerator-runtime: 0.13.11
 
   /@babel/runtime/7.18.9:
     resolution: {integrity: sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==}
@@ -9737,8 +9737,8 @@ packages:
   /@vanilla-extract/css-utils/0.1.3:
     resolution: {integrity: sha512-PZAcHROlgtCUGI2y0JntdNwvPwCNyeVnkQu6KTYKdmxBbK3w72XJUmLFYapfaFfgami4I9CTLnrJTPdtmS3gpw==}
 
-  /@vanilla-extract/css/1.11.1:
-    resolution: {integrity: sha512-iLalh4K4sXgkfzsiFUsiek4IY1/N4jtJKdr1ubpyszPE7W7G2v+DAl8KcmKkRA6vS7k5mFNW34e4fNki6T2cbQ==}
+  /@vanilla-extract/css/1.12.0:
+    resolution: {integrity: sha512-TEttZfnqTRtwgVYiBWQSGGUiVaYWReHp59DsavITEvh4TpJNifZFGhBznHx4wQFEsyio6xA513jps4tmqR6zmw==}
     dependencies:
       '@emotion/hash': 0.9.0
       '@vanilla-extract/private': 1.0.3
@@ -9767,7 +9767,7 @@ packages:
   /@vanilla-extract/integration/5.0.0:
     resolution: {integrity: sha512-HwglsIxGYtV4IXFfyQ6GzZLFoaWaW+QkNx8UhXbgsCWUoPqpSbioukCOA+SuSuzsIcEZ3hkD0Y5ixITQNtnzjQ==}
     dependencies:
-      '@vanilla-extract/css': 1.11.1
+      '@vanilla-extract/css': 1.12.0
       esbuild: 0.11.23
       eval: 0.1.6
       find-up: 5.0.0
@@ -9781,7 +9781,7 @@ packages:
       '@babel/core': 7.22.5
       '@babel/plugin-syntax-typescript': 7.22.5_@babel+core@7.22.5
       '@vanilla-extract/babel-plugin-debug-ids': 1.0.3
-      '@vanilla-extract/css': 1.11.1
+      '@vanilla-extract/css': 1.12.0
       esbuild: 0.17.6
       eval: 0.1.6
       find-up: 5.0.0
@@ -9804,20 +9804,20 @@ packages:
   /@vanilla-extract/private/1.0.3:
     resolution: {integrity: sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==}
 
-  /@vanilla-extract/recipes/0.2.5_sqr63gfwi5yqhik3spxs63sakq:
+  /@vanilla-extract/recipes/0.2.5_zd2pmj2rl4fq6dchynq6tm4lty:
     resolution: {integrity: sha512-OWXUUiFJdswD3+Xg8f8avuw/vAHZRFS4oHqFeoV1TcO8cfbDQ0zmkreBHvyspoJU+qsyWK48yPHKSptqNRPy9Q==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
-      '@vanilla-extract/css': 1.11.1
+      '@vanilla-extract/css': 1.12.0
     dev: false
 
-  /@vanilla-extract/sprinkles/1.6.0_tudhbyyv4ny3z7rjvvzcz3ffue_sqr63gfwi5yqhik3spxs63sakq:
+  /@vanilla-extract/sprinkles/1.6.0_tudhbyyv4ny3z7rjvvzcz3ffue_zd2pmj2rl4fq6dchynq6tm4lty:
     resolution: {integrity: sha512-TDc/bKyYmt6PDd7/39a5HXUa+4mBI9PO0uw0jmxFMqe9EzrFEVevyRsjJ9KGK09ACItvVUotz98LIJTeliCbpQ==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
-      '@vanilla-extract/css': 1.11.1
+      '@vanilla-extract/css': 1.12.0
     patched: true
 
   /@vanilla-extract/vite-plugin/3.8.2_vite@4.3.9:
@@ -17825,9 +17825,9 @@ packages:
       '@types/prettier': 2.7.2
       '@types/react': 18.0.15
       '@types/react-dom': 18.2.1
-      '@vanilla-extract/css': 1.11.1
+      '@vanilla-extract/css': 1.12.0
       '@vanilla-extract/css-utils': 0.1.3
-      '@vanilla-extract/sprinkles': 1.6.0_tudhbyyv4ny3z7rjvvzcz3ffue_sqr63gfwi5yqhik3spxs63sakq
+      '@vanilla-extract/sprinkles': 1.6.0_tudhbyyv4ny3z7rjvvzcz3ffue_zd2pmj2rl4fq6dchynq6tm4lty
       '@vanilla-extract/webpack-plugin': 2.1.12_webpack@5.76.3
       babel-loader: 9.1.2_to7tqe65bwi5htdodftgrvaqzq
       classnames: 2.3.2
@@ -17899,9 +17899,9 @@ packages:
       '@types/prettier': 2.7.2
       '@types/react': 18.0.15
       '@types/react-dom': 18.2.1
-      '@vanilla-extract/css': 1.11.1
+      '@vanilla-extract/css': 1.12.0
       '@vanilla-extract/css-utils': 0.1.3
-      '@vanilla-extract/sprinkles': 1.6.0_tudhbyyv4ny3z7rjvvzcz3ffue_sqr63gfwi5yqhik3spxs63sakq
+      '@vanilla-extract/sprinkles': 1.6.0_tudhbyyv4ny3z7rjvvzcz3ffue_zd2pmj2rl4fq6dchynq6tm4lty
       '@vanilla-extract/webpack-plugin': 2.1.12_webpack@5.76.3
       babel-loader: 9.1.2_wkbijb5shpv5us5lp44yqc5qui
       classnames: 2.3.2
@@ -19424,9 +19424,6 @@ packages:
 
   /regenerator-runtime/0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
-
-  /regenerator-runtime/0.13.9:
-    resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
 
   /regenerator-transform/0.15.1:
     resolution: {integrity: sha512-knzmNAcuyxV+gQCufkYcvOqX/qIIfHLv0u5x79kRxuGojfYVky1f15TzZEu2Avte8QGepvUNTnLskf8E6X6Vyg==}
