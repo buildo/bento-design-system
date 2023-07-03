@@ -22,4 +22,5 @@ type ActiveVisualElementConfig = {
   lineWidth: SizeConfig<number | "100%">;
   lineHeight: SizeConfig<number>;
   lineColor: BentoSprinkles["decoration"];
+  lineOffset: SizeConfig<Exclude<BentoSprinkles["height"], "full">>;
 };

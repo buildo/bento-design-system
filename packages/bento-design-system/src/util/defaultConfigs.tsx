@@ -421,6 +421,10 @@ export const navigation: NavigationConfig = {
       medium: 16,
       large: 16,
     },
+    lineOffset: {
+      medium: 0,
+      large: 0,
+    },
   },
   uppercaseLabel: false,
   radius: {
