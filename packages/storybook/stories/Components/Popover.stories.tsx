@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { useRef, useState } from "react";
 import { Box, Button, Placeholder, Popover } from "..";
-import { createComponentStories } from "../util";
 import { BentoThemeProvider } from "@buildo/bento-design-system";
 
 const meta = {
