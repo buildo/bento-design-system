@@ -31,5 +31,5 @@ run:
         export CHROMATIC_SHA=$(cat .git/resource/head_sha)
       fi
 
-      CHROMATIC_OPTIONS="--ci --exit-zero-on-changes --exit-once-uploaded ${CHROMATIC_OPTIONS} --only-changed"
+      CHROMATIC_OPTIONS="--ci --exit-zero-on-changes --exit-once-uploaded ${CHROMATIC_OPTIONS} --only-changed --output-dir packages/storybook/storybook-static"
       pnpm chromatic
