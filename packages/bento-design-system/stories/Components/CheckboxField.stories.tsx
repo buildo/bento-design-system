@@ -1,4 +1,4 @@
-import { CheckboxField, IconLightbulb, Body } from "../";
+import { CheckboxField, IconLightbulb, Body } from "..";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

@@ -3,5 +3,5 @@
   "compilerOptions": {
     "noEmit": true
   },
-  "include": ["stories/**/*", "./.storybook/**/*"]
+  "include": ["stories/**/*", "../.storybook/**/*"]
 }

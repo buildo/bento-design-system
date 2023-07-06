@@ -1,5 +1,4 @@
-import { Body, Card, Stack, Title } from "../";
-import { unconditionalProperties, vars } from "@buildo/bento-design-system";
+import { Body, Card, Stack, Title, unconditionalProperties, vars } from "..";
 import { StoryObj, Meta } from "@storybook/react";
 
 const elevationType = {

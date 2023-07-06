@@ -1,4 +1,4 @@
-import { alignToFlexAlignLookup, alignYToFlexAlignLookup, vars } from "@buildo/bento-design-system";
+import { alignToFlexAlignLookup, alignYToFlexAlignLookup, vars } from "../src";
 
 export const textArgType: any = { control: { type: "text" } };
 export const disableControlArgType: any = { control: { disable: true } };

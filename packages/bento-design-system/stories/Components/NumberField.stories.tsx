@@ -1,4 +1,4 @@
-import { NumberField } from "../";
+import { NumberField } from "..";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

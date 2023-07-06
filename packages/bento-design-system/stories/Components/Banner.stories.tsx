@@ -1,4 +1,4 @@
-import { Banner } from "../";
+import { Banner } from "..";
 import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
 

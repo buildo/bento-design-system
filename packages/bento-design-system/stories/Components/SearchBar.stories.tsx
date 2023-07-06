@@ -1,4 +1,4 @@
-import { SearchBar } from "../";
+import { SearchBar } from "..";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

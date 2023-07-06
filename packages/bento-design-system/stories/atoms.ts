@@ -2,7 +2,7 @@ import {
   responsiveProperties as bentoResponsiveProperties,
   statusProperties as bentoStatusProperties,
   unconditionalProperties as bentoUnconditionalProperties,
-} from "@buildo/bento-design-system";
+} from "../src";
 import { customVars } from "./theme.css";
 
 const space = {

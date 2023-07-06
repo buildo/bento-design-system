@@ -1,5 +1,4 @@
-import { Placeholder } from "@buildo/bento-design-system";
-import { DecorativeDivider, Stack } from "../";
+import { DecorativeDivider, Stack, Placeholder } from "..";
 import { StoryObj, Meta } from "@storybook/react";
 
 const meta = {

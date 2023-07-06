@@ -1,5 +1,4 @@
-import { DateField } from "../";
-import type { DateFieldProps } from "@buildo/bento-design-system";
+import { DateField, DateFieldProps } from "..";
 import {
   startOfWeek,
   endOfWeek,

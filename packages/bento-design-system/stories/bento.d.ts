@@ -1,4 +1,4 @@
-import "@buildo/bento-design-system";
+import { StrictLocalizedString } from "../src";
 import { sprinkles } from "./sprinkles.css";
 
 declare module "@buildo/bento-design-system" {

@@ -1,5 +1,4 @@
-import { IconButton } from "../";
-import { IconPlaceholder } from "@buildo/bento-design-system";
+import { IconButton, IconPlaceholder } from "..";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

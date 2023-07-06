@@ -1,5 +1,4 @@
-import { IconPlaceholder } from "@buildo/bento-design-system";
-import { Chip } from "../";
+import { Chip, IconPlaceholder } from "..";
 import { StoryObj, Meta } from "@storybook/react";
 
 const meta = {

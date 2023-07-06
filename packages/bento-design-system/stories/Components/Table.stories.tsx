@@ -10,9 +10,9 @@ import {
   IconWarningSolid,
   NumberField,
   TableProps,
-} from "../";
+  IconX,
+} from "..";
 import orderBy from "lodash.orderby";
-import { IconX } from "@buildo/bento-design-system";
 import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
 import { useArgs } from "@storybook/addons";

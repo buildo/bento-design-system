@@ -1,4 +1,4 @@
-import { Body, Box, Card, AreaLoader, Stack, Title, Inset } from "../";
+import { Body, Box, Card, AreaLoader, Stack, Title, Inset } from "..";
 import { useArgs } from "@storybook/addons";
 import { useEffect } from "react";
 import { Meta, StoryObj } from "@storybook/react";
