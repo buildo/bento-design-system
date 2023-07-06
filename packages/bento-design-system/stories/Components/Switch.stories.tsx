@@ -1,4 +1,4 @@
-import { Switch } from "../";
+import { Switch } from "..";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { InlineLoader } from "../";
+import { InlineLoader } from "..";
 
 const meta = {
   component: InlineLoader,

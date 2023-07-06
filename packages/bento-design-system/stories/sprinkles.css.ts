@@ -14,7 +14,7 @@ import {
   statusPropertiesConditions,
   statusPropertiesDefaultCondition,
   unconditionalPropertiesShorthands,
-} from "@buildo/bento-design-system";
+} from "../src";
 
 const unconditionalStyles = defineProperties({
   properties: unconditionalProperties,

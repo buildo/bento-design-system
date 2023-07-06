@@ -1,4 +1,4 @@
-import { defaultMessages } from "@buildo/bento-design-system/lib/defaultMessages/en";
+import { defaultMessages } from "../src/defaultMessages/en";
 import { BentoProvider } from "../stories";
 import { useArgs } from "@storybook/addons";
 import { Decorator } from "@storybook/react";

@@ -1,4 +1,4 @@
-import { CheckboxGroupField } from "../";
+import { CheckboxGroupField } from "..";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

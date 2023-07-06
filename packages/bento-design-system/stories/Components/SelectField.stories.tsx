@@ -7,7 +7,7 @@ import {
   SelectField,
   BentoConfigProvider,
   SelectFieldProps,
-} from "../";
+} from "..";
 
 const meta = {
   component: SelectField,

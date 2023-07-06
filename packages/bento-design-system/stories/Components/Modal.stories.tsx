@@ -1,4 +1,4 @@
-import { Modal, Body, Placeholder, Stack, CustomModal, Feedback, Inset } from "../";
+import { Modal, Body, Placeholder, Stack, CustomModal, Feedback, Inset } from "..";
 import { action } from "@storybook/addon-actions";
 import { screen } from "@storybook/testing-library";
 import { Meta, StoryObj } from "@storybook/react";

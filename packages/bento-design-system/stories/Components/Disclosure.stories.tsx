@@ -1,4 +1,4 @@
-import { Card, Disclosure, Placeholder } from "../";
+import { Card, Disclosure, Placeholder } from "..";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

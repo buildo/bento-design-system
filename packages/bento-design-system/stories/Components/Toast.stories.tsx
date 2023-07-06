@@ -2,7 +2,7 @@ import { BentoProvider, Toast, useToast } from "..";
 import { action } from "@storybook/addon-actions";
 import { useEffect } from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { defaultMessages } from "@buildo/bento-design-system/lib/defaultMessages/en";
+import { defaultMessages } from "../../src//defaultMessages/en";
 
 const meta = {
   component: Toast,

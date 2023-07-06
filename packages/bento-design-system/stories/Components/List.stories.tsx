@@ -1,5 +1,12 @@
-import { IconInfoSolid, IconNegativeSolid, IconWarningSolid, List, IconCheck, Box } from "..";
-import { Children } from "@buildo/bento-design-system";
+import {
+  Children,
+  IconInfoSolid,
+  IconNegativeSolid,
+  IconWarningSolid,
+  List,
+  IconCheck,
+  Box,
+} from "..";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

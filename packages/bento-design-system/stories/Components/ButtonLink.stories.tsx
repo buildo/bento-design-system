@@ -1,5 +1,4 @@
-import { ButtonLink } from "../";
-import { IconCheck } from "@buildo/bento-design-system";
+import { ButtonLink, IconCheck } from "..";
 import { StoryObj, Meta } from "@storybook/react";
 
 const meta = {

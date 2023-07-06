@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Headline } from "../..";
-import { Box } from "@buildo/bento-design-system";
+import { Box, Headline } from "../..";
 
 const meta = {
   component: Headline,

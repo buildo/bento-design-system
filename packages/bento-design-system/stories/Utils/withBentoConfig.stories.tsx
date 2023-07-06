@@ -1,10 +1,6 @@
-import {
-  DesignSystemProvider,
-  Modal as BentoModal,
-  withBentoConfig,
-} from "@buildo/bento-design-system";
+import { DesignSystemProvider, Modal as BentoModal, withBentoConfig } from "..";
 import { action } from "@storybook/addon-actions";
-import { defaultMessages } from "@buildo/bento-design-system/lib/defaultMessages/en";
+import { defaultMessages } from "../../src/defaultMessages/en";
 
 export default {
   title: "utils/withBentoConfig",

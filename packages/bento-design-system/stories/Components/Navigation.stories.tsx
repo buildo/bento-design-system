@@ -1,6 +1,4 @@
-import { Navigation } from "../";
-import { IconInfoSolid } from "..";
-import { Box, NavigationProps, withBentoConfig } from "@buildo/bento-design-system";
+import { Navigation, IconInfoSolid, Box, NavigationProps, withBentoConfig } from "..";
 import { Meta, StoryObj } from "@storybook/react";
 
 const destinations: NavigationProps<"none">["destinations"] = [
