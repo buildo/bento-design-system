@@ -7,14 +7,16 @@ export const listItemRecipe = strictRecipe({
       true: bentoSprinkles({
         cursor: { default: "pointer", disabled: "notAllowed" },
         background: {
-          hover: "primaryTransparentHoverBackground",
-          focus: "primaryTransparentFocusBackground",
+          default: "secondaryTransparentEnabledBackground",
+          hover: "secondaryTransparentHoverBackground",
+          focus: "secondaryTransparentFocusBackground",
+          disabled: "disabledTransparentBackground",
         },
       }),
     },
     focused: {
       true: bentoSprinkles({
-        background: "primaryTransparentFocusBackground",
+        background: "secondaryTransparentFocusBackground",
       }),
     },
     selected: {

@@ -4,9 +4,14 @@ import { bentoSprinkles } from "../internal";
 export const destinationRecipe = strictRecipe({
   base: bentoSprinkles({
     position: "relative",
+    background: {
+      default: "primaryTransparentEnabledBackground",
+      hover: "primaryTransparentHoverBackground",
+      focus: "primaryTransparentFocusBackground",
+    },
     color: { disabled: "disabledTransparentForeground" },
     fill: { disabled: "disabledTransparentForeground" },
-    cursor: { disabled: "notAllowed" },
+    cursor: { default: "pointer", disabled: "notAllowed" },
     outline: "none",
   }),
   variants: {
@@ -17,15 +22,8 @@ export const destinationRecipe = strictRecipe({
           hover: "secondaryTransparentHoverForeground",
           focus: "secondaryTransparentFocusForeground",
         },
-        background: {
-          default: "secondaryTransparentEnabledBackground",
-          hover: "secondaryTransparentHoverBackground",
-          focus: "secondaryTransparentFocusBackground",
-        },
-        cursor: "pointer",
       }),
       true: bentoSprinkles({
-        background: "secondaryTransparentEnabledBackground",
         color: "textPrimary",
       }),
     },

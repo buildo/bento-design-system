@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { PaginationItemsPerPage as ItemsPerPage, Pagination } from "../";
+import { BentoConfigProvider, PaginationItemsPerPage as ItemsPerPage, Pagination } from "..";
 import { action } from "@storybook/addon-actions";
 
 const meta = {
@@ -39,4 +39,21 @@ export const SinglePage = {
   args: {
     pageCount: 1,
   },
+} satisfies Story;
+
+export const SmallButtons = {
+  decorators: [
+    (Story) => (
+      <BentoConfigProvider
+        value={{
+          pagination: {
+            dropdownButtonSize: "small",
+            navigationButtonSize: 16,
+          },
+        }}
+      >
+        <Story />
+      </BentoConfigProvider>
+    ),
+  ],
 } satisfies Story;
