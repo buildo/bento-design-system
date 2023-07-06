@@ -1,4 +1,4 @@
-import { ComponentProps, FunctionComponent } from "react";
+import { ComponentProps } from "react";
 import { CellProps } from "react-table";
 import {
   LocalizedString,
@@ -84,7 +84,7 @@ export function TextWithIconCell({
 }: CellProps<
   {},
   {
-    icon: FunctionComponent<IconProps> | null;
+    icon: ((props: IconProps) => Children) | null;
     iconPosition: "left" | "right";
     text: LocalizedString;
     tooltipContent?: Children;
