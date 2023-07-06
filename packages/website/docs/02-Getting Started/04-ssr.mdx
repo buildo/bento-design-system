@@ -3,17 +3,8 @@
 Bento uses [react-aria](https://react-spectrum.adobe.com/react-aria/) internally.
 react-aria auto generates unique ids for some of Bento components.
 
-To ensure the ids are consistent between the client and server in a SSR environment, you need to pass the `ssr` option to `BentoProvider`.
+Starting from version 0.20.0 you don't need to do anything to support consistent ids in an SSR setup, since recent versions of react-aria use the native React.useId() hook.
 
-E.g.:
+Note that this requires React >= 18, which is the version range supported by Bento.
 
-```tsx
-<BentoProvider defaultMessages={defaultMessages} ssr>
-  <YourSsrApp />
-</BentoProvider>
-```
-
-This will wrap all components in react-aria's `SSRProvider`.
 More info about SSR in react-aria [here](https://react-spectrum.adobe.com/react-aria/ssr.html).
-
-Alternatively, Bento also exposes `SSRProvider` directly, in the rare in case in which you want to use it separately from `BentoProvider`.
