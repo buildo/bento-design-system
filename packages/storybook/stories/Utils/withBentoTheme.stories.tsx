@@ -8,7 +8,9 @@ import { useState } from "react";
 import { Button, Inline } from "..";
 import { newTheme } from "./withBentoTheme.css";
 
-export default {};
+export default {
+  title: "utils/withBentoTheme",
+};
 
 // This tests that `withBentoTheme` only overrides the specific theme passed to it.
 // In this case, at top-level we're overriding the defaultTheme to set a purple background color for the hovered or focused buttons.
