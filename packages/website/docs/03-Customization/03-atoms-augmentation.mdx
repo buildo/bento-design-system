@@ -31,7 +31,17 @@ Suppose now you want to add a new color token (`specialBackgroundColor`) to the 
 
 To do so, we must extend the set of tokens accepted by the `background` CSS properties to include also the custom token.
 
-First, let's define the new CSS variable for the custom token and assign the corresponding hex color value to it:
+First of all, in order to hook into the default Bento sprinkles, we need to add `@vanilla-extract/css` and `@vanilla-extract/sprinkles` as dependencies:
+
+<PackageManagerCommand
+  command={{
+    pnpm: "add -D @vanilla-extract/css @vanilla-extract/sprinkles",
+    yarn: "add -D @vanilla-extract/css @vanilla-extract/sprinkles",
+    npm: "install --save-dev @vanilla-extract/css @vanilla-extract/sprinkles",
+  }}
+/>
+
+Then let's define the new CSS variable for the custom token and assign the corresponding hex color value to it:
 
 ```ts title="my-project/design-system/src/theme.css.ts"
 import { createGlobalTheme } from "@vanilla-extract/css";
@@ -53,19 +63,28 @@ export const customVars = createGlobalTheme(":root", {
 });
 ```
 
-Then, we must tell Bento this new token can be used as a value for the `background` CSS property, by extending Bento's `statusProperties`:
+Now we must tell Bento the new token can be used as a value for the `background` CSS property.
+
+To do so, we will define our own `sprinkles` function, adding the new token to the set of possible values for the `background` property.
+We can leverage the default values exported by Bento and augment it with our tokens:
 
 ```ts title="my-project/design-system/src/sprinkles.css.ts"
+import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
 import {
-  createDefineBentoSprinklesFn,
   unconditionalProperties,
+  unconditionalPropertiesShorthands,
   responsiveProperties,
-  statusProperties as bentoStatusProperties,
+  responsivePropertiesConditions,
+  responsivePropertiesDefaultCondition,
+  responsivePropertiesShorthands,
+  statusProprties as bentoStatusProperties,
+  statusPropertiesConditions,
+  statusPropertiesDefaultCondition,
 } from "@buildo/bento-design-system";
+
 import { customVars } from "./theme.css";
 
-const defineBentoSprinkles = createDefineBentoSprinklesFn();
-
+// Define our own status properties by extending the default ones
 const statusProperties = {
   ...bentoStatusProperties,
   background: {
@@ -74,11 +93,25 @@ const statusProperties = {
   },
 };
 
-export const { sprinkles } = defineBentoSprinkles(
-  bentoUnconditionalProperties,
-  bentoResponsiveProperties,
-  statusProperties
-);
+const unconditionalStyles = defineProperties({
+  properties: unconditionalProperties,
+  shorthands: unconditionalPropertiesShorthands,
+});
+
+const responsiveStyles = defineProperties({
+  conditions: responsivePropertiesConditions,
+  defaultCondition: responsivePropertiesDefaultCondition,
+  properties: responsiveProperties,
+  shorthands: responsivePropertiesShorthands,
+});
+
+const statusStyles = defineProperties({
+  conditions: statusPropertiesConditions,
+  defaultCondition: statusPropertiesDefaultCondition,
+  properties: statusProperties,
+});
+
+export const sprinkles = createSprinkles(unconditionalStyles, responsiveStyles, statusStyles);
 ```
 
 <details>

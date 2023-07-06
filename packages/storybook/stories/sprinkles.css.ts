@@ -3,16 +3,38 @@ import {
   createNormalizeValueFn,
   ConditionalValue,
   RequiredConditionalValue,
+  defineProperties,
+  createSprinkles,
 } from "@vanilla-extract/sprinkles";
 import { unconditionalProperties, statusProperties, responsiveProperties } from "./atoms";
-import { createDefineBentoSprinklesFn } from "@buildo/bento-design-system";
+import {
+  responsivePropertiesConditions,
+  responsivePropertiesDefaultCondition,
+  responsivePropertiesShorthands,
+  statusPropertiesConditions,
+  statusPropertiesDefaultCondition,
+  unconditionalPropertiesShorthands,
+} from "@buildo/bento-design-system";
 
-const defineBentoSprinkles = createDefineBentoSprinklesFn();
-export const { sprinkles, responsiveStyles } = defineBentoSprinkles(
-  unconditionalProperties,
-  responsiveProperties,
-  statusProperties
-);
+const unconditionalStyles = defineProperties({
+  properties: unconditionalProperties,
+  shorthands: unconditionalPropertiesShorthands,
+});
+
+const responsiveStyles = defineProperties({
+  conditions: responsivePropertiesConditions,
+  defaultCondition: responsivePropertiesDefaultCondition,
+  properties: responsiveProperties,
+  shorthands: responsivePropertiesShorthands,
+});
+
+const statusStyles = defineProperties({
+  conditions: statusPropertiesConditions,
+  defaultCondition: statusPropertiesDefaultCondition,
+  properties: statusProperties,
+});
+
+export const sprinkles = createSprinkles(unconditionalStyles, responsiveStyles, statusStyles);
 
 export type Sprinkles = Parameters<typeof sprinkles>[0];
 
