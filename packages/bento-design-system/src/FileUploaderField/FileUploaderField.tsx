@@ -346,6 +346,7 @@ export function FileUploaderField<E extends string>({
               <Button
                 kind={config.buttonKind}
                 hierarchy="secondary"
+                size={config.buttonSize}
                 label={texts.uploadButtonLabel}
                 onPress={open}
                 isDisabled={!!disabled}

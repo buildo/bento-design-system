@@ -73,3 +73,35 @@ export const WithOutlineButton = {
     ),
   ],
 } satisfies Story;
+
+export const WithSolidButton = {
+  decorators: [
+    (Story) => (
+      <BentoConfigProvider
+        value={{
+          fileUploaderField: {
+            buttonKind: "solid",
+          },
+        }}
+      >
+        <Story />
+      </BentoConfigProvider>
+    ),
+  ],
+} satisfies Story;
+
+export const WithSmallButton = {
+  decorators: [
+    (Story) => (
+      <BentoConfigProvider
+        value={{
+          fileUploaderField: {
+            buttonSize: "small",
+          },
+        }}
+      >
+        <Story />
+      </BentoConfigProvider>
+    ),
+  ],
+} satisfies Story;
