@@ -1,13 +1,14 @@
 import "@buildo/bento-design-system/index.css";
+import "@buildo/bento-design-system/defaultFonts.css";
 import "./theme.css";
 import {
   createBentoProvider,
   defaultConfigs,
   withBentoConfig,
   createBentoComponents,
+  defaultTheme,
 } from "@buildo/bento-design-system";
 import { sprinkles } from "./sprinkles.css";
-import "@buildo/bento-design-system/defaultTheme.css";
 
 export { BarChart, DonutChart, LineChart, useChart } from "@buildo/bento-design-system";
 
@@ -144,7 +145,7 @@ export const BentoProvider = createBentoProvider(
       itemsPerPageOptions: [5, 10, 20, 50],
     },
   },
-  undefined,
+  defaultTheme,
   sprinkles
 );
 

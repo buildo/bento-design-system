@@ -20,6 +20,7 @@
     },
     "./index.css": "./lib/index.css",
     "./defaultTheme.css": "./lib/defaultTheme.css",
+    "./defaultFonts.css": "./lib/defaultFonts.css",
     "./defaultMessages/en": {
       "node": "./lib/defaultMessages/en.js",
       "import": "./lib/defaultMessages/en.mjs",

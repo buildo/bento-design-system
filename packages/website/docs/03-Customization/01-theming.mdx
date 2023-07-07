@@ -45,6 +45,17 @@ You're not forced to set a value for each of the design tokens Bento defines.
 For each of the design tokens that are not explicitly set in the `makeGlobalBentoTheme` call, Bento will use the value defined by the default theme.
 :::
 
+:::caution
+If you define a custom theme, you must ensure all the fonts you want to use in it are made available in your app (e.g. by importing the correct Google Fonts).
+If you don't want to override the default fonts used by Bento, you can import them with the following line:
+
+```ts title="my-project/src/index.ts"
+import "@buildo/bento-design-system/defaultFonts.css";
+```
+
+This is not needed if you're already importing the `defaultTheme.css` file, since it already includes the default fonts.
+:::
+
 If you correctly set-up Vanilla Extract in your build pipeline as described in the [suggested project structure](../Getting%20Started/project-structure), the build of your design-system package will produce a `theme.css` file you can import in your final app in place of the `defaultTheme.css` file.
 
 ### Customizing the theme using BentoProvider and BentoThemeProvider
