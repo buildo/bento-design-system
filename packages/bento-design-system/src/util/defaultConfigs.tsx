@@ -254,6 +254,7 @@ export const field: FieldConfig = {
 export const fileUploaderField: FileUploaderFieldConfig = {
   defaultHeight: "8rem",
   buttonKind: "outline",
+  buttonSize: "medium",
 };
 
 export const inlineLoader: InlineLoaderConfig = {
