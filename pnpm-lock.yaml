@@ -267,7 +267,7 @@ importers:
       '@vanilla-extract/sprinkles': 1.6.1
       '@vanilla-extract/webpack-plugin': 2.2.0
       chromatic: 6.7.2
-      date-fns: 2.29.3
+      date-fns: 2.30.0
       eslint: 8.42.0
       eslint-config-react-app: 7.0.1
       eslint-plugin-sort-export-all: 1.2.2
@@ -287,7 +287,7 @@ importers:
       '@buildo/bento-design-system': link:../bento-design-system
       '@phosphor-icons/react': 2.0.10_biqbaboplfbrettd7655fr4n2y
       '@vanilla-extract/sprinkles': 1.6.1_zd2pmj2rl4fq6dchynq6tm4lty
-      date-fns: 2.29.3
+      date-fns: 2.30.0
       recharts: 2.7.2_v2m5e27vhdewzwhryxwfaorcca
     devDependencies:
       '@babel/core': 7.22.5
@@ -11158,11 +11158,6 @@ packages:
       whatwg-mimetype: 3.0.0
       whatwg-url: 12.0.1
     dev: true
-
-  /date-fns/2.29.3:
-    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
-    engines: {node: '>=0.11'}
-    dev: false
 
   /date-fns/2.30.0:
     resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
