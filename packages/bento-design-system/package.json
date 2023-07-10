@@ -150,7 +150,7 @@
     "@vanilla-extract/vite-plugin": "^3.8.2",
     "@vanilla-extract/webpack-plugin": "2.1.12",
     "@vitejs/plugin-react": "^4.0.1",
-    "css-loader": "6.7.4",
+    "css-loader": "6.8.1",
     "esbuild-loader": "2.21.0",
     "eslint": "8.20.0",
     "eslint-config-react-app": "7.0.1",
