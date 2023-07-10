@@ -89,7 +89,7 @@ importers:
       '@vanilla-extract/recipes': 0.4.0
       '@vanilla-extract/sprinkles': 1.6.1
       '@vanilla-extract/vite-plugin': ^3.8.2
-      '@vanilla-extract/webpack-plugin': 2.1.12
+      '@vanilla-extract/webpack-plugin': 2.2.0
       '@vitejs/plugin-react': ^4.0.1
       clsx: ^1.2.1
       css-loader: 6.8.1
@@ -213,7 +213,7 @@ importers:
       '@vanilla-extract/esbuild-plugin': 2.1.0
       '@vanilla-extract/private': 1.0.3
       '@vanilla-extract/vite-plugin': 3.8.2_vite@4.3.9
-      '@vanilla-extract/webpack-plugin': 2.1.12_webpack@5.76.3
+      '@vanilla-extract/webpack-plugin': 2.2.0_webpack@5.76.3
       '@vitejs/plugin-react': 4.0.1_vite@4.3.9
       css-loader: 6.8.1_webpack@5.76.3
       esbuild-loader: 2.21.0_webpack@5.76.3
@@ -10337,6 +10337,26 @@ packages:
       webpack: 5.76.3_xv6o4afsychpgm2yejy2midhya
     transitivePeerDependencies:
       - supports-color
+
+  /@vanilla-extract/webpack-plugin/2.2.0_webpack@5.76.3:
+    resolution: {integrity: sha512-EQrnT7gIki+Wm57eIRZRw6pi4M4VVnwiSp5OOcQF81XdZvoYXo51Ern7+dHKS+Xxli151BWTUsg/UZSpaAz29Q==}
+    peerDependencies:
+      webpack: ^4.30.0 || ^5.20.2
+    dependencies:
+      '@vanilla-extract/integration': 6.2.1
+      chalk: 4.1.2
+      debug: 4.3.4
+      loader-utils: 2.0.4
+      webpack: 5.76.3_xv6o4afsychpgm2yejy2midhya
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
 
   /@vanilla-extract/webpack-plugin/2.2.0_webpack@5.88.1:
     resolution: {integrity: sha512-EQrnT7gIki+Wm57eIRZRw6pi4M4VVnwiSp5OOcQF81XdZvoYXo51Ern7+dHKS+Xxli151BWTUsg/UZSpaAz29Q==}
