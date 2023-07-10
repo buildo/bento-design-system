@@ -20,8 +20,8 @@
     "recharts": "^2.1.16"
   },
   "devDependencies": {
-    "@babel/core": "7.22.5",
-    "@babel/preset-env": "7.22.5",
+    "@babel/core": "7.22.8",
+    "@babel/preset-env": "7.22.7",
     "@babel/preset-react": "7.22.5",
     "@babel/preset-typescript": "7.22.5",
     "@storybook/addon-actions": "7.0.25",
