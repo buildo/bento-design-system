@@ -16,7 +16,7 @@
     "@buildo/bento-design-system": "workspace:*",
     "@phosphor-icons/react": "^2.0.10",
     "@vanilla-extract/sprinkles": "1.6.1",
-    "date-fns": "2.29.3",
+    "date-fns": "2.30.0",
     "recharts": "^2.1.16"
   },
   "devDependencies": {
