@@ -167,6 +167,7 @@
     "@vitejs/plugin-react": "^4.0.1",
     "chromatic": "6.7.2",
     "css-loader": "6.8.1",
+    "date-fns": "^2.30.0",
     "esbuild-loader": "2.21.0",
     "eslint": "8.45.0",
     "eslint-config-react-app": "7.0.1",

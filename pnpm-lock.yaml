@@ -106,6 +106,7 @@ importers:
       chromatic: 6.7.2
       clsx: ^1.2.1
       css-loader: 6.8.1
+      date-fns: ^2.30.0
       deepmerge-ts: ^4.3.0
       esbuild-loader: 2.21.0
       eslint: 8.45.0
@@ -244,6 +245,7 @@ importers:
       '@vitejs/plugin-react': 4.0.1_vite@4.3.9
       chromatic: 6.7.2
       css-loader: 6.8.1_webpack@5.76.3
+      date-fns: 2.30.0
       esbuild-loader: 2.21.0_webpack@5.76.3
       eslint: 8.45.0
       eslint-config-react-app: 7.0.1_q4xwzvngyhefxgqi6l766swz3u
@@ -12000,7 +12002,6 @@ packages:
     engines: {node: '>=0.11'}
     dependencies:
       '@babel/runtime': 7.22.5
-    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
