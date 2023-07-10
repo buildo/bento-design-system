@@ -21,7 +21,7 @@ importers:
       '@datepicker-react/hooks': ^2.8.4
       '@dessert-box/core': 0.2.0
       '@floating-ui/core': 1.3.1
-      '@floating-ui/dom': 1.4.3
+      '@floating-ui/dom': 1.4.4
       '@floating-ui/react-dom': 1.3.0
       '@fontsource/lexend': ^4.5.15
       '@internationalized/date': ^3.0.0
@@ -130,7 +130,7 @@ importers:
       '@datepicker-react/hooks': 2.8.4_react@18.2.0
       '@dessert-box/core': 0.2.0
       '@floating-ui/core': 1.3.1
-      '@floating-ui/dom': 1.4.3
+      '@floating-ui/dom': 1.4.4
       '@floating-ui/react-dom': 1.3.0_biqbaboplfbrettd7655fr4n2y
       '@fontsource/lexend': 4.5.15
       '@internationalized/date': 3.3.0
@@ -721,16 +721,16 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@babel/eslint-parser/7.22.5_oywi6cuogong47g24xd6q2exbi:
+  /@babel/eslint-parser/7.22.5_j4chmfuqln7nm7rb4xsxbn4qdu:
     resolution: {integrity: sha512-C69RWYNYtrgIRE5CmTd77ZiLDXqgBipahJc/jHP3sLcAGj6AJzxNIuKNpVnICqbyK7X3pFUfEvL++rvtbQpZkQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || >=14.0.0}
     peerDependencies:
       '@babel/core': '>=7.11.0'
       eslint: ^7.5.0 || ^8.0.0
     dependencies:
-      '@babel/core': 7.22.8
+      '@babel/core': 7.22.5
       '@nicolo-ribaudo/eslint-scope-5-internals': 5.1.1-v1
-      eslint: 8.42.0
+      eslint: 8.44.0
       eslint-visitor-keys: 2.1.0
       semver: 6.3.0
     dev: true
@@ -749,16 +749,16 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /@babel/eslint-parser/7.22.5_zcysblikscedbvze64gqvi2g7m:
+  /@babel/eslint-parser/7.22.5_x2nqc5cansj73pf43kd5o2aydq:
     resolution: {integrity: sha512-C69RWYNYtrgIRE5CmTd77ZiLDXqgBipahJc/jHP3sLcAGj6AJzxNIuKNpVnICqbyK7X3pFUfEvL++rvtbQpZkQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || >=14.0.0}
     peerDependencies:
       '@babel/core': '>=7.11.0'
       eslint: ^7.5.0 || ^8.0.0
     dependencies:
-      '@babel/core': 7.22.8
+      '@babel/core': 7.22.5
       '@nicolo-ribaudo/eslint-scope-5-internals': 5.1.1-v1
-      eslint: 8.44.0
+      eslint: 8.42.0
       eslint-visitor-keys: 2.1.0
       semver: 6.3.0
     dev: true
@@ -6337,8 +6337,8 @@ packages:
     resolution: {integrity: sha512-Bu+AMaXNjrpjh41znzHqaz3r2Nr8hHuHZT6V2LBKMhyMl0FgKA62PNYbqnfgmzOhoWZj70Zecisbo4H1rotP5g==}
     dev: false
 
-  /@floating-ui/dom/1.4.3:
-    resolution: {integrity: sha512-nB/68NyaQlcdY22L+Fgd1HERQ7UGv7XFN+tPxwrEfQL4nKtAP/jIZnZtpUlXbtV+VEGHh6W/63Gy2C5biWI3sA==}
+  /@floating-ui/dom/1.4.4:
+    resolution: {integrity: sha512-21hhDEPOiWkGp0Ys4Wi6Neriah7HweToKra626CIK712B5m9qkdz54OP9gVldUg+URnBTpv/j/bi/skmGdstXQ==}
     dependencies:
       '@floating-ui/core': 1.3.1
     dev: false
@@ -6349,7 +6349,7 @@ packages:
       react: '>=16.8.0 || 18'
       react-dom: '>=16.8.0 || 18'
     dependencies:
-      '@floating-ui/dom': 1.4.3
+      '@floating-ui/dom': 1.4.4
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
@@ -13415,8 +13415,8 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@babel/core': 7.22.8
-      '@babel/eslint-parser': 7.22.5_zcysblikscedbvze64gqvi2g7m
+      '@babel/core': 7.22.5
+      '@babel/eslint-parser': 7.22.5_j4chmfuqln7nm7rb4xsxbn4qdu
       '@rushstack/eslint-patch': 1.3.2
       '@typescript-eslint/eslint-plugin': 5.60.1_es4krx4dgbtwmc44x7lxscwfia
       '@typescript-eslint/parser': 5.60.1_l6zvuqc3zpbiltenhyz7ewjecq
@@ -13485,8 +13485,8 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@babel/core': 7.22.8
-      '@babel/eslint-parser': 7.22.5_oywi6cuogong47g24xd6q2exbi
+      '@babel/core': 7.22.5
+      '@babel/eslint-parser': 7.22.5_x2nqc5cansj73pf43kd5o2aydq
       '@rushstack/eslint-patch': 1.3.2
       '@typescript-eslint/eslint-plugin': 5.60.1_ds6o7apch2mp4umu6xqlcjt4be
       '@typescript-eslint/parser': 5.60.1_tizxnkcvjrb4cldxgwq5h3lj5u
@@ -19239,7 +19239,7 @@ packages:
       '@babel/runtime': 7.22.5
       '@emotion/cache': 11.11.0
       '@emotion/react': 11.11.1_i73ekzlbntu7jol6ph2fvy4mga
-      '@floating-ui/dom': 1.4.3
+      '@floating-ui/dom': 1.4.4
       '@types/react-transition-group': 4.4.6
       memoize-one: 6.0.0
       prop-types: 15.8.1
