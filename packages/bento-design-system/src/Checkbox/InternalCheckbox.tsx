@@ -67,7 +67,6 @@ export function InternalCheckbox({ option, inputRef, inputProps }: Props) {
       {...focusProps}
       color={undefined}
       cursor={{ default: "pointer", disabled: "notAllowed" }}
-      paddingBottom={4}
       className={fieldContainer}
     >
       <VisuallyHidden>
