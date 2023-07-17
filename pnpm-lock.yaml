@@ -97,7 +97,7 @@ importers:
       esbuild-loader: 2.21.0
       eslint: 8.20.0
       eslint-config-react-app: 7.0.1
-      eslint-plugin-sort-export-all: 1.2.2
+      eslint-plugin-sort-export-all: 1.4.1
       file-loader: 6.2.0
       jsdom: ^22.1.0
       lint-staged: 13.2.3
@@ -219,7 +219,7 @@ importers:
       esbuild-loader: 2.21.0_webpack@5.76.3
       eslint: 8.20.0
       eslint-config-react-app: 7.0.1_pfxbaesgzuxe3h3bluvdglcnwu
-      eslint-plugin-sort-export-all: 1.2.2_eslint@8.20.0
+      eslint-plugin-sort-export-all: 1.4.1_eslint@8.20.0
       file-loader: 6.2.0_webpack@5.76.3
       jsdom: 22.1.0
       lint-staged: 13.2.3
@@ -270,7 +270,7 @@ importers:
       date-fns: 2.30.0
       eslint: 8.42.0
       eslint-config-react-app: 7.0.1
-      eslint-plugin-sort-export-all: 1.2.2
+      eslint-plugin-sort-export-all: 1.4.1
       eslint-plugin-storybook: ^0.6.12
       lint-staged: 13.2.3
       lodash.orderby: 4.6.0
@@ -314,7 +314,7 @@ importers:
       chromatic: 6.19.9
       eslint: 8.42.0
       eslint-config-react-app: 7.0.1_yn5ilqvgwchduzwezxxn64yk7y
-      eslint-plugin-sort-export-all: 1.2.2_eslint@8.42.0
+      eslint-plugin-sort-export-all: 1.4.1_eslint@8.42.0
       eslint-plugin-storybook: 0.6.12_tizxnkcvjrb4cldxgwq5h3lj5u
       lint-staged: 13.2.3
       lodash.orderby: 4.6.0
@@ -13993,8 +13993,8 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: true
 
-  /eslint-plugin-sort-export-all/1.2.2_eslint@8.20.0:
-    resolution: {integrity: sha512-yvOjEiGkhf2A+5lmZzZZPI79sZFF4OkLU2Bth6cfBQvZG+FBcz9naGEc8xADfixZ6JYI5yOF5P6qmysSGsAPyA==}
+  /eslint-plugin-sort-export-all/1.4.1_eslint@8.20.0:
+    resolution: {integrity: sha512-6MxnZYKqaqp6HH02bctYqEz/ccDZPGouZQWiIAWF/9x9EeiQpdPxuEnpFHyWHijRSqleK1mO1xOaF42DeueQoQ==}
     peerDependencies:
       eslint: ^4 || ^5 || ^6 || ^7 || ^8
     dependencies:
@@ -14002,8 +14002,8 @@ packages:
       natural-compare: 1.4.0
     dev: true
 
-  /eslint-plugin-sort-export-all/1.2.2_eslint@8.42.0:
-    resolution: {integrity: sha512-yvOjEiGkhf2A+5lmZzZZPI79sZFF4OkLU2Bth6cfBQvZG+FBcz9naGEc8xADfixZ6JYI5yOF5P6qmysSGsAPyA==}
+  /eslint-plugin-sort-export-all/1.4.1_eslint@8.42.0:
+    resolution: {integrity: sha512-6MxnZYKqaqp6HH02bctYqEz/ccDZPGouZQWiIAWF/9x9EeiQpdPxuEnpFHyWHijRSqleK1mO1xOaF42DeueQoQ==}
     peerDependencies:
       eslint: ^4 || ^5 || ^6 || ^7 || ^8
     dependencies:
