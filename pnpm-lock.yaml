@@ -103,7 +103,7 @@ importers:
       lint-staged: 13.0.3
       lodash.pick: 4.4.0
       madge: ^5.0.1
-      mini-css-extract-plugin: 2.6.1
+      mini-css-extract-plugin: 2.7.6
       playroom: 0.31.0
       postcss: 8.4.25
       prettier: 2.8.8
@@ -224,7 +224,7 @@ importers:
       jsdom: 22.1.0
       lint-staged: 13.0.3
       madge: 5.0.2
-      mini-css-extract-plugin: 2.6.1_webpack@5.76.3
+      mini-css-extract-plugin: 2.7.6_webpack@5.76.3
       playroom: 0.31.0_4spgo6o4ve4sfeymu2mh46wvwi
       postcss: 8.4.25
       prettier: 2.8.8
@@ -274,7 +274,7 @@ importers:
       eslint-plugin-storybook: ^0.6.12
       lint-staged: 13.0.3
       lodash.orderby: 4.6.0
-      mini-css-extract-plugin: 2.6.1
+      mini-css-extract-plugin: 2.7.6
       prettier: 2.8.8
       react: 18.2.0
       react-dom: 18.2.0
@@ -318,7 +318,7 @@ importers:
       eslint-plugin-storybook: 0.6.12_tizxnkcvjrb4cldxgwq5h3lj5u
       lint-staged: 13.0.3
       lodash.orderby: 4.6.0
-      mini-css-extract-plugin: 2.6.1_webpack@5.88.1
+      mini-css-extract-plugin: 2.7.6_webpack@5.88.1
       prettier: 2.8.8
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -17195,26 +17195,6 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /mini-css-extract-plugin/2.6.1_webpack@5.76.3:
-    resolution: {integrity: sha512-wd+SD57/K6DiV7jIR34P+s3uckTRuQvx0tKPcvjFlrEylk6P4mQ2KSWk1hblj1Kxaqok7LogKOieygXqBczNlg==}
-    engines: {node: '>= 12.13.0'}
-    peerDependencies:
-      webpack: ^5.0.0
-    dependencies:
-      schema-utils: 4.2.0
-      webpack: 5.76.3_xv6o4afsychpgm2yejy2midhya
-    dev: true
-
-  /mini-css-extract-plugin/2.6.1_webpack@5.88.1:
-    resolution: {integrity: sha512-wd+SD57/K6DiV7jIR34P+s3uckTRuQvx0tKPcvjFlrEylk6P4mQ2KSWk1hblj1Kxaqok7LogKOieygXqBczNlg==}
-    engines: {node: '>= 12.13.0'}
-    peerDependencies:
-      webpack: ^5.0.0
-    dependencies:
-      schema-utils: 4.2.0
-      webpack: 5.88.1_esbuild@0.17.19
-    dev: true
-
   /mini-css-extract-plugin/2.7.6_webpack@5.76.3:
     resolution: {integrity: sha512-Qk7HcgaPkGG6eD77mLvZS1nmxlao3j+9PkrT9Uc7HAE1id3F41+DdBRYRYkbyfNRGzm8/YWtzhw7nVPmwhqTQw==}
     engines: {node: '>= 12.13.0'}
@@ -17231,8 +17211,7 @@ packages:
       webpack: ^5.0.0
     dependencies:
       schema-utils: 4.2.0
-      webpack: 5.88.1
-    dev: false
+      webpack: 5.88.1_esbuild@0.17.19
 
   /minimalistic-assert/1.0.1:
     resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}
