@@ -1,4 +1,3 @@
-import { FunctionComponent } from "react";
 import { IconProps } from "../Icons/IconProps";
 import {
   Label,
@@ -9,6 +8,7 @@ import {
   IconButton,
   ChipCustomColors,
   Body,
+  Children,
 } from "..";
 import { BentoSprinkles } from "../internal";
 import { chipRecipe, ellipsedLabel, maxWidth } from "./Chip.css";
@@ -44,7 +44,7 @@ type DefaultColor =
 type Props = {
   label: LocalizedString;
   color: DefaultColor | ChipCustomColors;
-  icon?: FunctionComponent<IconProps>;
+  icon?: (props: IconProps) => Children;
   /** Truncate and show ellipsis after a number of characters */
   maxCharacters?: number;
   uppercase?: boolean;

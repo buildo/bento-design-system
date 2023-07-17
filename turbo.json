@@ -1,27 +1,16 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "baseBranch": "origin/main",
   "pipeline": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "lib",
-        "storybook-static"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["lib"]
     },
     "typecheck": {
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     },
     "start": {
       "persistent": true,
-      "cache": false,
-      "dependsOn": [
-        "^wait"
-      ]
+      "cache": false
     },
     "prettier-check": {},
     "prettier-write": {},
@@ -29,43 +18,26 @@
     "test": {},
     "eslint-check": {},
     "chromatic": {
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     },
     "playroom-start": {
-      "dependsOn": [
-        "@buildo/bento-design-system#build"
-      ],
+      "dependsOn": ["@buildo/bento-design-system#build"],
       "persistent": true,
       "cache": false
     },
     "playroom-build": {
-      "dependsOn": [
-        "@buildo/bento-design-system#build"
-      ],
-      "outputs": [
-        "dist"
-      ]
+      "dependsOn": ["@buildo/bento-design-system#build"],
+      "outputs": ["dist"]
     },
     "website-start": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "persistent": true,
       "cache": false
     },
     "website-build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "build"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["build"]
     },
-    "check-circular-deps": {},
-    "wait": {
-      "cache": false
-    }
+    "check-circular-deps": {}
   }
 }

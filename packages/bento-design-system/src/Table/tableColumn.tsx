@@ -22,7 +22,7 @@ import {
   TextWithIconCell,
   IconButtonCell,
 } from "./cells";
-import { ComponentProps, FunctionComponent } from "react";
+import { ComponentProps } from "react";
 import { useBentoConfig } from "../BentoConfigContext";
 
 export type { CellProps } from "react-table";
@@ -145,7 +145,7 @@ export function textWithIcon<A extends string>({
     }: CellProps<
       {},
       {
-        icon: FunctionComponent<IconProps> | null;
+        icon: ((props: IconProps) => Children) | null;
         text: LocalizedString;
         tooltipContent?: Children;
       }
@@ -205,7 +205,7 @@ export function numberWithIcon<A extends string>({
     }: CellProps<
       {},
       {
-        icon: FunctionComponent<IconProps> | null;
+        icon: ((props: IconProps) => Children) | null;
         numericValue: number;
         tooltipContent?: Children;
       }
