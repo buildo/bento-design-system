@@ -9,6 +9,7 @@ import { I18nProvider } from "@react-aria/i18n";
 import { BentoConfigProvider } from "./BentoConfigContext";
 import { SprinklesFn } from "./util/ConfigurableTypes";
 import { SprinklesContext } from "./SprinklesContext";
+import { BentoTheme, BentoThemeProvider } from "./BentoThemeContext";
 
 type Props = {
   children?: Children;
@@ -37,13 +38,26 @@ type Props = {
   linkComponent?: ComponentType<LinkComponentProps>;
   locale?: string;
   config?: PartialBentoConfig;
+  /**
+   * The theme to apply to the app via a wrapper Box.
+   * If no theme is provided, no wrapper will be created. In this case, the user
+   * will be responsible for applying the theme to the app by either importing a global theme
+   * (e.g. created with `createGlobalTheme`) or wrapping the app manually in a Box with a theme applied.
+   */
+  theme?: BentoTheme;
   sprinkles?: SprinklesFn;
 } & DefaultMessages;
 
 export function createBentoProvider(
   config: PartialBentoConfig = {},
+  theme?: BentoTheme,
   sprinkles: SprinklesFn = bentoSprinkles
 ) {
+  function OptionalThemeWrapper(props: { children: Children; theme?: BentoTheme }) {
+    if (!props.theme) return <>{props.children}</>;
+    return <BentoThemeProvider theme={props.theme}>{props.children}</BentoThemeProvider>;
+  }
+
   return function BentoProvider({
     children,
     toastDismissAfterMs = 5000,
@@ -53,17 +67,18 @@ export function createBentoProvider(
     ...props
   }: Props) {
     const linkComponentFromContext = useContext(LinkComponentContext);
-
     return (
       <I18nProvider locale={locale}>
         <OverlayProvider style={{ height: "100%" }}>
           <DefaultMessagesContext.Provider value={{ defaultMessages }}>
             <BentoConfigProvider value={props.config ?? config}>
-              <SprinklesContext.Provider value={props.sprinkles ?? sprinkles}>
-                <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
-                  <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
-                </LinkComponentContext.Provider>
-              </SprinklesContext.Provider>
+              <OptionalThemeWrapper theme={props.theme || theme}>
+                <SprinklesContext.Provider value={props.sprinkles ?? sprinkles}>
+                  <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
+                    <ToastProvider dismissAfterMs={toastDismissAfterMs}>{children}</ToastProvider>
+                  </LinkComponentContext.Provider>
+                </SprinklesContext.Provider>
+              </OptionalThemeWrapper>
             </BentoConfigProvider>
           </DefaultMessagesContext.Provider>
         </OverlayProvider>

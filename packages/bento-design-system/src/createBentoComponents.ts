@@ -61,6 +61,7 @@ import {
   useComponentsShowcase,
   List,
   Divider,
+  BentoTheme,
 } from ".";
 import * as icons from "./Icons";
 import { PartialBentoConfig } from "./BentoConfig";
@@ -89,24 +90,26 @@ export function createBentoComponents<ChipCustomColor extends string = never>(
 export function createBentoComponents<
   SprinklesFn extends typeof bentoSprinkles,
   ChipCustomColor extends string = never
->(sprinkles: SprinklesFn, config?: PartialBentoConfig): R;
+>(sprinkles: SprinklesFn, config?: PartialBentoConfig, theme?: BentoTheme): R;
 
 /** @deprecated Import components directly from "@buildo/bento-design-system" instead */
 export function createBentoComponents<SprinklesFn extends typeof bentoSprinkles>(
   sprinkles?: SprinklesFn | PartialBentoConfig,
-  config: PartialBentoConfig = defaultConfigs
+  config: PartialBentoConfig = defaultConfigs,
+  theme?: BentoTheme
 ): R {
   if (typeof sprinkles === "function") {
-    return internalCreateBentoComponents(sprinkles, config);
+    return internalCreateBentoComponents(sprinkles, config, theme);
   }
-  return internalCreateBentoComponents(bentoSprinkles, config);
+  return internalCreateBentoComponents(bentoSprinkles, config, theme);
 }
 
 function internalCreateBentoComponents(
   sprinkles: SprinklesFn,
-  config: PartialBentoConfig = defaultConfigs
+  config: PartialBentoConfig = defaultConfigs,
+  theme?: BentoTheme
 ) {
-  const DesignSystemProvider = createBentoProvider(config, sprinkles);
+  const DesignSystemProvider = createBentoProvider(config, theme, sprinkles);
 
   const components = {
     ...icons,

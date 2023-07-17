@@ -5,6 +5,7 @@ import { mergeProps } from "@react-aria/utils";
 import { forwardRef, RefObject, useImperativeHandle, useRef } from "react";
 import { Box, Children } from "..";
 import { Placement } from "@react-types/overlays";
+import { BentoThemePortalProvider } from "../BentoThemeContext";
 
 type Props = {
   children: Children;
@@ -57,17 +58,19 @@ export const Popover = forwardRef<HTMLElement, Props>(
 
     return (
       <OverlayContainer>
-        <FocusScope restoreFocus>
-          <Box
-            ref={overlayRef}
-            position="absolute"
-            display="flex"
-            outline="none"
-            {...mergeProps(overlayProps, dialogProps, modalProps, positionProps)}
-          >
-            {children}
-          </Box>
-        </FocusScope>
+        <BentoThemePortalProvider>
+          <FocusScope restoreFocus>
+            <Box
+              ref={overlayRef}
+              position="absolute"
+              display="flex"
+              outline="none"
+              {...mergeProps(overlayProps, dialogProps, modalProps, positionProps)}
+            >
+              {children}
+            </Box>
+          </FocusScope>
+        </BentoThemePortalProvider>
       </OverlayContainer>
     );
   }

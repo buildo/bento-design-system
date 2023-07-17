@@ -8,6 +8,7 @@ export * from "./AreaLoader/AreaLoader";
 export * from "./Avatar/Avatar";
 export * from "./Banner/Banner";
 export * from "./BentoProvider";
+export * from "./BentoThemeContext";
 export * from "./Box/Box";
 export * from "./Breadcrumb/Breadcrumb";
 export * from "./Button/Button";
@@ -92,9 +93,12 @@ export * from "./util/atoms";
 export * from "./util/breakpoints";
 export * from "./util/conditions";
 export * from "./util/link";
+export * from "./util/makeBentoTheme";
+export * from "./util/makeGlobalBentoTheme";
 export * from "./util/strictRecipe";
 export * from "./util/useDefaultMessages";
 export * from "./util/withBentoConfig";
+export * from "./util/withBentoTheme";
 
 export { icons };
 
@@ -105,6 +109,8 @@ export { headlineRecipe } from "./Typography/Headline/Headline.css";
 export { displayRecipe } from "./Typography/Display/Display.css";
 export { inputRecipe } from "./Field/Field.css";
 export * from "./vars.css";
+export { defaultTheme } from "./defaultThemeClass.css";
+export { defaultTokens } from "./util/defaultTokens";
 
 export type { BentoConfig, PartialBentoConfig } from "./BentoConfig";
 export { defaultConfigs };
