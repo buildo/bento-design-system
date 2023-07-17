@@ -46,7 +46,7 @@
     "eslint-config-react-app": "7.0.1",
     "eslint-plugin-sort-export-all": "1.2.2",
     "eslint-plugin-storybook": "^0.6.12",
-    "lint-staged": "13.0.3",
+    "lint-staged": "13.2.3",
     "lodash.orderby": "4.6.0",
     "mini-css-extract-plugin": "2.6.1",
     "prettier": "2.8.8",
