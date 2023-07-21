@@ -145,6 +145,8 @@ export const button: ButtonConfig = {
 };
 
 export const card: CardConfig = {
+  defaultElevation: "small",
+  defaultPadding: { padding: 24 },
   defaultRadius: 24,
 };
 

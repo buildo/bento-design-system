@@ -3,6 +3,7 @@ import { Box, Children } from "..";
 import { cardRecipe } from "./Card.css";
 import { useBentoConfig } from "../BentoConfigContext";
 import { BorderRadiusConfig, getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
+import { CardElevation } from "./Config";
 
 type PaddingKey =
   | "padding"
@@ -15,7 +16,7 @@ type PaddingKey =
 
 type Props = {
   children: Children;
-  elevation?: "small" | "medium" | "large";
+  elevation?: CardElevation;
   borderRadius?: BorderRadiusConfig;
 } & { [k in PaddingKey]?: 0 | BentoSprinkles["padding"] };
 
@@ -24,7 +25,8 @@ export function Card({ children, elevation, borderRadius, ...boxProps }: Props) 
   return (
     <Box
       {...getRadiusPropsFromConfig(borderRadius ?? config.defaultRadius)}
-      className={cardRecipe({ elevation: elevation || "none" })}
+      className={cardRecipe({ elevation: elevation ?? config.defaultElevation })}
+      {...config.defaultPadding}
       {...boxProps}
     >
       {children}
