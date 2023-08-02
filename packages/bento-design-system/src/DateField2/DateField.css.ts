@@ -90,23 +90,15 @@ export const dayRecipe = strictRecipe({
   ],
   variants: {
     style: {
-      default: [
-        bentoSprinkles({
-          background: {
-            hover: "backgroundSecondary",
-          },
-          color: {
-            default: "textPrimary",
-            disabled: "textDisabled",
-          },
-        }),
-        style({
-          borderTopLeftRadius: topLeftRadius,
-          borderBottomLeftRadius: bottomLeftRadius,
-          borderTopRightRadius: topRightRadius,
-          borderBottomRightRadius: bottomRightRadius,
-        }),
-      ],
+      default: bentoSprinkles({
+        background: {
+          hover: "backgroundSecondary",
+        },
+        color: {
+          default: "textPrimary",
+          disabled: "textDisabled",
+        },
+      }),
       selectedStart: [
         bentoSprinkles({
           color: { default: "foregroundPrimaryInverse", hover: "textPrimary" },
@@ -127,15 +119,10 @@ export const dayRecipe = strictRecipe({
           borderBottomRightRadius: bottomRightRadius,
         }),
       ],
-      selectedRange: [
-        bentoSprinkles({
-          color: "textPrimary",
-          background: { default: "backgroundInteractiveOverlay", hover: "backgroundSecondary" },
-        }),
-        style({
-          borderRadius: 0,
-        }),
-      ],
+      selectedRange: bentoSprinkles({
+        color: "textPrimary",
+        background: { default: "backgroundInteractiveOverlay", hover: "backgroundSecondary" },
+      }),
       selected: [
         bentoSprinkles({
           color: { default: "foregroundPrimaryInverse", hover: "textPrimary" },
@@ -160,16 +147,5 @@ export const dayRecipe = strictRecipe({
         color: "textPrimary",
       }),
     },
-  },
-});
-
-export const selector = bentoSprinkles({
-  paddingX: 16,
-  paddingY: 8,
-  borderRadius: 4,
-  background: {
-    default: "secondaryTransparentEnabledBackground",
-    focus: "secondaryTransparentFocusBackground",
-    hover: "secondaryTransparentHoverBackground",
   },
 });
