@@ -1,19 +1,19 @@
 import { useState } from "react";
+import { ColorConfig, ColorEditor } from "./ColorEditor/ColorEditor";
+import { unsafeLocalizedString } from "@buildo/bento-design-system";
+import { HexColor } from "./utils/colorUtils";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [value, setValue] = useState<ColorConfig>({
+    keyColor: "#1A212B" as HexColor,
+    hue: 215,
+    saturation: 25,
+    lightnessInterpolation: "Linear",
+    keyColorLocked: true,
+  });
 
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    <ColorEditor name={unsafeLocalizedString("Brand color")} value={value} onChange={setValue} />
   );
 }
 
