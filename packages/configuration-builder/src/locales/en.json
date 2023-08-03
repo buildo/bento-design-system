@@ -1,0 +1,20 @@
+{
+  "translation": {
+    "ColorEditor.keyColor": "Key Color",
+    "ColorEditor.palette": "Palette",
+    "ColorEditor.hexValue": "Hex value",
+    "ColorEditor.lightnessInterpolation": "Lightness interpolation",
+    "ColorEditor.LightnessInterpolation.linear": "Linear",
+    "ColorEditor.LightnessInterpolation.easeIn": "Ease in",
+    "ColorEditor.LightnessInterpolation.easeOut": "Ease out",
+    "ColorEditor.LightnessInterpolation.easeInOut": "Ease in/out",
+    "ColorEditor.hue": "Hue",
+    "ColorEditor.lockKeyColor": "Lock key color",
+    "ColorEditor.unlockKeyColor": "Unlock key color",
+    "ColorEditor.reset": "Reset",
+    "ColorEditor.delete": "Delete",
+    "ColorEditor.saturation": "Saturation",
+    "CounterField.increment": "Increment",
+    "CounterField.decrement": "Decrement"
+  }
+}
