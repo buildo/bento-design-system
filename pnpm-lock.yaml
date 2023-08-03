@@ -276,6 +276,8 @@ importers:
 
   packages/configuration-builder:
     specifiers:
+      '@buildo/bento-design-system': workspace:*
+      '@phosphor-icons/react': ^2.0.10
       '@types/react': ^18
       '@types/react-dom': ^18.2.7
       '@typescript-eslint/eslint-plugin': ^6.0.0
@@ -284,13 +286,19 @@ importers:
       eslint: ^8.45.0
       eslint-plugin-react-hooks: ^4.6.0
       eslint-plugin-react-refresh: ^0.4.3
+      i18next: ^22.5.1
       react: ^18.2.0
       react-dom: ^18.2.0
+      react-i18next: ^12.3.1
       typescript: ^5.0.2
       vite: ^4.4.5
     dependencies:
+      '@buildo/bento-design-system': link:../bento-design-system
+      '@phosphor-icons/react': 2.0.10_biqbaboplfbrettd7655fr4n2y
+      i18next: 22.5.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      react-i18next: 12.3.1_spyi3zqm3bqfobczid2f6jym6y
     devDependencies:
       '@types/react': 18.2.14
       '@types/react-dom': 18.2.7
@@ -4516,7 +4524,6 @@ packages:
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    dev: true
 
   /@pkgjs/parseargs/0.11.0:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -12830,6 +12837,12 @@ packages:
       relateurl: 0.2.7
       terser: 5.18.2
 
+  /html-parse-stringify/3.0.1:
+    resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
+    dependencies:
+      void-elements: 3.1.0
+    dev: false
+
   /html-tags/3.3.1:
     resolution: {integrity: sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==}
     engines: {node: '>=8'}
@@ -13000,6 +13013,12 @@ packages:
 
   /hyphenate-style-name/1.0.4:
     resolution: {integrity: sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==}
+
+  /i18next/22.5.1:
+    resolution: {integrity: sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA==}
+    dependencies:
+      '@babel/runtime': 7.22.5
+    dev: false
 
   /iconv-lite/0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
@@ -16318,6 +16337,26 @@ packages:
       react-fast-compare: 3.2.2
       shallowequal: 1.1.0
 
+  /react-i18next/12.3.1_spyi3zqm3bqfobczid2f6jym6y:
+    resolution: {integrity: sha512-5v8E2XjZDFzK7K87eSwC7AJcAkcLt5xYZ4+yTPDAW1i7C93oOY1dnr4BaQM7un4Hm+GmghuiPvevWwlca5PwDA==}
+    peerDependencies:
+      i18next: '>= 19.0.0'
+      react: '>= 16.8.0 || 18'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.22.5
+      html-parse-stringify: 3.0.1
+      i18next: 22.5.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /react-input-mask/2.0.4_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-1hwzMr/aO9tXfiroiVCx5EtKohKwLk/NT8QlJXHQ4N+yJJFyUuMT+zfTpLBwX/lK3PkuMlievIffncpMZ3HGRQ==}
     peerDependencies:
@@ -19206,6 +19245,11 @@ packages:
   /vlq/1.0.1:
     resolution: {integrity: sha512-gQpnTgkubC6hQgdIcRdYGDSDc+SaujOdyesZQMv6JlfQee/9Mp0Qhnys6WxDWvQnL5WZdT7o2Ul187aSt0Rq+w==}
     dev: true
+
+  /void-elements/3.1.0:
+    resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
+    engines: {node: '>=0.10.0'}
+    dev: false
 
   /w3c-xmlserializer/4.0.0:
     resolution: {integrity: sha512-d+BFHzbiCx6zGfz0HyQ6Rg69w9k19nviJspaj4yNscGjrHu94sVP+aRm75yEbCh+r2/yR+7q6hux9LVtbuTGBw==}

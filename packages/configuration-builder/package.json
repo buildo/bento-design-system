@@ -14,9 +14,10 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@buildo/bento-design-system": "workspace:*",
+    "@phosphor-icons/react": "^2.0.10",
     "i18next": "^22.5.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
     "react-dom": "^18.2.0",
     "react-i18next": "^12.3.1"
   },
