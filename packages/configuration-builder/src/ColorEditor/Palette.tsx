@@ -67,7 +67,20 @@ export function Palette(props: Props) {
                 backgroundColor,
               }}
             >
-              {isKeyColorLightness && <IconLockSimple size={16} color="primaryInverse" />}
+              {isKeyColorLightness && (
+                <Box
+                  display="flex"
+                  width={24}
+                  height={24}
+                  background="backgroundLightScrim"
+                  borderRadius={8}
+                  alignItems="center"
+                  justifyContent="center"
+                  margin="negative8"
+                >
+                  <IconLockSimple size={16} color="primary" />
+                </Box>
+              )}
             </Box>
           );
         })}
