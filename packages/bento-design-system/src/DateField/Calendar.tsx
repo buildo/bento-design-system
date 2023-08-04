@@ -99,8 +99,10 @@ export function Calendar(props: Props) {
           {weekdayLabels.map((d, index) => (
             <Box
               className={weekDay}
-              width={config.dayWidth}
-              height={config.dayHeight}
+              style={{
+                width: config.dayWidth,
+                height: config.dayHeight,
+              }}
               key={`${d}-${index}`}
             >
               <Label size={config.dayOfWeekLabelSize}>{d}</Label>
@@ -111,7 +113,10 @@ export function Calendar(props: Props) {
               return <Day key={day.dayLabel} {...props} date={day.date} label={day.dayLabel} />;
             } else {
               return (
-                <Box key={`empty-${index}`} width={config.dayWidth} height={config.dayHeight} />
+                <Box
+                  key={`empty-${index}`}
+                  style={{ width: config.dayWidth, height: config.dayHeight }}
+                />
               );
             }
           })}

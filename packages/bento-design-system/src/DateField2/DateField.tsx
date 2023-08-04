@@ -7,14 +7,22 @@ import { Input } from "./Input";
 import { Calendar } from "./Calendar";
 import { Box } from "../Box/Box";
 import { Field } from "../Field/Field";
+import { LocalizedString } from "../util/ConfigurableTypes";
 
-type Props = {
+export type ShortcutProps<Value> = {
+  label: LocalizedString;
+  value: Value;
+};
+type SingleDateFieldProps = {
   type?: "single";
-  readOnly?: boolean;
+  shortcuts?: ShortcutProps<CalendarDate>[];
+} & FieldProps<CalendarDate | null>;
+type Props = SingleDateFieldProps & {
   minDate?: CalendarDate;
   maxDate?: CalendarDate;
   shouldDisableDate?: (date: DateValue) => boolean;
-} & FieldProps<CalendarDate | null>;
+  readOnly?: boolean;
+};
 
 export function DateField({ disabled, readOnly, ...props }: Props) {
   const internalProps = {
@@ -28,16 +36,14 @@ export function DateField({ disabled, readOnly, ...props }: Props) {
   } as const;
   const state = useDatePickerState(internalProps);
   const ref = useRef(null);
-  const inputRef = useRef(null);
   const {
     groupProps,
     labelProps,
     fieldProps,
     buttonProps,
-    // dialogProps,
-    calendarProps,
     descriptionProps,
     errorMessageProps,
+    calendarProps,
   } = useDatePicker(internalProps, state, ref);
 
   return (
@@ -48,9 +54,16 @@ export function DateField({ disabled, readOnly, ...props }: Props) {
       errorMessageProps={errorMessageProps}
     >
       <Box {...groupProps} ref={ref}>
-        <Input fieldProps={fieldProps} buttonProps={buttonProps} ref={inputRef} />
+        <Input fieldProps={fieldProps} buttonProps={buttonProps} ref={ref} />
       </Box>
-      {state.isOpen && <Calendar {...calendarProps} inputRef={inputRef} onClose={state.close} />}
+      {state.isOpen && (
+        <Calendar
+          type={props.type ?? "single"}
+          {...calendarProps}
+          inputRef={ref}
+          onClose={state.close}
+        />
+      )}
     </Field>
   );
 }

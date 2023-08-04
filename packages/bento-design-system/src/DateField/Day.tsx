@@ -106,24 +106,26 @@ export function Day(props: Props) {
 
   return (
     <Box
-      style={assignInlineVars(
-        typeof config.radius === "object"
-          ? {
-              [topLeftRadius]: `${config.radius.topLeft}px`,
-              [topRightRadius]: `${config.radius.topRight}px`,
-              [bottomLeftRadius]: `${config.radius.bottomLeft}px`,
-              [bottomRightRadius]: `${config.radius.bottomRight}px`,
-            }
-          : {
-              [topLeftRadius]: `${config.radius}px`,
-              [topRightRadius]: `${config.radius}px`,
-              [bottomLeftRadius]: `${config.radius}px`,
-              [bottomRightRadius]: `${config.radius}px`,
-            }
-      )}
+      style={{
+        ...assignInlineVars(
+          typeof config.radius === "object"
+            ? {
+                [topLeftRadius]: `${config.radius.topLeft}px`,
+                [topRightRadius]: `${config.radius.topRight}px`,
+                [bottomLeftRadius]: `${config.radius.bottomLeft}px`,
+                [bottomRightRadius]: `${config.radius.bottomRight}px`,
+              }
+            : {
+                [topLeftRadius]: `${config.radius}px`,
+                [topRightRadius]: `${config.radius}px`,
+                [bottomLeftRadius]: `${config.radius}px`,
+                [bottomRightRadius]: `${config.radius}px`,
+              }
+        ),
+        width: config.dayWidth,
+        height: config.dayHeight,
+      }}
       className={dayRecipe({ style })}
-      width={config.dayWidth}
-      height={config.dayHeight}
       {...rest}
       onKeyDown={onKeyDown}
       ref={dayRef}

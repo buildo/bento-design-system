@@ -81,8 +81,6 @@ export const dayRecipe = strictRecipe({
     bentoSprinkles({
       display: "flex",
       cursor: "pointer",
-      width: 40,
-      height: 40,
       alignItems: "center",
       justifyContent: "center",
       outline: "none",

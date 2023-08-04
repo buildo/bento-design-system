@@ -13,6 +13,7 @@ import {
   topRightRadius,
 } from "../DateField/DateField.css";
 import { Body } from "../Typography/Body/Body";
+import { mergeProps } from "@react-aria/utils";
 
 type Props = {
   type: "single" | "range";
@@ -67,7 +68,7 @@ export function Day({ state, date, ...props }: Props) {
     isSelected,
     isInvalid,
     isFocused,
-    // isOutsideVisibleRange,
+    isOutsideVisibleRange,
     isDisabled,
     isUnavailable,
     formattedDate,
@@ -86,26 +87,30 @@ export function Day({ state, date, ...props }: Props) {
   return (
     <Box
       as="td"
-      style={assignInlineVars(
-        typeof config.dayRadius === "object"
-          ? {
-              [topLeftRadius]: `${config.dayRadius.topLeft}px`,
-              [topRightRadius]: `${config.dayRadius.topRight}px`,
-              [bottomLeftRadius]: `${config.dayRadius.bottomLeft}px`,
-              [bottomRightRadius]: `${config.dayRadius.bottomRight}px`,
-            }
-          : {
-              [topLeftRadius]: `${config.dayRadius}px`,
-              [topRightRadius]: `${config.dayRadius}px`,
-              [bottomLeftRadius]: `${config.dayRadius}px`,
-              [bottomRightRadius]: `${config.dayRadius}px`,
-            }
-      )}
-      width={config.dayWidth}
-      height={config.dayHeight}
-      {...cellProps}
+      {...mergeProps(cellProps, buttonProps)}
+      ref={ref}
+      className={dayRecipe({ style })}
+      style={{
+        ...assignInlineVars(
+          typeof config.dayRadius === "object"
+            ? {
+                [topLeftRadius]: `${config.dayRadius.topLeft}px`,
+                [topRightRadius]: `${config.dayRadius.topRight}px`,
+                [bottomLeftRadius]: `${config.dayRadius.bottomLeft}px`,
+                [bottomRightRadius]: `${config.dayRadius.bottomRight}px`,
+              }
+            : {
+                [topLeftRadius]: `${config.dayRadius}px`,
+                [topRightRadius]: `${config.dayRadius}px`,
+                [bottomLeftRadius]: `${config.dayRadius}px`,
+                [bottomRightRadius]: `${config.dayRadius}px`,
+              }
+        ),
+        width: config.dayWidth,
+        height: config.dayHeight,
+      }}
     >
-      <Box {...buttonProps} ref={ref} className={dayRecipe({ style })}>
+      {!isOutsideVisibleRange && (
         <Body
           size={config.daySize}
           color="inherit"
@@ -113,7 +118,7 @@ export function Day({ state, date, ...props }: Props) {
         >
           {formattedDate}
         </Body>
-      </Box>
+      )}
     </Box>
   );
 }

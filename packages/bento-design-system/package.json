@@ -107,6 +107,7 @@
     "@react-stately/slider": "3.4.1",
     "@react-stately/toggle": "3.6.1",
     "@react-stately/tooltip": "3.4.3",
+    "@react-types/calendar": "3.3.0",
     "@react-types/overlays": "3.8.1",
     "@react-types/radio": "3.5.0",
     "@react-types/shared": "3.19.0",

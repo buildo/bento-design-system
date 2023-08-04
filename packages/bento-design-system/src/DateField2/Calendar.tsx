@@ -1,6 +1,6 @@
 import { useCalendar, useCalendarGrid } from "@react-aria/calendar";
 import { CalendarState, useCalendarState } from "@react-stately/calendar";
-import { CalendarDate, createCalendar, getWeeksInMonth } from "@internationalized/date";
+import { createCalendar, getWeeksInMonth } from "@internationalized/date";
 import { Day } from "./Day";
 import { useLocale } from "@react-aria/i18n";
 import { Box } from "../Box/Box";
@@ -11,20 +11,15 @@ import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 import { CalendarHeader } from "./CalendarHeader";
 import { useCreatePortal } from "../util/useCreatePortal";
 import { useOverlay, useOverlayPosition } from "@react-aria/overlays";
-import { RefObject, useRef } from "react";
+import { useRef } from "react";
 import { mergeProps } from "@react-aria/utils";
+import { AriaCalendarProps, DateValue } from "@react-types/calendar";
 
 type Props = {
   type: "single" | "range";
-  value: CalendarDate | null;
-  onChange: (value: CalendarDate | null) => void;
-  isDisabled?: boolean;
-  isReadOnly?: boolean;
-  minDate?: CalendarDate;
-  maxDate?: CalendarDate;
-  inputRef: RefObject<HTMLInputElement>;
   onClose: () => void;
-};
+  inputRef: React.RefObject<HTMLInputElement>;
+} & AriaCalendarProps<DateValue>;
 
 function boxShadowFromElevation(config: "none" | "small" | "medium" | "large") {
   switch (config) {
@@ -49,7 +44,11 @@ function CalendarGrid(props: { state: CalendarState; type: "single" | "range" })
   return (
     <Box className={calendarGrid} {...gridProps}>
       {weekDays.map((day, index) => (
-        <Box key={index} className={weekDay} width={config.dayWidth} height={config.dayHeight}>
+        <Box
+          key={index}
+          className={weekDay}
+          style={{ width: config.dayWidth, height: config.dayHeight }}
+        >
           <Label color="secondary" size={config.dayOfWeekLabelSize}>
             {day}
           </Label>
@@ -115,10 +114,10 @@ export function Calendar(props: Props) {
         <CalendarHeader
           prevButtonProps={prevButtonProps}
           nextButtonProps={nextButtonProps}
-          value={state.value}
-          onChange={state.selectDate}
-          minDate={props.minDate}
-          maxDate={props.maxDate}
+          focusedDate={state.focusedDate}
+          onChange={state.setFocusedDate}
+          minDate={props.minValue}
+          maxDate={props.maxValue}
         />
         <CalendarGrid type={props.type} state={state} />
       </Stack>

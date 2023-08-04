@@ -1,5 +1,5 @@
-import { DateValue, createCalendar } from "@internationalized/date";
-import { AriaDatePickerProps, useDateField, useDateSegment } from "@react-aria/datepicker";
+import { CalendarDate, createCalendar } from "@internationalized/date";
+import { AriaDateFieldOptions, useDateField, useDateSegment } from "@react-aria/datepicker";
 import { useLocale } from "@react-aria/i18n";
 import {
   DateFieldState,
@@ -18,9 +18,10 @@ import useDimensions from "react-cool-dimensions";
 import { IconCalendar } from "../Icons";
 import { AriaButtonProps } from "@react-types/button";
 import { IconButton } from "../IconButton/IconButton";
+import { getReadOnlyBackgroundStyle } from "../Field/utils";
 
 type Props = {
-  fieldProps: AriaDatePickerProps<DateValue>;
+  fieldProps: AriaDateFieldOptions<CalendarDate>;
   buttonProps: AriaButtonProps<"button">;
   ref: RefObject<HTMLInputElement>;
 };
@@ -32,18 +33,21 @@ function DateSegment({ segment, state }: { segment: DateSegmentType; state: Date
 
   return (
     <Box {...segmentProps} ref={ref}>
-      <Body size={config.fontSize}>{segment.text}</Body>
+      <Body size={config.fontSize} color="inherit">
+        {segment.text}
+      </Body>
     </Box>
   );
 }
 
-export function Input({ fieldProps, buttonProps, ref }: Props) {
+export function Input({ fieldProps, buttonProps }: Props) {
   const { locale } = useLocale();
   const state = useDateFieldState({
     ...fieldProps,
     locale,
     createCalendar,
   });
+  const ref = useRef(null);
   const { fieldProps: dateFieldProps } = useDateField(fieldProps, state, ref);
   const config = useBentoConfig().input;
 
@@ -69,35 +73,40 @@ export function Input({ fieldProps, buttonProps, ref }: Props) {
           ellipsis: false,
         }),
       ]}
-      style={{ paddingRight: rightAccessoryWidth }}
+      style={{ paddingRight: rightAccessoryWidth, ...getReadOnlyBackgroundStyle(config) }}
       position="relative"
+      disabled={fieldProps.isDisabled}
+      readOnly={fieldProps.isReadOnly}
     >
       <Inline space={0}>
         {state.segments.map((segment, i) => (
           <DateSegment key={i} segment={segment} state={state} />
         ))}
       </Inline>
-      <Box
-        ref={rightAccessoryRef}
-        position="absolute"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        paddingX={config.paddingX}
-        top={0}
-        bottom={0}
-        right={0}
-      >
-        <IconButton
-          kind="transparent"
-          hierarchy="secondary"
-          label="Calendar"
-          size={16}
-          icon={IconCalendar}
-          {...buttonProps}
-          onPress={buttonProps.onPress!}
-        />
-      </Box>
+      {!fieldProps.isReadOnly && (
+        <Box
+          ref={rightAccessoryRef}
+          position="absolute"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          paddingX={config.paddingX}
+          top={0}
+          bottom={0}
+          right={0}
+        >
+          <IconButton
+            kind="transparent"
+            hierarchy="secondary"
+            label="Calendar"
+            size={16}
+            icon={IconCalendar}
+            {...buttonProps}
+            onPress={buttonProps.onPress!}
+            isDisabled={fieldProps.isDisabled}
+          />
+        </Box>
+      )}
     </Box>
   );
 }

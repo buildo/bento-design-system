@@ -1,25 +1,26 @@
 import { AriaButtonProps } from "@react-types/button";
 import { Box } from "../Box/Box";
 import { Column, Columns } from "../Layout/Columns";
-import { IconButton } from "../IconButton/IconButton";
+import { IconButton } from "../";
 import { defaultMessages } from "../defaultMessages/en";
 import { IconChevronLeft, IconChevronRight } from "../Icons";
 import { Selector } from "./Selector";
 import { CalendarDate } from "@internationalized/date";
+import { DateValue } from "@react-aria/calendar";
 
 type Props = {
   prevButtonProps: AriaButtonProps<"button">;
   nextButtonProps: AriaButtonProps<"button">;
-  value: CalendarDate;
+  focusedDate: CalendarDate;
   onChange: (date: CalendarDate) => void;
-  minDate?: CalendarDate;
-  maxDate?: CalendarDate;
+  minDate?: DateValue;
+  maxDate?: DateValue;
 };
 
 export function CalendarHeader(props: Props) {
   return (
-    <Box paddingX={12} width="full">
-      <Columns space={4} alignY="center">
+    <Box paddingX={8} width="full">
+      <Columns space={8} alignY="center">
         <Column width="content">
           <IconButton
             label={defaultMessages.DateField.previousMonthLabel}
@@ -31,10 +32,10 @@ export function CalendarHeader(props: Props) {
             onPress={props.prevButtonProps.onPress!}
           />
         </Column>
-        <Selector datePart="month" activeDate={props.value} onSelect={props.onChange} />
+        <Selector datePart="month" activeDate={props.focusedDate} onSelect={props.onChange} />
         <Selector
           datePart="year"
-          activeDate={props.value}
+          activeDate={props.focusedDate}
           onSelect={props.onChange}
           minDate={props.minDate}
           maxDate={props.maxDate}

@@ -4,11 +4,12 @@ import { Box, Button, Menu } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
 import { ListProps } from "../List/List";
 import { CalendarDate, getLocalTimeZone, isSameYear, isSameMonth } from "@internationalized/date";
+import { DateValue } from "@react-aria/calendar";
 
 function getYears(
   activeDate: CalendarDate,
-  minDate?: CalendarDate,
-  maxDate?: CalendarDate
+  minDate?: DateValue,
+  maxDate?: DateValue
 ): CalendarDate[] {
   const firstYear = activeDate.set({ year: activeDate.year - 100 });
   return Array(200)
@@ -37,8 +38,8 @@ type Props = {
 } & (
   | {
       datePart: "year";
-      maxDate?: CalendarDate;
-      minDate?: CalendarDate;
+      maxDate?: DateValue;
+      minDate?: DateValue;
     }
   | {
       datePart: "month";
@@ -50,7 +51,7 @@ type Props = {
 export function Selector({ datePart, activeDate, maxDate, minDate, onSelect }: Props) {
   const config = useBentoConfig().dateField;
   const formatter = useDateFormatter(
-    datePart === "month" ? { month: "long" } : { year: "numeric" }
+    datePart === "month" ? { month: "short" } : { year: "numeric" }
   );
 
   const values =

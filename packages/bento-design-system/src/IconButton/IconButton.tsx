@@ -60,7 +60,9 @@ export function IconButton(props: Props) {
       tabIndex={props.tabIndex ?? buttonProps.tabIndex}
       alignItems="center"
       justifyContent="center"
-      {...getRadiusPropsFromConfig(config.radius)}
+      {...match(props.kind)
+        .with("solid", "outline", () => getRadiusPropsFromConfig(config.radius))
+        .with("transparent", () => {})}
       {...match(props.kind)
         .with("solid", "outline", () =>
           paddingConfig && typeof paddingConfig === "object" && "paddingX" in paddingConfig
