@@ -19,7 +19,8 @@
     "chromatic": "turbo run chromatic",
     "website-start": "turbo run website-start",
     "website-build": "turbo run website-build",
-    "check-circular-deps": "turbo run check-circular-deps"
+    "check-circular-deps": "turbo run check-circular-deps",
+    "configurator-build": "turbo run build --filter=configuration-builder"
   },
   "devDependencies": {
     "husky": "8.0.3",
