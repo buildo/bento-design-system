@@ -1,6 +1,6 @@
 import { useCalendarCell } from "@react-aria/calendar";
 import { useRef } from "react";
-import { CalendarState } from "@react-stately/calendar";
+import { CalendarState, RangeCalendarState } from "@react-stately/calendar";
 import { CalendarDate, isToday, getLocalTimeZone } from "@internationalized/date";
 import { useBentoConfig } from "../BentoConfigContext";
 import { Box } from "../Box/Box";
@@ -15,9 +15,16 @@ import {
 import { Body } from "../Typography/Body/Body";
 import { mergeProps } from "@react-aria/utils";
 
-type Props = {
-  type: "single" | "range";
-  state: CalendarState;
+type Props = (
+  | {
+      type: "single";
+      state: CalendarState;
+    }
+  | {
+      type: "range";
+      state: RangeCalendarState;
+    }
+) & {
   date: CalendarDate;
 };
 
@@ -59,7 +66,7 @@ function computeStyle(props: {
   }
 }
 
-export function Day({ state, date, ...props }: Props) {
+export function Day(props: Props) {
   const config = useBentoConfig().dateField;
   const ref = useRef(null);
   const {
@@ -72,15 +79,36 @@ export function Day({ state, date, ...props }: Props) {
     isDisabled,
     isUnavailable,
     formattedDate,
-  } = useCalendarCell({ date }, state, ref);
+  } = useCalendarCell({ date: props.date }, props.state, ref);
 
   const style = computeStyle({
     type: props.type,
     isDisabled: isDisabled || isUnavailable || isInvalid,
-    isStartDate: isSelected, // TODO: fix
-    isEndDate: isSelected, // TODO: fix
-    isInRange: isSelected,
-    isInHoverRange: false, // TODO: fix
+    isStartDate:
+      props.type === "single"
+        ? isSelected
+        : (isSelected && props.state.value && props.date.compare(props.state.value.start) === 0) ||
+          (props.state.highlightedRange &&
+            props.date.compare(props.state.highlightedRange.start) === 0),
+    isEndDate:
+      props.type === "single"
+        ? isSelected
+        : (isSelected && props.state.value && props.date.compare(props.state.value.end) === 0) ||
+          (props.state.highlightedRange &&
+            props.date.compare(props.state.highlightedRange.end) === 0),
+    isInRange:
+      props.type === "single"
+        ? isSelected
+        : isSelected &&
+          props.state.value &&
+          props.date.compare(props.state.value.end) < 0 &&
+          props.date.compare(props.state.value.start) > 0,
+    isInHoverRange:
+      props.type === "single"
+        ? isSelected
+        : props.state.highlightedRange &&
+          props.date.compare(props.state.highlightedRange.start) > 0 &&
+          props.date.compare(props.state.highlightedRange.end) < 0,
     isFocused: isFocused,
   });
 
@@ -114,7 +142,7 @@ export function Day({ state, date, ...props }: Props) {
         <Body
           size={config.daySize}
           color="inherit"
-          weight={isToday(date, getLocalTimeZone()) ? "strong" : "default"}
+          weight={isToday(props.date, getLocalTimeZone()) ? "strong" : "default"}
         >
           {formattedDate}
         </Body>

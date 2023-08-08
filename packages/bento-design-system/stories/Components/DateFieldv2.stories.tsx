@@ -1,7 +1,18 @@
 import { DateField, DateFieldProps } from "../../src/DateField2/DateField";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { CalendarDate, getLocalTimeZone, today, getDayOfWeek } from "@internationalized/date";
+import {
+  CalendarDate,
+  getLocalTimeZone,
+  today,
+  getDayOfWeek,
+  startOfWeek,
+  endOfWeek,
+  startOfMonth,
+  endOfMonth,
+  startOfYear,
+  endOfYear,
+} from "@internationalized/date";
 import isChromatic from "chromatic";
 import { screen, waitFor } from "@storybook/testing-library";
 
@@ -103,3 +114,39 @@ export const CalendarOpen = {
       ]
     : [],
 } satisfies Story;
+
+export const Range = {
+  args: {
+    value: [value, value.add({ days: 2 })],
+    type: "range",
+  },
+} satisfies Story;
+export const RangeWithMinMax = {
+  args: {
+    value: [null, null],
+    type: "range",
+    minDate: today,
+    maxDate: inOneMonth,
+    assistiveText: "You can select a date between today and one month from now",
+  },
+} satisfies Story;
+export const RangeWithShortcuts = {
+  args: {
+    value: [null, null],
+    type: "range",
+    shortcuts: [
+      {
+        label: "This Week",
+        value: [startOfWeek(value, "en-EN"), endOfWeek(value, "en-EN")],
+      },
+      {
+        label: "This Month",
+        value: [startOfMonth(value), endOfMonth(value)],
+      },
+      {
+        label: "This Year",
+        value: [startOfYear(value), endOfYear(value)],
+      },
+    ],
+  },
+};
