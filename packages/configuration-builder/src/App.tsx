@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { ColorConfig, ColorEditor } from "./ColorEditor/ColorEditor";
-import { unsafeLocalizedString } from "@buildo/bento-design-system";
+import { Stack, unsafeLocalizedString } from "@buildo/bento-design-system";
 import { HexColor } from "./utils/colorUtils";
+import { Header } from "./Header/Header";
 
 function App() {
   const [value, setValue] = useState<ColorConfig>({
@@ -13,7 +14,10 @@ function App() {
   });
 
   return (
-    <ColorEditor name={unsafeLocalizedString("Brand color")} value={value} onChange={setValue} />
+    <Stack space={0}>
+      <Header />
+      <ColorEditor name={unsafeLocalizedString("Brand color")} value={value} onChange={setValue} />
+    </Stack>
   );
 }
 

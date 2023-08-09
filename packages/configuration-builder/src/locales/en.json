@@ -1,5 +1,6 @@
 {
   "translation": {
+    "App.name": "Design System Configurator",
     "ColorEditor.keyColor": "Key Color",
     "ColorEditor.palette": "Palette",
     "ColorEditor.hexValue": "Hex value",
