@@ -71,6 +71,7 @@ export function ThemeConfigurator() {
     <ColorsSection
       value={themeConfig.colors}
       onChange={(colors) => setThemeConfig({ ...themeConfig, colors })}
+      onComplete={() => {}}
     />
   );
 }
