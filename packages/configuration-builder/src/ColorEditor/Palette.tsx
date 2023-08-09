@@ -77,6 +77,7 @@ export function Palette(props: Props) {
                   alignItems="center"
                   justifyContent="center"
                   margin="negative8"
+                  aria-label={t("ColorEditor.keyColor")}
                 >
                   <IconLockSimple size={16} color="primary" />
                 </Box>
