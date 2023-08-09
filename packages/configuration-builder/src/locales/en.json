@@ -16,6 +16,17 @@
     "ColorEditor.delete": "Delete",
     "ColorEditor.saturation": "Saturation",
     "CounterField.increment": "Increment",
-    "CounterField.decrement": "Decrement"
+    "CounterField.decrement": "Decrement",
+    "ConfigurationSection.myTheme": "My theme",
+    "ColorsSection.title": "Colors",
+    "ColorsSection.Step.brand": "Brand",
+    "ColorsSection.Step.interactive": "Interactive",
+    "ColorsSection.Step.neutral": "Neutral",
+    "ColorsSection.Step.semantic": "Semantic",
+    "ColorsSection.Step.dataVisualization": "Data Visualization",
+    "BrandColors.brandPrimary": "Brand Primary",
+    "BrandColors.brandSecondary": "Brand Secondary",
+    "BrandColors.brandTertiary": "Brand Tertiary",
+    "BrandColors.addBrandColor": "Add brand color"
   }
 }
