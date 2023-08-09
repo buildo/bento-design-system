@@ -42,6 +42,10 @@
     "InteractiveColors.useBrandColor": "Use a brand color",
     "NeutralColors.neutral": "Neutral",
     "ColorPresets.presets": "Presets",
-    "ColorPresets.description": "Select one of the presets to populate the palettes below."
+    "ColorPresets.description": "Select one of the presets to populate the palettes below.",
+    "SemanticColors.informative": "Informative",
+    "SemanticColors.positive": "Positive",
+    "SemanticColors.warning": "Warning",
+    "SemanticColors.negative": "Negative"
   }
 }

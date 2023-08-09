@@ -37,17 +37,20 @@ function SingleColorPalette(props: { keyColor: HexColor; onSelect: () => void })
   );
 }
 
-function MultipleColorPalette(props: { keyColors: HexColor[]; onSelect: () => void }) {
+function MultipleColorPalette<T extends string>(props: {
+  keyColors: Record<T, HexColor>;
+  onSelect: () => void;
+}) {
   return (
     <Palette onSelect={props.onSelect}>
-      {Object.values(props.keyColors).map((keyColor) => (
+      {Object.values<HexColor>(props.keyColors).map((keyColor) => (
         <ColorBox key={keyColor} color={keyColor} />
       ))}
     </Palette>
   );
 }
 
-type Props =
+type Props<T extends string> =
   | {
       kind: "single";
       presets: HexColor[];
@@ -55,11 +58,11 @@ type Props =
     }
   | {
       kind: "multiple";
-      presets: HexColor[][];
-      onSelect: (preset: HexColor[]) => void;
+      presets: Record<T, HexColor>[];
+      onSelect: (preset: Record<T, HexColor>) => void;
     };
 
-export function ColorPresets(props: Props) {
+export function ColorPresets<T extends string>(props: Props<T>) {
   const { t } = useTranslation();
 
   return (

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { match } from "ts-pattern";
 import { InteractiveColor } from "./InteractiveColor";
 import { NeutralColor } from "./NeutralColor";
+import { SemanticColors } from "./SemanticColors";
 
 type ColorsConfig = ThemeConfig["colors"];
 
@@ -66,7 +67,15 @@ export function ColorsSection(props: Props) {
             onNext={onNext}
           />
         ))
-        .with("semantic", "dataVisualization", () => null)
+        .with("semantic", () => (
+          <SemanticColors
+            value={props.value.semantic}
+            onChange={(semantic) => props.onChange({ ...props.value, semantic })}
+            onBack={onBack}
+            onNext={onNext}
+          />
+        ))
+        .with("dataVisualization", () => null)
         .exhaustive()}
     </ConfiguratorSection>
   );
