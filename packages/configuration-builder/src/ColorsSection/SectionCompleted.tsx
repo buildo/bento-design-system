@@ -1,4 +1,4 @@
-import { Button, Columns, Feedback, Stack } from "@buildo/bento-design-system";
+import { Box, Button, Columns, Feedback, Inline, Stack } from "@buildo/bento-design-system";
 import { useTranslation } from "react-i18next";
 import { IconConfetti } from "../Icons/IconConfetti";
 
@@ -12,7 +12,7 @@ export function SectionCompleted(props: Props) {
   return (
     <Stack space={40} align="center">
       <Feedback size="large" title={t("ColorsSection.completed")} icon={IconConfetti} />
-      <Columns space={16}>
+      <Inline space={16}>
         <Button
           size="large"
           kind="solid"
@@ -27,7 +27,7 @@ export function SectionCompleted(props: Props) {
           label={t("ColorsSection.goToTypography")}
           onPress={props.goToTypography}
         />
-      </Columns>
+      </Inline>
     </Stack>
   );
 }
