@@ -5,6 +5,7 @@ import { ThemeConfig } from "../ThemeConfigurator/ThemeConfigurator";
 import { useState } from "react";
 import { match } from "ts-pattern";
 import { InteractiveColor } from "./InteractiveColor";
+import { NeutralSection } from "./NeutralSection";
 
 type ColorsConfig = ThemeConfig["colors"];
 
@@ -24,12 +25,20 @@ export function ColorsSection(props: Props) {
   const { t } = useTranslation();
 
   const [currentStep, setCurrentStep] = useState<(typeof steps)[0]>("brand");
+  const currentStepIndex = steps.indexOf(currentStep);
+
+  const onNext = () => {
+    setCurrentStep(steps[currentStepIndex + 1]);
+  };
+  const onBack = () => {
+    setCurrentStep(steps[currentStepIndex - 1]);
+  };
 
   return (
     <ConfiguratorSection
       title={t("ColorsSection.title")}
       steps={steps.map((step) => ({ label: t(`ColorsSection.Step.${step}`) }))}
-      currentStep={steps.indexOf(currentStep)}
+      currentStep={currentStepIndex}
     >
       {match(currentStep)
         .with("brand", () => (
@@ -37,7 +46,7 @@ export function ColorsSection(props: Props) {
             value={props.value.brand}
             onChange={(value) => props.onChange({ ...props.value, brand: value })}
             onCancel={() => {}}
-            onNext={() => setCurrentStep("interactive")}
+            onNext={onNext}
           />
         ))
         .with("interactive", () => (
@@ -45,11 +54,19 @@ export function ColorsSection(props: Props) {
             value={props.value.interactive}
             onChange={(value) => props.onChange({ ...props.value, interactive: value })}
             brandColors={props.value.brand}
-            onBack={() => setCurrentStep("brand")}
-            onNext={() => setCurrentStep("neutral")}
+            onBack={onBack}
+            onNext={onNext}
           />
         ))
-        .with("neutral", "semantic", "dataVisualization", () => null)
+        .with("neutral", () => (
+          <NeutralSection
+            value={props.value.neutral}
+            onChange={(neutral) => props.onChange({ ...props.value, neutral })}
+            onBack={onBack}
+            onNext={onNext}
+          />
+        ))
+        .with("semantic", "dataVisualization", () => null)
         .exhaustive()}
     </ConfiguratorSection>
   );
