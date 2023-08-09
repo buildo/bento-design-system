@@ -7,6 +7,7 @@ import { match } from "ts-pattern";
 import { InteractiveColor } from "./InteractiveColor";
 import { NeutralColor } from "./NeutralColor";
 import { SemanticColors } from "./SemanticColors";
+import { DataVizColors } from "./DataVizColors";
 
 type ColorsConfig = ThemeConfig["colors"];
 
@@ -75,7 +76,14 @@ export function ColorsSection(props: Props) {
             onNext={onNext}
           />
         ))
-        .with("dataVisualization", () => null)
+        .with("dataVisualization", () => (
+          <DataVizColors
+            value={props.value.dataVisualization}
+            onChange={(dataVisualization) => props.onChange({ ...props.value, dataVisualization })}
+            onBack={onBack}
+            onNext={onNext}
+          />
+        ))
         .exhaustive()}
     </ConfiguratorSection>
   );
