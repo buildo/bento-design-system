@@ -1,4 +1,4 @@
-import { Box, Button, Columns, Feedback, Inline, Stack } from "@buildo/bento-design-system";
+import { Button, Feedback, Inline, Stack } from "@buildo/bento-design-system";
 import { useTranslation } from "react-i18next";
 import { IconConfetti } from "../Icons/IconConfetti";
 
