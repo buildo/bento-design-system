@@ -5,7 +5,7 @@ import { ThemeConfig } from "../ThemeConfigurator/ThemeConfigurator";
 import { useState } from "react";
 import { match } from "ts-pattern";
 import { InteractiveColor } from "./InteractiveColor";
-import { NeutralSection } from "./NeutralSection";
+import { NeutralColor } from "./NeutralColor";
 
 type ColorsConfig = ThemeConfig["colors"];
 
@@ -59,7 +59,7 @@ export function ColorsSection(props: Props) {
           />
         ))
         .with("neutral", () => (
-          <NeutralSection
+          <NeutralColor
             value={props.value.neutral}
             onChange={(neutral) => props.onChange({ ...props.value, neutral })}
             onBack={onBack}

@@ -22,7 +22,7 @@ const presets: HexColor[] = [
   "#786363" as HexColor,
 ];
 
-export function NeutralSection(props: Props) {
+export function NeutralColor(props: Props) {
   const { t } = useTranslation();
 
   return (
