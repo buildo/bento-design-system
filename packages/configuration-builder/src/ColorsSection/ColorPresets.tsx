@@ -75,13 +75,21 @@ export function ColorPresets<T extends string>(props: Props<T>) {
         <Inline space={40}>
           {match(props)
             .with({ kind: "single" }, (props) =>
-              props.presets.map((preset) => (
-                <SingleColorPalette keyColor={preset} onSelect={() => props.onSelect(preset)} />
+              props.presets.map((preset, i) => (
+                <SingleColorPalette
+                  key={i}
+                  keyColor={preset}
+                  onSelect={() => props.onSelect(preset)}
+                />
               ))
             )
             .with({ kind: "multiple" }, (props) =>
-              props.presets.map((preset) => (
-                <MultipleColorPalette keyColors={preset} onSelect={() => props.onSelect(preset)} />
+              props.presets.map((preset, i) => (
+                <MultipleColorPalette
+                  key={i}
+                  keyColors={preset}
+                  onSelect={() => props.onSelect(preset)}
+                />
               ))
             )
             .exhaustive()}
