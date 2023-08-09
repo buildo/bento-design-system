@@ -277,7 +277,7 @@ importers:
   packages/configuration-builder:
     specifiers:
       '@buildo/bento-design-system': workspace:*
-      '@phosphor-icons/react': 2.0.10
+      '@phosphor-icons/react': ^2.0.10
       '@tsconfig/vite-react': 2.0.0
       '@types/react': ^18
       '@types/react-dom': 18.2.7
@@ -287,10 +287,11 @@ importers:
       eslint: 8.47.0
       eslint-plugin-react-hooks: 4.6.0
       eslint-plugin-react-refresh: 0.4.3
-      i18next: 22.5.1
-      react: 18.2.0
-      react-dom: 18.2.0
-      react-i18next: 12.3.1
+      i18next: ^22.5.1
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      react-i18next: ^12.3.1
+      ts-pattern: ^5.0.5
       typescript: 5.1.3
       vite: 4.4.9
     dependencies:
@@ -300,6 +301,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-i18next: 12.3.1_spyi3zqm3bqfobczid2f6jym6y
+      ts-pattern: 5.0.5
     devDependencies:
       '@tsconfig/vite-react': 2.0.0
       '@types/react': 18.2.14
@@ -18315,6 +18317,10 @@ packages:
 
   /ts-pattern/3.3.5:
     resolution: {integrity: sha512-LD+wFR/RNckk1DrKV0LTH4KIT9wRqnnOjtEf77ovhKcVi8gf83Uf6U7OdywEua6KD9SbHadUdfolayfIUiPxzw==}
+    dev: false
+
+  /ts-pattern/5.0.5:
+    resolution: {integrity: sha512-tL0w8U/pgaacOmkb9fRlYzWEUDCfVjjv9dD4wHTgZ61MjhuMt46VNWTG747NqW6vRzoWIKABVhFSOJ82FvXrfA==}
     dev: false
 
   /tsconfig-paths/3.14.2:

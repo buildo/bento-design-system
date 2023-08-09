@@ -1,5 +1,8 @@
 {
   "translation": {
+    "Next": "Next",
+    "Back": "Back",
+    "Cancel": "Cancel",
     "App.name": "Design System Configurator",
     "App.bentoDS": "Bento Design System",
     "ColorEditor.keyColor": "Key Color",
@@ -28,6 +31,14 @@
     "BrandColors.brandPrimary": "Brand Primary",
     "BrandColors.brandSecondary": "Brand Secondary",
     "BrandColors.brandTertiary": "Brand Tertiary",
-    "BrandColors.addBrandColor": "Add brand color"
+    "BrandColors.primary": "Primary",
+    "BrandColors.secondary": "Secondary",
+    "BrandColors.tertiary": "Tertiary",
+    "BrandColors.addBrandColor": "Add brand color",
+    "InteractiveColors.interactive": "Interactive",
+    "InteractiveColors.useColor": "useColor",
+    "InteractiveColors.brandColor": "Color",
+    "InteractiveColors.setNewColor": "Set a new color",
+    "InteractiveColors.useBrandColor": "Use a brand color"
   }
 }
