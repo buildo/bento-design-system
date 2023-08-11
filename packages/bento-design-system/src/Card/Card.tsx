@@ -18,6 +18,7 @@ type Props = {
   children: Children;
   elevation?: CardElevation;
   borderRadius?: BorderRadiusConfig;
+  background?: BentoSprinkles["background"];
 } & { [k in PaddingKey]?: 0 | BentoSprinkles["padding"] };
 
 export function Card({ children, elevation, borderRadius, ...boxProps }: Props) {
