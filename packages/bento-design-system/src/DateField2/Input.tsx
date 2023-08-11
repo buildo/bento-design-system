@@ -15,13 +15,22 @@ import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 import { Body } from "../Typography/Body/Body";
 import { Inline } from "../Layout/Inline";
 import useDimensions from "react-cool-dimensions";
-import { IconCalendar } from "../Icons";
+import { IconCalendar, IconMinus } from "../Icons";
 import { AriaButtonProps } from "@react-types/button";
 import { IconButton } from "../IconButton/IconButton";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
+import { match } from "ts-pattern";
 
-type Props = {
-  fieldProps: AriaDateFieldOptions<CalendarDate>;
+type Props = (
+  | { type: "single"; fieldProps: AriaDateFieldOptions<CalendarDate> }
+  | {
+      type: "range";
+      fieldProps: {
+        start: AriaDateFieldOptions<CalendarDate>;
+        end: AriaDateFieldOptions<CalendarDate>;
+      };
+    }
+) & {
   buttonProps: AriaButtonProps<"button">;
   ref: RefObject<HTMLInputElement>;
 };
@@ -40,15 +49,27 @@ function DateSegment({ segment, state }: { segment: DateSegmentType; state: Date
   );
 }
 
-export function Input({ fieldProps, buttonProps }: Props) {
+function DateField({ fieldProps }: { fieldProps: AriaDateFieldOptions<CalendarDate> }) {
   const { locale } = useLocale();
+  const ref = useRef(null);
   const state = useDateFieldState({
     ...fieldProps,
     locale,
     createCalendar,
   });
-  const ref = useRef(null);
   const { fieldProps: dateFieldProps } = useDateField(fieldProps, state, ref);
+  return (
+    <Box {...dateFieldProps} ref={ref}>
+      <Inline space={0}>
+        {state.segments.map((segment, i) => (
+          <DateSegment key={i} segment={segment} state={state} />
+        ))}
+      </Inline>
+    </Box>
+  );
+}
+
+export function Input(props: Props) {
   const config = useBentoConfig().input;
 
   const { observe: rightAccessoryRef, width: rightAccessoryWidth } = useDimensions({
@@ -56,18 +77,39 @@ export function Input({ fieldProps, buttonProps }: Props) {
     useBorderBoxSize: true,
   });
 
+  const { validationState, isDisabled, isReadOnly } = match(props)
+    .with({ type: "single" }, (props) => {
+      return {
+        validationState: props.fieldProps.validationState ?? "notSet",
+        isDisabled: props.fieldProps.isDisabled,
+        isReadOnly: props.fieldProps.isReadOnly,
+      } as const;
+    })
+    .with({ type: "range" }, (props) => {
+      return {
+        validationState:
+          props.fieldProps.start.validationState || props.fieldProps.end.validationState
+            ? props.fieldProps.start.validationState === "invalid" ||
+              props.fieldProps.end.validationState === "invalid"
+              ? "invalid"
+              : "valid"
+            : "notSet",
+        isDisabled: props.fieldProps.start.isDisabled && props.fieldProps.end.isDisabled,
+        isReadOnly: props.fieldProps.start.isReadOnly && props.fieldProps.end.isReadOnly,
+      } as const;
+    })
+    .exhaustive();
+
   return (
     <Box
-      {...dateFieldProps}
-      ref={ref}
       {...getRadiusPropsFromConfig(config.radius)}
       paddingX={config.paddingX}
       paddingY={config.paddingY}
       background={config.background.default}
       className={[
-        inputRecipe({ validation: fieldProps.validationState ?? "notSet" }),
+        inputRecipe({ validation: validationState }),
         bodyRecipe({
-          color: fieldProps.isDisabled ? "disabled" : "primary",
+          color: isDisabled ? "disabled" : "primary",
           weight: "default",
           size: config.fontSize,
           ellipsis: false,
@@ -75,15 +117,19 @@ export function Input({ fieldProps, buttonProps }: Props) {
       ]}
       style={{ paddingRight: rightAccessoryWidth, ...getReadOnlyBackgroundStyle(config) }}
       position="relative"
-      disabled={fieldProps.isDisabled}
-      readOnly={fieldProps.isReadOnly}
+      disabled={isDisabled}
+      readOnly={isReadOnly}
     >
-      <Inline space={0}>
-        {state.segments.map((segment, i) => (
-          <DateSegment key={i} segment={segment} state={state} />
-        ))}
-      </Inline>
-      {!fieldProps.isReadOnly && (
+      {props.type === "single" ? (
+        <DateField fieldProps={props.fieldProps} />
+      ) : (
+        <Inline space={16}>
+          <DateField fieldProps={props.fieldProps.start} />
+          <IconMinus size={24} />
+          <DateField fieldProps={props.fieldProps.end} />
+        </Inline>
+      )}
+      {!isReadOnly && (
         <Box
           ref={rightAccessoryRef}
           position="absolute"
@@ -101,9 +147,9 @@ export function Input({ fieldProps, buttonProps }: Props) {
             label="Calendar"
             size={16}
             icon={IconCalendar}
-            {...buttonProps}
-            onPress={buttonProps.onPress!}
-            isDisabled={fieldProps.isDisabled}
+            {...props.buttonProps}
+            onPress={props.buttonProps.onPress!}
+            isDisabled={isDisabled}
           />
         </Box>
       )}

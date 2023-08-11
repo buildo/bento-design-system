@@ -83,55 +83,7 @@ function CalendarGrid(
   );
 }
 
-function SingleCalendar(props: Extract<Props, { type: "single" }>) {
-  const { locale } = useLocale();
-  const state = useCalendarState({
-    ...props,
-    locale,
-    createCalendar,
-  });
-  const { calendarProps, prevButtonProps, nextButtonProps } = useCalendar(props, state);
-  const ref = useRef(null);
-
-  return (
-    <InternalCalendar
-      type="single"
-      {...calendarProps}
-      prevButtonProps={prevButtonProps}
-      nextButtonProps={nextButtonProps}
-      state={state}
-      onClose={props.onClose}
-      inputRef={props.inputRef}
-      calendarRef={ref}
-    />
-  );
-}
-
-function RangeCalendar(props: Extract<Props, { type: "range" }>) {
-  const { locale } = useLocale();
-  const state = useRangeCalendarState({
-    ...props,
-    locale,
-    createCalendar,
-  });
-  const ref = useRef(null);
-  const { calendarProps, prevButtonProps, nextButtonProps } = useRangeCalendar(props, state, ref);
-
-  return (
-    <InternalCalendar
-      type="range"
-      {...calendarProps}
-      prevButtonProps={prevButtonProps}
-      nextButtonProps={nextButtonProps}
-      state={state}
-      onClose={props.onClose}
-      inputRef={props.inputRef}
-      calendarRef={ref}
-    />
-  );
-}
-
-export function InternalCalendar(
+export function CalendarPopover(
   props: {
     type: "single" | "range";
     prevButtonProps: AriaButtonProps<"button">;
@@ -194,6 +146,54 @@ export function InternalCalendar(
         <CalendarGrid type={props.type} state={state as any} />
       </Stack>
     </Box>
+  );
+}
+
+function SingleCalendar(props: Extract<Props, { type: "single" }>) {
+  const { locale } = useLocale();
+  const state = useCalendarState({
+    ...props,
+    locale,
+    createCalendar,
+  });
+  const { calendarProps, prevButtonProps, nextButtonProps } = useCalendar(props, state);
+  const ref = useRef(null);
+
+  return (
+    <CalendarPopover
+      type="single"
+      {...calendarProps}
+      prevButtonProps={prevButtonProps}
+      nextButtonProps={nextButtonProps}
+      state={state}
+      onClose={props.onClose}
+      inputRef={props.inputRef}
+      calendarRef={ref}
+    />
+  );
+}
+
+function RangeCalendar(props: Extract<Props, { type: "range" }>) {
+  const { locale } = useLocale();
+  const state = useRangeCalendarState({
+    ...props,
+    locale,
+    createCalendar,
+  });
+  const ref = useRef(null);
+  const { calendarProps, prevButtonProps, nextButtonProps } = useRangeCalendar(props, state, ref);
+
+  return (
+    <CalendarPopover
+      type="range"
+      {...calendarProps}
+      prevButtonProps={prevButtonProps}
+      nextButtonProps={nextButtonProps}
+      state={state}
+      onClose={props.onClose}
+      inputRef={props.inputRef}
+      calendarRef={ref}
+    />
   );
 }
 
