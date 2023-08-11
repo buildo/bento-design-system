@@ -19,8 +19,8 @@ import { IconCalendar, IconMinus } from "../Icons";
 import { AriaButtonProps } from "@react-types/button";
 import { IconButton } from "../IconButton/IconButton";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
-import { match } from "ts-pattern";
-import { dateSegment } from "./DateField.css";
+import { match, __ } from "ts-pattern";
+import { dateFieldRecipe, dateSegment } from "./DateField.css";
 
 type Props = (
   | { type: "single"; fieldProps: AriaDateFieldOptions<CalendarDate> }
@@ -42,7 +42,7 @@ function DateSegment({ segment, state }: { segment: DateSegmentType; state: Date
   const config = useBentoConfig().input;
 
   return (
-    <Box {...segmentProps} ref={ref} className={dateSegment}>
+    <Box {...segmentProps} ref={ref} className={dateSegment} readOnly={state.isReadOnly}>
       <Body size={config.fontSize} color="inherit">
         {segment.text}
       </Body>
@@ -81,22 +81,30 @@ export function Input(props: Props) {
   const { validationState, isDisabled, isReadOnly } = match(props)
     .with({ type: "single" }, (props) => {
       return {
-        validationState: props.fieldProps.validationState ?? "notSet",
+        validationState: props.fieldProps.isReadOnly
+          ? "notSet"
+          : props.fieldProps.validationState ?? "notSet",
         isDisabled: props.fieldProps.isDisabled,
         isReadOnly: props.fieldProps.isReadOnly,
       } as const;
     })
     .with({ type: "range" }, (props) => {
+      const isReadOnly = props.fieldProps.start.isReadOnly && props.fieldProps.end.isReadOnly;
+      const validationState = isReadOnly
+        ? "notSet"
+        : match([
+            props.fieldProps.start.validationState,
+            props.fieldProps.end.validationState,
+          ] as const)
+            .with(["invalid", __], [__, "invalid"], () => "invalid")
+            .with([undefined, undefined], () => "notSet")
+            .with([__, "valid"], ["valid", __], () => "valid")
+            .exhaustive();
+
       return {
-        validationState:
-          props.fieldProps.start.validationState || props.fieldProps.end.validationState
-            ? props.fieldProps.start.validationState === "invalid" ||
-              props.fieldProps.end.validationState === "invalid"
-              ? "invalid"
-              : "valid"
-            : "notSet",
+        validationState,
         isDisabled: props.fieldProps.start.isDisabled && props.fieldProps.end.isDisabled,
-        isReadOnly: props.fieldProps.start.isReadOnly && props.fieldProps.end.isReadOnly,
+        isReadOnly,
       } as const;
     })
     .exhaustive();
@@ -115,6 +123,10 @@ export function Input(props: Props) {
           size: config.fontSize,
           ellipsis: false,
         }),
+        dateFieldRecipe({ validation: validationState }),
+        {
+          readOnly: isReadOnly,
+        },
       ]}
       style={{ paddingRight: rightAccessoryWidth, ...getReadOnlyBackgroundStyle(config) }}
       position="relative"
