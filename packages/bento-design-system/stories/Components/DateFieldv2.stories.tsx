@@ -125,7 +125,7 @@ export const RangeWithMinMax = {
   args: {
     value: [null, null],
     type: "range",
-    minDate: today,
+    minDate: value,
     maxDate: inOneMonth,
     assistiveText: "You can select a date between today and one month from now",
   },
