@@ -21,6 +21,7 @@ import { IconButton } from "../IconButton/IconButton";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
 import { match, __ } from "ts-pattern";
 import { dateFieldRecipe, dateSegment } from "./DateField.css";
+import { ValidationState } from "@react-types/shared";
 
 type Props = (
   | { type: "single"; fieldProps: AriaDateFieldOptions<CalendarDate> }
@@ -90,15 +91,15 @@ export function Input(props: Props) {
     })
     .with({ type: "range" }, (props) => {
       const isReadOnly = props.fieldProps.start.isReadOnly && props.fieldProps.end.isReadOnly;
-      const validationState = isReadOnly
-        ? "notSet"
+      const validationState: ValidationState | "notSet" = isReadOnly
+        ? ("notSet" as const)
         : match([
             props.fieldProps.start.validationState,
             props.fieldProps.end.validationState,
           ] as const)
-            .with(["invalid", __], [__, "invalid"], () => "invalid")
-            .with([undefined, undefined], () => "notSet")
-            .with([__, "valid"], ["valid", __], () => "valid")
+            .with(["invalid", __], [__, "invalid"], () => "invalid" as const)
+            .with([undefined, undefined], () => "notSet" as const)
+            .with([__, "valid"], ["valid", __], () => "valid" as const)
             .exhaustive();
 
       return {
