@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   CalendarDate,
   getLocalTimeZone,
-  today,
+  today as _today,
   getDayOfWeek,
   startOfWeek,
   endOfWeek,
@@ -44,7 +44,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const value = today(getLocalTimeZone());
+const today = _today(getLocalTimeZone());
 
 export const SingleDate = {} satisfies Story;
 
@@ -60,23 +60,23 @@ export const ReadOnly = {
   },
 } satisfies Story;
 
-const inOneWeek = value.add({ weeks: 1 });
+const inOneWeek = today.add({ weeks: 1 });
 export const SingleWithMinMax = {
   args: {
-    minDate: value,
+    minDate: today,
     maxDate: inOneWeek,
     assistiveText: "You can select a date between today and one week from now",
   },
 } satisfies Story;
 
-const inOneMonth = value.add({ months: 1 });
+const inOneMonth = today.add({ months: 1 });
 export const SingleWithShortcuts = {
   args: {
     value: null,
     shortcuts: [
       {
         label: "Today",
-        value: new Date(),
+        value: today,
       },
       {
         label: "In a week",
@@ -96,7 +96,7 @@ export const DisabledDates = {
 };
 export const CalendarOpen = {
   args: {
-    value,
+    value: today,
   },
   play: async () => {
     const button = screen.getByRole("button");
@@ -117,7 +117,7 @@ export const CalendarOpen = {
 
 export const Range = {
   args: {
-    value: [value, value.add({ days: 2 })],
+    value: [today, today.add({ days: 2 })],
     type: "range",
   },
 } satisfies Story;
@@ -125,7 +125,7 @@ export const RangeWithMinMax = {
   args: {
     value: [null, null],
     type: "range",
-    minDate: value,
+    minDate: today,
     maxDate: inOneMonth,
     assistiveText: "You can select a date between today and one month from now",
   },
@@ -137,15 +137,15 @@ export const RangeWithShortcuts = {
     shortcuts: [
       {
         label: "This Week",
-        value: [startOfWeek(value, "en-EN"), endOfWeek(value, "en-EN")],
+        value: [startOfWeek(today, "en-EN"), endOfWeek(today, "en-EN")],
       },
       {
         label: "This Month",
-        value: [startOfMonth(value), endOfMonth(value)],
+        value: [startOfMonth(today), endOfMonth(today)],
       },
       {
         label: "This Year",
-        value: [startOfYear(value), endOfYear(value)],
+        value: [startOfYear(today), endOfYear(today)],
       },
     ],
   },

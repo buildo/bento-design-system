@@ -9,6 +9,8 @@ import { Box } from "../Box/Box";
 import { Field } from "../Field/Field";
 import { LocalizedString } from "../util/ConfigurableTypes";
 import { RangeValue } from "@react-types/shared";
+import { Inline } from "../Layout/Inline";
+import { Button } from "..";
 
 export type ShortcutProps<Value> = {
   label: LocalizedString;
@@ -51,6 +53,24 @@ function SingleDateField({ disabled, readOnly, ...props }: Extract<Props, { type
     calendarProps,
   } = useDatePicker(internalProps, state, ref);
 
+  const shortcuts = props.shortcuts && (
+    <Inline space={4}>
+      {props.shortcuts.map((shortcut) => (
+        <Button
+          key={shortcut.label}
+          kind="transparent"
+          hierarchy="secondary"
+          size="small"
+          label={shortcut.label}
+          onPress={() => {
+            props.onChange(shortcut.value);
+            state.close();
+          }}
+        />
+      ))}
+    </Inline>
+  );
+
   return (
     <Field
       {...props}
@@ -62,7 +82,13 @@ function SingleDateField({ disabled, readOnly, ...props }: Extract<Props, { type
         <Input type="single" fieldProps={fieldProps} buttonProps={buttonProps} ref={ref} />
       </Box>
       {state.isOpen && (
-        <Calendar type="single" {...calendarProps} inputRef={ref} onClose={state.close} />
+        <Calendar
+          type="single"
+          {...calendarProps}
+          inputRef={ref}
+          onClose={state.close}
+          shortcuts={shortcuts}
+        />
       )}
     </Field>
   );
@@ -100,6 +126,24 @@ function RangeDateField({ disabled, readOnly, ...props }: Extract<Props, { type:
     endFieldProps,
   } = useDateRangePicker(internalProps, state, ref);
 
+  const shortcuts = props.shortcuts && (
+    <Inline space={4}>
+      {props.shortcuts.map((shortcut) => (
+        <Button
+          key={shortcut.label}
+          kind="transparent"
+          hierarchy="secondary"
+          size="small"
+          label={shortcut.label}
+          onPress={() => {
+            props.onChange(shortcut.value);
+            state.close();
+          }}
+        />
+      ))}
+    </Inline>
+  );
+
   return (
     <Field
       {...props}
@@ -116,7 +160,13 @@ function RangeDateField({ disabled, readOnly, ...props }: Extract<Props, { type:
         />
       </Box>
       {state.isOpen && (
-        <Calendar type="range" {...calendarProps} inputRef={ref} onClose={state.close} />
+        <Calendar
+          type="range"
+          {...calendarProps}
+          inputRef={ref}
+          onClose={state.close}
+          shortcuts={shortcuts}
+        />
       )}
     </Field>
   );

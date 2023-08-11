@@ -11,7 +11,7 @@ import { useLocale } from "@react-aria/i18n";
 import { Box } from "../Box/Box";
 import { calendar, calendarGrid, weekDay } from "../DateField/DateField.css";
 import { useBentoConfig } from "../BentoConfigContext";
-import { Label, Stack } from "..";
+import { Children, Label, Stack } from "..";
 import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 import { CalendarHeader } from "./CalendarHeader";
 import { useCreatePortal } from "../util/useCreatePortal";
@@ -32,6 +32,7 @@ type Props = (
 ) & {
   onClose: () => void;
   inputRef: React.RefObject<HTMLInputElement>;
+  shortcuts: Children;
 };
 
 function boxShadowFromElevation(config: "none" | "small" | "medium" | "large") {
@@ -92,6 +93,7 @@ export function CalendarPopover(
     calendarRef: React.RefObject<HTMLElement>;
     inputRef: React.RefObject<HTMLInputElement>;
     state: CalendarState | RangeCalendarState;
+    shortcuts?: Children;
   } & DOMAttributes<FocusableElement>
 ) {
   const {
@@ -144,6 +146,7 @@ export function CalendarPopover(
           maxDate={state.maxValue}
         />
         <CalendarGrid type={props.type} state={state as any} />
+        {props.shortcuts && <Box style={{ maxWidth: config.dayWidth * 7 }}>{props.shortcuts}</Box>}
       </Stack>
     </Box>
   );
@@ -169,6 +172,7 @@ function SingleCalendar(props: Extract<Props, { type: "single" }>) {
       onClose={props.onClose}
       inputRef={props.inputRef}
       calendarRef={ref}
+      shortcuts={props.shortcuts}
     />
   );
 }
@@ -193,6 +197,7 @@ function RangeCalendar(props: Extract<Props, { type: "range" }>) {
       onClose={props.onClose}
       inputRef={props.inputRef}
       calendarRef={ref}
+      shortcuts={props.shortcuts}
     />
   );
 }
