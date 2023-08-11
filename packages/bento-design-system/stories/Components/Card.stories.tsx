@@ -37,14 +37,7 @@ const borderRadiusType = {
 
 const meta = {
   component: Card,
-  args: {
-    paddingLeft: 24,
-    paddingRight: 24,
-    paddingTop: 40,
-    paddingBottom: 40,
-    elevation: "small",
-    borderRadius: 8,
-  },
+  args: {},
   argTypes: {
     paddingLeft: paddingType,
     paddingRight: paddingType,
@@ -69,12 +62,26 @@ const children = (
   </Stack>
 );
 
-// eslint-disable-next-line storybook/prefer-pascal-case
-export const card = {
+export const Default = {
   args: { children },
 } satisfies Story;
 
-export const CardWithDifferentRadius = {
+export const WithCustomPadding = {
+  args: {
+    children,
+    paddingX: 32,
+    paddingY: 16,
+  },
+} satisfies Story;
+
+export const WithCustomElevation = {
+  args: {
+    children,
+    elevation: "large",
+  },
+} satisfies Story;
+
+export const WithCustomBorderRadius = {
   args: {
     children,
     borderRadius: {
