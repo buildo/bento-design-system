@@ -62,7 +62,8 @@ export function IconButton(props: Props) {
       justifyContent="center"
       {...match(props.kind)
         .with("solid", "outline", () => getRadiusPropsFromConfig(config.radius))
-        .with("transparent", () => {})}
+        .with("transparent", () => {})
+        .exhaustive()}
       {...match(props.kind)
         .with("solid", "outline", () =>
           paddingConfig && typeof paddingConfig === "object" && "paddingX" in paddingConfig
