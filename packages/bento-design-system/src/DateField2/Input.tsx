@@ -20,6 +20,7 @@ import { AriaButtonProps } from "@react-types/button";
 import { IconButton } from "../IconButton/IconButton";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
 import { match } from "ts-pattern";
+import { dateSegment } from "./DateField.css";
 
 type Props = (
   | { type: "single"; fieldProps: AriaDateFieldOptions<CalendarDate> }
@@ -41,7 +42,7 @@ function DateSegment({ segment, state }: { segment: DateSegmentType; state: Date
   const config = useBentoConfig().input;
 
   return (
-    <Box {...segmentProps} ref={ref}>
+    <Box {...segmentProps} ref={ref} className={dateSegment}>
       <Body size={config.fontSize} color="inherit">
         {segment.text}
       </Body>

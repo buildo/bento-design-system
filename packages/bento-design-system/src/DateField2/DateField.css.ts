@@ -1,6 +1,7 @@
 import { createVar, style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
+import { vars } from "../vars.css";
 
 export const topLeftRadius = createVar();
 export const topRightRadius = createVar();
@@ -149,3 +150,18 @@ export const dayRecipe = strictRecipe({
     },
   },
 });
+
+export const dateSegment = style([
+  bentoSprinkles({ outline: { focus: "none" } }),
+  {
+    selectors: {
+      "&[data-placeholder=true]": {
+        color: vars.textColor.textSecondary,
+      },
+      "&:focus:not([readonly])": {
+        borderBottom: `1px solid ${vars.textColor.textSecondary}`,
+        marginBottom: "-1px",
+      },
+    },
+  },
+]);
