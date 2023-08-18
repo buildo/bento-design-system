@@ -296,7 +296,7 @@ importers:
       '@types/babel__generator': 7.6.4
       '@types/babel__standalone': 7.1.4
       '@types/babel__traverse': 7.20.1
-      '@types/node': 18.16.19
+      '@types/node': 18.17.5
       '@types/react': ^18
       '@typescript-eslint/parser': ^5.59.8
       '@vanilla-extract/sprinkles': 1.6.1
@@ -353,7 +353,7 @@ importers:
       '@types/babel__generator': 7.6.4
       '@types/babel__standalone': 7.1.4
       '@types/babel__traverse': 7.20.1
-      '@types/node': 18.16.19
+      '@types/node': 18.17.5
       '@types/react': 18.2.14
       '@typescript-eslint/parser': 5.60.1_mhvizudgavq6jzvqzwcqcv4nnm
       '@vanilla-extract/sprinkles': 1.6.1_zd2pmj2rl4fq6dchynq6tm4lty
@@ -8162,8 +8162,8 @@ packages:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
     dev: false
 
-  /@types/node/18.16.19:
-    resolution: {integrity: sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==}
+  /@types/node/18.17.5:
+    resolution: {integrity: sha512-xNbS75FxH6P4UXTPUJp/zNPq6/xsfdJKussCWNOnz4aULWIRwMgP1LgaB5RiBnMX1DPCYenuqGZfnIAx5mbFLA==}
     dev: true
 
   /@types/node/20.3.3:
