@@ -146,7 +146,7 @@
     "@storybook/testing-library": "0.2.0",
     "@storybook/types": "^7.0.18",
     "@testing-library/dom": "8.20.1",
-    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "13.4.0",
     "@testing-library/react-hooks": "8.0.1",
     "@testing-library/user-event": "14.4.3",
