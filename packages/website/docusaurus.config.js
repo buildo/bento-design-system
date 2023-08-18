@@ -7,7 +7,7 @@ const { ProvidePlugin } = require("webpack");
 const config = {
   title: "Bento DS",
   tagline: "An extensible and customizable Design System for React",
-  url: "https://bento-design-system-ruddy.vercel.app/",
+  url: "https://developer.bento-ds.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
