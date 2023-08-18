@@ -103,7 +103,7 @@ importers:
       '@vanilla-extract/vite-plugin': ^3.8.2
       '@vanilla-extract/webpack-plugin': 2.2.0
       '@vitejs/plugin-react': ^4.0.1
-      chromatic: 6.7.2
+      chromatic: 6.22.0
       clsx: ^1.2.1
       css-loader: 6.8.1
       date-fns: ^2.30.0
@@ -243,7 +243,7 @@ importers:
       '@vanilla-extract/vite-plugin': 3.8.2_vite@4.3.9
       '@vanilla-extract/webpack-plugin': 2.2.0_webpack@5.76.3
       '@vitejs/plugin-react': 4.0.1_vite@4.3.9
-      chromatic: 6.7.2
+      chromatic: 6.22.0
       css-loader: 6.8.1_webpack@5.76.3
       date-fns: 2.30.0
       esbuild-loader: 2.21.0_webpack@5.76.3
@@ -10173,12 +10173,9 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /chromatic/6.7.2:
-    resolution: {integrity: sha512-0CCAbZSPi+QMXyDtlBasxz0Htc0oM76IztQZn3xCP6IIT53RwxOiQ1++Zd/zCBEyC+UTodKQ/G4fUOX0Y1ERvw==}
+  /chromatic/6.22.0:
+    resolution: {integrity: sha512-PBZAhTzjQvx+B4nXmEgvySmR9+a8hgt7zuTT3NhC0BT1Wf08T6gjnl4bZR5Dg5V4PfCeQvP5uROPS7QFdzZeyA==}
     hasBin: true
-    dependencies:
-      '@discoveryjs/json-ext': 0.5.7
-      '@types/webpack-env': 1.18.1
     dev: true
 
   /chrome-trace-event/1.0.3:
