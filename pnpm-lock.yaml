@@ -80,7 +80,7 @@ importers:
       '@storybook/testing-library': 0.2.0
       '@storybook/types': ^7.0.18
       '@testing-library/dom': 8.20.1
-      '@testing-library/jest-dom': 5.16.5
+      '@testing-library/jest-dom': 5.17.0
       '@testing-library/react': 13.4.0
       '@testing-library/react-hooks': 8.0.1
       '@testing-library/user-event': 14.4.3
@@ -224,7 +224,7 @@ importers:
       '@storybook/testing-library': 0.2.0
       '@storybook/types': 7.0.25
       '@testing-library/dom': 8.20.1
-      '@testing-library/jest-dom': 5.16.5
+      '@testing-library/jest-dom': 5.17.0
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/react-hooks': 8.0.1_qzycrpzqvmvb7wd2jdibmpq2cy
       '@testing-library/user-event': 14.4.3_szfc7t2zqsdonxwckqxkjn2the
@@ -7749,8 +7749,8 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/jest-dom/5.16.5:
-    resolution: {integrity: sha512-N5ixQ2qKpi5OLYfwQmUb/5mSV9LneAcaUfp32pn4yCnpb8r/Yz0pXFPck21dIicKmi+ta5WRAknkZCfA8refMA==}
+  /@testing-library/jest-dom/5.17.0:
+    resolution: {integrity: sha512-ynmNeT7asXyH3aSVv4vvX4Rb+0qjOhdNHnO/3vuZNqPmhDpV/+rCSGwQ7bLcmU2cJ4dvoheIO85LQj0IbJHEtg==}
     engines: {node: '>=8', npm: '>=6', yarn: '>=1'}
     dependencies:
       '@adobe/css-tools': 4.2.0
