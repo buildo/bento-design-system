@@ -1,11 +1,22 @@
 {
-  "extends": ["config:base", "schedule:earlyMondays"],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":automergeStableNonMajor",
+    ":automergeLinters",
+    ":automergeTesters",
+    ":automergeTypes",
+    ":combinePatchMinorReleases",
+    ":pinAllExceptPeerDependencies"
+  ],
   "labels": ["dependencies"],
+  "automerge": true,
   "packageRules": [
     {
       "matchPackagePatterns": ["@react-aria", "@react-types", "@react-stately"],
       "groupName": "react-aria monorepo"
-    }
+    },
+    {}
   ],
-  "prHourlyLimit": 0
+  "prHourlyLimit": 1
 }
