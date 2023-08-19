@@ -180,7 +180,7 @@
     "lodash.orderby": "4.6.0",
     "madge": "5.0.2",
     "mini-css-extract-plugin": "2.7.6",
-    "playroom": "0.32.0",
+    "playroom": "0.32.1",
     "postcss": "8.4.28",
     "prettier": "2.8.8",
     "react": "18.2.0",

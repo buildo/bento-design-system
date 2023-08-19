@@ -121,7 +121,7 @@ importers:
       lodash.pick: 4.4.0
       madge: 5.0.2
       mini-css-extract-plugin: 2.7.6
-      playroom: 0.32.0
+      playroom: 0.32.1
       postcss: 8.4.28
       prettier: 2.8.8
       react: 18.2.0
@@ -259,7 +259,7 @@ importers:
       lodash.orderby: 4.6.0
       madge: 5.0.2
       mini-css-extract-plugin: 2.7.6_webpack@5.76.3
-      playroom: 0.32.0_gxomvay4mtc6kpwb26arntbvc4
+      playroom: 0.32.1_gxomvay4mtc6kpwb26arntbvc4
       postcss: 8.4.28
       prettier: 2.8.8
       react: 18.2.0
@@ -308,7 +308,7 @@ importers:
       docusaurus-plugin-react-docgen-typescript: 1.1.0
       eslint-config-react-app: 7.0.1
       lint-staged: 13.2.3
-      playroom: 0.32.0
+      playroom: 0.32.1
       prettier: 2.8.8
       prism-react-renderer: 1.3.5
       process: 0.11.10
@@ -336,7 +336,7 @@ importers:
       buffer: 6.0.3
       clsx: 1.2.1
       docusaurus-plugin-react-docgen-typescript: 1.1.0_vy67b2njtce6aph6izod4nkvpe
-      playroom: 0.32.0_biqbaboplfbrettd7655fr4n2y
+      playroom: 0.32.1_biqbaboplfbrettd7655fr4n2y
       prettier: 2.8.8
       prism-react-renderer: 1.3.5_react@18.2.0
       process: 0.11.10
@@ -1997,11 +1997,6 @@ packages:
 
   /@babel/standalone/7.22.10:
     resolution: {integrity: sha512-VmK2sWxUTfDDh9mPfCtFJPIehZToteqK+Zpwq8oJUjJ+WeeKIFTTQIrDzH7jEdom+cAaaguU7FI/FBsBWFkIeQ==}
-    engines: {node: '>=6.9.0'}
-    dev: false
-
-  /@babel/standalone/7.22.8:
-    resolution: {integrity: sha512-Bm9Sn+FfDqcvxYo/lz5BFo/PWBcjhxD6rtifkchFes/rU8/u4FacCFY/WdqwPtycH54THlXqMYMjaWigQaMpYA==}
     engines: {node: '>=6.9.0'}
 
   /@babel/template/7.22.5:
@@ -15828,8 +15823,8 @@ packages:
     dependencies:
       find-up: 3.0.0
 
-  /playroom/0.32.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-V+VO1hDxtqtW/xVOskggPVnGQLrxXLiETPn5/AqH3n0f1Lf0xVQ8P9LJxgOUtlfi/piDb3xoLHvffa2ezohgng==}
+  /playroom/0.32.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-b/0jLzDRKBLRdEE6O1HC7fWEp+bDfocyipsQL9yN26c0hcZ5vgiKammf7HHX5iYYTvSTrBlZ0oDSJJUfksdZdQ==}
     hasBin: true
     peerDependencies:
       react: ^17 || ^18 || 18
@@ -15840,7 +15835,7 @@ packages:
       '@babel/preset-env': 7.22.10_@babel+core@7.22.10
       '@babel/preset-react': 7.22.5_@babel+core@7.22.10
       '@babel/preset-typescript': 7.22.5_@babel+core@7.22.10
-      '@babel/standalone': 7.22.8
+      '@babel/standalone': 7.22.10
       '@soda/friendly-errors-webpack-plugin': 1.8.1_webpack@5.88.1
       '@types/base64-url': 2.2.0
       '@types/codemirror': 5.60.8
@@ -15902,8 +15897,8 @@ packages:
       - webpack-cli
     dev: false
 
-  /playroom/0.32.0_gxomvay4mtc6kpwb26arntbvc4:
-    resolution: {integrity: sha512-V+VO1hDxtqtW/xVOskggPVnGQLrxXLiETPn5/AqH3n0f1Lf0xVQ8P9LJxgOUtlfi/piDb3xoLHvffa2ezohgng==}
+  /playroom/0.32.1_gxomvay4mtc6kpwb26arntbvc4:
+    resolution: {integrity: sha512-b/0jLzDRKBLRdEE6O1HC7fWEp+bDfocyipsQL9yN26c0hcZ5vgiKammf7HHX5iYYTvSTrBlZ0oDSJJUfksdZdQ==}
     hasBin: true
     peerDependencies:
       react: ^17 || ^18 || 18
@@ -15914,7 +15909,7 @@ packages:
       '@babel/preset-env': 7.22.10_@babel+core@7.22.10
       '@babel/preset-react': 7.22.5_@babel+core@7.22.10
       '@babel/preset-typescript': 7.22.5_@babel+core@7.22.10
-      '@babel/standalone': 7.22.8
+      '@babel/standalone': 7.22.10
       '@soda/friendly-errors-webpack-plugin': 1.8.1_webpack@5.88.1
       '@types/base64-url': 2.2.0
       '@types/codemirror': 5.60.8
