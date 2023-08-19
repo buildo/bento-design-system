@@ -10,7 +10,8 @@
   "sideEffects": [
     "global.css.ts",
     "reset.css.ts",
-    "defaultTheme.css.ts"
+    "defaultTheme.css.ts",
+    "defaultFonts.ts"
   ],
   "exports": {
     ".": {
