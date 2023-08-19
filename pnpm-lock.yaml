@@ -138,7 +138,7 @@ importers:
       style-loader: 3.3.3
       ts-loader: 9.4.4
       ts-pattern: 3.3.5
-      tsup: 7.1.0
+      tsup: 7.2.0
       typescript: 5.1.3
       vitest: 0.34.2
       webpack: 5.76.3
@@ -268,7 +268,7 @@ importers:
       storybook-addon-themes: 6.1.0_biqbaboplfbrettd7655fr4n2y
       style-loader: 3.3.3_webpack@5.76.3
       ts-loader: 9.4.4_w5ntw6etnsde2whexmqpfnfdhe
-      tsup: 7.1.0_dnrset4fb2h6hw3ktg3dd5qy3y
+      tsup: 7.2.0_dnrset4fb2h6hw3ktg3dd5qy3y
       typescript: 5.1.3
       vitest: 0.34.2_jsdom@22.1.0
       webpack: 5.76.3_j225tvu7tffq6zyszvscud65xq
@@ -19026,8 +19026,8 @@ packages:
   /tslib/2.6.0:
     resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
 
-  /tsup/7.1.0_dnrset4fb2h6hw3ktg3dd5qy3y:
-    resolution: {integrity: sha512-mazl/GRAk70j8S43/AbSYXGgvRP54oQeX8Un4iZxzATHt0roW0t6HYDVZIXMw0ZQIpvr1nFMniIVnN5186lW7w==}
+  /tsup/7.2.0_dnrset4fb2h6hw3ktg3dd5qy3y:
+    resolution: {integrity: sha512-vDHlczXbgUvY3rWvqFEbSqmC1L7woozbzngMqTtL2PGBODTtWlRwGDDawhvWzr5c1QjKe4OAKqJGfE1xeXUvtQ==}
     engines: {node: '>=16.14'}
     hasBin: true
     peerDependencies:
