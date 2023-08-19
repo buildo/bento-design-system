@@ -16,7 +16,10 @@
       "matchPackagePatterns": ["@react-aria", "@react-types", "@react-stately"],
       "groupName": "react-aria monorepo"
     },
-    {}
+    {
+      "matchPackagePatterns": ["@floating-ui"],
+      "groupName": "floating-ui monorepo"
+    }
   ],
   "prHourlyLimit": 1
 }
