@@ -1,7 +1,30 @@
 import { defaultMessages } from "../src/defaultMessages/en";
-import { BentoProvider } from "../stories";
+import "../stories/theme.css";
+import "../src/reset.css";
+import "../src/global.css";
+import "../src/defaultTheme.css";
+import "@fontsource/lexend/400.css";
+import "@fontsource/lexend/500.css";
+import "@fontsource/lexend/600.css";
 import { useArgs } from "@storybook/addons";
 import { Decorator } from "@storybook/react";
+import { createBentoProvider } from "../src";
+import { sprinkles } from "../stories/sprinkles.css";
+
+const BentoProvider = createBentoProvider(
+  {
+    chip: {
+      customColors: {
+        custom: "customColor1",
+      },
+    },
+    pagination: {
+      itemsPerPageOptions: [5, 10, 20, 50],
+    },
+  },
+  undefined,
+  sprinkles
+);
 
 export const decorators: Decorator[] = [
   (Story) => (
