@@ -53,8 +53,7 @@ export function Tooltip(props: Props) {
   const {
     x,
     y,
-    reference,
-    floating,
+    refs,
     strategy,
     placement,
     middlewareData: { arrow: arrowData },
@@ -83,13 +82,13 @@ export function Tooltip(props: Props) {
 
   return (
     <>
-      {props.trigger(reference, triggerProps)}
+      {props.trigger(refs.setReference, triggerProps)}
       {state.isOpen &&
         createPortal(
           <Box
             className={tooltip}
             {...getRadiusPropsFromConfig(config.radius)}
-            ref={floating}
+            ref={refs.setFloating}
             style={{
               position: strategy,
               top: y ?? "",
