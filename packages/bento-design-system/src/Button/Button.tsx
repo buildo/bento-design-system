@@ -92,7 +92,7 @@ export function Button(props: Props) {
         )}
         <Label
           size={typeof config.labelSize === "string" ? config.labelSize : config.labelSize[size]}
-          uppercase={config.uppercaseLabel}
+          uppercase
         >
           {props.label}
         </Label>
