@@ -1,6 +1,7 @@
 const { VanillaExtractPlugin } = require("@vanilla-extract/webpack-plugin");
 const { ProvidePlugin } = require("webpack");
 const { ESBuildMinifyPlugin } = require("esbuild-loader");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   components: "./src/index.ts",
@@ -13,6 +14,9 @@ module.exports = {
       new VanillaExtractPlugin(),
       new ProvidePlugin({
         React: "react",
+      }),
+      new MiniCssExtractPlugin({
+        ignoreOrder: true,
       }),
     ],
     module: {
@@ -32,7 +36,7 @@ module.exports = {
         },
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader"],
+          use: [MiniCssExtractPlugin.loader, "css-loader"],
           exclude: (modulePath) => {
             return /node_modules/.test(modulePath) && !modulePath.includes("@fontsource");
           },
