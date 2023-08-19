@@ -31,5 +31,5 @@ run:
         export CHROMATIC_SHA=$(cat .git/resource/head_sha)
       fi
 
-      CHROMATIC_OPTIONS="--ci --exit-zero-on-changes --exit-once-uploaded ${CHROMATIC_OPTIONS}"
+      CHROMATIC_OPTIONS="--ci --exit-zero-on-changes --exit-once-uploaded --only-changed --output-dir ${PWD}/packages/bento-design-system/storybook-static ${CHROMATIC_OPTIONS}"
       pnpm chromatic
