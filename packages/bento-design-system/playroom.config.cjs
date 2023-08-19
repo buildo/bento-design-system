@@ -35,11 +35,16 @@ module.exports = {
           use: "file-loader",
         },
         {
-          test: /\.css$/,
+          test: /(?!\.vanilla\.css)\.css$/,
           use: [MiniCssExtractPlugin.loader, "css-loader"],
           exclude: (modulePath) => {
             return /node_modules/.test(modulePath) && !modulePath.includes("@fontsource");
           },
+        },
+        {
+          test: /\.vanilla\.css$/i,
+          use: [MiniCssExtractPlugin.loader, "css-loader"],
+          exclude: /node_modules/,
         },
       ],
     },
