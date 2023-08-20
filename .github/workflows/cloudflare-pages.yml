@@ -11,7 +11,7 @@ jobs:
     name: Cloudflare Pages
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
       - uses: pnpm/action-setup@v2
