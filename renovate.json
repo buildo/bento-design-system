@@ -21,5 +21,6 @@
       "groupName": "floating-ui monorepo"
     }
   ],
-  "prHourlyLimit": 1
+  "prHourlyLimit": 1,
+  "prConcurrentLimit": 2
 }
