@@ -1,6 +1,7 @@
 {
   "translation": {
     "App.name": "Design System Configurator",
+    "App.bentoDS": "Bento Design System",
     "ColorEditor.keyColor": "Key Color",
     "ColorEditor.palette": "Palette",
     "ColorEditor.hexValue": "Hex value",

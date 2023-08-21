@@ -8,7 +8,7 @@ export function Header() {
   return (
     <Inset spaceX={40} spaceY={16}>
       <Inline space={24} alignY="center">
-        <img src={bentoLogo} alt="" />
+        <img src={bentoLogo} alt={t("App.bentoDS")} />
         <Body size="large">{t("App.name")}</Body>
       </Inline>
     </Inset>
