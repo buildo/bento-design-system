@@ -69,7 +69,7 @@
     "@dessert-box/core": "0.2.0",
     "@floating-ui/core": "1.4.1",
     "@floating-ui/dom": "1.5.1",
-    "@floating-ui/react-dom": "1.3.0",
+    "@floating-ui/react-dom": "2.0.1",
     "@floating-ui/utils": "0.1.1",
     "@fontsource/lexend": "5.0.9",
     "@internationalized/date": "3.4.0",
