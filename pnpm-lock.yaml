@@ -280,7 +280,7 @@ importers:
       '@phosphor-icons/react': 2.0.10
       '@tsconfig/vite-react': 2.0.0
       '@types/react': ^18
-      '@types/react-dom': ^18.2.7
+      '@types/react-dom': 18.2.7
       '@typescript-eslint/eslint-plugin': 6.4.0
       '@typescript-eslint/parser': 6.4.0
       '@vitejs/plugin-react': 4.0.4
