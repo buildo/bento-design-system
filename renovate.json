@@ -19,6 +19,10 @@
     {
       "matchPackagePatterns": ["@floating-ui"],
       "groupName": "floating-ui monorepo"
+    },
+    {
+      "matchPackageNames": ["@mdx-js/react"],
+      "allowedVersions": "<=2"
     }
   ],
   "prHourlyLimit": 1,
