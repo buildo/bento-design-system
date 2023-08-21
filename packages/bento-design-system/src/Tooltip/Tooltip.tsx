@@ -6,7 +6,7 @@ import {
   autoPlacement,
   offset,
   arrow,
-  UseFloatingProps,
+  UseFloatingOptions,
   flip,
 } from "@floating-ui/react-dom";
 import { useTooltipTriggerState } from "@react-stately/tooltip";
@@ -40,7 +40,7 @@ export function Tooltip(props: Props) {
 
   const commonMiddleware = [shift(), offset(8)];
   const arrowMiddleware = arrow({ element: arrowRef });
-  const floatingProps: UseFloatingProps = props.placement
+  const floatingProps: UseFloatingOptions = props.placement
     ? {
         placement: props.placement,
         middleware: commonMiddleware.concat([flip(), arrowMiddleware]),
@@ -51,10 +51,8 @@ export function Tooltip(props: Props) {
         middleware: commonMiddleware.concat([autoPlacement(), arrowMiddleware]),
       };
   const {
-    x,
-    y,
+    floatingStyles,
     refs,
-    strategy,
     placement,
     middlewareData: { arrow: arrowData },
   } = useFloating(floatingProps);
@@ -89,11 +87,7 @@ export function Tooltip(props: Props) {
             className={tooltip}
             {...getRadiusPropsFromConfig(config.radius)}
             ref={refs.setFloating}
-            style={{
-              position: strategy,
-              top: y ?? "",
-              left: x ?? "",
-            }}
+            style={floatingStyles}
             {...tooltipProps}
           >
             <Inset spaceX={config.paddingX} spaceY={config.paddingY}>
