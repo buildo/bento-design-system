@@ -278,6 +278,9 @@ importers:
     specifiers:
       '@buildo/bento-design-system': workspace:*
       '@phosphor-icons/react': 2.0.10
+      '@react-aria/numberfield': 3.6.0
+      '@react-stately/numberfield': 3.5.0
+      '@react-types/numberfield': 3.4.2
       '@tsconfig/vite-react': 2.0.0
       '@types/react': ^18
       '@types/react-dom': 18.2.7
@@ -297,12 +300,15 @@ importers:
     dependencies:
       '@buildo/bento-design-system': link:../bento-design-system
       '@phosphor-icons/react': 2.0.10_biqbaboplfbrettd7655fr4n2y
+      '@react-aria/numberfield': 3.6.0_biqbaboplfbrettd7655fr4n2y
+      '@react-stately/numberfield': 3.5.0_react@18.2.0
       i18next: 22.5.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-i18next: 12.3.1_spyi3zqm3bqfobczid2f6jym6y
       ts-pattern: 5.0.5
     devDependencies:
+      '@react-types/numberfield': 3.4.2_react@18.2.0
       '@tsconfig/vite-react': 2.0.0
       '@types/react': 18.2.14
       '@types/react-dom': 18.2.7
@@ -5287,6 +5293,28 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
+  /@react-aria/numberfield/3.6.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-LbtRS/JciPicYLjqAP87gufInzZ2rlOQlKu0tQK8l/Hwc2cPOWUldDXbrGgxrXwbMxfEASmfI6qYz8uhTGmIyw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || 18
+      react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || 18
+    dependencies:
+      '@react-aria/i18n': 3.8.1_react@18.2.0
+      '@react-aria/interactions': 3.17.0_react@18.2.0
+      '@react-aria/live-announcer': 3.3.1
+      '@react-aria/spinbutton': 3.5.1_biqbaboplfbrettd7655fr4n2y
+      '@react-aria/textfield': 3.11.0_react@18.2.0
+      '@react-aria/utils': 3.19.0_react@18.2.0
+      '@react-stately/numberfield': 3.6.0_react@18.2.0
+      '@react-types/button': 3.7.4_react@18.2.0
+      '@react-types/numberfield': 3.5.0_react@18.2.0
+      '@react-types/shared': 3.19.0_react@18.2.0
+      '@react-types/textfield': 3.7.3_react@18.2.0
+      '@swc/helpers': 0.5.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /@react-aria/numberfield/3.7.0_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-vXerG2mCdAM82AHc7ZiMhKxpWHgjnG+YXkBu5wGRYunmg5exj4n5QVFFIAQgCiToCoJp7nhY9d34BclJbmHwrQ==}
     peerDependencies:
@@ -5565,6 +5593,19 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@react-stately/numberfield/3.5.0_react@18.2.0:
+    resolution: {integrity: sha512-2R39hXQpQzoVDl1r3TZDKUEKf6lHbhiOpcBOYTPOne+YJOyMXQ6PnXAOTVuIcgTNdagukhXQVoDYH2B/1FvJOA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || 18
+    dependencies:
+      '@internationalized/number': 3.2.1
+      '@react-stately/utils': 3.7.0_react@18.2.0
+      '@react-types/numberfield': 3.5.0_react@18.2.0
+      '@react-types/shared': 3.19.0_react@18.2.0
+      '@swc/helpers': 0.5.1
+      react: 18.2.0
+    dev: false
+
   /@react-stately/numberfield/3.6.0_react@18.2.0:
     resolution: {integrity: sha512-4spLEPuYeYQrzs/r13tv/ti4szkJz+6VfVhFNdYwNiW41flUPDpFtGziIqbe2myoEudC+P5WWzryfHkl79tIbQ==}
     peerDependencies:
@@ -5754,6 +5795,15 @@ packages:
       '@react-types/overlays': 3.8.1_react@18.2.0
       '@react-types/shared': 3.19.0_react@18.2.0
       react: 18.2.0
+
+  /@react-types/numberfield/3.4.2_react@18.2.0:
+    resolution: {integrity: sha512-SGzuuFf5wCSRPvpV+bnykiXSIt8pkpBBVp8tlygB66pQSBV7VLdUvWGohaayPSM+3Z+WkU+osgzYtGq5wh+C3Q==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || 18
+    dependencies:
+      '@react-types/shared': 3.19.0_react@18.2.0
+      react: 18.2.0
+    dev: true
 
   /@react-types/numberfield/3.5.0_react@18.2.0:
     resolution: {integrity: sha512-uKN6uJCJICIvngk3d2AzD/XU+LZHSriALpsM58l6Zy7xmVu3Wdb11WeWL9z/cwJ+KAdt4tcD+rCE/Y2rcfjWDA==}
