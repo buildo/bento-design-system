@@ -278,6 +278,7 @@ importers:
     specifiers:
       '@buildo/bento-design-system': workspace:*
       '@phosphor-icons/react': ^2.0.10
+      '@tsconfig/vite-react': ^2.0.0
       '@types/react': ^18
       '@types/react-dom': ^18.2.7
       '@typescript-eslint/eslint-plugin': ^6.0.0
@@ -300,6 +301,7 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       react-i18next: 12.3.1_spyi3zqm3bqfobczid2f6jym6y
     devDependencies:
+      '@tsconfig/vite-react': 2.0.0
       '@types/react': 18.2.14
       '@types/react-dom': 18.2.7
       '@typescript-eslint/eslint-plugin': 6.4.0_cektlzuo45rm2t2rjfmg4k2r4e
@@ -7416,6 +7418,10 @@ packages:
 
   /@tsconfig/docusaurus/1.0.6:
     resolution: {integrity: sha512-1QxDaP54hpzM6bq9E+yFEo4F9WbWHhsDe4vktZXF/iDlc9FqGr9qlg+3X/nuKQXx8QxHV7ue8NXFazzajsxFBA==}
+    dev: true
+
+  /@tsconfig/vite-react/2.0.0:
+    resolution: {integrity: sha512-erT+k9yzjRYnqRn6Fmvz+Y8+AtE+/YE954frGGwwit2ifsoWzRzYaOTlGj9/z0xJyYiaKNnNiFhid312QdC4rw==}
     dev: true
 
   /@types/aria-query/5.0.1:
