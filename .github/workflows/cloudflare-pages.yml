@@ -19,6 +19,7 @@ jobs:
           run_install: true
       - run: pnpm website-build
       - run: pnpm playroom-build
+      - run: pnpm configurator-build
       - name: Publish Website
         uses: cloudflare/pages-action@v1
         with:
@@ -34,4 +35,12 @@ jobs:
           accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           projectName: bento-playroom
           directory: packages/bento-design-system/dist/playroom
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish Configurator
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: bento-configurator
+          directory: packages/configuration-builder/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
