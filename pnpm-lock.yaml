@@ -292,7 +292,7 @@ importers:
       '@docusaurus/theme-live-codeblock': 2.0.1
       '@docusaurus/types': 2.0.1
       '@easyops-cn/docusaurus-search-local': 0.35.0
-      '@mdx-js/react': 1.6.22
+      '@mdx-js/react': 2.3.0
       '@phosphor-icons/react': 2.0.10
       '@tsconfig/docusaurus': 1.0.6
       '@types/babel__generator': 7.6.4
@@ -331,7 +331,7 @@ importers:
       '@docusaurus/preset-classic': 2.0.1_jygx3ufwx54o6ncebcauowepre
       '@docusaurus/theme-common': 2.0.1_pjx4x42giw4eiryiiatxxi6tzu
       '@easyops-cn/docusaurus-search-local': 0.35.0_fxbocgsgzezq2ggxnknsyeqkbq
-      '@mdx-js/react': 1.6.22_react@18.2.0
+      '@mdx-js/react': 2.3.0_react@18.2.0
       assert: 2.0.0
       buffer: 6.0.3
       clsx: 1.2.1
@@ -4424,7 +4424,6 @@ packages:
       '@types/mdx': 2.0.5
       '@types/react': 18.2.14
       react: 18.2.0
-    dev: true
 
   /@mdx-js/util/1.6.22:
     resolution: {integrity: sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==}
@@ -7810,7 +7809,6 @@ packages:
 
   /@types/mdx/2.0.5:
     resolution: {integrity: sha512-76CqzuD6Q7LC+AtbPqrvD9AqsN0k8bsYo2bM2J8pmNldP1aIPAbzUQ7QbobyXL4eLr1wK5x8FZFe8eF/ubRuBg==}
-    dev: true
 
   /@types/mime-types/2.1.1:
     resolution: {integrity: sha512-vXOTGVSLR2jMw440moWTC7H19iUyLtP3Z1YTj7cSsubOICinjMxFeb/V57v9QdyyPGbbWolUFSSmSiRSn94tFw==}
