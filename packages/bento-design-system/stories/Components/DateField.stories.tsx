@@ -133,9 +133,9 @@ export const CalendarOpen = {
   },
   play: async () => {
     const input = screen.getByRole("textbox");
-    await waitFor(async () => {
-      await input.click();
-    });
+    await waitFor(() => input.click());
+    // wait a bit to see if it solves Chromatic snapshot flakiness
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   },
   decorators: isChromatic()
     ? [
