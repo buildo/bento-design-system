@@ -17,7 +17,7 @@
     "@buildo/bento-design-system": "workspace:*",
     "@phosphor-icons/react": "2.0.10",
     "@react-aria/numberfield": "3.6.0",
-    "@react-stately/numberfield": "3.5.0",
+    "@react-stately/numberfield": "3.6.0",
     "i18next": "22.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@tsconfig/vite-react": "2.0.0",
-    "@react-types/numberfield": "3.4.2",
+    "@react-types/numberfield": "3.5.0",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "@typescript-eslint/eslint-plugin": "6.4.1",
