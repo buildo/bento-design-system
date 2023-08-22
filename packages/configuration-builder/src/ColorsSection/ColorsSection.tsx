@@ -5,13 +5,10 @@ import { ThemeConfig } from "../ThemeConfigurator/ThemeConfigurator";
 import { useState } from "react";
 import { match } from "ts-pattern";
 import { InteractiveColor } from "./InteractiveColor";
-<<<<<<< HEAD
 import { NeutralColor } from "./NeutralColor";
 import { SemanticColors } from "./SemanticColors";
 import { DataVizColors } from "./DataVizColors";
 import { SectionCompleted } from "./SectionCompleted";
-=======
->>>>>>> 10bbcb2c (Implement Interactive view)
 
 type ColorsConfig = ThemeConfig["colors"];
 
