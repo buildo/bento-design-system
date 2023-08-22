@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
 import { BentoProvider } from "@buildo/bento-design-system";
 import { defaultMessages } from "@buildo/bento-design-system/defaultMessages/en";
 
@@ -11,7 +12,7 @@ import "@buildo/bento-design-system/defaultTheme.css";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BentoProvider defaultMessages={defaultMessages}>
-      <App />
+      <RouterProvider router={router} />
     </BentoProvider>
   </React.StrictMode>
 );

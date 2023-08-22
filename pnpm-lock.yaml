@@ -301,6 +301,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       react-i18next: 12.3.1
+      react-router-dom: ^6.15.0
       ts-pattern: 3.3.5
       typescript: 5.1.3
       vite: 4.4.9
@@ -315,6 +316,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-i18next: 12.3.1_spyi3zqm3bqfobczid2f6jym6y
+      react-router-dom: 6.15.0_biqbaboplfbrettd7655fr4n2y
       ts-pattern: 3.3.5
     devDependencies:
       '@react-types/numberfield': 3.5.0_react@18.2.0
@@ -329,7 +331,7 @@ importers:
       eslint-plugin-react-refresh: 0.4.3_eslint@8.48.0
       typescript: 5.1.3
       vite: 4.4.9
-      vite-plugin-checker: 0.6.2_i5oniqc2l6bqaqysbmwlbuxbza
+      vite-plugin-checker: 0.6.2_n6mu2ofuv5rkccc7cdbyivyvjq
 
   packages/website:
     specifiers:
@@ -6055,6 +6057,11 @@ packages:
       '@react-types/overlays': 3.8.1_react@18.2.0
       '@react-types/shared': 3.19.0_react@18.2.0
       react: 18.2.0
+    dev: false
+
+  /@remix-run/router/1.8.0:
+    resolution: {integrity: sha512-mrfKqIHnSZRyIzBcanNJmVQELTnX+qagEDlcKO90RgRBVOZGSGvZKeDihTRfWcqoDn5N/NkUcwWTccnpN18Tfg==}
+    engines: {node: '>=14.0.0'}
     dev: false
 
   /@rollup/pluginutils/5.0.4:
@@ -16536,6 +16543,19 @@ packages:
       tiny-invariant: 1.3.1
       tiny-warning: 1.0.3
 
+  /react-router-dom/6.15.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-aR42t0fs7brintwBGAv2+mGlCtgtFQeOzK0BM1/OiqEzRejOZtpMZepvgkscpMUnKb8YO84G7s3LsHnnDNonbQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8 || 18'
+      react-dom: '>=16.8 || 18'
+    dependencies:
+      '@remix-run/router': 1.8.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-router: 6.15.0_react@18.2.0
+    dev: false
+
   /react-router/5.3.4_react@18.2.0:
     resolution: {integrity: sha512-Ys9K+ppnJah3QuaRiLxk+jDWOR1MekYQrlytiXxC1RyfbdsZkS5pvKAzCCr031xHixZwpnsYNT5xysdFHQaYsA==}
     peerDependencies:
@@ -16551,6 +16571,16 @@ packages:
       react-is: 16.13.1
       tiny-invariant: 1.3.1
       tiny-warning: 1.0.3
+
+  /react-router/6.15.0_react@18.2.0:
+    resolution: {integrity: sha512-NIytlzvzLwJkCQj2HLefmeakxxWHWAP+02EGqWEZy+DgfHHKQMUoBBjUQLOtFInBMhWtb3hiUy6MfFgwLjXhqg==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8 || 18'
+    dependencies:
+      '@remix-run/router': 1.8.0
+      react: 18.2.0
+    dev: false
 
   /react-select/5.7.4_qzycrpzqvmvb7wd2jdibmpq2cy:
     resolution: {integrity: sha512-NhuE56X+p9QDFh4BgeygHFIvJJszO1i1KSkg/JPcIJrbovyRtI+GuOEa4XzFCEpZRAEoEI8u/cAHK+jG/PgUzQ==}
@@ -19078,7 +19108,7 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-checker/0.6.2_i5oniqc2l6bqaqysbmwlbuxbza:
+  /vite-plugin-checker/0.6.2_n6mu2ofuv5rkccc7cdbyivyvjq:
     resolution: {integrity: sha512-YvvvQ+IjY09BX7Ab+1pjxkELQsBd4rPhWNw8WLBeFVxu/E7O+n6VYAqNsKdK/a2luFlX/sMpoWdGFfg4HvwdJQ==}
     engines: {node: '>=14.16'}
     peerDependencies:
@@ -19114,7 +19144,7 @@ packages:
       chalk: 4.1.2
       chokidar: 3.5.3
       commander: 8.3.0
-      eslint: 8.47.0
+      eslint: 8.48.0
       fast-glob: 3.3.0
       fs-extra: 11.1.1
       lodash.debounce: 4.0.8
