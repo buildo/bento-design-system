@@ -19,7 +19,8 @@
     "i18next": "22.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-i18next": "12.3.1"
+    "react-i18next": "12.3.1",
+    "ts-pattern": "5.0.5"
   },
   "devDependencies": {
     "@tsconfig/vite-react": "2.0.0",

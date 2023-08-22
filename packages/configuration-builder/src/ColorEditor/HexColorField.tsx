@@ -6,6 +6,7 @@ import { HexColor, isHexColor } from "../utils/colorUtils";
 type Props = {
   value: HexColor;
   onChange: (value: HexColor) => void;
+  isReadOnly?: boolean;
 };
 
 export function HexColorField(props: Props) {
@@ -26,6 +27,7 @@ export function HexColorField(props: Props) {
           props.onChange(value);
         }
       }}
+      isReadOnly={props.isReadOnly}
     />
   );
 }

@@ -32,14 +32,22 @@ export type ColorConfig = {
 type Props = {
   name: LocalizedString;
   value: ColorConfig;
-  onChange: (value: ColorConfig) => void;
-  onDelete?: () => void;
-};
+} & (
+  | {
+      isReadOnly?: false;
+      onChange: (value: ColorConfig) => void;
+      onDelete?: () => void;
+    }
+  | {
+      isReadOnly: true;
+    }
+);
 
 export function ColorEditor(props: Props) {
   const { t } = useTranslation();
 
   function onKeyColorChange(keyColor: HexColor) {
+    if (props.isReadOnly) return;
     const hsl = HexToHSL(keyColor);
     props.onChange({
       ...props.value,
@@ -50,6 +58,7 @@ export function ColorEditor(props: Props) {
   }
 
   function onHueChange(hue: number) {
+    if (props.isReadOnly) return;
     if (props.value.keyColorLocked) {
       props.onChange({ ...props.value, hue });
     } else {
@@ -60,6 +69,7 @@ export function ColorEditor(props: Props) {
   }
 
   function onSaturationChange(saturation: number) {
+    if (props.isReadOnly) return;
     if (props.value.keyColorLocked) {
       props.onChange({ ...props.value, saturation });
     } else {
@@ -70,6 +80,7 @@ export function ColorEditor(props: Props) {
   }
 
   function onReset() {
+    if (props.isReadOnly) return;
     if (!props.value.keyColorLocked) return;
     const hsl = HexToHSL(props.value.keyColor);
     if (hsl) {
@@ -78,6 +89,7 @@ export function ColorEditor(props: Props) {
   }
 
   function onToggleKeyColorLocked() {
+    if (props.isReadOnly) return;
     props.onChange({ ...props.value, keyColorLocked: !props.value.keyColorLocked });
   }
 
@@ -96,7 +108,11 @@ export function ColorEditor(props: Props) {
                 style={{ backgroundColor: props.value.keyColor }}
               />
               <Inline space={8} alignY="bottom">
-                <HexColorField value={props.value.keyColor} onChange={onKeyColorChange} />
+                <HexColorField
+                  value={props.value.keyColor}
+                  onChange={onKeyColorChange}
+                  isReadOnly={props.isReadOnly}
+                />
                 <IconButton
                   label={
                     props.value.keyColorLocked
@@ -108,6 +124,7 @@ export function ColorEditor(props: Props) {
                   icon={props.value.keyColorLocked ? IconLockSimple : IconLockOpen}
                   size={16}
                   onPress={onToggleKeyColorLocked}
+                  isDisabled={props.isReadOnly}
                 />
               </Inline>
             </Stack>
@@ -120,55 +137,57 @@ export function ColorEditor(props: Props) {
             lightnessInterpolation={props.value.lightnessInterpolation}
           />
         </Columns>
-        <Columns space={40} alignY="bottom">
-          <Column width="content">
-            <LightnessInterpolationSelector
-              value={props.value.lightnessInterpolation}
-              onChange={(lightnessInterpolation) => {
-                if (lightnessInterpolation) {
-                  props.onChange({ ...props.value, lightnessInterpolation });
-                }
-              }}
-            />
-          </Column>
-          <Column width="content">
-            <CounterField
-              label={t("ColorEditor.hue")}
-              minValue={0}
-              maxValue={360}
-              value={props.value.hue}
-              onChange={onHueChange}
-            />
-          </Column>
-          <Column width="content">
-            <CounterField
-              label={t("ColorEditor.saturation")}
-              minValue={0}
-              maxValue={100}
-              value={props.value.saturation}
-              onChange={onSaturationChange}
-            />
-          </Column>
-          <Column width="content">
-            <Button
-              kind="solid"
-              hierarchy="secondary"
-              onPress={onReset}
-              label={t("ColorEditor.reset")}
-              isDisabled={!props.value.keyColorLocked}
-            />
-          </Column>
-          {props.onDelete && (
-            <Inline space={0} align="right">
+        {!props.isReadOnly && (
+          <Columns space={40} alignY="bottom">
+            <Column width="content">
+              <LightnessInterpolationSelector
+                value={props.value.lightnessInterpolation}
+                onChange={(lightnessInterpolation) => {
+                  if (lightnessInterpolation) {
+                    props.onChange({ ...props.value, lightnessInterpolation });
+                  }
+                }}
+              />
+            </Column>
+            <Column width="content">
+              <CounterField
+                label={t("ColorEditor.hue")}
+                minValue={0}
+                maxValue={360}
+                value={props.value.hue}
+                onChange={onHueChange}
+              />
+            </Column>
+            <Column width="content">
+              <CounterField
+                label={t("ColorEditor.saturation")}
+                minValue={0}
+                maxValue={100}
+                value={props.value.saturation}
+                onChange={onSaturationChange}
+              />
+            </Column>
+            <Column width="content">
               <Button
                 kind="solid"
                 hierarchy="secondary"
-                label={t("ColorEditor.delete")}
-                onPress={props.onDelete}
+                onPress={onReset}
+                label={t("ColorEditor.reset")}
+                isDisabled={!props.value.keyColorLocked}
               />
-            </Inline>
-          )}
-        </Columns>
+            </Column>
+            {props.onDelete && (
+              <Inline space={0} align="right">
+                <Button
+                  kind="solid"
+                  hierarchy="secondary"
+                  label={t("ColorEditor.delete")}
+                  onPress={props.onDelete}
+                />
+              </Inline>
+            )}
+          </Columns>
+        )}
       </Stack>
     </Card>
   );

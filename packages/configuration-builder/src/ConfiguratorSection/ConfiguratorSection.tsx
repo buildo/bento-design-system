@@ -12,10 +12,8 @@ import { useTranslation } from "react-i18next";
 
 type Props = {
   title: LocalizedString;
-  steps: StepperProps["steps"];
-  currentStep: number;
   children: Children;
-};
+} & ({ endStep: true } | { endStep?: false; steps: StepperProps["steps"]; currentStep: number });
 
 export function ConfiguratorSection(props: Props) {
   const { t } = useTranslation();
@@ -27,7 +25,7 @@ export function ConfiguratorSection(props: Props) {
             items={[{ label: t("ConfigurationSection.myTheme"), href: "" }, { label: props.title }]}
           />
           <Headline size="medium">{props.title}</Headline>
-          <Stepper steps={props.steps} currentStep={props.currentStep} />
+          {!props.endStep && <Stepper steps={props.steps} currentStep={props.currentStep} />}
         </Stack>
         {props.children}
       </Stack>
