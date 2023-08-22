@@ -278,6 +278,7 @@ importers:
     specifiers:
       '@buildo/bento-design-system': workspace:*
       '@phosphor-icons/react': 2.0.10
+      '@react-aria/i18n': 3.8.1
       '@react-aria/numberfield': 3.6.0
       '@react-stately/numberfield': 3.6.0
       '@react-types/numberfield': 3.5.0
@@ -300,6 +301,7 @@ importers:
     dependencies:
       '@buildo/bento-design-system': link:../bento-design-system
       '@phosphor-icons/react': 2.0.10_biqbaboplfbrettd7655fr4n2y
+      '@react-aria/i18n': 3.8.1_react@18.2.0
       '@react-aria/numberfield': 3.6.0_biqbaboplfbrettd7655fr4n2y
       '@react-stately/numberfield': 3.6.0_react@18.2.0
       i18next: 22.5.1
