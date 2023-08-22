@@ -277,7 +277,7 @@ importers:
   packages/configuration-builder:
     specifiers:
       '@buildo/bento-design-system': workspace:*
-      '@phosphor-icons/react': ^2.0.10
+      '@phosphor-icons/react': 2.0.10
       '@tsconfig/vite-react': 2.0.0
       '@types/react': ^18
       '@types/react-dom': 18.2.7
@@ -287,11 +287,11 @@ importers:
       eslint: 8.47.0
       eslint-plugin-react-hooks: 4.6.0
       eslint-plugin-react-refresh: 0.4.3
-      i18next: ^22.5.1
-      react: ^18.2.0
-      react-dom: ^18.2.0
-      react-i18next: ^12.3.1
-      ts-pattern: ^5.0.5
+      i18next: 22.5.1
+      react: 18.2.0
+      react-dom: 18.2.0
+      react-i18next: 12.3.1
+      ts-pattern: 5.0.5
       typescript: 5.1.3
       vite: 4.4.9
     dependencies:
