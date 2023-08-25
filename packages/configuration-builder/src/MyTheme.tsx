@@ -13,7 +13,6 @@ import {
 } from "@buildo/bento-design-system";
 import { useTranslation } from "react-i18next";
 import { SectionCard } from "./SectionCard/SectionCard";
-import { IconSwatches } from "./Icons/IconSwatches";
 import { useConfiguratorStatusContext } from "./ConfiguratorStatusContext";
 import { useNavigate } from "react-router-dom";
 import foundationsImg from "./assets/Foundations.png";
@@ -22,8 +21,17 @@ import exportImg from "./assets/Export.png";
 import image1 from "./assets/1.svg";
 import image2 from "./assets/2.svg";
 import image3 from "./assets/3.svg";
-import { IconFigmaLogo } from "./Icons/FigmaLogo";
-import { IconAtom } from "./Icons/ReactLogo";
+import {
+  IconFigmaLogo,
+  IconAtom,
+  IconTextAa,
+  IconSubtract,
+  IconCards,
+  IconLayout,
+  IconDiamond,
+  IconDiamondsFour,
+  IconSwatches,
+} from "./PhosphorIcons";
 
 const numberImages = [image1, image2, image3];
 
@@ -107,19 +115,19 @@ export function MyTheme() {
           <SectionCard
             name={t("Theme.Foundations.Typography.title")}
             description={t("Theme.Foundations.Typography.description")}
-            icon={IconSwatches}
+            icon={IconTextAa}
             disabled
           />
           <SectionCard
             name={t("Theme.Foundations.Elevations.title")}
             description={t("Theme.Foundations.Elevations.description")}
-            icon={IconSwatches}
+            icon={IconSubtract}
             disabled
           />
           <SectionCard
             name={t("Theme.Foundations.Tokens.title")}
             description={t("Theme.Foundations.Tokens.description")}
-            icon={IconSwatches}
+            icon={IconCards}
             disabled
           />
         </Stack>
@@ -135,19 +143,19 @@ export function MyTheme() {
           <SectionCard
             name={t("Theme.Configuration.General.title")}
             description={t("Theme.Configuration.General.description")}
-            icon={IconSwatches}
+            icon={IconLayout}
             disabled
           />
           <SectionCard
             name={t("Theme.Configuration.Components.title")}
             description={t("Theme.Configuration.Components.description")}
-            icon={IconSwatches}
+            icon={IconDiamond}
             disabled
           />
           <SectionCard
             name={t("Theme.Configuration.Patterns.title")}
             description={t("Theme.Configuration.Patterns.description")}
-            icon={IconSwatches}
+            icon={IconDiamondsFour}
             disabled
           />
         </Stack>

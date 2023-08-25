@@ -1,6 +1,6 @@
 import { Button, Feedback, Inline, Stack } from "@buildo/bento-design-system";
 import { useTranslation } from "react-i18next";
-import { IconConfetti } from "../Icons/IconConfetti";
+import { IconConfetti } from "../PhosphorIcons";
 import { useNavigate } from "react-router-dom";
 
 export function SectionCompleted() {

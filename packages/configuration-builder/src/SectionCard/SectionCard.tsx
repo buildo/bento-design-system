@@ -10,9 +10,8 @@ import {
   Stack,
   Title,
 } from "@buildo/bento-design-system";
-import { IconCaretRight } from "../Icons/IconCaretRight";
+import { IconCaretRight, IconCheckCircle } from "../PhosphorIcons";
 import { match } from "ts-pattern";
-import { IconCheckCircle } from "../Icons/IconCheckCircle";
 import { useTranslation } from "react-i18next";
 
 type Props = {
