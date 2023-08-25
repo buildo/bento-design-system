@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
-import { ThemeConfig } from "../ThemeConfigurator/ThemeConfigurator";
 import { Actions, Headline, Stack } from "@buildo/bento-design-system";
 import { ColorEditor } from "../ColorEditor/ColorEditor";
+import { ThemeConfig } from "../ConfiguratorStatusContext";
 
 type DataVizColors = ThemeConfig["colors"]["dataVisualization"];
 

@@ -1,13 +1,11 @@
 import { Button, Feedback, Inline, Stack } from "@buildo/bento-design-system";
 import { useTranslation } from "react-i18next";
 import { IconConfetti } from "../Icons/IconConfetti";
+import { useNavigate } from "react-router-dom";
 
-type Props = {
-  goToMyTheme: () => void;
-  goToTypography: () => void;
-};
+export function SectionCompleted() {
+  const navigate = useNavigate();
 
-export function SectionCompleted(props: Props) {
   const { t } = useTranslation();
   return (
     <Stack space={40} align="center">
@@ -18,14 +16,14 @@ export function SectionCompleted(props: Props) {
           kind="solid"
           hierarchy="secondary"
           label={t("ColorsSection.returnToMyTheme")}
-          onPress={props.goToMyTheme}
+          onPress={() => navigate("/theme")}
         />
         <Button
           size="large"
           kind="solid"
           hierarchy="primary"
           label={t("ColorsSection.goToTypography")}
-          onPress={props.goToTypography}
+          onPress={() => navigate("/theme/typography")}
         />
       </Inline>
     </Stack>

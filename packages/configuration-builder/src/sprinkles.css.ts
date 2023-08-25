@@ -6,12 +6,18 @@ import {
   responsivePropertiesConditions,
   responsivePropertiesDefaultCondition,
   responsivePropertiesShorthands,
-  statusProperties,
+  statusProperties as bentoStatusProperties,
   statusPropertiesConditions,
   statusPropertiesDefaultCondition,
 } from "@buildo/bento-design-system";
 
 const spaces = { ...bentoResponsiveProperties.gap, 120: "120px" };
+const backgrounds = {
+  ...bentoStatusProperties.background,
+  "linear-gradient-1": "linear-gradient(285deg, #E0D5F5 0%, #EFE9FA 100%)",
+  "linear-gradient-2": "linear-gradient(285deg, #DCE0FB 0%, #EDEFFD 100%)",
+  "linear-gradient-3": "linear-gradient(285deg, #CCE6FB 0%, #E4F2FD 100%)",
+};
 
 const responsiveProperties = {
   ...bentoResponsiveProperties,
@@ -20,6 +26,11 @@ const responsiveProperties = {
   paddingLeft: spaces,
   paddingRight: spaces,
   gap: spaces,
+};
+
+const statusProperties = {
+  ...bentoStatusProperties,
+  background: backgrounds,
 };
 
 const unconditionalStyles = defineProperties({

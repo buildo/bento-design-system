@@ -1,10 +1,10 @@
 import { useTranslation } from "react-i18next";
-import { ThemeConfig } from "../ThemeConfigurator/ThemeConfigurator";
 import { Actions, Headline, Stack } from "@buildo/bento-design-system";
 import { ColorEditor } from "../ColorEditor/ColorEditor";
 import { ColorPresets } from "./ColorPresets";
 import { HexColor } from "../utils/colorUtils";
 import { defaultColorConfig } from "./defaultColor";
+import { ThemeConfig } from "../ConfiguratorStatusContext";
 
 type SemanticColors = ThemeConfig["colors"]["semantic"];
 

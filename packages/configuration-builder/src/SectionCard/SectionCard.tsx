@@ -35,7 +35,9 @@ type Props = {
 export function SectionCard(props: Props) {
   const { t } = useTranslation();
   const icon = match(props.kind)
-    .with("todo", undefined, () => props.icon({ size: 40 }))
+    .with("todo", undefined, () =>
+      props.icon({ size: 40, color: props.disabled ? "secondary" : "primary" })
+    )
     .with("done", () => <IconCheckCircle size={40} color="interactive" />)
     .exhaustive();
 

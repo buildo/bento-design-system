@@ -2,8 +2,8 @@ import { Button, Headline, Inline, Stack, Actions } from "@buildo/bento-design-s
 import { useTranslation } from "react-i18next";
 import { ColorConfig, ColorEditor } from "../ColorEditor/ColorEditor";
 import { HexColor } from "../utils/colorUtils";
-import { ThemeConfig } from "../ThemeConfigurator/ThemeConfigurator";
 import { defaultColorConfig } from "./defaultColor";
+import { ThemeConfig } from "../ConfiguratorStatusContext";
 
 type BrandColors = ThemeConfig["colors"]["brand"];
 

@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { ColorConfig } from "../ColorEditor/ColorEditor";
-import { ColorsSection } from "../ColorsSection/ColorsSection";
-import { HexColor } from "../utils/colorUtils";
-import { defaultTokens } from "@buildo/bento-design-system";
-import { defaultColorConfig } from "../ColorsSection/defaultColor";
+import { createContext, useContext, useState } from "react";
+import { defaultColorConfig } from "./ColorsSection/defaultColor";
+import { Children, defaultTokens } from "@buildo/bento-design-system";
+import { HexColor } from "./utils/colorUtils";
+import { ColorConfig } from "./ColorEditor/ColorEditor";
 
 type BrandColors =
   | [ColorConfig]
@@ -36,8 +35,19 @@ export type ThemeConfig = {
   };
 };
 
-export function ThemeConfigurator() {
-  const [themeConfig, setThemeConfig] = useState<ThemeConfig>({
+export type ThemeSection = "colors";
+
+type ConfiguratorStatus = {
+  theme: ThemeConfig;
+  sections: { [key in ThemeSection]: boolean };
+  completeSection: (section: ThemeSection) => void;
+  setTheme: (newTheme: ThemeConfig) => void;
+};
+
+export const ConfiguratorStatusContext = createContext<ConfiguratorStatus | null>(null);
+
+export function ConfiguratorStatusProvider(props: { children: Children }) {
+  const [theme, setTheme] = useState<ThemeConfig>({
     colors: {
       brand: [defaultColorConfig(defaultTokens.brandColor.brandPrimary as HexColor)],
       interactive: defaultColorConfig(
@@ -67,11 +77,28 @@ export function ThemeConfigurator() {
     },
   });
 
+  const [sections, setSections] = useState<ConfiguratorStatus["sections"]>({
+    colors: false,
+  });
+
   return (
-    <ColorsSection
-      value={themeConfig.colors}
-      onChange={(colors) => setThemeConfig({ ...themeConfig, colors })}
-      onComplete={() => {}}
-    />
+    <ConfiguratorStatusContext.Provider
+      value={{
+        theme,
+        setTheme: (newTheme) => setTheme(newTheme),
+        sections,
+        completeSection: (section) => setSections({ ...sections, [section]: true }),
+      }}
+    >
+      {props.children}
+    </ConfiguratorStatusContext.Provider>
   );
+}
+
+export function useConfiguratorStatusContext() {
+  const value = useContext(ConfiguratorStatusContext);
+  if (!value) {
+    throw new Error("Missing ConfiguratorStatusContext.Provider");
+  }
+  return value;
 }
