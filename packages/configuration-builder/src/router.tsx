@@ -1,9 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
+import { Home } from "./Home";
+import { ThemeConfigurator } from "./ThemeConfigurator/ThemeConfigurator";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
+  },
+  {
+    path: "/theme",
+    element: <ThemeConfigurator />,
   },
 ]);

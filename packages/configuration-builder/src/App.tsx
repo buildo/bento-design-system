@@ -1,14 +1,16 @@
-import { Stack } from "@buildo/bento-design-system";
+import { Box, Divider } from "@buildo/bento-design-system";
 import { Header } from "./Header/Header";
-import { ThemeConfigurator } from "./ThemeConfigurator/ThemeConfigurator";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
 
-function App() {
+export function App() {
   return (
-    <Stack space={0}>
+    <Box display="flex" flexDirection="column" height="full">
       <Header />
-      <ThemeConfigurator />
-    </Stack>
+      <Divider />
+      <Box display="flex" flexGrow={1} flexDirection="column">
+        <RouterProvider router={router} />
+      </Box>
+    </Box>
   );
 }
-
-export default App;
