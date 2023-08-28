@@ -18,7 +18,7 @@
     "test": {},
     "eslint-check": {},
     "chromatic": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["build"]
     },
     "playroom-start": {
       "dependsOn": ["@buildo/bento-design-system#build"],
