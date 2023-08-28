@@ -1,11 +1,6 @@
-import {
-  Modal as BentoModal,
-  withBentoTheme,
-  BentoThemeProvider,
-} from "@buildo/bento-design-system";
+import { Modal as BentoModal, withBentoTheme, BentoThemeProvider, Button, Inline } from "../";
 import { action } from "@storybook/addon-actions";
 import { useState } from "react";
-import { Button, Inline } from "..";
 import { newTheme } from "./withBentoTheme.css";
 
 export default {

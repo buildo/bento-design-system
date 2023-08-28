@@ -1,4 +1,4 @@
-import { makeBentoTheme } from "@buildo/bento-design-system";
+import { makeBentoTheme } from "..";
 
 export const newTheme = makeBentoTheme({
   interactiveBackgroundColor: {
