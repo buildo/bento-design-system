@@ -1,9 +1,9 @@
-import { TextField } from "@buildo/bento-design-system";
+import { Box, Inline, LocalizedString, TextField } from "@buildo/bento-design-system";
 import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { HexColor, isHexColor } from "../utils/colorUtils";
 
 type Props = {
+  label: LocalizedString;
   value: HexColor;
   onChange: (value: HexColor) => void;
   isReadOnly?: boolean;
@@ -11,23 +11,25 @@ type Props = {
 
 export function HexColorField(props: Props) {
   const [value, setValue] = useState<string>(props.value);
-  const { t } = useTranslation();
 
   useEffect(() => {
     setValue(props.value);
   }, [props.value]);
 
   return (
-    <TextField
-      label={t("ColorEditor.hexValue")}
-      value={value}
-      onChange={(value) => {
-        setValue(value);
-        if (isHexColor(value)) {
-          props.onChange(value);
-        }
-      }}
-      isReadOnly={props.isReadOnly}
-    />
+    <Inline space={12} alignY="bottom">
+      <TextField
+        label={props.label}
+        value={value}
+        onChange={(value) => {
+          setValue(value);
+          if (isHexColor(value)) {
+            props.onChange(value);
+          }
+        }}
+        isReadOnly={props.isReadOnly}
+      />
+      <Box borderRadius="circled" style={{ width: 48, height: 48, backgroundColor: props.value }} />
+    </Inline>
   );
 }

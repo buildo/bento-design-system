@@ -1,89 +1,73 @@
-import { Box, Title } from "@buildo/bento-design-system";
+import { Box } from "@buildo/bento-design-system";
 import { LightnessInterpolation } from "./ColorEditor";
-import { useTranslation } from "react-i18next";
-import { HexColor, HexToHSL } from "../utils/colorUtils";
-import { IconLockSimple } from "../Icons/IconLockSimple";
+import { useState } from "react";
+import { IconEyedropper } from "../Icons/IconEyedropper";
+import { HSLToHex, HexColor } from "../utils/colorUtils";
 
 type Props = {
-  keyColor: HexColor;
-  keyColorLocked: boolean;
   hue: number;
   saturation: number;
   lightnessInterpolation: LightnessInterpolation;
 };
 
 const interpolations: Record<LightnessInterpolation, number[]> = {
-  Linear: [10, 19, 28, 37, 46, 55, 64, 73, 82, 91, 97],
-  EaseIn: [10, 21, 32, 43, 54, 65, 75, 82, 88, 93, 97],
-  EaseOut: [10, 14, 19, 25, 32, 42, 53, 64, 75, 86, 97],
-  EaseInOut: [10, 14, 20, 28, 41, 54, 67, 79, 87, 93, 97],
+  Linear: [97, 91, 82, 73, 64, 55, 46, 37, 28, 19, 10],
+  EaseIn: [97, 93, 88, 82, 75, 65, 54, 43, 32, 21, 10],
+  EaseOut: [97, 86, 75, 64, 53, 42, 32, 25, 19, 14, 10],
+  EaseInOut: [97, 93, 87, 79, 67, 54, 41, 28, 20, 14, 10],
 };
 
-function findLightnessCloserToKeyColor(keyColorLightness: number, lightnesses: number[]) {
-  for (let i = 0; i < lightnesses.length; i++) {
-    if (lightnesses[i] > keyColorLightness) {
-      if (i === 0) return lightnesses[i];
-      const previousLightness = lightnesses[i - 1];
-      if (keyColorLightness - previousLightness < lightnesses[i] - keyColorLightness) {
-        return previousLightness;
-      } else {
-        return lightnesses[i];
-      }
-    }
+export function PaletteColorBox(props: { color: HexColor }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  function copyToClipboard() {
+    navigator.clipboard.writeText(props.color);
   }
+
+  return (
+    <Box
+      flexGrow={1}
+      padding={16}
+      borderRadius={16}
+      style={{
+        flexBasis: "100%",
+        backgroundColor: props.color,
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      onClick={copyToClipboard}
+      cursor="pointer"
+    >
+      {isHovered && (
+        <Box borderRadius={8} padding={8} background="backgroundDarkScrim">
+          <IconEyedropper size={24} color="primaryInverse" />
+        </Box>
+      )}
+    </Box>
+  );
 }
 
 export function Palette(props: Props) {
   const { hue, saturation, lightnessInterpolation } = props;
 
-  const keyColorHSL = HexToHSL(props.keyColor);
-  const keyColorLightness = keyColorHSL.l;
-
   const lightnesses = interpolations[lightnessInterpolation];
-  const closestLightness = findLightnessCloserToKeyColor(keyColorLightness, lightnesses);
-
-  const { t } = useTranslation();
 
   return (
-    <Box display="flex" gap={16} flexDirection="column" flexGrow={1} height="full" width="full">
-      <Title size="small">{t("ColorEditor.palette")}</Title>
+    <Box
+      display="flex"
+      gap={16}
+      flexDirection="column"
+      flexGrow={1}
+      width="full"
+      style={{ height: 160 }}
+    >
       <Box display="flex" gap={4} flexGrow={1}>
         {lightnesses.map((lightness) => {
-          const isKeyColorLightness = lightness === closestLightness;
-
-          const backgroundColor =
-            isKeyColorLightness && props.keyColorLocked
-              ? `hsl(${keyColorHSL.h}, ${keyColorHSL.s}%, ${keyColorHSL.l}%)`
-              : `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-
-          return (
-            <Box
-              flexGrow={1}
-              key={lightness}
-              padding={16}
-              borderRadius={16}
-              style={{
-                flexBasis: "100%",
-                backgroundColor,
-              }}
-            >
-              {isKeyColorLightness && (
-                <Box
-                  display="flex"
-                  width={24}
-                  height={24}
-                  background="backgroundLightScrim"
-                  borderRadius={8}
-                  alignItems="center"
-                  justifyContent="center"
-                  margin="negative8"
-                  aria-label={t("ColorEditor.keyColor")}
-                >
-                  <IconLockSimple size={16} color="primary" />
-                </Box>
-              )}
-            </Box>
-          );
+          const color = HSLToHex({ h: hue, s: saturation, l: lightness });
+          return <PaletteColorBox color={color} key={lightness} />;
         })}
       </Box>
     </Box>

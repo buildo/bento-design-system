@@ -278,6 +278,10 @@ importers:
     specifiers:
       '@buildo/bento-design-system': workspace:*
       '@phosphor-icons/react': 2.0.10
+      '@react-aria/i18n': 3.8.1
+      '@react-aria/numberfield': 3.6.0
+      '@react-stately/numberfield': 3.6.0
+      '@react-types/numberfield': 3.5.0
       '@tsconfig/vite-react': 2.0.0
       '@types/react': ^18
       '@types/react-dom': 18.2.7
@@ -297,12 +301,16 @@ importers:
     dependencies:
       '@buildo/bento-design-system': link:../bento-design-system
       '@phosphor-icons/react': 2.0.10_biqbaboplfbrettd7655fr4n2y
+      '@react-aria/i18n': 3.8.1_react@18.2.0
+      '@react-aria/numberfield': 3.6.0_biqbaboplfbrettd7655fr4n2y
+      '@react-stately/numberfield': 3.6.0_react@18.2.0
       i18next: 22.5.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-i18next: 12.3.1_spyi3zqm3bqfobczid2f6jym6y
       ts-pattern: 5.0.5
     devDependencies:
+      '@react-types/numberfield': 3.5.0_react@18.2.0
       '@tsconfig/vite-react': 2.0.0
       '@types/react': 18.2.14
       '@types/react-dom': 18.2.7
@@ -5340,6 +5348,28 @@ packages:
       '@react-types/button': 3.7.4_react@18.2.0
       '@react-types/menu': 3.9.3_react@18.2.0
       '@react-types/shared': 3.19.0_react@18.2.0
+      '@swc/helpers': 0.5.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@react-aria/numberfield/3.6.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-LbtRS/JciPicYLjqAP87gufInzZ2rlOQlKu0tQK8l/Hwc2cPOWUldDXbrGgxrXwbMxfEASmfI6qYz8uhTGmIyw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || 18
+      react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || 18
+    dependencies:
+      '@react-aria/i18n': 3.8.1_react@18.2.0
+      '@react-aria/interactions': 3.17.0_react@18.2.0
+      '@react-aria/live-announcer': 3.3.1
+      '@react-aria/spinbutton': 3.5.1_biqbaboplfbrettd7655fr4n2y
+      '@react-aria/textfield': 3.11.0_react@18.2.0
+      '@react-aria/utils': 3.19.0_react@18.2.0
+      '@react-stately/numberfield': 3.6.0_react@18.2.0
+      '@react-types/button': 3.7.4_react@18.2.0
+      '@react-types/numberfield': 3.5.0_react@18.2.0
+      '@react-types/shared': 3.19.0_react@18.2.0
+      '@react-types/textfield': 3.7.3_react@18.2.0
       '@swc/helpers': 0.5.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
