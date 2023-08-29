@@ -4,7 +4,6 @@ import { BodyProps } from "../Typography/Body/Body";
 import { LabelProps } from "../Typography/Label/Label";
 import { BorderRadiusConfig } from "../util/BorderRadiusConfig";
 import { Children } from "../util/Children";
-import { vars } from "../vars.css";
 
 export type DateFieldConfig = {
   radius: BorderRadiusConfig;
@@ -18,8 +17,8 @@ export type DateFieldConfig = {
     open: (props: IconProps) => Children;
     close: (props: IconProps) => Children;
   };
-  dayWidth: keyof typeof vars.space;
-  dayHeight: keyof typeof vars.space;
+  dayWidth: number;
+  dayHeight: number;
   dayRadius: BorderRadiusConfig;
   daySize: BodyProps["size"];
 };
