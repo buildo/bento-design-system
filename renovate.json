@@ -9,6 +9,7 @@
     ":combinePatchMinorReleases",
     ":pinAllExceptPeerDependencies"
   ],
+  "schedule": ["after 1am and before 10am on Monday"],
   "labels": ["dependencies"],
   "automerge": true,
   "packageRules": [
@@ -25,6 +26,5 @@
       "allowedVersions": "<=2"
     }
   ],
-  "prHourlyLimit": 1,
   "prConcurrentLimit": 2
 }
