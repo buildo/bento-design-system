@@ -17,7 +17,7 @@
     "@buildo/bento-design-system": "workspace:*",
     "@phosphor-icons/react": "2.0.10",
     "@react-aria/i18n": "3.8.1",
-    "@react-aria/numberfield": "3.6.0",
+    "@react-aria/numberfield": "3.7.0",
     "@react-stately/numberfield": "3.6.0",
     "i18next": "22.5.1",
     "react": "18.2.0",
