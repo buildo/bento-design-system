@@ -1,6 +1,7 @@
 import { createVar, style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
+import { vars } from "../vars.css";
 
 export const topLeftRadius = createVar();
 export const topRightRadius = createVar();
@@ -81,6 +82,8 @@ export const dayRecipe = strictRecipe({
     bentoSprinkles({
       display: "flex",
       cursor: "pointer",
+      width: 40,
+      height: 40,
       alignItems: "center",
       justifyContent: "center",
       outline: "none",
@@ -88,23 +91,15 @@ export const dayRecipe = strictRecipe({
   ],
   variants: {
     style: {
-      default: [
-        bentoSprinkles({
-          background: {
-            hover: "backgroundSecondary",
-          },
-          color: {
-            default: "textPrimary",
-            disabled: "textDisabled",
-          },
-        }),
-        style({
-          borderTopLeftRadius: topLeftRadius,
-          borderBottomLeftRadius: bottomLeftRadius,
-          borderTopRightRadius: topRightRadius,
-          borderBottomRightRadius: bottomRightRadius,
-        }),
-      ],
+      default: bentoSprinkles({
+        background: {
+          hover: "backgroundSecondary",
+        },
+        color: {
+          default: "textPrimary",
+          disabled: "textDisabled",
+        },
+      }),
       selectedStart: [
         bentoSprinkles({
           color: { default: "foregroundPrimaryInverse", hover: "textPrimary" },
@@ -125,15 +120,10 @@ export const dayRecipe = strictRecipe({
           borderBottomRightRadius: bottomRightRadius,
         }),
       ],
-      selectedRange: [
-        bentoSprinkles({
-          color: "textPrimary",
-          background: { default: "backgroundInteractiveOverlay", hover: "backgroundSecondary" },
-        }),
-        style({
-          borderRadius: 0,
-        }),
-      ],
+      selectedRange: bentoSprinkles({
+        color: "textPrimary",
+        background: { default: "backgroundInteractiveOverlay", hover: "backgroundSecondary" },
+      }),
       selected: [
         bentoSprinkles({
           color: { default: "foregroundPrimaryInverse", hover: "textPrimary" },
@@ -161,13 +151,17 @@ export const dayRecipe = strictRecipe({
   },
 });
 
-export const selector = bentoSprinkles({
-  paddingX: 16,
-  paddingY: 8,
-  borderRadius: 4,
-  background: {
-    default: "secondaryTransparentEnabledBackground",
-    focus: "secondaryTransparentFocusBackground",
-    hover: "secondaryTransparentHoverBackground",
+export const dateSegment = style([
+  bentoSprinkles({ outline: { focus: "none" } }),
+  {
+    selectors: {
+      "&[data-placeholder=true]": {
+        color: vars.textColor.textSecondary,
+      },
+      "&:focus:not([readonly])": {
+        borderBottom: `1px solid ${vars.textColor.textSecondary}`,
+        marginBottom: "-1px",
+      },
+    },
   },
-});
+]);

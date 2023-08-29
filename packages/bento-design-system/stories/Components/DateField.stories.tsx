@@ -1,23 +1,38 @@
-import { DateField, DateFieldProps } from "..";
+import { DateField, DateFieldProps } from "../../src/DateField/DateField";
+import { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
 import {
+  CalendarDate,
+  getLocalTimeZone,
+  today as _today,
+  getDayOfWeek,
   startOfWeek,
   endOfWeek,
   startOfMonth,
   endOfMonth,
   startOfYear,
   endOfYear,
-  addMonths,
-  startOfToday,
-  addWeeks,
-  addDays,
-} from "date-fns";
+} from "@internationalized/date";
+import isChromatic from "chromatic";
 import { screen, waitFor } from "@storybook/testing-library";
-import isChromatic from "chromatic/isChromatic";
-import { Meta, StoryObj } from "@storybook/react";
+
+const ControlledDateField = (props: Omit<DateFieldProps, "value" | "onChange">) => {
+  const [value, setValue] = useState<CalendarDate | null>(null);
+  return (
+    <DateField
+      {...props}
+      value={value}
+      onChange={(value) => {
+        setValue(value);
+      }}
+    />
+  );
+};
 
 const meta = {
-  component: DateField,
+  component: ControlledDateField,
   args: {
+    type: "single",
     name: "date",
     label: "Date",
     assistiveText: "This is your favorite date",
@@ -29,64 +44,39 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const today = startOfToday();
-const value = new Date(2022, 1, 4);
+const today = _today(getLocalTimeZone());
 
-export const SingleDate = {
-  args: {
-    value,
-  },
-} satisfies Story;
+export const SingleDate = {} satisfies Story;
 
 export const Disabled = {
   args: {
-    value: null,
     disabled: true,
   },
 } satisfies Story;
 
 export const ReadOnly = {
   args: {
-    value,
     readOnly: true,
   },
 } satisfies Story;
 
-export const Range = {
-  args: {
-    value: [value, addDays(value, 2)],
-    type: "range",
-  },
-} satisfies Story;
-
-const inOneWeek = addWeeks(today, 1);
+const inOneWeek = today.add({ weeks: 1 });
 export const SingleWithMinMax = {
   args: {
-    value: null,
     minDate: today,
     maxDate: inOneWeek,
     assistiveText: "You can select a date between today and one week from now",
   },
 } satisfies Story;
 
-const inOneMonth = addMonths(today, 1);
-export const RangeWithMinMax = {
-  args: {
-    value: [null, null],
-    type: "range",
-    minDate: today,
-    maxDate: inOneMonth,
-    assistiveText: "You can select a date between today and one month from now",
-  },
-} satisfies Story;
-
+const inOneMonth = today.add({ months: 1 });
 export const SingleWithShortcuts = {
   args: {
     value: null,
     shortcuts: [
       {
         label: "Today",
-        value: new Date(),
+        value: today,
       },
       {
         label: "In a week",
@@ -99,41 +89,20 @@ export const SingleWithShortcuts = {
     ],
   },
 } satisfies Story;
-
-export const RangeWithShortcuts = {
-  args: {
-    value: [null, null],
-    type: "range",
-    shortcuts: [
-      {
-        label: "This Week",
-        value: [startOfWeek(today), endOfWeek(today)],
-      },
-      {
-        label: "This Month",
-        value: [startOfMonth(today), endOfMonth(today)],
-      },
-      {
-        label: "This Year",
-        value: [startOfYear(today), endOfYear(today)],
-      },
-    ],
-  },
-};
-
 export const DisabledDates = {
   args: {
-    shouldDisableDate: (date: Date) => date.getDay() === 0,
+    shouldDisableDate: (date: CalendarDate) => getDayOfWeek(date, "en-EN") === 0,
   },
 };
-
 export const CalendarOpen = {
   args: {
-    value,
+    value: today,
   },
   play: async () => {
-    const input = screen.getByRole("textbox");
-    await waitFor(() => input.click());
+    const button = screen.getByRole("button");
+    await waitFor(async () => {
+      await button.click();
+    });
     // wait a bit to see if it solves Chromatic snapshot flakiness
     await new Promise((resolve) => setTimeout(resolve, 1000));
   },
@@ -147,3 +116,39 @@ export const CalendarOpen = {
       ]
     : [],
 } satisfies Story;
+
+export const Range = {
+  args: {
+    value: [today, today.add({ days: 2 })],
+    type: "range",
+  },
+} satisfies Story;
+export const RangeWithMinMax = {
+  args: {
+    value: [null, null],
+    type: "range",
+    minDate: today,
+    maxDate: inOneMonth,
+    assistiveText: "You can select a date between today and one month from now",
+  },
+} satisfies Story;
+export const RangeWithShortcuts = {
+  args: {
+    value: [null, null],
+    type: "range",
+    shortcuts: [
+      {
+        label: "This Week",
+        value: [startOfWeek(today, "en-EN"), endOfWeek(today, "en-EN")],
+      },
+      {
+        label: "This Month",
+        value: [startOfMonth(today), endOfMonth(today)],
+      },
+      {
+        label: "This Year",
+        value: [startOfYear(today), endOfYear(today)],
+      },
+    ],
+  },
+};
