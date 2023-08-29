@@ -121,7 +121,7 @@
     "react-is": "18.2.0",
     "react-select": "5.7.4",
     "react-table": "7.8.0",
-    "recharts": "2.7.3",
+    "recharts": "2.8.0",
     "ts-pattern": "3.3.5"
   },
   "devDependencies": {

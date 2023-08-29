@@ -132,7 +132,7 @@ importers:
       react-is: 18.2.0
       react-select: 5.7.4
       react-table: 7.8.0
-      recharts: 2.7.3
+      recharts: 2.8.0
       storybook: 7.3.2
       storybook-addon-themes: 6.1.0
       style-loader: 3.3.3
@@ -200,7 +200,7 @@ importers:
       react-is: 18.2.0
       react-select: 5.7.4_qzycrpzqvmvb7wd2jdibmpq2cy
       react-table: 7.8.0_react@18.2.0
-      recharts: 2.7.3_v2m5e27vhdewzwhryxwfaorcca
+      recharts: 2.8.0_v2m5e27vhdewzwhryxwfaorcca
       ts-pattern: 3.3.5
     devDependencies:
       '@babel/core': 7.22.11
@@ -16836,8 +16836,8 @@ packages:
       decimal.js-light: 2.5.1
     dev: false
 
-  /recharts/2.7.3_v2m5e27vhdewzwhryxwfaorcca:
-    resolution: {integrity: sha512-cKoO9jUZRQavn06H6Ih2EcG82zUNdQH3OEGWVCmluSDyp3d7fIpDAsbMTd8hE8+T+MD8P76iicv/J4pJspDP7A==}
+  /recharts/2.8.0_v2m5e27vhdewzwhryxwfaorcca:
+    resolution: {integrity: sha512-nciXqQDh3aW8abhwUlA4EBOBusRHLNiKHfpRZiG/yjups1x+auHb2zWPuEcTn/IMiN47vVMMuF8Sr+vcQJtsmw==}
     engines: {node: '>=12'}
     peerDependencies:
       prop-types: ^15.6.0
