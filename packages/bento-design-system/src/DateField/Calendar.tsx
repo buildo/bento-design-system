@@ -85,8 +85,10 @@ function CalendarGrid(
 }
 
 export function CalendarPopover(
-  props: {
-    type: "single" | "range";
+  props: (
+    | { type: "single"; state: CalendarState }
+    | { type: "range"; state: RangeCalendarState }
+  ) & {
     prevButtonProps: AriaButtonProps<"button">;
     nextButtonProps: AriaButtonProps<"button">;
     onClose: () => void;
@@ -126,6 +128,14 @@ export function CalendarPopover(
     shouldFlip: true,
   });
 
+  const gridProps =
+    props.type === "single"
+      ? {
+          type: "single" as const,
+          state: state as CalendarState,
+        }
+      : { type: "range" as const, state: state as RangeCalendarState };
+
   return createPortal(
     <Box
       className={calendar}
@@ -145,7 +155,7 @@ export function CalendarPopover(
           minDate={state.minValue}
           maxDate={state.maxValue}
         />
-        <CalendarGrid type={props.type} state={state as any} />
+        <CalendarGrid {...gridProps} />
         {props.shortcuts && <Box style={{ maxWidth: config.dayWidth * 7 }}>{props.shortcuts}</Box>}
       </Stack>
     </Box>
