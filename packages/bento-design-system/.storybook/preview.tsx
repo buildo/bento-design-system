@@ -2,6 +2,9 @@ import { defaultMessages } from "../src/defaultMessages/en";
 import { BentoProvider } from "../stories";
 import { useArgs } from "@storybook/addons";
 import { Decorator } from "@storybook/react";
+import "@fontsource/lexend/400.css";
+import "@fontsource/lexend/500.css";
+import "@fontsource/lexend/600.css";
 
 export const decorators: Decorator[] = [
   (Story) => (
