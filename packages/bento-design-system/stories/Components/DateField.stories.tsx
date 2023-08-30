@@ -97,7 +97,7 @@ export const DisabledDates = {
 };
 export const CalendarOpen = {
   args: {
-    value: today,
+    value: new CalendarDate(2022, 2, 4),
   },
   play: async () => {
     const button = screen.getByRole("button");

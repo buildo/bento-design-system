@@ -81,7 +81,13 @@ function SingleDateField({ disabled, readOnly, ...props }: Extract<Props, { type
       errorMessageProps={errorMessageProps}
     >
       <Box {...groupProps} ref={ref}>
-        <Input type="single" fieldProps={fieldProps} buttonProps={buttonProps} ref={ref} />
+        <Input
+          type="single"
+          fieldProps={fieldProps}
+          buttonProps={buttonProps}
+          ref={ref}
+          isCalendarOpen={state.isOpen}
+        />
       </Box>
       {state.isOpen && (
         <Calendar
@@ -160,6 +166,7 @@ function RangeDateField({ disabled, readOnly, ...props }: Extract<Props, { type:
           fieldProps={{ start: startFieldProps, end: endFieldProps }}
           buttonProps={buttonProps}
           ref={ref}
+          isCalendarOpen={state.isOpen}
         />
       </Box>
       {state.isOpen && (

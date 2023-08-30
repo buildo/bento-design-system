@@ -35,7 +35,7 @@ export const dateFieldRecipe = strictRecipe({
       invalid: {},
       notSet: {},
     },
-    isFocused: {
+    isCalendarOpen: {
       true: {},
     },
   },
@@ -43,7 +43,7 @@ export const dateFieldRecipe = strictRecipe({
     {
       variants: {
         validation: "valid",
-        isFocused: true,
+        isCalendarOpen: true,
       },
       style: bentoSprinkles({
         boxShadow: { default: "outlineInputFocus", hover: "outlineInputFocus" },
@@ -52,7 +52,7 @@ export const dateFieldRecipe = strictRecipe({
     {
       variants: {
         validation: "invalid",
-        isFocused: true,
+        isCalendarOpen: true,
       },
       style: bentoSprinkles({
         boxShadow: { default: "outlineNegativeStrong", hover: "outlineNegativeStrong" },

@@ -34,6 +34,7 @@ type Props = (
     }
 ) & {
   buttonProps: AriaButtonProps<"button">;
+  isCalendarOpen: boolean;
   ref: RefObject<HTMLInputElement>;
 };
 
@@ -124,7 +125,7 @@ export function Input(props: Props) {
           size: config.fontSize,
           ellipsis: false,
         }),
-        dateFieldRecipe({ validation: validationState }),
+        dateFieldRecipe({ validation: validationState, isCalendarOpen: props.isCalendarOpen }),
         {
           readOnly: isReadOnly,
         },
