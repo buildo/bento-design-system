@@ -74,6 +74,7 @@ function SingleDateField({ disabled, readOnly, ...props }: Extract<Props, { type
   return (
     <Field
       {...props}
+      disabled={disabled}
       labelProps={labelProps}
       assistiveTextProps={descriptionProps}
       errorMessageProps={errorMessageProps}
@@ -147,6 +148,7 @@ function RangeDateField({ disabled, readOnly, ...props }: Extract<Props, { type:
   return (
     <Field
       {...props}
+      disabled={disabled}
       labelProps={labelProps}
       assistiveTextProps={descriptionProps}
       errorMessageProps={errorMessageProps}
