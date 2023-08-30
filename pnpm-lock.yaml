@@ -82,7 +82,7 @@ importers:
       '@storybook/types': 7.4.0
       '@testing-library/dom': 9.3.1
       '@testing-library/jest-dom': 5.17.0
-      '@testing-library/react': 13.4.0
+      '@testing-library/react': 14.0.0
       '@testing-library/react-hooks': 8.0.1
       '@testing-library/user-event': 14.4.3
       '@types/lodash.orderby': 4.6.7
@@ -227,7 +227,7 @@ importers:
       '@storybook/types': 7.4.0
       '@testing-library/dom': 9.3.1
       '@testing-library/jest-dom': 5.17.0
-      '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
+      '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/react-hooks': 8.0.1_qzycrpzqvmvb7wd2jdibmpq2cy
       '@testing-library/user-event': 14.4.3_@testing-library+dom@9.3.1
       '@types/lodash.orderby': 4.6.7
@@ -7270,20 +7270,6 @@ packages:
     dependencies:
       defer-to-connect: 1.1.3
 
-  /@testing-library/dom/8.20.1:
-    resolution: {integrity: sha512-/DiOQ5xBxgdYRC8LNk7U+RWat0S3qRLeIw3ZIkMQ9kkVlRmwD/Eg8k8CqIpD6GW7u20JIUOfMKbxtiLutpjQ4g==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@babel/code-frame': 7.22.10
-      '@babel/runtime': 7.22.5
-      '@types/aria-query': 5.0.1
-      aria-query: 5.1.3
-      chalk: 4.1.2
-      dom-accessibility-api: 0.5.16
-      lz-string: 1.5.0
-      pretty-format: 27.5.1
-    dev: true
-
   /@testing-library/dom/9.3.1:
     resolution: {integrity: sha512-0DGPd9AR3+iDTjGoMpxIkAsUihHZ3Ai6CneU6bRRrffXMgzCdlNk43jTrD2/5LT6CBb3MWTP8v510JzYtahD2w==}
     engines: {node: '>=14'}
@@ -7336,15 +7322,15 @@ packages:
       react-error-boundary: 3.1.4_react@18.2.0
     dev: true
 
-  /@testing-library/react/13.4.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-sXOGON+WNTh3MLE9rve97ftaZukN3oNf2KjDy7YTx6hcTO2uuLHuCGynMDhFwGw/jYf4OJ2Qk0i4i79qMNNkyw==}
-    engines: {node: '>=12'}
+  /@testing-library/react/14.0.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-S04gSNJbYE30TlIMLTzv6QCTzt9AqIF5y6s6SzVFILNcNvbV/jU96GeiTPillGQo+Ny64M/5PV7klNYYgv5Dfg==}
+    engines: {node: '>=14'}
     peerDependencies:
       react: ^18.0.0 || 18
       react-dom: ^18.0.0 || 18
     dependencies:
       '@babel/runtime': 7.22.5
-      '@testing-library/dom': 8.20.1
+      '@testing-library/dom': 9.3.1
       '@types/react-dom': 18.2.7
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
