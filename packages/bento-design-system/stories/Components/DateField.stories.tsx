@@ -16,8 +16,8 @@ import {
 import isChromatic from "chromatic";
 import { screen, waitFor } from "@storybook/testing-library";
 
-const ControlledDateField = (props: Omit<DateFieldProps, "value" | "onChange">) => {
-  const [value, setValue] = useState<CalendarDate | null>(null);
+const ControlledDateField = (props: Omit<DateFieldProps, "onChange">) => {
+  const [value, setValue] = useState<CalendarDate | null>(props.value);
   return (
     <DateField
       {...props}
@@ -56,6 +56,7 @@ export const Disabled = {
 
 export const ReadOnly = {
   args: {
+    value: new CalendarDate(2022, 2, 4),
     readOnly: true,
   },
 } satisfies Story;

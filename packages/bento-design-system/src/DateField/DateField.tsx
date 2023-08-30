@@ -40,6 +40,7 @@ function SingleDateField({ disabled, readOnly, ...props }: Extract<Props, { type
     minValue: props.minDate,
     maxValue: props.maxDate,
     isDateUnavailable: props.shouldDisableDate,
+    shouldForceLeadingZeros: true,
   } as const;
   const state = useDatePickerState(internalProps);
   const ref = useRef(null);
