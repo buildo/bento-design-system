@@ -2,9 +2,7 @@ import "./theme.css";
 import "../src/reset.css";
 import "../src/global.css";
 import "../src/defaultTheme.css";
-import "@fontsource/lexend/400.css";
-import "@fontsource/lexend/500.css";
-import "@fontsource/lexend/600.css";
+
 import { createBentoProvider, defaultConfigs, withBentoConfig, Tabs, Actions } from "../src";
 import { sprinkles } from "./sprinkles.css";
 

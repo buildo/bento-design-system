@@ -1,5 +1,5 @@
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
+// @ts-expect-error
 import * as path from "path";
 import type { StorybookConfig } from "@storybook/react-vite";
 import { mergeConfig } from "vite";

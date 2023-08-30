@@ -6171,7 +6171,7 @@ packages:
       error-stack-parser: 2.1.4
       string-width: 4.2.3
       strip-ansi: 6.0.1
-      webpack: 5.88.2_xv6o4afsychpgm2yejy2midhya
+      webpack: 5.88.2
 
   /@storybook/addon-actions/7.4.0_uxzdvyigevn6hawdlr7isnvh64:
     resolution: {integrity: sha512-0lHLLUlrGE7CBFrfmAXrBKu7fUIsiQlnNekuE3cIAjSgVR481bJEzYHUUoMATqpPC4GGErBdP1CZxVDDwWV8jA==}
@@ -8559,7 +8559,7 @@ packages:
       chalk: 4.1.2
       debug: 4.3.4
       loader-utils: 2.0.4
-      webpack: 5.88.2_xv6o4afsychpgm2yejy2midhya
+      webpack: 5.88.2
     transitivePeerDependencies:
       - supports-color
 
@@ -9309,7 +9309,7 @@ packages:
       '@babel/core': 7.22.11
       find-cache-dir: 3.3.2
       schema-utils: 4.2.0
-      webpack: 5.88.2_xv6o4afsychpgm2yejy2midhya
+      webpack: 5.88.2
 
   /babel-plugin-add-module-exports/0.2.1:
     resolution: {integrity: sha512-3AN/9V/rKuv90NG65m4tTHsI04XrCKsWbztIcW7a8H5iIN7WlvWucRtVV0V/rT4QvtA11n5Vmp20fLwfMWqp6g==}
@@ -11453,7 +11453,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.62.0_jkonsiqll5kf7uvjobvewtpypa
+      '@typescript-eslint/parser': 5.62.0_cgvy6hrg3pjeapqw5wnuqcmdo4
       debug: 3.2.7
       eslint: 8.48.0
       eslint-import-resolver-node: 0.3.7
@@ -11486,7 +11486,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.62.0_jkonsiqll5kf7uvjobvewtpypa
+      '@typescript-eslint/parser': 5.62.0_cgvy6hrg3pjeapqw5wnuqcmdo4
       array-includes: 3.1.6
       array.prototype.flat: 1.3.1
       array.prototype.flatmap: 1.3.1
@@ -12888,7 +12888,7 @@ packages:
       lodash: 4.17.21
       pretty-error: 4.0.0
       tapable: 2.2.1
-      webpack: 5.88.2_xv6o4afsychpgm2yejy2midhya
+      webpack: 5.88.2
 
   /htmlparser2/6.1.0:
     resolution: {integrity: sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==}
