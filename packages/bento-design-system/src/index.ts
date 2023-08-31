@@ -1,3 +1,7 @@
+// Mark all components as "client components" so that they can be used in Server Components
+// In the future we may decide to be more granular with this, but this at least ensures
+// good compatibility out of the box.
+"use client";
 import "./reset.css";
 import "./global.css";
 import * as icons from "./Icons";
