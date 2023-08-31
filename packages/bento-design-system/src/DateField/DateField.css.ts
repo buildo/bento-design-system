@@ -152,7 +152,7 @@ export const dayRecipe = strictRecipe({
 });
 
 export const dateSegment = style([
-  bentoSprinkles({ outline: { focus: "none" } }),
+  bentoSprinkles({ outline: { focus: "none" }, textTransform: "uppercase" }),
   {
     selectors: {
       "&[data-placeholder=true]": {
