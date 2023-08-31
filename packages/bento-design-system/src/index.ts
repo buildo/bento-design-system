@@ -25,8 +25,8 @@ export * from "./CheckboxGroupField/CheckboxGroupField";
 export * from "./Chip/Chip";
 export * from "./ContentBlock/ContentBlock";
 export * from "./ContentWithSidebar/ContentWithSidebar";
-export * from "./DateField/DateField";
 export * from "./DateField/Calendar";
+export * from "./DateField/DateField";
 export * from "./Disclosure/Disclosure";
 export * from "./DisclosureGroup/DisclosureGroup";
 export * from "./Divider/Divider";
@@ -127,4 +127,4 @@ export { useComponentsShowcase } from "./useComponentsShowcase";
 
 export type { ClassValue } from "clsx";
 
-export { Time } from "@internationalized/date";
+export type { Time, CalendarDate, DateValue } from "@internationalized/date";
