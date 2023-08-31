@@ -97,7 +97,7 @@ export function MyTheme() {
 
   return (
     <Box display="flex" flexGrow={1} overflowY="auto" flexDirection="column">
-      <Box display="flex">
+      <Box display="flex" flexGrow={1}>
         <MainColumn
           title={t("Theme.Foundations.title")}
           description={t("Theme.Foundations.description")}
