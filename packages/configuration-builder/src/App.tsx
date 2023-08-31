@@ -7,7 +7,9 @@ export function App() {
   return (
     <Box display="flex" flexDirection="column" height="full">
       <Header />
-      <Divider />
+      <Box flexShrink={0}>
+        <Divider />
+      </Box>
       <Box display="flex" flexGrow={1} flexDirection="column">
         <RouterProvider router={router} />
       </Box>
