@@ -22,6 +22,7 @@ import { getReadOnlyBackgroundStyle } from "../Field/utils";
 import { match, __ } from "ts-pattern";
 import { dateFieldRecipe, dateSegment } from "./DateField.css";
 import { ValidationState } from "@react-types/shared";
+import { Column, Columns } from "../Layout/Columns";
 
 type Props = (
   | { type: "single"; fieldProps: AriaDateFieldOptions<CalendarDate> }
@@ -44,7 +45,15 @@ function DateSegment({ segment, state }: { segment: DateSegmentType; state: Date
   const config = useBentoConfig().input;
 
   return (
-    <Box {...segmentProps} ref={ref} className={dateSegment} readOnly={state.isReadOnly}>
+    <Box
+      {...segmentProps}
+      ref={ref}
+      className={dateSegment}
+      readOnly={state.isReadOnly}
+      // Note: we override aria-disabled and data-placeholder because they're not set for dividers
+      aria-disabled={state.isDisabled}
+      data-placeholder={!state.value}
+    >
       <Body size={config.fontSize} color="inherit">
         {segment.text}
       </Body>
@@ -138,11 +147,13 @@ export function Input(props: Props) {
       {props.type === "single" ? (
         <DateField fieldProps={props.fieldProps} />
       ) : (
-        <Inline space={16}>
+        <Columns space={16}>
           <DateField fieldProps={props.fieldProps.start} />
-          <IconMinus size={24} />
+          <Column width="content">
+            <IconMinus size={24} />
+          </Column>
           <DateField fieldProps={props.fieldProps.end} />
-        </Inline>
+        </Columns>
       )}
       {!isReadOnly && (
         <Box

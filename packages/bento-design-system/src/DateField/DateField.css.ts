@@ -161,6 +161,7 @@ export const dateSegment = style([
       "&[data-placeholder=true][aria-disabled=true]": {
         color: vars.textColor.textDisabled,
       },
+
       "&:focus:not([readonly])": {
         borderBottom: `1px solid ${vars.textColor.textSecondary}`,
         marginBottom: "-1px",
