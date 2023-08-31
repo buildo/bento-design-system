@@ -19,6 +19,9 @@ categories:
   - title: "📚 Documentation"
     labels:
       - "documentation"
+  - title: "⚙️ Configurator"
+    labels:
+      - "configurator"
 version-resolver:
   minor:
     labels:
