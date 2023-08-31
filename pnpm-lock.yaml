@@ -294,6 +294,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 6.5.0
       '@typescript-eslint/parser': 6.5.0
       '@vanilla-extract/css': 1.12.0
+      '@vanilla-extract/recipes': 0.5.0
       '@vanilla-extract/sprinkles': 1.6.1
       '@vanilla-extract/vite-plugin': 3.8.2
       '@vitejs/plugin-react': 4.0.4
@@ -316,6 +317,7 @@ importers:
       '@react-aria/numberfield': 3.7.0_biqbaboplfbrettd7655fr4n2y
       '@react-stately/numberfield': 3.6.0_react@18.2.0
       '@vanilla-extract/css': 1.12.0
+      '@vanilla-extract/recipes': 0.5.0_zd2pmj2rl4fq6dchynq6tm4lty
       i18next: 22.5.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -8522,6 +8524,14 @@ packages:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
       '@vanilla-extract/css': 1.13.0
+    dev: false
+
+  /@vanilla-extract/recipes/0.5.0_zd2pmj2rl4fq6dchynq6tm4lty:
+    resolution: {integrity: sha512-NfdZ8XyqCDG2RsO3FmYPALDMKg5045dRD97NbBb0Fog3LMDVXZxYgDOct5FAWob8U6W4GbhVpRZt1X9hNnH6fA==}
+    peerDependencies:
+      '@vanilla-extract/css': ^1.0.0
+    dependencies:
+      '@vanilla-extract/css': 1.12.0
     dev: false
 
   /@vanilla-extract/sprinkles/1.6.1_3qusp464cmatvw2qbjjzblbe54:
