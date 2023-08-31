@@ -10,7 +10,7 @@ export function App() {
       <Box flexShrink={0}>
         <Divider />
       </Box>
-      <Box display="flex" flexGrow={1} flexDirection="column">
+      <Box display="flex" flexGrow={1} flexDirection="column" overflow="hidden">
         <RouterProvider router={router} />
       </Box>
     </Box>

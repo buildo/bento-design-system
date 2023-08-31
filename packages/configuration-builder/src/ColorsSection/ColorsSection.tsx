@@ -46,6 +46,7 @@ export function ColorsSection() {
     ))
     .with(false, () => (
       <ConfiguratorSection
+        key={currentStep} // refresh component to restore scroll position at every step change
         title={t("ColorsSection.title")}
         steps={steps.map((step) => ({ label: t(`ColorsSection.Step.${step}`) }))}
         currentStep={currentStepIndex}

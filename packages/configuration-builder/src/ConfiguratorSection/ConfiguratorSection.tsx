@@ -18,7 +18,7 @@ type Props = {
 export function ConfiguratorSection(props: Props) {
   const { t } = useTranslation();
   return (
-    <Box padding={40} paddingTop={24} flexGrow={1}>
+    <Box padding={40} paddingTop={24} flexGrow={1} overflowY="auto">
       <Stack space={40}>
         <Stack space={24}>
           <Breadcrumb
