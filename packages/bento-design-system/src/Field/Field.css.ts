@@ -12,11 +12,16 @@ export const inputRecipe = strictRecipe({
         color: vars.textColor.textSecondary,
       },
       selectors: {
+        "&:disabled, &[disabled]": {
+          background: vars.backgroundColor.backgroundPrimary,
+        },
         "&:disabled::placeholder": {
           color: vars.textColor.textDisabled,
         },
         "input&:read-only, textarea&:read-only, &.readOnly, &[readonly]": {
-          background: readOnlyBackground,
+          "&:not(:disabled):not([disabled])": {
+            background: readOnlyBackground,
+          },
         },
       },
     },
