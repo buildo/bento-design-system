@@ -41,7 +41,7 @@ export function Breadcrumb(props: Props) {
               <BreadcrumbItem isCurrent={isCurrent} {...item} />
               {!isCurrent && (
                 <Box as="span" aria-hidden="true">
-                  {config.separator({ size: config.separatorSize })}
+                  {config.separator({ color: config.separatorColor, size: config.separatorSize })}
                 </Box>
               )}
             </Fragment>

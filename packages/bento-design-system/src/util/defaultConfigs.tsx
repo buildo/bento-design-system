@@ -116,6 +116,7 @@ export const banner: BannerConfig = {
 export const breadcrumb: BreadcrumbConfig = {
   fontSize: "medium",
   separator: IconChevronRight,
+  separatorColor: "primary",
   separatorSize: 12,
   space: 16,
 };

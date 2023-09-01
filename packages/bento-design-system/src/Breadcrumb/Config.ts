@@ -7,5 +7,6 @@ export type BreadcrumbConfig = {
   fontSize: BodyProps["size"];
   separator: (props: IconProps) => Children;
   separatorSize: IconProps["size"];
+  separatorColor: IconProps["color"];
   space: BentoSprinkles["gap"];
 };
