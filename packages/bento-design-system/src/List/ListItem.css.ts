@@ -6,12 +6,6 @@ export const listItemRecipe = strictRecipe({
     interactive: {
       true: bentoSprinkles({
         cursor: { default: "pointer", disabled: "notAllowed" },
-        background: {
-          default: "secondaryTransparentEnabledBackground",
-          hover: "secondaryTransparentHoverBackground",
-          focus: "secondaryTransparentFocusBackground",
-          disabled: "disabledTransparentBackground",
-        },
       }),
     },
     focused: {
@@ -20,9 +14,37 @@ export const listItemRecipe = strictRecipe({
       }),
     },
     selected: {
-      true: bentoSprinkles({
-        background: "backgroundInteractiveOverlay",
-      }),
+      true: {},
     },
   },
+  compoundVariants: [
+    {
+      variants: {
+        interactive: true,
+        selected: true,
+      },
+      style: bentoSprinkles({
+        background: {
+          default: "backgroundInteractiveOverlay",
+          hover: "secondaryTransparentHoverBackground",
+          focus: "secondaryTransparentFocusBackground",
+          disabled: "disabledTransparentBackground",
+        },
+      }),
+    },
+    {
+      variants: {
+        interactive: true,
+        selected: false,
+      },
+      style: bentoSprinkles({
+        background: {
+          default: "secondaryTransparentEnabledBackground",
+          hover: "secondaryTransparentHoverBackground",
+          focus: "secondaryTransparentFocusBackground",
+          disabled: "disabledTransparentBackground",
+        },
+      }),
+    },
+  ],
 });
