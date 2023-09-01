@@ -157,3 +157,14 @@ export const WithRoundBorders = {
     space: 8,
   },
 } satisfies Story;
+
+export const WithSelectedItem = {
+  args: {
+    items: [
+      { kind: "single-line", label, href, isSelected: true },
+      { kind: "single-line", label: labelLong, href },
+      { kind: "single-line", label, href },
+      { kind: "single-line", label: labelRich, href },
+    ],
+  },
+} satisfies Story;
