@@ -5,7 +5,7 @@ export const stepRecipe = strictRecipe({
   variants: {
     status: {
       todo: bentoSprinkles({
-        color: "textSecondary",
+        color: "textPrimary",
       }),
       inProgress: bentoSprinkles({
         color: "textInteractive",
@@ -30,7 +30,7 @@ export const stepIconRecipe = strictRecipe({
     status: {
       todo: bentoSprinkles({
         background: "backgroundOverlay",
-        color: "textSecondary",
+        color: "textPrimary",
       }),
       inProgress: bentoSprinkles({
         color: "textPrimaryInverse",
