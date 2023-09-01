@@ -9,6 +9,6 @@
     "paths": {
       "@buildo/bento-design-system": ["../src"]
     },
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals", "@testing-library/jest-dom/vitest"]
   }
 }
