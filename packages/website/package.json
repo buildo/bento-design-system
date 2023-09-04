@@ -23,9 +23,9 @@
   "dependencies": {
     "@babel/core": "7.22.11",
     "@babel/generator": "7.22.10",
-    "@babel/parser": "7.22.13",
+    "@babel/parser": "7.22.14",
     "@babel/preset-typescript": "7.22.11",
-    "@babel/standalone": "7.22.13",
+    "@babel/standalone": "7.22.14",
     "@babel/traverse": "7.22.11",
     "@buildo/bento-design-system": "workspace:*",
     "@docusaurus/core": "2.0.1",
