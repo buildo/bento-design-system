@@ -1,6 +1,6 @@
 import { Body, Button, Columns, Display, Inline, Stack, Inset } from "@buildo/bento-design-system";
 import { useTranslation } from "react-i18next";
-import Cover from "./assets/Cover.png";
+import Cover from "./assets/Cover.svg";
 import { useNavigate } from "react-router-dom";
 
 export function Home() {
