@@ -23,6 +23,10 @@ export const tabRecipe = strictRecipe({
         },
         cursor: "pointer",
       }),
+      true: bentoSprinkles({
+        color: { default: "textPrimary", hover: "textPrimary", focus: "textPrimary" },
+        fill: { default: "textPrimary", hover: "textPrimary", focus: "textPrimary" },
+      }),
     },
     kind: {
       folder: {},
@@ -54,18 +58,6 @@ export const tabRecipe = strictRecipe({
           hover: "backgroundInteractiveOverlay",
           focus: "backgroundInteractiveOverlay",
         },
-        color: { default: "textInteractive", hover: "textInteractive", focus: "textInteractive" },
-        fill: { default: "textInteractive", hover: "textInteractive", focus: "textInteractive" },
-      }),
-    },
-    {
-      variants: {
-        active: true,
-        kind: "underline",
-      },
-      style: bentoSprinkles({
-        color: { default: "textPrimary", hover: "textPrimary", focus: "textPrimary" },
-        fill: { default: "textPrimary", hover: "textPrimary", focus: "textPrimary" },
       }),
     },
   ],

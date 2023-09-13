@@ -5,6 +5,8 @@ import { vars } from "../vars.css";
 
 export const readOnlyBackground = createVar();
 
+const notDisabled = ":not(:disabled):not([disabled])";
+
 export const inputRecipe = strictRecipe({
   base: [
     {
@@ -12,12 +14,16 @@ export const inputRecipe = strictRecipe({
         color: vars.textColor.textSecondary,
       },
       selectors: {
+        "&:disabled, &[disabled]": {
+          background: vars.backgroundColor.backgroundPrimary,
+        },
         "&:disabled::placeholder": {
           color: vars.textColor.textDisabled,
         },
-        "input&:read-only, textarea&:read-only, &.readOnly, &[readonly]": {
-          background: readOnlyBackground,
-        },
+        [`input&:read-only${notDisabled}, textarea&:read-only${notDisabled}, &.readOnly${notDisabled}, &[readonly]${notDisabled}`]:
+          {
+            background: readOnlyBackground,
+          },
       },
     },
     bentoSprinkles({
@@ -39,7 +45,7 @@ export const inputRecipe = strictRecipe({
         }),
         {
           selectors: {
-            "&:focus-within:not(:disabled):not([disabled])": {
+            [`&:focus-within${notDisabled}`]: {
               boxShadow: vars.boxShadow.outlineInputFocus,
             },
           },
@@ -54,7 +60,7 @@ export const inputRecipe = strictRecipe({
         }),
         {
           selectors: {
-            "&:focus-within:not(:disabled):not([disabled])": {
+            [`&:focus-within${notDisabled}`]: {
               boxShadow: vars.boxShadow.outlineNegativeStrong,
             },
           },
