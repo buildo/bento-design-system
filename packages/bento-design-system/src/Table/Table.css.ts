@@ -25,10 +25,16 @@ export const sortIconContainer = style({
   filter: "opacity(80%)",
 });
 
-export const stickyColumnHeader = bentoSprinkles({
-  position: "sticky",
-  top: 0,
-});
+export const stickyTopHeight = createVar();
+
+export const stickyColumnHeader = style([
+  {
+    top: stickyTopHeight,
+  },
+  bentoSprinkles({
+    position: "sticky",
+  }),
+]);
 
 export const rowContainer = style({
   // NOTE(gabro): this allows us to use the entire row as a parent selector,

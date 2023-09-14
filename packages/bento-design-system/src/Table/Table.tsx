@@ -9,6 +9,7 @@ import {
   useGroupBy,
   Cell,
   SortingRule,
+  HeaderGroup,
 } from "react-table";
 import { IconProps } from "../Icons/IconProps";
 import { useDefaultMessages } from "../util/useDefaultMessages";
@@ -38,21 +39,27 @@ import {
   selectedRowBackgroundColor,
   sortIconContainer,
   stickyColumnHeader,
+  stickyTopHeight,
   table,
 } from "./Table.css";
-import { Column as ColumnType, GridWidth, Row as RowType } from "./types";
+import {
+  Column as SimpleColumnType,
+  GroupedColumn as GroupedColumnType,
+  GridWidth,
+  Row as RowType,
+} from "./types";
 import { useLayoutEffect, useMemo, useState, CSSProperties, useEffect } from "react";
 import { IconQuestionSolid, IconInfo } from "../Icons";
 import { match, __ } from "ts-pattern";
 import { useBentoConfig } from "../BentoConfigContext";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 
-type SortFn<C extends ReadonlyArray<ColumnType<string, {}, any>>> = (
+type SortFn<C extends ReadonlyArray<SimpleColumnType<string, {}, any>>> = (
   a: Row<RowType<C>>,
   b: Row<RowType<C>>
 ) => number;
 
-type SortingProps<C extends ReadonlyArray<ColumnType<string, {}, any>>> =
+type SortingProps<C extends ReadonlyArray<SimpleColumnType<string, {}, any>>> =
   | {
       /**
        * `customSorting` can be used to customize the sorting logic of the table. It supports cross-columns comparison.
@@ -74,8 +81,11 @@ type SortingProps<C extends ReadonlyArray<ColumnType<string, {}, any>>> =
       onSort?: never;
     };
 
-type Props<C extends ReadonlyArray<ColumnType<string, {}, any>>> = {
-  columns: C;
+type Props<
+  C extends ReadonlyArray<SimpleColumnType<string, {}, any>>,
+  D extends ReadonlyArray<GroupedColumnType<string, {}, any>>
+> = {
+  columns: C | D;
   data: ReadonlyArray<RowType<C>>;
   groupBy?: C[number]["accessor"];
   noResultsTitle?: LocalizedString;
@@ -106,7 +116,10 @@ type Props<C extends ReadonlyArray<ColumnType<string, {}, any>>> = {
  * <Table columns={[tableColumn(...), tableColumn(...)]} data={data} />
  * ```
  */
-export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
+export function Table<
+  C extends ReadonlyArray<SimpleColumnType<string, {}, any>>,
+  D extends ReadonlyArray<GroupedColumnType<string, {}, any>>
+>({
   columns,
   data,
   groupBy,
@@ -119,7 +132,7 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
   stickyHeaders,
   height,
   onRowPress,
-}: Props<C>) {
+}: Props<C, D>) {
   const config = useBentoConfig().table;
   const customOrderByFn = useMemo(
     () =>
@@ -144,6 +157,11 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
           }
         : undefined,
     [customSorting]
+  );
+
+  const flatColumns = useMemo(
+    () => columns.flatMap((c) => ("columns" in c ? c.columns : [c])),
+    [columns]
   );
 
   const {
@@ -179,15 +197,19 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
   // Determine the ids of the sticky columns to the left
   const stickyLeftColumnsIds = useMemo(
     () =>
-      columns
-        .filter((c) => c.sticky === "left")
-        .map((c) => headerGroups[0].headers.find((h) => h.id === c.accessor)?.id)
-        .filter((id): id is string => id !== undefined),
-    [columns, headerGroups]
+      headerGroups[0].headers
+        .filter((h) => h.sticky)
+        .flatMap((h) => h.columns || [h])
+        .map((h) => h.id),
+    [headerGroups]
+  );
+  const stickyLeftColumnGroupsIds = useMemo(
+    () => headerGroups[0].headers.filter((h) => h.sticky).map((h) => h.id),
+    [headerGroups]
   );
 
   // Determine the id of the last left sticky column (used to draw a visual separator in the UI)
-  const lastStickyColumnIndex = columns
+  const lastStickyColumnIndex = flatColumns
     .map((c) => c.accessor)
     .indexOf(stickyLeftColumnsIds[stickyLeftColumnsIds.length - 1]);
 
@@ -195,6 +217,9 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
   const [stickyLeftColumnStyle, setStickyLeftColumnStyle] = useState(
     {} as Record<string, CSSProperties>
   );
+
+  // Keep a state for the height of the first row of headers, which will be updated by the useLayoutEffect below
+  const [stickyHeaderHeight, setStickyHeaderHeight] = useState(0);
 
   /** Get the width of each sticky column (using the header width as reference) and use it to set the `left` of each sticky column.
    *  Each sticky column must have as `left` the total width of the previous sticky columns.
@@ -206,35 +231,55 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
       const columnWidths = stickyLeftColumnsIds.map(
         (id) => document.getElementById(`header-cell-${id}`)!.clientWidth
       );
+      const columnGroupWidths = stickyLeftColumnGroupsIds.map(
+        (id) => document.getElementById(`header-cell-${id}`)!.clientWidth
+      );
+      const columnGroupHeight = Math.max(
+        ...headerGroups[0].headers.map((h) =>
+          h.columns ? document.getElementById(`header-cell-${h.id}`)!.clientHeight : 0
+        )
+      );
 
-      const columnStyles = stickyLeftColumnsIds.reduce((styles, id, index) => {
-        if (index > 0) {
-          const totalLeftWidth = columnWidths
-            .filter((_w, i) => i < index)
-            .reduce((acc, w) => acc + w, 0);
-          return {
-            ...styles,
-            [id]: {
-              left: totalLeftWidth,
-              zIndex: zIndexes.leftStickyCell,
-              position: "sticky",
-            } as CSSProperties,
-          };
-        } else {
-          return {
-            ...styles,
-            [id]: {
-              left: 0,
-              zIndex: zIndexes.leftStickyCell,
-              position: "sticky",
-            } as CSSProperties,
-          };
-        }
-      }, {} as Record<string, CSSProperties>);
+      const styleReducer =
+        (widths: number[]) =>
+        (styles: Record<string, CSSProperties>, id: string, index: number) => {
+          if (index > 0) {
+            const totalLeftWidth = widths
+              .filter((_w, i) => i < index)
+              .reduce((acc, w) => acc + w, 0);
+            return {
+              ...styles,
+              [id]: {
+                left: totalLeftWidth,
+                zIndex: zIndexes.leftStickyCell,
+                position: "sticky",
+              } as CSSProperties,
+            };
+          } else {
+            return {
+              ...styles,
+              [id]: {
+                left: 0,
+                zIndex: zIndexes.leftStickyCell,
+                position: "sticky",
+              } as CSSProperties,
+            };
+          }
+        };
 
-      setStickyLeftColumnStyle(columnStyles);
+      const columnStyles = stickyLeftColumnsIds.reduce(
+        styleReducer(columnWidths),
+        {} as Record<string, CSSProperties>
+      );
+      const columnGroupStyles = stickyLeftColumnGroupsIds.reduce(
+        styleReducer(columnGroupWidths),
+        {} as Record<string, CSSProperties>
+      );
+
+      setStickyLeftColumnStyle({ ...columnStyles, ...columnGroupStyles });
+      setStickyHeaderHeight(columnGroupHeight);
     }
-  }, [data.length, stickyLeftColumnsIds]);
+  }, [data.length, headerGroups, stickyLeftColumnsIds, stickyLeftColumnGroupsIds]);
 
   if (data.length === 0) {
     return (
@@ -265,7 +310,7 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
       .exhaustive();
   }
 
-  function tableHeight(height: Props<C>["height"]): string | undefined {
+  function tableHeight(height: Props<C, D>["height"]): string | undefined {
     return match(height)
       .with({ custom: __.string }, ({ custom: width }) => width)
       .with({ custom: __.number }, ({ custom: width }) => `${width}px`)
@@ -273,7 +318,7 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
       .exhaustive();
   }
 
-  const gridTemplateColumns = columns
+  const gridTemplateColumns = flatColumns
     .filter(({ accessor }) => accessor !== groupBy)
     .map(({ gridWidth = "fit-content" }) => gridWidthStyle(gridWidth))
     .join(" ");
@@ -290,7 +335,7 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
         lastLeftSticky={index === lastStickyColumnIndex}
         style={stickyLeftColumnStyle[cell.column.id]}
         first={index === 0}
-        last={(index + 1) % columns.length === 0}
+        last={(index + 1) % flatColumns.length === 0}
         interactiveRow={interactiveRow}
       >
         {cell.render("Cell")}
@@ -307,16 +352,28 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
       style={{ ...getTableProps().style, gridTemplateColumns, height: tableHeight(height) }}
     >
       {headerGroups.map((headerGroup) =>
-        headerGroup.headers.map((column, index) => (
+        headerGroup.headers.map((header, index) => (
           <ColumnHeader
-            column={column}
-            key={column.id}
-            style={stickyLeftColumnStyle[column.id]}
-            lastLeftSticky={index === lastStickyColumnIndex}
+            column={header}
+            key={header.id}
+            style={{
+              ...stickyLeftColumnStyle[header.id],
+              ...assignInlineVars({
+                [stickyTopHeight]: header.columns ? "0" : `${stickyHeaderHeight}px`,
+              }),
+            }}
+            lastLeftSticky={
+              header.columns
+                ? header.id === stickyLeftColumnGroupsIds[stickyLeftColumnGroupsIds.length - 1]
+                : index === lastStickyColumnIndex
+            }
             stickyHeaders={stickyHeaders}
-            sticky={stickyLeftColumnsIds.includes(column.id)}
+            sticky={
+              stickyLeftColumnsIds.includes(header.id) ||
+              stickyLeftColumnGroupsIds.includes(header.id)
+            }
             first={index === 0}
-            last={index + 1 === columns.length}
+            last={index + 1 === flatColumns.length}
           />
         ))
       )}
@@ -347,7 +404,7 @@ export function Table<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
   );
 }
 
-function RowContainer<C extends ReadonlyArray<ColumnType<string, {}, any>>>({
+function RowContainer<C extends ReadonlyArray<SimpleColumnType<string, {}, any>>>({
   row,
   children,
   onPress,
@@ -379,7 +436,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
   first,
   last,
 }: {
-  column: ColumnInstance<D>;
+  column: ColumnInstance<D> | HeaderGroup<D>;
   style: CSSProperties;
   lastLeftSticky: boolean;
   stickyHeaders?: boolean;
@@ -432,7 +489,11 @@ function ColumnHeader<D extends Record<string, unknown>>({
   return (
     <Box
       className={[lastLeftSticky && lastLeftStickyColumn, stickyHeaders && stickyColumnHeader]}
-      style={{ ...style, zIndex: sticky ? zIndexes.leftStickyHeader : zIndexes.header }}
+      style={{
+        ...style,
+        gridColumnEnd: column.columns ? `span ${column.columns.length}` : undefined,
+        zIndex: sticky ? zIndexes.leftStickyHeader : zIndexes.header,
+      }}
     >
       <Box
         className={columnHeader}
@@ -557,7 +618,7 @@ export type {
   Row as TableRow,
 } from "react-table";
 
-export type { Column as ColumnType, Row as RowType } from "./types";
+export type { Column as SimpleColumnType, Row as RowType } from "./types";
 
 export type { ColumnOptionsBase } from "./tableColumn";
 export type { Props as TableProps };
