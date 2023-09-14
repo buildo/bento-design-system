@@ -24,10 +24,8 @@ export function TimeField(props: Props) {
   const { locale } = useLocale();
   const validationState = props.isReadOnly ? undefined : props.issues ? "invalid" : "valid";
 
-  // NOTE(gabro): not sure why we need this cast, but we get a build error if we remove it
-  const value = props.value as TimeValue | undefined;
-
-  const onChange = (value: TimeValue) => {
+  const onChange = (value: TimeValue | null) => {
+    if (value == null) return;
     const time = new Time(value.hour, value.minute, value.second, value.millisecond);
     return props.onChange(time);
   };
@@ -37,7 +35,6 @@ export function TimeField(props: Props) {
     validationState,
     isDisabled: props.disabled,
     locale,
-    value,
     onChange,
   });
   const ref = useRef<HTMLDivElement>(null);
@@ -45,7 +42,6 @@ export function TimeField(props: Props) {
   const { labelProps, fieldProps, descriptionProps, errorMessageProps } = useTimeField(
     {
       ...props,
-      value,
       onChange,
     },
     state,
