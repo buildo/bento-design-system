@@ -24,7 +24,8 @@ export function TimeField(props: Props) {
   const { locale } = useLocale();
   const validationState = props.isReadOnly ? undefined : props.issues ? "invalid" : "valid";
 
-  const onChange = (value: TimeValue) => {
+  const onChange = (value: TimeValue | null) => {
+    if (value == null) return;
     const time = new Time(value.hour, value.minute, value.second, value.millisecond);
     return props.onChange(time);
   };
