@@ -78,7 +78,7 @@ importers:
       '@storybook/builder-vite': 7.4.0
       '@storybook/react': 7.4.0
       '@storybook/react-vite': 7.4.0
-      '@storybook/testing-library': 0.2.0
+      '@storybook/testing-library': 0.2.1
       '@storybook/types': 7.4.0
       '@testing-library/dom': 9.3.1
       '@testing-library/jest-dom': 6.1.2
@@ -224,7 +224,7 @@ importers:
       '@storybook/builder-vite': 7.4.0_ok2zj3awwwnslarljxl5fedi2m
       '@storybook/react': 7.4.0_44xjq2vn3xoetgnf63bej2xcom
       '@storybook/react-vite': 7.4.0_cucyu6hjfvlf3rz2ofc5ahvwdi
-      '@storybook/testing-library': 0.2.0
+      '@storybook/testing-library': 0.2.1
       '@storybook/types': 7.4.0
       '@testing-library/dom': 9.3.1
       '@testing-library/jest-dom': 6.1.2_vitest@0.34.3
@@ -7092,8 +7092,8 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/testing-library/0.2.0:
-    resolution: {integrity: sha512-Ff6jNnrsosmDshgCf0Eb5Cz7IA34p/1Ps5N3Kp3598kfXpBSccSkQQvVFUXC3kIHw/isIXWPqntZuKqnWUz7Gw==}
+  /@storybook/testing-library/0.2.1:
+    resolution: {integrity: sha512-AdbfLCm1C2nEFrhA3ScdicfW6Fjcorehr6RlGwECMiWwaXisnP971Wd4psqtWxlAqQo4tYBZ0f6rJ3J78JLtsg==}
     dependencies:
       '@testing-library/dom': 9.3.1
       '@testing-library/user-event': 14.4.3_@testing-library+dom@9.3.1

@@ -145,7 +145,7 @@
     "@storybook/react": "7.4.0",
     "@storybook/builder-vite": "7.4.0",
     "@storybook/react-vite": "7.4.0",
-    "@storybook/testing-library": "0.2.0",
+    "@storybook/testing-library": "0.2.1",
     "@storybook/types": "7.4.0",
     "@testing-library/dom": "9.3.1",
     "@testing-library/jest-dom": "6.1.2",
