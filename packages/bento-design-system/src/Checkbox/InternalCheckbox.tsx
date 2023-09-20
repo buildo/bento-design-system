@@ -57,7 +57,7 @@ type Props = {
 
 export function InternalCheckbox({ option, inputRef, inputProps }: Props) {
   const config = useBentoConfig().selectionControl.element;
-  const { fieldProps, labelProps } = useLabel(option);
+  const { fieldProps, labelProps } = useLabel({ ...option, ...inputProps });
   const { isFocusVisible, focusProps } = useFocusRing({ autoFocus: inputProps.autoFocus });
   return (
     <Box
