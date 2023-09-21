@@ -424,45 +424,45 @@ export function Table<
       });
 
   return (
-    <Box style={{ height: tableHeight(height) }} ref={tableContainerRef} overflow="auto">
-      <Box
-        {...getTableProps()}
-        alignItems="stretch"
-        className={table}
-        style={{
-          ...getTableProps().style,
-          gridTemplateColumns,
-          height: virtualizeRows ? `${rowVirtualizer.getTotalSize()}px` : tableHeight(height),
-        }}
-      >
-        {headerGroups.map((headerGroup) =>
-          headerGroup.headers.map((header, index) => (
-            <ColumnHeader
-              column={header}
-              key={header.id}
-              style={{
-                ...stickyLeftColumnStyle[header.id],
-                ...assignInlineVars({
-                  [stickyTopHeight]: header.columns ? "0" : `${stickyHeaderHeight}px`,
-                }),
-              }}
-              lastLeftSticky={
-                header.columns
-                  ? header.id === stickyLeftColumnGroupsIds.at(-1)
-                  : index === lastStickyColumnIndex
-              }
-              stickyHeaders={stickyHeaders}
-              sticky={
-                stickyLeftColumnsIds.includes(header.id) ||
-                stickyLeftColumnGroupsIds.includes(header.id)
-              }
-              first={index === 0}
-              last={index + 1 === flatColumns.length}
-            />
-          ))
-        )}
-        {renderedRows}
-      </Box>
+    <Box
+      {...getTableProps()}
+      alignItems="stretch"
+      overflow="auto"
+      className={table}
+      style={{
+        ...getTableProps().style,
+        gridTemplateColumns,
+        height: tableHeight(height),
+      }}
+      ref={tableContainerRef}
+    >
+      {headerGroups.map((headerGroup) =>
+        headerGroup.headers.map((header, index) => (
+          <ColumnHeader
+            column={header}
+            key={header.id}
+            style={{
+              ...stickyLeftColumnStyle[header.id],
+              ...assignInlineVars({
+                [stickyTopHeight]: header.columns ? "0" : `${stickyHeaderHeight}px`,
+              }),
+            }}
+            lastLeftSticky={
+              header.columns
+                ? header.id === stickyLeftColumnGroupsIds.at(-1)
+                : index === lastStickyColumnIndex
+            }
+            stickyHeaders={stickyHeaders}
+            sticky={
+              stickyLeftColumnsIds.includes(header.id) ||
+              stickyLeftColumnGroupsIds.includes(header.id)
+            }
+            first={index === 0}
+            last={index + 1 === flatColumns.length}
+          />
+        ))
+      )}
+      {renderedRows}
     </Box>
   );
 }
