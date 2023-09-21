@@ -573,7 +573,7 @@ export const VirtualizedRows = {
   args: {
     stickyHeaders: true,
     height: { custom: 340 },
-    virtualizeRows: { estimateRowHeight: () => 92 },
+    virtualizeRows: true,
     data: repeatToLength(exampleData, 1_000),
   },
 } satisfies Story;

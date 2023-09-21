@@ -110,7 +110,7 @@ type Props<
         : never;
       virtualizeRows?: never;
     }
-  | { groupBy?: never; virtualizeRows?: { estimateRowHeight: (index: number) => number } }
+  | { groupBy?: never; virtualizeRows?: boolean | { estimateRowHeight: (index: number) => number } }
 ) &
   SortingProps<C>;
 
@@ -150,7 +150,7 @@ export function Table<
   stickyHeaders,
   height,
   onRowPress,
-  virtualizeRows,
+  virtualizeRows: virtualizeRowsConfig,
 }: Props<C>) {
   const config = useBentoConfig().table;
   const customOrderByFn = useMemo(
@@ -302,10 +302,17 @@ export function Table<
 
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
+  const virtualizeRows =
+    typeof virtualizeRowsConfig === "boolean" ? virtualizeRowsConfig : virtualizeRowsConfig != null;
+  const estimateSize =
+    typeof virtualizeRowsConfig === "boolean"
+      ? () => 52 // Default height of a medium-sized text cell
+      : virtualizeRowsConfig?.estimateRowHeight ?? (() => 0);
+
   const rowVirtualizer = useVirtualizer({
     count: rows.length,
     getScrollElement: () => tableContainerRef.current,
-    estimateSize: virtualizeRows?.estimateRowHeight ?? (() => 0),
+    estimateSize,
   });
   const virtualRows = rowVirtualizer.getVirtualItems();
 
