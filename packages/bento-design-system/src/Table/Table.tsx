@@ -199,7 +199,7 @@ export function Table<
     () =>
       headerGroups[0].headers
         .filter((h) => h.sticky)
-        .flatMap((h) => h.columns || [h])
+        .flatMap((h) => h.columns ?? [h])
         .map((h) => h.id),
     [headerGroups]
   );
@@ -364,7 +364,7 @@ export function Table<
             }}
             lastLeftSticky={
               header.columns
-                ? header.id === stickyLeftColumnGroupsIds[stickyLeftColumnGroupsIds.length - 1]
+                ? header.id === stickyLeftColumnGroupsIds.at(-1)
                 : index === lastStickyColumnIndex
             }
             stickyHeaders={stickyHeaders}
