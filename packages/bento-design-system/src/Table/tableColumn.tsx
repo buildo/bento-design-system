@@ -47,7 +47,7 @@ export function custom<A extends string, V, D extends Record<string, unknown>>({
   const column = {
     ...options,
     gridWidth: width,
-    Cell: (props) => {
+    Cell: (props: CellProps<D, V>) => {
       const { defaultMessages } = useDefaultMessages();
       const config = useBentoConfig().table;
       if (props.value == null) {
