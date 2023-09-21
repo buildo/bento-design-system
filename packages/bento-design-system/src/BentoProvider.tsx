@@ -49,10 +49,31 @@ type Props = {
 } & DefaultMessages;
 
 export function createBentoProvider(
-  config: PartialBentoConfig = {},
+  config?: PartialBentoConfig,
+  sprinkles?: SprinklesFn
+): (props: Props) => JSX.Element;
+
+export function createBentoProvider(
+  config?: PartialBentoConfig,
   theme?: BentoTheme,
-  sprinkles: SprinklesFn = bentoSprinkles
+  sprinkles?: SprinklesFn
+): (props: Props) => JSX.Element;
+
+export function createBentoProvider(
+  config: PartialBentoConfig = {},
+  themeOrSprinkles?: BentoTheme | SprinklesFn,
+  sprinkles_?: SprinklesFn
 ) {
+  let sprinkles: SprinklesFn = bentoSprinkles;
+  let theme: BentoTheme | undefined = undefined;
+  if (typeof themeOrSprinkles === "function") {
+    sprinkles = themeOrSprinkles;
+  }
+  if (typeof themeOrSprinkles === "object") {
+    theme = themeOrSprinkles;
+    sprinkles = sprinkles_ ?? bentoSprinkles;
+  }
+
   function OptionalThemeWrapper(props: { children: Children; theme?: BentoTheme }) {
     if (!props.theme) return <>{props.children}</>;
     return <BentoThemeProvider theme={props.theme}>{props.children}</BentoThemeProvider>;
