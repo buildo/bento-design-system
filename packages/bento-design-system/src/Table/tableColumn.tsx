@@ -31,8 +31,8 @@ export type ColumnOptionsBase<A> = {
   accessor: A;
   headerLabel?: LocalizedString;
   missingValue?: LocalizedString;
-  width?: Column_<{}>["gridWidth"];
-} & Omit<Column_<{}>, "accessor" | "Header" | "Cell" | "sortType" | "width" | "gridWidth">;
+  width?: Column_<any>["gridWidth"];
+} & Omit<Column_<any>, "accessor" | "Header" | "Cell" | "sortType" | "width" | "gridWidth">;
 
 export function custom<A extends string, V, D extends Record<string, unknown>>({
   headerLabel,

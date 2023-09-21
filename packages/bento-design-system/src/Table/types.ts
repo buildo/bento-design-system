@@ -41,8 +41,21 @@ type ColumnValueByAccessor<C, K extends string> = C extends Column<K, infer _D, 
   ? V
   : never;
 
-export type Row<Columns extends ReadonlyArray<Column<string, {}, any>>> = {
-  [k in Columns[number]["accessor"]]?: ColumnValueByAccessor<Columns[number], k>;
-};
+export type Row<
+  Columns extends
+    | ReadonlyArray<Column<string, any, any>>
+    | ReadonlyArray<GroupedColumn<string, any, any>>
+> = Columns[number] extends GroupedColumn<string, any, any>
+  ? {
+      [k in Columns[number]["columns"][number]["accessor"]]?: ColumnValueByAccessor<
+        Columns[number]["columns"][number],
+        k
+      >;
+    }
+  : Columns[number] extends Column<string, any, any>
+  ? {
+      [k in Columns[number]["accessor"]]?: ColumnValueByAccessor<Columns[number], k>;
+    }
+  : never;
 
 export type GridWidth = "fit-content" | "fill-available" | { custom: string | number };

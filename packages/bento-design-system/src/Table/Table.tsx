@@ -54,12 +54,17 @@ import { match, __ } from "ts-pattern";
 import { useBentoConfig } from "../BentoConfigContext";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 
-type SortFn<C extends ReadonlyArray<SimpleColumnType<string, {}, any>>> = (
-  a: Row<RowType<C>>,
-  b: Row<RowType<C>>
-) => number;
+type SortFn<
+  C extends
+    | ReadonlyArray<SimpleColumnType<string, any, any>>
+    | ReadonlyArray<GroupedColumnType<string, any, any>>
+> = (a: Row<RowType<C>>, b: Row<RowType<C>>) => number;
 
-type SortingProps<C extends ReadonlyArray<SimpleColumnType<string, {}, any>>> =
+type SortingProps<
+  C extends
+    | ReadonlyArray<SimpleColumnType<string, any, any>>
+    | ReadonlyArray<GroupedColumnType<string, any, any>>
+> =
   | {
       /**
        * `customSorting` can be used to customize the sorting logic of the table. It supports cross-columns comparison.
@@ -82,12 +87,17 @@ type SortingProps<C extends ReadonlyArray<SimpleColumnType<string, {}, any>>> =
     };
 
 type Props<
-  C extends ReadonlyArray<SimpleColumnType<string, {}, any>>,
-  D extends ReadonlyArray<GroupedColumnType<string, {}, any>>
+  C extends
+    | ReadonlyArray<SimpleColumnType<string, any, any>>
+    | ReadonlyArray<GroupedColumnType<string, any, any>>
 > = {
-  columns: C | D;
+  columns: C;
   data: ReadonlyArray<RowType<C>>;
-  groupBy?: C[number]["accessor"];
+  groupBy?: C extends ReadonlyArray<SimpleColumnType<string, any, any>>
+    ? C[number]["accessor"]
+    : C extends ReadonlyArray<GroupedColumnType<string, any, any>>
+    ? C[number]["columns"][number]["accessor"]
+    : never;
   noResultsTitle?: LocalizedString;
   noResultsDescription?: LocalizedString;
   noResultsFeedbackSize?: FeedbackProps["size"];
@@ -117,8 +127,9 @@ type Props<
  * ```
  */
 export function Table<
-  C extends ReadonlyArray<SimpleColumnType<string, {}, any>>,
-  D extends ReadonlyArray<GroupedColumnType<string, {}, any>>
+  C extends
+    | ReadonlyArray<SimpleColumnType<string, any, any>>
+    | ReadonlyArray<GroupedColumnType<string, any, any>>
 >({
   columns,
   data,
@@ -132,7 +143,7 @@ export function Table<
   stickyHeaders,
   height,
   onRowPress,
-}: Props<C, D>) {
+}: Props<C>) {
   const config = useBentoConfig().table;
   const customOrderByFn = useMemo(
     () =>
@@ -310,7 +321,7 @@ export function Table<
       .exhaustive();
   }
 
-  function tableHeight(height: Props<C, D>["height"]): string | undefined {
+  function tableHeight(height: Props<C>["height"]): string | undefined {
     return match(height)
       .with({ custom: __.string }, ({ custom: width }) => width)
       .with({ custom: __.number }, ({ custom: width }) => `${width}px`)
@@ -404,7 +415,11 @@ export function Table<
   );
 }
 
-function RowContainer<C extends ReadonlyArray<SimpleColumnType<string, {}, any>>>({
+function RowContainer<
+  C extends
+    | ReadonlyArray<SimpleColumnType<string, any, any>>
+    | ReadonlyArray<GroupedColumnType<string, any, any>>
+>({
   row,
   children,
   onPress,
