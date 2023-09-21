@@ -52,3 +52,29 @@ const columns = [
   // passing columns inline
   groupBy="error"
 />;
+
+<Table
+  columns={[
+    {
+      Header: unsafeLocalizedString("Group 1"),
+      columns: [
+        tableColumn.number({
+          accessor: "number",
+          headerLabel: unsafeLocalizedString("Number"),
+          valueFormatter: unsafeLocalizedString,
+        }),
+        tableColumn.text({
+          accessor: "text",
+          headerLabel: unsafeLocalizedString("Text"),
+        }),
+      ],
+    },
+  ]}
+  data={[
+    {
+      text: unsafeLocalizedString("ok"),
+      // @ts-expect-error
+      number: "error",
+    },
+  ]}
+/>;

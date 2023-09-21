@@ -78,6 +78,84 @@ const exampleColumns = [
   }),
 ] as const;
 
+const exampleGroupedColumns = [
+  {
+    Header: "Group 1",
+    sticky: "left" as const,
+    hint: "This is a hint",
+    columns: [
+      tableColumn.button({
+        headerLabel: "Button",
+        accessor: "button",
+        sticky: "left",
+        disableSortBy: true,
+        align: "center",
+      }),
+      tableColumn.text({
+        headerLabel: "Name",
+        accessor: "name",
+      }),
+      tableColumn.text({
+        headerLabel: "Extended address",
+        accessor: "address",
+        width: { custom: 200 },
+      }),
+      tableColumn.textWithIcon({
+        headerLabel: "Country",
+        accessor: "country",
+        iconPosition: "right",
+        hint: "This is a hint",
+      }),
+    ],
+  },
+  {
+    Header: "Group 2",
+    columns: [
+      tableColumn.number({
+        headerLabel: "Applications",
+        accessor: "applications",
+        valueFormatter: (value) => Intl.NumberFormat("en").format(value),
+        align: "right",
+        hint: { onPress: action("hint") },
+      }),
+      tableColumn.numberWithIcon({
+        headerLabel: "Value",
+        accessor: "value",
+        valueFormatter: (value) => Intl.NumberFormat("en").format(value),
+        align: "right",
+      }),
+      tableColumn.label({
+        headerLabel: "Type",
+        accessor: "type",
+      }),
+      tableColumn.link({
+        headerLabel: "Website",
+        accessor: "website",
+      }),
+    ],
+  },
+  {
+    Header: "Group 3",
+    columns: [
+      tableColumn.icon({
+        headerLabel: "Alerts",
+        accessor: "alerts",
+      }),
+      tableColumn.chip({
+        headerLabel: "Status",
+        accessor: "status",
+        align: "center",
+      }),
+      tableColumn.iconButton({
+        headerLabel: "Actions",
+        accessor: "deleteAction",
+        align: "center",
+        disableSortBy: true,
+      }),
+    ],
+  },
+];
+
 const customizedColumns = [
   tableColumn.button({
     headerLabel: "Button",
@@ -290,7 +368,7 @@ const meta = {
     data: exampleData,
   },
   parameters: { actions: { argTypesRegex: "" } },
-} satisfies Meta<TableProps<typeof exampleColumns>>;
+} satisfies Meta<TableProps<typeof exampleColumns, typeof exampleGroupedColumns>>;
 
 export default meta;
 
@@ -471,5 +549,13 @@ export const InteractiveRow = {
   args: {
     initialSorting: [{ id: "name" }],
     onRowPress: action("onRowPress"),
+  },
+} satisfies Story;
+
+export const GroupedHeaders = {
+  args: {
+    columns: exampleGroupedColumns,
+    stickyHeaders: true,
+    height: { custom: 320 },
   },
 } satisfies Story;

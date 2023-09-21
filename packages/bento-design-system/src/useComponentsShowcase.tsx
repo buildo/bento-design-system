@@ -556,7 +556,7 @@ export function useComponentsShowcase({ action }: { action: (s: string) => () =>
                       experiments: 0,
                       status: { label: "pending", color: "yellow" },
                     },
-                  ],
+                  ] as any,
                 },
               ],
             ],
