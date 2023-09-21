@@ -48,11 +48,12 @@ import {
   GridWidth,
   Row as RowType,
 } from "./types";
-import { useLayoutEffect, useMemo, useState, CSSProperties, useEffect } from "react";
+import { useLayoutEffect, useMemo, useState, CSSProperties, useEffect, useRef } from "react";
 import { IconQuestionSolid, IconInfo } from "../Icons";
 import { match, __ } from "ts-pattern";
 import { useBentoConfig } from "../BentoConfigContext";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
+import { useVirtualizer } from "@tanstack/react-virtual";
 
 type SortFn<
   C extends
@@ -93,11 +94,6 @@ type Props<
 > = {
   columns: C;
   data: ReadonlyArray<RowType<C>>;
-  groupBy?: C extends ReadonlyArray<SimpleColumnType<string, any, any>>
-    ? C[number]["accessor"]
-    : C extends ReadonlyArray<GroupedColumnType<string, any, any>>
-    ? C[number]["columns"][number]["accessor"]
-    : never;
   noResultsTitle?: LocalizedString;
   noResultsDescription?: LocalizedString;
   noResultsFeedbackSize?: FeedbackProps["size"];
@@ -105,7 +101,18 @@ type Props<
   stickyHeaders?: boolean;
   height?: { custom: string | number };
   onRowPress?: (row: Row<RowType<C>>) => void;
-} & SortingProps<C>;
+} & (
+  | {
+      groupBy?: C extends ReadonlyArray<SimpleColumnType<string, any, any>>
+        ? C[number]["accessor"]
+        : C extends ReadonlyArray<GroupedColumnType<string, any, any>>
+        ? C[number]["columns"][number]["accessor"]
+        : never;
+      virtualizeRows?: never;
+    }
+  | { groupBy?: never; virtualizeRows?: { estimateRowHeight: (index: number) => number } }
+) &
+  SortingProps<C>;
 
 /**
  * A component that renders a Table, with sorting capabilities
@@ -143,6 +150,7 @@ export function Table<
   stickyHeaders,
   height,
   onRowPress,
+  virtualizeRows,
 }: Props<C>) {
   const config = useBentoConfig().table;
   const customOrderByFn = useMemo(
@@ -292,6 +300,22 @@ export function Table<
     }
   }, [data.length, headerGroups, stickyLeftColumnsIds, stickyLeftColumnGroupsIds]);
 
+  const tableContainerRef = useRef<HTMLDivElement>(null);
+
+  const rowVirtualizer = useVirtualizer({
+    count: rows.length,
+    getScrollElement: () => tableContainerRef.current,
+    estimateSize: virtualizeRows?.estimateRowHeight ?? (() => 0),
+  });
+  const virtualRows = rowVirtualizer.getVirtualItems();
+
+  const virtualPaddingTop =
+    virtualizeRows && virtualRows.length > 0 ? virtualRows[0]?.start ?? 0 : 0;
+  const virtualPaddingBottom =
+    virtualizeRows && virtualRows.length > 0
+      ? rowVirtualizer.getTotalSize() - (virtualRows[virtualRows.length - 1]?.end ?? 0)
+      : 0;
+
   if (data.length === 0) {
     return (
       <Box
@@ -354,42 +378,29 @@ export function Table<
     ));
   }
 
-  return (
-    <Box
-      {...getTableProps()}
-      alignItems="stretch"
-      overflow="auto"
-      className={table}
-      style={{ ...getTableProps().style, gridTemplateColumns, height: tableHeight(height) }}
-    >
-      {headerGroups.map((headerGroup) =>
-        headerGroup.headers.map((header, index) => (
-          <ColumnHeader
-            column={header}
-            key={header.id}
-            style={{
-              ...stickyLeftColumnStyle[header.id],
-              ...assignInlineVars({
-                [stickyTopHeight]: header.columns ? "0" : `${stickyHeaderHeight}px`,
-              }),
-            }}
-            lastLeftSticky={
-              header.columns
-                ? header.id === stickyLeftColumnGroupsIds.at(-1)
-                : index === lastStickyColumnIndex
-            }
-            stickyHeaders={stickyHeaders}
-            sticky={
-              stickyLeftColumnsIds.includes(header.id) ||
-              stickyLeftColumnGroupsIds.includes(header.id)
-            }
-            first={index === 0}
-            last={index + 1 === flatColumns.length}
-          />
+  const renderedRows = virtualizeRows
+    ? columns
+        .map((_, index) => (
+          <div key={`paddingTop${index}`} style={{ marginTop: virtualPaddingTop }} />
         ))
-      )}
-
-      {rows.flatMap((row, index) => {
+        .concat(
+          virtualRows.map((virtualRow) => {
+            const index = virtualRow.index;
+            const row = rows[index];
+            prepareRow(row);
+            return (
+              <RowContainer key={index} row={row} onPress={onRowPress}>
+                {renderCells(row.cells, index, onRowPress !== undefined)}
+              </RowContainer>
+            );
+          })
+        )
+        .concat(
+          columns.map((_, index) => (
+            <div key={`paddingBottom${index}`} style={{ marginBottom: virtualPaddingBottom }} />
+          ))
+        )
+    : rows.flatMap((row, index) => {
         if (row.isGrouped) {
           return [
             <SectionHeader
@@ -410,7 +421,48 @@ export function Table<
             </RowContainer>
           );
         }
-      })}
+      });
+
+  return (
+    <Box style={{ height: tableHeight(height) }} ref={tableContainerRef} overflow="auto">
+      <Box
+        {...getTableProps()}
+        alignItems="stretch"
+        className={table}
+        style={{
+          ...getTableProps().style,
+          gridTemplateColumns,
+          height: virtualizeRows ? `${rowVirtualizer.getTotalSize()}px` : tableHeight(height),
+        }}
+      >
+        {headerGroups.map((headerGroup) =>
+          headerGroup.headers.map((header, index) => (
+            <ColumnHeader
+              column={header}
+              key={header.id}
+              style={{
+                ...stickyLeftColumnStyle[header.id],
+                ...assignInlineVars({
+                  [stickyTopHeight]: header.columns ? "0" : `${stickyHeaderHeight}px`,
+                }),
+              }}
+              lastLeftSticky={
+                header.columns
+                  ? header.id === stickyLeftColumnGroupsIds.at(-1)
+                  : index === lastStickyColumnIndex
+              }
+              stickyHeaders={stickyHeaders}
+              sticky={
+                stickyLeftColumnsIds.includes(header.id) ||
+                stickyLeftColumnGroupsIds.includes(header.id)
+              }
+              first={index === 0}
+              last={index + 1 === flatColumns.length}
+            />
+          ))
+        )}
+        {renderedRows}
+      </Box>
     </Box>
   );
 }
