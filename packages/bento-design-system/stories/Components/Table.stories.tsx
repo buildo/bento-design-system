@@ -559,3 +559,21 @@ export const GroupedHeaders = {
     height: { custom: 320 },
   },
 } satisfies Story;
+
+function repeatToLength<T>(arr: T[], n: number): T[] {
+  if (arr.length <= 0) return [];
+  let result: T[] = [];
+  while (result.length < n) {
+    result = result.concat(arr);
+  }
+  return result.slice(0, n);
+}
+
+export const VirtualizedRows = {
+  args: {
+    stickyHeaders: true,
+    height: { custom: 340 },
+    virtualizeRows: true,
+    data: repeatToLength(exampleData, 1_000),
+  },
+} satisfies Story;
