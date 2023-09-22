@@ -19,7 +19,6 @@ export const BentoProvider = createBentoProvider(
       itemsPerPageOptions: [5, 10, 20, 50],
     },
   },
-  undefined,
   sprinkles
 );
 
