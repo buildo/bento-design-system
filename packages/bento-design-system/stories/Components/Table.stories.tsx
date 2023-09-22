@@ -577,3 +577,13 @@ export const VirtualizedRows = {
     data: repeatToLength(exampleData, 1_000),
   },
 } satisfies Story;
+
+export const VirtualizedRowsGrupedHeaders = {
+  args: {
+    columns: exampleGroupedColumns,
+    stickyHeaders: true,
+    height: { custom: 340 },
+    virtualizeRows: true,
+    data: repeatToLength(exampleData, 1_000),
+  },
+} satisfies Story;
