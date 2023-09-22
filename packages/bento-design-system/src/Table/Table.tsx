@@ -386,7 +386,7 @@ export function Table<
   }
 
   const renderedRows = virtualizeRows
-    ? columns
+    ? flatColumns
         .map((_, index) => (
           <div key={`paddingTop${index}`} style={{ marginTop: virtualPaddingTop }} />
         ))
@@ -403,7 +403,7 @@ export function Table<
           })
         )
         .concat(
-          columns.map((_, index) => (
+          flatColumns.map((_, index) => (
             <div key={`paddingBottom${index}`} style={{ marginBottom: virtualPaddingBottom }} />
           ))
         )
