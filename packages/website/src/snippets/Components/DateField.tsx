@@ -2,7 +2,7 @@ import * as React from "react";
 import { DateField } from "..";
 
 export default function DateFieldExample() {
-  const [value, setValue] = React.useState<Date | null>(new Date(1987, 8, 31));
+  const [value, setValue] = React.useState<Date | null>(new Date());
   return (
     <DateField
       type="single"

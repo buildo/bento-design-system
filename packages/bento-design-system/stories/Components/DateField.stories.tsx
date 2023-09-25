@@ -33,8 +33,9 @@ const today = startOfToday();
 const value = new Date(2022, 1, 4);
 
 export const SingleDate = {
-  type: "single",
-  value,
+  args: {
+    value,
+  },
 } satisfies Story;
 
 export const Disabled = {
