@@ -131,7 +131,7 @@
     "@babel/preset-env": "7.22.20",
     "@babel/preset-react": "7.22.15",
     "@babel/preset-typescript": "7.22.15",
-    "@phosphor-icons/react": "2.0.10",
+    "@phosphor-icons/react": "2.0.13",
     "@react-types/breadcrumbs": "3.6.1",
     "@react-types/button": "3.7.4",
     "@react-types/datepicker": "3.5.0",
