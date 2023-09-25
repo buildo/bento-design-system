@@ -6,7 +6,7 @@ import {
   DateSegment as DateSegmentType,
   useDateFieldState,
 } from "@react-stately/datepicker";
-import { RefObject, useRef } from "react";
+import { useRef } from "react";
 import { Box } from "../Box/Box";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
@@ -36,7 +36,6 @@ type Props = (
 ) & {
   buttonProps: AriaButtonProps<"button">;
   isCalendarOpen: boolean;
-  ref: RefObject<HTMLInputElement>;
 };
 
 function DateSegment({ segment, state }: { segment: DateSegmentType; state: DateFieldState }) {

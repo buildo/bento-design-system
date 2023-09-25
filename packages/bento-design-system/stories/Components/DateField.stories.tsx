@@ -1,38 +1,23 @@
-import { DateField, DateFieldProps } from "../../src/DateField/DateField";
-import { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
+import { DateField, DateFieldProps } from "..";
 import {
-  CalendarDate,
-  getLocalTimeZone,
-  today as _today,
-  getDayOfWeek,
   startOfWeek,
   endOfWeek,
   startOfMonth,
   endOfMonth,
   startOfYear,
   endOfYear,
-} from "@internationalized/date";
-import isChromatic from "chromatic";
+  addMonths,
+  startOfToday,
+  addWeeks,
+  addDays,
+} from "date-fns";
 import { screen, waitFor } from "@storybook/testing-library";
-
-const ControlledDateField = (props: Omit<DateFieldProps, "onChange">) => {
-  const [value, setValue] = useState<CalendarDate | null>(props.value);
-  return (
-    <DateField
-      {...props}
-      value={value}
-      onChange={(value) => {
-        setValue(value);
-      }}
-    />
-  );
-};
+import isChromatic from "chromatic/isChromatic";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
-  component: ControlledDateField,
+  component: DateField,
   args: {
-    type: "single",
     name: "date",
     label: "Date",
     assistiveText: "This is your favorite date",
@@ -44,40 +29,45 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const today = _today(getLocalTimeZone());
+const today = startOfToday();
+const value = new Date(2022, 1, 4);
 
-export const SingleDate = {} satisfies Story;
+export const SingleDate = {
+  value,
+} satisfies Story;
 
 export const Disabled = {
   args: {
+    value: null,
     disabled: true,
   },
 } satisfies Story;
 
 export const ReadOnly = {
   args: {
-    value: new CalendarDate(2022, 2, 4),
+    value,
     readOnly: true,
   },
 } satisfies Story;
 
-const inOneWeek = today.add({ weeks: 1 });
+const inOneWeek = addWeeks(today, 1);
 export const SingleWithMinMax = {
   args: {
+    value: null,
     minDate: today,
     maxDate: inOneWeek,
     assistiveText: "You can select a date between today and one week from now",
   },
 } satisfies Story;
 
-const inOneMonth = today.add({ months: 1 });
+const inOneMonth = addMonths(today, 1);
 export const SingleWithShortcuts = {
   args: {
     value: null,
     shortcuts: [
       {
         label: "Today",
-        value: today,
+        value: new Date(),
       },
       {
         label: "In a week",
@@ -92,18 +82,16 @@ export const SingleWithShortcuts = {
 } satisfies Story;
 export const DisabledDates = {
   args: {
-    shouldDisableDate: (date: CalendarDate) => getDayOfWeek(date, "en-EN") === 0,
+    shouldDisableDate: (date: Date) => date.getDay() === 0,
   },
 };
 export const CalendarOpen = {
   args: {
-    value: new CalendarDate(2022, 2, 4),
+    value,
   },
   play: async () => {
-    const button = screen.getByRole("button");
-    await waitFor(async () => {
-      await button.click();
-    });
+    const input = screen.getByRole("textbox");
+    await waitFor(() => input.click());
     // wait a bit to see if it solves Chromatic snapshot flakiness
     await new Promise((resolve) => setTimeout(resolve, 1000));
   },
@@ -120,10 +108,11 @@ export const CalendarOpen = {
 
 export const Range = {
   args: {
-    value: [today, today.add({ days: 2 })],
+    value: [value, addDays(value, 2)],
     type: "range",
   },
 } satisfies Story;
+
 export const RangeWithMinMax = {
   args: {
     value: [null, null],
@@ -133,6 +122,7 @@ export const RangeWithMinMax = {
     assistiveText: "You can select a date between today and one month from now",
   },
 } satisfies Story;
+
 export const RangeWithShortcuts = {
   args: {
     value: [null, null],
@@ -140,7 +130,7 @@ export const RangeWithShortcuts = {
     shortcuts: [
       {
         label: "This Week",
-        value: [startOfWeek(today, "en-EN"), endOfWeek(today, "en-EN")],
+        value: [startOfWeek(today), endOfWeek(today)],
       },
       {
         label: "This Month",

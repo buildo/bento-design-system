@@ -2,7 +2,7 @@ import { useDatePicker, useDateRangePicker } from "@react-aria/datepicker";
 import { useDatePickerState, useDateRangePickerState } from "@react-stately/datepicker";
 import { useRef } from "react";
 import { FieldProps } from "../Field/FieldProps";
-import { CalendarDate, DateValue } from "@internationalized/date";
+import { CalendarDate, DateValue, getLocalTimeZone } from "@internationalized/date";
 import { Input } from "./Input";
 import { Calendar } from "./Calendar";
 import { Box } from "../Box/Box";
@@ -18,27 +18,36 @@ export type ShortcutProps<Value> = {
 };
 type SingleDateFieldProps = {
   type?: "single";
-  shortcuts?: ShortcutProps<CalendarDate>[];
-} & FieldProps<CalendarDate | null>;
+  shortcuts?: ShortcutProps<Date>[];
+} & FieldProps<Date | null>;
 type RangeDateFieldProps = {
   type: "range";
-  shortcuts?: ShortcutProps<[CalendarDate, CalendarDate]>[];
-} & FieldProps<[CalendarDate, CalendarDate] | null>;
+  shortcuts?: ShortcutProps<[Date, Date]>[];
+} & FieldProps<[Date, Date] | null>;
 type Props = (SingleDateFieldProps | RangeDateFieldProps) & {
-  minDate?: CalendarDate;
-  maxDate?: CalendarDate;
+  minDate?: Date;
+  maxDate?: Date;
   shouldDisableDate?: (date: DateValue) => boolean;
   readOnly?: boolean;
 };
 
+function dateToCalendarDate(date: Date): CalendarDate {
+  if (!date) return date;
+  return new CalendarDate(date.getFullYear(), date.getMonth() + 1, date.getDate());
+}
+
 function SingleDateField({ disabled, readOnly, ...props }: Extract<Props, { type?: "single" }>) {
   const internalProps = {
     ...props,
+    value: props.value ? dateToCalendarDate(props.value) : props.value,
+    onChange: (date: CalendarDate | null) => {
+      props.onChange(date?.toDate(getLocalTimeZone()) ?? null);
+    },
     isDisabled: disabled,
     isReadOnly: readOnly,
     validationState: props.issues ? "invalid" : "valid",
-    minValue: props.minDate,
-    maxValue: props.maxDate,
+    minValue: props.minDate ? dateToCalendarDate(props.minDate) : undefined,
+    maxValue: props.maxDate ? dateToCalendarDate(props.maxDate) : undefined,
     isDateUnavailable: props.shouldDisableDate,
     shouldForceLeadingZeros: true,
   } as const;
@@ -85,7 +94,6 @@ function SingleDateField({ disabled, readOnly, ...props }: Extract<Props, { type
           type="single"
           fieldProps={fieldProps}
           buttonProps={buttonProps}
-          ref={ref}
           isCalendarOpen={state.isOpen}
         />
       </Box>
@@ -108,17 +116,18 @@ function RangeDateField({ disabled, readOnly, ...props }: Extract<Props, { type:
     isDisabled: disabled,
     isReadOnly: readOnly,
     validationState: props.issues ? "invalid" : "valid",
-    minValue: props.minDate,
-    maxValue: props.maxDate,
+    minValue: props.minDate ? dateToCalendarDate(props.minDate) : undefined,
+    maxValue: props.maxDate ? dateToCalendarDate(props.maxDate) : undefined,
     isDateUnavailable: props.shouldDisableDate,
     value: props.value
       ? {
-          start: props.value[0],
-          end: props.value[1],
+          start: dateToCalendarDate(props.value[0]),
+          end: dateToCalendarDate(props.value[1]),
         }
       : props.value,
     onChange: (range: RangeValue<CalendarDate>) => {
-      props.onChange([range.start, range.end]);
+      const localTimeZone = getLocalTimeZone();
+      props.onChange([range.start.toDate(localTimeZone), range.end.toDate(localTimeZone)]);
     },
   } as const;
   const state = useDateRangePickerState(internalProps);
@@ -165,7 +174,6 @@ function RangeDateField({ disabled, readOnly, ...props }: Extract<Props, { type:
           type="range"
           fieldProps={{ start: startFieldProps, end: endFieldProps }}
           buttonProps={buttonProps}
-          ref={ref}
           isCalendarOpen={state.isOpen}
         />
       </Box>
