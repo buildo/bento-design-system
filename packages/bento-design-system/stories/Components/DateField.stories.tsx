@@ -33,6 +33,7 @@ const today = startOfToday();
 const value = new Date(2022, 1, 4);
 
 export const SingleDate = {
+  type: "single",
   value,
 } satisfies Story;
 
@@ -90,8 +91,10 @@ export const CalendarOpen = {
     value,
   },
   play: async () => {
-    const input = screen.getByRole("textbox");
-    await waitFor(() => input.click());
+    const button = screen.getByRole("button");
+    await waitFor(async () => {
+      await button.click();
+    });
     // wait a bit to see if it solves Chromatic snapshot flakiness
     await new Promise((resolve) => setTimeout(resolve, 1000));
   },
