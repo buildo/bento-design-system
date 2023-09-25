@@ -1,11 +1,17 @@
-import { Body, Button, Columns, Display, Inline, Stack, Inset } from "@buildo/bento-design-system";
+import {
+  Body,
+  Columns,
+  Display,
+  Inline,
+  Stack,
+  Inset,
+  ButtonLink,
+} from "@buildo/bento-design-system";
 import { useTranslation } from "react-i18next";
 import Cover from "./assets/Cover.svg";
-import { useNavigate } from "react-router-dom";
 
 export function Home() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   return (
     <Inset spaceX={120} spaceY={80}>
@@ -16,11 +22,11 @@ export function Home() {
             <Body size="large">{t("App.description")}</Body>
           </Stack>
           <Inline space={0}>
-            <Button
+            <ButtonLink
               kind="solid"
               hierarchy="primary"
               size="large"
-              onPress={() => navigate("/theme")}
+              href="/theme"
               label={t("Home.createTheme")}
             />
           </Inline>
