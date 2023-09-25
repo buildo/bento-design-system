@@ -93,6 +93,7 @@
     "Tokens.Color.label": "Color",
     "Component.decorativeDivider": "Decorative Divider",
     "Component.areaLoader": "Area Loader",
-    "Component.sliderField": "Slider Field"
+    "Component.sliderField": "Slider Field",
+    "TokensSection.Step.brand": "Brand"
   }
 }
