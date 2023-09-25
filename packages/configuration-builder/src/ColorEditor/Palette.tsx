@@ -17,6 +17,16 @@ const interpolations: Record<LightnessInterpolation, number[]> = {
   EaseInOut: [97, 93, 87, 79, 67, 54, 41, 28, 20, 14, 10],
 };
 
+export function getPalette(props: Props) {
+  const { hue, saturation, lightnessInterpolation } = props;
+  const lightnesses = interpolations[lightnessInterpolation];
+
+  return lightnesses.map((lightness) => {
+    const color = HSLToHex({ h: hue, s: saturation, l: lightness });
+    return color;
+  });
+}
+
 export function PaletteColorBox(props: { color: HexColor }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -51,9 +61,7 @@ export function PaletteColorBox(props: { color: HexColor }) {
 }
 
 export function Palette(props: Props) {
-  const { hue, saturation, lightnessInterpolation } = props;
-
-  const lightnesses = interpolations[lightnessInterpolation];
+  const colors = getPalette(props);
 
   return (
     <Box
@@ -65,9 +73,8 @@ export function Palette(props: Props) {
       style={{ height: 160 }}
     >
       <Box display="flex" gap={4} flexGrow={1}>
-        {lightnesses.map((lightness) => {
-          const color = HSLToHex({ h: hue, s: saturation, l: lightness });
-          return <PaletteColorBox color={color} key={lightness} />;
+        {colors.map((color) => {
+          return <PaletteColorBox color={color} key={color} />;
         })}
       </Box>
     </Box>

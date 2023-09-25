@@ -95,6 +95,7 @@ export * from "./util/NonEmptyArray";
 export * from "./util/Omit";
 export * from "./util/align";
 export * from "./util/atoms";
+export * from "./util/bentoTokens";
 export * from "./util/breakpoints";
 export * from "./util/conditions";
 export * from "./util/link";
@@ -113,11 +114,14 @@ export { titleRecipe } from "./Typography/Title/Title.css";
 export { headlineRecipe } from "./Typography/Headline/Headline.css";
 export { displayRecipe } from "./Typography/Display/Display.css";
 export { inputRecipe } from "./Field/Field.css";
+export { control } from "./SelectField/SelectField.css";
 export * from "./vars.css";
 export { defaultTheme } from "./defaultThemeClass.css";
 export { defaultTokens } from "./util/defaultTokens";
 
 export type { BentoConfig, PartialBentoConfig } from "./BentoConfig";
+export { useBentoConfig } from "./BentoConfigContext";
+export { getRadiusPropsFromConfig } from "./util/BorderRadiusConfig";
 export { defaultConfigs };
 export { BentoConfigProvider } from "./BentoConfigContext";
 
