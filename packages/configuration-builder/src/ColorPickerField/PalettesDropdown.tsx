@@ -1,4 +1,5 @@
 import { Box, Card, Divider, Inline, Label, Stack } from "@buildo/bento-design-system";
+<<<<<<< HEAD
 import { ThemeConfig, useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
 import { colorBoxRecipe } from "./PalettesDropdown.css";
 import { SelectState } from "@react-stately/select";
@@ -10,6 +11,19 @@ import { PaletteName, getPalette, getPaletteKeyColor } from "../utils/paletteUti
 
 type Props = {
   colors: ThemeConfig["colors"];
+=======
+import { ThemeConfig } from "../ConfiguratorStatusContext";
+import { colorBoxRecipe } from "./PalettesDropdown.css";
+import { SelectState } from "@react-stately/select";
+import { AriaListBoxOptions, useListBox, useOption } from "@react-aria/listbox";
+import { Key, useRef } from "react";
+import { useTranslation } from "react-i18next";
+
+type Props = {
+  colors: ThemeConfig["colors"];
+  value: string | null;
+  onChange: (value: string) => void;
+>>>>>>> e2d57964 (Implement ColorPickerField)
   state: SelectState<object>;
   menuProps: AriaListBoxOptions<object>;
 };

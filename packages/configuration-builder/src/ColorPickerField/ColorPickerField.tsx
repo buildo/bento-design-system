@@ -86,6 +86,7 @@ export function ColorPickerField(props: Props) {
 
   const state = useSelectState({
     ...props,
+<<<<<<< HEAD
     selectedKey: props.value,
     isDisabled: props.disabled,
     children: getColorItems(props.colors),
@@ -94,6 +95,12 @@ export function ColorPickerField(props: Props) {
       if (item) {
         props.onChange(item.textValue);
       }
+=======
+    isDisabled: props.disabled,
+    children: getColorItems(props.colors),
+    onSelectionChange: (key) => {
+      props.onChange(state.collection.getItem(key)!.textValue);
+>>>>>>> e2d57964 (Implement ColorPickerField)
     },
   });
 
@@ -145,7 +152,11 @@ export function ColorPickerField(props: Props) {
       >
         <Box {...valueProps} flexGrow={1} textAlign="left">
           <Body size={inputConfig.fontSize} color={props.disabled ? "disabled" : "primary"}>
+<<<<<<< HEAD
             {state.selectedItem ? state.selectedItem.rendered : ""}
+=======
+            {props.value}
+>>>>>>> e2d57964 (Implement ColorPickerField)
           </Body>
         </Box>
         <Box paddingLeft={16} aria-hidden="true">
@@ -157,7 +168,17 @@ export function ColorPickerField(props: Props) {
       </Box>
       {state.isOpen && (
         <Popover triggerRef={ref} onClose={state.close}>
+<<<<<<< HEAD
           <PalettesDropdown colors={props.colors} state={state} menuProps={menuProps} />
+=======
+          <PalettesDropdown
+            colors={props.colors}
+            value={props.value}
+            onChange={props.onChange}
+            state={state}
+            menuProps={menuProps}
+          />
+>>>>>>> e2d57964 (Implement ColorPickerField)
         </Popover>
       )}
     </Field>
