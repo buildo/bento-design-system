@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { MyTheme } from "./MyTheme";
 import { Home } from "./Home";
 import { ColorsSection } from "./ColorsSection/ColorsSection";
+import { TokensSection } from "./TokensSection/TokensSection";
 
 export const router = createBrowserRouter([
   {
@@ -19,5 +20,9 @@ export const router = createBrowserRouter([
   {
     path: "/theme/typography",
     element: null,
+  },
+  {
+    path: "/theme/tokens",
+    element: <TokensSection />,
   },
 ]);

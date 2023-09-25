@@ -1,3 +1,8 @@
+import "@buildo/bento-design-system/index.css";
+import { sprinkles } from "./sprinkles.css";
+import "@buildo/bento-design-system/defaultTheme.css";
+import "./main.css";
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BentoProvider, LinkComponentProps } from "@buildo/bento-design-system";
@@ -7,10 +12,6 @@ import { App } from "./App";
 import { ConfiguratorStatusProvider } from "./ConfiguratorStatusContext";
 
 import "./intl";
-import "@buildo/bento-design-system/index.css";
-import "@buildo/bento-design-system/defaultTheme.css";
-import "./main.css";
-import { sprinkles } from "./sprinkles.css";
 
 function LinkComponent({ href, ...props }: LinkComponentProps) {
   return (
