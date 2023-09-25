@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { defaultColorConfig } from "./ColorsSection/defaultColor";
-import { Children, defaultTokens } from "@buildo/bento-design-system";
+import { BentoTokens, Children, defaultTokens } from "@buildo/bento-design-system";
 import { HexColor } from "./utils/colorUtils";
 import { ColorConfig } from "./ColorEditor/ColorEditor";
 
@@ -33,9 +33,10 @@ export type ThemeConfig = {
       pink: ColorConfig;
     };
   };
+  tokens: BentoTokens;
 };
 
-export type ThemeSection = "colors";
+export type ThemeSection = "colors" | "tokens";
 
 type ConfiguratorStatus = {
   theme: ThemeConfig;
@@ -75,10 +76,12 @@ export function ConfiguratorStatusProvider(props: { children: Children }) {
         pink: defaultColorConfig(defaultTokens.dataVisualizationColor.brightPink as HexColor),
       },
     },
+    tokens: defaultTokens,
   });
 
   const [sections, setSections] = useState<ConfiguratorStatus["sections"]>({
     colors: false,
+    tokens: false,
   });
 
   return (

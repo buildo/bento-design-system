@@ -129,7 +129,8 @@ export function MyTheme() {
               name={t("Theme.Foundations.Tokens.title")}
               description={t("Theme.Foundations.Tokens.description")}
               icon={IconCards}
-              disabled
+              kind={sections.tokens ? "done" : "todo"}
+              onClick={() => navigate("/theme/tokens")}
             />
           </Stack>
         </MainColumn>

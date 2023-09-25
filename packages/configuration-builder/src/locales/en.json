@@ -85,6 +85,14 @@
     "DataVizColors.blue": "Blue",
     "DataVizColors.indigo": "Indigo",
     "DataVizColors.violet": "Violet",
-    "DataVizColors.pink": "Pink"
+    "DataVizColors.pink": "Pink",
+    "Tokens.title": "Tokens",
+    "Tokens.Color.primary": "Primary",
+    "Tokens.Color.secondary": "Secondary",
+    "Tokens.Color.tertiary": "Tertiary",
+    "Tokens.Color.label": "Color",
+    "Component.decorativeDivider": "Decorative Divider",
+    "Component.areaLoader": "Area Loader",
+    "Component.sliderField": "Slider Field"
   }
 }
