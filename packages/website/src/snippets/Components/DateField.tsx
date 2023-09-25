@@ -1,8 +1,8 @@
 import * as React from "react";
-import { DateField, CalendarDate } from "..";
+import { DateField } from "..";
 
 export default function DateFieldExample() {
-  const [value, setValue] = React.useState<CalendarDate | null>(new CalendarDate(1987, 8, 31));
+  const [value, setValue] = React.useState<Date | null>(new Date(1987, 8, 31));
   return (
     <DateField
       type="single"
