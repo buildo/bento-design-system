@@ -94,6 +94,11 @@ type Props<
 > = {
   columns: C;
   data: ReadonlyArray<RowType<C>>;
+  groupBy?: C extends ReadonlyArray<SimpleColumnType<string, any, any>>
+    ? C[number]["accessor"]
+    : C extends ReadonlyArray<GroupedColumnType<string, any, any>>
+    ? C[number]["columns"][number]["accessor"]
+    : never;
   noResultsTitle?: LocalizedString;
   noResultsDescription?: LocalizedString;
   noResultsFeedbackSize?: FeedbackProps["size"];
@@ -101,18 +106,8 @@ type Props<
   stickyHeaders?: boolean;
   height?: { custom: string | number };
   onRowPress?: (row: Row<RowType<C>>) => void;
-} & (
-  | {
-      groupBy?: C extends ReadonlyArray<SimpleColumnType<string, any, any>>
-        ? C[number]["accessor"]
-        : C extends ReadonlyArray<GroupedColumnType<string, any, any>>
-        ? C[number]["columns"][number]["accessor"]
-        : never;
-      virtualizeRows?: never;
-    }
-  | { groupBy?: never; virtualizeRows?: boolean | { estimateRowHeight: (index: number) => number } }
-) &
-  SortingProps<C>;
+  virtualizeRows?: boolean | { estimateRowHeight: (index: number) => number };
+} & SortingProps<C>;
 
 /**
  * A component that renders a Table, with sorting capabilities
@@ -300,17 +295,19 @@ export function Table<
     }
   }, [data.length, headerGroups, stickyLeftColumnsIds, stickyLeftColumnGroupsIds]);
 
+  const flatRows = rows.flatMap((row) => (row.isGrouped ? [row, ...row.leafRows] : [row]));
+
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
   const virtualizeRows =
     typeof virtualizeRowsConfig === "boolean" ? virtualizeRowsConfig : virtualizeRowsConfig != null;
   const estimateSize =
     typeof virtualizeRowsConfig === "boolean"
-      ? () => 52 // Default height of a medium-sized text cell
+      ? (index: number) => (flatRows[index]?.isGrouped ? 26 : 52) // Default heights of a group row and of a medium-sized text cell
       : virtualizeRowsConfig?.estimateRowHeight ?? (() => 0);
 
   const rowVirtualizer = useVirtualizer({
-    count: rows.length,
+    count: flatRows.length,
     getScrollElement: () => tableContainerRef.current,
     estimateSize,
   });
@@ -360,8 +357,9 @@ export function Table<
       .exhaustive();
   }
 
-  const gridTemplateColumns = flatColumns
-    .filter(({ accessor }) => accessor !== groupBy)
+  const nonGroupedColumns = flatColumns.filter(({ accessor }) => accessor !== groupBy);
+
+  const gridTemplateColumns = nonGroupedColumns
     .map(({ gridWidth = "fit-content" }) => gridWidthStyle(gridWidth))
     .join(" ");
 
@@ -385,50 +383,39 @@ export function Table<
     ));
   }
 
-  const renderedRows = virtualizeRows
-    ? flatColumns
-        .map((_, index) => (
-          <div key={`paddingTop${index}`} style={{ marginTop: virtualPaddingTop }} />
-        ))
-        .concat(
-          virtualRows.map((virtualRow) => {
-            const index = virtualRow.index;
-            const row = rows[index];
-            prepareRow(row);
-            return (
-              <RowContainer key={index} row={row} onPress={onRowPress}>
-                {renderCells(row.cells, index, onRowPress !== undefined)}
-              </RowContainer>
-            );
-          })
-        )
-        .concat(
-          flatColumns.map((_, index) => (
-            <div key={`paddingBottom${index}`} style={{ marginBottom: virtualPaddingBottom }} />
-          ))
-        )
-    : rows.flatMap((row, index) => {
-        if (row.isGrouped) {
-          return [
-            <SectionHeader
-              key={row.groupByVal}
-              label={row.groupByVal}
-              numberOfStickyColumns={stickyLeftColumnsIds.length}
-            />,
-            ...row.leafRows.map((row, index) => {
-              prepareRow(row);
-              return renderCells(row.cells, index, false);
-            }),
-          ];
-        } else {
-          prepareRow(row);
-          return (
-            <RowContainer key={index} row={row} onPress={onRowPress}>
-              {renderCells(row.cells, index, onRowPress !== undefined)}
-            </RowContainer>
-          );
-        }
-      });
+  const rowsToRender = virtualizeRows
+    ? virtualRows.map((virtualRow) => [flatRows[virtualRow.index], virtualRow.index] as const)
+    : flatRows.map((row, index) => [row, index] as const);
+
+  const paddingTopRow = virtualizeRows
+    ? nonGroupedColumns.map((_, index) => (
+        <div key={`paddingTop${index}`} style={{ marginTop: virtualPaddingTop }} />
+      ))
+    : [];
+  const paddingBottomRow = virtualizeRows
+    ? nonGroupedColumns.map((_, index) => (
+        <div key={`paddingBottom${index}`} style={{ marginBottom: virtualPaddingBottom }} />
+      ))
+    : [];
+
+  const renderedRows = rowsToRender.map(([row, index]) => {
+    if (row.isGrouped) {
+      return (
+        <SectionHeader
+          key={row.groupByVal}
+          label={row.groupByVal}
+          numberOfStickyColumns={stickyLeftColumnsIds.length}
+        />
+      );
+    } else {
+      prepareRow(row);
+      return (
+        <RowContainer key={index} row={row} onPress={onRowPress}>
+          {renderCells(row.cells, index, onRowPress !== undefined)}
+        </RowContainer>
+      );
+    }
+  });
 
   return (
     <Box
@@ -469,7 +456,9 @@ export function Table<
           />
         ))
       )}
+      {paddingTopRow}
       {renderedRows}
+      {paddingBottomRow}
     </Box>
   );
 }

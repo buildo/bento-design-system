@@ -573,17 +573,34 @@ export const VirtualizedRows = {
   args: {
     stickyHeaders: true,
     height: { custom: 340 },
-    virtualizeRows: true,
+    virtualizeRows: { estimateRowHeight: () => 92 },
     data: repeatToLength(exampleData, 1_000),
   },
 } satisfies Story;
 
-export const VirtualizedRowsGrupedHeaders = {
+export const VirtualizedRowsGroupedHeaders = {
   args: {
     columns: exampleGroupedColumns,
     stickyHeaders: true,
     height: { custom: 340 },
-    virtualizeRows: true,
+    virtualizeRows: { estimateRowHeight: () => 92 },
+    data: repeatToLength(exampleData, 1_000),
+  },
+} satisfies Story;
+
+export const VirtualizedRowsGroupedRows = {
+  args: {
+    columns: [
+      ...exampleColumns,
+      tableColumn.text({
+        headerLabel: "Group",
+        accessor: "group",
+      }),
+    ] as const,
+    groupBy: "group",
+    stickyHeaders: true,
+    height: { custom: 340 },
+    virtualizeRows: { estimateRowHeight: () => 92 },
     data: repeatToLength(exampleData, 1_000),
   },
 } satisfies Story;
