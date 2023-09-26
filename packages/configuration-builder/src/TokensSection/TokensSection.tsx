@@ -4,14 +4,24 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { BrandTokens } from "./BrandTokens";
 import { match } from "ts-pattern";
+import { TextAndIconsTokens } from "./TextAndIconsTokens";
+import { useNavigate } from "react-router-dom";
 
 export function TokensSection() {
   const { theme, setTheme } = useConfiguratorStatusContext();
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
-  const steps = ["brand" as const];
-  const [currentStep] = useState<(typeof steps)[0]>("brand");
+  const steps = ["brand" as const, "textAndIcons" as const];
+  const [currentStep, setCurrentStep] = useState<(typeof steps)[0]>("brand");
   const currentStepIndex = steps.indexOf(currentStep);
+
+  const onNext = () => {
+    setCurrentStep(steps[currentStepIndex + 1]);
+  };
+  const onBack = () => {
+    setCurrentStep(steps[currentStepIndex - 1]);
+  };
 
   return (
     <ConfiguratorSection
@@ -26,6 +36,16 @@ export function TokensSection() {
             onChange={(brandTokens) =>
               setTheme({ ...theme, tokens: { ...theme.tokens, brandColor: brandTokens } })
             }
+            onNext={onNext}
+            onCancel={() => navigate("/theme")}
+          />
+        ))
+        .with("textAndIcons", () => (
+          <TextAndIconsTokens
+            tokens={theme.tokens}
+            onChange={(newTokens) => setTheme({ ...theme, tokens: newTokens })}
+            onNext={onNext}
+            onBack={onBack}
           />
         ))
         .exhaustive()}

@@ -9,6 +9,7 @@ import {
   unsafeLocalizedString,
   DecorativeDivider,
   Headline,
+  Actions,
 } from "@buildo/bento-design-system";
 import { ColorSelector } from "./ColorSelector";
 import { useTranslation } from "react-i18next";
@@ -19,6 +20,8 @@ import { useState } from "react";
 type Props = {
   tokens: ThemeConfig["tokens"]["brandColor"];
   onChange: (value: ThemeConfig["tokens"]["brandColor"]) => void;
+  onNext: () => void;
+  onCancel: () => void;
 };
 
 function BrandTokensPlayground() {
@@ -97,6 +100,10 @@ export function BrandTokens(props: Props) {
         </Column>
         <BrandTokensPlayground />
       </Columns>
+      <Actions
+        primaryAction={{ label: t("Next"), onPress: props.onNext }}
+        secondaryAction={{ label: t("Cancel"), onPress: props.onCancel }}
+      />
     </Stack>
   );
 }

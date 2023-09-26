@@ -10,10 +10,10 @@ import {
 import { useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
 import { useTranslation } from "react-i18next";
 import { ColorPickerField } from "../ColorPickerField/ColorPickerField";
-import { colorTokenToRGBA } from "../utils/paletteUtils";
+import { ColorKey, colorTokenToRGBA } from "../utils/paletteUtils";
 
 type Value = {
-  colorKey: string;
+  colorKey: ColorKey;
   alpha: number;
 };
 
@@ -43,7 +43,7 @@ export function ColorSelector(props: {
             colors={colors}
             label={t("Tokens.Color.label")}
             value={props.value.colorKey}
-            onChange={(colorKey) => props.onChange({ ...props.value, colorKey: colorKey })}
+            onChange={(colorKey) => props.onChange({ ...props.value, colorKey })}
           />
         </Stack>
         <Column width="content">

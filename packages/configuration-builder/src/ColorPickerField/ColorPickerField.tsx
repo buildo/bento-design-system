@@ -16,9 +16,9 @@ import { PalettesDropdown } from "./PalettesDropdown";
 import { ThemeConfig } from "../ConfiguratorStatusContext";
 import { useButton } from "@react-aria/button";
 import { ColorConfig } from "../ColorEditor/ColorEditor";
-import { stepNames } from "../utils/paletteUtils";
+import { ColorKey, stepNames } from "../utils/paletteUtils";
 
-type Props = FieldProps<string> & { colors: ThemeConfig["colors"] };
+type Props = FieldProps<ColorKey> & { colors: ThemeConfig["colors"] };
 
 function getPaletteItemsSection(key: string, colorConfig: ColorConfig) {
   const paletteItems = [...Array(stepNames.length)].map((_, index) => {
@@ -86,21 +86,14 @@ export function ColorPickerField(props: Props) {
 
   const state = useSelectState({
     ...props,
-<<<<<<< HEAD
     selectedKey: props.value,
     isDisabled: props.disabled,
     children: getColorItems(props.colors),
     onSelectionChange: (key) => {
       const item = state.collection.getItem(key);
       if (item) {
-        props.onChange(item.textValue);
+        props.onChange(item.textValue as ColorKey);
       }
-=======
-    isDisabled: props.disabled,
-    children: getColorItems(props.colors),
-    onSelectionChange: (key) => {
-      props.onChange(state.collection.getItem(key)!.textValue);
->>>>>>> e2d57964 (Implement ColorPickerField)
     },
   });
 
@@ -152,11 +145,7 @@ export function ColorPickerField(props: Props) {
       >
         <Box {...valueProps} flexGrow={1} textAlign="left">
           <Body size={inputConfig.fontSize} color={props.disabled ? "disabled" : "primary"}>
-<<<<<<< HEAD
             {state.selectedItem ? state.selectedItem.rendered : ""}
-=======
-            {props.value}
->>>>>>> e2d57964 (Implement ColorPickerField)
           </Body>
         </Box>
         <Box paddingLeft={16} aria-hidden="true">
@@ -168,17 +157,7 @@ export function ColorPickerField(props: Props) {
       </Box>
       {state.isOpen && (
         <Popover triggerRef={ref} onClose={state.close}>
-<<<<<<< HEAD
           <PalettesDropdown colors={props.colors} state={state} menuProps={menuProps} />
-=======
-          <PalettesDropdown
-            colors={props.colors}
-            value={props.value}
-            onChange={props.onChange}
-            state={state}
-            menuProps={menuProps}
-          />
->>>>>>> e2d57964 (Implement ColorPickerField)
         </Popover>
       )}
     </Field>
