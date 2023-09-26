@@ -8,6 +8,7 @@ import {
 import { HexColor } from "./utils/colorUtils";
 import { ColorConfig } from "./ColorEditor/ColorEditor";
 import { MapLeafNodes } from "./utils/mapLeafNodes";
+import { ColorKey } from "./utils/paletteUtils";
 
 type BrandColors =
   | [ColorConfig]
@@ -38,7 +39,10 @@ export type ThemeConfig = {
       pink: ColorConfig;
     };
   };
-  tokens: MapLeafNodes<Pick<BentoTokens, "brandColor">, { colorKey: string; alpha: number }>;
+  tokens: MapLeafNodes<
+    Pick<BentoTokens, "brandColor" | "backgroundColor" | "foregroundColor" | "textColor">,
+    { colorKey: ColorKey; alpha: number }
+  >;
 };
 
 export type ThemeSection = "colors" | "tokens";
@@ -53,13 +57,52 @@ type ConfiguratorStatus = {
 export const ConfiguratorStatusContext = createContext<ConfiguratorStatus | null>(null);
 
 export const defaultTokens: MapLeafNodes<
-  Pick<BentoTokens, "brandColor">,
-  { colorKey: string; alpha: number }
+  Pick<BentoTokens, "brandColor" | "backgroundColor" | "foregroundColor" | "textColor">,
+  { colorKey: ColorKey; alpha: number }
 > = {
   brandColor: {
     brandPrimary: { colorKey: "BrandPrimary-40", alpha: 100 },
     brandSecondary: { colorKey: "BrandPrimary-20", alpha: 100 },
     brandTertiary: { colorKey: "BrandPrimary-10", alpha: 100 },
+  },
+  backgroundColor: {
+    backgroundPrimary: { colorKey: "white", alpha: 100 },
+    backgroundSecondary: { colorKey: "Neutral-1", alpha: 100 },
+    backgroundOverlay: { colorKey: "Neutral-20", alpha: 20 },
+    backgroundPrimaryInverse: { colorKey: "Neutral-90", alpha: 100 },
+    backgroundSecondaryInverse: { colorKey: "Neutral-80", alpha: 100 },
+    backgroundInteractive: { colorKey: "Interactive-40", alpha: 100 },
+    backgroundInteractiveOverlay: { colorKey: "Interactive-10", alpha: 40 },
+    backgroundInformative: { colorKey: "Informative-5", alpha: 100 },
+    backgroundPositive: { colorKey: "Positive-5", alpha: 100 },
+    backgroundWarning: { colorKey: "Warning-5", alpha: 100 },
+    backgroundNegative: { colorKey: "Negative-5", alpha: 100 },
+    backgroundLightScrim: { colorKey: "white", alpha: 80 },
+    backgroundDarkScrim: { colorKey: "Neutral-90", alpha: 60 },
+  },
+  foregroundColor: {
+    foregroundPrimary: { colorKey: "Neutral-90", alpha: 100 },
+    foregroundSecondary: { colorKey: "Neutral-50", alpha: 100 },
+    foregroundPrimaryInverse: { colorKey: "Neutral-1", alpha: 100 },
+    foregroundSecondaryInverse: { colorKey: "Neutral-30", alpha: 100 },
+    foregroundInteractive: { colorKey: "Interactive-40", alpha: 100 },
+    foregroundInformative: { colorKey: "Informative-30", alpha: 100 },
+    foregroundPositive: { colorKey: "Positive-50", alpha: 100 },
+    foregroundWarning: { colorKey: "Warning-40", alpha: 100 },
+    foregroundNegative: { colorKey: "Negative-30", alpha: 100 },
+    foregroundDisabled: { colorKey: "Neutral-40", alpha: 30 },
+  },
+  textColor: {
+    textPrimary: { colorKey: "Neutral-90", alpha: 100 },
+    textSecondary: { colorKey: "Neutral-50", alpha: 100 },
+    textPrimaryInverse: { colorKey: "Neutral-1", alpha: 100 },
+    textSecondaryInverse: { colorKey: "Neutral-30", alpha: 100 },
+    textInteractive: { colorKey: "Interactive-40", alpha: 100 },
+    textInformative: { colorKey: "Informative-50", alpha: 100 },
+    textPositive: { colorKey: "Positive-70", alpha: 100 },
+    textWarning: { colorKey: "Warning-60", alpha: 100 },
+    textNegative: { colorKey: "Negative-60", alpha: 100 },
+    textDisabled: { colorKey: "Neutral-40", alpha: 30 },
   },
 };
 

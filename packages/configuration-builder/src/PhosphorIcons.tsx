@@ -14,6 +14,8 @@ import {
   Layout,
   Eyedropper,
   Swatches,
+  Planet,
+  CloudMoon,
 } from "@phosphor-icons/react";
 
 function phosphorToBento(Icon: PhosphorIcon) {
@@ -36,3 +38,5 @@ export const IconLayout = phosphorToBento(Layout);
 export const IconSubtract = phosphorToBento(Subtract);
 export const IconSwatches = phosphorToBento(Swatches);
 export const IconTextAa = phosphorToBento(TextAa);
+export const IconPlanet = phosphorToBento(Planet);
+export const IconCloudMoon = phosphorToBento(CloudMoon);

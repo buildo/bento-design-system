@@ -24,7 +24,9 @@ export type PaletteName =
   | "Violet"
   | "Pink";
 
-export const stepNames = ["1", "5", "10", "20", "30", "40", "50", "60", "70", "80", "90"];
+export const stepNames = ["1", "5", "10", "20", "30", "40", "50", "60", "70", "80", "90"] as const;
+
+export type ColorKey = `${PaletteName}-${(typeof stepNames)[number]}` | "black" | "white";
 
 const interpolations: Record<LightnessInterpolation, number[]> = {
   Linear: [97, 91, 82, 73, 64, 55, 46, 37, 28, 19, 10],
@@ -75,7 +77,7 @@ export function getPaletteKeyColor(
 }
 
 type ColorToken = {
-  colorKey: string;
+  colorKey: ColorKey;
   alpha: number;
 };
 
@@ -89,13 +91,13 @@ export function colorTokenToRGBA(colors: ThemeConfig["colors"]) {
     }
     const [paletteName, step] = colorToken.colorKey.split("-");
     const keyColor = getPaletteKeyColor(paletteName as PaletteName, colors);
-    if (keyColor) {
+    if (keyColor != null) {
       if (step === "ref") {
         return withAlpha(keyColor.referenceColor, colorToken.alpha);
       }
-      const stepIndex = stepNames.indexOf(step);
+      const stepIndex = stepNames.indexOf(step as (typeof stepNames)[number]);
 
-      if (stepIndex) {
+      if (stepIndex != null) {
         const palette = getPalette(keyColor);
         return withAlpha(palette[stepIndex].value, colorToken.alpha);
       }
