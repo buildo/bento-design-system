@@ -27,28 +27,31 @@ type RangeDateFieldProps = {
 type Props = (SingleDateFieldProps | RangeDateFieldProps) & {
   minDate?: Date;
   maxDate?: Date;
-  shouldDisableDate?: (date: DateValue) => boolean;
+  shouldDisableDate?: (date: Date) => boolean;
   readOnly?: boolean;
 };
 
 function dateToCalendarDate(date: Date): CalendarDate {
-  if (!date) return date;
   return new CalendarDate(date.getFullYear(), date.getMonth() + 1, date.getDate());
 }
 
 function SingleDateField({ disabled, readOnly, ...props }: Extract<Props, { type?: "single" }>) {
+  const localTimeZone = getLocalTimeZone();
+
   const internalProps = {
     ...props,
     value: props.value ? dateToCalendarDate(props.value) : props.value,
     onChange: (date: CalendarDate | null) => {
-      props.onChange(date?.toDate(getLocalTimeZone()) ?? null);
+      props.onChange(date?.toDate(localTimeZone) ?? null);
     },
     isDisabled: disabled,
     isReadOnly: readOnly,
     validationState: props.issues ? "invalid" : "valid",
     minValue: props.minDate ? dateToCalendarDate(props.minDate) : undefined,
     maxValue: props.maxDate ? dateToCalendarDate(props.maxDate) : undefined,
-    isDateUnavailable: props.shouldDisableDate,
+    isDateUnavailable: props.shouldDisableDate
+      ? (date: DateValue) => props.shouldDisableDate!(date.toDate(localTimeZone))
+      : undefined,
     shouldForceLeadingZeros: true,
   } as const;
   const state = useDatePickerState(internalProps);
@@ -111,6 +114,7 @@ function SingleDateField({ disabled, readOnly, ...props }: Extract<Props, { type
 }
 
 function RangeDateField({ disabled, readOnly, ...props }: Extract<Props, { type: "range" }>) {
+  const localTimeZone = getLocalTimeZone();
   const internalProps = {
     ...props,
     isDisabled: disabled,
@@ -118,16 +122,21 @@ function RangeDateField({ disabled, readOnly, ...props }: Extract<Props, { type:
     validationState: props.issues ? "invalid" : "valid",
     minValue: props.minDate ? dateToCalendarDate(props.minDate) : undefined,
     maxValue: props.maxDate ? dateToCalendarDate(props.maxDate) : undefined,
-    isDateUnavailable: props.shouldDisableDate,
+    isDateUnavailable: props.shouldDisableDate
+      ? (date: DateValue) => props.shouldDisableDate!(date.toDate(localTimeZone))
+      : undefined,
     value: props.value
       ? {
           start: dateToCalendarDate(props.value[0]),
           end: dateToCalendarDate(props.value[1]),
         }
       : props.value,
-    onChange: (range: RangeValue<CalendarDate>) => {
-      const localTimeZone = getLocalTimeZone();
-      props.onChange([range.start.toDate(localTimeZone), range.end.toDate(localTimeZone)]);
+    onChange: (range: RangeValue<CalendarDate> | null) => {
+      if (!range) {
+        props.onChange(null);
+      } else {
+        props.onChange([range.start.toDate(localTimeZone), range.end.toDate(localTimeZone)]);
+      }
     },
   } as const;
   const state = useDateRangePickerState(internalProps);

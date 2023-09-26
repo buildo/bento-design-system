@@ -119,7 +119,7 @@ export const Range = {
 
 export const RangeWithMinMax = {
   args: {
-    value: [null, null],
+    value: null,
     type: "range",
     minDate: today,
     maxDate: inOneMonth,
@@ -129,7 +129,7 @@ export const RangeWithMinMax = {
 
 export const RangeWithShortcuts = {
   args: {
-    value: [null, null],
+    value: null,
     type: "range",
     shortcuts: [
       {
