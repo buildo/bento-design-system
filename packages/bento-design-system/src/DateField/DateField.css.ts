@@ -1,6 +1,7 @@
 import { createVar, style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
+import { vars } from "../vars.css";
 
 export const topLeftRadius = createVar();
 export const topRightRadius = createVar();
@@ -18,6 +19,15 @@ export const calendar = bentoSprinkles({
   borderWidth: 1,
 });
 
+export const calendarGrid = style([
+  bentoSprinkles({
+    display: "grid",
+  }),
+  {
+    gridTemplateColumns: "repeat(7, 1fr)",
+  },
+]);
+
 export const dateFieldRecipe = strictRecipe({
   variants: {
     validation: {
@@ -25,7 +35,7 @@ export const dateFieldRecipe = strictRecipe({
       invalid: {},
       notSet: {},
     },
-    isFocused: {
+    isCalendarOpen: {
       true: {},
     },
   },
@@ -33,7 +43,7 @@ export const dateFieldRecipe = strictRecipe({
     {
       variants: {
         validation: "valid",
-        isFocused: true,
+        isCalendarOpen: true,
       },
       style: bentoSprinkles({
         boxShadow: { default: "outlineInputFocus", hover: "outlineInputFocus" },
@@ -42,7 +52,7 @@ export const dateFieldRecipe = strictRecipe({
     {
       variants: {
         validation: "invalid",
-        isFocused: true,
+        isCalendarOpen: true,
       },
       style: bentoSprinkles({
         boxShadow: { default: "outlineNegativeStrong", hover: "outlineNegativeStrong" },
@@ -141,13 +151,21 @@ export const dayRecipe = strictRecipe({
   },
 });
 
-export const selector = bentoSprinkles({
-  paddingX: 16,
-  paddingY: 8,
-  borderRadius: 4,
-  background: {
-    default: "secondaryTransparentEnabledBackground",
-    focus: "secondaryTransparentFocusBackground",
-    hover: "secondaryTransparentHoverBackground",
+export const dateSegment = style([
+  bentoSprinkles({ outline: { focus: "none" }, textTransform: "uppercase" }),
+  {
+    selectors: {
+      "&[data-placeholder=true]": {
+        color: vars.textColor.textSecondary,
+      },
+      "&[data-placeholder=true][aria-disabled=true]": {
+        color: vars.textColor.textDisabled,
+      },
+
+      "&:focus:not([readonly])": {
+        borderBottom: `1px solid ${vars.textColor.textSecondary}`,
+        marginBottom: "-1px",
+      },
+    },
   },
-});
+]);

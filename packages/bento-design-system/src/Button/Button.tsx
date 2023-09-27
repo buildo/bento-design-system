@@ -6,7 +6,7 @@ import { AriaButtonProps } from "@react-types/button";
 import { useButton } from "@react-aria/button";
 import { Label } from "../Typography/Label/Label";
 import { Column, Columns } from "../Layout/Columns";
-import { IconProps } from "..";
+import { Children, IconProps } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
 import pick from "lodash.pick";
 import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
@@ -31,7 +31,7 @@ type Props = {
   hierarchy: "primary" | "secondary" | "danger";
   isDisabled?: boolean;
   size?: ButtonSize;
-  icon?: (props: IconProps) => JSX.Element;
+  icon?: (props: IconProps) => Children;
   iconPosition?: "leading" | "trailing";
 } & Omit<AriaButtonProps<"button">, "onPress"> &
   Pick<React.HTMLProps<HTMLButtonElement>, OtherButtonKeys>;

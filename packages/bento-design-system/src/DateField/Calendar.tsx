@@ -1,43 +1,38 @@
-import { MonthType, useMonth } from "@datepicker-react/hooks";
-import { useDateFormatter } from "@react-aria/i18n";
-import { useOverlay, useOverlayPosition } from "@react-aria/overlays";
-import { mergeProps } from "@react-aria/utils";
-import { RefObject, useRef } from "react";
-import { Box, Stack, Tiles } from "..";
-import { Label } from "../Typography/Label/Label";
-import { Children } from "../util/Children";
-import { useCreatePortal } from "../util/useCreatePortal";
-import { CalendarHeader } from "./CalendarHeader";
-import { calendar, weekDay } from "./DateField.css";
+import { useCalendar, useCalendarGrid, useRangeCalendar } from "@react-aria/calendar";
+import {
+  CalendarState,
+  RangeCalendarState,
+  useCalendarState,
+  useRangeCalendarState,
+} from "@react-stately/calendar";
+import { createCalendar, getWeeksInMonth } from "@internationalized/date";
 import { Day } from "./Day";
+import { useLocale } from "@react-aria/i18n";
+import { Box } from "../Box/Box";
+import { calendar, calendarGrid, weekDay } from "../DateField/DateField.css";
 import { useBentoConfig } from "../BentoConfigContext";
+import { Children, Label, Stack } from "..";
 import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
+import { CalendarHeader } from "./CalendarHeader";
+import { useCreatePortal } from "../util/useCreatePortal";
+import { useOverlay, useOverlayPosition } from "@react-aria/overlays";
+import { DOMAttributes, useRef } from "react";
+import { mergeProps } from "@react-aria/utils";
+import { AriaCalendarProps, AriaRangeCalendarProps, DateValue } from "@react-types/calendar";
+import { AriaButtonProps } from "@react-types/button";
+import { FocusableElement } from "@react-types/shared";
 
-export type CommonCalendarProps = {
-  inputRef: RefObject<HTMLInputElement>;
-  focusedDate: Date | null;
-  onDateFocus(date: Date): void;
-  onDateSelect(date: Date): void;
-  onDateHover(date: Date): void;
-  isStartDate(date: Date): boolean;
-  isEndDate(date: Date): boolean;
-  isDateFocused(date: Date): boolean;
-  isDateSelected(date: Date): boolean;
-  isDateHovered(date: Date): boolean;
-  isDateBlocked(date: Date): boolean;
-  isFirstOrLastSelectedDate(date: Date): boolean;
-};
-
-type Props = CommonCalendarProps & {
-  type: "single" | "range";
-  activeDate: MonthType;
-  goToPreviousMonth: () => void;
-  goToNextMonth: () => void;
-  selectActiveDate: (date: Date) => void;
+type Props = (
+  | ({
+      type: "single";
+    } & AriaCalendarProps<DateValue>)
+  | ({
+      type: "range";
+    } & AriaRangeCalendarProps<DateValue>)
+) & {
   onClose: () => void;
-  shortcuts?: Children;
-  minDate?: Date;
-  maxDate?: Date;
+  inputRef: React.RefObject<HTMLInputElement>;
+  shortcuts: Children;
 };
 
 function boxShadowFromElevation(config: "none" | "small" | "medium" | "large") {
@@ -53,19 +48,68 @@ function boxShadowFromElevation(config: "none" | "small" | "medium" | "large") {
   }
 }
 
-export function Calendar(props: Props) {
+function CalendarGrid(
+  props:
+    | {
+        type: "single";
+        state: CalendarState;
+      }
+    | { type: "range"; state: RangeCalendarState }
+) {
+  const { locale } = useLocale();
+  const { gridProps, weekDays } = useCalendarGrid({}, props.state);
   const config = useBentoConfig().dateField;
-  const weekdayFormatter = useDateFormatter({
-    weekday: "narrow",
-  });
-  const overlayRef = useRef(null);
-  const createPortal = useCreatePortal();
 
-  const { days, weekdayLabels } = useMonth({
-    year: props.activeDate.year,
-    month: props.activeDate.month,
-    weekdayLabelFormat: (date) => weekdayFormatter.format(date),
-  });
+  const weeksInMonth = getWeeksInMonth(props.state.visibleRange.start, locale);
+
+  return (
+    <Box className={calendarGrid} {...gridProps}>
+      {weekDays.map((day, index) => (
+        <Box
+          key={index}
+          className={weekDay}
+          style={{ width: config.dayWidth, height: config.dayHeight }}
+        >
+          <Label color="secondary" size={config.dayOfWeekLabelSize}>
+            {day}
+          </Label>
+        </Box>
+      ))}
+      {[...new Array(weeksInMonth).keys()].map((weekIndex) =>
+        props.state
+          .getDatesInWeek(weekIndex)
+          .map((date, i) => (date ? <Day {...props} key={i} date={date} /> : <td key={i} />))
+      )}
+    </Box>
+  );
+}
+
+export function CalendarPopover(
+  props: (
+    | { type: "single"; state: CalendarState }
+    | { type: "range"; state: RangeCalendarState }
+  ) & {
+    prevButtonProps: AriaButtonProps<"button">;
+    nextButtonProps: AriaButtonProps<"button">;
+    onClose: () => void;
+    calendarRef: React.RefObject<HTMLElement>;
+    inputRef: React.RefObject<HTMLInputElement>;
+    state: CalendarState | RangeCalendarState;
+    shortcuts?: Children;
+  } & DOMAttributes<FocusableElement>
+) {
+  const {
+    prevButtonProps,
+    nextButtonProps,
+    onClose,
+    inputRef,
+    state,
+    calendarRef,
+    ...calendarProps
+  } = props;
+  const config = useBentoConfig().dateField;
+
+  const createPortal = useCreatePortal();
 
   const { overlayProps } = useOverlay(
     {
@@ -73,16 +117,24 @@ export function Calendar(props: Props) {
       isDismissable: true,
       onClose: props.onClose,
     },
-    overlayRef
+    calendarRef
   );
   const { overlayProps: positionProps } = useOverlayPosition({
     targetRef: props.inputRef,
-    overlayRef,
+    overlayRef: calendarRef,
     placement: "bottom start",
     offset: 35,
     isOpen: true,
     shouldFlip: true,
   });
+
+  const gridProps =
+    props.type === "single"
+      ? {
+          type: "single" as const,
+          state: state as CalendarState,
+        }
+      : { type: "range" as const, state: state as RangeCalendarState };
 
   return createPortal(
     <Box
@@ -90,34 +142,80 @@ export function Calendar(props: Props) {
       {...getRadiusPropsFromConfig(config.radius)}
       padding={config.padding}
       boxShadow={boxShadowFromElevation(config.elevation)}
+      {...calendarProps}
       {...mergeProps(overlayProps, positionProps)}
-      ref={overlayRef}
+      ref={calendarRef}
     >
       <Stack space={16} align="center">
-        <CalendarHeader {...props} />
-        <Tiles columns={7} space={0}>
-          {weekdayLabels.map((d, index) => (
-            <Box
-              className={weekDay}
-              width={config.dayWidth}
-              height={config.dayHeight}
-              key={`${d}-${index}`}
-            >
-              <Label size={config.dayOfWeekLabelSize}>{d}</Label>
-            </Box>
-          ))}
-          {days.map((day, index) => {
-            if (typeof day === "object") {
-              return <Day key={day.dayLabel} {...props} date={day.date} label={day.dayLabel} />;
-            } else {
-              return (
-                <Box key={`empty-${index}`} width={config.dayWidth} height={config.dayHeight} />
-              );
-            }
-          })}
-        </Tiles>
+        <CalendarHeader
+          prevButtonProps={prevButtonProps}
+          nextButtonProps={nextButtonProps}
+          focusedDate={state.focusedDate}
+          onChange={state.setFocusedDate}
+          minDate={state.minValue}
+          maxDate={state.maxValue}
+        />
+        <CalendarGrid {...gridProps} />
         {props.shortcuts && <Box style={{ maxWidth: config.dayWidth * 7 }}>{props.shortcuts}</Box>}
       </Stack>
     </Box>
   );
+}
+
+function SingleCalendar(props: Extract<Props, { type: "single" }>) {
+  const { locale } = useLocale();
+  const state = useCalendarState({
+    ...props,
+    locale,
+    createCalendar,
+  });
+  const { calendarProps, prevButtonProps, nextButtonProps } = useCalendar(props, state);
+  const ref = useRef(null);
+
+  return (
+    <CalendarPopover
+      type="single"
+      {...calendarProps}
+      prevButtonProps={prevButtonProps}
+      nextButtonProps={nextButtonProps}
+      state={state}
+      onClose={props.onClose}
+      inputRef={props.inputRef}
+      calendarRef={ref}
+      shortcuts={props.shortcuts}
+    />
+  );
+}
+
+function RangeCalendar(props: Extract<Props, { type: "range" }>) {
+  const { locale } = useLocale();
+  const state = useRangeCalendarState({
+    ...props,
+    locale,
+    createCalendar,
+  });
+  const ref = useRef(null);
+  const { calendarProps, prevButtonProps, nextButtonProps } = useRangeCalendar(props, state, ref);
+
+  return (
+    <CalendarPopover
+      type="range"
+      {...calendarProps}
+      prevButtonProps={prevButtonProps}
+      nextButtonProps={nextButtonProps}
+      state={state}
+      onClose={props.onClose}
+      inputRef={props.inputRef}
+      calendarRef={ref}
+      shortcuts={props.shortcuts}
+    />
+  );
+}
+
+export function Calendar(props: Props) {
+  if (props.type === "single") {
+    return <SingleCalendar {...props} />;
+  } else {
+    return <RangeCalendar {...props} />;
+  }
 }

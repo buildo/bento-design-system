@@ -1,22 +1,31 @@
-import { useDay } from "@datepicker-react/hooks";
-import { useEffect, useRef } from "react";
-import { Box } from "..";
-import { Body } from "../Typography/Body/Body";
-import type { CommonCalendarProps } from "./Calendar";
+import { useCalendarCell } from "@react-aria/calendar";
+import { useRef } from "react";
+import { CalendarState, RangeCalendarState } from "@react-stately/calendar";
+import { CalendarDate, isToday, getLocalTimeZone } from "@internationalized/date";
+import { useBentoConfig } from "../BentoConfigContext";
+import { Box } from "../Box/Box";
+import { assignInlineVars } from "@vanilla-extract/dynamic";
 import {
-  topLeftRadius,
-  topRightRadius,
   bottomLeftRadius,
   bottomRightRadius,
   dayRecipe,
-} from "./DateField.css";
-import { assignInlineVars } from "@vanilla-extract/dynamic";
-import { useBentoConfig } from "../BentoConfigContext";
+  topLeftRadius,
+  topRightRadius,
+} from "../DateField/DateField.css";
+import { Body } from "../Typography/Body/Body";
+import { mergeProps } from "@react-aria/utils";
 
-type Props = CommonCalendarProps & {
-  date: Date;
-  label: string;
-  type: "single" | "range";
+type Props = (
+  | {
+      type: "single";
+      state: CalendarState;
+    }
+  | {
+      type: "range";
+      state: RangeCalendarState;
+    }
+) & {
+  date: CalendarDate;
 };
 
 function computeStyle(props: {
@@ -59,78 +68,85 @@ function computeStyle(props: {
 
 export function Day(props: Props) {
   const config = useBentoConfig().dateField;
-  const dayRef = useRef<HTMLElement>(null);
-  const ref = useRef<HTMLButtonElement | null>(null);
+  const ref = useRef(null);
   const {
-    disabledDate,
-    isWithinHoverRange,
+    cellProps,
+    buttonProps,
     isSelected,
-    isSelectedStartOrEnd,
-    onKeyDown: _onKeyDown,
-    ...rest
-  } = useDay({
-    ...props,
-    dayRef: ref,
-  });
-
-  function onKeyDown(e: React.KeyboardEvent<HTMLButtonElement>) {
-    if (e.key === "Enter") {
-      rest.onClick();
-    } else {
-      _onKeyDown(e);
-    }
-  }
+    isInvalid,
+    isFocused,
+    isOutsideVisibleRange,
+    isDisabled,
+    isUnavailable,
+    formattedDate,
+  } = useCalendarCell({ date: props.date }, props.state, ref);
 
   const style = computeStyle({
     type: props.type,
-    isDisabled: disabledDate,
-    isStartDate: props.isStartDate(props.date),
-    isEndDate: props.isEndDate(props.date),
-    isInRange: isSelected,
-    isInHoverRange: isWithinHoverRange,
-    isFocused: props.isDateFocused(props.date),
+    isDisabled: isDisabled || isUnavailable || isInvalid,
+    isStartDate:
+      props.type === "single"
+        ? isSelected
+        : (isSelected && props.state.value && props.date.compare(props.state.value.start) === 0) ||
+          (props.state.highlightedRange &&
+            props.date.compare(props.state.highlightedRange.start) === 0),
+    isEndDate:
+      props.type === "single"
+        ? isSelected
+        : (isSelected && props.state.value && props.date.compare(props.state.value.end) === 0) ||
+          (props.state.highlightedRange &&
+            props.date.compare(props.state.highlightedRange.end) === 0),
+    isInRange:
+      props.type === "single"
+        ? isSelected
+        : isSelected &&
+          props.state.value &&
+          props.date.compare(props.state.value.end) < 0 &&
+          props.date.compare(props.state.value.start) > 0,
+    isInHoverRange:
+      props.type === "single"
+        ? isSelected
+        : props.state.highlightedRange &&
+          props.date.compare(props.state.highlightedRange.start) > 0 &&
+          props.date.compare(props.state.highlightedRange.end) < 0,
+    isFocused: isFocused,
   });
-
-  const isToday = props.date.getTime() === new Date().setHours(0, 0, 0, 0);
-
-  useEffect(() => {
-    if (
-      dayRef.current &&
-      props.inputRef.current &&
-      props.isDateFocused(props.date) &&
-      document.activeElement !== props.inputRef.current
-    ) {
-      dayRef.current.focus();
-    }
-  }, [props.isDateFocused(props.date)]);
 
   return (
     <Box
-      style={assignInlineVars(
-        typeof config.radius === "object"
-          ? {
-              [topLeftRadius]: `${config.radius.topLeft}px`,
-              [topRightRadius]: `${config.radius.topRight}px`,
-              [bottomLeftRadius]: `${config.radius.bottomLeft}px`,
-              [bottomRightRadius]: `${config.radius.bottomRight}px`,
-            }
-          : {
-              [topLeftRadius]: `${config.radius}px`,
-              [topRightRadius]: `${config.radius}px`,
-              [bottomLeftRadius]: `${config.radius}px`,
-              [bottomRightRadius]: `${config.radius}px`,
-            }
-      )}
+      as="td"
+      {...mergeProps(cellProps, buttonProps)}
+      ref={ref}
       className={dayRecipe({ style })}
-      width={config.dayWidth}
-      height={config.dayHeight}
-      {...rest}
-      onKeyDown={onKeyDown}
-      ref={dayRef}
+      style={{
+        ...assignInlineVars(
+          typeof config.dayRadius === "object"
+            ? {
+                [topLeftRadius]: `${config.dayRadius.topLeft}px`,
+                [topRightRadius]: `${config.dayRadius.topRight}px`,
+                [bottomLeftRadius]: `${config.dayRadius.bottomLeft}px`,
+                [bottomRightRadius]: `${config.dayRadius.bottomRight}px`,
+              }
+            : {
+                [topLeftRadius]: `${config.dayRadius}px`,
+                [topRightRadius]: `${config.dayRadius}px`,
+                [bottomLeftRadius]: `${config.dayRadius}px`,
+                [bottomRightRadius]: `${config.dayRadius}px`,
+              }
+        ),
+        width: config.dayWidth,
+        height: config.dayHeight,
+      }}
     >
-      <Body size={config.daySize} color="inherit" weight={isToday ? "strong" : "default"}>
-        {props.label}
-      </Body>
+      {!isOutsideVisibleRange && (
+        <Body
+          size={config.daySize}
+          color="inherit"
+          weight={isToday(props.date, getLocalTimeZone()) ? "strong" : "default"}
+        >
+          {formattedDate}
+        </Body>
+      )}
     </Box>
   );
 }

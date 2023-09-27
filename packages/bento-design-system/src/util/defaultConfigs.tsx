@@ -637,8 +637,8 @@ export const dateField: DateFieldConfig = {
     open: IconChevronUp,
     close: IconChevronDown,
   },
-  dayWidth: 40,
-  dayHeight: 40,
+  dayWidth: 44,
+  dayHeight: 44,
   dayRadius: 16,
   daySize: "medium",
 };

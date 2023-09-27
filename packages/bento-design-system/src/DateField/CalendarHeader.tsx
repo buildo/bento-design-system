@@ -1,56 +1,54 @@
-import { MonthType } from "@datepicker-react/hooks";
+import { AriaButtonProps } from "@react-types/button";
+import { Box } from "../Box/Box";
+import { Column, Columns } from "../Layout/Columns";
+import { IconButton } from "../";
+import { defaultMessages } from "../defaultMessages/en";
 import { IconChevronLeft, IconChevronRight } from "../Icons";
-import { Box, Column, Columns, IconButton } from "..";
-import { useDefaultMessages } from "../util/useDefaultMessages";
 import { Selector } from "./Selector";
+import { CalendarDate } from "@internationalized/date";
+import { DateValue } from "@react-aria/calendar";
 
 type Props = {
-  activeDate: MonthType;
-  goToPreviousMonth: () => void;
-  goToNextMonth: () => void;
-  selectActiveDate: (date: Date) => void;
-  minDate?: Date;
-  maxDate?: Date;
+  prevButtonProps: AriaButtonProps<"button">;
+  nextButtonProps: AriaButtonProps<"button">;
+  focusedDate: CalendarDate;
+  onChange: (date: CalendarDate) => void;
+  minDate?: DateValue;
+  maxDate?: DateValue;
 };
 
-export function CalendarHeader({
-  goToPreviousMonth,
-  goToNextMonth,
-  selectActiveDate,
-  activeDate,
-  minDate,
-  maxDate,
-}: Props) {
-  const { defaultMessages } = useDefaultMessages();
+export function CalendarHeader(props: Props) {
   return (
-    <Box paddingX={12} width="full">
-      <Columns space={4} alignY="center">
+    <Box paddingX={8} width="full">
+      <Columns space={8} alignY="center">
         <Column width="content">
           <IconButton
             label={defaultMessages.DateField.previousMonthLabel}
-            size={16}
+            size={24}
             kind="transparent"
             hierarchy="secondary"
             icon={IconChevronLeft}
-            onPress={goToPreviousMonth}
+            {...props.prevButtonProps}
+            onPress={props.prevButtonProps.onPress!}
           />
         </Column>
-        <Selector datePart="month" activeMonth={activeDate} onSelect={selectActiveDate} />
+        <Selector datePart="month" activeDate={props.focusedDate} onSelect={props.onChange} />
         <Selector
           datePart="year"
-          activeMonth={activeDate}
-          onSelect={selectActiveDate}
-          minDate={minDate}
-          maxDate={maxDate}
+          activeDate={props.focusedDate}
+          onSelect={props.onChange}
+          minDate={props.minDate}
+          maxDate={props.maxDate}
         />
         <Column width="content">
           <IconButton
             label={defaultMessages.DateField.nextMonthLabel}
-            size={16}
+            size={24}
             kind="transparent"
             hierarchy="secondary"
             icon={IconChevronRight}
-            onPress={goToNextMonth}
+            {...props.nextButtonProps}
+            onPress={props.nextButtonProps.onPress!}
           />
         </Column>
       </Columns>

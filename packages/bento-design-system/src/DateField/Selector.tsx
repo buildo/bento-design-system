@@ -1,46 +1,45 @@
-import { MonthType } from "@datepicker-react/hooks";
 import { useDateFormatter } from "@react-aria/i18n";
 import { useMemo } from "react";
-import { Box, Column, Columns, Menu } from "..";
+import { Box, Button, Menu } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
 import { ListProps } from "../List/List";
-import { Label } from "../Typography/Label/Label";
-import { selector } from "./DateField.css";
+import { CalendarDate, getLocalTimeZone, isSameYear, isSameMonth } from "@internationalized/date";
+import { DateValue } from "@react-aria/calendar";
 
-function getYears(activeDate: Date, minDate?: Date, maxDate?: Date): Date[] {
-  const firstYear = new Date().getFullYear() - 100;
+function getYears(
+  activeDate: CalendarDate,
+  minDate?: DateValue,
+  maxDate?: DateValue
+): CalendarDate[] {
+  const firstYear = activeDate.set({ year: activeDate.year - 100 });
   return Array(200)
     .fill(0)
     .map((_, diff) => {
-      const yearDate = new Date(activeDate);
-      yearDate.setFullYear(firstYear + diff);
-      return yearDate;
+      return firstYear.add({ years: diff });
     })
     .filter(
       (year) =>
-        (minDate === undefined || year.getFullYear() >= minDate.getFullYear()) &&
-        (maxDate === undefined || year.getFullYear() <= maxDate.getFullYear())
+        (minDate === undefined || year.year >= minDate.year) &&
+        (maxDate === undefined || year.year <= maxDate.year)
     );
 }
 
-function getMonths(activeDate: Date): Date[] {
+function getMonths(activeDate: CalendarDate): CalendarDate[] {
   return Array(12)
     .fill(0)
     .map((_, month) => {
-      const monthDate = new Date(activeDate);
-      monthDate.setMonth(month);
-      return monthDate;
+      return activeDate.set({ month: month + 1 });
     });
 }
 
 type Props = {
-  activeMonth: MonthType;
-  onSelect: (date: Date) => void;
+  activeDate: CalendarDate;
+  onSelect: (date: CalendarDate) => void;
 } & (
   | {
       datePart: "year";
-      maxDate?: Date;
-      minDate?: Date;
+      maxDate?: DateValue;
+      minDate?: DateValue;
     }
   | {
       datePart: "month";
@@ -49,46 +48,41 @@ type Props = {
     }
 );
 
-export function Selector({ datePart, activeMonth, maxDate, minDate, onSelect }: Props) {
+export function Selector({ datePart, activeDate, maxDate, minDate, onSelect }: Props) {
   const config = useBentoConfig().dateField;
   const formatter = useDateFormatter(
-    datePart === "month" ? { month: "long" } : { year: "numeric" }
+    datePart === "month" ? { month: "short" } : { year: "numeric" }
   );
 
   const values =
-    datePart === "month"
-      ? getMonths(activeMonth.date)
-      : getYears(activeMonth.date, minDate, maxDate);
+    datePart === "month" ? getMonths(activeDate) : getYears(activeDate, minDate, maxDate);
 
   const options: ListProps["items"] = useMemo(
     () =>
       values.map((value) => {
         return {
-          label: formatter.format(value),
+          label: formatter.format(value.toDate(getLocalTimeZone())),
           onPress: () => onSelect(value),
-          isSelected: value.getTime() === activeMonth.date.getTime(),
+          isSelected: isSameMonth(value, activeDate) && isSameYear(value, activeDate),
         };
       }),
-    [values, activeMonth, onSelect, formatter]
+    [values, activeDate, onSelect, formatter]
   );
 
   return (
     <Menu
       size="medium"
-      trigger={(ref, triggerProps, { isOpen }) => (
-        <Box ref={ref} {...triggerProps} cursor="pointer" outline="none" className={selector}>
-          <Columns space={8} align="center" alignY="center">
-            <Column width="content">
-              <Label size={config.monthYearLabelSize} color="secondary" uppercase>
-                {formatter.format(activeMonth.date)}
-              </Label>
-            </Column>
-            <Column width="content">
-              {isOpen
-                ? config.monthYearSelectIcons.open({ size: 12 })
-                : config.monthYearSelectIcons.close({ size: 12 })}
-            </Column>
-          </Columns>
+      trigger={(ref, triggerProps, { isOpen, toggle }) => (
+        <Box ref={ref} {...triggerProps} display="inline-block" outline="none" tabIndex={undefined}>
+          <Button
+            kind="transparent"
+            hierarchy="secondary"
+            icon={isOpen ? config.monthYearSelectIcons.open : config.monthYearSelectIcons.close}
+            iconPosition="trailing"
+            label={formatter.format(activeDate.toDate(getLocalTimeZone()))}
+            size="small"
+            onPress={toggle}
+          />
         </Box>
       )}
       items={options}

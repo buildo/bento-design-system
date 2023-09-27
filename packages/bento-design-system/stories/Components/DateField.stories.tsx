@@ -52,13 +52,6 @@ export const ReadOnly = {
   },
 } satisfies Story;
 
-export const Range = {
-  args: {
-    value: [value, addDays(value, 2)],
-    type: "range",
-  },
-} satisfies Story;
-
 const inOneWeek = addWeeks(today, 1);
 export const SingleWithMinMax = {
   args: {
@@ -70,16 +63,6 @@ export const SingleWithMinMax = {
 } satisfies Story;
 
 const inOneMonth = addMonths(today, 1);
-export const RangeWithMinMax = {
-  args: {
-    value: [null, null],
-    type: "range",
-    minDate: today,
-    maxDate: inOneMonth,
-    assistiveText: "You can select a date between today and one month from now",
-  },
-} satisfies Story;
-
 export const SingleWithShortcuts = {
   args: {
     value: null,
@@ -99,10 +82,54 @@ export const SingleWithShortcuts = {
     ],
   },
 } satisfies Story;
+export const DisabledDates = {
+  args: {
+    shouldDisableDate: (date: Date) => date.getDay() === 0,
+  },
+};
+export const CalendarOpen = {
+  args: {
+    value,
+  },
+  play: async () => {
+    const button = screen.getByRole("button");
+    await waitFor(async () => {
+      await button.click();
+    });
+    // wait a bit to see if it solves Chromatic snapshot flakiness
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+  },
+  decorators: isChromatic()
+    ? [
+        (Story) => (
+          <div style={{ paddingBottom: "600px" }}>
+            <Story />
+          </div>
+        ),
+      ]
+    : [],
+} satisfies Story;
+
+export const Range = {
+  args: {
+    value: [value, addDays(value, 2)],
+    type: "range",
+  },
+} satisfies Story;
+
+export const RangeWithMinMax = {
+  args: {
+    value: null,
+    type: "range",
+    minDate: today,
+    maxDate: inOneMonth,
+    assistiveText: "You can select a date between today and one month from now",
+  },
+} satisfies Story;
 
 export const RangeWithShortcuts = {
   args: {
-    value: [null, null],
+    value: null,
     type: "range",
     shortcuts: [
       {
@@ -120,30 +147,3 @@ export const RangeWithShortcuts = {
     ],
   },
 };
-
-export const DisabledDates = {
-  args: {
-    shouldDisableDate: (date: Date) => date.getDay() === 0,
-  },
-};
-
-export const CalendarOpen = {
-  args: {
-    value,
-  },
-  play: async () => {
-    const input = screen.getByRole("textbox");
-    await waitFor(() => input.click());
-    // wait a bit to see if it solves Chromatic snapshot flakiness
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-  },
-  decorators: isChromatic()
-    ? [
-        (Story) => (
-          <div style={{ paddingBottom: "600px" }}>
-            <Story />
-          </div>
-        ),
-      ]
-    : [],
-} satisfies Story;

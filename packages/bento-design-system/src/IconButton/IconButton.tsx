@@ -9,12 +9,13 @@ import { LocalizedString } from "../util/LocalizedString";
 import { useBentoConfig } from "../BentoConfigContext";
 import { match } from "ts-pattern";
 import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
+import { PressEvent } from "@react-types/shared";
 
 type Props = {
   kind: "solid" | "transparent" | "outline";
   hierarchy: "primary" | "secondary" | "danger";
   label: LocalizedString;
-  onPress: () => void;
+  onPress: (e: PressEvent) => void;
   size: Exclude<IconProps["size"], 40>;
   tabIndex?: number;
   isDisabled?: boolean;
@@ -33,7 +34,7 @@ export function IconButton(props: Props) {
       // since it's deprecated in favor of `onPress`, but it works in practice.
       ["onClick" as any]: props.onPress,
       onPress: (e) => {
-        if (e.pointerType === "keyboard") props.onPress();
+        if (e.pointerType === "keyboard") props.onPress(e);
       },
     },
     ref
@@ -59,7 +60,10 @@ export function IconButton(props: Props) {
       tabIndex={props.tabIndex ?? buttonProps.tabIndex}
       alignItems="center"
       justifyContent="center"
-      {...getRadiusPropsFromConfig(config.radius)}
+      {...match(props.kind)
+        .with("solid", "outline", () => getRadiusPropsFromConfig(config.radius))
+        .with("transparent", () => {})
+        .exhaustive()}
       {...match(props.kind)
         .with("solid", "outline", () =>
           paddingConfig && typeof paddingConfig === "object" && "paddingX" in paddingConfig
