@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { ConfiguratorSection } from "../ConfiguratorSection/ConfiguratorSection";
 import { BrandColors } from "./BrandColors";
-import { ThemeConfig } from "../ThemeConfigurator/ThemeConfigurator";
 import { useState } from "react";
 import { match } from "ts-pattern";
 import { InteractiveColor } from "./InteractiveColor";
@@ -9,16 +8,9 @@ import { NeutralColor } from "./NeutralColor";
 import { SemanticColors } from "./SemanticColors";
 import { DataVizColors } from "./DataVizColors";
 import { SectionCompleted } from "./SectionCompleted";
+import { ThemeConfig, useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
 
-type ColorsConfig = ThemeConfig["colors"];
-
-type Props = {
-  value: ColorsConfig;
-  onChange: (value: ColorsConfig) => void;
-  onComplete: () => void;
-};
-
-export function ColorsSection(props: Props) {
+export function ColorsSection() {
   const steps = [
     "brand" as const,
     "interactive" as const,
@@ -27,6 +19,13 @@ export function ColorsSection(props: Props) {
     "dataVisualization" as const,
   ];
   const { t } = useTranslation();
+  const { theme, setTheme, completeSection } = useConfiguratorStatusContext();
+
+  const colors = theme.colors;
+
+  const onChange = (newValue: ThemeConfig["colors"]) => {
+    setTheme({ ...theme, colors: newValue });
+  };
 
   const [completed, setCompleted] = useState(false);
   const [currentStep, setCurrentStep] = useState<(typeof steps)[0]>("brand");
@@ -42,11 +41,12 @@ export function ColorsSection(props: Props) {
   return match(completed)
     .with(true, () => (
       <ConfiguratorSection title={t("ColorsSection.title")} endStep>
-        <SectionCompleted goToMyTheme={() => {}} goToTypography={() => {}} />
+        <SectionCompleted />
       </ConfiguratorSection>
     ))
     .with(false, () => (
       <ConfiguratorSection
+        key={currentStep} // refresh component to restore scroll position at every step change
         title={t("ColorsSection.title")}
         steps={steps.map((step) => ({ label: t(`ColorsSection.Step.${step}`) }))}
         currentStep={currentStepIndex}
@@ -54,47 +54,45 @@ export function ColorsSection(props: Props) {
         {match(currentStep)
           .with("brand", () => (
             <BrandColors
-              value={props.value.brand}
-              onChange={(value) => props.onChange({ ...props.value, brand: value })}
+              value={colors.brand}
+              onChange={(value) => onChange({ ...colors, brand: value })}
               onCancel={() => {}}
               onNext={onNext}
             />
           ))
           .with("interactive", () => (
             <InteractiveColor
-              value={props.value.interactive}
-              onChange={(value) => props.onChange({ ...props.value, interactive: value })}
-              brandColors={props.value.brand}
+              value={theme.colors.interactive}
+              onChange={(value) => onChange({ ...colors, interactive: value })}
+              brandColors={colors.brand}
               onBack={onBack}
               onNext={onNext}
             />
           ))
           .with("neutral", () => (
             <NeutralColor
-              value={props.value.neutral}
-              onChange={(neutral) => props.onChange({ ...props.value, neutral })}
+              value={colors.neutral}
+              onChange={(neutral) => onChange({ ...colors, neutral })}
               onBack={onBack}
               onNext={onNext}
             />
           ))
           .with("semantic", () => (
             <SemanticColors
-              value={props.value.semantic}
-              onChange={(semantic) => props.onChange({ ...props.value, semantic })}
+              value={colors.semantic}
+              onChange={(semantic) => onChange({ ...colors, semantic })}
               onBack={onBack}
               onNext={onNext}
             />
           ))
           .with("dataVisualization", () => (
             <DataVizColors
-              value={props.value.dataVisualization}
-              onChange={(dataVisualization) =>
-                props.onChange({ ...props.value, dataVisualization })
-              }
+              value={colors.dataVisualization}
+              onChange={(dataVisualization) => onChange({ ...colors, dataVisualization })}
               onBack={onBack}
               onNext={() => {
                 setCompleted(true);
-                props.onComplete();
+                completeSection("colors");
               }}
             />
           ))

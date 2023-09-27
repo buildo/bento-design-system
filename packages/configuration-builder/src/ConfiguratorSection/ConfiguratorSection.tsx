@@ -18,11 +18,14 @@ type Props = {
 export function ConfiguratorSection(props: Props) {
   const { t } = useTranslation();
   return (
-    <Box padding={40} paddingTop={24}>
+    <Box padding={40} paddingTop={24} flexGrow={1} overflowY="auto">
       <Stack space={40}>
         <Stack space={24}>
           <Breadcrumb
-            items={[{ label: t("ConfigurationSection.myTheme"), href: "" }, { label: props.title }]}
+            items={[
+              { label: t("ConfigurationSection.myTheme"), href: "/theme" },
+              { label: props.title },
+            ]}
           />
           <Headline size="medium">{props.title}</Headline>
           {!props.endStep && <Stepper steps={props.steps} currentStep={props.currentStep} />}

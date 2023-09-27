@@ -1,31 +1,26 @@
-import { Button, Feedback, Inline, Stack } from "@buildo/bento-design-system";
+import { ButtonLink, Feedback, Inline, Stack } from "@buildo/bento-design-system";
 import { useTranslation } from "react-i18next";
-import { IconConfetti } from "../Icons/IconConfetti";
+import { IconConfetti } from "../PhosphorIcons";
 
-type Props = {
-  goToMyTheme: () => void;
-  goToTypography: () => void;
-};
-
-export function SectionCompleted(props: Props) {
+export function SectionCompleted() {
   const { t } = useTranslation();
   return (
     <Stack space={40} align="center">
       <Feedback size="large" title={t("ColorsSection.completed")} icon={IconConfetti} />
       <Inline space={16}>
-        <Button
+        <ButtonLink
           size="large"
           kind="solid"
           hierarchy="secondary"
           label={t("ColorsSection.returnToMyTheme")}
-          onPress={props.goToMyTheme}
+          href="/theme"
         />
-        <Button
+        <ButtonLink
           size="large"
           kind="solid"
           hierarchy="primary"
           label={t("ColorsSection.goToTypography")}
-          onPress={props.goToTypography}
+          href="/theme/typography"
         />
       </Inline>
     </Stack>

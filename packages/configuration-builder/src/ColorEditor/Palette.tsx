@@ -1,7 +1,7 @@
 import { Box } from "@buildo/bento-design-system";
 import { LightnessInterpolation } from "./ColorEditor";
 import { useState } from "react";
-import { IconEyedropper } from "../Icons/IconEyedropper";
+import { IconEyedropper } from "../PhosphorIcons";
 import { HSLToHex, HexColor } from "../utils/colorUtils";
 
 type Props = {

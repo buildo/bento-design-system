@@ -6,10 +6,10 @@ import {
   Stack,
   unsafeLocalizedString,
 } from "@buildo/bento-design-system";
-import { ThemeConfig } from "../ThemeConfigurator/ThemeConfigurator";
 import { ColorEditor } from "../ColorEditor/ColorEditor";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { ThemeConfig } from "../ConfiguratorStatusContext";
 
 type InteractiveColor = ThemeConfig["colors"]["interactive"];
 type BrandColors = ThemeConfig["colors"]["brand"];
