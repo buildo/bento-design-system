@@ -127,4 +127,6 @@ export { useComponentsShowcase } from "./useComponentsShowcase";
 
 export type { ClassValue } from "clsx";
 
-export type { Time, CalendarDate, DateValue } from "@internationalized/date";
+export type { DateValue } from "@internationalized/date";
+
+export { Time, CalendarDate } from "@internationalized/date";
