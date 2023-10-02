@@ -71,7 +71,7 @@
     "@floating-ui/dom": "1.5.1",
     "@floating-ui/react-dom": "2.0.2",
     "@floating-ui/utils": "0.1.1",
-    "@fontsource/lexend": "5.0.12",
+    "@fontsource/lexend": "5.0.13",
     "@internationalized/date": "3.4.0",
     "@react-aria/breadcrumbs": "3.5.4",
     "@react-aria/button": "3.8.1",
