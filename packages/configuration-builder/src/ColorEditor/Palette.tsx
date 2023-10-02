@@ -2,30 +2,14 @@ import { Box } from "@buildo/bento-design-system";
 import { LightnessInterpolation } from "./ColorEditor";
 import { useState } from "react";
 import { IconEyedropper } from "../PhosphorIcons";
-import { HSLToHex, HexColor } from "../utils/colorUtils";
+import { HexColor } from "../utils/colorUtils";
+import { getPalette } from "../utils/paletteUtils";
 
 type Props = {
   hue: number;
   saturation: number;
   lightnessInterpolation: LightnessInterpolation;
 };
-
-const interpolations: Record<LightnessInterpolation, number[]> = {
-  Linear: [97, 91, 82, 73, 64, 55, 46, 37, 28, 19, 10],
-  EaseIn: [97, 93, 88, 82, 75, 65, 54, 43, 32, 21, 10],
-  EaseOut: [97, 86, 75, 64, 53, 42, 32, 25, 19, 14, 10],
-  EaseInOut: [97, 93, 87, 79, 67, 54, 41, 28, 20, 14, 10],
-};
-
-export function getPalette(props: Props) {
-  const { hue, saturation, lightnessInterpolation } = props;
-  const lightnesses = interpolations[lightnessInterpolation];
-
-  return lightnesses.map((lightness) => {
-    const color = HSLToHex({ h: hue, s: saturation, l: lightness });
-    return color;
-  });
-}
 
 export function PaletteColorBox(props: { color: HexColor }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -74,7 +58,7 @@ export function Palette(props: Props) {
     >
       <Box display="flex" gap={4} flexGrow={1}>
         {colors.map((color) => {
-          return <PaletteColorBox color={color} key={color} />;
+          return <PaletteColorBox color={color.value} key={color.value} />;
         })}
       </Box>
     </Box>

@@ -299,6 +299,7 @@ importers:
       '@react-stately/numberfield': 3.6.0
       '@react-stately/select': 3.5.4
       '@react-types/numberfield': 3.5.0
+      '@react-types/shared': 3.19.0
       '@tsconfig/vite-react': 2.0.0
       '@types/react': ^18
       '@types/react-dom': 18.2.7
@@ -343,6 +344,7 @@ importers:
       '@react-aria/listbox': 3.10.2_react@18.2.0
       '@react-stately/collections': 3.10.1_react@18.2.0
       '@react-types/numberfield': 3.5.0_react@18.2.0
+      '@react-types/shared': 3.19.0_react@18.2.0
       '@tsconfig/vite-react': 2.0.0
       '@types/react': 18.2.14
       '@types/react-dom': 18.2.7
