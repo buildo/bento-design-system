@@ -22,7 +22,7 @@ export function TokensSection() {
       {match(currentStep)
         .with("brand", () => (
           <BrandTokens
-            tokens={theme.tokens}
+            tokens={theme.tokens.brandColor}
             onChange={(brandTokens) =>
               setTheme({ ...theme, tokens: { ...theme.tokens, brandColor: brandTokens } })
             }

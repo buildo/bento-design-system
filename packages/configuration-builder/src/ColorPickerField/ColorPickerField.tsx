@@ -15,21 +15,33 @@ import { useSelect, HiddenSelect } from "@react-aria/select";
 import { PalettesDropdown } from "./PalettesDropdown";
 import { ThemeConfig } from "../ConfiguratorStatusContext";
 import { useButton } from "@react-aria/button";
-import { getPalette } from "../ColorEditor/Palette";
 import { ColorConfig } from "../ColorEditor/ColorEditor";
+import { stepNames } from "../utils/paletteUtils";
 
 type Props = FieldProps<string> & { colors: ThemeConfig["colors"] };
 
 function getPaletteItemsSection(key: string, colorConfig: ColorConfig) {
-  const paletteItems = getPalette(colorConfig).map((color, index) => (
-    <Item key={`${key}-${index}`}>{color}</Item>
-  ));
+  const paletteItems = [...Array(stepNames.length)].map((_, index) => {
+    const stepName = stepNames[index];
+    const colorKey = `${key}-${stepName}`;
+    const colorText = `${key}${stepName}`;
+    return (
+      <Item key={colorKey} textValue={colorKey}>
+        {colorText}
+      </Item>
+    );
+  });
   return (
     <Section
       key={key}
       children={
         colorConfig.useReferenceAsKeyColor
-          ? [...paletteItems, <Item key={`${key}-reference`}>{colorConfig.referenceColor}</Item>]
+          ? [
+              ...paletteItems,
+              <Item key={`${key}-ref`} textValue={`${key}-ref`}>
+                {`${key}Reference`}
+              </Item>,
+            ]
           : paletteItems
       }
     />
@@ -39,8 +51,12 @@ function getPaletteItemsSection(key: string, colorConfig: ColorConfig) {
 function getColorItems(colors: ThemeConfig["colors"]) {
   return [
     <Section key="General">
-      <Item key="white">white</Item>
-      <Item key="black">black</Item>
+      <Item key="white" textValue="white">
+        white
+      </Item>
+      <Item key="black" textValue="black">
+        black
+      </Item>
     </Section>,
     getPaletteItemsSection("BrandPrimary", colors.brand[0]),
     getPaletteItemsSection("Interactive", colors.interactive),
@@ -70,10 +86,14 @@ export function ColorPickerField(props: Props) {
 
   const state = useSelectState({
     ...props,
+    selectedKey: props.value,
     isDisabled: props.disabled,
     children: getColorItems(props.colors),
     onSelectionChange: (key) => {
-      props.onChange(state.collection.getItem(key)!.textValue);
+      const item = state.collection.getItem(key);
+      if (item) {
+        props.onChange(item.textValue);
+      }
     },
   });
 
@@ -125,7 +145,7 @@ export function ColorPickerField(props: Props) {
       >
         <Box {...valueProps} flexGrow={1} textAlign="left">
           <Body size={inputConfig.fontSize} color={props.disabled ? "disabled" : "primary"}>
-            {props.value}
+            {state.selectedItem ? state.selectedItem.rendered : ""}
           </Body>
         </Box>
         <Box paddingLeft={16} aria-hidden="true">
@@ -137,13 +157,7 @@ export function ColorPickerField(props: Props) {
       </Box>
       {state.isOpen && (
         <Popover triggerRef={ref} onClose={state.close}>
-          <PalettesDropdown
-            colors={props.colors}
-            value={props.value}
-            onChange={props.onChange}
-            state={state}
-            menuProps={menuProps}
-          />
+          <PalettesDropdown colors={props.colors} state={state} menuProps={menuProps} />
         </Popover>
       )}
     </Field>
