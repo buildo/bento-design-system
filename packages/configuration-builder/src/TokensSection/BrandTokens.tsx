@@ -14,11 +14,50 @@ import { ColorSelector } from "./ColorSelector";
 import { useTranslation } from "react-i18next";
 import { Playground } from "./Playground";
 import { ThemeConfig } from "../ConfiguratorStatusContext";
+import { useState } from "react";
 
 type Props = {
   tokens: ThemeConfig["tokens"]["brandColor"];
   onChange: (value: ThemeConfig["tokens"]["brandColor"]) => void;
 };
+
+function BrandTokensPlayground() {
+  const [slider, setSlider] = useState(50);
+  const { t } = useTranslation();
+  return (
+    <Playground>
+      <Stack space={40}>
+        <Stack space={12}>
+          <Body size="medium" color="secondary">
+            {t("Component.decorativeDivider")}
+          </Body>
+          <DecorativeDivider />
+        </Stack>
+        <Stack space={12}>
+          <Body size="medium" color="secondary">
+            {t("Component.areaLoader")}
+          </Body>
+          <Box position="relative" style={{ height: 240 }}>
+            <AreaLoader />
+          </Box>
+        </Stack>
+        <Stack space={12}>
+          <Body size="medium" color="secondary">
+            {t("Component.sliderField")}
+          </Body>
+          <SliderField
+            type="single"
+            label={unsafeLocalizedString("")}
+            value={slider}
+            minValue={0}
+            maxValue={100}
+            onChange={setSlider}
+          />
+        </Stack>
+      </Stack>
+    </Playground>
+  );
+}
 
 export function BrandTokens(props: Props) {
   const { t } = useTranslation();
@@ -56,37 +95,7 @@ export function BrandTokens(props: Props) {
             />
           </Stack>
         </Column>
-        <Playground>
-          <Stack space={40}>
-            <Stack space={12}>
-              <Body size="medium" color="secondary">
-                {t("Component.decorativeDivider")}
-              </Body>
-              <DecorativeDivider />
-            </Stack>
-            <Stack space={12}>
-              <Body size="medium" color="secondary">
-                {t("Component.areaLoader")}
-              </Body>
-              <Box position="relative" style={{ height: 240 }}>
-                <AreaLoader />
-              </Box>
-            </Stack>
-            <Stack space={12}>
-              <Body size="medium" color="secondary">
-                {t("Component.sliderField")}
-              </Body>
-              <SliderField
-                type="single"
-                label={unsafeLocalizedString("")}
-                value={50}
-                minValue={0}
-                maxValue={100}
-                onChange={() => {}}
-              />
-            </Stack>
-          </Stack>
-        </Playground>
+        <BrandTokensPlayground />
       </Columns>
     </Stack>
   );
