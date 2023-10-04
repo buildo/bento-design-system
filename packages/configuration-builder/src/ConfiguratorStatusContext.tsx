@@ -24,6 +24,7 @@ type TokensConfig = MapLeafNodes<
     | "textColor"
     | "interactiveBackgroundColor"
     | "interactiveForegroundColor"
+    | "outlineColor"
   >,
   ColorToken
 >;
@@ -166,6 +167,29 @@ export const defaultTokens: TokensConfig = {
     linkHoverInverse: colorToken("Interactive-5"),
     linkFocusInverse: colorToken("Interactive-5"),
     linkDisabledInverse: colorToken("Neutral-60"),
+  },
+  outlineColor: {
+    outlineInteractive: colorToken("Interactive-40"),
+    outlineDecorative: colorToken("Neutral-20"),
+    outlineContainer: colorToken("Neutral-40", 20),
+    outlineInputEnabled: colorToken("Neutral-40"),
+    outlineInputHover: colorToken("Neutral-60"),
+    outlineInputFocus: colorToken("Interactive-40"),
+    outlineInputDisabled: colorToken("Neutral-40", 30),
+    outlineInformative: colorToken("Informative-30"),
+    outlinePositive: colorToken("Positive-50"),
+    outlineWarning: colorToken("Warning-40"),
+    outlineNegative: colorToken("Negative-30"),
+    outlineInteractivePrimaryEnabled: colorToken("Interactive-40"),
+    outlineInteractivePrimaryHover: colorToken("Interactive-60"),
+    outlineInteractivePrimaryFocus: colorToken("Interactive-60"),
+    outlineInteractiveSecondaryEnabled: colorToken("Neutral-80"),
+    outlineInteractiveSecondaryHover: colorToken("black"),
+    outlineInteractiveSecondaryFocus: colorToken("black"),
+    outlineInteractiveDangerEnabled: colorToken("Negative-40"),
+    outlineInteractiveDangerHover: colorToken("Negative-60"),
+    outlineInteractiveDangerFocus: colorToken("Negative-60"),
+    outlineInteractiveDisabled: colorToken("Neutral-40", 30),
   },
 };
 
