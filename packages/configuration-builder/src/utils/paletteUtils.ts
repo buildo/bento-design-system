@@ -76,7 +76,7 @@ export function getPaletteKeyColor(
     .exhaustive();
 }
 
-type ColorToken = {
+export type ColorToken = {
   colorKey: ColorKey;
   alpha: number;
 };
