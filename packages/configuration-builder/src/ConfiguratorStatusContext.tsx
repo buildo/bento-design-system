@@ -8,12 +8,25 @@ import {
 import { HexColor } from "./utils/colorUtils";
 import { ColorConfig } from "./ColorEditor/ColorEditor";
 import { MapLeafNodes } from "./utils/mapLeafNodes";
-import { ColorKey } from "./utils/paletteUtils";
+import { ColorKey, ColorToken } from "./utils/paletteUtils";
 
 type BrandColors =
   | [ColorConfig]
   | [ColorConfig, ColorConfig]
   | [ColorConfig, ColorConfig, ColorConfig];
+
+type TokensConfig = MapLeafNodes<
+  Pick<
+    BentoTokens,
+    | "brandColor"
+    | "backgroundColor"
+    | "foregroundColor"
+    | "textColor"
+    | "interactiveBackgroundColor"
+    | "interactiveForegroundColor"
+  >,
+  ColorToken
+>;
 
 export type ThemeConfig = {
   colors: {
@@ -39,10 +52,7 @@ export type ThemeConfig = {
       pink: ColorConfig;
     };
   };
-  tokens: MapLeafNodes<
-    Pick<BentoTokens, "brandColor" | "backgroundColor" | "foregroundColor" | "textColor">,
-    { colorKey: ColorKey; alpha: number }
-  >;
+  tokens: TokensConfig;
 };
 
 export type ThemeSection = "colors" | "tokens";
@@ -56,53 +66,106 @@ type ConfiguratorStatus = {
 
 export const ConfiguratorStatusContext = createContext<ConfiguratorStatus | null>(null);
 
-export const defaultTokens: MapLeafNodes<
-  Pick<BentoTokens, "brandColor" | "backgroundColor" | "foregroundColor" | "textColor">,
-  { colorKey: ColorKey; alpha: number }
-> = {
+function colorToken(colorKey: ColorKey, alpha?: number): ColorToken {
+  return { colorKey, alpha: alpha ?? 100 };
+}
+
+export const defaultTokens: TokensConfig = {
   brandColor: {
-    brandPrimary: { colorKey: "BrandPrimary-40", alpha: 100 },
-    brandSecondary: { colorKey: "BrandPrimary-20", alpha: 100 },
-    brandTertiary: { colorKey: "BrandPrimary-10", alpha: 100 },
+    brandPrimary: colorToken("BrandPrimary-40"),
+    brandSecondary: colorToken("BrandPrimary-20"),
+    brandTertiary: colorToken("BrandPrimary-10"),
   },
   backgroundColor: {
-    backgroundPrimary: { colorKey: "white", alpha: 100 },
-    backgroundSecondary: { colorKey: "Neutral-1", alpha: 100 },
-    backgroundOverlay: { colorKey: "Neutral-20", alpha: 20 },
-    backgroundPrimaryInverse: { colorKey: "Neutral-90", alpha: 100 },
-    backgroundSecondaryInverse: { colorKey: "Neutral-80", alpha: 100 },
-    backgroundInteractive: { colorKey: "Interactive-40", alpha: 100 },
-    backgroundInteractiveOverlay: { colorKey: "Interactive-10", alpha: 40 },
-    backgroundInformative: { colorKey: "Informative-5", alpha: 100 },
-    backgroundPositive: { colorKey: "Positive-5", alpha: 100 },
-    backgroundWarning: { colorKey: "Warning-5", alpha: 100 },
-    backgroundNegative: { colorKey: "Negative-5", alpha: 100 },
-    backgroundLightScrim: { colorKey: "white", alpha: 80 },
-    backgroundDarkScrim: { colorKey: "Neutral-90", alpha: 60 },
+    backgroundPrimary: colorToken("white"),
+    backgroundSecondary: colorToken("Neutral-1"),
+    backgroundOverlay: colorToken("Neutral-20", 20),
+    backgroundPrimaryInverse: colorToken("Neutral-90"),
+    backgroundSecondaryInverse: colorToken("Neutral-80"),
+    backgroundInteractive: colorToken("Interactive-40"),
+    backgroundInteractiveOverlay: colorToken("Interactive-10", 40),
+    backgroundInformative: colorToken("Informative-5"),
+    backgroundPositive: colorToken("Positive-5"),
+    backgroundWarning: colorToken("Warning-5"),
+    backgroundNegative: colorToken("Negative-5"),
+    backgroundLightScrim: colorToken("white", 80),
+    backgroundDarkScrim: colorToken("Neutral-90", 60),
   },
   foregroundColor: {
-    foregroundPrimary: { colorKey: "Neutral-90", alpha: 100 },
-    foregroundSecondary: { colorKey: "Neutral-50", alpha: 100 },
-    foregroundPrimaryInverse: { colorKey: "Neutral-1", alpha: 100 },
-    foregroundSecondaryInverse: { colorKey: "Neutral-30", alpha: 100 },
-    foregroundInteractive: { colorKey: "Interactive-40", alpha: 100 },
-    foregroundInformative: { colorKey: "Informative-30", alpha: 100 },
-    foregroundPositive: { colorKey: "Positive-50", alpha: 100 },
-    foregroundWarning: { colorKey: "Warning-40", alpha: 100 },
-    foregroundNegative: { colorKey: "Negative-30", alpha: 100 },
-    foregroundDisabled: { colorKey: "Neutral-40", alpha: 30 },
+    foregroundPrimary: colorToken("Neutral-90"),
+    foregroundSecondary: colorToken("Neutral-50"),
+    foregroundPrimaryInverse: colorToken("Neutral-1"),
+    foregroundSecondaryInverse: colorToken("Neutral-30"),
+    foregroundInteractive: colorToken("Interactive-40"),
+    foregroundInformative: colorToken("Informative-30"),
+    foregroundPositive: colorToken("Positive-50"),
+    foregroundWarning: colorToken("Warning-40"),
+    foregroundNegative: colorToken("Negative-30"),
+    foregroundDisabled: colorToken("Neutral-40", 30),
   },
   textColor: {
-    textPrimary: { colorKey: "Neutral-90", alpha: 100 },
-    textSecondary: { colorKey: "Neutral-50", alpha: 100 },
-    textPrimaryInverse: { colorKey: "Neutral-1", alpha: 100 },
-    textSecondaryInverse: { colorKey: "Neutral-30", alpha: 100 },
-    textInteractive: { colorKey: "Interactive-40", alpha: 100 },
-    textInformative: { colorKey: "Informative-50", alpha: 100 },
-    textPositive: { colorKey: "Positive-70", alpha: 100 },
-    textWarning: { colorKey: "Warning-60", alpha: 100 },
-    textNegative: { colorKey: "Negative-60", alpha: 100 },
-    textDisabled: { colorKey: "Neutral-40", alpha: 30 },
+    textPrimary: colorToken("Neutral-90"),
+    textSecondary: colorToken("Neutral-50"),
+    textPrimaryInverse: colorToken("Neutral-1"),
+    textSecondaryInverse: colorToken("Neutral-30"),
+    textInteractive: colorToken("Interactive-40"),
+    textInformative: colorToken("Informative-50"),
+    textPositive: colorToken("Positive-70"),
+    textWarning: colorToken("Warning-60"),
+    textNegative: colorToken("Negative-60"),
+    textDisabled: colorToken("Neutral-40", 30),
+  },
+  interactiveBackgroundColor: {
+    primarySolidEnabledBackground: colorToken("Interactive-40"),
+    primarySolidHoverBackground: colorToken("Interactive-60"),
+    primarySolidFocusBackground: colorToken("Interactive-60"),
+    primaryTransparentEnabledBackground: colorToken("white", 0),
+    primaryTransparentHoverBackground: colorToken("Interactive-10", 40),
+    primaryTransparentFocusBackground: colorToken("Interactive-10", 40),
+    dangerSolidEnabledBackground: colorToken("Negative-40"),
+    dangerSolidHoverBackground: colorToken("Negative-40"),
+    dangerSolidFocusBackground: colorToken("Negative-40"),
+    dangerTransparentEnabledBackground: colorToken("white", 0),
+    dangerTransparentHoverBackground: colorToken("Negative-40", 10),
+    dangerTransparentFocusBackground: colorToken("Negative-40", 10),
+    secondarySolidEnabledBackground: colorToken("Neutral-5"),
+    secondarySolidHoverBackground: colorToken("Neutral-20"),
+    secondarySolidFocusBackground: colorToken("Neutral-20"),
+    secondaryTransparentEnabledBackground: colorToken("white", 0),
+    secondaryTransparentHoverBackground: colorToken("Neutral-20", 40),
+    secondaryTransparentFocusBackground: colorToken("Neutral-20", 40),
+    disabledSolidBackground: colorToken("Neutral-20", 20),
+    disabledTransparentBackground: colorToken("white", 0),
+  },
+  interactiveForegroundColor: {
+    primarySolidEnabledForeground: colorToken("white"),
+    primarySolidHoverForeground: colorToken("white"),
+    primarySolidFocusForeground: colorToken("white"),
+    primaryTransparentEnabledForeground: colorToken("Interactive-40"),
+    primaryTransparentHoverForeground: colorToken("Interactive-60"),
+    primaryTransparentFocusForeground: colorToken("Interactive-60"),
+    dangerSolidEnabledForeground: colorToken("white"),
+    dangerSolidHoverForeground: colorToken("white"),
+    dangerSolidFocusForeground: colorToken("white"),
+    dangerTransparentEnabledForeground: colorToken("Negative-40"),
+    dangerTransparentHoverForeground: colorToken("Negative-60"),
+    dangerTransparentFocusForeground: colorToken("Negative-60"),
+    secondarySolidEnabledForeground: colorToken("Neutral-90"),
+    secondarySolidHoverForeground: colorToken("Neutral-90"),
+    secondarySolidFocusForeground: colorToken("Neutral-90"),
+    secondaryTransparentEnabledForeground: colorToken("Neutral-80"),
+    secondaryTransparentHoverForeground: colorToken("black"),
+    secondaryTransparentFocusForeground: colorToken("black"),
+    disabledSolidForeground: colorToken("Neutral-40", 30),
+    disabledTransparentForeground: colorToken("Neutral-40", 30),
+    linkEnabled: colorToken("Interactive-40"),
+    linkHover: colorToken("Interactive-60"),
+    linkFocus: colorToken("Interactive-60"),
+    linkDisabled: colorToken("Neutral-40", 30),
+    linkEnabledInverse: colorToken("Interactive-10"),
+    linkHoverInverse: colorToken("Interactive-5"),
+    linkFocusInverse: colorToken("Interactive-5"),
+    linkDisabledInverse: colorToken("Neutral-60"),
   },
 };
 
