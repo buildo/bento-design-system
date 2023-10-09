@@ -104,3 +104,7 @@ export function colorTokenToRGBA(colors: ThemeConfig["colors"]) {
     }
   };
 }
+
+export function colorToken(colorKey: ColorKey, alpha?: number): ColorToken {
+  return { colorKey, alpha: alpha ?? 100 };
+}
