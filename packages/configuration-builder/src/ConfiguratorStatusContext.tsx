@@ -8,7 +8,7 @@ import {
 import { HexColor } from "./utils/colorUtils";
 import { ColorConfig } from "./ColorEditor/ColorEditor";
 import { MapLeafNodes } from "./utils/mapLeafNodes";
-import { ColorKey, ColorToken } from "./utils/paletteUtils";
+import { ColorToken, colorToken } from "./utils/paletteUtils";
 
 type BrandColors =
   | [ColorConfig]
@@ -66,10 +66,6 @@ type ConfiguratorStatus = {
 };
 
 export const ConfiguratorStatusContext = createContext<ConfiguratorStatus | null>(null);
-
-function colorToken(colorKey: ColorKey, alpha?: number): ColorToken {
-  return { colorKey, alpha: alpha ?? 100 };
-}
 
 export const defaultTokens: TokensConfig = {
   brandColor: {
@@ -133,8 +129,8 @@ export const defaultTokens: TokensConfig = {
     secondarySolidHoverBackground: colorToken("Neutral-20"),
     secondarySolidFocusBackground: colorToken("Neutral-20"),
     secondaryTransparentEnabledBackground: colorToken("white", 0),
-    secondaryTransparentHoverBackground: colorToken("Neutral-20", 40),
-    secondaryTransparentFocusBackground: colorToken("Neutral-20", 40),
+    secondaryTransparentHoverBackground: colorToken("Neutral-10", 40),
+    secondaryTransparentFocusBackground: colorToken("Neutral-10", 40),
     disabledSolidBackground: colorToken("Neutral-20", 20),
     disabledTransparentBackground: colorToken("white", 0),
   },
