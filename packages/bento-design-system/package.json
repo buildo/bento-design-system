@@ -111,7 +111,7 @@
     "@react-types/overlays": "3.8.1",
     "@react-types/radio": "3.5.0",
     "@react-types/shared": "3.19.0",
-    "@tanstack/react-virtual": "3.0.0-beta.61",
+    "@tanstack/react-virtual": "3.0.0-beta.65",
     "@tanstack/virtual-core": "3.0.0-beta.60",
     "@vanilla-extract/css": "1.13.0",
     "@vanilla-extract/dynamic": "2.0.3",
