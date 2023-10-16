@@ -86,7 +86,7 @@ importers:
       '@tanstack/react-virtual': 3.0.0-beta.65
       '@tanstack/virtual-core': 3.0.0-beta.65
       '@testing-library/dom': 9.3.3
-      '@testing-library/jest-dom': 6.1.2
+      '@testing-library/jest-dom': 6.1.4
       '@testing-library/react': 14.0.0
       '@testing-library/react-hooks': 8.0.1
       '@testing-library/user-event': 14.4.3
@@ -237,7 +237,7 @@ importers:
       '@storybook/testing-library': 0.2.2
       '@storybook/types': 7.4.0
       '@testing-library/dom': 9.3.3
-      '@testing-library/jest-dom': 6.1.2_vitest@0.34.3
+      '@testing-library/jest-dom': 6.1.4_vitest@0.34.3
       '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/react-hooks': 8.0.1_qzycrpzqvmvb7wd2jdibmpq2cy
       '@testing-library/user-event': 14.4.3_@testing-library+dom@9.3.3
@@ -7369,8 +7369,8 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/jest-dom/6.1.2_vitest@0.34.3:
-    resolution: {integrity: sha512-NP9jl1Q2qDDtx+cqogowtQtmgD2OVs37iMSIsTv5eN5ETRkf26Kj6ugVwA93/gZzzFWQAsgkKkcftDe91BJCkQ==}
+  /@testing-library/jest-dom/6.1.4_vitest@0.34.3:
+    resolution: {integrity: sha512-wpoYrCYwSZ5/AxcrjLxJmCU6I5QAJXslEeSiMQqaWmP2Kzpd1LvF/qxmAIW2qposULGWq2gw30GgVNFLSc2Jnw==}
     engines: {node: '>=14', npm: '>=6', yarn: '>=1'}
     peerDependencies:
       '@jest/globals': '>= 28'
