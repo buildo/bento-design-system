@@ -653,20 +653,18 @@ function ColumnFooter<D extends Record<string, unknown>>({
         textAlign={column.align}
         {...config.padding.footer}
       >
-        <Box
-          paddingLeft={first ? config.boundaryPadding : undefined}
-          paddingRight={last ? config.boundaryPadding : undefined}
-        >
-          {column.Footer && (
+        {column.Footer && (
+          <Box
+            paddingLeft={first ? config.boundaryPadding : undefined}
+            paddingRight={last ? config.boundaryPadding : undefined}
+          >
             <Columns space={8} alignY="center" align={column.align}>
-              {column.Footer ? (
-                <Column width="content">
-                  <Label size="large">{column.render("Footer") as any}</Label>
-                </Column>
-              ) : null}
+              <Column width="content">
+                <Label size="large">{column.render("Footer") as any}</Label>
+              </Column>
             </Columns>
-          )}
-        </Box>
+          </Box>
+        )}
       </Box>
     </Box>
   );
