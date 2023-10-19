@@ -13,6 +13,8 @@ export type TableConfig = {
   emptyIcon: (props: IconProps) => JSX.Element;
   headerBackgroundColor: BentoSprinkles["background"];
   headerForegroundColor: BentoSprinkles["color"];
+  footerBackgroundColor: BentoSprinkles["background"];
+  footerForegroundColor: BentoSprinkles["color"];
   hintPlacement: TooltipPlacement;
   cellTooltipPlacement: TooltipPlacement;
   evenRowsBackgroundColor: BentoSprinkles["background"];
@@ -22,6 +24,7 @@ export type TableConfig = {
   selectedRowBackgroundColor: keyof typeof vars.backgroundColor;
   padding: {
     header: CellPaddingConfig;
+    footer: CellPaddingConfig;
     defaultCell: CellPaddingConfig;
     buttonCell: CellPaddingConfig | undefined;
     buttonLinkCell: CellPaddingConfig | undefined;

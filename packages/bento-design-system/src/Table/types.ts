@@ -15,6 +15,7 @@ declare module "react-table" {
     sticky?: "left";
     gridWidth?: GridWidth;
     hint?: LocalizedString | { onPress: () => void };
+    footer?: string | ((props: { rows: Row<D>[] }) => string);
   }
 
   interface ColumnInstance<D extends object>

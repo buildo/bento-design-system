@@ -39,6 +39,7 @@ export function custom<A extends string, V, D extends Record<string, unknown>>({
   sortType,
   missingValue,
   width,
+  footer,
   ...options
 }: ColumnOptionsBase<A> & {
   Cell: (props: CellProps<D, V>) => Children;
@@ -62,6 +63,7 @@ export function custom<A extends string, V, D extends Record<string, unknown>>({
       }
     },
     Header: headerLabel,
+    Footer: footer,
   } as Column<A, D, V>;
 
   if (sortType) {

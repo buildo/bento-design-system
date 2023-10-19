@@ -31,6 +31,7 @@ import {
 } from "..";
 import {
   cellContainerRecipe,
+  columnFooter,
   columnHeader,
   lastLeftStickyColumn,
   rowContainer,
@@ -38,6 +39,7 @@ import {
   sectionHeaderContainer,
   selectedRowBackgroundColor,
   sortIconContainer,
+  stickyColumnFooter,
   stickyColumnHeader,
   stickyTopHeight,
   table,
@@ -104,6 +106,7 @@ type Props<
   noResultsFeedbackSize?: FeedbackProps["size"];
   initialSorting?: Array<SortingRule<C>>;
   stickyHeaders?: boolean;
+  stickyFooters?: boolean;
   height?: { custom: string | number };
   onRowPress?: (row: Row<RowType<C>>) => void;
   virtualizeRows?: boolean | { estimateRowHeight: (index: number) => number };
@@ -143,6 +146,7 @@ export function Table<
   onSort,
   initialSorting,
   stickyHeaders,
+  stickyFooters = true,
   height,
   onRowPress,
   virtualizeRows: virtualizeRowsConfig,
@@ -417,6 +421,8 @@ export function Table<
     }
   });
 
+  const hasFooters = headerGroups.at(-1)?.headers.some((h) => h.Footer);
+
   return (
     <Box
       {...getTableProps()}
@@ -459,6 +465,25 @@ export function Table<
       {paddingTopRow}
       {renderedRows}
       {paddingBottomRow}
+      {hasFooters &&
+        headerGroups.at(-1)?.headers.map((header, index) => (
+          <ColumnFooter
+            column={header}
+            key={header.id}
+            style={{
+              ...stickyLeftColumnStyle[header.id],
+            }}
+            lastLeftSticky={
+              header.columns
+                ? header.id === stickyLeftColumnGroupsIds.at(-1)
+                : index === lastStickyColumnIndex
+            }
+            stickyFooters={stickyFooters}
+            sticky={stickyLeftColumnsIds.includes(header.id)}
+            first={index === 0}
+            last={index + 1 === flatColumns.length}
+          />
+        ))}
     </Box>
   );
 }
@@ -585,6 +610,60 @@ function ColumnHeader<D extends Record<string, unknown>>({
                   </Box>
                 </Column>
               )}
+            </Columns>
+          )}
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+
+function ColumnFooter<D extends Record<string, unknown>>({
+  column,
+  style,
+  lastLeftSticky,
+  stickyFooters,
+  sticky,
+  first,
+  last,
+}: {
+  column: ColumnInstance<D> | HeaderGroup<D>;
+  style: CSSProperties;
+  lastLeftSticky: boolean;
+  stickyFooters: boolean;
+  sticky: boolean;
+  first: boolean;
+  last: boolean;
+}) {
+  const config = useBentoConfig().table;
+
+  return (
+    <Box
+      className={[lastLeftSticky && lastLeftStickyColumn, stickyFooters && stickyColumnFooter]}
+      style={{
+        ...style,
+        zIndex: sticky ? zIndexes.leftStickyHeader : zIndexes.header,
+      }}
+    >
+      <Box
+        className={columnFooter}
+        background={config.footerBackgroundColor}
+        color={config.footerForegroundColor}
+        {...column.getFooterProps()}
+        textAlign={column.align}
+        {...config.padding.footer}
+      >
+        <Box
+          paddingLeft={first ? config.boundaryPadding : undefined}
+          paddingRight={last ? config.boundaryPadding : undefined}
+        >
+          {column.Footer && (
+            <Columns space={8} alignY="center" align={column.align}>
+              {column.Footer ? (
+                <Column width="content">
+                  <Label size="large">{column.render("Footer") as any}</Label>
+                </Column>
+              ) : null}
             </Columns>
           )}
         </Box>
