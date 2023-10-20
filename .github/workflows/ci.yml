@@ -1,14 +1,46 @@
+name: CI
+
 on: [push]
 
-name: Publish Website and Playroom
-
 jobs:
-  publish:
+  checks:
     runs-on: ubuntu-latest
+    name: Checks
+    strategy:
+      fail-fast: false
+      matrix:
+        tasks: [prettier-check, eslint-check, check-circular-deps, test, typecheck, build]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: pnpm/action-setup@v2
+        with:
+          run_install: true
+      - run: pnpm ${{ matrix.tasks }}
+
+  chromatic:
+    runs-on: ubuntu-latest
+    name: Chromatic
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: pnpm/action-setup@v2
+        with:
+          run_install: true
+      - uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
+  cloudflare-pages:
+    runs-on: ubuntu-latest
+    name: Cloudflare Pages
     permissions:
       contents: read
       deployments: write
-    name: Cloudflare Pages
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
