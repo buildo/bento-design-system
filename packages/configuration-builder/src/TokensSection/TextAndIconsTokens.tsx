@@ -97,158 +97,83 @@ export function TextAndIconsTokens(props: Props) {
         <Stack space={24}>
           <Title size="large">{t("Tokens.Color.backgroundTokens")}</Title>
           <Stack space={16}>
-            <ColorSelector
-              label={t("Tokens.Color.backgroundPrimary")}
-              value={props.tokens.backgroundColor.backgroundPrimary}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  backgroundColor: { ...props.tokens.backgroundColor, backgroundPrimary: value },
-                })
-              }
-            />
-            <ColorSelector
-              label={t("Tokens.Color.backgroundSecondary")}
-              value={props.tokens.backgroundColor.backgroundSecondary}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  backgroundColor: { ...props.tokens.backgroundColor, backgroundSecondary: value },
-                })
-              }
-            />
-            <ColorSelector
-              label={t("Tokens.Color.backgroundOverlay")}
-              value={props.tokens.backgroundColor.backgroundOverlay}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  backgroundColor: { ...props.tokens.backgroundColor, backgroundOverlay: value },
-                })
-              }
-            />
-            <ColorSelector
-              label={t("Tokens.Color.backgroundPrimaryInverse")}
-              value={props.tokens.backgroundColor.backgroundPrimaryInverse}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  backgroundColor: {
-                    ...props.tokens.backgroundColor,
-                    backgroundPrimaryInverse: value,
-                  },
-                })
-              }
-            />
-            <ColorSelector
-              label={t("Tokens.Color.backgroundSecondaryInverse")}
-              value={props.tokens.backgroundColor.backgroundSecondaryInverse}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  backgroundColor: {
-                    ...props.tokens.backgroundColor,
-                    backgroundSecondaryInverse: value,
-                  },
-                })
-              }
-            />
+            {(
+              [
+                "backgroundPrimary",
+                "backgroundSecondary",
+                "backgroundOverlay",
+                "backgroundPrimaryInverse",
+                "backgroundSecondaryInverse",
+              ] as const
+            ).map((token) => (
+              <ColorSelector
+                label={t(`Tokens.Color.${token}`)}
+                value={props.tokens.backgroundColor[token]}
+                onChange={(value) =>
+                  props.onChange({
+                    ...props.tokens,
+                    backgroundColor: {
+                      ...props.tokens.backgroundColor,
+                      [token]: value,
+                    },
+                  })
+                }
+              />
+            ))}
           </Stack>
         </Stack>
         <Stack space={24}>
           <Title size="large">{t("Tokens.Color.textTokens")}</Title>
           <Stack space={16}>
-            <ColorSelector
-              label={t("Tokens.Color.textPrimary")}
-              value={props.tokens.textColor.textPrimary}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  textColor: { ...props.tokens.textColor, textPrimary: value },
-                })
-              }
-            />
-            <ColorSelector
-              label={t("Tokens.Color.textSecondary")}
-              value={props.tokens.textColor.textSecondary}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  textColor: { ...props.tokens.textColor, textSecondary: value },
-                })
-              }
-            />
-            <ColorSelector
-              label={t("Tokens.Color.textPrimaryInverse")}
-              value={props.tokens.textColor.textPrimaryInverse}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  textColor: { ...props.tokens.textColor, textPrimaryInverse: value },
-                })
-              }
-            />
-            <ColorSelector
-              label={t("Tokens.Color.textSecondaryInverse")}
-              value={props.tokens.textColor.textSecondaryInverse}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  textColor: { ...props.tokens.textColor, textSecondaryInverse: value },
-                })
-              }
-            />
+            {(
+              [
+                "textPrimary",
+                "textSecondary",
+                "textPrimaryInverse",
+                "textSecondaryInverse",
+              ] as const
+            ).map((token) => (
+              <ColorSelector
+                label={t(`Tokens.Color.${token}`)}
+                value={props.tokens.textColor[token]}
+                onChange={(value) =>
+                  props.onChange({
+                    ...props.tokens,
+                    textColor: {
+                      ...props.tokens.textColor,
+                      [token]: value,
+                    },
+                  })
+                }
+              />
+            ))}
           </Stack>
         </Stack>
         <Stack space={24}>
           <Title size="large">{t("Tokens.Color.foregroundTokens")}</Title>
           <Stack space={16}>
-            <ColorSelector
-              label={t("Tokens.Color.foregroundPrimary")}
-              value={props.tokens.foregroundColor.foregroundPrimary}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  foregroundColor: { ...props.tokens.foregroundColor, foregroundPrimary: value },
-                })
-              }
-            />
-            <ColorSelector
-              label={t("Tokens.Color.foregroundSecondary")}
-              value={props.tokens.foregroundColor.foregroundSecondary}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  foregroundColor: { ...props.tokens.foregroundColor, foregroundSecondary: value },
-                })
-              }
-            />
-            <ColorSelector
-              label={t("Tokens.Color.foregroundPrimaryInverse")}
-              value={props.tokens.foregroundColor.foregroundPrimaryInverse}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  foregroundColor: {
-                    ...props.tokens.foregroundColor,
-                    foregroundPrimaryInverse: value,
-                  },
-                })
-              }
-            />
-            <ColorSelector
-              label={t("Tokens.Color.foregroundSecondaryInverse")}
-              value={props.tokens.foregroundColor.foregroundSecondaryInverse}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  foregroundColor: {
-                    ...props.tokens.foregroundColor,
-                    foregroundSecondaryInverse: value,
-                  },
-                })
-              }
-            />
+            {(
+              [
+                "foregroundPrimary",
+                "foregroundSecondary",
+                "foregroundPrimaryInverse",
+                "foregroundSecondaryInverse",
+              ] as const
+            ).map((token) => (
+              <ColorSelector
+                label={t(`Tokens.Color.${token}`)}
+                value={props.tokens.foregroundColor[token]}
+                onChange={(value) =>
+                  props.onChange({
+                    ...props.tokens,
+                    foregroundColor: {
+                      ...props.tokens.foregroundColor,
+                      [token]: value,
+                    },
+                  })
+                }
+              />
+            ))}
           </Stack>
         </Stack>
       </Columns>
