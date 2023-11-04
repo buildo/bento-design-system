@@ -7,6 +7,7 @@ import {
   Stepper,
   StepperProps,
   Children,
+  ContentBlock,
 } from "@buildo/bento-design-system";
 import { useTranslation } from "react-i18next";
 
@@ -19,19 +20,21 @@ export function ConfiguratorSection(props: Props) {
   const { t } = useTranslation();
   return (
     <Box padding={40} paddingTop={24} flexGrow={1} overflowY="auto">
-      <Stack space={40}>
-        <Stack space={24}>
-          <Breadcrumb
-            items={[
-              { label: t("ConfigurationSection.myTheme"), href: "/theme" },
-              { label: props.title },
-            ]}
-          />
-          <Headline size="medium">{props.title}</Headline>
-          {!props.endStep && <Stepper steps={props.steps} currentStep={props.currentStep} />}
+      <ContentBlock maxWidth={1440} alignSelf="center">
+        <Stack space={40}>
+          <Stack space={24}>
+            <Breadcrumb
+              items={[
+                { label: t("ConfigurationSection.myTheme"), href: "/theme" },
+                { label: props.title },
+              ]}
+            />
+            <Headline size="medium">{props.title}</Headline>
+            {!props.endStep && <Stepper steps={props.steps} currentStep={props.currentStep} />}
+          </Stack>
+          {props.children}
         </Stack>
-        {props.children}
-      </Stack>
+      </ContentBlock>
     </Box>
   );
 }
