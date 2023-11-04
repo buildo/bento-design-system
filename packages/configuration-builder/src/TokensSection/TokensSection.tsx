@@ -7,13 +7,19 @@ import { match } from "ts-pattern";
 import { TextAndIconsTokens } from "./TextAndIconsTokens";
 import { useNavigate } from "react-router-dom";
 import { InteractiveElementsTokens } from "./InteractiveElementsTokens";
+import { SemanticElementsTokens } from "./SemanticElementsTokens";
 
 export function TokensSection() {
   const { theme, setTheme } = useConfiguratorStatusContext();
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const steps = ["brand" as const, "textAndIcons" as const, "interactiveElements" as const];
+  const steps = [
+    "brand" as const,
+    "textAndIcons" as const,
+    "interactiveElements" as const,
+    "semanticElements" as const,
+  ];
   const [currentStep, setCurrentStep] = useState<(typeof steps)[0]>("brand");
   const currentStepIndex = steps.indexOf(currentStep);
 
@@ -53,6 +59,16 @@ export function TokensSection() {
         ))
         .with("interactiveElements", () => (
           <InteractiveElementsTokens
+            tokens={theme.tokens}
+            onChange={(newTokens) =>
+              setTheme({ ...theme, tokens: { ...theme.tokens, ...newTokens } })
+            }
+            onNext={onNext}
+            onBack={onBack}
+          />
+        ))
+        .with("semanticElements", () => (
+          <SemanticElementsTokens
             tokens={theme.tokens}
             onChange={(newTokens) =>
               setTheme({ ...theme, tokens: { ...theme.tokens, ...newTokens } })
