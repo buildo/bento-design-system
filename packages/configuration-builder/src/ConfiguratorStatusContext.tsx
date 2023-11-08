@@ -25,6 +25,7 @@ type TokensConfig = MapLeafNodes<
     | "interactiveBackgroundColor"
     | "interactiveForegroundColor"
     | "outlineColor"
+    | "dataVisualizationColor"
   >,
   ColorToken
 >;
@@ -186,6 +187,28 @@ export const defaultTokens: TokensConfig = {
     outlineInteractiveDangerHover: colorToken("Negative-60"),
     outlineInteractiveDangerFocus: colorToken("Negative-60"),
     outlineInteractiveDisabled: colorToken("Neutral-40", 30),
+  },
+  dataVisualizationColor: {
+    softIndigo: colorToken("Indigo-10"),
+    softViolet: colorToken("Violet-10"),
+    softPink: colorToken("Pink-10"),
+    softRed: colorToken("Red-10"),
+    softOrange: colorToken("Orange-10"),
+    softYellow: colorToken("Yellow-10"),
+    softGreen: colorToken("Green-10"),
+    softJade: colorToken("Jade-10"),
+    softBlue: colorToken("Blue-10"),
+    softGrey: colorToken("Grey-10"),
+    brightIndigo: colorToken("Indigo-30"),
+    brightViolet: colorToken("Violet-30"),
+    brightPink: colorToken("Pink-30"),
+    brightRed: colorToken("Red-30"),
+    brightOrange: colorToken("Orange-30"),
+    brightYellow: colorToken("Yellow-30"),
+    brightGreen: colorToken("Green-30"),
+    brightJade: colorToken("Jade-30"),
+    brightBlue: colorToken("Blue-30"),
+    brightGrey: colorToken("Grey-30"),
   },
 };
 

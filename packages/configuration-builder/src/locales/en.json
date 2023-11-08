@@ -140,6 +140,13 @@
     "TokensSection.Step.semanticElements.positiveBanner": "Banner positive",
     "TokensSection.Step.semanticElements.warningBanner": "Banner warning",
     "TokensSection.Step.semanticElements.negativeBanner": "Banner negative",
+    "TokensSection.Step.categoricalPalettes": "Categorical palettes",
+    "TokensSection.Step.categoricalPalettes.chip": "Chip",
+    "TokensSection.Step.categoricalPalettes.chipLabel": "Label",
+    "TokensSection.Step.categoricalPalettes.barChart": "Bar Chart",
+    "TokensSection.Step.categoricalPalettes.lowContrast": "Low contrast",
+    "TokensSection.Step.categoricalPalettes.highContrast": "High contrast",
+    "TokensSection.Step.categoricalPalettes.colorStep": "Color step",
     "LoremIpsum.title": "The quick brown fox jumps over the lazy dog.",
     "LoremIpsum.text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   }
