@@ -124,6 +124,9 @@
     "Tokens.Color.interactiveSolidBackground": "Solid Background",
     "Tokens.Color.interactiveSolidForeground": "Solid Foreground",
     "Tokens.Color.interactiveOutlineTransparent": "Outline/Transparent",
+    "Tokens.Color.outlineEnabled": "Enabled",
+    "Tokens.Color.outlineHover": "Hover",
+    "Tokens.Color.outlineFocus": "Focus",
     "Tokens.Color.label": "Color",
     "Tokens.Color.alphaLabel": "Alpha",
     "Component.decorativeDivider": "Decorative Divider",
@@ -147,6 +150,11 @@
     "TokensSection.Step.categoricalPalettes.lowContrast": "Low contrast",
     "TokensSection.Step.categoricalPalettes.highContrast": "High contrast",
     "TokensSection.Step.categoricalPalettes.colorStep": "Color step",
+    "TokensSection.Step.inputs": "Inputs",
+    "TokensSection.Step.inputs.textField": "Text Field",
+    "TokensSection.Step.inputs.textArea": "Text Area",
+    "TokensSection.Step.inputs.label": "Label",
+    "TokensSection.Step.inputs.placeholder": "Placeholder",
     "LoremIpsum.title": "The quick brown fox jumps over the lazy dog.",
     "LoremIpsum.text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   }

@@ -61,6 +61,15 @@ export function useConfiguredTheme(): BentoTheme & object {
       outlineInteractiveDisabled: theme.outlineColor?.outlineInteractiveDisabled
         ? `inset 0px 0px 0px 1px ${theme.outlineColor.outlineInteractiveDisabled}`
         : undefined,
+      outlineInputEnabled: theme.outlineColor?.outlineInputEnabled
+        ? `inset 0px 0px 0px 1px ${theme.outlineColor.outlineInputEnabled}`
+        : undefined,
+      outlineInputHover: theme.outlineColor?.outlineInputHover
+        ? `inset 0px 0px 0px 1px ${theme.outlineColor.outlineInputHover}`
+        : undefined,
+      outlineInputFocus: theme.outlineColor?.outlineInputFocus
+        ? `inset 0px 0px 0px 2px ${theme.outlineColor.outlineInputFocus}`
+        : undefined,
     },
   };
 }
