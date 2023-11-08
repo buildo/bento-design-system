@@ -8,6 +8,7 @@ import { TextAndIconsTokens } from "./TextAndIconsTokens";
 import { useNavigate } from "react-router-dom";
 import { InteractiveElementsTokens } from "./InteractiveElementsTokens";
 import { SemanticElementsTokens } from "./SemanticElementsTokens";
+import { CategoricalPalettesTokens } from "./CategoricalPalettesTokens";
 
 export function TokensSection() {
   const { theme, setTheme } = useConfiguratorStatusContext();
@@ -19,6 +20,7 @@ export function TokensSection() {
     "textAndIcons" as const,
     "interactiveElements" as const,
     "semanticElements" as const,
+    "categoricalPalettes" as const,
   ];
   const [currentStep, setCurrentStep] = useState<(typeof steps)[0]>("brand");
   const currentStepIndex = steps.indexOf(currentStep);
@@ -69,6 +71,16 @@ export function TokensSection() {
         ))
         .with("semanticElements", () => (
           <SemanticElementsTokens
+            tokens={theme.tokens}
+            onChange={(newTokens) =>
+              setTheme({ ...theme, tokens: { ...theme.tokens, ...newTokens } })
+            }
+            onNext={onNext}
+            onBack={onBack}
+          />
+        ))
+        .with("categoricalPalettes", () => (
+          <CategoricalPalettesTokens
             tokens={theme.tokens}
             onChange={(newTokens) =>
               setTheme({ ...theme, tokens: { ...theme.tokens, ...newTokens } })
