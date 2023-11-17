@@ -12,6 +12,7 @@ export function Playground({ children }: { children: Children }) {
       display="flex"
       flexDirection="column"
       flexGrow={1}
+      overflow="hidden"
     >
       <BentoThemeProvider theme={theme}>{children}</BentoThemeProvider>
     </Box>

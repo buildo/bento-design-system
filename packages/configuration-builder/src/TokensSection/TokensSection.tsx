@@ -11,6 +11,7 @@ import { SemanticElementsTokens } from "./SemanticElementsTokens";
 import { CategoricalPalettesTokens } from "./CategoricalPalettesTokens";
 import { InputTokens } from "./InputTokens";
 import { SectionCompleted } from "./SectionCompleted";
+import { OtherTokens } from "./OtherTokens";
 
 const steps = [
   "brand",
@@ -19,6 +20,7 @@ const steps = [
   "semanticElements",
   "categoricalPalettes",
   "inputs",
+  "other",
 ] as const;
 type Step = (typeof steps)[number];
 
@@ -93,6 +95,14 @@ export function TokensSection() {
         ))
         .with("inputs", () => (
           <InputTokens
+            tokens={theme.tokens}
+            onChange={(newTokens) =>
+              setTheme({ ...theme, tokens: { ...theme.tokens, ...newTokens } })
+            }
+          />
+        ))
+        .with("other", () => (
+          <OtherTokens
             tokens={theme.tokens}
             onChange={(newTokens) =>
               setTheme({ ...theme, tokens: { ...theme.tokens, ...newTokens } })
