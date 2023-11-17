@@ -1,6 +1,6 @@
 import { match } from "ts-pattern";
 import { ColorConfig, LightnessInterpolation } from "../ColorEditor/ColorEditor";
-import { HSLToHex, withAlpha } from "./colorUtils";
+import { HSLToHex, HexColor, withAlpha } from "./colorUtils";
 import { ThemeConfig } from "../ConfiguratorStatusContext";
 
 export type PaletteName =
@@ -84,10 +84,10 @@ export type ColorToken = {
 export function colorTokenToRGBA(colors: ThemeConfig["colors"]) {
   return (colorToken: ColorToken): string | undefined => {
     if (colorToken.colorKey === "black") {
-      return `rgba(0, 0, 0, ${colorToken.alpha / 100})`;
+      return withAlpha("#000000" as HexColor, colorToken.alpha);
     }
     if (colorToken.colorKey === "white") {
-      return `rgba(255, 255, 255, ${colorToken.alpha / 100})`;
+      return withAlpha("#FFFFFF" as HexColor, colorToken.alpha);
     }
     const [paletteName, step] = colorToken.colorKey.split("-");
     const keyColor = getPaletteKeyColor(paletteName as PaletteName, colors);

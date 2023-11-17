@@ -32,6 +32,7 @@ import {
   IconDiamondsFour,
   IconSwatches,
 } from "./PhosphorIcons";
+import { useConfigurationExporter } from "./utils/useConfigurationExporter";
 
 const numberImages = [image1, image2, image3];
 
@@ -94,6 +95,7 @@ export function MyTheme() {
 
   const { sections } = useConfiguratorStatusContext();
   const navigate = useNavigate();
+  const exportTS = useConfigurationExporter();
 
   return (
     <Box display="flex" flexGrow={1} overflowY="auto" flexDirection="column">
@@ -199,7 +201,10 @@ export function MyTheme() {
                 kind="solid"
                 hierarchy="primary"
                 label={t("Theme.Export.React.action")}
-                onPress={() => {}}
+                onPress={() => {
+                  const ts = exportTS();
+                  console.log(ts);
+                }}
               />
             </Inline>
           </Stack>

@@ -5,10 +5,11 @@ import { Decorator } from "@storybook/react";
 import "@fontsource/lexend/400.css";
 import "@fontsource/lexend/500.css";
 import "@fontsource/lexend/600.css";
+import { theme } from "./theme";
 
 export const decorators: Decorator[] = [
   (Story) => (
-    <BentoProvider toastDismissAfterMs={1000000} defaultMessages={defaultMessages}>
+    <BentoProvider toastDismissAfterMs={1000000} defaultMessages={defaultMessages} theme={theme}>
       <Story />
     </BentoProvider>
   ),
