@@ -1,8 +1,6 @@
 import {
   Stack,
-  Headline,
   Title,
-  Actions,
   Columns,
   ButtonProps,
   Button,
@@ -30,8 +28,6 @@ type Props = {
       "interactiveBackgroundColor" | "interactiveForegroundColor" | "outlineColor"
     >
   ) => void;
-  onNext: () => void;
-  onBack: () => void;
 };
 
 function PlayGroundButtonsStack({ hierarchy, kind }: Pick<ButtonProps, "kind" | "hierarchy">) {
@@ -265,11 +261,8 @@ function ButtonHierarchyConfiguration(
 }
 
 export function InteractiveElementsTokens(props: Props) {
-  const { t } = useTranslation();
-
   return (
-    <Stack space={40}>
-      <Headline size="small">{t("TokensSection.Step.interactiveElements")}</Headline>
+    <>
       <ButtonHierarchyConfiguration
         tokens={props.tokens}
         onChange={props.onChange}
@@ -285,10 +278,6 @@ export function InteractiveElementsTokens(props: Props) {
         onChange={props.onChange}
         hierarchy="danger"
       />
-      <Actions
-        primaryAction={{ label: t("Next"), onPress: props.onNext }}
-        secondaryAction={{ label: t("Back"), onPress: props.onBack }}
-      />
-    </Stack>
+    </>
   );
 }

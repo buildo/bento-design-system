@@ -10,35 +10,45 @@ import { InteractiveElementsTokens } from "./InteractiveElementsTokens";
 import { SemanticElementsTokens } from "./SemanticElementsTokens";
 import { CategoricalPalettesTokens } from "./CategoricalPalettesTokens";
 import { InputTokens } from "./InputTokens";
+import { SectionCompleted } from "./SectionCompleted";
+
+const steps = [
+  "brand",
+  "textAndIcons",
+  "interactiveElements",
+  "semanticElements",
+  "categoricalPalettes",
+  "inputs",
+] as const;
+type Step = (typeof steps)[number];
 
 export function TokensSection() {
-  const { theme, setTheme } = useConfiguratorStatusContext();
+  const { theme, setTheme, completeSection } = useConfiguratorStatusContext();
+  const [completed, setCompleted] = useState(false);
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [currentStep, setCurrentStep] = useState<Step>(steps[0]);
 
-  const steps = [
-    "brand" as const,
-    "textAndIcons" as const,
-    "interactiveElements" as const,
-    "semanticElements" as const,
-    "categoricalPalettes" as const,
-    "inputs" as const,
-  ];
-  const [currentStep, setCurrentStep] = useState<(typeof steps)[0]>("brand");
-  const currentStepIndex = steps.indexOf(currentStep);
-
-  const onNext = () => {
-    setCurrentStep(steps[currentStepIndex + 1]);
-  };
-  const onBack = () => {
-    setCurrentStep(steps[currentStepIndex - 1]);
-  };
+  if (completed) {
+    return (
+      <ConfiguratorSection title={t("Tokens.title")} endStep>
+        <SectionCompleted />
+      </ConfiguratorSection>
+    );
+  }
 
   return (
     <ConfiguratorSection
       title={t("Tokens.title")}
-      steps={steps.map((step) => ({ label: t(`TokensSection.Step.${step}`) }))}
-      currentStep={currentStepIndex}
+      steps={steps}
+      currentStep={currentStep}
+      onStepChange={(step) => setCurrentStep(step)}
+      stepLabel={(step) => t(`TokensSection.Step.${step}`)}
+      onCancel={() => navigate("/theme")}
+      onComplete={() => {
+        setCompleted(true);
+        completeSection("tokens");
+      }}
     >
       {match(currentStep)
         .with("brand", () => (
@@ -47,8 +57,6 @@ export function TokensSection() {
             onChange={(brandTokens) =>
               setTheme({ ...theme, tokens: { ...theme.tokens, brandColor: brandTokens } })
             }
-            onNext={onNext}
-            onCancel={() => navigate("/theme")}
           />
         ))
         .with("textAndIcons", () => (
@@ -57,8 +65,6 @@ export function TokensSection() {
             onChange={(newTokens) =>
               setTheme({ ...theme, tokens: { ...theme.tokens, ...newTokens } })
             }
-            onNext={onNext}
-            onBack={onBack}
           />
         ))
         .with("interactiveElements", () => (
@@ -67,8 +73,6 @@ export function TokensSection() {
             onChange={(newTokens) =>
               setTheme({ ...theme, tokens: { ...theme.tokens, ...newTokens } })
             }
-            onNext={onNext}
-            onBack={onBack}
           />
         ))
         .with("semanticElements", () => (
@@ -77,8 +81,6 @@ export function TokensSection() {
             onChange={(newTokens) =>
               setTheme({ ...theme, tokens: { ...theme.tokens, ...newTokens } })
             }
-            onNext={onNext}
-            onBack={onBack}
           />
         ))
         .with("categoricalPalettes", () => (
@@ -87,8 +89,6 @@ export function TokensSection() {
             onChange={(newTokens) =>
               setTheme({ ...theme, tokens: { ...theme.tokens, ...newTokens } })
             }
-            onNext={onNext}
-            onBack={onBack}
           />
         ))
         .with("inputs", () => (
@@ -97,8 +97,6 @@ export function TokensSection() {
             onChange={(newTokens) =>
               setTheme({ ...theme, tokens: { ...theme.tokens, ...newTokens } })
             }
-            onNext={onNext}
-            onBack={onBack}
           />
         ))
         .exhaustive()}

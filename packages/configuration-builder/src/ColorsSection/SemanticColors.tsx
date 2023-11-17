@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { Actions, Headline, Stack } from "@buildo/bento-design-system";
 import { ColorEditor } from "../ColorEditor/ColorEditor";
 import { ColorPresets } from "./ColorPresets";
 import { HexColor } from "../utils/colorUtils";
@@ -11,8 +10,6 @@ type SemanticColors = ThemeConfig["colors"]["semantic"];
 type Props = {
   value: SemanticColors;
   onChange: (value: SemanticColors) => void;
-  onNext: () => void;
-  onBack: () => void;
 };
 
 const presets: Record<"informative" | "positive" | "warning" | "negative", HexColor>[] = [
@@ -46,10 +43,7 @@ export function SemanticColors(props: Props) {
   const { t } = useTranslation();
 
   return (
-    <Stack space={40}>
-      <Stack space={24}>
-        <Headline size="small">{t("ColorsSection.Step.semantic")}</Headline>
-      </Stack>
+    <>
       <ColorPresets
         kind="multiple"
         presets={presets}
@@ -86,11 +80,6 @@ export function SemanticColors(props: Props) {
         value={props.value.negative}
         onChange={(value) => props.onChange({ ...props.value, negative: value })}
       />
-
-      <Actions
-        primaryAction={{ label: t("Next"), onPress: props.onNext }}
-        secondaryAction={{ label: t("Back"), onPress: props.onBack }}
-      />
-    </Stack>
+    </>
   );
 }

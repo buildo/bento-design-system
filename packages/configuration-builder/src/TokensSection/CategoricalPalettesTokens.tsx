@@ -1,5 +1,4 @@
 import {
-  Actions,
   BarChart,
   Body,
   Chip,
@@ -19,8 +18,6 @@ import { ColorToken, colorToken, stepNames } from "../utils/paletteUtils";
 type Props = {
   tokens: Pick<ThemeConfig["tokens"], "dataVisualizationColor">;
   onChange: (value: Pick<ThemeConfig["tokens"], "dataVisualizationColor">) => void;
-  onNext: () => void;
-  onBack: () => void;
 };
 
 const dataVizColors = [
@@ -110,7 +107,7 @@ const getStepFromToken = (token: ColorToken): (typeof stepNames)[number] => {
 export function CategoricalPalettesTokens(props: Props) {
   const { t } = useTranslation();
   return (
-    <Stack space={40}>
+    <>
       <Columns space={40}>
         <Column width="1/3">
           <Stack space={24}>
@@ -181,10 +178,6 @@ export function CategoricalPalettesTokens(props: Props) {
         </Column>
         <HighContrastPlayground />
       </Columns>
-      <Actions
-        primaryAction={{ label: t("Next"), onPress: props.onNext }}
-        secondaryAction={{ label: t("Back"), onPress: props.onBack }}
-      />
-    </Stack>
+    </>
   );
 }
