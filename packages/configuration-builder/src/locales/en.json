@@ -155,6 +155,8 @@
     "TokensSection.Step.inputs.textArea": "Text Area",
     "TokensSection.Step.inputs.label": "Label",
     "TokensSection.Step.inputs.placeholder": "Placeholder",
+    "TokensSection.completed": "Tokens configuration completed!",
+    "TokensSection.returnToMyTheme": "Return to My Theme",
     "LoremIpsum.title": "The quick brown fox jumps over the lazy dog.",
     "LoremIpsum.text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   }

@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { Actions, Headline, Stack } from "@buildo/bento-design-system";
 import { ColorEditor } from "../ColorEditor/ColorEditor";
 import { ColorPresets } from "./ColorPresets";
 import { HexColor } from "../utils/colorUtils";
@@ -11,8 +10,6 @@ type NeutralColor = ThemeConfig["colors"]["neutral"];
 type Props = {
   value: NeutralColor;
   onChange: (value: NeutralColor) => void;
-  onNext: () => void;
-  onBack: () => void;
 };
 
 const presets: HexColor[] = [
@@ -26,10 +23,7 @@ export function NeutralColor(props: Props) {
   const { t } = useTranslation();
 
   return (
-    <Stack space={40}>
-      <Stack space={24}>
-        <Headline size="small">{t("ColorsSection.Step.neutral")}</Headline>
-      </Stack>
+    <>
       <ColorPresets
         kind="single"
         presets={presets}
@@ -41,11 +35,6 @@ export function NeutralColor(props: Props) {
         value={props.value}
         onChange={props.onChange}
       />
-
-      <Actions
-        primaryAction={{ label: t("Next"), onPress: props.onNext }}
-        secondaryAction={{ label: t("Back"), onPress: props.onBack }}
-      />
-    </Stack>
+    </>
   );
 }

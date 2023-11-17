@@ -8,8 +8,6 @@ import {
   Stack,
   unsafeLocalizedString,
   DecorativeDivider,
-  Headline,
-  Actions,
 } from "@buildo/bento-design-system";
 import { ColorSelector } from "./ColorSelector";
 import { useTranslation } from "react-i18next";
@@ -20,8 +18,6 @@ import { useState } from "react";
 type Props = {
   tokens: ThemeConfig["tokens"]["brandColor"];
   onChange: (value: ThemeConfig["tokens"]["brandColor"]) => void;
-  onNext: () => void;
-  onCancel: () => void;
 };
 
 function BrandTokensPlayground() {
@@ -66,44 +62,37 @@ export function BrandTokens(props: Props) {
   const { t } = useTranslation();
 
   return (
-    <Stack space={40}>
-      <Headline size="small">{t("TokensSection.Step.brand")}</Headline>
-      <Columns space={40} alignY="stretch">
-        <Column width="1/4">
-          <Stack space={16}>
-            <ColorSelector
-              label={t("Tokens.Color.brandPrimary")}
-              value={props.tokens.brandPrimary}
-              onChange={(value) => props.onChange({ ...props.tokens, brandPrimary: value })}
-            />
-            <ColorSelector
-              label={t("Tokens.Color.brandSecondary")}
-              value={props.tokens.brandSecondary}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  brandSecondary: value,
-                })
-              }
-            />
-            <ColorSelector
-              label={t("Tokens.Color.brandTertiary")}
-              value={props.tokens.brandTertiary}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  brandTertiary: value,
-                })
-              }
-            />
-          </Stack>
-        </Column>
-        <BrandTokensPlayground />
-      </Columns>
-      <Actions
-        primaryAction={{ label: t("Next"), onPress: props.onNext }}
-        secondaryAction={{ label: t("Cancel"), onPress: props.onCancel }}
-      />
-    </Stack>
+    <Columns space={40} alignY="stretch">
+      <Column width="1/4">
+        <Stack space={16}>
+          <ColorSelector
+            label={t("Tokens.Color.brandPrimary")}
+            value={props.tokens.brandPrimary}
+            onChange={(value) => props.onChange({ ...props.tokens, brandPrimary: value })}
+          />
+          <ColorSelector
+            label={t("Tokens.Color.brandSecondary")}
+            value={props.tokens.brandSecondary}
+            onChange={(value) =>
+              props.onChange({
+                ...props.tokens,
+                brandSecondary: value,
+              })
+            }
+          />
+          <ColorSelector
+            label={t("Tokens.Color.brandTertiary")}
+            value={props.tokens.brandTertiary}
+            onChange={(value) =>
+              props.onChange({
+                ...props.tokens,
+                brandTertiary: value,
+              })
+            }
+          />
+        </Stack>
+      </Column>
+      <BrandTokensPlayground />
+    </Columns>
   );
 }

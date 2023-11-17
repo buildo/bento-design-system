@@ -1,6 +1,4 @@
 import {
-  Actions,
-  Headline,
   RadioGroupField,
   SelectField,
   Stack,
@@ -18,8 +16,6 @@ type Props = {
   value: InteractiveColor;
   brandColors: BrandColors;
   onChange: (value: InteractiveColor) => void;
-  onNext: () => void;
-  onBack: () => void;
 };
 
 type BrandColor = "primary" | "secondary" | "tertiary";
@@ -33,9 +29,8 @@ export function InteractiveColor(props: Props) {
   const [useColor, setUseColor] = useState<UseColor>({ kind: "New" });
 
   return (
-    <Stack space={40}>
+    <>
       <Stack space={24}>
-        <Headline size="small">{t("ColorsSection.Step.interactive")}</Headline>
         <RadioGroupField
           name={t("InteractiveColors.useColor")}
           label={unsafeLocalizedString("")}
@@ -83,10 +78,6 @@ export function InteractiveColor(props: Props) {
           onChange={props.onChange}
         />
       )}
-      <Actions
-        primaryAction={{ label: t("Next"), onPress: props.onNext }}
-        secondaryAction={{ label: t("Back"), onPress: props.onBack }}
-      />
-    </Stack>
+    </>
   );
 }

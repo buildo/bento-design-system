@@ -1,14 +1,4 @@
-import {
-  Body,
-  Box,
-  Stack,
-  Headline,
-  Card,
-  Title,
-  Actions,
-  Columns,
-  Column,
-} from "@buildo/bento-design-system";
+import { Body, Box, Stack, Card, Title, Columns, Column } from "@buildo/bento-design-system";
 import { ColorSelector } from "./ColorSelector";
 import { useTranslation } from "react-i18next";
 import { IconCloudMoon, IconPlanet } from "../PhosphorIcons";
@@ -18,8 +8,6 @@ import { Playground } from "./Playground";
 type Props = {
   tokens: ThemeConfig["tokens"];
   onChange: (value: ThemeConfig["tokens"]) => void;
-  onNext: () => void;
-  onBack: () => void;
 };
 
 function PlaygroundExample({ theme }: { theme: "light" | "dark" }) {
@@ -85,8 +73,7 @@ export function TextAndIconsTokens(props: Props) {
   const { t } = useTranslation();
 
   return (
-    <Stack space={40}>
-      <Headline size="small">{t("TokensSection.Step.textAndIcons")}</Headline>
+    <>
       <Playground>
         <Columns space={40}>
           <PlaygroundExample theme="light" />
@@ -177,10 +164,6 @@ export function TextAndIconsTokens(props: Props) {
           </Stack>
         </Stack>
       </Columns>
-      <Actions
-        primaryAction={{ label: t("Next"), onPress: props.onNext }}
-        secondaryAction={{ label: t("Back"), onPress: props.onBack }}
-      />
-    </Stack>
+    </>
   );
 }

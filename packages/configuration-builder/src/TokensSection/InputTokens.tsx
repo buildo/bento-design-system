@@ -5,7 +5,6 @@ import {
   TextField as BentoTextField,
   TextArea as BentoTextArea,
   withBentoTheme,
-  Actions,
   Column,
 } from "@buildo/bento-design-system";
 import { Playground as _Playground } from "./Playground";
@@ -18,8 +17,6 @@ import { ColorSelector } from "./ColorSelector";
 type Props = {
   tokens: Pick<ThemeConfig["tokens"], "outlineColor">;
   onChange: (value: Pick<ThemeConfig["tokens"], "outlineColor">) => void;
-  onNext: () => void;
-  onBack: () => void;
 };
 
 function TextField(props: { initialValue?: string }) {
@@ -117,57 +114,51 @@ function Playground() {
 export function InputTokens(props: Props) {
   const { t } = useTranslation();
   return (
-    <Stack space={40}>
-      <Columns space={40}>
-        <Column width="1/3">
-          <Stack space={16}>
-            <ColorSelector
-              label={t("Tokens.Color.outlineEnabled")}
-              value={props.tokens.outlineColor.outlineInputEnabled}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  outlineColor: {
-                    ...props.tokens.outlineColor,
-                    outlineInputEnabled: value,
-                  },
-                })
-              }
-            />
-            <ColorSelector
-              label={t("Tokens.Color.outlineHover")}
-              value={props.tokens.outlineColor.outlineInputHover}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  outlineColor: {
-                    ...props.tokens.outlineColor,
-                    outlineInputHover: value,
-                  },
-                })
-              }
-            />
-            <ColorSelector
-              label={t("Tokens.Color.outlineFocus")}
-              value={props.tokens.outlineColor.outlineInputFocus}
-              onChange={(value) =>
-                props.onChange({
-                  ...props.tokens,
-                  outlineColor: {
-                    ...props.tokens.outlineColor,
-                    outlineInputFocus: value,
-                  },
-                })
-              }
-            />
-          </Stack>
-        </Column>
-        <Playground />
-      </Columns>
-      <Actions
-        primaryAction={{ label: t("Next"), onPress: props.onNext }}
-        secondaryAction={{ label: t("Back"), onPress: props.onBack }}
-      />
-    </Stack>
+    <Columns space={40}>
+      <Column width="1/3">
+        <Stack space={16}>
+          <ColorSelector
+            label={t("Tokens.Color.outlineEnabled")}
+            value={props.tokens.outlineColor.outlineInputEnabled}
+            onChange={(value) =>
+              props.onChange({
+                ...props.tokens,
+                outlineColor: {
+                  ...props.tokens.outlineColor,
+                  outlineInputEnabled: value,
+                },
+              })
+            }
+          />
+          <ColorSelector
+            label={t("Tokens.Color.outlineHover")}
+            value={props.tokens.outlineColor.outlineInputHover}
+            onChange={(value) =>
+              props.onChange({
+                ...props.tokens,
+                outlineColor: {
+                  ...props.tokens.outlineColor,
+                  outlineInputHover: value,
+                },
+              })
+            }
+          />
+          <ColorSelector
+            label={t("Tokens.Color.outlineFocus")}
+            value={props.tokens.outlineColor.outlineInputFocus}
+            onChange={(value) =>
+              props.onChange({
+                ...props.tokens,
+                outlineColor: {
+                  ...props.tokens.outlineColor,
+                  outlineInputFocus: value,
+                },
+              })
+            }
+          />
+        </Stack>
+      </Column>
+      <Playground />
+    </Columns>
   );
 }

@@ -1,7 +1,5 @@
 import {
   Stack,
-  Headline,
-  Actions,
   unsafeLocalizedString,
   Banner,
   Body,
@@ -18,8 +16,6 @@ type Props = {
   onChange: (
     value: Pick<ThemeConfig["tokens"], "backgroundColor" | "foregroundColor" | "textColor">
   ) => void;
-  onNext: () => void;
-  onBack: () => void;
 };
 
 function Playground() {
@@ -44,8 +40,7 @@ export function SemanticElementsTokens(props: Props) {
   const { t } = useTranslation();
 
   return (
-    <Stack space={40}>
-      <Headline size="small">{t("TokensSection.Step.semanticElements")}</Headline>
+    <>
       <Playground />
       <Columns space={40}>
         <Stack space={24}>
@@ -125,10 +120,6 @@ export function SemanticElementsTokens(props: Props) {
           </Stack>
         </Stack>
       </Columns>
-      <Actions
-        primaryAction={{ label: t("Next"), onPress: props.onNext }}
-        secondaryAction={{ label: t("Back"), onPress: props.onBack }}
-      />
-    </Stack>
+    </>
   );
 }

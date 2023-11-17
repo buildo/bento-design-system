@@ -4,20 +4,28 @@ import {
   LocalizedString,
   Stack,
   Headline,
-  Stepper,
-  StepperProps,
   Children,
   ContentBlock,
 } from "@buildo/bento-design-system";
 import { useTranslation } from "react-i18next";
+import {
+  ConfiguratorSectionSteps,
+  Props as ConfiguratorSectionStepsProps,
+} from "./ConfiguratorSectionSteps";
 
-type Props = {
+type Props<T extends string> = {
   title: LocalizedString;
   children: Children;
-} & ({ endStep: true } | { endStep?: false; steps: StepperProps["steps"]; currentStep: number });
+} & (
+  | { endStep: true }
+  | ({
+      endStep?: false;
+    } & ConfiguratorSectionStepsProps<T>)
+);
 
-export function ConfiguratorSection(props: Props) {
+export function ConfiguratorSection<T extends string>(props: Props<T>) {
   const { t } = useTranslation();
+
   return (
     <Box padding={40} paddingTop={24} flexGrow={1} overflowY="auto">
       <ContentBlock maxWidth={1440} alignSelf="center">
@@ -30,9 +38,12 @@ export function ConfiguratorSection(props: Props) {
               ]}
             />
             <Headline size="medium">{props.title}</Headline>
-            {!props.endStep && <Stepper steps={props.steps} currentStep={props.currentStep} />}
           </Stack>
-          {props.children}
+          {props.endStep ? (
+            props.children
+          ) : (
+            <ConfiguratorSectionSteps {...props}>{props.children}</ConfiguratorSectionSteps>
+          )}
         </Stack>
       </ContentBlock>
     </Box>
