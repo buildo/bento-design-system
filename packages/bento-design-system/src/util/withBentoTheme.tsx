@@ -6,7 +6,7 @@ type WrapperProps = {
   className?: string;
 };
 
-export function withBentoTheme<Props extends JSX.IntrinsicAttributes>(
+export function withBentoTheme<Props extends {}>(
   theme: BentoTheme,
   Component: (props: Props) => JSX.Element,
   wrapper?: WrapperProps
