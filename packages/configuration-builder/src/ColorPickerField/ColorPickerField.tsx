@@ -58,7 +58,12 @@ function getColorItems(colors: ThemeConfig["colors"]) {
         Black
       </Item>
     </Section>,
-    getPaletteItemsSection("BrandPrimary", colors.brand[0]),
+    ...colors.brand.map((brandColor, i) =>
+      getPaletteItemsSection(
+        i === 0 ? "BrandPrimary" : i === 1 ? "BrandSecondary" : "BrandTertiary",
+        brandColor
+      )
+    ),
     getPaletteItemsSection("Interactive", colors.interactive),
     getPaletteItemsSection("Neutral", colors.neutral),
     getPaletteItemsSection("Informative", colors.semantic.informative),

@@ -78,7 +78,11 @@ export function PalettesDropdown(props: Props) {
           </Inline>
           <Stack space={4}>
             <Label size="small">{t("ColorsSection.Step.brand")}</Label>
-            <Palette name="BrandPrimary" state={props.state} />
+            {(["BrandPrimary", "BrandSecondary", "BrandTertiary"] as PaletteName[]).map(
+              (brandColor) => (
+                <Palette name={brandColor} state={props.state} />
+              )
+            )}
           </Stack>
           <Stack space={4}>
             <Label size="small">{t("ColorsSection.Step.interactive")}</Label>
