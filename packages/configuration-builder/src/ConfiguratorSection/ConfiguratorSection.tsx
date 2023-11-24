@@ -27,7 +27,13 @@ export function ConfiguratorSection<T extends string>(props: Props<T>) {
   const { t } = useTranslation();
 
   return (
-    <Box padding={40} paddingTop={24} flexGrow={1} overflowY="auto">
+    <Box
+      padding={40}
+      paddingTop={24}
+      flexGrow={1}
+      overflowY="auto"
+      key={props.endStep ? "endStep" : props.currentStep}
+    >
       <ContentBlock maxWidth={1440} alignSelf="center">
         <Stack space={40}>
           <Stack space={24}>
