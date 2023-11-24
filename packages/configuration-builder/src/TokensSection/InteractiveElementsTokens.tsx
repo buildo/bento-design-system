@@ -15,7 +15,7 @@ import { useTranslation } from "react-i18next";
 import { Playground as _Playground } from "./Playground";
 import { ThemeConfig } from "../ConfiguratorStatusContext";
 import { useConfiguredTheme } from "../utils/preview";
-import { ColorKey, ColorToken, stepNames } from "../utils/paletteUtils";
+import { getPaletteStep, getRelativeStep } from "../utils/paletteUtils";
 
 type Props = {
   tokens: Pick<
@@ -126,38 +126,6 @@ function Playground({ hierarchy }: { hierarchy: ButtonProps["hierarchy"] }) {
       </Columns>
     </_Playground>
   );
-}
-
-function getRelativeStep(colorToken: ColorToken, gap: number): ColorToken {
-  if (colorToken.colorKey === "black" || colorToken.colorKey === "white") {
-    return { colorKey: "black", alpha: colorToken.alpha };
-  }
-  const [palette, step] = colorToken.colorKey.split("-");
-  const stepIndex = stepNames.indexOf(step as (typeof stepNames)[number]);
-  const nextStepIndex = stepIndex + gap;
-  if (stepNames[nextStepIndex] != null) {
-    return {
-      colorKey: `${palette}-${stepNames[nextStepIndex]}` as ColorKey,
-      alpha: colorToken.alpha,
-    };
-  } else {
-    return { colorKey: "black", alpha: colorToken.alpha };
-  }
-}
-
-function getPaletteStep(
-  colorKey: ColorKey,
-  step: (typeof stepNames)[number],
-  alpha: number
-): ColorToken {
-  if (colorKey === "black" || colorKey === "white") {
-    return { colorKey: "black", alpha };
-  }
-  const [palette] = colorKey.split("-");
-  return {
-    colorKey: `${palette}-${step}` as ColorKey,
-    alpha,
-  };
 }
 
 function capitalizeFirstLetter(value: string) {
