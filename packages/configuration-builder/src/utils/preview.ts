@@ -1,63 +1,66 @@
 import { BentoTheme } from "@buildo/bento-design-system";
-import { defaultTokens, useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
-import { colorTokenToRGBA as _colorTokenToRGBA } from "./paletteUtils";
+import { useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
+import { ColorToken, colorTokenToRGBA as _colorTokenToRGBA } from "./paletteUtils";
 
-export function useConfiguredTheme(): BentoTheme {
-  const { tokens, colors } = useConfiguratorStatusContext().theme;
+export function useConfiguredTheme(): BentoTheme & object {
+  const { tokens: _tokens, colors } = useConfiguratorStatusContext().theme;
+  const tokens = _tokens as Record<string, Record<string, ColorToken>>;
 
   const colorTokenToRGBA = _colorTokenToRGBA(colors);
 
+  const theme: BentoTheme & object = Object.keys(tokens).reduce(
+    (acc, key) => ({
+      ...acc,
+      [key]: Object.keys(tokens[key]).reduce(
+        (acc2, key2) => ({
+          ...acc2,
+          [key2]: colorTokenToRGBA(tokens[key][key2]),
+        }),
+        {}
+      ),
+    }),
+    {}
+  );
+
   return {
-    ...defaultTokens,
-    brandColor: {
-      brandPrimary: colorTokenToRGBA(tokens.brandColor.brandPrimary),
-      brandSecondary: colorTokenToRGBA(tokens.brandColor.brandSecondary),
-      brandTertiary: colorTokenToRGBA(tokens.brandColor.brandTertiary),
-    },
-    backgroundColor: {
-      backgroundPrimary: colorTokenToRGBA(tokens.backgroundColor.backgroundPrimary),
-      backgroundSecondary: colorTokenToRGBA(tokens.backgroundColor.backgroundSecondary),
-      backgroundOverlay: colorTokenToRGBA(tokens.backgroundColor.backgroundOverlay),
-      backgroundPrimaryInverse: colorTokenToRGBA(tokens.backgroundColor.backgroundPrimaryInverse),
-      backgroundSecondaryInverse: colorTokenToRGBA(
-        tokens.backgroundColor.backgroundSecondaryInverse
-      ),
-      backgroundInteractive: colorTokenToRGBA(tokens.backgroundColor.backgroundInteractive),
-      backgroundInteractiveOverlay: colorTokenToRGBA(
-        tokens.backgroundColor.backgroundInteractiveOverlay
-      ),
-      backgroundInformative: colorTokenToRGBA(tokens.backgroundColor.backgroundInformative),
-      backgroundPositive: colorTokenToRGBA(tokens.backgroundColor.backgroundPositive),
-      backgroundWarning: colorTokenToRGBA(tokens.backgroundColor.backgroundWarning),
-      backgroundNegative: colorTokenToRGBA(tokens.backgroundColor.backgroundNegative),
-      backgroundLightScrim: colorTokenToRGBA(tokens.backgroundColor.backgroundLightScrim),
-      backgroundDarkScrim: colorTokenToRGBA(tokens.backgroundColor.backgroundDarkScrim),
-    },
-    foregroundColor: {
-      foregroundPrimary: colorTokenToRGBA(tokens.foregroundColor.foregroundPrimary),
-      foregroundSecondary: colorTokenToRGBA(tokens.foregroundColor.foregroundSecondary),
-      foregroundPrimaryInverse: colorTokenToRGBA(tokens.foregroundColor.foregroundPrimaryInverse),
-      foregroundSecondaryInverse: colorTokenToRGBA(
-        tokens.foregroundColor.foregroundSecondaryInverse
-      ),
-      foregroundInteractive: colorTokenToRGBA(tokens.foregroundColor.foregroundInteractive),
-      foregroundInformative: colorTokenToRGBA(tokens.foregroundColor.foregroundInformative),
-      foregroundPositive: colorTokenToRGBA(tokens.foregroundColor.foregroundPositive),
-      foregroundWarning: colorTokenToRGBA(tokens.foregroundColor.foregroundWarning),
-      foregroundNegative: colorTokenToRGBA(tokens.foregroundColor.foregroundNegative),
-      foregroundDisabled: colorTokenToRGBA(tokens.foregroundColor.foregroundDisabled),
-    },
-    textColor: {
-      textPrimary: colorTokenToRGBA(tokens.textColor.textPrimary),
-      textSecondary: colorTokenToRGBA(tokens.textColor.textSecondary),
-      textPrimaryInverse: colorTokenToRGBA(tokens.textColor.textPrimaryInverse),
-      textSecondaryInverse: colorTokenToRGBA(tokens.textColor.textSecondaryInverse),
-      textInteractive: colorTokenToRGBA(tokens.textColor.textInteractive),
-      textInformative: colorTokenToRGBA(tokens.textColor.textInformative),
-      textPositive: colorTokenToRGBA(tokens.textColor.textPositive),
-      textWarning: colorTokenToRGBA(tokens.textColor.textWarning),
-      textNegative: colorTokenToRGBA(tokens.textColor.textNegative),
-      textDisabled: colorTokenToRGBA(tokens.textColor.textDisabled),
+    ...theme,
+    boxShadow: {
+      outlineInteractive: theme.outlineColor?.outlineInteractive
+        ? `inset 0px 0px 0px 1px ${theme.outlineColor.outlineInteractive}`
+        : undefined,
+      outlineInteractiveBottom: theme.outlineColor?.outlineInteractive
+        ? `inset 0px -1px 0px ${theme.outlineColor.outlineInteractive}`
+        : undefined,
+      outlineInteractivePrimaryEnabled: theme.outlineColor?.outlineInteractivePrimaryEnabled
+        ? `inset 0px 0px 0px 1px ${theme.outlineColor?.outlineInteractivePrimaryEnabled}`
+        : undefined,
+      outlineInteractivePrimaryFocus: theme.outlineColor?.outlineInteractivePrimaryFocus
+        ? `inset 0px 0px 0px 1px ${theme.outlineColor.outlineInteractivePrimaryEnabled}`
+        : undefined,
+      outlineInteractivePrimaryHover: theme.outlineColor?.outlineInteractivePrimaryHover
+        ? `inset 0px 0px 0px 1px ${theme.outlineColor.outlineInteractivePrimaryHover}`
+        : undefined,
+      outlineInteractiveSecondaryEnabled: theme.outlineColor?.outlineInteractiveSecondaryEnabled
+        ? `inset 0px 0px 0px 1px ${theme.outlineColor.outlineInteractiveSecondaryEnabled}`
+        : undefined,
+      outlineInteractiveSecondaryFocus: theme.outlineColor?.outlineInteractiveSecondaryFocus
+        ? `inset 0px 0px 0px 1px ${theme.outlineColor.outlineInteractiveSecondaryFocus}`
+        : undefined,
+      outlineInteractiveSecondaryHover: theme.outlineColor?.outlineInteractiveSecondaryHover
+        ? `inset 0px 0px 0px 1px ${theme.outlineColor.outlineInteractiveSecondaryHover}`
+        : undefined,
+      outlineInteractiveDangerEnabled: theme.outlineColor?.outlineInteractiveDangerEnabled
+        ? `inset 0px 0px 0px 1px ${theme.outlineColor.outlineInteractiveDangerEnabled}`
+        : undefined,
+      outlineInteractiveDangerFocus: theme.outlineColor?.outlineInteractiveDangerFocus
+        ? `inset 0px 0px 0px 1px ${theme.outlineColor.outlineInteractiveDangerFocus}`
+        : undefined,
+      outlineInteractiveDangerHover: theme.outlineColor?.outlineInteractiveDangerHover
+        ? `inset 0px 0px 0px 1px ${theme.outlineColor?.outlineInteractiveDangerHover}`
+        : undefined,
+      outlineInteractiveDisabled: theme.outlineColor?.outlineInteractiveDisabled
+        ? `inset 0px 0px 0px 1px ${theme.outlineColor.outlineInteractiveDisabled}`
+        : undefined,
     },
   };
 }

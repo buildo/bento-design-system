@@ -76,7 +76,7 @@ export function getPaletteKeyColor(
     .exhaustive();
 }
 
-type ColorToken = {
+export type ColorToken = {
   colorKey: ColorKey;
   alpha: number;
 };
@@ -103,4 +103,8 @@ export function colorTokenToRGBA(colors: ThemeConfig["colors"]) {
       }
     }
   };
+}
+
+export function colorToken(colorKey: ColorKey, alpha?: number): ColorToken {
+  return { colorKey, alpha: alpha ?? 100 };
 }

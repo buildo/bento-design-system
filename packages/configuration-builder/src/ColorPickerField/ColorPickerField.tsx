@@ -52,10 +52,10 @@ function getColorItems(colors: ThemeConfig["colors"]) {
   return [
     <Section key="General">
       <Item key="white" textValue="white">
-        white
+        White
       </Item>
       <Item key="black" textValue="black">
-        black
+        Black
       </Item>
     </Section>,
     getPaletteItemsSection("BrandPrimary", colors.brand[0]),
