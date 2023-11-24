@@ -108,3 +108,35 @@ export function colorTokenToRGBA(colors: ThemeConfig["colors"]) {
 export function colorToken(colorKey: ColorKey, alpha?: number): ColorToken {
   return { colorKey, alpha: alpha ?? 100 };
 }
+
+export function getRelativeStep(colorToken: ColorToken, gap: number): ColorToken {
+  if (colorToken.colorKey === "black" || colorToken.colorKey === "white") {
+    return { colorKey: "black", alpha: colorToken.alpha };
+  }
+  const [palette, step] = colorToken.colorKey.split("-");
+  const stepIndex = stepNames.indexOf(step as (typeof stepNames)[number]);
+  const nextStepIndex = stepIndex + gap;
+  if (stepNames[nextStepIndex] != null) {
+    return {
+      colorKey: `${palette}-${stepNames[nextStepIndex]}` as ColorKey,
+      alpha: colorToken.alpha,
+    };
+  } else {
+    return { colorKey: "black", alpha: colorToken.alpha };
+  }
+}
+
+export function getPaletteStep(
+  colorKey: ColorKey,
+  step: (typeof stepNames)[number],
+  alpha: number
+): ColorToken {
+  if (colorKey === "black" || colorKey === "white") {
+    return { colorKey: "black", alpha };
+  }
+  const [palette] = colorKey.split("-");
+  return {
+    colorKey: `${palette}-${step}` as ColorKey,
+    alpha,
+  };
+}

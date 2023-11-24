@@ -1,8 +1,22 @@
 import { useTranslation } from "react-i18next";
 import { ThemeConfig } from "../ConfiguratorStatusContext";
 import { Playground as _Playground } from "./Playground";
-import { Column, Columns, Title, Stack, Box, Body, Link } from "@buildo/bento-design-system";
+import {
+  Column,
+  Columns,
+  Title,
+  Stack,
+  Box,
+  Body,
+  Link,
+  Modal,
+  unsafeLocalizedString,
+  withBentoTheme,
+} from "@buildo/bento-design-system";
 import { ColorSelector } from "./ColorSelector";
+import { useRef } from "react";
+import { getRelativeStep } from "../utils/paletteUtils";
+import { useConfiguredTheme } from "../utils/preview";
 
 type Props = {
   tokens: Pick<
@@ -20,9 +34,31 @@ type Props = {
 function ModalPlayground() {
   const { t } = useTranslation();
 
+  const ExampleModal = withBentoTheme(
+    {
+      backgroundColor: {
+        backgroundDarkScrim: "transparent",
+      },
+    },
+    Modal
+  );
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
   return (
     <_Playground>
-      <Box position="relative" display="flex" padding={32} style={{ height: 400 }}>
+      <Box
+        position="relative"
+        display="flex"
+        padding={32}
+        style={{
+          height: 400,
+          // Note: the following transform doesn't alter the Box in any way, but it creates a context for the
+          // fixed position of the modal overlay, so that it's not relative to the body but to this Box instead.
+          transform: "scale(1)",
+        }}
+        ref={containerRef}
+      >
         <Body size="medium">{t("LoremIpsum.longText")}</Body>
         <Box position="absolute" height="full" width="full" top={0} left={0} display="flex">
           <Box display="flex" flexGrow={1}>
@@ -30,6 +66,23 @@ function ModalPlayground() {
             <Box flex={1} height="full" background="backgroundLightScrim" />
           </Box>
         </Box>
+        <ExampleModal
+          size="small"
+          title={t("TokensSection.Step.other.modalTitle")}
+          onClose={() => {}}
+          portalContainer={containerRef.current ?? undefined}
+          primaryAction={{
+            label: unsafeLocalizedString(t("TokensSection.Step.other.modalAction")),
+            onPress: () => {},
+          }}
+          secondaryAction={{
+            label: unsafeLocalizedString(t("TokensSection.Step.other.modalCancel")),
+            onPress: () => {},
+          }}
+          autoFocus={false}
+        >
+          <Body size="medium">{t("TokensSection.Step.other.modalContent")}</Body>
+        </ExampleModal>
       </Box>
     </_Playground>
   );
@@ -37,6 +90,25 @@ function ModalPlayground() {
 
 function LinkPlayground() {
   const { t } = useTranslation();
+  const theme = useConfiguredTheme();
+
+  const HoverLink = withBentoTheme(
+    {
+      interactiveForegroundColor: {
+        linkEnabled: theme.interactiveForegroundColor?.linkHover,
+      },
+    },
+    Link
+  );
+
+  const FocusLink = withBentoTheme(
+    {
+      interactiveForegroundColor: {
+        linkEnabled: theme.interactiveForegroundColor?.linkFocus,
+      },
+    },
+    Link
+  );
 
   return (
     <_Playground>
@@ -50,9 +122,9 @@ function LinkPlayground() {
         >
           <Stack space={24}>
             <Link label={t("TokensSection.Step.other.linkEnabled")} />
-            <Link label={t("TokensSection.Step.other.linkHover")} />
-            <Link label={t("TokensSection.Step.other.linkFocus")} />
-            <Link label={t("TokensSection.Step.other.linkDisabled")} />
+            <HoverLink label={t("TokensSection.Step.other.linkHover")} />
+            <FocusLink label={t("TokensSection.Step.other.linkFocus")} />
+            <Link isDisabled label={t("TokensSection.Step.other.linkDisabled")} />
           </Stack>
         </Box>
         <Box
@@ -66,9 +138,9 @@ function LinkPlayground() {
         >
           <Stack space={24}>
             <Link kind="inverse" label={t("TokensSection.Step.other.linkEnabled")} />
-            <Link kind="inverse" label={t("TokensSection.Step.other.linkHover")} />
-            <Link kind="inverse" label={t("TokensSection.Step.other.linkFocus")} />
-            <Link kind="inverse" label={t("TokensSection.Step.other.linkDisabled")} />
+            <HoverLink kind="inverse" label={t("TokensSection.Step.other.linkHover")} />
+            <FocusLink kind="inverse" label={t("TokensSection.Step.other.linkFocus")} />
+            <Link isDisabled kind="inverse" label={t("TokensSection.Step.other.linkDisabled")} />
           </Stack>
         </Box>
       </Box>
@@ -145,6 +217,8 @@ export function OtherTokens(props: Props) {
                     interactiveForegroundColor: {
                       ...props.tokens.interactiveForegroundColor,
                       linkEnabled: value,
+                      linkHover: getRelativeStep(value, 2),
+                      linkFocus: getRelativeStep(value, 2),
                     },
                   })
                 }
