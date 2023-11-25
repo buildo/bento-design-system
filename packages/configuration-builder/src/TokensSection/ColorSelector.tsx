@@ -10,7 +10,7 @@ import {
 import { useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
 import { useTranslation } from "react-i18next";
 import { ColorPickerField } from "../ColorPickerField/ColorPickerField";
-import { ColorToken, colorTokenToRGBA } from "../utils/paletteUtils";
+import { ColorToken, colorTokenToValue } from "../utils/paletteUtils";
 
 export function ColorSelector(props: {
   label: LocalizedString;
@@ -18,7 +18,7 @@ export function ColorSelector(props: {
   onChange: (value: ColorToken) => void;
 }) {
   const colors = useConfiguratorStatusContext().theme.colors;
-  const selectedColor = colorTokenToRGBA(colors)(props.value);
+  const selectedColor = colorTokenToValue(colors)(props.value);
   const { t } = useTranslation();
 
   return (

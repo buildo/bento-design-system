@@ -100,10 +100,10 @@ export function HexToRGB(hex: HexColor): RGB {
 }
 
 export function withAlpha(color: HexColor, alpha: number) {
-  const rgb = HexToRGB(color);
   if (alpha === 100) {
-    return `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+    return color;
   } else {
+    const rgb = HexToRGB(color);
     return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha / 100})`;
   }
 }

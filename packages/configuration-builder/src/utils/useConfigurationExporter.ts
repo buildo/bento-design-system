@@ -1,5 +1,5 @@
 import { useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
-import { ColorToken, colorTokenToRGBA as _colorTokenToRGBA } from "./paletteUtils";
+import { ColorToken, colorTokenToValue as _colorTokenToValue } from "./paletteUtils";
 
 function colorTokenToVarName(colorToken: ColorToken): string {
   const tokenPart = `${colorToken.colorKey.replace("-", "")}`;
@@ -11,14 +11,14 @@ function colorTokenToVarName(colorToken: ColorToken): string {
 
 export function useConfigurationExporter(): () => string {
   const { tokens, colors } = useConfiguratorStatusContext().theme;
-  const colorTokenToRGBA = _colorTokenToRGBA(colors);
+  const colorTokenToValue = _colorTokenToValue(colors);
   return () => {
     const prelude = `import { BentoTheme } from "@buildo/bento-design-system";`;
 
     const usedColors: Record<string, string> = {};
     Object.entries(tokens).forEach(([_, tokensSection]) => {
       Object.entries(tokensSection).forEach(([_, colorToken]) => {
-        const rgba = colorTokenToRGBA(colorToken);
+        const rgba = colorTokenToValue(colorToken);
         if (rgba) {
           usedColors[colorTokenToVarName(colorToken)] = rgba;
         }

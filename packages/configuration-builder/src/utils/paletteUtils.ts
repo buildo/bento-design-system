@@ -81,13 +81,13 @@ export type ColorToken = {
   alpha: number;
 };
 
-export function colorTokenToRGBA(colors: ThemeConfig["colors"]) {
+export function colorTokenToValue(colors: ThemeConfig["colors"]) {
   return (colorToken: ColorToken): string | undefined => {
     if (colorToken.colorKey === "black") {
       return withAlpha("#000000" as HexColor, colorToken.alpha);
     }
     if (colorToken.colorKey === "white") {
-      return withAlpha("#FFFFFF" as HexColor, colorToken.alpha);
+      return withAlpha("#ffffff" as HexColor, colorToken.alpha);
     }
     const [paletteName, step] = colorToken.colorKey.split("-");
     const keyColor = getPaletteKeyColor(paletteName as PaletteName, colors);

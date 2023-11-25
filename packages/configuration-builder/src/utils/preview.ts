@@ -1,12 +1,12 @@
 import { BentoTheme } from "@buildo/bento-design-system";
 import { useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
-import { ColorToken, colorTokenToRGBA as _colorTokenToRGBA } from "./paletteUtils";
+import { ColorToken, colorTokenToValue as _colorTokenToValue } from "./paletteUtils";
 
 export function useConfiguredTheme(): BentoTheme & object {
   const { tokens: _tokens, colors } = useConfiguratorStatusContext().theme;
   const tokens = _tokens as Record<string, Record<string, ColorToken>>;
 
-  const colorTokenToRGBA = _colorTokenToRGBA(colors);
+  const colorTokenToValue = _colorTokenToValue(colors);
 
   const theme: BentoTheme & object = Object.keys(tokens).reduce(
     (acc, key) => ({
@@ -14,7 +14,7 @@ export function useConfiguredTheme(): BentoTheme & object {
       [key]: Object.keys(tokens[key]).reduce(
         (acc2, key2) => ({
           ...acc2,
-          [key2]: colorTokenToRGBA(tokens[key][key2]),
+          [key2]: colorTokenToValue(tokens[key][key2]),
         }),
         {}
       ),
