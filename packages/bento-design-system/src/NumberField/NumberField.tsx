@@ -2,18 +2,15 @@ import { useLocale } from "@react-aria/i18n";
 import { useNumberField } from "@react-aria/numberfield";
 import { NumberFieldStateOptions, useNumberFieldState } from "@react-stately/numberfield";
 import { useRef } from "react";
-import { Children, LocalizedString } from "..";
 import { FieldProps } from "../Field/FieldProps";
-import { FormatProps } from "../NumberInput/FormatProps";
-import { useFormatOptions } from "../NumberInput/formatOptions";
+import { BaseNumberProps, FormatProps } from "./types";
+import { useFormatOptions } from "./formatOptions";
 import { Field } from "../Field/Field";
-import { NumberInput } from "../NumberInput/NumberInput";
+import { InternalNumberInput } from "./InternalNumberInput";
 
-type Props = FieldProps<number | undefined, number> & {
-  placeholder?: LocalizedString;
-  isReadOnly?: boolean;
-  rightAccessory?: Children;
-} & FormatProps &
+type Props = FieldProps<number | undefined, number> &
+  BaseNumberProps &
+  FormatProps &
   Pick<NumberFieldStateOptions, "minValue" | "maxValue" | "step">;
 
 export function NumberField(props: Props) {
@@ -45,7 +42,7 @@ export function NumberField(props: Props) {
       assistiveTextProps={descriptionProps}
       errorMessageProps={errorMessageProps}
     >
-      <NumberInput
+      <InternalNumberInput
         inputProps={inputProps}
         inputRef={inputRef}
         validationState={validationState}

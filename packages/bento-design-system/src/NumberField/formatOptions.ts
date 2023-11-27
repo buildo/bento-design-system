@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { FormatProps } from "./FormatProps";
+import { FormatProps } from "./types";
 
 export function useFormatOptions({ kind }: FormatProps) {
   // This function must be memoized, see this relevant issue:

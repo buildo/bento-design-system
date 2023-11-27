@@ -6,8 +6,8 @@ import { ValueBase } from "@react-types/shared";
 import { useRef } from "react";
 import { Field, Slider } from "..";
 import { FieldProps } from "../Field/FieldProps";
-import { useFormatOptions } from "../NumberInput/formatOptions";
-import { FormatProps } from "../NumberInput/FormatProps";
+import { useFormatOptions } from "../NumberField/formatOptions";
+import { FormatProps } from "../NumberField/types";
 
 type Props = (
   | ({
