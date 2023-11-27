@@ -53,7 +53,7 @@ export * from "./Menu/Menu";
 export * from "./Modal/Modal";
 export * from "./Navigation/Navigation";
 export * from "./NumberField/NumberField";
-export * from "./NumberInput/NumberInput";
+export * from "./NumberField/NumberInput";
 export * from "./Pagination/Pagination";
 export * from "./Placeholder/Placeholder";
 export * from "./Popover/Popover";
@@ -62,6 +62,7 @@ export * from "./RadioGroupField/RadioGroupField";
 export * from "./ReadOnlyField/ReadOnlyField";
 export * from "./SearchBar/SearchBar";
 export * from "./SelectField/SelectField";
+export * from "./SelectField/SelectInput";
 export * from "./Slider/Slider";
 export * from "./SliderField/SliderField";
 export * from "./Stepper/Stepper";
@@ -71,6 +72,7 @@ export * from "./Tabs/Tabs";
 export { bentoSprinkles } from "./internal/sprinkles.css";
 export * from "./TextArea/TextArea";
 export * from "./TextField/TextField";
+export * from "./TextField/TextInput";
 export * from "./TimeField/TimeField";
 export type {
   TypeOverrides,
