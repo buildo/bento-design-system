@@ -10,6 +10,7 @@ import {
   SingleValueProps,
   StylesConfig,
   ValueContainerProps,
+  MultiValueProps,
 } from "react-select";
 import {
   MenuPortalProps,
@@ -27,11 +28,13 @@ import {
   Inline,
   Inset,
   Button,
+  Chip,
+  LocalizedString,
 } from "..";
 import { singleValue, placeholder, menu, control } from "./SelectField.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { clsx } from "clsx";
-import type { SelectOption } from "./SelectField";
+import { SelectOption } from "./types";
 import { InternalList } from "../List/InternalList";
 import { ListItem } from "../List/ListItem";
 import { useBentoConfig } from "../BentoConfigContext";
@@ -255,6 +258,42 @@ export function NoOptionsMessage<A>(props: NoticeProps<A>) {
       </Inline>
     </Inset>
   );
+}
+
+// NOTE(gabro): we override MultiValue instead of ValueContainer (which would be more natural)
+// because overriding ValueContainer breaks the logic for closing the menu when clicking away.
+// See: https://github.com/JedWatson/react-select/issues/2239#issuecomment-861848975
+export function MultiValue<A extends SelectOption<unknown>>(props: MultiValueProps<A>) {
+  const inputConfig = useBentoConfig().input;
+  const dropdownConfig = useBentoConfig().dropdown;
+  switch (props.selectProps.multiSelectMode ?? "summary") {
+    case "summary":
+      const numberOfSelectedOptions = props.getValue().length;
+
+      if (props.index > 0 || !props.selectProps.multiValueMessage) {
+        return null;
+      }
+
+      // note(fede): we split the SingleValue instantiation from the return
+      // in order to avoid the conditional calling of hooks that would result from
+      // the short-circuiting
+      const singleValue = SingleValue(props);
+      if (numberOfSelectedOptions === 1) return singleValue;
+
+      return (
+        <Body size={inputConfig.fontSize}>
+          {props.selectProps.multiValueMessage(numberOfSelectedOptions)}
+        </Body>
+      );
+    case "chips":
+      return (
+        <Chip
+          color={dropdownConfig.chipColor}
+          label={props.data.label as LocalizedString}
+          onDismiss={props.removeProps.onClick as () => void}
+        />
+      );
+  }
 }
 
 export const IndicatorSeparator = null;
