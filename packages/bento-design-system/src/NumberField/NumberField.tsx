@@ -6,7 +6,7 @@ import { FieldProps } from "../Field/FieldProps";
 import { BaseNumberProps, FormatProps } from "./types";
 import { useFormatOptions } from "./formatOptions";
 import { Field } from "../Field/Field";
-import { InternalNumberInput } from "./InternalNumberInput";
+import { BaseNumberInput } from "./BaseNumberInput";
 
 type Props = FieldProps<number | undefined, number> &
   BaseNumberProps &
@@ -42,7 +42,7 @@ export function NumberField(props: Props) {
       assistiveTextProps={descriptionProps}
       errorMessageProps={errorMessageProps}
     >
-      <InternalNumberInput
+      <BaseNumberInput
         inputProps={inputProps}
         inputRef={inputRef}
         validationState={validationState}

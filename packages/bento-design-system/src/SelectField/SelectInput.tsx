@@ -3,7 +3,7 @@ import { FieldProps } from "../Field/FieldProps";
 import { BaseMultiProps, BaseSelectProps, BaseSingleProps } from "./types";
 import { AtLeast } from "../util/AtLeast";
 import { HTMLAttributes } from "react";
-import { InternalSelect } from "./InternalSelect";
+import { BaseSelect } from "./BaseSelect";
 
 type MultiProps<A> = BaseMultiProps &
   Pick<FieldProps<A[]>, "autoFocus" | "disabled" | "name" | "onBlur" | "onChange" | "value">;
@@ -24,7 +24,7 @@ export function SelectInput<A>(props: Props<A>) {
     ...props,
   });
 
-  return <InternalSelect fieldProps={fieldProps} {...props} />;
+  return <BaseSelect fieldProps={fieldProps} {...props} />;
 }
 
 export type { Props as SelectInputProps };

@@ -3,7 +3,7 @@ import { ListSize, LocalizedString } from "..";
 import { useField } from "@react-aria/label";
 import { FieldProps } from "../Field/FieldProps";
 import { Field } from "../Field/Field";
-import { InternalSelect } from "./InternalSelect";
+import { BaseSelect } from "./BaseSelect";
 import { BaseMultiProps, BaseSelectProps, BaseSingleProps } from "./types";
 
 type MultiProps<A> = BaseMultiProps & FieldProps<A[]>;
@@ -51,7 +51,7 @@ export function SelectField<A>(props: Props<A>) {
       disabled={disabled}
       {...hintProps}
     >
-      <InternalSelect fieldProps={fieldProps} validationState={validationState} {...props} />
+      <BaseSelect fieldProps={fieldProps} validationState={validationState} {...props} />
     </Field>
   );
 }

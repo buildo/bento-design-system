@@ -1,7 +1,7 @@
 import { HTMLAttributes, useRef } from "react";
 import { AtLeast } from "../util/AtLeast";
 import { FieldProps } from "../Field/FieldProps";
-import { InternalTextInput } from "./InternalTextInput";
+import { BaseTextInput } from "./BaseTextInput";
 import { useTextField } from "@react-aria/textfield";
 import { LocalizedString } from "../util/LocalizedString";
 import { Children } from "../util/Children";
@@ -34,7 +34,7 @@ export function TextInput(props: Props) {
     inputRef
   );
 
-  return <InternalTextInput inputProps={inputProps} inputRef={inputRef} {...props} />;
+  return <BaseTextInput inputProps={inputProps} inputRef={inputRef} {...props} />;
 }
 
 export type { Props as TextInputProps };

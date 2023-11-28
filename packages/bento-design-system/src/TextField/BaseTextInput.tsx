@@ -26,7 +26,7 @@ type Props = {
   hidePasswordLabel?: never;
 };
 
-export function InternalTextInput(props: Props) {
+export function BaseTextInput(props: Props) {
   const config = useBentoConfig().input;
   const { defaultMessages } = useDefaultMessages();
 

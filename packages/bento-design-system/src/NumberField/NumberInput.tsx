@@ -5,7 +5,7 @@ import { useLocale } from "@react-aria/i18n";
 import { useFormatOptions } from "./formatOptions";
 import { HTMLAttributes, useRef } from "react";
 import { useNumberField } from "@react-aria/numberfield";
-import { InternalNumberInput } from "./InternalNumberInput";
+import { BaseNumberInput } from "./BaseNumberInput";
 import { AtLeast } from "../util/AtLeast";
 
 type Props = AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "aria-labelledby">> &
@@ -34,7 +34,7 @@ export function NumberInput(props: Props) {
     inputRef
   );
 
-  return <InternalNumberInput inputProps={inputProps} inputRef={inputRef} {...props} />;
+  return <BaseNumberInput inputProps={inputProps} inputRef={inputRef} {...props} />;
 }
 
 export type { Props as NumberInputProps };

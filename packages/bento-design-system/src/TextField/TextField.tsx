@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { Field, Children } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { FieldProps } from "../Field/FieldProps";
-import { InternalTextInput } from "./InternalTextInput";
+import { BaseTextInput } from "./BaseTextInput";
 
 type Props = FieldProps<string> & {
   placeholder?: LocalizedString;
@@ -37,7 +37,7 @@ export function TextField(props: Props) {
       assistiveTextProps={descriptionProps}
       errorMessageProps={errorMessageProps}
     >
-      <InternalTextInput
+      <BaseTextInput
         inputProps={inputProps}
         inputRef={inputRef}
         validationState={validationState}

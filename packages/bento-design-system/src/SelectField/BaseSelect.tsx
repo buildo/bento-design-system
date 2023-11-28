@@ -21,7 +21,7 @@ type Props<A> = BaseSelectProps<A> & {
   validationState: "valid" | "invalid";
 } & (SingleProps<A> | MultiProps<A>);
 
-export function InternalSelect<A>(props: Props<A>) {
+export function BaseSelect<A>(props: Props<A>) {
   const dropdownConfig = useBentoConfig().dropdown;
   const { defaultMessages } = useDefaultMessages();
 

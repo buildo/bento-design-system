@@ -17,7 +17,7 @@ type Props = BaseNumberProps & {
   disabled?: boolean;
 } & FormatProps;
 
-export function InternalNumberInput(props: Props) {
+export function BaseNumberInput(props: Props) {
   const config = useBentoConfig().input;
   const { locale } = useLocale();
 
