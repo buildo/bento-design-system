@@ -1,5 +1,6 @@
 import { TextField } from "..";
 import { Meta, StoryObj } from "@storybook/react";
+import { within, expect } from "@storybook/test";
 
 const meta = {
   component: TextField,
@@ -41,5 +42,17 @@ export const CustomAccessory = {
   args: {
     value: "With a custom accessory",
     rightAccessory: "👍",
+  },
+} satisfies Story;
+
+export const NonDefaultType = {
+  args: {
+    value: "bento@example.com",
+    type: "email",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textField = canvas.getByRole("textbox");
+    await expect(textField).toHaveAttribute("type", "email");
   },
 } satisfies Story;
