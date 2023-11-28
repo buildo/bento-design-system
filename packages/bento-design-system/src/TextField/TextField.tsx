@@ -49,7 +49,10 @@ export function TextField(props: Props) {
     ? props.hidePasswordLabel ?? defaultMessages.TextField.hidePasswordLabel
     : props.showPasswordLabel ?? defaultMessages.TextField.showPasswordLabel;
 
-  const type = props.type === "password" && !showPassword ? "password" : "text";
+  const type = match(props.type ?? "text")
+    .with("password", () => (showPassword ? "text" : "password"))
+    .with("text", "email", "url", () => props.type)
+    .exhaustive();
 
   const rightAccessory = match(props.type ?? "text")
     .with("password", () => (
