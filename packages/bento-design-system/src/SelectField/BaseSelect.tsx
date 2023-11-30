@@ -134,3 +134,5 @@ export function BaseSelect<A>(props: Props<A>) {
     </BentoConfigProvider>
   );
 }
+
+export type { SelectOption };
