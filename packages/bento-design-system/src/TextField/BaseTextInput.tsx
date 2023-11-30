@@ -74,7 +74,7 @@ export function BaseTextInput(props: Props) {
         type={type}
         // NOTE(gabro): this is to please TS, since the inputProps type is very broad
         color={undefined}
-        width={undefined}
+        width="full"
         height={undefined}
         className={[
           inputRecipe({
