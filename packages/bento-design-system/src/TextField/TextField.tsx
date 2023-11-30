@@ -1,15 +1,9 @@
 import { useTextField } from "@react-aria/textfield";
-import { useRef, useState } from "react";
-import { Box, IconButton, Field, Children, Columns, useDefaultMessages } from "..";
+import { useRef } from "react";
+import { Field, Children } from "..";
 import { LocalizedString } from "../util/LocalizedString";
-import { inputRecipe } from "../Field/Field.css";
 import { FieldProps } from "../Field/FieldProps";
-import { bodyRecipe } from "../Typography/Body/Body.css";
-import useDimensions from "react-cool-dimensions";
-import { useBentoConfig } from "../BentoConfigContext";
-import { match } from "ts-pattern";
-import { getReadOnlyBackgroundStyle } from "../Field/utils";
-import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
+import { BaseTextInput } from "./BaseTextInput";
 
 type Props = FieldProps<string> & {
   placeholder?: LocalizedString;
@@ -21,14 +15,7 @@ type Props = FieldProps<string> & {
 } & Pick<React.HTMLProps<HTMLInputElement>, "onKeyDown" | "onKeyUp">;
 
 export function TextField(props: Props) {
-  const config = useBentoConfig().input;
   const inputRef = useRef<HTMLInputElement>(null);
-  const { defaultMessages } = useDefaultMessages();
-
-  const { observe: rightAccessoryRef, width: rightAccessoryWidth } = useDimensions({
-    // This is needed to include the padding in the width
-    useBorderBoxSize: true,
-  });
 
   const validationState = props.isReadOnly ? undefined : props.issues ? "invalid" : "valid";
 
@@ -43,35 +30,6 @@ export function TextField(props: Props) {
     inputRef
   );
 
-  const [showPassword, setShowPassword] = useState(false);
-  const passwordIcon = showPassword ? config.passwordHideIcon : config.passwordShowIcon;
-  const passwordIconLabel = showPassword
-    ? props.hidePasswordLabel ?? defaultMessages.TextField.hidePasswordLabel
-    : props.showPasswordLabel ?? defaultMessages.TextField.showPasswordLabel;
-
-  const type = match(props.type ?? "text")
-    .with("password", () => (showPassword ? "text" : "password"))
-    .with("text", "email", "url", () => props.type)
-    .exhaustive();
-
-  const rightAccessory = match(props.type ?? "text")
-    .with("password", () => (
-      // if we have both a rightAccessory and type='password', display the accessory on the left of the password toggle field
-      <Columns space={config.paddingX} alignY="center">
-        <IconButton
-          size={config.passwordIconSize}
-          icon={passwordIcon}
-          onPress={() => setShowPassword((prevValue) => !prevValue)}
-          kind="transparent"
-          hierarchy="secondary"
-          label={passwordIconLabel}
-        />
-        {props.rightAccessory}
-      </Columns>
-    ))
-    .with("email", "text", "url", () => props.rightAccessory)
-    .exhaustive();
-
   return (
     <Field
       {...props}
@@ -79,51 +37,12 @@ export function TextField(props: Props) {
       assistiveTextProps={descriptionProps}
       errorMessageProps={errorMessageProps}
     >
-      <Box position="relative" display="flex">
-        <Box
-          as="input"
-          ref={inputRef}
-          {...inputProps}
-          type={type}
-          // NOTE(gabro): this is to please TS, since the inputProps type is very broad
-          color={undefined}
-          width={undefined}
-          height={undefined}
-          {...getRadiusPropsFromConfig(config.radius)}
-          paddingX={config.paddingX}
-          paddingY={config.paddingY}
-          background={config.background.default}
-          className={[
-            inputRecipe({ validation: validationState || "notSet" }),
-            bodyRecipe({
-              color: props.disabled ? "disabled" : "primary",
-              weight: "default",
-              size: config.fontSize,
-              ellipsis: false,
-            }),
-          ]}
-          style={{
-            paddingRight: rightAccessory ? rightAccessoryWidth : undefined,
-            flexGrow: 1,
-            ...getReadOnlyBackgroundStyle(config),
-          }}
-        />
-        {rightAccessory && (
-          <Box
-            ref={rightAccessoryRef}
-            position="absolute"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            paddingX={config.paddingX}
-            top={0}
-            bottom={0}
-            right={0}
-          >
-            {rightAccessory}
-          </Box>
-        )}
-      </Box>
+      <BaseTextInput
+        inputProps={inputProps}
+        inputRef={inputRef}
+        validationState={validationState}
+        {...props}
+      />
     </Field>
   );
 }

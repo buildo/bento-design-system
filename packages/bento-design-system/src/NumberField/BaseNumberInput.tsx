@@ -4,23 +4,20 @@ import useDimensions from "react-cool-dimensions";
 import { Label, LocalizedString, Box, Children, Columns } from "..";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
-import { FormatProps } from "./FormatProps";
+import { BaseNumberProps, FormatProps } from "./types";
 import { useBentoConfig } from "../BentoConfigContext";
 import { match, not, __ } from "ts-pattern";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
 import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
-type Props = {
+type Props = BaseNumberProps & {
   inputProps: React.InputHTMLAttributes<HTMLInputElement>;
   inputRef: React.Ref<HTMLInputElement>;
-  placeholder?: LocalizedString;
   validationState: "valid" | "invalid";
   disabled?: boolean;
-  isReadOnly?: boolean;
-  rightAccessory?: Children;
 } & FormatProps;
 
-export function NumberInput(props: Props) {
+export function BaseNumberInput(props: Props) {
   const config = useBentoConfig().input;
   const { locale } = useLocale();
 
@@ -132,5 +129,3 @@ export function NumberInput(props: Props) {
     </Box>
   );
 }
-
-export type { Props as NumberInputProps };

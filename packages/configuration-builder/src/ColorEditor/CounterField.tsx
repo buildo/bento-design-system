@@ -6,7 +6,7 @@ import {
   IconMinus,
   IconPlus,
   NumberFieldProps,
-  NumberInput,
+  BaseNumberInput,
 } from "@buildo/bento-design-system";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
@@ -61,7 +61,7 @@ export function CounterField(props: Omit<NumberFieldProps, "kind" | "currency">)
             }}
           />
         </Column>
-        <NumberInput
+        <BaseNumberInput
           inputProps={inputProps}
           inputRef={inputRef}
           validationState={validationState}
