@@ -1,4 +1,5 @@
-import { useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
+import { match } from "ts-pattern";
+import { ElevationConfig, useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
 import { ColorToken, colorTokenToValue as _colorTokenToValue } from "./paletteUtils";
 import prettier from "prettier/standalone";
 import parserTypescript from "prettier/parser-typescript";
@@ -11,9 +12,22 @@ function colorTokenToVarName(colorToken: ColorToken): string {
   return `${tokenPart}_${colorToken.alpha}`;
 }
 
+function elevationToVarName(elevation: "small" | "medium" | "large"): string {
+  return match(elevation)
+    .with("small", () => "elevationSmall")
+    .with("medium", () => "elevationMedium")
+    .with("large", () => "elevationLarge")
+    .exhaustive();
+}
+
 export function useConfigGeneratorTS(): () => string {
-  const { tokens, colors } = useConfiguratorStatusContext().theme;
+  const { tokens, colors, elevations } = useConfiguratorStatusContext().theme;
   const colorTokenToValue = _colorTokenToValue(colors);
+  function elevationToValue(elevation: ElevationConfig): string {
+    return `${elevation.x}px ${elevation.y}px ${elevation.blur}px ${colorTokenToValue(
+      elevation.color
+    )}`;
+  }
   return () => {
     const prelude = `import { BentoTheme } from "@buildo/bento-design-system";`;
 
@@ -41,7 +55,13 @@ export function useConfigGeneratorTS(): () => string {
       });
       themeCode += "},";
     });
-    themeCode += "};";
+    themeCode += `boxShadow: {`;
+    Object.entries(elevations).forEach(([key, value]) => {
+      themeCode += `${elevationToVarName(key as "small" | "medium" | "large")}: "${elevationToValue(
+        value
+      )}",`;
+    });
+    themeCode += `}};`;
 
     return prettier.format([prelude, colorConsts, themeCode].join("\n\n"), {
       parser: "typescript",
