@@ -32,7 +32,7 @@ export function ConfiguratorSection<T extends string>(props: Props<T>) {
       paddingTop={24}
       flexGrow={1}
       overflowY="auto"
-      key={props.endStep ? "endStep" : props.currentStep}
+      key={props.endStep ? "endStep" : props.singleStep ? "singleStep" : props.currentStep}
     >
       <ContentBlock maxWidth={1440} alignSelf="center">
         <Stack space={40}>

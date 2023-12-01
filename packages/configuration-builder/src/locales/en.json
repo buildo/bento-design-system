@@ -3,6 +3,7 @@
     "Next": "Next",
     "Back": "Back",
     "Cancel": "Cancel",
+    "Confirm": "Confirm",
     "App.name": "Design System Configurator",
     "App.description": "In three simple steps, the configurator will guide you through the customization of your new design system.",
     "App.bentoDS": "Bento Design System",
@@ -176,6 +177,20 @@
     "TokensSection.returnToMyTheme": "Return to My Theme",
     "LoremIpsum.title": "The quick brown fox jumps over the lazy dog.",
     "LoremIpsum.text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "LoremIpsum.longText": "Lorem ipsum dolor sit amet consectetur. Nisl porttitor mi convallis cras sed enim. Eu commodo ac eget purus lacinia eu massa proin in. Cras bibendum malesuada lacus amet sagittis molestie mi nec aenean. Tortor sagittis blandit justo at platea ultrices egestas. Congue nec donec adipiscing elementum nunc elementum lectus egestas. Non morbi a facilisis urna aliquam. Et urna posuere sit sociis adipiscing facilisis id. Cras pharetra ac mattis vitae ultricies ac dictum turpis. Fermentum quam viverra aliquet adipiscing est sollicitudin in. Rhoncus odio tellus amet facilisi felis ullamcorper. Convallis auctor a vitae quam pharetra tristique. Eget molestie gravida proin sed sapien euismod dignissim. Diam massa fringilla vitae leo. Ut feugiat convallis in sem magnis. Non nascetur cursus in fringilla nunc aenean lorem non. In mollis vitae in curabitur a integer sit lacus eros. Velit facilisis ornare ultricies aliquet vivamus a. Amet aliquam venenatis fusce senectus nullam. Et sit fermentum neque ornare ut sit dignissim leo turpis. Pharetra quam risus dolor vel egestas massa. Tincidunt habitant habitant imperdiet pellentesque sed lectus pharetra facilisi tempus. Convallis vitae eu vivamus a faucibus. Eget sed tristique ut tincidunt nulla cras est leo. Fames senectus amet neque felis ut bibendum pellentesque non. Nisl facilisis consequat fermentum amet aliquet vitae. Hac tristique etiam id suscipit viverra rhoncus neque. Tincidunt ullamcorper aliquam sed magna eget tellus sodales. Libero volutpat lectus vel erat id bibendum quis nam in. Ut ipsum sagittis augue elit libero. Orci massa faucibus amet sem."
+    "LoremIpsum.longText": "Lorem ipsum dolor sit amet consectetur. Nisl porttitor mi convallis cras sed enim. Eu commodo ac eget purus lacinia eu massa proin in. Cras bibendum malesuada lacus amet sagittis molestie mi nec aenean. Tortor sagittis blandit justo at platea ultrices egestas. Congue nec donec adipiscing elementum nunc elementum lectus egestas. Non morbi a facilisis urna aliquam. Et urna posuere sit sociis adipiscing facilisis id. Cras pharetra ac mattis vitae ultricies ac dictum turpis. Fermentum quam viverra aliquet adipiscing est sollicitudin in. Rhoncus odio tellus amet facilisi felis ullamcorper. Convallis auctor a vitae quam pharetra tristique. Eget molestie gravida proin sed sapien euismod dignissim. Diam massa fringilla vitae leo. Ut feugiat convallis in sem magnis. Non nascetur cursus in fringilla nunc aenean lorem non. In mollis vitae in curabitur a integer sit lacus eros. Velit facilisis ornare ultricies aliquet vivamus a. Amet aliquam venenatis fusce senectus nullam. Et sit fermentum neque ornare ut sit dignissim leo turpis. Pharetra quam risus dolor vel egestas massa. Tincidunt habitant habitant imperdiet pellentesque sed lectus pharetra facilisi tempus. Convallis vitae eu vivamus a faucibus. Eget sed tristique ut tincidunt nulla cras est leo. Fames senectus amet neque felis ut bibendum pellentesque non. Nisl facilisis consequat fermentum amet aliquet vitae. Hac tristique etiam id suscipit viverra rhoncus neque. Tincidunt ullamcorper aliquam sed magna eget tellus sodales. Libero volutpat lectus vel erat id bibendum quis nam in. Ut ipsum sagittis augue elit libero. Orci massa faucibus amet sem.",
+    "ElevationsSection.title": "Elevations",
+    "ElevationsSection.completed": "Elevations section completed",
+    "ElevationsSection.returnToMyTheme": "Return to My Theme",
+    "ElevationsSection.goToTokens": "Go to Tokens",
+    "Elevation.small": "Small",
+    "Elevation.medium": "Medium",
+    "Elevation.large": "Large",
+    "Elevation.smallDescription": "Use Small elevation to slightly detach interactive elements from the page layout, such as Cards.",
+    "Elevation.mediumDescription": "Use Medium elevation for elements that are integral to the page layout, such as Headers.",
+    "Elevation.largeDescription": "Use Large elevation for non-layout elements, such as Modals.",
+    "Elevation.x": "X",
+    "Elevation.y": "Y",
+    "Elevation.blur": "Blur",
+    "Elevation.color": "Color"
   }
 }

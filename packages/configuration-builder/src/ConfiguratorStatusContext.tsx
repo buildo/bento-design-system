@@ -30,6 +30,13 @@ type TokensConfig = MapLeafNodes<
   ColorToken
 >;
 
+export type ElevationConfig = {
+  x: number;
+  y: number;
+  blur: number;
+  color: ColorToken;
+};
+
 export type ThemeConfig = {
   colors: {
     brand: BrandColors;
@@ -54,10 +61,11 @@ export type ThemeConfig = {
       pink: ColorConfig;
     };
   };
+  elevations: Record<"small" | "medium" | "large", ElevationConfig>;
   tokens: TokensConfig;
 };
 
-export type ThemeSection = "colors" | "tokens";
+export type ThemeSection = "colors" | "tokens" | "elevations";
 
 type ConfiguratorStatus = {
   theme: ThemeConfig;
@@ -258,11 +266,32 @@ export function ConfiguratorStatusProvider(props: { children: Children }) {
       },
     },
     tokens: defaultTokens,
+    elevations: {
+      small: {
+        x: 0,
+        y: 4,
+        blur: 8,
+        color: { colorKey: "black", alpha: 16 },
+      },
+      medium: {
+        x: 0,
+        y: 8,
+        blur: 16,
+        color: { colorKey: "black", alpha: 16 },
+      },
+      large: {
+        x: 0,
+        y: 16,
+        blur: 32,
+        color: { colorKey: "black", alpha: 16 },
+      },
+    },
   });
 
   const [sections, setSections] = useState<ConfiguratorStatus["sections"]>({
     colors: false,
     tokens: false,
+    elevations: false,
   });
 
   return (
