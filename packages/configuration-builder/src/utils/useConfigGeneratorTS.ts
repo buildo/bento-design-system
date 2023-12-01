@@ -9,7 +9,7 @@ function colorTokenToVarName(colorToken: ColorToken): string {
   return `${tokenPart}_${colorToken.alpha}`;
 }
 
-export function useConfigurationExporter(): () => string {
+export function useConfigGeneratorTS(): () => string {
   const { tokens, colors } = useConfiguratorStatusContext().theme;
   const colorTokenToValue = _colorTokenToValue(colors);
   return () => {
