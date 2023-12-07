@@ -96,6 +96,7 @@ function LinkPlayground() {
     {
       interactiveForegroundColor: {
         linkEnabled: theme.interactiveForegroundColor?.linkHover,
+        linkEnabledInverse: theme.interactiveForegroundColor?.linkHoverInverse,
       },
     },
     Link
@@ -105,6 +106,7 @@ function LinkPlayground() {
     {
       interactiveForegroundColor: {
         linkEnabled: theme.interactiveForegroundColor?.linkFocus,
+        linkEnabledInverse: theme.interactiveForegroundColor?.linkFocusInverse,
       },
     },
     Link
@@ -232,6 +234,8 @@ export function OtherTokens(props: Props) {
                     interactiveForegroundColor: {
                       ...props.tokens.interactiveForegroundColor,
                       linkEnabledInverse: value,
+                      linkHoverInverse: getRelativeStep(value, -1),
+                      linkFocusInverse: getRelativeStep(value, -1),
                     },
                   })
                 }
