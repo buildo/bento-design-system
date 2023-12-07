@@ -1,5 +1,7 @@
 import { useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
 import { ColorToken, colorTokenToValue as _colorTokenToValue } from "./paletteUtils";
+import prettier from "prettier/standalone";
+import parserTypescript from "prettier/parser-typescript";
 
 function colorTokenToVarName(colorToken: ColorToken): string {
   const tokenPart = `${colorToken.colorKey.replace("-", "")}`;
@@ -31,16 +33,19 @@ export function useConfigGeneratorTS(): () => string {
       }, [] as string[])
       .join("\n");
 
-    let themeCode = "export const theme: BentoTheme = {\n";
+    let themeCode = "export const theme: BentoTheme = {";
     Object.entries(tokens).forEach(([key, tokensSection]) => {
-      themeCode += `   ${key}: {\n`;
+      themeCode += `${key}: {`;
       Object.entries(tokensSection).forEach(([key2, colorToken]) => {
-        themeCode += `    ${key2}: ${colorTokenToVarName(colorToken)},\n`;
+        themeCode += `${key2}: ${colorTokenToVarName(colorToken)},`;
       });
-      themeCode += "  },\n";
+      themeCode += "},";
     });
     themeCode += "};";
 
-    return [prelude, colorConsts, themeCode].join("\n\n");
+    return prettier.format([prelude, colorConsts, themeCode].join("\n\n"), {
+      parser: "typescript",
+      plugins: [parserTypescript],
+    });
   };
 }
