@@ -2,6 +2,8 @@ import { ConfiguratorSection } from "../ConfiguratorSection/ConfiguratorSection"
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { match } from "ts-pattern";
+import { FontFamilyStep } from "./FontFamilyStep";
+import { TypographicScaleStep } from "./TypographicScaleStep";
 
 const steps = ["fontFamily", "typographicScale"] as const;
 type Step = (typeof steps)[number];
@@ -24,8 +26,8 @@ export function TypographySection() {
       }}
     >
       {match(currentStep)
-        .with("fontFamily", () => <></>)
-        .with("typographicScale", () => <></>)
+        .with("fontFamily", () => <FontFamilyStep />)
+        .with("typographicScale", () => <TypographicScaleStep />)
         .exhaustive()}
     </ConfiguratorSection>
   );
