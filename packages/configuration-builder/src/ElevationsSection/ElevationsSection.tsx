@@ -1,34 +1,21 @@
 import { ConfiguratorSection } from "../ConfiguratorSection/ConfiguratorSection";
 import { useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { SectionCompleted } from "./SectionCompleted";
 import { Columns } from "@buildo/bento-design-system";
 import { ElevationCard } from "./ElevationCard";
 
 export function ElevationsSection() {
-  const { theme, setTheme, completeSection } = useConfiguratorStatusContext();
-  const [completed, setCompleted] = useState(false);
+  const { theme, setTheme } = useConfiguratorStatusContext();
   const { t } = useTranslation();
-  const navigate = useNavigate();
-
-  if (completed) {
-    return (
-      <ConfiguratorSection title={t("ElevationsSection.title")} endStep>
-        <SectionCompleted />
-      </ConfiguratorSection>
-    );
-  }
 
   return (
     <ConfiguratorSection
+      sectionName="elevations"
       title={t("ElevationsSection.title")}
       singleStep
-      onCancel={() => navigate("/theme")}
-      onComplete={() => {
-        setCompleted(true);
-        completeSection("elevations");
+      nextSection={{
+        label: t("ElevationsSection.goToTokens"),
+        href: "/theme/tokens",
       }}
     >
       <Columns space={24}>

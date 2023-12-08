@@ -120,7 +120,8 @@ export function MyTheme() {
               name={t("Theme.Foundations.Typography.title")}
               description={t("Theme.Foundations.Typography.description")}
               icon={IconTextAa}
-              disabled
+              kind={sections.typography ? "done" : "todo"}
+              onClick={() => navigate("/theme/typography")}
             />
             <SectionCard
               name={t("Theme.Foundations.Elevations.title")}
