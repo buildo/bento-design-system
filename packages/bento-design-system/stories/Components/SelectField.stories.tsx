@@ -7,7 +7,9 @@ import {
   SelectField,
   BentoConfigProvider,
   SelectFieldProps,
+  SelectOption,
 } from "..";
+import { useState } from "react";
 
 const meta = {
   component: SelectField,
@@ -190,4 +192,24 @@ export const CustomListConfig = {
       </BentoConfigProvider>
     ),
   ],
+} satisfies Story;
+
+// NOTE(gabro): using a render function instead of just args, because the `value/onChange` trick we
+// use to make the story controlled doesn't play well with the implementation of `clearable`
+export const NotClearable = {
+  args: {
+    clearable: false,
+  },
+  render: (args) => {
+    const [value, onChange] = useState<number | undefined>(undefined);
+    return (
+      <SelectField
+        label={args.label}
+        clearable={args.clearable}
+        options={args.options as SelectOption<number>[]}
+        value={value}
+        onChange={onChange}
+      />
+    );
+  },
 } satisfies Story;

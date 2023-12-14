@@ -55,6 +55,7 @@ export function BaseSelect<A>(props: Props<A>) {
     autoFocus,
     menuSize = dropdownConfig.defaultMenuSize,
     searchable,
+    clearable = true,
   } = props;
 
   return (
@@ -79,7 +80,11 @@ export function BaseSelect<A>(props: Props<A>) {
             onChange(multiValue.map((a) => a.value));
           } else {
             const singleValue = o as SingleValueT<SelectOption<A>>;
-            onChange(singleValue == null ? undefined : singleValue.value);
+            if (clearable) {
+              onChange(singleValue == null ? undefined : singleValue.value);
+            } else {
+              singleValue != null && onChange(singleValue.value);
+            }
           }
         }}
         onBlur={onBlur}
