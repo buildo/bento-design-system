@@ -11,6 +11,7 @@ export type SelectOption<A> = Omit<
 
 export type BaseSingleProps = {
   isMulti?: false;
+  clearable?: boolean;
 };
 
 export type BaseMultiProps = {
@@ -18,6 +19,7 @@ export type BaseMultiProps = {
   showMultiSelectBulkActions?: boolean;
   selectAllButtonLabel?: LocalizedString;
   clearAllButtonLabel?: LocalizedString;
+  clearable?: never;
 } & (
   | {
       multiSelectMode?: "summary";
