@@ -73,14 +73,10 @@ function TypographyConfigurator(props: { component: keyof TypographyConfig["typo
                     : t("TypographySection.Step.typographicScale.fontWeight")
                 }
                 options={fontWeightOptions}
-                value={"weight" in config ? config.weight : config.regularWeight}
+                value={config.weights.regular}
                 onChange={(value) => {
                   if (value) {
-                    if ("weight" in config) {
-                      onChange({ ...config, weight: value });
-                    } else {
-                      onChange({ ...config, regularWeight: value });
-                    }
+                    onChange({ ...config, weights: { ...config.weights, regular: value } });
                   }
                 }}
               />
@@ -88,10 +84,10 @@ function TypographyConfigurator(props: { component: keyof TypographyConfig["typo
                 <SelectField
                   label={t("TypographySection.Step.typographicScale.strongFontWeight")}
                   options={fontWeightOptions}
-                  value={(config as TypographyConfig["typographicScale"]["body"]).strongWeight}
+                  value={(config as TypographyConfig["typographicScale"]["body"]).weights.strong}
                   onChange={(value) => {
                     if (value) {
-                      onChange({ ...config, strongWeight: value });
+                      onChange({ ...config, weights: { ...config.weights, strong: value } });
                     }
                   }}
                 />

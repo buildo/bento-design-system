@@ -29,12 +29,12 @@ export function useConfiguredTheme(): BentoTheme & object {
     ...theme,
     fontFamily: { default: typography.fontFamily },
     fontWeight: {
-      body: typography.typographicScale.body.regularWeight,
-      bodyStrong: typography.typographicScale.body.strongWeight,
-      headline: typography.typographicScale.headline.weight,
-      label: typography.typographicScale.label.weight,
-      title: typography.typographicScale.title.weight,
-      display: typography.typographicScale.display.weight,
+      body: typography.typographicScale.body.weights.regular,
+      bodyStrong: typography.typographicScale.body.weights.strong,
+      headline: typography.typographicScale.headline.weights.regular,
+      label: typography.typographicScale.label.weights.regular,
+      title: typography.typographicScale.title.weights.regular,
+      display: typography.typographicScale.display.weights.regular,
     },
     fontSize: {
       bodySmall: pixelToRem(typography.typographicScale.body.sizes.small.fontSize),

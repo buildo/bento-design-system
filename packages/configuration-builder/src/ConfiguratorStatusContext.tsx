@@ -70,24 +70,23 @@ export type TypographyConfig = {
   fontFamily: string;
   typographicScale: {
     display: {
-      weight: string;
+      weights: { regular: string };
       sizes: Record<DisplayProps["size"], { fontSize: number; lineHeight: number }>;
     };
     headline: {
-      weight: string;
+      weights: { regular: string };
       sizes: Record<HeadlineProps["size"], { fontSize: number; lineHeight: number }>;
     };
     title: {
-      weight: string;
+      weights: { regular: string };
       sizes: Record<TitleProps["size"], { fontSize: number; lineHeight: number }>;
     };
     body: {
-      regularWeight: string;
-      strongWeight: string;
+      weights: { regular: string; strong: string };
       sizes: Record<BodyProps["size"], { fontSize: number; lineHeight: number }>;
     };
     label: {
-      weight: string;
+      weights: { regular: string };
       sizes: Record<LabelProps["size"], { fontSize: number; lineHeight: number }>;
     };
   };
@@ -325,8 +324,10 @@ export function ConfiguratorStatusProvider(props: { children: Children }) {
       fontFamily: "Lexend",
       typographicScale: {
         body: {
-          regularWeight: "400",
-          strongWeight: "600",
+          weights: {
+            regular: "400",
+            strong: "600",
+          },
           sizes: {
             small: { fontSize: 12, lineHeight: 18 },
             medium: { fontSize: 14, lineHeight: 20 },
@@ -334,7 +335,7 @@ export function ConfiguratorStatusProvider(props: { children: Children }) {
           },
         },
         headline: {
-          weight: "600",
+          weights: { regular: "600" },
           sizes: {
             small: { fontSize: 32, lineHeight: 36 },
             medium: { fontSize: 36, lineHeight: 40 },
@@ -342,7 +343,7 @@ export function ConfiguratorStatusProvider(props: { children: Children }) {
           },
         },
         display: {
-          weight: "600",
+          weights: { regular: "600" },
           sizes: {
             small: { fontSize: 44, lineHeight: 50 },
             medium: { fontSize: 52, lineHeight: 58 },
@@ -350,7 +351,7 @@ export function ConfiguratorStatusProvider(props: { children: Children }) {
           },
         },
         label: {
-          weight: "500",
+          weights: { regular: "500" },
           sizes: {
             small: { fontSize: 12, lineHeight: 18 },
             medium: { fontSize: 14, lineHeight: 20 },
@@ -358,7 +359,7 @@ export function ConfiguratorStatusProvider(props: { children: Children }) {
           },
         },
         title: {
-          weight: "600",
+          weights: { regular: "600" },
           sizes: {
             small: { fontSize: 14, lineHeight: 16 },
             medium: { fontSize: 16, lineHeight: 18 },

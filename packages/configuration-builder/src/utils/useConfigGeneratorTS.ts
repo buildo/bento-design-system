@@ -4,6 +4,10 @@ import { ColorToken, colorTokenToValue as _colorTokenToValue } from "./paletteUt
 import prettier from "prettier/standalone";
 import parserTypescript from "prettier/parser-typescript";
 
+function uppercase(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function colorTokenToVarName(colorToken: ColorToken): string {
   const tokenPart = `${colorToken.colorKey.replace("-", "")}`;
   if (colorToken.alpha === 100) {
@@ -21,7 +25,7 @@ function elevationToVarName(elevation: "small" | "medium" | "large"): string {
 }
 
 export function useConfigGeneratorTS(): () => string {
-  const { tokens, colors, elevations } = useConfiguratorStatusContext().theme;
+  const { tokens, colors, elevations, typography } = useConfiguratorStatusContext().theme;
   const colorTokenToValue = _colorTokenToValue(colors);
 
   function elevationToValue(elevation: ElevationConfig): string {
@@ -31,7 +35,10 @@ export function useConfigGeneratorTS(): () => string {
   }
 
   return () => {
-    const prelude = `import { BentoTheme } from "@buildo/bento-design-system";`;
+    let prelude = `import { BentoTheme } from "@buildo/bento-design-system";`;
+    prelude += `const remBaseSize = 16; const pixelToRem = (px: number) => \`\${
+      px / remBaseSize
+    }rem\`;`;
 
     const usedColors: Record<string, string> = {};
     Object.entries(tokens).forEach(([_, tokensSection]) => {
@@ -55,7 +62,9 @@ export function useConfigGeneratorTS(): () => string {
       }, [] as string[])
       .join("\n");
 
-    let themeCode = "export const theme: BentoTheme = {";
+    let themeCode = "export const theme = {";
+
+    // color tokens
     Object.entries(tokens).forEach(([key, tokensSection]) => {
       themeCode += `${key}: {`;
       Object.entries(tokensSection).forEach(([key2, colorToken]) => {
@@ -63,6 +72,8 @@ export function useConfigGeneratorTS(): () => string {
       });
       themeCode += "},";
     });
+
+    // outlines
     themeCode += `boxShadow: {`;
     Object.entries(tokens.outlineColor).forEach(([key, colorToken]) => {
       themeCode += `${key}: \`inset 0px 0px 0px 1px \${${colorTokenToVarName(colorToken)}}\`,`;
@@ -76,12 +87,40 @@ export function useConfigGeneratorTS(): () => string {
     themeCode += `outlineNegativeStrong: \`inset 0px 0px 0px 2px \${${colorTokenToVarName(
       tokens.outlineColor.outlineNegative
     )}}\`,`;
+
+    // elevations
     Object.entries(elevations).forEach(([key, value]) => {
       themeCode += `${elevationToVarName(
         key as "small" | "medium" | "large"
       )}: \`${elevationToValue(value)}\`,`;
     });
-    themeCode += `}};`;
+    themeCode += `},`;
+
+    // typography
+    themeCode += `fontFamily: { default: "${typography.fontFamily}" },`;
+    themeCode += `fontSize: {`;
+    Object.entries(typography.typographicScale).forEach(([kind, value]) => {
+      Object.entries(value.sizes).forEach(([size, value]) => {
+        themeCode += `${kind}${uppercase(size)}: pixelToRem(${value.fontSize}),`;
+      });
+    });
+    themeCode += "},";
+    themeCode += `lineHeight: {`;
+    Object.entries(typography.typographicScale).forEach(([kind, value]) => {
+      Object.entries(value.sizes).forEach(([size, value]) => {
+        themeCode += `${kind}${uppercase(size)}: pixelToRem(${value.lineHeight}),`;
+      });
+    });
+    themeCode += "},";
+    themeCode += `fontWeight: {`;
+    Object.entries(typography.typographicScale).forEach(([kind, value]) => {
+      Object.entries(value.weights).forEach(([weight, value]) => {
+        themeCode += `${kind}${weight === "regular" ? "" : uppercase(weight)}: "${value}",`;
+      });
+    });
+    themeCode += "},";
+
+    themeCode += "} satisfies BentoTheme;";
 
     return prettier.format([prelude, colorConsts, themeCode].join("\n\n"), {
       parser: "typescript",
