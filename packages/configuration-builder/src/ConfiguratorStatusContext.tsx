@@ -30,6 +30,13 @@ type TokensConfig = MapLeafNodes<
   ColorToken
 >;
 
+export type ElevationConfig = {
+  x: number;
+  y: number;
+  blur: number;
+  color: ColorToken;
+};
+
 export type ThemeConfig = {
   colors: {
     brand: BrandColors;
@@ -54,10 +61,11 @@ export type ThemeConfig = {
       pink: ColorConfig;
     };
   };
+  elevations: Record<"small" | "medium" | "large", ElevationConfig>;
   tokens: TokensConfig;
 };
 
-export type ThemeSection = "colors" | "tokens";
+export type ThemeSection = "colors" | "tokens" | "elevations";
 
 type ConfiguratorStatus = {
   theme: ThemeConfig;
@@ -77,7 +85,7 @@ export const defaultTokens: TokensConfig = {
   backgroundColor: {
     backgroundPrimary: colorToken("white"),
     backgroundSecondary: colorToken("Neutral-1"),
-    backgroundOverlay: colorToken("Neutral-20", 20),
+    backgroundOverlay: colorToken("Neutral-20", 40),
     backgroundPrimaryInverse: colorToken("Neutral-90"),
     backgroundSecondaryInverse: colorToken("Neutral-80"),
     backgroundInteractive: colorToken("Interactive-40"),
@@ -92,7 +100,7 @@ export const defaultTokens: TokensConfig = {
   foregroundColor: {
     foregroundPrimary: colorToken("Neutral-90"),
     foregroundSecondary: colorToken("Neutral-50"),
-    foregroundPrimaryInverse: colorToken("Neutral-1"),
+    foregroundPrimaryInverse: colorToken("white"),
     foregroundSecondaryInverse: colorToken("Neutral-30"),
     foregroundInteractive: colorToken("Interactive-40"),
     foregroundInformative: colorToken("Informative-30"),
@@ -121,8 +129,8 @@ export const defaultTokens: TokensConfig = {
     primaryTransparentHoverBackground: colorToken("Interactive-10", 40),
     primaryTransparentFocusBackground: colorToken("Interactive-10", 40),
     dangerSolidEnabledBackground: colorToken("Negative-40"),
-    dangerSolidHoverBackground: colorToken("Negative-40"),
-    dangerSolidFocusBackground: colorToken("Negative-40"),
+    dangerSolidHoverBackground: colorToken("Negative-60"),
+    dangerSolidFocusBackground: colorToken("Negative-60"),
     dangerTransparentEnabledBackground: colorToken("white", 0),
     dangerTransparentHoverBackground: colorToken("Negative-40", 10),
     dangerTransparentFocusBackground: colorToken("Negative-40", 10),
@@ -130,8 +138,8 @@ export const defaultTokens: TokensConfig = {
     secondarySolidHoverBackground: colorToken("Neutral-20"),
     secondarySolidFocusBackground: colorToken("Neutral-20"),
     secondaryTransparentEnabledBackground: colorToken("white", 0),
-    secondaryTransparentHoverBackground: colorToken("Neutral-10", 40),
-    secondaryTransparentFocusBackground: colorToken("Neutral-10", 40),
+    secondaryTransparentHoverBackground: colorToken("Neutral-20", 40),
+    secondaryTransparentFocusBackground: colorToken("Neutral-20", 40),
     disabledSolidBackground: colorToken("Neutral-20", 20),
     disabledTransparentBackground: colorToken("white", 0),
   },
@@ -168,7 +176,7 @@ export const defaultTokens: TokensConfig = {
   outlineColor: {
     outlineInteractive: colorToken("Interactive-40"),
     outlineDecorative: colorToken("Neutral-20"),
-    outlineContainer: colorToken("Neutral-40", 20),
+    outlineContainer: colorToken("Neutral-5"),
     outlineInputEnabled: colorToken("Neutral-40"),
     outlineInputHover: colorToken("Neutral-60"),
     outlineInputFocus: colorToken("Interactive-40"),
@@ -258,11 +266,32 @@ export function ConfiguratorStatusProvider(props: { children: Children }) {
       },
     },
     tokens: defaultTokens,
+    elevations: {
+      small: {
+        x: 0,
+        y: 4,
+        blur: 8,
+        color: { colorKey: "black", alpha: 16 },
+      },
+      medium: {
+        x: 0,
+        y: 8,
+        blur: 16,
+        color: { colorKey: "black", alpha: 16 },
+      },
+      large: {
+        x: 0,
+        y: 16,
+        blur: 32,
+        color: { colorKey: "black", alpha: 16 },
+      },
+    },
   });
 
   const [sections, setSections] = useState<ConfiguratorStatus["sections"]>({
     colors: false,
     tokens: false,
+    elevations: false,
   });
 
   return (

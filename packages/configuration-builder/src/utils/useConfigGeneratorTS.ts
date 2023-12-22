@@ -1,4 +1,5 @@
-import { useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
+import { match } from "ts-pattern";
+import { ElevationConfig, useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
 import { ColorToken, colorTokenToValue as _colorTokenToValue } from "./paletteUtils";
 import prettier from "prettier/standalone";
 import parserTypescript from "prettier/parser-typescript";
@@ -11,9 +12,24 @@ function colorTokenToVarName(colorToken: ColorToken): string {
   return `${tokenPart}_${colorToken.alpha}`;
 }
 
+function elevationToVarName(elevation: "small" | "medium" | "large"): string {
+  return match(elevation)
+    .with("small", () => "elevationSmall")
+    .with("medium", () => "elevationMedium")
+    .with("large", () => "elevationLarge")
+    .exhaustive();
+}
+
 export function useConfigGeneratorTS(): () => string {
-  const { tokens, colors } = useConfiguratorStatusContext().theme;
+  const { tokens, colors, elevations } = useConfiguratorStatusContext().theme;
   const colorTokenToValue = _colorTokenToValue(colors);
+
+  function elevationToValue(elevation: ElevationConfig): string {
+    return `${elevation.x}px ${elevation.y}px ${elevation.blur}px \${${colorTokenToVarName(
+      elevation.color
+    )}}`;
+  }
+
   return () => {
     const prelude = `import { BentoTheme } from "@buildo/bento-design-system";`;
 
@@ -25,6 +41,12 @@ export function useConfigGeneratorTS(): () => string {
           usedColors[colorTokenToVarName(colorToken)] = rgba;
         }
       });
+    });
+    Object.entries(elevations).forEach(([_, elevation]) => {
+      const rgba = colorTokenToValue(elevation.color);
+      if (rgba) {
+        usedColors[colorTokenToVarName(elevation.color)] = rgba;
+      }
     });
 
     const colorConsts = Object.entries(usedColors)
@@ -41,7 +63,25 @@ export function useConfigGeneratorTS(): () => string {
       });
       themeCode += "},";
     });
-    themeCode += "};";
+    themeCode += `boxShadow: {`;
+    Object.entries(tokens.outlineColor).forEach(([key, colorToken]) => {
+      themeCode += `${key}: \`inset 0px 0px 0px 1px \${${colorTokenToVarName(colorToken)}}\`,`;
+    });
+    themeCode += `outlineInteractiveBottom: \`inset 0px 0px -1px 0px \${${colorTokenToVarName(
+      tokens.outlineColor.outlineInteractive
+    )}}\`,`;
+    themeCode += `outlineDecorativeBottom: \`inset 0px 0px -1px 0px \${${colorTokenToVarName(
+      tokens.outlineColor.outlineDecorative
+    )}}\`,`;
+    themeCode += `outlineNegativeStrong: \`inset 0px 0px 0px 2px \${${colorTokenToVarName(
+      tokens.outlineColor.outlineNegative
+    )}}\`,`;
+    Object.entries(elevations).forEach(([key, value]) => {
+      themeCode += `${elevationToVarName(
+        key as "small" | "medium" | "large"
+      )}: \`${elevationToValue(value)}\`,`;
+    });
+    themeCode += `}};`;
 
     return prettier.format([prelude, colorConsts, themeCode].join("\n\n"), {
       parser: "typescript",

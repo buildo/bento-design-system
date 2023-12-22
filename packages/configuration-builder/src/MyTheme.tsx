@@ -126,7 +126,8 @@ export function MyTheme() {
               name={t("Theme.Foundations.Elevations.title")}
               description={t("Theme.Foundations.Elevations.description")}
               icon={IconSubtract}
-              disabled
+              kind={sections.elevations ? "done" : "todo"}
+              onClick={() => navigate("/theme/elevations")}
             />
             <SectionCard
               name={t("Theme.Foundations.Tokens.title")}

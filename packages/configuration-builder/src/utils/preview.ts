@@ -3,7 +3,7 @@ import { useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
 import { ColorToken, colorTokenToValue as _colorTokenToValue } from "./paletteUtils";
 
 export function useConfiguredTheme(): BentoTheme & object {
-  const { tokens: _tokens, colors } = useConfiguratorStatusContext().theme;
+  const { tokens: _tokens, colors, elevations } = useConfiguratorStatusContext().theme;
   const tokens = _tokens as Record<string, Record<string, ColorToken>>;
 
   const colorTokenToValue = _colorTokenToValue(colors);
@@ -70,6 +70,15 @@ export function useConfiguredTheme(): BentoTheme & object {
       outlineInputFocus: theme.outlineColor?.outlineInputFocus
         ? `inset 0px 0px 0px 2px ${theme.outlineColor.outlineInputFocus}`
         : undefined,
+      elevationSmall: `${elevations.small.x}px ${elevations.small.y}px ${
+        elevations.small.blur
+      }px ${colorTokenToValue(elevations.small.color)}`,
+      elevationMedium: `${elevations.medium.x}px ${elevations.medium.y}px ${
+        elevations.medium.blur
+      }px ${colorTokenToValue(elevations.medium.color)}`,
+      elevationLarge: `${elevations.large.x}px ${elevations.large.y}px ${
+        elevations.large.blur
+      }px ${colorTokenToValue(elevations.large.color)}`,
     },
   };
 }
