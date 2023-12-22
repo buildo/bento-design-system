@@ -1,5 +1,10 @@
 import { match } from "ts-pattern";
-import { ElevationConfig, useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
+import {
+  ElevationConfig,
+  ThemeConfig,
+  TypographyConfig,
+  useConfiguratorStatusContext,
+} from "../ConfiguratorStatusContext";
 import { ColorToken, colorTokenToValue as _colorTokenToValue } from "./paletteUtils";
 import prettier from "prettier/standalone";
 import parserTypescript from "prettier/parser-typescript";
@@ -24,105 +29,132 @@ function elevationToVarName(elevation: "small" | "medium" | "large"): string {
     .exhaustive();
 }
 
-export function useConfigGeneratorTS(): () => string {
-  const { tokens, colors, elevations, typography } = useConfiguratorStatusContext().theme;
+function elevationToValue(elevation: ElevationConfig): string {
+  return `${elevation.x}px ${elevation.y}px ${elevation.blur}px \${${colorTokenToVarName(
+    elevation.color
+  )}}`;
+}
+
+function getUsedColors(
+  colors: ThemeConfig["colors"],
+  tokens: Record<string, Record<string, ColorToken>>,
+  elevations: ThemeConfig["elevations"]
+): Record<string, string> {
   const colorTokenToValue = _colorTokenToValue(colors);
 
-  function elevationToValue(elevation: ElevationConfig): string {
-    return `${elevation.x}px ${elevation.y}px ${elevation.blur}px \${${colorTokenToVarName(
-      elevation.color
-    )}}`;
-  }
+  const fromTokens = Object.entries(tokens).reduce((acc, [_, tokensSection]) => {
+    return {
+      ...acc,
+      ...Object.entries(tokensSection).reduce((acc, [_, colorToken]) => {
+        const rgba = colorTokenToValue(colorToken);
+        return rgba ? { ...acc, [colorTokenToVarName(colorToken)]: rgba } : acc;
+      }, {}),
+    };
+  }, {});
+
+  const fromElevations = Object.entries(elevations).reduce((acc, [_, elevation]) => {
+    const rgba = colorTokenToValue(elevation.color);
+    return rgba ? { ...acc, [colorTokenToVarName(elevation.color)]: rgba } : acc;
+  }, {});
+
+  return { ...fromTokens, ...fromElevations };
+}
+
+function exportColorConsts(usedColors: Record<string, string>): string {
+  return Object.entries(usedColors).reduce((acc, [colorKey, color]) => {
+    return `${acc}const ${colorKey} = "${color}";`;
+  }, "");
+}
+
+function exportColorTokens(tokens: Record<string, Record<string, ColorToken>>): string {
+  const colorTokens = Object.entries(tokens).reduce((acc, [key, tokensSection]) => {
+    const tokens = Object.entries(tokensSection).reduce((acc, [key, colorToken]) => {
+      return `${acc}${key}: ${colorTokenToVarName(colorToken)},`;
+    }, "");
+
+    return `${acc}${key}: {${tokens}},`;
+  }, "");
+
+  return colorTokens;
+}
+
+function exportBoxShadows(
+  outlineColors: ThemeConfig["tokens"]["outlineColor"],
+  elevations: ThemeConfig["elevations"]
+): string {
+  const fromOutlineColors = Object.entries(outlineColors).reduce((acc, [key, colorToken]) => {
+    const regular = `${key}: \`inset 0px 0px 0px 1px \${${colorTokenToVarName(colorToken)}}\`,`;
+    const bottom =
+      key === "outlineInteractive" || key === "outlineDecorative"
+        ? `${key}Bottom: \`inset 0px 0px -1px 0px \${${colorTokenToVarName(colorToken)}}\`,`
+        : "";
+    const strong =
+      key === "outlineNegative"
+        ? `${key}Strong: \`inset 0px 0px 0px 2px \${${colorTokenToVarName(colorToken)}}\`,`
+        : "";
+
+    return `${acc}${regular}${bottom}${strong}`;
+  }, "");
+
+  const fromElevations = Object.entries(elevations).reduce((acc, [key, value]) => {
+    return `${acc}${elevationToVarName(key as "small" | "medium" | "large")}: \`${elevationToValue(
+      value
+    )}\`,`;
+  }, "");
+
+  return `boxShadows: {
+    ${fromOutlineColors}
+    ${fromElevations}
+  },`;
+}
+
+function exportTypography(typography: TypographyConfig): string {
+  const fontFamily = `fontFamily: { default: "${typography.fontFamily}" }`;
+  const fontSizes = Object.entries(typography.typographicScale).reduce((acc, [kind, value]) => {
+    return `${acc}${Object.entries(value.sizes).reduce((acc, [size, value]) => {
+      return `${acc}${kind}${uppercase(size)}: pixelToRem(${value.fontSize}),`;
+    }, "")}`;
+  }, "");
+  const lineHeight = Object.entries(typography.typographicScale).reduce((acc, [kind, value]) => {
+    return `${acc}${Object.entries(value.sizes).reduce((acc, [size, value]) => {
+      return `${acc}${kind}${uppercase(size)}: pixelToRem(${value.lineHeight}),`;
+    }, "")}`;
+  }, "");
+  const fontWeight = Object.entries(typography.typographicScale).reduce((acc, [kind, value]) => {
+    return `${acc}${Object.entries(value.weights).reduce((acc, [weight, value]) => {
+      return `${acc}${kind}${weight === "regular" ? "" : uppercase(weight)}: "${value}",`;
+    }, "")}`;
+  }, "");
+
+  return `${fontFamily}, fontSize: {${fontSizes}}, lineHeight: {${lineHeight}}, fontWeight: {${fontWeight}},`;
+}
+
+export function useConfigGeneratorTS(): () => string {
+  const { tokens, colors, elevations, typography } = useConfiguratorStatusContext().theme;
 
   return () => {
-    let prelude = `import { BentoTheme } from "@buildo/bento-design-system";`;
-    prelude += `const remBaseSize = 16; const pixelToRem = (px: number) => \`\${
-      px / remBaseSize
-    }rem\`;`;
+    const colorConsts = exportColorConsts(getUsedColors(colors, tokens, elevations));
+    const colorTokens = exportColorTokens(tokens);
+    const boxShadows = exportBoxShadows(tokens.outlineColor, elevations);
+    const typographyConfig = exportTypography(typography);
 
-    const usedColors: Record<string, string> = {};
-    Object.entries(tokens).forEach(([_, tokensSection]) => {
-      Object.entries(tokensSection).forEach(([_, colorToken]) => {
-        const rgba = colorTokenToValue(colorToken);
-        if (rgba) {
-          usedColors[colorTokenToVarName(colorToken)] = rgba;
-        }
-      });
-    });
-    Object.entries(elevations).forEach(([_, elevation]) => {
-      const rgba = colorTokenToValue(elevation.color);
-      if (rgba) {
-        usedColors[colorTokenToVarName(elevation.color)] = rgba;
-      }
-    });
+    const themeCode = `
+      import { BentoTheme } from "@buildo/bento-design-system";
 
-    const colorConsts = Object.entries(usedColors)
-      .reduce((acc, [colorKey, color]) => {
-        return [...acc, `const ${colorKey} = "${color}";`];
-      }, [] as string[])
-      .join("\n");
+      const remBaseSize = 16; const pixelToRem = (px: number) => \`\${
+        px / remBaseSize
+      }rem\`;
 
-    let themeCode = "export const theme = {";
+      ${colorConsts}
 
-    // color tokens
-    Object.entries(tokens).forEach(([key, tokensSection]) => {
-      themeCode += `${key}: {`;
-      Object.entries(tokensSection).forEach(([key2, colorToken]) => {
-        themeCode += `${key2}: ${colorTokenToVarName(colorToken)},`;
-      });
-      themeCode += "},";
-    });
+      export const theme = {
+        ${colorTokens}
+        ${boxShadows}
+        ${typographyConfig}
+      } satisfies BentoTheme;
+    `;
 
-    // outlines
-    themeCode += `boxShadow: {`;
-    Object.entries(tokens.outlineColor).forEach(([key, colorToken]) => {
-      themeCode += `${key}: \`inset 0px 0px 0px 1px \${${colorTokenToVarName(colorToken)}}\`,`;
-    });
-    themeCode += `outlineInteractiveBottom: \`inset 0px 0px -1px 0px \${${colorTokenToVarName(
-      tokens.outlineColor.outlineInteractive
-    )}}\`,`;
-    themeCode += `outlineDecorativeBottom: \`inset 0px 0px -1px 0px \${${colorTokenToVarName(
-      tokens.outlineColor.outlineDecorative
-    )}}\`,`;
-    themeCode += `outlineNegativeStrong: \`inset 0px 0px 0px 2px \${${colorTokenToVarName(
-      tokens.outlineColor.outlineNegative
-    )}}\`,`;
-
-    // elevations
-    Object.entries(elevations).forEach(([key, value]) => {
-      themeCode += `${elevationToVarName(
-        key as "small" | "medium" | "large"
-      )}: \`${elevationToValue(value)}\`,`;
-    });
-    themeCode += `},`;
-
-    // typography
-    themeCode += `fontFamily: { default: "${typography.fontFamily}" },`;
-    themeCode += `fontSize: {`;
-    Object.entries(typography.typographicScale).forEach(([kind, value]) => {
-      Object.entries(value.sizes).forEach(([size, value]) => {
-        themeCode += `${kind}${uppercase(size)}: pixelToRem(${value.fontSize}),`;
-      });
-    });
-    themeCode += "},";
-    themeCode += `lineHeight: {`;
-    Object.entries(typography.typographicScale).forEach(([kind, value]) => {
-      Object.entries(value.sizes).forEach(([size, value]) => {
-        themeCode += `${kind}${uppercase(size)}: pixelToRem(${value.lineHeight}),`;
-      });
-    });
-    themeCode += "},";
-    themeCode += `fontWeight: {`;
-    Object.entries(typography.typographicScale).forEach(([kind, value]) => {
-      Object.entries(value.weights).forEach(([weight, value]) => {
-        themeCode += `${kind}${weight === "regular" ? "" : uppercase(weight)}: "${value}",`;
-      });
-    });
-    themeCode += "},";
-
-    themeCode += "} satisfies BentoTheme;";
-
-    return prettier.format([prelude, colorConsts, themeCode].join("\n\n"), {
+    return prettier.format(themeCode, {
       parser: "typescript",
       plugins: [parserTypescript],
     });
