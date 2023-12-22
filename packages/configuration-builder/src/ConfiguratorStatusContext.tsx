@@ -2,7 +2,12 @@ import { createContext, useContext, useState } from "react";
 import { defaultColorConfig } from "./ColorsSection/defaultColor";
 import {
   BentoTokens,
+  BodyProps,
   Children,
+  DisplayProps,
+  HeadlineProps,
+  LabelProps,
+  TitleProps,
   defaultTokens as bentoDefaultTokens,
 } from "@buildo/bento-design-system";
 import { HexColor } from "./utils/colorUtils";
@@ -14,6 +19,30 @@ type BrandColors =
   | [ColorConfig]
   | [ColorConfig, ColorConfig]
   | [ColorConfig, ColorConfig, ColorConfig];
+
+type ColorsConfig = {
+  brand: BrandColors;
+  interactive: ColorConfig;
+  neutral: ColorConfig;
+  semantic: {
+    informative: ColorConfig;
+    positive: ColorConfig;
+    warning: ColorConfig;
+    negative: ColorConfig;
+  };
+  dataVisualization: {
+    grey: ColorConfig;
+    red: ColorConfig;
+    orange: ColorConfig;
+    yellow: ColorConfig;
+    green: ColorConfig;
+    jade: ColorConfig;
+    blue: ColorConfig;
+    indigo: ColorConfig;
+    violet: ColorConfig;
+    pink: ColorConfig;
+  };
+};
 
 type TokensConfig = MapLeafNodes<
   Pick<
@@ -37,35 +66,40 @@ export type ElevationConfig = {
   color: ColorToken;
 };
 
-export type ThemeConfig = {
-  colors: {
-    brand: BrandColors;
-    interactive: ColorConfig;
-    neutral: ColorConfig;
-    semantic: {
-      informative: ColorConfig;
-      positive: ColorConfig;
-      warning: ColorConfig;
-      negative: ColorConfig;
+export type TypographyConfig = {
+  fontFamily: string;
+  typographicScale: {
+    display: {
+      weights: { regular: string };
+      sizes: Record<DisplayProps["size"], { fontSize: number; lineHeight: number }>;
     };
-    dataVisualization: {
-      grey: ColorConfig;
-      red: ColorConfig;
-      orange: ColorConfig;
-      yellow: ColorConfig;
-      green: ColorConfig;
-      jade: ColorConfig;
-      blue: ColorConfig;
-      indigo: ColorConfig;
-      violet: ColorConfig;
-      pink: ColorConfig;
+    headline: {
+      weights: { regular: string };
+      sizes: Record<HeadlineProps["size"], { fontSize: number; lineHeight: number }>;
+    };
+    title: {
+      weights: { regular: string };
+      sizes: Record<TitleProps["size"], { fontSize: number; lineHeight: number }>;
+    };
+    body: {
+      weights: { regular: string; strong: string };
+      sizes: Record<BodyProps["size"], { fontSize: number; lineHeight: number }>;
+    };
+    label: {
+      weights: { regular: string };
+      sizes: Record<LabelProps["size"], { fontSize: number; lineHeight: number }>;
     };
   };
-  elevations: Record<"small" | "medium" | "large", ElevationConfig>;
-  tokens: TokensConfig;
 };
 
-export type ThemeSection = "colors" | "tokens" | "elevations";
+export type ThemeConfig = {
+  colors: ColorsConfig;
+  elevations: Record<"small" | "medium" | "large", ElevationConfig>;
+  tokens: TokensConfig;
+  typography: TypographyConfig;
+};
+
+export type ThemeSection = "colors" | "tokens" | "elevations" | "typography";
 
 type ConfiguratorStatus = {
   theme: ThemeConfig;
@@ -286,12 +320,61 @@ export function ConfiguratorStatusProvider(props: { children: Children }) {
         color: { colorKey: "black", alpha: 16 },
       },
     },
+    typography: {
+      fontFamily: "Lexend",
+      typographicScale: {
+        body: {
+          weights: {
+            regular: "400",
+            strong: "600",
+          },
+          sizes: {
+            small: { fontSize: 12, lineHeight: 18 },
+            medium: { fontSize: 14, lineHeight: 20 },
+            large: { fontSize: 16, lineHeight: 24 },
+          },
+        },
+        headline: {
+          weights: { regular: "600" },
+          sizes: {
+            small: { fontSize: 32, lineHeight: 36 },
+            medium: { fontSize: 36, lineHeight: 40 },
+            large: { fontSize: 40, lineHeight: 44 },
+          },
+        },
+        display: {
+          weights: { regular: "600" },
+          sizes: {
+            small: { fontSize: 44, lineHeight: 50 },
+            medium: { fontSize: 52, lineHeight: 58 },
+            large: { fontSize: 64, lineHeight: 72 },
+          },
+        },
+        label: {
+          weights: { regular: "500" },
+          sizes: {
+            small: { fontSize: 12, lineHeight: 18 },
+            medium: { fontSize: 14, lineHeight: 20 },
+            large: { fontSize: 16, lineHeight: 24 },
+          },
+        },
+        title: {
+          weights: { regular: "600" },
+          sizes: {
+            small: { fontSize: 14, lineHeight: 16 },
+            medium: { fontSize: 16, lineHeight: 18 },
+            large: { fontSize: 22, lineHeight: 24 },
+          },
+        },
+      },
+    },
   });
 
   const [sections, setSections] = useState<ConfiguratorStatus["sections"]>({
     colors: false,
     tokens: false,
     elevations: false,
+    typography: false,
   });
 
   return (

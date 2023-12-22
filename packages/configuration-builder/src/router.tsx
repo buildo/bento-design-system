@@ -4,6 +4,7 @@ import { Home } from "./Home";
 import { ColorsSection } from "./ColorsSection/ColorsSection";
 import { TokensSection } from "./TokensSection/TokensSection";
 import { ElevationsSection } from "./ElevationsSection/ElevationsSection";
+import { TypographySection } from "./TypographySection/TypographySection";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/theme/typography",
-    element: null,
+    element: <TypographySection />,
   },
   {
     path: "/theme/elevations",

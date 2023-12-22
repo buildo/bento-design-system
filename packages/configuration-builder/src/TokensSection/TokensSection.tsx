@@ -5,12 +5,10 @@ import { useState } from "react";
 import { BrandTokens } from "./BrandTokens";
 import { match } from "ts-pattern";
 import { TextAndIconsTokens } from "./TextAndIconsTokens";
-import { useNavigate } from "react-router-dom";
 import { InteractiveElementsTokens } from "./InteractiveElementsTokens";
 import { SemanticElementsTokens } from "./SemanticElementsTokens";
 import { CategoricalPalettesTokens } from "./CategoricalPalettesTokens";
 import { InputTokens } from "./InputTokens";
-import { SectionCompleted } from "./SectionCompleted";
 import { OtherTokens } from "./OtherTokens";
 
 const steps = [
@@ -25,32 +23,18 @@ const steps = [
 type Step = (typeof steps)[number];
 
 export function TokensSection() {
-  const { theme, setTheme, completeSection } = useConfiguratorStatusContext();
-  const [completed, setCompleted] = useState(false);
+  const { theme, setTheme } = useConfiguratorStatusContext();
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState<Step>(steps[0]);
-
-  if (completed) {
-    return (
-      <ConfiguratorSection title={t("Tokens.title")} endStep>
-        <SectionCompleted />
-      </ConfiguratorSection>
-    );
-  }
 
   return (
     <ConfiguratorSection
+      sectionName="tokens"
       title={t("Tokens.title")}
       steps={steps}
       currentStep={currentStep}
       onStepChange={(step) => setCurrentStep(step)}
       stepLabel={(step) => t(`TokensSection.Step.${step}`)}
-      onCancel={() => navigate("/theme")}
-      onComplete={() => {
-        setCompleted(true);
-        completeSection("tokens");
-      }}
     >
       {match(currentStep)
         .with("brand", () => (

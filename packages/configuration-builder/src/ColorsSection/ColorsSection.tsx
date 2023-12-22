@@ -7,17 +7,14 @@ import { InteractiveColor } from "./InteractiveColor";
 import { NeutralColor } from "./NeutralColor";
 import { SemanticColors } from "./SemanticColors";
 import { DataVizColors } from "./DataVizColors";
-import { SectionCompleted } from "./SectionCompleted";
 import { ThemeConfig, useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
-import { useNavigate } from "react-router-dom";
 
 const steps = ["brand", "interactive", "neutral", "semantic", "dataVisualization"] as const;
 type Step = (typeof steps)[number];
 
 export function ColorsSection() {
   const { t } = useTranslation();
-  const { theme, setTheme, completeSection } = useConfiguratorStatusContext();
-  const navigate = useNavigate();
+  const { theme, setTheme } = useConfiguratorStatusContext();
 
   const colors = theme.colors;
 
@@ -25,28 +22,19 @@ export function ColorsSection() {
     setTheme({ ...theme, colors: newValue });
   };
 
-  const [completed, setCompleted] = useState(false);
   const [currentStep, setCurrentStep] = useState<Step>(steps[0]);
-
-  if (completed) {
-    return (
-      <ConfiguratorSection title={t("ColorsSection.title")} endStep>
-        <SectionCompleted />
-      </ConfiguratorSection>
-    );
-  }
 
   return (
     <ConfiguratorSection
+      sectionName="colors"
       title={t("ColorsSection.title")}
       steps={steps}
       currentStep={currentStep}
       onStepChange={(step) => setCurrentStep(step)}
       stepLabel={(step) => t(`ColorsSection.Step.${step}`)}
-      onCancel={() => navigate("/theme")}
-      onComplete={() => {
-        setCompleted(true);
-        completeSection("colors");
+      nextSection={{
+        label: t("ColorsSection.goToTypography"),
+        href: "/theme/typography",
       }}
     >
       {match(currentStep)

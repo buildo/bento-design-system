@@ -7,6 +7,7 @@ import {
   Stepper,
 } from "@buildo/bento-design-system";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 export type Props<T extends string> = (
   | {
@@ -19,14 +20,20 @@ export type Props<T extends string> = (
   | {
       singleStep: true;
     }
-) & { onComplete: () => void; onCancel: () => void; children: Children };
+) & {
+  children: Children;
+  onComplete: () => void;
+};
 
 export function ConfiguratorSectionSteps<T extends string>(props: Props<T>) {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const currentStepIndex = props.singleStep ? 0 : props.steps.indexOf(props.currentStep);
 
   const onNext = () => {
-    if (!props.singleStep) {
+    if (props.singleStep || currentStepIndex === props.steps.length - 1) {
+      props.onComplete();
+    } else {
       props.onStepChange(props.steps[currentStepIndex + 1]);
     }
   };
@@ -53,14 +60,11 @@ export function ConfiguratorSectionSteps<T extends string>(props: Props<T>) {
         <Actions
           primaryAction={{
             label: t(props.singleStep ? "Confirm" : "Next"),
-            onPress:
-              props.singleStep || currentStepIndex === props.steps.length - 1
-                ? props.onComplete
-                : onNext,
+            onPress: onNext,
           }}
           secondaryAction={
             currentStepIndex === 0
-              ? { label: t("Cancel"), onPress: props.onCancel }
+              ? { label: t("Cancel"), onPress: () => navigate("/theme") }
               : { label: t("Back"), onPress: onBack }
           }
         />
