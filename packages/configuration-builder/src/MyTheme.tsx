@@ -32,6 +32,8 @@ import {
   IconDiamondsFour,
   IconSwatches,
 } from "./PhosphorIcons";
+import { useConfigGeneratorTS } from "./utils/useConfigGeneratorTS";
+import { saveAs } from "file-saver";
 
 const numberImages = [image1, image2, image3];
 
@@ -94,6 +96,7 @@ export function MyTheme() {
 
   const { sections } = useConfiguratorStatusContext();
   const navigate = useNavigate();
+  const generateTS = useConfigGeneratorTS();
 
   return (
     <Box display="flex" flexGrow={1} overflowY="auto" flexDirection="column">
@@ -199,7 +202,11 @@ export function MyTheme() {
                 kind="solid"
                 hierarchy="primary"
                 label={t("Theme.Export.React.action")}
-                onPress={() => {}}
+                onPress={() => {
+                  const generatedCode = generateTS();
+                  const blob = new Blob([generatedCode], { type: "text/plain;charset=utf-8" });
+                  saveAs(blob, "generatedCode.ts");
+                }}
               />
             </Inline>
           </Stack>
