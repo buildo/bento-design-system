@@ -24,7 +24,7 @@ function getPaletteItemsSection(key: string, colorConfig: ColorConfig) {
   const paletteItems = [...Array(stepNames.length)].map((_, index) => {
     const stepName = stepNames[index];
     const colorKey = `${key}-${stepName}`;
-    const colorText = `${key}${stepName}`;
+    const colorText = `${key} ${stepName}`;
     return (
       <Item key={colorKey} textValue={colorKey}>
         {colorText}

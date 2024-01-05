@@ -63,7 +63,7 @@ export function BrandTokens(props: Props) {
 
   return (
     <Columns space={40} alignY="stretch">
-      <Column width="1/4">
+      <Column width="1/3">
         <Stack space={16}>
           <ColorSelector
             label={t("Tokens.Color.brandPrimary")}
