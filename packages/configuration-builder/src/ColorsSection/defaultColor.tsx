@@ -5,7 +5,7 @@ export function defaultColorConfig(hexValue: HexColor): ColorConfig {
   const hslValue = HexToHSL(hexValue);
   return {
     referenceColor: hexValue,
-    useReferenceAsKeyColor: false,
+    useReferenceAsKeyColor: true,
     hue: hslValue.h,
     saturation: hslValue.s,
     lightnessInterpolation: "EaseIn",
