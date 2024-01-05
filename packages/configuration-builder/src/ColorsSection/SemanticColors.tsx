@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { ColorEditor } from "../ColorEditor/ColorEditor";
 import { ColorPresets } from "./ColorPresets";
 import { HexColor } from "../utils/colorUtils";
-import { defaultColorConfig } from "./defaultColor";
+import { defaultPaletteConfig } from "./defaultPaletteConfig";
 import { ThemeConfig } from "../ConfiguratorStatusContext";
 
 type SemanticColors = ThemeConfig["colors"]["semantic"];
@@ -49,10 +49,10 @@ export function SemanticColors(props: Props) {
         presets={presets}
         onSelect={(preset) =>
           props.onChange({
-            informative: defaultColorConfig(preset.informative),
-            positive: defaultColorConfig(preset.positive),
-            warning: defaultColorConfig(preset.warning),
-            negative: defaultColorConfig(preset.negative),
+            informative: defaultPaletteConfig(preset.informative),
+            positive: defaultPaletteConfig(preset.positive),
+            warning: defaultPaletteConfig(preset.warning),
+            negative: defaultPaletteConfig(preset.negative),
           })
         }
       />

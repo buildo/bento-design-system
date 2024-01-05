@@ -94,6 +94,7 @@ export function TextAndIconsTokens(props: Props) {
               ] as const
             ).map((token) => (
               <ColorSelector
+                key={token}
                 label={t(`Tokens.Color.${token}`)}
                 value={props.tokens.backgroundColor[token]}
                 onChange={(value) =>
@@ -121,6 +122,7 @@ export function TextAndIconsTokens(props: Props) {
               ] as const
             ).map((token) => (
               <ColorSelector
+                key={token}
                 label={t(`Tokens.Color.${token}`)}
                 value={props.tokens.textColor[token]}
                 onChange={(value) =>
@@ -148,6 +150,7 @@ export function TextAndIconsTokens(props: Props) {
               ] as const
             ).map((token) => (
               <ColorSelector
+                key={token}
                 label={t(`Tokens.Color.${token}`)}
                 value={props.tokens.foregroundColor[token]}
                 onChange={(value) =>

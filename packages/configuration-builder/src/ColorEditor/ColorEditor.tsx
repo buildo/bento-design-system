@@ -17,24 +17,15 @@ import { HexToHSL, HexColor } from "../utils/colorUtils";
 import { useTranslation } from "react-i18next";
 import { LightnessInterpolationSelector } from "./LightnessInterpolationSelector";
 import { CounterField } from "./CounterField";
-
-export type LightnessInterpolation = "Linear" | "EaseIn" | "EaseOut" | "EaseInOut";
-
-export type ColorConfig = {
-  referenceColor: HexColor;
-  useReferenceAsKeyColor: boolean;
-  lightnessInterpolation: LightnessInterpolation;
-  hue: number;
-  saturation: number;
-};
+import { PaletteConfig } from "../utils/paletteUtils";
 
 type Props = {
   name: LocalizedString;
-  value: ColorConfig;
+  value: PaletteConfig;
 } & (
   | {
       isReadOnly?: false;
-      onChange: (value: ColorConfig) => void;
+      onChange: (value: PaletteConfig) => void;
       onDelete?: () => void;
     }
   | {

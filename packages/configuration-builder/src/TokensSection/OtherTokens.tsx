@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { ThemeConfig } from "../ConfiguratorStatusContext";
+import { ThemeConfig, useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
 import { Playground as _Playground } from "./Playground";
 import {
   Column,
@@ -15,7 +15,7 @@ import {
 } from "@buildo/bento-design-system";
 import { ColorSelector } from "./ColorSelector";
 import { useRef } from "react";
-import { getRelativeStep } from "../utils/paletteUtils";
+import { getRelativeStep as _getRelativeStep } from "../utils/paletteUtils";
 import { useConfiguredTheme } from "../utils/preview";
 
 type Props = {
@@ -152,6 +152,8 @@ function LinkPlayground() {
 
 export function OtherTokens(props: Props) {
   const { t } = useTranslation();
+  const colors = useConfiguratorStatusContext().theme.colors;
+  const getRelativeStep = _getRelativeStep(colors);
 
   return (
     <Stack space={40}>

@@ -15,12 +15,11 @@ import { useSelect, HiddenSelect } from "@react-aria/select";
 import { PalettesDropdown } from "./PalettesDropdown";
 import { ThemeConfig } from "../ConfiguratorStatusContext";
 import { useButton } from "@react-aria/button";
-import { ColorConfig } from "../ColorEditor/ColorEditor";
-import { ColorKey, stepNames } from "../utils/paletteUtils";
+import { ColorKey, PaletteConfig, stepNames } from "../utils/paletteUtils";
 
 type Props = FieldProps<ColorKey> & { colors: ThemeConfig["colors"] };
 
-function getPaletteItemsSection(key: string, colorConfig: ColorConfig) {
+function getPaletteItemsSection(key: string, paletteConfig: PaletteConfig) {
   const paletteItems = [...Array(stepNames.length)].map((_, index) => {
     const stepName = stepNames[index];
     const colorKey = `${key}-${stepName}`;
@@ -35,7 +34,7 @@ function getPaletteItemsSection(key: string, colorConfig: ColorConfig) {
     <Section
       key={key}
       children={
-        colorConfig.useReferenceAsKeyColor
+        paletteConfig.useReferenceAsKeyColor
           ? [
               ...paletteItems,
               <Item key={`${key}-ref`} textValue={`${key}-ref`}>

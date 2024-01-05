@@ -46,7 +46,7 @@ function BrandTokensPlayground() {
           </Body>
           <SliderField
             type="single"
-            label={unsafeLocalizedString("")}
+            label={unsafeLocalizedString(" ")}
             value={slider}
             minValue={0}
             maxValue={100}

@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { ColorEditor } from "../ColorEditor/ColorEditor";
 import { ColorPresets } from "./ColorPresets";
 import { HexColor } from "../utils/colorUtils";
-import { defaultColorConfig } from "./defaultColor";
+import { defaultPaletteConfig } from "./defaultPaletteConfig";
 import { ThemeConfig } from "../ConfiguratorStatusContext";
 
 type NeutralColor = ThemeConfig["colors"]["neutral"];
@@ -27,7 +27,7 @@ export function NeutralColor(props: Props) {
       <ColorPresets
         kind="single"
         presets={presets}
-        onSelect={(preset) => props.onChange(defaultColorConfig(preset))}
+        onSelect={(preset) => props.onChange(defaultPaletteConfig(preset))}
       />
 
       <ColorEditor

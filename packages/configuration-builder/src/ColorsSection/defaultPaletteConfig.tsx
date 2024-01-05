@@ -1,7 +1,7 @@
-import { ColorConfig } from "../ColorEditor/ColorEditor";
 import { HexColor, HexToHSL } from "../utils/colorUtils";
+import { PaletteConfig } from "../utils/paletteUtils";
 
-export function defaultColorConfig(hexValue: HexColor): ColorConfig {
+export function defaultPaletteConfig(hexValue: HexColor): PaletteConfig {
   const hslValue = HexToHSL(hexValue);
   return {
     referenceColor: hexValue,

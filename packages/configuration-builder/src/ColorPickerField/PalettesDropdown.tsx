@@ -6,7 +6,7 @@ import { AriaListBoxOptions, useListBox, useOption } from "@react-aria/listbox";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Node } from "@react-types/shared";
-import { PaletteName, getPalette, getPaletteKeyColor } from "../utils/paletteUtils";
+import { PaletteName, getPalette, getPaletteConfig } from "../utils/paletteUtils";
 
 type Props = {
   colors: ThemeConfig["colors"];
@@ -41,20 +41,32 @@ function ColorBox({
 function Palette(props: { name: PaletteName; state: SelectState<object> }) {
   const colors = useConfiguratorStatusContext().theme.colors;
   const colorItems = [...props.state.collection.getChildren!(props.name)];
-  const keyColor = getPaletteKeyColor(props.name, colors);
-  if (keyColor) {
-    const palette = getPalette(keyColor);
+  const paletteConfig = getPaletteConfig(props.name, colors);
+  if (paletteConfig) {
+    const palette = getPalette(paletteConfig);
 
     return (
       <Inline space={4} alignY="stretch">
         {colorItems.map((colorItem, index) => {
           if (colorItem.key.toString().endsWith("ref")) {
             return [
-              <Divider orientation="vertical" />,
-              <ColorBox item={colorItem} state={props.state} color={keyColor.referenceColor} />,
+              <Divider orientation="vertical" key="divider" />,
+              <ColorBox
+                item={colorItem}
+                state={props.state}
+                color={paletteConfig.referenceColor}
+                key="ref"
+              />,
             ];
           }
-          return <ColorBox item={colorItem} state={props.state} color={palette[index].value} />;
+          return (
+            <ColorBox
+              key={colorItem.key}
+              item={colorItem}
+              state={props.state}
+              color={palette[index].value}
+            />
+          );
         })}
       </Inline>
     );
@@ -74,14 +86,19 @@ export function PalettesDropdown(props: Props) {
         <Stack space={16}>
           <Inline space={4}>
             {[...props.state.collection.getChildren!("General")].map((color) => (
-              <ColorBox item={color} color={color.textValue} state={props.state} />
+              <ColorBox
+                key={color.textValue}
+                item={color}
+                color={color.textValue}
+                state={props.state}
+              />
             ))}
           </Inline>
           <Stack space={4}>
             <Label size="small">{t("ColorsSection.Step.brand")}</Label>
             {(["BrandPrimary", "BrandSecondary", "BrandTertiary"] as PaletteName[]).map(
               (brandColor) => (
-                <Palette name={brandColor} state={props.state} />
+                <Palette key={brandColor} name={brandColor} state={props.state} />
               )
             )}
           </Stack>
@@ -99,7 +116,7 @@ export function PalettesDropdown(props: Props) {
             <Label size="small">{t("ColorsSection.Step.semantic")}</Label>
             {(["Informative", "Positive", "Warning", "Negative"] as PaletteName[]).map(
               (semanticColor) => (
-                <Palette name={semanticColor} state={props.state} />
+                <Palette key={semanticColor} name={semanticColor} state={props.state} />
               )
             )}
           </Stack>
@@ -119,7 +136,7 @@ export function PalettesDropdown(props: Props) {
                 "Pink",
               ] as PaletteName[]
             ).map((dataVizColor) => (
-              <Palette name={dataVizColor} state={props.state} />
+              <Palette key={dataVizColor} name={dataVizColor} state={props.state} />
             ))}
           </Stack>
         </Stack>

@@ -1,6 +1,5 @@
-import { match } from "ts-pattern";
-import { ColorConfig, LightnessInterpolation } from "../ColorEditor/ColorEditor";
-import { HSLToHex, HexColor, withAlpha } from "./colorUtils";
+import { __, match } from "ts-pattern";
+import { HSLToHex, HexColor, HexToHSL, withAlpha } from "./colorUtils";
 import { ThemeConfig } from "../ConfiguratorStatusContext";
 
 export type PaletteName =
@@ -26,9 +25,19 @@ export type PaletteName =
 
 export const stepNames = ["1", "5", "10", "20", "30", "40", "50", "60", "70", "80", "90"] as const;
 
+export type LightnessInterpolation = "Linear" | "EaseIn" | "EaseOut" | "EaseInOut";
+
+export type PaletteConfig = {
+  referenceColor: HexColor;
+  useReferenceAsKeyColor: boolean;
+  lightnessInterpolation: LightnessInterpolation;
+  hue: number;
+  saturation: number;
+};
+
 export type ColorKey = `${PaletteName}-${(typeof stepNames)[number]}` | "black" | "white";
 
-const interpolations: Record<LightnessInterpolation, number[]> = {
+export const interpolations: Record<LightnessInterpolation, number[]> = {
   Linear: [97, 91, 82, 73, 64, 55, 46, 37, 28, 19, 10],
   EaseIn: [97, 93, 88, 82, 75, 65, 54, 43, 32, 21, 10],
   EaseOut: [97, 86, 75, 64, 53, 42, 32, 25, 19, 14, 10],
@@ -49,10 +58,10 @@ export function getPalette(props: {
   });
 }
 
-export function getPaletteKeyColor(
+export function getPaletteConfig(
   name: PaletteName,
   colors: ThemeConfig["colors"]
-): ColorConfig | undefined {
+): PaletteConfig | undefined {
   return match(name)
     .with("BrandPrimary", () => colors.brand[0])
     .with("BrandSecondary", () => colors.brand[1])
@@ -90,7 +99,7 @@ export function colorTokenToValue(colors: ThemeConfig["colors"]) {
       return withAlpha("#ffffff" as HexColor, colorToken.alpha);
     }
     const [paletteName, step] = colorToken.colorKey.split("-");
-    const keyColor = getPaletteKeyColor(paletteName as PaletteName, colors);
+    const keyColor = getPaletteConfig(paletteName as PaletteName, colors);
     if (keyColor != null) {
       if (step === "ref") {
         return withAlpha(keyColor.referenceColor, colorToken.alpha);
@@ -109,21 +118,33 @@ export function colorToken(colorKey: ColorKey, alpha?: number): ColorToken {
   return { colorKey, alpha: alpha ?? 100 };
 }
 
-export function getRelativeStep(colorToken: ColorToken, gap: number): ColorToken {
-  if (colorToken.colorKey === "black" || colorToken.colorKey === "white") {
-    return { colorKey: "black", alpha: colorToken.alpha };
-  }
-  const [palette, step] = colorToken.colorKey.split("-");
-  const stepIndex = stepNames.indexOf(step as (typeof stepNames)[number]);
-  const nextStepIndex = stepIndex + gap;
-  if (stepNames[nextStepIndex] != null) {
-    return {
-      colorKey: `${palette}-${stepNames[nextStepIndex]}` as ColorKey,
-      alpha: colorToken.alpha,
-    };
-  } else {
-    return { colorKey: "black", alpha: colorToken.alpha };
-  }
+export function getRelativeStep(colors: ThemeConfig["colors"]) {
+  return (colorToken: ColorToken, gap: number): ColorToken => {
+    if (colorToken.colorKey === "black" || colorToken.colorKey === "white") {
+      return { colorKey: "black", alpha: colorToken.alpha };
+    }
+    const [palette, step] = colorToken.colorKey.split("-");
+    const stepIndex = match(step)
+      .with("ref", () => {
+        const paletteConfig = getPaletteConfig(palette as PaletteName, colors);
+        if (paletteConfig) {
+          return findStepIndexCloserToReferenceColor(paletteConfig);
+        }
+        throw new Error("Invalid ColorToken provided to getRelativeStep");
+      })
+      .otherwise(() => {
+        return stepNames.indexOf(step as (typeof stepNames)[number]);
+      });
+    const nextStepIndex = stepIndex + gap;
+    if (stepNames[nextStepIndex] != null) {
+      return {
+        colorKey: `${palette}-${stepNames[nextStepIndex]}` as ColorKey,
+        alpha: colorToken.alpha,
+      };
+    } else {
+      return { colorKey: "black", alpha: colorToken.alpha };
+    }
+  };
 }
 
 export function getPaletteStep(
@@ -139,4 +160,21 @@ export function getPaletteStep(
     colorKey: `${palette}-${step}` as ColorKey,
     alpha,
   };
+}
+
+function findStepIndexCloserToReferenceColor(paletteConfig: PaletteConfig) {
+  const lightnesses = interpolations[paletteConfig.lightnessInterpolation];
+  const referenceColorLightness = HexToHSL(paletteConfig.referenceColor).l;
+  for (let i = 0; i < lightnesses.length; i++) {
+    if (lightnesses[i] < referenceColorLightness) {
+      if (i === 0) return i;
+      const previousLightness = lightnesses[i - 1];
+      if (previousLightness - referenceColorLightness < referenceColorLightness - lightnesses[i]) {
+        return i - 1;
+      } else {
+        return i;
+      }
+    }
+  }
+  throw new Error("Impossible to find a step closer to the reference color");
 }

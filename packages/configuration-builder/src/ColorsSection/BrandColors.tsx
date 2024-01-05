@@ -1,9 +1,10 @@
 import { Button, Inline, Stack } from "@buildo/bento-design-system";
 import { useTranslation } from "react-i18next";
-import { ColorConfig, ColorEditor } from "../ColorEditor/ColorEditor";
+import { ColorEditor } from "../ColorEditor/ColorEditor";
 import { HexColor } from "../utils/colorUtils";
-import { defaultColorConfig } from "./defaultColor";
+import { defaultPaletteConfig } from "./defaultPaletteConfig";
 import { ThemeConfig } from "../ConfiguratorStatusContext";
+import { PaletteConfig } from "../utils/paletteUtils";
 
 type BrandColors = ThemeConfig["colors"]["brand"];
 
@@ -12,14 +13,14 @@ type Props = {
   onChange: (value: BrandColors) => void;
 };
 
-const defaultBrandColor: ColorConfig = defaultColorConfig("#1F3A93" as HexColor);
+const defaultBrandConfig: PaletteConfig = defaultPaletteConfig("#1F3A93" as HexColor);
 
 export function BrandColors(props: Props) {
   const { t } = useTranslation();
 
   function onAddBrandColor() {
     if (props.value.length < 3) {
-      return props.onChange([...props.value, defaultBrandColor] as BrandColors);
+      return props.onChange([...props.value, defaultBrandConfig] as BrandColors);
     }
   }
 

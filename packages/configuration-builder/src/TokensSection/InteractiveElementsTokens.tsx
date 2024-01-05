@@ -13,9 +13,9 @@ import {
 import { ColorSelector } from "./ColorSelector";
 import { useTranslation } from "react-i18next";
 import { Playground as _Playground } from "./Playground";
-import { ThemeConfig } from "../ConfiguratorStatusContext";
+import { ThemeConfig, useConfiguratorStatusContext } from "../ConfiguratorStatusContext";
 import { useConfiguredTheme } from "../utils/preview";
-import { getPaletteStep, getRelativeStep } from "../utils/paletteUtils";
+import { getPaletteStep, getRelativeStep as _getRelativeStep } from "../utils/paletteUtils";
 
 type Props = {
   tokens: Pick<
@@ -139,6 +139,8 @@ function ButtonHierarchyConfiguration(
   }
 ) {
   const { t } = useTranslation();
+  const colors = useConfiguratorStatusContext().theme.colors;
+  const getRelativeStep = _getRelativeStep(colors);
 
   return (
     <Columns space={40}>

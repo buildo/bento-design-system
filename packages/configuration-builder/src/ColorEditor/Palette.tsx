@@ -1,9 +1,8 @@
 import { Box } from "@buildo/bento-design-system";
-import { LightnessInterpolation } from "./ColorEditor";
 import { useState } from "react";
 import { IconEyedropper } from "../PhosphorIcons";
 import { HexColor } from "../utils/colorUtils";
-import { getPalette } from "../utils/paletteUtils";
+import { LightnessInterpolation, getPalette } from "../utils/paletteUtils";
 
 type Props = {
   hue: number;

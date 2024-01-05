@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { defaultColorConfig } from "./ColorsSection/defaultColor";
+import { defaultPaletteConfig } from "./ColorsSection/defaultPaletteConfig";
 import {
   BentoTokens,
   BodyProps,
@@ -11,36 +11,35 @@ import {
   defaultTokens as bentoDefaultTokens,
 } from "@buildo/bento-design-system";
 import { HexColor } from "./utils/colorUtils";
-import { ColorConfig } from "./ColorEditor/ColorEditor";
 import { MapLeafNodes } from "./utils/mapLeafNodes";
-import { ColorToken, colorToken } from "./utils/paletteUtils";
+import { ColorToken, PaletteConfig, colorToken } from "./utils/paletteUtils";
 
-type BrandColors =
-  | [ColorConfig]
-  | [ColorConfig, ColorConfig]
-  | [ColorConfig, ColorConfig, ColorConfig];
+type BrandPalettes =
+  | [PaletteConfig]
+  | [PaletteConfig, PaletteConfig]
+  | [PaletteConfig, PaletteConfig, PaletteConfig];
 
 type ColorsConfig = {
-  brand: BrandColors;
-  interactive: ColorConfig;
-  neutral: ColorConfig;
+  brand: BrandPalettes;
+  interactive: PaletteConfig;
+  neutral: PaletteConfig;
   semantic: {
-    informative: ColorConfig;
-    positive: ColorConfig;
-    warning: ColorConfig;
-    negative: ColorConfig;
+    informative: PaletteConfig;
+    positive: PaletteConfig;
+    warning: PaletteConfig;
+    negative: PaletteConfig;
   };
   dataVisualization: {
-    grey: ColorConfig;
-    red: ColorConfig;
-    orange: ColorConfig;
-    yellow: ColorConfig;
-    green: ColorConfig;
-    jade: ColorConfig;
-    blue: ColorConfig;
-    indigo: ColorConfig;
-    violet: ColorConfig;
-    pink: ColorConfig;
+    grey: PaletteConfig;
+    red: PaletteConfig;
+    orange: PaletteConfig;
+    yellow: PaletteConfig;
+    green: PaletteConfig;
+    jade: PaletteConfig;
+    blue: PaletteConfig;
+    indigo: PaletteConfig;
+    violet: PaletteConfig;
+    pink: PaletteConfig;
   };
 };
 
@@ -257,46 +256,54 @@ export const defaultTokens: TokensConfig = {
 export function ConfiguratorStatusProvider(props: { children: Children }) {
   const [theme, setTheme] = useState<ThemeConfig>({
     colors: {
-      brand: [defaultColorConfig(bentoDefaultTokens.brandColor.brandPrimary as HexColor)],
-      interactive: defaultColorConfig(
+      brand: [defaultPaletteConfig(bentoDefaultTokens.brandColor.brandPrimary as HexColor)],
+      interactive: defaultPaletteConfig(
         bentoDefaultTokens.interactiveBackgroundColor.primarySolidEnabledBackground as HexColor
       ),
-      neutral: defaultColorConfig(bentoDefaultTokens.textColor.textPrimary as HexColor),
+      neutral: defaultPaletteConfig(bentoDefaultTokens.textColor.textPrimary as HexColor),
       semantic: {
-        informative: defaultColorConfig(
+        informative: defaultPaletteConfig(
           bentoDefaultTokens.foregroundColor.foregroundInformative as HexColor
         ),
-        positive: defaultColorConfig(
+        positive: defaultPaletteConfig(
           bentoDefaultTokens.foregroundColor.foregroundPositive as HexColor
         ),
-        warning: defaultColorConfig(
+        warning: defaultPaletteConfig(
           bentoDefaultTokens.foregroundColor.foregroundWarning as HexColor
         ),
-        negative: defaultColorConfig(
+        negative: defaultPaletteConfig(
           bentoDefaultTokens.foregroundColor.foregroundNegative as HexColor
         ),
       },
       dataVisualization: {
-        grey: defaultColorConfig(bentoDefaultTokens.dataVisualizationColor.brightGrey as HexColor),
-        red: defaultColorConfig(bentoDefaultTokens.dataVisualizationColor.brightRed as HexColor),
-        orange: defaultColorConfig(
+        grey: defaultPaletteConfig(
+          bentoDefaultTokens.dataVisualizationColor.brightGrey as HexColor
+        ),
+        red: defaultPaletteConfig(bentoDefaultTokens.dataVisualizationColor.brightRed as HexColor),
+        orange: defaultPaletteConfig(
           bentoDefaultTokens.dataVisualizationColor.brightOrange as HexColor
         ),
-        yellow: defaultColorConfig(
+        yellow: defaultPaletteConfig(
           bentoDefaultTokens.dataVisualizationColor.brightYellow as HexColor
         ),
-        green: defaultColorConfig(
+        green: defaultPaletteConfig(
           bentoDefaultTokens.dataVisualizationColor.brightGreen as HexColor
         ),
-        jade: defaultColorConfig(bentoDefaultTokens.dataVisualizationColor.brightJade as HexColor),
-        blue: defaultColorConfig(bentoDefaultTokens.dataVisualizationColor.brightBlue as HexColor),
-        indigo: defaultColorConfig(
+        jade: defaultPaletteConfig(
+          bentoDefaultTokens.dataVisualizationColor.brightJade as HexColor
+        ),
+        blue: defaultPaletteConfig(
+          bentoDefaultTokens.dataVisualizationColor.brightBlue as HexColor
+        ),
+        indigo: defaultPaletteConfig(
           bentoDefaultTokens.dataVisualizationColor.brightIndigo as HexColor
         ),
-        violet: defaultColorConfig(
+        violet: defaultPaletteConfig(
           bentoDefaultTokens.dataVisualizationColor.brightViolet as HexColor
         ),
-        pink: defaultColorConfig(bentoDefaultTokens.dataVisualizationColor.brightPink as HexColor),
+        pink: defaultPaletteConfig(
+          bentoDefaultTokens.dataVisualizationColor.brightPink as HexColor
+        ),
       },
     },
     tokens: defaultTokens,
