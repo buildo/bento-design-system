@@ -33,6 +33,7 @@ function ColorBox({
       {...optionProps}
       className={colorBoxRecipe({ isSelected })}
       style={{ backgroundColor: color }}
+      title={item.rendered as string}
     />
   );
 }
