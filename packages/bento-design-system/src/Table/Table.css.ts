@@ -196,16 +196,11 @@ export const cellContainerRecipe = strictRecipe({
   },
 });
 
-export const sectionHeaderContainer = style([
-  {
-    zIndex: 1,
-  },
-  bentoSprinkles({
-    position: "sticky",
-    left: 0,
-    background: "backgroundPrimary",
-  }),
-]);
+export const sectionHeaderContainer = bentoSprinkles({
+  position: "sticky",
+  left: 0,
+  background: "backgroundPrimary",
+});
 
 export const sectionHeader = bentoSprinkles({
   display: "inline-block",

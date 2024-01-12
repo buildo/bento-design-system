@@ -708,6 +708,7 @@ function SectionHeader({
       <Box
         className={sectionHeaderContainer}
         style={{
+          zIndex: numberOfStickyColumns > 0 ? 1 : undefined,
           gridColumn: `1 / ${numberOfStickyColumns > 0 ? numberOfStickyColumns + 1 : -1}`,
         }}
       >
