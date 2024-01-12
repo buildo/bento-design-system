@@ -37,4 +37,5 @@ export type TableConfig = {
     iconButtonCell: CellPaddingConfig | undefined;
   };
   boundaryPadding: BentoSprinkles["padding"];
+  dividers: boolean;
 };

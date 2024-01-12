@@ -527,6 +527,7 @@ export const table: TableConfig = {
     iconButtonCell: { paddingX: 16, paddingY: 16 },
   },
   boundaryPadding: 8,
+  dividers: false,
 };
 
 export const toast: ToastConfig = {
