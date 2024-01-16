@@ -460,7 +460,7 @@ export const SimpleWithDividers = {
   args: {
     columns: exampleColumnsWithFooter,
     initialSorting: [{ id: "name" }],
-    dividers: true,
+    columnDividers: true,
   },
 } satisfies Story;
 
@@ -648,7 +648,7 @@ export const GroupedHeadersWithDividers = {
   args: {
     columns: exampleGroupedColumns,
     stickyHeaders: true,
-    dividers: true,
+    columnDividers: true,
     height: { custom: 320 },
   },
 } satisfies Story;
