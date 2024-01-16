@@ -14,25 +14,133 @@ export const lastLeftStickyColumn = bentoSprinkles({
   paddingRight: 8,
 });
 
-export const columnHeader = bentoSprinkles({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  boxShadow: "outlineDecorativeBottom",
-  height: "full",
-});
-
-export const columnFooter = style([
-  {
-    boxShadow: `inset 0px 1px 0px ${vars.outlineColor.outlineDecorative}`,
-  },
-  bentoSprinkles({
+export const columnHeader = strictRecipe({
+  base: bentoSprinkles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     height: "full",
   }),
-]);
+  variants: {
+    withDividers: {
+      false: bentoSprinkles({
+        boxShadow: "outlineDecorativeBottom",
+      }),
+    },
+    first: {
+      true: {},
+    },
+    lastLeftSticky: {
+      true: {},
+    },
+  },
+  compoundVariants: [
+    {
+      variants: {
+        withDividers: true,
+        first: true,
+        lastLeftSticky: false,
+      },
+      style: bentoSprinkles({
+        boxShadow: "outlineDecorativeBottom",
+      }),
+    },
+    {
+      variants: {
+        withDividers: true,
+        first: true,
+        lastLeftSticky: true,
+      },
+      style: style({
+        boxShadow: `inset -1px -1px ${vars.outlineColor.outlineDecorative}`,
+      }),
+    },
+    {
+      variants: {
+        withDividers: true,
+        first: false,
+        lastLeftSticky: false,
+      },
+      style: style({
+        boxShadow: `inset 1px -1px ${vars.outlineColor.outlineDecorative}`,
+      }),
+    },
+    {
+      variants: {
+        withDividers: true,
+        first: false,
+        lastLeftSticky: true,
+      },
+      style: style({
+        boxShadow: `inset 1px -1px ${vars.outlineColor.outlineDecorative}, inset -1px -1px ${vars.outlineColor.outlineDecorative}`,
+      }),
+    },
+  ],
+});
+
+export const columnFooter = strictRecipe({
+  base: bentoSprinkles({
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    height: "full",
+  }),
+  variants: {
+    withDividers: {
+      false: style({
+        boxShadow: `inset 0px 1px ${vars.outlineColor.outlineDecorative}`,
+      }),
+    },
+    first: {
+      true: {},
+    },
+    lastLeftSticky: {
+      true: {},
+    },
+  },
+  compoundVariants: [
+    {
+      variants: {
+        withDividers: true,
+        first: true,
+        lastLeftSticky: false,
+      },
+      style: style({
+        boxShadow: `inset 0px 1px ${vars.outlineColor.outlineDecorative}`,
+      }),
+    },
+    {
+      variants: {
+        withDividers: true,
+        first: true,
+        lastLeftSticky: true,
+      },
+      style: style({
+        boxShadow: `inset -1px 1px ${vars.outlineColor.outlineDecorative}`,
+      }),
+    },
+    {
+      variants: {
+        withDividers: true,
+        first: false,
+        lastLeftSticky: false,
+      },
+      style: style({
+        boxShadow: `inset 1px 1px ${vars.outlineColor.outlineDecorative}`,
+      }),
+    },
+    {
+      variants: {
+        withDividers: true,
+        first: false,
+        lastLeftSticky: true,
+      },
+      style: style({
+        boxShadow: `inset 1px 1px ${vars.outlineColor.outlineDecorative}, inset -1px 1px ${vars.outlineColor.outlineDecorative}`,
+      }),
+    },
+  ],
+});
 
 export const sortIconContainer = style({
   filter: "opacity(80%)",
@@ -88,16 +196,11 @@ export const cellContainerRecipe = strictRecipe({
   },
 });
 
-export const sectionHeaderContainer = style([
-  {
-    zIndex: 1,
-  },
-  bentoSprinkles({
-    position: "sticky",
-    left: 0,
-    background: "backgroundPrimary",
-  }),
-]);
+export const sectionHeaderContainer = bentoSprinkles({
+  position: "sticky",
+  left: 0,
+  background: "backgroundPrimary",
+});
 
 export const sectionHeader = bentoSprinkles({
   display: "inline-block",
@@ -105,4 +208,47 @@ export const sectionHeader = bentoSprinkles({
   left: 0,
   paddingX: 24,
   paddingY: 4,
+});
+
+export const cellColumnDivider = strictRecipe({
+  base: style({
+    boxShadow: `inset 1px 0px 0px ${vars.outlineColor.outlineDecorative}`,
+  }),
+  variants: {
+    first: {
+      true: {},
+    },
+    lastLeftSticky: {
+      true: {},
+    },
+  },
+  compoundVariants: [
+    {
+      variants: {
+        first: true,
+        lastLeftSticky: true,
+      },
+      style: style({
+        boxShadow: `inset -1px 0px ${vars.outlineColor.outlineDecorative}`,
+      }),
+    },
+    {
+      variants: {
+        first: false,
+        lastLeftSticky: true,
+      },
+      style: style({
+        boxShadow: `inset 1px 0px ${vars.outlineColor.outlineDecorative}, inset -1px 0px ${vars.outlineColor.outlineDecorative}`,
+      }),
+    },
+    {
+      variants: {
+        first: true,
+        lastLeftSticky: false,
+      },
+      style: style({
+        boxShadow: "none",
+      }),
+    },
+  ],
 });

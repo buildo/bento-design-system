@@ -78,6 +78,75 @@ const exampleColumns = [
   }),
 ] as const;
 
+const exampleColumnsWithFooter = [
+  tableColumn.button({
+    headerLabel: "Button",
+    accessor: "button",
+    sticky: "left",
+    disableSortBy: true,
+    align: "center",
+  }),
+  tableColumn.text({
+    headerLabel: "Name",
+    accessor: "name",
+    footer: "-",
+  }),
+  tableColumn.text({
+    headerLabel: "Extended address",
+    accessor: "address",
+    width: { custom: 200 },
+    footer: "-",
+  }),
+  tableColumn.textWithIcon({
+    headerLabel: "Country",
+    accessor: "country",
+    iconPosition: "right",
+    hint: "This is a hint",
+    footer: "-",
+  }),
+  tableColumn.number({
+    headerLabel: "Applications",
+    accessor: "applications",
+    valueFormatter: (value) => Intl.NumberFormat("en").format(value),
+    align: "right",
+    hint: { onPress: action("hint") },
+    footer: ({ rows }) =>
+      Intl.NumberFormat("en").format(
+        rows.reduce((acc, row) => acc + (row.values.applications ?? 0), 0)
+      ),
+  }),
+  tableColumn.numberWithIcon({
+    headerLabel: "Value",
+    accessor: "value",
+    valueFormatter: (value) => Intl.NumberFormat("en").format(value),
+    align: "right",
+  }),
+  tableColumn.label({
+    headerLabel: "Type",
+    accessor: "type",
+  }),
+  tableColumn.link({
+    headerLabel: "Website",
+    accessor: "website",
+    footer: "-",
+  }),
+  tableColumn.icon({
+    headerLabel: "Alerts",
+    accessor: "alerts",
+  }),
+  tableColumn.chip({
+    headerLabel: "Status",
+    accessor: "status",
+    align: "center",
+  }),
+  tableColumn.iconButton({
+    headerLabel: "Actions",
+    accessor: "deleteAction",
+    align: "center",
+    disableSortBy: true,
+  }),
+] as const;
+
 const exampleGroupedColumns = [
   {
     Header: "Group 1",
@@ -94,17 +163,20 @@ const exampleGroupedColumns = [
       tableColumn.text({
         headerLabel: "Name",
         accessor: "name",
+        footer: "-",
       }),
       tableColumn.text({
         headerLabel: "Extended address",
         accessor: "address",
         width: { custom: 200 },
+        footer: "-",
       }),
       tableColumn.textWithIcon({
         headerLabel: "Country",
         accessor: "country",
         iconPosition: "right",
         hint: "This is a hint",
+        footer: "-",
       }),
     ],
   },
@@ -117,6 +189,10 @@ const exampleGroupedColumns = [
         valueFormatter: (value) => Intl.NumberFormat("en").format(value),
         align: "right",
         hint: { onPress: action("hint") },
+        footer: ({ rows }) =>
+          Intl.NumberFormat("en").format(
+            rows.reduce((acc, row) => acc + (row.values.applications ?? 0), 0)
+          ),
       }),
       tableColumn.numberWithIcon({
         headerLabel: "Value",
@@ -380,6 +456,14 @@ export const Simple = {
   },
 } satisfies Story;
 
+export const SimpleWithDividers = {
+  args: {
+    columns: exampleColumnsWithFooter,
+    initialSorting: [{ id: "name" }],
+    columnDividers: true,
+  },
+} satisfies Story;
+
 export const Empty = {
   args: {
     data: [],
@@ -556,6 +640,15 @@ export const GroupedHeaders = {
   args: {
     columns: exampleGroupedColumns,
     stickyHeaders: true,
+    height: { custom: 320 },
+  },
+} satisfies Story;
+
+export const GroupedHeadersWithDividers = {
+  args: {
+    columns: exampleGroupedColumns,
+    stickyHeaders: true,
+    columnDividers: true,
     height: { custom: 320 },
   },
 } satisfies Story;

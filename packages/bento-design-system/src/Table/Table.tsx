@@ -30,6 +30,7 @@ import {
   vars,
 } from "..";
 import {
+  cellColumnDivider,
   cellContainerRecipe,
   columnFooter,
   columnHeader,
@@ -110,6 +111,7 @@ type Props<
   height?: { custom: string | number };
   onRowPress?: (row: Row<RowType<C>>) => void;
   virtualizeRows?: boolean | { estimateRowHeight: (index: number) => number };
+  columnDividers?: boolean;
 } & SortingProps<C>;
 
 /**
@@ -150,6 +152,7 @@ export function Table<
   height,
   onRowPress,
   virtualizeRows: virtualizeRowsConfig,
+  columnDividers,
 }: Props<C>) {
   const config = useBentoConfig().table;
   const customOrderByFn = useMemo(
@@ -367,6 +370,8 @@ export function Table<
     .map(({ gridWidth = "fit-content" }) => gridWidthStyle(gridWidth))
     .join(" ");
 
+  const withDividers = columnDividers ?? config.columnDividers;
+
   function renderCells<D extends Record<string, unknown>>(
     cells: Array<Cell<D>>,
     rowIndex: number,
@@ -381,6 +386,7 @@ export function Table<
         first={index === 0}
         last={(index + 1) % flatColumns.length === 0}
         interactiveRow={interactiveRow}
+        withDividers={withDividers}
       >
         {cell.render("Cell")}
       </CellContainer>
@@ -459,6 +465,7 @@ export function Table<
             }
             first={index === 0}
             last={index + 1 === flatColumns.length}
+            withDividers={withDividers}
           />
         ))
       )}
@@ -482,6 +489,7 @@ export function Table<
             sticky={stickyLeftColumnsIds.includes(header.id)}
             first={index === 0}
             last={index + 1 === flatColumns.length}
+            withDividers={withDividers}
           />
         ))}
     </Box>
@@ -523,6 +531,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
   sticky,
   first,
   last,
+  withDividers,
 }: {
   column: ColumnInstance<D> | HeaderGroup<D>;
   style: CSSProperties;
@@ -531,6 +540,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
   sticky: boolean;
   first: boolean;
   last: boolean;
+  withDividers: boolean;
 }) {
   const config = useBentoConfig().table;
 
@@ -584,7 +594,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
       }}
     >
       <Box
-        className={columnHeader}
+        className={[columnHeader({ withDividers, first, lastLeftSticky })]}
         background={config.headerBackgroundColor}
         color={config.headerForegroundColor}
         {...column.getHeaderProps(column.getSortByToggleProps())}
@@ -626,6 +636,7 @@ function ColumnFooter<D extends Record<string, unknown>>({
   sticky,
   first,
   last,
+  withDividers,
 }: {
   column: ColumnInstance<D> | HeaderGroup<D>;
   style: CSSProperties;
@@ -634,6 +645,7 @@ function ColumnFooter<D extends Record<string, unknown>>({
   sticky: boolean;
   first: boolean;
   last: boolean;
+  withDividers: boolean;
 }) {
   const config = useBentoConfig().table;
 
@@ -646,7 +658,7 @@ function ColumnFooter<D extends Record<string, unknown>>({
       }}
     >
       <Box
-        className={columnFooter}
+        className={columnFooter({ withDividers, first, lastLeftSticky })}
         background={config.footerBackgroundColor}
         color={config.footerForegroundColor}
         {...column.getFooterProps()}
@@ -696,6 +708,7 @@ function SectionHeader({
       <Box
         className={sectionHeaderContainer}
         style={{
+          zIndex: numberOfStickyColumns > 0 ? 1 : undefined,
           gridColumn: `1 / ${numberOfStickyColumns > 0 ? numberOfStickyColumns + 1 : -1}`,
         }}
       >
@@ -723,6 +736,7 @@ function CellContainer({
   first,
   last,
   interactiveRow,
+  withDividers,
   ...props
 }: {
   children: any;
@@ -732,6 +746,7 @@ function CellContainer({
   first: boolean;
   last: boolean;
   interactiveRow: boolean;
+  withDividers: boolean;
 } & TableCellProps) {
   const tableConfig = useBentoConfig().table;
 
@@ -739,7 +754,10 @@ function CellContainer({
     <Box className={lastLeftSticky && lastLeftStickyColumn} style={style}>
       <Box
         background={index % 2 === 0 ? tableConfig.evenRowsBackgroundColor : "backgroundPrimary"}
-        className={cellContainerRecipe({ interactiveRow })}
+        className={[
+          cellContainerRecipe({ interactiveRow }),
+          withDividers && cellColumnDivider({ first, lastLeftSticky }),
+        ]}
         paddingLeft={first ? tableConfig.boundaryPadding : undefined}
         paddingRight={last ? tableConfig.boundaryPadding : undefined}
         {...props}
@@ -758,7 +776,11 @@ export type {
   Row as TableRow,
 } from "react-table";
 
-export type { Column as SimpleColumnType, Row as RowType } from "./types";
+export type {
+  Column as SimpleColumnType,
+  GroupedColumn as GroupedColumnType,
+  Row as RowType,
+} from "./types";
 
 export type { ColumnOptionsBase } from "./tableColumn";
 export type { Props as TableProps };
