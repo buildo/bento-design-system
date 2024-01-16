@@ -111,7 +111,7 @@ type Props<
   height?: { custom: string | number };
   onRowPress?: (row: Row<RowType<C>>) => void;
   virtualizeRows?: boolean | { estimateRowHeight: (index: number) => number };
-  dividers?: boolean;
+  columnDividers?: boolean;
 } & SortingProps<C>;
 
 /**
@@ -152,7 +152,7 @@ export function Table<
   height,
   onRowPress,
   virtualizeRows: virtualizeRowsConfig,
-  dividers,
+  columnDividers,
 }: Props<C>) {
   const config = useBentoConfig().table;
   const customOrderByFn = useMemo(
@@ -370,7 +370,7 @@ export function Table<
     .map(({ gridWidth = "fit-content" }) => gridWidthStyle(gridWidth))
     .join(" ");
 
-  const withDividers = dividers ?? config.dividers;
+  const withDividers = columnDividers ?? config.columnDividers;
 
   function renderCells<D extends Record<string, unknown>>(
     cells: Array<Cell<D>>,
