@@ -107,7 +107,7 @@ export function BaseSelect<A>(props: Props<A>) {
         placeholder={placeholder}
         menuPortalTarget={menuPortalTarget.current}
         components={selectComponents}
-        openMenuOnFocus
+        openMenuOnFocus={props.openMenuOnFocus ?? dropdownConfig.openMenuOnFocus}
         styles={selectComponents.styles<SelectOption<A>>()}
         validationState={validationState}
         isMulti={isMulti}

@@ -38,4 +38,5 @@ export type BaseSelectProps<A> = {
   noOptionsMessage?: LocalizedString;
   isReadOnly?: boolean;
   searchable?: boolean;
+  openMenuOnFocus?: boolean;
 };
