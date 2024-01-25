@@ -16,4 +16,5 @@ export type DropdownConfig = {
   openIndicatorIconSize: IconProps["size"];
   chipColor: ChipProps["color"];
   chipSpacing: BentoSprinkles["gap"];
+  openMenuOnFocus: boolean;
 };

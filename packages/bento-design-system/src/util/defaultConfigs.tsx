@@ -499,6 +499,7 @@ export const dropdown: DropdownConfig = {
   openIndicatorIconSize: 24,
   chipColor: "indigo",
   chipSpacing: 4,
+  openMenuOnFocus: true,
 };
 
 export const table: TableConfig = {
