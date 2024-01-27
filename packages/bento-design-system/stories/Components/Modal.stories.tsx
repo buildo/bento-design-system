@@ -1,6 +1,6 @@
 import { Modal, Body, Placeholder, Stack, CustomModal, Feedback, Inset } from "..";
 import { action } from "@storybook/addon-actions";
-import { screen } from "@storybook/testing-library";
+import { screen } from "@storybook/test";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

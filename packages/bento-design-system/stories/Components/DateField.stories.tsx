@@ -11,7 +11,7 @@ import {
   addWeeks,
   addDays,
 } from "date-fns";
-import { screen, waitFor } from "@storybook/testing-library";
+import { screen, waitFor } from "@storybook/test";
 import isChromatic from "chromatic/isChromatic";
 import { Meta, StoryObj } from "@storybook/react";
 
