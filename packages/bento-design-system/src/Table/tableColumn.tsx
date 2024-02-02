@@ -9,6 +9,7 @@ import {
   IconButtonProps,
   BodyProps,
   ButtonProps,
+  LabelProps,
 } from "..";
 import { Column } from "./types";
 import {
@@ -55,7 +56,7 @@ export function custom<A extends string, V, D extends Record<string, unknown>>({
         const value = missingValue ?? defaultMessages.Table.missingValue;
         return (
           <Box {...config.padding.defaultCell} textAlign={options.align}>
-            <Body size="medium">{value}</Body>
+            <Body size={config.defaultCellOptions.defaultCell.size}>{value}</Body>
           </Box>
         );
       } else {
@@ -234,10 +235,16 @@ export function numberWithIcon<A extends string>({
   });
 }
 
-export function label<A extends string>(options: ColumnOptionsBase<A>) {
+export function label<A extends string>({
+  size,
+  color,
+  ...options
+}: ColumnOptionsBase<A> & Partial<Pick<LabelProps, "size" | "color">>) {
   return custom({
     ...options,
-    Cell: LabelCell,
+    Cell: (props: Omit<ComponentProps<typeof TextCell>, "options">) => (
+      <LabelCell {...{ ...props, options: { size, color } }} />
+    ),
   });
 }
 

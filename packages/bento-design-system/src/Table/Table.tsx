@@ -611,7 +611,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
             <Columns space={8} alignY="center" align={column.align}>
               {column.Header ? (
                 <Column width="content">
-                  <Label size="large">{column.render("Header") as any}</Label>
+                  <Label size={config.headerSize}>{column.render("Header") as any}</Label>
                 </Column>
               ) : null}
               {hint && <Column width="content">{hint}</Column>}
@@ -677,7 +677,7 @@ function ColumnFooter<D extends Record<string, unknown>>({
           >
             <Columns space={8} alignY="center" align={column.align}>
               <Column width="content">
-                <Label size="large">{column.render("Footer") as any}</Label>
+                <Label size={config.footerSize}>{column.render("Footer") as any}</Label>
               </Column>
             </Columns>
           </Box>

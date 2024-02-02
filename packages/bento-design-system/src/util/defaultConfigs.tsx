@@ -507,8 +507,10 @@ export const table: TableConfig = {
   emptyIcon: IconSearch,
   headerBackgroundColor: "backgroundPrimary",
   headerForegroundColor: "foregroundPrimary",
+  headerSize: "large",
   footerBackgroundColor: "backgroundPrimary",
   footerForegroundColor: "foregroundPrimary",
+  footerSize: "large",
   hintPlacement: "top",
   cellTooltipPlacement: "bottom",
   evenRowsBackgroundColor: "backgroundSecondary",
@@ -526,6 +528,46 @@ export const table: TableConfig = {
     linkCell: { paddingX: 16, paddingY: 16 },
     iconCell: { paddingX: 16, paddingY: 16 },
     iconButtonCell: { paddingX: 16, paddingY: 16 },
+  },
+  defaultCellOptions: {
+    defaultCell: {
+      size: "medium",
+    },
+    textCell: {
+      size: "medium",
+      weight: "default",
+      color: "default",
+    },
+    textWithIconCell: {
+      size: "medium",
+      weight: "default",
+      color: "default",
+      iconSize: 12,
+      iconColor: "default",
+    },
+    iconCell: {
+      size: 16,
+      color: "default",
+    },
+    buttonCell: {
+      size: "medium",
+    },
+    buttonLinkCell: {
+      size: "medium",
+    },
+    labelCell: {
+      size: "large",
+      color: "default",
+    },
+    iconButtonCell: {
+      size: 16,
+      hierarchy: "primary",
+      kind: "transparent",
+    },
+    linkCell: {
+      size: "medium",
+      weight: "default",
+    },
   },
   boundaryPadding: 8,
   columnDividers: false,

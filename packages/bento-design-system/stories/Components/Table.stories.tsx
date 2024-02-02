@@ -11,6 +11,7 @@ import {
   NumberField,
   TableProps,
   IconX,
+  withBentoConfig,
 } from "..";
 import orderBy from "lodash.orderby";
 import { action } from "@storybook/addon-actions";
@@ -696,4 +697,45 @@ export const VirtualizedRowsGroupedRows = {
     virtualizeRows: { estimateRowHeight: () => 92 },
     data: repeatToLength(exampleData, 1_000),
   },
+} satisfies Story;
+
+const CompactTable = withBentoConfig(
+  {
+    table: {
+      headerSize: "small",
+      footerSize: "small",
+      padding: {
+        header: { paddingX: 8, paddingY: 8 },
+        footer: { paddingX: 8, paddingY: 8 },
+        textCell: { paddingX: 8, paddingY: 8 },
+        buttonCell: { paddingX: 8, paddingY: 8 },
+        iconButtonCell: { paddingX: 8, paddingY: 8 },
+        buttonLinkCell: { paddingX: 8, paddingY: 8 },
+        defaultCell: { paddingX: 8, paddingY: 8 },
+        iconCell: { paddingX: 8, paddingY: 8 },
+        labelCell: { paddingX: 8, paddingY: 8 },
+        linkCell: { paddingX: 8, paddingY: 8 },
+        textWithIconCell: { paddingX: 8, paddingY: 8 },
+      },
+      defaultCellOptions: {
+        textCell: { size: "small" },
+        buttonCell: { size: "small" },
+        iconButtonCell: { size: 8 },
+        buttonLinkCell: { size: "small" },
+        defaultCell: { size: "small" },
+        iconCell: { size: 8 },
+        labelCell: { size: "small" },
+        linkCell: { size: "small" },
+        textWithIconCell: { size: "small", iconSize: 8 },
+      },
+    },
+  },
+  Table
+);
+
+export const Compact = {
+  args: {
+    initialSorting: [{ id: "name" }],
+  },
+  render: (args) => <CompactTable {...args} />,
 } satisfies Story;
