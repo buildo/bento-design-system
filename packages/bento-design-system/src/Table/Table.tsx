@@ -231,7 +231,7 @@ export function Table<
 
   // Determine the id of the last left sticky column (used to draw a visual separator in the UI)
   const lastStickyColumnIndex = flatColumns
-    .map((c) => c.accessor)
+    .map((c) => c.id ?? c.accessor)
     .indexOf(stickyLeftColumnsIds[stickyLeftColumnsIds.length - 1]);
 
   // Keep a style object for each sticky column, which will be updated by the useLayoutEffect below
@@ -242,6 +242,11 @@ export function Table<
   // Keep a state for the height of the first row of headers, which will be updated by the useLayoutEffect below
   const [stickyHeaderHeight, setStickyHeaderHeight] = useState(0);
 
+  const tableContainerRef = useRef<HTMLDivElement>(null);
+  const getHeaderById = (id: string) =>
+    // Search header only inside the table container, to avoid selecting headers from other tables
+    tableContainerRef.current!.querySelector(`[id='header-cell-${id}']`);
+
   /** Get the width of each sticky column (using the header width as reference) and use it to set the `left` of each sticky column.
    *  Each sticky column must have as `left` the total width of the previous sticky columns.
    */
@@ -249,16 +254,12 @@ export function Table<
     // Make this computation only if we have any data, because headers are not rendered when there are no rows
     // and we need them to get the column width.
     if (data.length > 0) {
-      const columnWidths = stickyLeftColumnsIds.map(
-        (id) => document.getElementById(`header-cell-${id}`)!.clientWidth
-      );
+      const columnWidths = stickyLeftColumnsIds.map((id) => getHeaderById(id)!.clientWidth);
       const columnGroupWidths = stickyLeftColumnGroupsIds.map(
-        (id) => document.getElementById(`header-cell-${id}`)!.clientWidth
+        (id) => getHeaderById(id)!.clientWidth
       );
       const columnGroupHeight = Math.max(
-        ...headerGroups[0].headers.map((h) =>
-          h.columns ? document.getElementById(`header-cell-${h.id}`)!.clientHeight : 0
-        )
+        ...headerGroups[0].headers.map((h) => (h.columns ? getHeaderById(h.id)!.clientHeight : 0))
       );
 
       const styleReducer =
@@ -303,8 +304,6 @@ export function Table<
   }, [data.length, headerGroups, stickyLeftColumnsIds, stickyLeftColumnGroupsIds]);
 
   const flatRows = rows.flatMap((row) => (row.isGrouped ? [row, ...row.leafRows] : [row]));
-
-  const tableContainerRef = useRef<HTMLDivElement>(null);
 
   const virtualizeRows =
     typeof virtualizeRowsConfig === "boolean" ? virtualizeRowsConfig : virtualizeRowsConfig != null;
