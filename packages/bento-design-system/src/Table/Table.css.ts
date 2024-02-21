@@ -9,9 +9,23 @@ export const table = style({
   isolation: "isolate",
 });
 
-export const lastLeftStickyColumn = bentoSprinkles({
-  background: "backgroundPrimary",
-  paddingRight: 8,
+export const lastLeftStickyColumn = strictRecipe({
+  variants: {
+    withDividers: {
+      true: style([
+        {
+          paddingRight: 2,
+        },
+        bentoSprinkles({
+          background: "outlineDecorative",
+        }),
+      ]),
+      false: bentoSprinkles({
+        background: "backgroundPrimary",
+        paddingRight: 8,
+      }),
+    },
+  },
 });
 
 export const columnHeader = strictRecipe({

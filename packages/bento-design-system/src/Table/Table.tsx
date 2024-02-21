@@ -585,7 +585,10 @@ function ColumnHeader<D extends Record<string, unknown>>({
 
   return (
     <Box
-      className={[lastLeftSticky && lastLeftStickyColumn, stickyHeaders && stickyColumnHeader]}
+      className={[
+        lastLeftSticky && lastLeftStickyColumn({ withDividers }),
+        stickyHeaders && stickyColumnHeader,
+      ]}
       style={{
         ...style,
         gridColumnEnd: column.columns ? `span ${column.columns.length}` : undefined,
@@ -650,7 +653,10 @@ function ColumnFooter<D extends Record<string, unknown>>({
 
   return (
     <Box
-      className={[lastLeftSticky && lastLeftStickyColumn, stickyFooters && stickyColumnFooter]}
+      className={[
+        lastLeftSticky && lastLeftStickyColumn({ withDividers }),
+        stickyFooters && stickyColumnFooter,
+      ]}
       style={{
         ...style,
         zIndex: sticky ? zIndexes.leftStickyHeader : zIndexes.header,
@@ -750,7 +756,7 @@ function CellContainer({
   const tableConfig = useBentoConfig().table;
 
   return (
-    <Box className={lastLeftSticky && lastLeftStickyColumn} style={style}>
+    <Box className={lastLeftSticky && lastLeftStickyColumn({ withDividers })} style={style}>
       <Box
         background={index % 2 === 0 ? tableConfig.evenRowsBackgroundColor : "backgroundPrimary"}
         className={[
