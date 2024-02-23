@@ -6,6 +6,12 @@ export type HSL = {
   l: number;
 };
 
+export type RGB = {
+  r: number;
+  g: number;
+  b: number;
+};
+
 export function HexToHSL(hex: HexColor): HSL {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 
@@ -77,4 +83,27 @@ export function HSLToHex(hsl: HSL): HexColor {
 const hexRegex = /^#[0-9a-f]{6}$/i;
 export function isHexColor(value: string): value is HexColor {
   return hexRegex.test(value);
+}
+
+export function HexToRGB(hex: HexColor): RGB {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+  if (!result) {
+    throw new Error("Invalid hex color provided to HexToRGB");
+  }
+
+  const rHex = parseInt(result[1], 16);
+  const gHex = parseInt(result[2], 16);
+  const bHex = parseInt(result[3], 16);
+
+  return { r: rHex, g: gHex, b: bHex };
+}
+
+export function withAlpha(color: HexColor, alpha: number) {
+  if (alpha === 100) {
+    return color;
+  } else {
+    const rgb = HexToRGB(color);
+    return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha / 100})`;
+  }
 }

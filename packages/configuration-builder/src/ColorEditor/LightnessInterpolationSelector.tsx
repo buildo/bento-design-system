@@ -1,6 +1,6 @@
 import { SelectField } from "@buildo/bento-design-system";
-import { LightnessInterpolation } from "./ColorEditor";
 import { useTranslation } from "react-i18next";
+import { LightnessInterpolation } from "../utils/paletteUtils";
 
 type Props = {
   value: LightnessInterpolation;

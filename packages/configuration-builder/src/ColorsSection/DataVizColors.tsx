@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { Actions, Headline, Stack } from "@buildo/bento-design-system";
 import { ColorEditor } from "../ColorEditor/ColorEditor";
 import { ThemeConfig } from "../ConfiguratorStatusContext";
 
@@ -8,19 +7,13 @@ type DataVizColors = ThemeConfig["colors"]["dataVisualization"];
 type Props = {
   value: DataVizColors;
   onChange: (value: DataVizColors) => void;
-  onNext: () => void;
-  onBack: () => void;
 };
 
 export function DataVizColors(props: Props) {
   const { t } = useTranslation();
 
   return (
-    <Stack space={40}>
-      <Stack space={24}>
-        <Headline size="small">{t("ColorsSection.Step.dataVisualization")}</Headline>
-      </Stack>
-
+    <>
       <ColorEditor
         name={t("DataVizColors.grey")}
         value={props.value.grey}
@@ -80,11 +73,6 @@ export function DataVizColors(props: Props) {
         value={props.value.pink}
         onChange={(pink) => props.onChange({ ...props.value, pink })}
       />
-
-      <Actions
-        primaryAction={{ label: t("Next"), onPress: props.onNext }}
-        secondaryAction={{ label: t("Back"), onPress: props.onBack }}
-      />
-    </Stack>
+    </>
   );
 }

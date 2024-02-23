@@ -1,9 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { Actions, Headline, Stack } from "@buildo/bento-design-system";
 import { ColorEditor } from "../ColorEditor/ColorEditor";
 import { ColorPresets } from "./ColorPresets";
 import { HexColor } from "../utils/colorUtils";
-import { defaultColorConfig } from "./defaultColor";
+import { defaultPaletteConfig } from "./defaultPaletteConfig";
 import { ThemeConfig } from "../ConfiguratorStatusContext";
 
 type NeutralColor = ThemeConfig["colors"]["neutral"];
@@ -11,8 +10,6 @@ type NeutralColor = ThemeConfig["colors"]["neutral"];
 type Props = {
   value: NeutralColor;
   onChange: (value: NeutralColor) => void;
-  onNext: () => void;
-  onBack: () => void;
 };
 
 const presets: HexColor[] = [
@@ -26,14 +23,11 @@ export function NeutralColor(props: Props) {
   const { t } = useTranslation();
 
   return (
-    <Stack space={40}>
-      <Stack space={24}>
-        <Headline size="small">{t("ColorsSection.Step.neutral")}</Headline>
-      </Stack>
+    <>
       <ColorPresets
         kind="single"
         presets={presets}
-        onSelect={(preset) => props.onChange(defaultColorConfig(preset))}
+        onSelect={(preset) => props.onChange(defaultPaletteConfig(preset))}
       />
 
       <ColorEditor
@@ -41,11 +35,6 @@ export function NeutralColor(props: Props) {
         value={props.value}
         onChange={props.onChange}
       />
-
-      <Actions
-        primaryAction={{ label: t("Next"), onPress: props.onNext }}
-        secondaryAction={{ label: t("Back"), onPress: props.onBack }}
-      />
-    </Stack>
+    </>
   );
 }

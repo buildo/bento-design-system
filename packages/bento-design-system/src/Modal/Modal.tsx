@@ -38,9 +38,13 @@ type Props = {
   size?: ModalSize;
   kind?: ModalKind;
   autoFocus?: boolean;
+  portalContainer?: HTMLElement;
 };
 
-type CustomModalProps = Pick<Props, "children" | "isDestructive" | "size" | "autoFocus"> & {
+type CustomModalProps = Pick<
+  Props,
+  "children" | "isDestructive" | "size" | "autoFocus" | "portalContainer"
+> & {
   ["aria-label"]: string;
 };
 
@@ -48,7 +52,7 @@ export function CustomModal(props: CustomModalProps) {
   const config = useBentoConfig().modal;
   const ref = useRef<HTMLDivElement>(null);
   const { overlayProps, underlayProps } = useOverlay({ ...props, isOpen: true }, ref);
-  const createPortal = useCreatePortal();
+  const createPortal = useCreatePortal(props.portalContainer);
 
   usePreventScroll();
 

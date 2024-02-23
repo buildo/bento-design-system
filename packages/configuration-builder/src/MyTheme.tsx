@@ -32,6 +32,8 @@ import {
   IconDiamondsFour,
   IconSwatches,
 } from "./PhosphorIcons";
+import { useConfigGeneratorTS } from "./utils/useConfigGeneratorTS";
+import { saveAs } from "file-saver";
 
 const numberImages = [image1, image2, image3];
 
@@ -94,6 +96,7 @@ export function MyTheme() {
 
   const { sections } = useConfiguratorStatusContext();
   const navigate = useNavigate();
+  const generateTS = useConfigGeneratorTS();
 
   return (
     <Box display="flex" flexGrow={1} overflowY="auto" flexDirection="column">
@@ -117,19 +120,22 @@ export function MyTheme() {
               name={t("Theme.Foundations.Typography.title")}
               description={t("Theme.Foundations.Typography.description")}
               icon={IconTextAa}
-              disabled
+              kind={sections.typography ? "done" : "todo"}
+              onClick={() => navigate("/theme/typography")}
             />
             <SectionCard
               name={t("Theme.Foundations.Elevations.title")}
               description={t("Theme.Foundations.Elevations.description")}
               icon={IconSubtract}
-              disabled
+              kind={sections.elevations ? "done" : "todo"}
+              onClick={() => navigate("/theme/elevations")}
             />
             <SectionCard
               name={t("Theme.Foundations.Tokens.title")}
               description={t("Theme.Foundations.Tokens.description")}
               icon={IconCards}
-              disabled
+              kind={sections.tokens ? "done" : "todo"}
+              onClick={() => navigate("/theme/tokens")}
             />
           </Stack>
         </MainColumn>
@@ -198,7 +204,11 @@ export function MyTheme() {
                 kind="solid"
                 hierarchy="primary"
                 label={t("Theme.Export.React.action")}
-                onPress={() => {}}
+                onPress={() => {
+                  const generatedCode = generateTS();
+                  const blob = new Blob([generatedCode], { type: "text/plain;charset=utf-8" });
+                  saveAs(blob, "generatedCode.ts");
+                }}
               />
             </Inline>
           </Stack>
