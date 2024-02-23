@@ -23,6 +23,7 @@ import {
   IconPositiveCircle,
   IconQuestionCircle,
   IconNegative,
+  IconQuestionSolid,
 } from "../Icons";
 import type { ButtonConfig } from "../Button/Config";
 import type { CardConfig } from "../Card/Config";
@@ -504,6 +505,7 @@ export const dropdown: DropdownConfig = {
 
 export const table: TableConfig = {
   headerInfoIcon: IconInfo,
+  headerHintIcon: IconQuestionSolid,
   emptyIcon: IconSearch,
   headerBackgroundColor: "backgroundPrimary",
   headerForegroundColor: "foregroundPrimary",

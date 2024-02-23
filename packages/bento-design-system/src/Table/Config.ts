@@ -23,6 +23,7 @@ type CellPaddingConfig = {
 
 export type TableConfig = {
   headerInfoIcon: (props: IconProps) => JSX.Element;
+  headerHintIcon: (props: IconProps) => JSX.Element;
   emptyIcon: (props: IconProps) => JSX.Element;
   headerBackgroundColor: BentoSprinkles["background"];
   headerForegroundColor: BentoSprinkles["color"];
