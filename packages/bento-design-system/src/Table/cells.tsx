@@ -20,22 +20,25 @@ import {
   ButtonLink,
   ButtonLinkProps,
   BodyProps,
+  LabelProps,
 } from "..";
 import { useBentoConfig } from "../BentoConfigContext";
+import { mergeProps } from "@react-aria/utils";
 
 export function ButtonCell({
   value: buttonProps,
   column: { align },
-  options: { size },
+  options,
 }: CellProps<{}, Omit<ButtonProps, "size">> & {
   options: Partial<Pick<ButtonProps, "size">>;
 }) {
   const config = useBentoConfig().table;
+  const { size } = mergeProps(config.defaultCellOptions.buttonCell, options);
   const padding = config.padding.buttonCell ?? config.padding.defaultCell;
   return (
     <Inset spaceX={padding.paddingX} spaceY={padding.paddingY}>
       <Inline space={0} align={align} alignY="center">
-        <Button size={size ?? "medium"} {...buttonProps} />
+        <Button size={size} {...buttonProps} />
       </Inline>
     </Inset>
   );
@@ -44,16 +47,17 @@ export function ButtonCell({
 export function ButtonLinkCell({
   value: buttonProps,
   column: { align },
-  options: { size },
+  options,
 }: CellProps<{}, Omit<ButtonLinkProps, "size">> & {
   options: Partial<Pick<ButtonLinkProps, "size">>;
 }) {
   const config = useBentoConfig().table;
+  const { size } = mergeProps(config.defaultCellOptions.buttonLinkCell, options);
   const padding = config.padding.buttonLinkCell ?? config.padding.defaultCell;
   return (
     <Inset spaceX={padding.paddingX} spaceY={padding.paddingY}>
       <Inline space={0} align={align}>
-        <ButtonLink size={size ?? "medium"} {...buttonProps} />
+        <ButtonLink size={size} {...buttonProps} />
       </Inline>
     </Inset>
   );
@@ -62,15 +66,16 @@ export function ButtonLinkCell({
 export function TextCell({
   value,
   column: { align },
-  options: { size, weight, color },
+  options,
 }: CellProps<{}, LocalizedString> & {
   options: Partial<Pick<BodyProps, "size" | "weight" | "color">>;
 }) {
   const config = useBentoConfig().table;
   const padding = config.padding.textCell ?? config.padding.defaultCell;
+  const { size, weight, color } = mergeProps(config.defaultCellOptions.textCell, options);
   return (
     <Box {...padding} textAlign={align}>
-      <Body size={size ?? "medium"} weight={weight} color={color}>
+      <Body size={size} weight={weight} color={color}>
         {value}
       </Body>
     </Box>
@@ -80,7 +85,7 @@ export function TextCell({
 export function TextWithIconCell({
   value: { icon, iconPosition, text, tooltipContent },
   column: { align },
-  options: { size, weight, color, iconSize, iconColor },
+  options,
 }: CellProps<
   {},
   {
@@ -96,8 +101,12 @@ export function TextWithIconCell({
   };
 }) {
   const config = useBentoConfig().table;
+  const { size, weight, color, iconSize, iconColor } = mergeProps(
+    config.defaultCellOptions.textWithIconCell,
+    options
+  );
   const padding = config.padding.textWithIconCell ?? config.padding.defaultCell;
-  const icon_ = icon && icon({ size: iconSize ?? 12, color: iconColor });
+  const icon_ = icon && icon({ size: iconSize, color: iconColor });
 
   return (
     <Inset spaceX={padding.paddingX} spaceY={padding.paddingY}>
@@ -115,7 +124,7 @@ export function TextWithIconCell({
         ) : (
           icon_
         )}
-        <Body size={size ?? "medium"} weight={weight} color={color}>
+        <Body size={size} weight={weight} color={color}>
           {text}
         </Body>
       </Inline>
@@ -135,12 +144,21 @@ export function ChipCell({ value: chipProps, column: { align } }: CellProps<{}, 
   );
 }
 
-export function LabelCell({ value, column: { align } }: CellProps<{}, LocalizedString>) {
+export function LabelCell({
+  value,
+  column: { align },
+  options,
+}: CellProps<{}, LocalizedString> & {
+  options: Partial<Pick<LabelProps, "size" | "color">>;
+}) {
   const config = useBentoConfig().table;
   const padding = config.padding.labelCell ?? config.padding.defaultCell;
+  const { size, color } = mergeProps(config.defaultCellOptions.labelCell, options);
   return (
     <Box {...padding} textAlign={align}>
-      <Label size="large">{value}</Label>
+      <Label size={size} color={color}>
+        {value}
+      </Label>
     </Box>
   );
 }
@@ -148,15 +166,16 @@ export function LabelCell({ value, column: { align } }: CellProps<{}, LocalizedS
 export function LinkCell({
   value,
   column: { align },
-  options: { size, weight },
+  options,
 }: CellProps<{}, ComponentProps<typeof Link>> & {
   options: Partial<Pick<BodyProps, "size" | "weight">>;
 }) {
   const config = useBentoConfig().table;
   const padding = config.padding.linkCell ?? config.padding.defaultCell;
+  const { size, weight } = mergeProps(config.defaultCellOptions.linkCell, options);
   return (
     <Box {...padding} textAlign={align}>
-      <Body size={size ?? "medium"} weight={weight}>
+      <Body size={size} weight={weight}>
         <Link {...value} />
       </Body>
     </Box>
@@ -166,15 +185,16 @@ export function LinkCell({
 export function IconCell({
   value,
   column: { align },
-  options: { size, color },
+  options,
 }: CellProps<{}, { icon: (props: IconProps) => JSX.Element; label: LocalizedString }> & {
   options: Partial<Pick<IconProps, "size" | "color">>;
 }) {
   const config = useBentoConfig().table;
+  const { size, color } = mergeProps(config.defaultCellOptions.iconCell, options);
   const padding = config.padding.iconCell ?? config.padding.defaultCell;
   return (
     <Box {...padding} textAlign={align} aria-label={value.label}>
-      {value.icon({ size: size ?? 16, color: color ?? "default" })}
+      {value.icon({ size, color })}
     </Box>
   );
 }
@@ -182,21 +202,18 @@ export function IconCell({
 export function IconButtonCell({
   value: iconButtonProps,
   column: { align },
-  options: { size, hierarchy, kind },
+  options,
 }: CellProps<{}, Omit<IconButtonProps, "size" | "kind" | "hierarchy">> & {
   options: Partial<Pick<IconButtonProps, "size" | "kind" | "hierarchy">>;
 }) {
   const config = useBentoConfig().table;
+  const { size, hierarchy, kind } = mergeProps(config.defaultCellOptions.iconButtonCell, options);
   const padding = config.padding.iconButtonCell ?? config.padding.defaultCell;
+
   return (
     <Inset spaceX={padding.paddingX} spaceY={padding.paddingY}>
       <Inline space={0} align={align} alignY="center">
-        <IconButton
-          kind={kind ?? "transparent"}
-          hierarchy={hierarchy ?? "primary"}
-          size={size ?? 16}
-          {...iconButtonProps}
-        />
+        <IconButton kind={kind} hierarchy={hierarchy} size={size} {...iconButtonProps} />
       </Inline>
     </Inset>
   );

@@ -52,7 +52,6 @@ import {
   Row as RowType,
 } from "./types";
 import { useLayoutEffect, useMemo, useState, CSSProperties, useEffect, useRef } from "react";
-import { IconQuestionSolid, IconInfo } from "../Icons";
 import { match, __ } from "ts-pattern";
 import { useBentoConfig } from "../BentoConfigContext";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
@@ -561,7 +560,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
   const hint = column.hint ? (
     typeof column.hint === "object" ? (
       <IconButton
-        icon={IconQuestionSolid}
+        icon={config.headerHintIcon}
         onPress={column.hint.onPress}
         kind="transparent"
         hierarchy="primary"
@@ -572,7 +571,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
       <Tooltip
         trigger={(ref, props) => (
           <Box as="div" display="inline-block" ref={ref} {...props}>
-            <IconInfo size={12} color="currentColor" />
+            <config.headerInfoIcon size={12} color="currentColor" />
           </Box>
         )}
         content={column.hint}
@@ -611,7 +610,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
             <Columns space={8} alignY="center" align={column.align}>
               {column.Header ? (
                 <Column width="content">
-                  <Label size="large">{column.render("Header") as any}</Label>
+                  <Label size={config.headerSize}>{column.render("Header") as any}</Label>
                 </Column>
               ) : null}
               {hint && <Column width="content">{hint}</Column>}
@@ -677,7 +676,7 @@ function ColumnFooter<D extends Record<string, unknown>>({
           >
             <Columns space={8} alignY="center" align={column.align}>
               <Column width="content">
-                <Label size="large">{column.render("Footer") as any}</Label>
+                <Label size={config.footerSize}>{column.render("Footer") as any}</Label>
               </Column>
             </Columns>
           </Box>
