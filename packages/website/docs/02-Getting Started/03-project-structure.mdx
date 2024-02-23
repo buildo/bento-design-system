@@ -51,7 +51,7 @@ The reason for splitting the design system code from the application code is tha
 Having them as separate workspace projects is a good practice since it allows setting up different dependencies for each of them.
 
 For example, we recommend _not_ adding a i18n library (like `react-intl` or `react-i18next`) to the `design-system` project, so you
-will autoomatically make sure the UI components are parametric with respect to the localization aspects.
+will automatically make sure the UI components are parametric with respect to the localization aspects.
 
 Another example is _not_ setting up a styling library (like Vanilla Extract) in `app`: ideally, `app` should only use the design system components
 and in those rare cases in which this isn't true, plain CSS support (as it comes with tools like Create React App) should be enough.
@@ -98,8 +98,7 @@ export default defineConfig({
   outDir: "lib",
   esbuildPlugins: [vanillaExtractPlugin()],
   dts: true,
-  // See https://esbuild.github.io/content-types/#auto-import-for-jsx
-  inject: ["./jsxShim.ts"],
+  jsx: "automatic",
   // Include here the css files coming from external dependencies, which we
   // recommend to bundle in your design system package.
   noExternal: [
