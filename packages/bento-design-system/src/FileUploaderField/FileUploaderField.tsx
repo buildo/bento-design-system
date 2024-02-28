@@ -141,6 +141,7 @@ export function FileUploaderField<E extends string>({
   allowedFileTypes,
   height: height_,
   isUploading,
+  name,
 }: Props<E>) {
   const config = useBentoConfig().fileUploaderField;
   const height = height_ ?? config.defaultHeight;
@@ -354,7 +355,7 @@ export function FileUploaderField<E extends string>({
             </Stack>
           </Inset>
         )}
-        <input {...getInputProps()} {...fieldProps} />
+        <input name={name} {...getInputProps()} {...fieldProps} />
       </Box>
     </Field>
   );
