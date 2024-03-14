@@ -124,7 +124,7 @@ export { defaultTokens } from "./util/defaultTokens";
 
 export type { BentoConfig, PartialBentoConfig } from "./BentoConfig";
 export { defaultConfigs };
-export { BentoConfigProvider } from "./BentoConfigContext";
+export { BentoConfigProvider, useBentoConfig } from "./BentoConfigContext";
 
 export { createBentoComponents } from "./createBentoComponents";
 
