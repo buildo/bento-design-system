@@ -1,6 +1,19 @@
-import { StyleRule, styleVariants } from "@vanilla-extract/css";
+import { StyleRule, createVar, style, styleVariants } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal/sprinkles.css";
 import { Breakpoint, breakpoints } from "../util/breakpoints";
+
+export const columnsSpace = createVar("columns-space");
+
+export const column = style({});
+
+export const columnContent = style({
+  marginLeft: columnsSpace,
+  selectors: {
+    [`${column}:first-child &`]: {
+      marginLeft: 0,
+    },
+  },
+});
 
 const styleForScale = (scale: number): StyleRule => ({
   flex: `0 0 ${scale * 100}%`,
