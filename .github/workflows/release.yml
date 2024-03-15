@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    name: Checks
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: pnpm/action-setup@v2
+        with:
+          run_install: true
+      - run: |
+          cd packages/bento-design-system
+          pnpm version --no-git-tag-version --new-version ${{ github.ref_name }}
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          message: ${{ github.ref_name }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish
+        run: |
+          cd packages/bento-design-system
+
+          # publish on npm
+          pnpm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_TOKEN }}
+          pnpm publish --git-checks false
+
+          # publish on GitHub Packages
+          pnpm config set '//npm.pkg.github.com/:_authToken' ${{ secrets.GITHUB_TOKEN }}
+          pnpm publish --git-checks false --access public --registry=https://npm.pkg.github.com
+      - uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          channel-id: bento
+          slack-message: ":tada: Version ${{ github.ref_name }} has been released!"
