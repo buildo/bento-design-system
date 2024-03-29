@@ -16,7 +16,7 @@ import {
   mobileWidths,
   fullWidth,
   columnsSpace,
-  column,
+  columns,
   columnContent,
 } from "./Column.css";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
@@ -36,9 +36,8 @@ export function Column({ children, width, sticky }: ColumnProps) {
 
   const className =
     width == null
-      ? [column, fullWidth]
+      ? fullWidth
       : [
-          column,
           wide && wideWidths[wide],
           desktop && desktopWidths[desktop],
           tablet && tabletWidths[tablet],
@@ -65,6 +64,7 @@ export function Columns({ space, children, align, alignY, collapseBelow, reverse
       display="flex"
       {...responsiveCollapsibleAlignmentProps({ align, alignY, collapseBelow, reverse })}
       style={assignInlineVars({ [columnsSpace]: `${space}px` })}
+      className={columns}
     >
       {flattenChildren(children).map((child, index) => {
         if (isColumn(child)) {
