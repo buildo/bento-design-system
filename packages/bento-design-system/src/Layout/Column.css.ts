@@ -4,15 +4,12 @@ import { Breakpoint, breakpoints } from "../util/breakpoints";
 
 export const columnsSpace = createVar("columns-space");
 
-export const column = style({});
+export const columns = style({
+  marginLeft: `calc(${columnsSpace} * -1)`,
+});
 
 export const columnContent = style({
   marginLeft: columnsSpace,
-  selectors: {
-    [`${column}:first-child &`]: {
-      marginLeft: 0,
-    },
-  },
 });
 
 const styleForScale = (scale: number): StyleRule => ({
