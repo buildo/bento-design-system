@@ -1,6 +1,6 @@
 import { defaultMessages } from "../src/defaultMessages/en";
 import { BentoProvider } from "../stories";
-import { useArgs } from "@storybook/addons";
+import { useArgs } from "@storybook/preview-api";
 import { Decorator } from "@storybook/react";
 import "@fontsource/lexend/400.css";
 import "@fontsource/lexend/500.css";

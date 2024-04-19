@@ -1,5 +1,5 @@
 import { Body, Box, Card, AreaLoader, Stack, Title, Inset } from "..";
-import { useArgs } from "@storybook/addons";
+import { useArgs } from "@storybook/preview-api";
 import { useEffect } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 

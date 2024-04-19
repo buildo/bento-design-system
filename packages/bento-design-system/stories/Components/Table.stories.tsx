@@ -16,7 +16,7 @@ import {
 import orderBy from "lodash.orderby";
 import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
-import { useArgs } from "@storybook/addons";
+import { useArgs } from "@storybook/preview-api";
 
 const exampleColumns = [
   tableColumn.button({
