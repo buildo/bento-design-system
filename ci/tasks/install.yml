@@ -15,6 +15,9 @@ outputs:
 caches:
   - path: bento/.pnpm-store
 
+params:
+  COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
+
 run:
   dir: bento
   path: ash

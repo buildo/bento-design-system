@@ -17,6 +17,7 @@ params:
   NPM_TOKEN: ((npm_token))
   SSH_PRIVATE_KEY: ((private-key))
   GITHUB_TOKEN: ((github-token))
+  COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
 
 run:
   path: ci/tasks/release.sh

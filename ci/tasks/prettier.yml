@@ -9,6 +9,9 @@ image_resource:
 inputs:
   - name: bento
 
+params:
+  COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
+
 run:
   dir: bento
   path: ash
