@@ -20,9 +20,11 @@ export const chipRecipe = strictRecipe({
 
 export const maxWidth = createVar();
 
-export const ellipsedLabel = style({
-  overflow: "hidden",
-  textOverflow: "ellipsis",
-  whiteSpace: "nowrap",
-  maxWidth: maxWidth,
-});
+export const ellipsedLabel = style([
+  { maxWidth: maxWidth },
+  bentoSprinkles({
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  }),
+]);

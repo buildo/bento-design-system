@@ -3,6 +3,7 @@ import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
 import { vars } from "../vars.css";
 import { radioOption } from "./RadioGroupField.css";
+import { statusProperties } from "../util/atoms";
 
 export const outerRadioCircleRecipe = strictRecipe({
   base: bentoSprinkles({
@@ -21,10 +22,10 @@ export const outerRadioCircleRecipe = strictRecipe({
         {
           selectors: {
             [`${radioOption}:hover:not([disabled]) &`]: {
-              boxShadow: vars.boxShadow.outlineInputHover,
+              boxShadow: statusProperties.boxShadow.outlineInputHover,
             },
             [`${radioOption}[disabled] &`]: {
-              boxShadow: vars.boxShadow.outlineInputDisabled,
+              boxShadow: statusProperties.boxShadow.outlineInputDisabled,
             },
           },
         },

@@ -2,6 +2,7 @@ import { createVar } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal/sprinkles.css";
 import { strictRecipe } from "../util/strictRecipe";
 import { vars } from "../vars.css";
+import { statusProperties } from "../util/atoms";
 
 export const readOnlyBackground = createVar();
 
@@ -46,7 +47,7 @@ export const inputRecipe = strictRecipe({
         {
           selectors: {
             [`&:focus-within${notDisabled}`]: {
-              boxShadow: vars.boxShadow.outlineInputFocus,
+              boxShadow: statusProperties.boxShadow.outlineInputFocus,
             },
           },
         },
@@ -61,7 +62,7 @@ export const inputRecipe = strictRecipe({
         {
           selectors: {
             [`&:focus-within${notDisabled}`]: {
-              boxShadow: vars.boxShadow.outlineNegativeStrong,
+              boxShadow: statusProperties.boxShadow.outlineNegativeStrong,
             },
           },
         },

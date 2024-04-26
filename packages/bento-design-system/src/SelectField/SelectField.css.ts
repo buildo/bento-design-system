@@ -1,7 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
-import { vars } from "../vars.css";
 
 export const control = strictRecipe({
   base: [
@@ -60,24 +59,22 @@ export const control = strictRecipe({
   ],
 });
 
-export const singleValue = style({
-  gridArea: "1/1/2/3",
-  textOverflow: "ellipsis",
-  overflow: "hidden",
-  whiteSpace: "nowrap",
-});
+export const singleValue = style([
+  bentoSprinkles({
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+  }),
+  { gridArea: "1/1/2/3" },
+]);
 
 export const placeholder = style({ gridArea: "1/1/2/3" });
 
-export const menu = style([
-  {
-    marginTop: vars.space[4],
-    overflow: "hidden",
-  },
-  bentoSprinkles({
-    background: "backgroundPrimary",
-  }),
-]);
+export const menu = bentoSprinkles({
+  marginTop: 4,
+  background: "backgroundPrimary",
+  overflow: "hidden",
+});
 
 export const optionRecipe = strictRecipe({
   base: bentoSprinkles({

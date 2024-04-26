@@ -1,4 +1,3 @@
-import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { bentoSprinkles } from "../internal";
 
@@ -6,14 +5,14 @@ export const iconRecipe = recipe({
   variants: {
     width: {
       8: bentoSprinkles({ width: 8 }),
-      12: style({ width: "12px" }),
+      12: bentoSprinkles({ width: 12 }),
       16: bentoSprinkles({ width: 16 }),
       24: bentoSprinkles({ width: 24 }),
       40: bentoSprinkles({ width: 40 }),
     },
     height: {
       8: bentoSprinkles({ height: 8 }),
-      12: style({ height: "12px" }),
+      12: bentoSprinkles({ height: 12 }),
       16: bentoSprinkles({ height: 16 }),
       24: bentoSprinkles({ height: 24 }),
       40: bentoSprinkles({ height: 40 }),

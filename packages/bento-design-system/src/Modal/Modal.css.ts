@@ -35,6 +35,6 @@ export const underlay = bentoSprinkles({
   background: "backgroundDarkScrim",
 });
 
-export const modalBody = style({
+export const modalBody = bentoSprinkles({
   overflowY: "auto",
 });

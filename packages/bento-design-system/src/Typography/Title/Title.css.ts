@@ -3,13 +3,12 @@ import { bentoSprinkles } from "../../internal/sprinkles.css";
 import { ellipsis } from "../typography.css";
 
 export const titleRecipe = strictRecipe({
-  base: bentoSprinkles({ fontFamily: "default", fontWeight: "title" }),
+  base: bentoSprinkles({ fontFamily: "title", fontWeight: "title" }),
   variants: {
     size: {
       small: bentoSprinkles({
         fontSize: "titleSmall",
         lineHeight: "titleSmall",
-        letterSpacing: 1,
       }),
       medium: bentoSprinkles({ fontSize: "titleMedium", lineHeight: "titleMedium" }),
       large: bentoSprinkles({ fontSize: "titleLarge", lineHeight: "titleLarge" }),

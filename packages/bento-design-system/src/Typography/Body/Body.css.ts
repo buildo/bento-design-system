@@ -3,10 +3,10 @@ import { bentoSprinkles } from "../../internal/sprinkles.css";
 import { ellipsis } from "../typography.css";
 
 export const bodyRecipe = strictRecipe({
-  base: bentoSprinkles({ fontFamily: "default" }),
+  base: bentoSprinkles({ fontFamily: "body" }),
   variants: {
     size: {
-      small: bentoSprinkles({ fontSize: "bodySmall", lineHeight: "bodySmall", letterSpacing: 1 }),
+      small: bentoSprinkles({ fontSize: "bodySmall", lineHeight: "bodySmall" }),
       medium: bentoSprinkles({ fontSize: "bodyMedium", lineHeight: "bodyMedium" }),
       large: bentoSprinkles({ fontSize: "bodyLarge", lineHeight: "bodyLarge" }),
     },

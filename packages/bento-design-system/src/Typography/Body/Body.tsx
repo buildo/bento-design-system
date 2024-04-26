@@ -17,12 +17,7 @@ export function Body({
   as = "span",
 }: Props) {
   return (
-    <Box
-      as={as}
-      className={bodyRecipe({ weight, size, color, ellipsis })}
-      textAlign={align}
-      fontFamily="default"
-    >
+    <Box as={as} className={bodyRecipe({ weight, size, color, ellipsis })} textAlign={align}>
       {children}
     </Box>
   );

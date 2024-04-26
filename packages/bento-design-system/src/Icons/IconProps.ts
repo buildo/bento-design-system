@@ -1,7 +1,7 @@
 import { BentoSprinkles } from "../internal";
 
 export type IconProps = {
-  size: Extract<BentoSprinkles["width"], 8 | 16 | 24 | 40> | 12;
+  size: Extract<BentoSprinkles["width"], 8 | 12 | 16 | 24 | 40>;
   color?:
     | "default"
     | "primary"

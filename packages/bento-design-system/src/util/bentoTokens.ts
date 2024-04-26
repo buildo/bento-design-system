@@ -1,81 +1,37 @@
+import { TypographySize } from "../Typography/TypographyProps";
+
+export type DataVisualizationPalette = "pastel" | "soft" | "bright" | "dark";
+export type DataVisualizationColor =
+  | "Grey"
+  | "Red"
+  | "Orange"
+  | "Yellow"
+  | "Green"
+  | "Jade"
+  | "Blue"
+  | "Indigo"
+  | "Violet"
+  | "Pink";
+
+type TypographyTokens<HasBold extends boolean> = {
+  fontFamily: string;
+  fontWeight: HasBold extends true ? { regular: string; strong: string } : string;
+  sizes: Record<
+    TypographySize,
+    {
+      fontSize: string;
+      lineHeight: string;
+    }
+  >;
+};
+
 export type BentoTokens = {
-  fontFamily: {
-    default: string;
-  };
-  fontWeight: {
-    body: string;
-    bodyStrong: string;
-    display: string;
-    headline: string;
-    label: string;
-    title: string;
-  };
-  fontSize: {
-    bodySmall: string;
-    bodyMedium: string;
-    bodyLarge: string;
-    displaySmall: string;
-    displayMedium: string;
-    displayLarge: string;
-    headlineSmall: string;
-    headlineMedium: string;
-    headlineLarge: string;
-    labelSmall: string;
-    labelMedium: string;
-    labelLarge: string;
-    titleSmall: string;
-    titleMedium: string;
-    titleLarge: string;
-  };
-  lineHeight: {
-    bodySmall: string;
-    bodyMedium: string;
-    bodyLarge: string;
-    displaySmall: string;
-    displayMedium: string;
-    displayLarge: string;
-    headlineSmall: string;
-    headlineMedium: string;
-    headlineLarge: string;
-    labelSmall: string;
-    labelMedium: string;
-    labelLarge: string;
-    titleSmall: string;
-    titleMedium: string;
-    titleLarge: string;
-  };
-  letterSpacing: {
-    1: string;
-    2: string;
-  };
-  space: {
-    0: string;
-    4: string;
-    8: string;
-    12: string;
-    16: string;
-    24: string;
-    32: string;
-    40: string;
-    80: string;
-  };
-  negativeSpace: {
-    0: string;
-    // NOTE(gabro): ideally we would use "-4" and so on here, but we can't due to
-    // https://github.com/Swatinem/rollup-plugin-dts/issues/201
-    negative4: string;
-    negative8: string;
-    negative12: string;
-    negative16: string;
-    negative24: string;
-    negative32: string;
-    negative40: string;
-    negative80: string;
-  };
-  radius: {
-    4: string;
-    8: string;
-    16: string;
+  typography: {
+    body: TypographyTokens<true>;
+    display: TypographyTokens<false>;
+    headline: TypographyTokens<false>;
+    label: TypographyTokens<false>;
+    title: TypographyTokens<false>;
   };
   brandColor: {
     brandPrimary: string;
@@ -196,53 +152,8 @@ export type BentoTokens = {
     outlineWarning: string;
     outlineNegative: string;
   };
-  dataVisualizationColor: {
-    softGrey: string;
-    softRed: string;
-    softOrange: string;
-    softYellow: string;
-    softGreen: string;
-    softJade: string;
-    softBlue: string;
-    softIndigo: string;
-    softViolet: string;
-    softPink: string;
-    brightGrey: string;
-    brightRed: string;
-    brightOrange: string;
-    brightYellow: string;
-    brightGreen: string;
-    brightJade: string;
-    brightBlue: string;
-    brightIndigo: string;
-    brightViolet: string;
-    brightPink: string;
-  };
-  boxShadow: {
-    outlineInteractive: string;
-    outlineInteractiveBottom: string;
-    outlineInteractivePrimaryEnabled: string;
-    outlineInteractivePrimaryFocus: string;
-    outlineInteractivePrimaryHover: string;
-    outlineInteractiveSecondaryEnabled: string;
-    outlineInteractiveSecondaryFocus: string;
-    outlineInteractiveSecondaryHover: string;
-    outlineInteractiveDangerEnabled: string;
-    outlineInteractiveDangerFocus: string;
-    outlineInteractiveDangerHover: string;
-    outlineInteractiveDisabled: string;
-    outlineDecorative: string;
-    outlineDecorativeBottom: string;
-    outlineContainer: string;
-    outlineInputEnabled: string;
-    outlineInputHover: string;
-    outlineInputFocus: string;
-    outlineInputDisabled: string;
-    outlineInformative: string;
-    outlinePositive: string;
-    outlineWarning: string;
-    outlineNegative: string;
-    outlineNegativeStrong: string;
+  dataVisualizationColor: Record<`${DataVisualizationPalette}${DataVisualizationColor}`, string>;
+  elevations: {
     elevationSmall: string;
     elevationMedium: string;
     elevationLarge: string;
