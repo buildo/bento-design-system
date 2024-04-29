@@ -12,6 +12,7 @@ inputs:
 params:
   CHROMATIC_PROJECT_TOKEN: ((chromatic-project-token))
   CHROMATIC_OPTIONS:
+  COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
 
 run:
   dir: bento

@@ -82,6 +82,7 @@ function DateField({ fieldProps }: { fieldProps: AriaDateFieldOptions<CalendarDa
 
 export function Input(props: Props) {
   const config = useBentoConfig().input;
+  const dateFieldConfig = useBentoConfig().dateField;
 
   const { observe: rightAccessoryRef, width: rightAccessoryWidth } = useDimensions({
     // This is needed to include the padding in the width
@@ -146,10 +147,12 @@ export function Input(props: Props) {
       {props.type === "single" ? (
         <DateField fieldProps={props.fieldProps} />
       ) : (
-        <Columns space={16}>
+        <Columns space={dateFieldConfig.internalPadding} alignY="stretch">
           <DateField fieldProps={props.fieldProps.start} />
           <Column width="content">
-            <IconMinus size={24} />
+            <Box display="flex" height="full" alignItems="center">
+              <IconMinus size={dateFieldConfig.rangeSeparatorSize} />
+            </Box>
           </Column>
           <DateField fieldProps={props.fieldProps.end} />
         </Columns>

@@ -677,7 +677,9 @@ export const tooltip: TooltipConfig = {
 export const dateField: DateFieldConfig = {
   radius: 24,
   padding: 24,
+  internalPadding: 16,
   elevation: "medium",
+  rangeSeparatorSize: 24,
   monthYearLabelSize: "large",
   dayOfWeekLabelSize: "large",
   previousMonthIcon: IconChevronLeft,
