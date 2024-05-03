@@ -7,9 +7,9 @@ on:
 permissions: write-all
 
 jobs:
-  checks:
+  release:
     runs-on: ubuntu-latest
-    name: Checks
+    name: Release
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,11 +24,18 @@ jobs:
           cd packages/bento-design-system
           pnpm version --no-git-tag-version --new-version ${{ github.ref_name }}
 
+      - name: Get Github App Token
+        id: github_app_token
+        uses: getsentry/action-github-app-token@v3
+        with:
+          app_id: ${{ secrets.RELEASE_BOT_APP_ID }}
+          private_key: ${{ secrets.RELEASE_BOT_APP_PRIVATE_KEY }}
+
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
           message: ${{ github.ref_name }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ steps.github_app_token.outputs.token }}
 
       - name: Publish to npm
         uses: JS-DevTools/npm-publish@v3
