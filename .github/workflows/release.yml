@@ -1,0 +1,68 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions: write-all
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    name: Checks
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v3
+        with:
+          run_install: true
+      - run: |
+          cd packages/bento-design-system
+          pnpm version --no-git-tag-version --new-version ${{ github.ref_name }}
+
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          message: ${{ github.ref_name }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to npm
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          package: "packages/bento-design-system/package.json"
+          token: ${{ secrets.NPM_TOKEN }}
+          access: "public"
+          provenance: true
+
+      - name: Publish to Github
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          package: "packages/bento-design-system/package.json"
+          registry: "https://npm.pkg.github.com"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          access: "public"
+          provenance: true
+
+      - uses: slackapi/slack-github-action@v1.24.0
+        if: ${{ job.status == 'success' }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          JOB_STATUS: ${{ job.status }}
+          ATTACHMENT_COLOR: "good"
+        with:
+          channel-id: bento
+          slack-message: ":tada: Version ${{ github.ref_name }} has been released!"
+
+      - uses: slackapi/slack-github-action@v1.24.0
+        if: ${{ job.status == 'failure' }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          JOB_STATUS: ${{ job.status }}
+          ATTACHMENT_COLOR: "danger"
+        with:
+          channel-id: bento
+          slack-message: ":x: Version ${{ github.ref_name }} failed to release"
