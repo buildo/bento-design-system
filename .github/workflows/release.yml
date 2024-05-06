@@ -36,6 +36,7 @@ jobs:
         with:
           message: ${{ github.ref_name }}
           author_name: buildo-release-bot[bot]
+          author_email: 168835274+buildo-release-bot[bot]@users.noreply.github.com
           github_token: ${{ steps.github_app_token.outputs.token }}
 
       - name: Publish to npm
