@@ -24,12 +24,12 @@ jobs:
           cd packages/bento-design-system
           pnpm version --no-git-tag-version --new-version ${{ github.ref_name }}
 
-      - name: Get Github App Token
+      - name: Generate Github App Token
         id: github_app_token
-        uses: getsentry/action-github-app-token@v3
+        uses: actions/create-github-app-token@v1
         with:
-          app_id: ${{ secrets.RELEASE_BOT_APP_ID }}
-          private_key: ${{ secrets.RELEASE_BOT_APP_PRIVATE_KEY }}
+          app-id: ${{ secrets.RELEASE_BOT_APP_ID }}
+          private-key: ${{ secrets.RELEASE_BOT_APP_PRIVATE_KEY }}
 
       - name: Commit & Push changes
         uses: actions-js/push@master
