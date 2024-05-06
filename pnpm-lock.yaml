@@ -369,7 +369,7 @@ importers:
       '@easyops-cn/docusaurus-search-local': 0.35.0
       '@mdx-js/react': 1.6.22
       '@phosphor-icons/react': 2.0.15
-      '@tsconfig/docusaurus': 1.0.6
+      '@tsconfig/docusaurus': 2.0.3
       '@types/babel__generator': 7.6.4
       '@types/babel__standalone': 7.1.4
       '@types/babel__traverse': 7.20.1
@@ -426,7 +426,7 @@ importers:
       '@docusaurus/theme-live-codeblock': 2.0.1_ke7zlixcmud45jrvihi6wmw3pu
       '@docusaurus/types': 2.0.1_biqbaboplfbrettd7655fr4n2y
       '@phosphor-icons/react': 2.0.15_biqbaboplfbrettd7655fr4n2y
-      '@tsconfig/docusaurus': 1.0.6
+      '@tsconfig/docusaurus': 2.0.3
       '@types/babel__generator': 7.6.4
       '@types/babel__standalone': 7.1.4
       '@types/babel__traverse': 7.20.1
@@ -8136,8 +8136,8 @@ packages:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
 
-  /@tsconfig/docusaurus/1.0.6:
-    resolution: {integrity: sha512-1QxDaP54hpzM6bq9E+yFEo4F9WbWHhsDe4vktZXF/iDlc9FqGr9qlg+3X/nuKQXx8QxHV7ue8NXFazzajsxFBA==}
+  /@tsconfig/docusaurus/2.0.3:
+    resolution: {integrity: sha512-3l1L5PzWVa7l0691TjnsZ0yOIEwG9DziSqu5IPZPlI5Dowi7z42cEym8Y35GHbgHvPcBfNxfrbxm7Cncn4nByQ==}
     dev: true
 
   /@tsconfig/vite-react/2.0.0:
