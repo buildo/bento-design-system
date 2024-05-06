@@ -35,6 +35,7 @@ jobs:
         uses: actions-js/push@master
         with:
           message: ${{ github.ref_name }}
+          author_name: buildo-release-bot[bot]
           github_token: ${{ steps.github_app_token.outputs.token }}
 
       - name: Publish to npm
