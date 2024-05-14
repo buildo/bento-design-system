@@ -1,5 +1,10 @@
-import { CalendarDate, createCalendar } from "@internationalized/date";
-import { AriaDateFieldOptions, useDateField, useDateSegment } from "@react-aria/datepicker";
+import { createCalendar } from "@internationalized/date";
+import {
+  AriaDatePickerProps,
+  DateValue,
+  useDateField,
+  useDateSegment,
+} from "@react-aria/datepicker";
 import { useLocale } from "@react-aria/i18n";
 import {
   DateFieldState,
@@ -25,12 +30,12 @@ import { ValidationState } from "@react-types/shared";
 import { Column, Columns } from "../Layout/Columns";
 
 type Props = (
-  | { type: "single"; fieldProps: AriaDateFieldOptions<CalendarDate> }
+  | { type: "single"; fieldProps: AriaDatePickerProps<DateValue> }
   | {
       type: "range";
       fieldProps: {
-        start: AriaDateFieldOptions<CalendarDate>;
-        end: AriaDateFieldOptions<CalendarDate>;
+        start: AriaDatePickerProps<DateValue>;
+        end: AriaDatePickerProps<DateValue>;
       };
     }
 ) & {
@@ -60,7 +65,7 @@ function DateSegment({ segment, state }: { segment: DateSegmentType; state: Date
   );
 }
 
-function DateField({ fieldProps }: { fieldProps: AriaDateFieldOptions<CalendarDate> }) {
+function DateField({ fieldProps }: { fieldProps: AriaDatePickerProps<DateValue> }) {
   const { locale } = useLocale();
   const ref = useRef(null);
   const state = useDateFieldState({
