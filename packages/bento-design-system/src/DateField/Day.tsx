@@ -47,7 +47,9 @@ function computeStyle(props: {
       return "focused";
     } else return "default";
   } else {
-    if (props.isStartDate) {
+    if (props.isInHoverRange) {
+      return "inHoverRange";
+    } else if (props.isStartDate) {
       if (props.isEndDate) {
         return "selected";
       }
@@ -56,8 +58,6 @@ function computeStyle(props: {
       return "selectedEnd";
     } else if (props.isInRange) {
       return "selectedRange";
-    } else if (props.isInHoverRange) {
-      return "inHoverRange";
     } else if (props.isFocused) {
       return "focused";
     } else {

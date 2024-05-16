@@ -67,6 +67,7 @@ export const SingleWithShortcuts = {
   args: {
     value: null,
     shortcuts: [
+      { label: "Clear", value: null },
       {
         label: "Today",
         value: new Date(),
@@ -132,6 +133,10 @@ export const RangeWithShortcuts = {
     value: null,
     type: "range",
     shortcuts: [
+      {
+        label: "Clear all",
+        value: null,
+      },
       {
         label: "This Week",
         value: [startOfWeek(today), endOfWeek(today)],
