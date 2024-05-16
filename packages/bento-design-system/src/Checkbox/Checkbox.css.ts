@@ -6,7 +6,7 @@ export const fieldContainer = extendedHitAreaRecipe({ axis: "y" });
 
 export const checkboxRecipe = strictRecipe({
   base: [
-    { position: "relative", zIndex: "1" },
+    { position: "relative" },
     bentoSprinkles({
       width: 24,
       height: 24,
