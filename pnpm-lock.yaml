@@ -371,7 +371,7 @@ importers:
       '@phosphor-icons/react': 2.0.15
       '@tsconfig/docusaurus': 1.0.6
       '@types/babel__generator': 7.6.8
-      '@types/babel__standalone': 7.1.4
+      '@types/babel__standalone': 7.1.7
       '@types/babel__traverse': 7.20.1
       '@types/node': 18.17.14
       '@types/react': ^18
@@ -428,7 +428,7 @@ importers:
       '@phosphor-icons/react': 2.0.15_biqbaboplfbrettd7655fr4n2y
       '@tsconfig/docusaurus': 1.0.6
       '@types/babel__generator': 7.6.8
-      '@types/babel__standalone': 7.1.4
+      '@types/babel__standalone': 7.1.7
       '@types/babel__traverse': 7.20.1
       '@types/node': 18.17.14
       '@types/react': 18.2.14
@@ -8199,11 +8199,11 @@ packages:
   /@types/babel__core/7.20.5:
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
     dependencies:
-      '@babel/parser': 7.24.4
+      '@babel/parser': 7.22.16
       '@babel/types': 7.22.19
       '@types/babel__generator': 7.6.8
       '@types/babel__template': 7.4.4
-      '@types/babel__traverse': 7.20.5
+      '@types/babel__traverse': 7.20.1
     dev: true
 
   /@types/babel__generator/7.6.8:
@@ -8212,18 +8212,16 @@ packages:
       '@babel/types': 7.22.19
     dev: true
 
-  /@types/babel__standalone/7.1.4:
-    resolution: {integrity: sha512-HijIDmcNl3Wmo0guqjYkQvMzyRCM6zMCkYcdG8f+2X7mPBNa9ikSeaQlWs2Yg18KN1klOJzyupX5BPOf+7ahaw==}
+  /@types/babel__standalone/7.1.7:
+    resolution: {integrity: sha512-4RUJX9nWrP/emaZDzxo/+RYW8zzLJTXWJyp2k78HufG459HCz754hhmSymt3VFOU6/Wy+IZqfPvToHfLuGOr7w==}
     dependencies:
-      '@babel/core': 7.22.20
-    transitivePeerDependencies:
-      - supports-color
+      '@types/babel__core': 7.20.5
     dev: true
 
   /@types/babel__template/7.4.4:
     resolution: {integrity: sha512-h/NUaSyG5EyxBIp8YRxo4RMe2/qQgvyowRwVMzhYhBCONbW8PUsg4lkFMrhgZhUe5z3L3MiLDuvyJ/CaPa2A8A==}
     dependencies:
-      '@babel/parser': 7.24.4
+      '@babel/parser': 7.22.16
       '@babel/types': 7.22.19
     dev: true
 
