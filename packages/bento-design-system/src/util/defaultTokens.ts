@@ -82,16 +82,15 @@ const colors = {
   pink50: "#C20B76",
 };
 
-const displayFontFamily = "Lexend, Arial, sans-serif";
-const groteskFontFamily = "Lexend, Arial, sans-serif";
+const fontFamily = "Lexend, Arial, sans-serif";
 
 export const defaultTokens: BentoTokens = {
   fontFamily: {
-    display: displayFontFamily,
-    headline: displayFontFamily,
-    title: displayFontFamily,
-    body: groteskFontFamily,
-    label: groteskFontFamily,
+    display: fontFamily,
+    headline: fontFamily,
+    title: fontFamily,
+    body: fontFamily,
+    label: fontFamily,
   },
   fontWeight: {
     displaySmall: "600",
