@@ -1,5 +1,8 @@
 import { TypographySize } from "../Typography/TypographyProps";
 
+type TypographyFamily = "display" | "headline" | "title" | "body" | "label";
+type TypographyComponent = `${TypographyFamily}${Capitalize<TypographySize>}`;
+
 export type DataVisualizationPalette = "pastel" | "soft" | "bright" | "dark";
 export type DataVisualizationColor =
   | "Grey"
@@ -13,26 +16,13 @@ export type DataVisualizationColor =
   | "Violet"
   | "Pink";
 
-type TypographyTokens<HasBold extends boolean> = {
-  fontFamily: string;
-  fontWeight: HasBold extends true ? { regular: string; strong: string } : string;
-  sizes: Record<
-    TypographySize,
-    {
-      fontSize: string;
-      lineHeight: string;
-    }
-  >;
-};
-
 export type BentoTokens = {
-  typography: {
-    body: TypographyTokens<true>;
-    display: TypographyTokens<false>;
-    headline: TypographyTokens<false>;
-    label: TypographyTokens<false>;
-    title: TypographyTokens<false>;
-  };
+  fontFamily: Record<TypographyFamily, string>;
+  fontWeight: Record<TypographyComponent, string> &
+    Record<`bodyStrong${Capitalize<TypographySize>}`, string>;
+  fontSize: Record<TypographyComponent, string>;
+  lineHeight: Record<TypographyComponent, string>;
+  letterSpacing: Record<TypographyComponent, string>;
   brandColor: {
     brandPrimary: string;
     brandSecondary: string;

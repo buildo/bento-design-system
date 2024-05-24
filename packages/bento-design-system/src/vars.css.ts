@@ -2,97 +2,83 @@ import { createGlobalThemeContract } from "@vanilla-extract/css";
 
 export const vars = createGlobalThemeContract(
   {
-    typography: {
-      body: {
-        fontFamily: null,
-        fontWeight: { regular: null, strong: null },
-        sizes: {
-          small: {
-            fontSize: null,
-            lineHeight: null,
-          },
-          medium: {
-            fontSize: null,
-            lineHeight: null,
-          },
-          large: {
-            fontSize: null,
-            lineHeight: null,
-          },
-        },
-      },
-      display: {
-        fontFamily: null,
-        fontWeight: null,
-        sizes: {
-          small: {
-            fontSize: null,
-            lineHeight: null,
-          },
-          medium: {
-            fontSize: null,
-            lineHeight: null,
-          },
-          large: {
-            fontSize: null,
-            lineHeight: null,
-          },
-        },
-      },
-      headline: {
-        fontFamily: null,
-        fontWeight: null,
-        sizes: {
-          small: {
-            fontSize: null,
-            lineHeight: null,
-          },
-          medium: {
-            fontSize: null,
-            lineHeight: null,
-          },
-          large: {
-            fontSize: null,
-            lineHeight: null,
-          },
-        },
-      },
-      label: {
-        fontFamily: null,
-        fontWeight: null,
-        sizes: {
-          small: {
-            fontSize: null,
-            lineHeight: null,
-          },
-          medium: {
-            fontSize: null,
-            lineHeight: null,
-          },
-          large: {
-            fontSize: null,
-            lineHeight: null,
-          },
-        },
-      },
-      title: {
-        fontFamily: null,
-        fontWeight: null,
-        sizes: {
-          small: {
-            fontSize: null,
-            lineHeight: null,
-          },
-          medium: {
-            fontSize: null,
-            lineHeight: null,
-          },
-          large: {
-            fontSize: null,
-            lineHeight: null,
-          },
-        },
-      },
+    fontFamily: {
+      display: null,
+      headline: null,
+      title: null,
+      body: null,
+      label: null,
+    },
+    fontWeight: {
+      displaySmall: null,
+      displayMedium: null,
+      displayLarge: null,
+      headlineSmall: null,
+      headlineMedium: null,
+      headlineLarge: null,
+      titleSmall: null,
+      titleMedium: null,
+      titleLarge: null,
+      bodySmall: null,
+      bodyMedium: null,
+      bodyLarge: null,
+      bodyStrongSmall: null,
+      bodyStrongMedium: null,
+      bodyStrongLarge: null,
+      labelSmall: null,
+      labelMedium: null,
+      labelLarge: null,
+    },
+    fontSize: {
+      displaySmall: null,
+      displayMedium: null,
+      displayLarge: null,
+      headlineSmall: null,
+      headlineMedium: null,
+      headlineLarge: null,
+      titleSmall: null,
+      titleMedium: null,
+      titleLarge: null,
+      bodySmall: null,
+      bodyMedium: null,
+      bodyLarge: null,
+      labelSmall: null,
+      labelMedium: null,
+      labelLarge: null,
+    },
+    lineHeight: {
+      displaySmall: null,
+      displayMedium: null,
+      displayLarge: null,
+      headlineSmall: null,
+      headlineMedium: null,
+      headlineLarge: null,
+      titleSmall: null,
+      titleMedium: null,
+      titleLarge: null,
+      bodySmall: null,
+      bodyMedium: null,
+      bodyLarge: null,
+      labelSmall: null,
+      labelMedium: null,
+      labelLarge: null,
+    },
+    letterSpacing: {
+      displaySmall: null,
+      displayMedium: null,
+      displayLarge: null,
+      headlineSmall: null,
+      headlineMedium: null,
+      headlineLarge: null,
+      titleSmall: null,
+      titleMedium: null,
+      titleLarge: null,
+      bodySmall: null,
+      bodyMedium: null,
+      bodyLarge: null,
+      labelSmall: null,
+      labelMedium: null,
+      labelLarge: null,
     },
     brandColor: {
       brandPrimary: null,

@@ -6,13 +6,25 @@ export const bodyRecipe = strictRecipe({
   base: bentoSprinkles({ fontFamily: "body" }),
   variants: {
     size: {
-      small: bentoSprinkles({ fontSize: "bodySmall", lineHeight: "bodySmall" }),
-      medium: bentoSprinkles({ fontSize: "bodyMedium", lineHeight: "bodyMedium" }),
-      large: bentoSprinkles({ fontSize: "bodyLarge", lineHeight: "bodyLarge" }),
+      small: bentoSprinkles({
+        fontSize: "bodySmall",
+        lineHeight: "bodySmall",
+        letterSpacing: "bodySmall",
+      }),
+      medium: bentoSprinkles({
+        fontSize: "bodyMedium",
+        lineHeight: "bodyMedium",
+        letterSpacing: "bodyMedium",
+      }),
+      large: bentoSprinkles({
+        fontSize: "bodyLarge",
+        lineHeight: "bodyLarge",
+        letterSpacing: "bodyLarge",
+      }),
     },
     weight: {
-      default: bentoSprinkles({ fontWeight: "body" }),
-      strong: bentoSprinkles({ fontWeight: "bodyStrong" }),
+      default: {},
+      strong: {},
     },
     color: {
       default: bentoSprinkles({ color: "textPrimary" }),
@@ -33,4 +45,48 @@ export const bodyRecipe = strictRecipe({
       true: ellipsis,
     },
   },
+  compoundVariants: [
+    {
+      variants: {
+        size: "small",
+        weight: "default",
+      },
+      style: bentoSprinkles({ fontWeight: "bodySmall" }),
+    },
+    {
+      variants: {
+        size: "medium",
+        weight: "default",
+      },
+      style: bentoSprinkles({ fontWeight: "bodyMedium" }),
+    },
+    {
+      variants: {
+        size: "large",
+        weight: "default",
+      },
+      style: bentoSprinkles({ fontWeight: "bodyLarge" }),
+    },
+    {
+      variants: {
+        size: "small",
+        weight: "strong",
+      },
+      style: bentoSprinkles({ fontWeight: "bodyStrongSmall" }),
+    },
+    {
+      variants: {
+        size: "medium",
+        weight: "strong",
+      },
+      style: bentoSprinkles({ fontWeight: "bodyStrongMedium" }),
+    },
+    {
+      variants: {
+        size: "large",
+        weight: "strong",
+      },
+      style: bentoSprinkles({ fontWeight: "bodyStrongLarge" }),
+    },
+  ],
 });

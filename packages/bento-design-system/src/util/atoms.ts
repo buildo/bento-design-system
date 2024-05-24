@@ -14,20 +14,15 @@ const spacing = {
   120: 120,
   160: 160,
 } as const;
-
-const negativeSpacing = {
-  negative0: 0,
-  negative4: 4,
-  negative8: 8,
-  negative12: 12,
-  negative16: 16,
-  negative24: 24,
-  negative32: 32,
-  negative40: 40,
-  negative80: 80,
-  negative120: 120,
-  negative160: 160,
-} as const;
+const negativeSpacing: Record<`negative${keyof typeof spacing}`, number> = Object.entries(
+  spacing
+).reduce(
+  (acc, [key, value]) => ({
+    ...acc,
+    [`negative${key}`]: value,
+  }),
+  {} as Record<`negative${keyof typeof spacing}`, number>
+);
 
 const radius = {
   ...spacing,
@@ -61,55 +56,11 @@ export const unconditionalProperties = {
   borderBottomLeftRadius: radius,
   borderBottomRightRadius: radius,
   textTransform: ["none", "uppercase", "lowercase", "capitalize"],
-  fontFamily: {
-    body: vars.typography.body.fontFamily,
-    display: vars.typography.display.fontFamily,
-    headline: vars.typography.headline.fontFamily,
-    label: vars.typography.label.fontFamily,
-    title: vars.typography.title.fontFamily,
-  },
-  fontWeight: {
-    body: vars.typography.body.fontWeight.regular,
-    bodyStrong: vars.typography.body.fontWeight.strong,
-    display: vars.typography.display.fontWeight,
-    headline: vars.typography.headline.fontWeight,
-    label: vars.typography.label.fontWeight,
-    title: vars.typography.title.fontWeight,
-  },
-  fontSize: {
-    bodySmall: vars.typography.body.sizes.small.fontSize,
-    bodyMedium: vars.typography.body.sizes.medium.fontSize,
-    bodyLarge: vars.typography.body.sizes.large.fontSize,
-    displaySmall: vars.typography.display.sizes.small.fontSize,
-    displayMedium: vars.typography.display.sizes.medium.fontSize,
-    displayLarge: vars.typography.display.sizes.large.fontSize,
-    headlineSmall: vars.typography.headline.sizes.small.fontSize,
-    headlineMedium: vars.typography.headline.sizes.medium.fontSize,
-    headlineLarge: vars.typography.headline.sizes.large.fontSize,
-    labelSmall: vars.typography.label.sizes.small.fontSize,
-    labelMedium: vars.typography.label.sizes.medium.fontSize,
-    labelLarge: vars.typography.label.sizes.large.fontSize,
-    titleSmall: vars.typography.title.sizes.small.fontSize,
-    titleMedium: vars.typography.title.sizes.medium.fontSize,
-    titleLarge: vars.typography.title.sizes.large.fontSize,
-  },
-  lineHeight: {
-    bodySmall: vars.typography.body.sizes.small.lineHeight,
-    bodyMedium: vars.typography.body.sizes.medium.lineHeight,
-    bodyLarge: vars.typography.body.sizes.large.lineHeight,
-    displaySmall: vars.typography.display.sizes.small.lineHeight,
-    displayMedium: vars.typography.display.sizes.medium.lineHeight,
-    displayLarge: vars.typography.display.sizes.large.lineHeight,
-    headlineSmall: vars.typography.headline.sizes.small.lineHeight,
-    headlineMedium: vars.typography.headline.sizes.medium.lineHeight,
-    headlineLarge: vars.typography.headline.sizes.large.lineHeight,
-    labelSmall: vars.typography.label.sizes.small.lineHeight,
-    labelMedium: vars.typography.label.sizes.medium.lineHeight,
-    labelLarge: vars.typography.label.sizes.large.lineHeight,
-    titleSmall: vars.typography.title.sizes.small.lineHeight,
-    titleMedium: vars.typography.title.sizes.medium.lineHeight,
-    titleLarge: vars.typography.title.sizes.large.lineHeight,
-  },
+  fontFamily: vars.fontFamily,
+  fontWeight: vars.fontWeight,
+  fontSize: vars.fontSize,
+  lineHeight: vars.lineHeight,
+  letterSpacing: vars.letterSpacing,
   height: {
     ...spacing,
     full: "100%",
