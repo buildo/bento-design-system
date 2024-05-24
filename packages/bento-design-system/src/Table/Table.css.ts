@@ -3,11 +3,15 @@ import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
 import { vars } from "../vars.css";
 
-export const table = style({
-  gridAutoRows: "max-content",
-  // NOTE(gabro): this is to avoid the internal z-indexes to "leak" out of the Table
-  isolation: "isolate",
-});
+export const table = style([
+  {
+    gridAutoRows: "max-content",
+  },
+  bentoSprinkles({
+    // NOTE(gabro): this is to avoid the internal z-indexes to "leak" out of the Table
+    isolation: "isolate",
+  }),
+]);
 
 export const lastLeftStickyColumn = strictRecipe({
   variants: {

@@ -3,6 +3,7 @@ import { vars } from "../vars.css";
 import { bentoSprinkles } from "../internal";
 import { strictRecipe } from "../util/strictRecipe";
 import { extendedHitAreaRecipe } from "../util/extendedHitArea.css";
+import { statusProperties } from "../util/atoms";
 
 export const switchContainer = style([
   { position: "relative", zIndex: "1" },
@@ -34,7 +35,7 @@ export const switchOuterRecipe = strictRecipe({
         {
           selectors: {
             [`${switchContainer}:hover:not([disabled]) &`]: {
-              boxShadow: vars.boxShadow.outlineInputHover,
+              boxShadow: statusProperties.boxShadow.outlineInputHover,
             },
           },
         },

@@ -3,23 +3,26 @@ import { bentoSprinkles } from "../../internal/sprinkles.css";
 import { ellipsis } from "../typography.css";
 
 export const labelRecipe = strictRecipe({
-  base: bentoSprinkles({ fontFamily: "default", fontWeight: "label" }),
+  base: bentoSprinkles({ fontFamily: "label" }),
   variants: {
     size: {
       small: bentoSprinkles({
         fontSize: "labelSmall",
         lineHeight: "labelSmall",
-        letterSpacing: 1,
+        fontWeight: "labelSmall",
+        letterSpacing: "labelSmall",
       }),
       medium: bentoSprinkles({
         fontSize: "labelMedium",
         lineHeight: "labelMedium",
-        letterSpacing: 1,
+        fontWeight: "labelMedium",
+        letterSpacing: "labelMedium",
       }),
       large: bentoSprinkles({
         fontSize: "labelLarge",
         lineHeight: "labelLarge",
-        letterSpacing: 2,
+        fontWeight: "labelLarge",
+        letterSpacing: "labelLarge",
       }),
     },
     color: {

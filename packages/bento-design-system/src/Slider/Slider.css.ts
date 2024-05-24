@@ -8,7 +8,7 @@ export const slider = style({
   // so their labels don't contribute to the vertical space, causing them to overlap with elements
   // below the Slider.
   // This takes into account the height the label + the space between the label and the thumb
-  paddingBottom: `calc(${vars.lineHeight.bodyMedium} + ${vars.space[8]})`,
+  paddingBottom: `calc(${vars.lineHeight.bodyMedium} + 8)`,
 });
 
 export const trackContainer = bentoSprinkles({

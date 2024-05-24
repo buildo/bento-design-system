@@ -3,12 +3,27 @@ import { bentoSprinkles } from "../../internal";
 import { ellipsis } from "../typography.css";
 
 export const headlineRecipe = strictRecipe({
-  base: bentoSprinkles({ fontFamily: "default", fontWeight: "headline", color: "textPrimary" }),
+  base: bentoSprinkles({ fontFamily: "headline", color: "textPrimary" }),
   variants: {
     size: {
-      small: bentoSprinkles({ fontSize: "headlineSmall", lineHeight: "headlineSmall" }),
-      medium: bentoSprinkles({ fontSize: "headlineMedium", lineHeight: "headlineMedium" }),
-      large: bentoSprinkles({ fontSize: "headlineLarge", lineHeight: "headlineLarge" }),
+      small: bentoSprinkles({
+        fontSize: "headlineSmall",
+        lineHeight: "headlineSmall",
+        fontWeight: "headlineSmall",
+        letterSpacing: "headlineSmall",
+      }),
+      medium: bentoSprinkles({
+        fontSize: "headlineMedium",
+        lineHeight: "headlineMedium",
+        fontWeight: "headlineMedium",
+        letterSpacing: "headlineMedium",
+      }),
+      large: bentoSprinkles({
+        fontSize: "headlineLarge",
+        lineHeight: "headlineLarge",
+        fontWeight: "headlineLarge",
+        letterSpacing: "headlineLarge",
+      }),
     },
     color: {
       primary: bentoSprinkles({ color: "textPrimary" }),
