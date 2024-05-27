@@ -158,7 +158,7 @@
     "@testing-library/react": "14.0.0",
     "@testing-library/react-hooks": "8.0.1",
     "@testing-library/user-event": "14.4.3",
-    "@types/lodash.orderby": "4.6.7",
+    "@types/lodash.orderby": "4.6.9",
     "@types/lodash.pick": "4.4.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
