@@ -372,7 +372,7 @@ importers:
       '@tsconfig/docusaurus': 1.0.6
       '@types/babel__generator': 7.6.8
       '@types/babel__standalone': 7.1.7
-      '@types/babel__traverse': 7.20.1
+      '@types/babel__traverse': 7.20.6
       '@types/node': 18.17.14
       '@types/react': ^18
       '@typescript-eslint/parser': 5.62.0
@@ -429,7 +429,7 @@ importers:
       '@tsconfig/docusaurus': 1.0.6
       '@types/babel__generator': 7.6.8
       '@types/babel__standalone': 7.1.7
-      '@types/babel__traverse': 7.20.1
+      '@types/babel__traverse': 7.20.6
       '@types/node': 18.17.14
       '@types/react': 18.2.14
       '@typescript-eslint/parser': 5.62.0_cgvy6hrg3pjeapqw5wnuqcmdo4
@@ -8203,7 +8203,7 @@ packages:
       '@babel/types': 7.22.19
       '@types/babel__generator': 7.6.8
       '@types/babel__template': 7.4.4
-      '@types/babel__traverse': 7.20.1
+      '@types/babel__traverse': 7.20.6
     dev: true
 
   /@types/babel__generator/7.6.8:
@@ -8225,14 +8225,8 @@ packages:
       '@babel/types': 7.22.19
     dev: true
 
-  /@types/babel__traverse/7.20.1:
-    resolution: {integrity: sha512-MitHFXnhtgwsGZWtT68URpOvLN4EREih1u3QtQiN4VdAxWKRVvGCSvw/Qth0M0Qq3pJpnGOu5JaM/ydK7OGbqg==}
-    dependencies:
-      '@babel/types': 7.22.19
-    dev: true
-
-  /@types/babel__traverse/7.20.5:
-    resolution: {integrity: sha512-WXCyOcRtH37HAUkpXhUduaxdm82b4GSlyTqajXviN4EfiuPgNYR109xMCKvpl6zPIpua0DGlMEDCq+g8EdoheQ==}
+  /@types/babel__traverse/7.20.6:
+    resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
     dependencies:
       '@babel/types': 7.22.19
     dev: true
@@ -17246,7 +17240,7 @@ packages:
       '@babel/traverse': 7.24.1
       '@babel/types': 7.22.19
       '@types/babel__core': 7.20.5
-      '@types/babel__traverse': 7.20.5
+      '@types/babel__traverse': 7.20.6
       '@types/doctrine': 0.0.9
       '@types/resolve': 1.20.6
       doctrine: 3.0.0
