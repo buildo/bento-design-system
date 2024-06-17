@@ -315,7 +315,7 @@ export function FileUploaderField<E extends string>({
                   <IconButton
                     kind="transparent"
                     hierarchy="secondary"
-                    size={12}
+                    size={16}
                     label={unsafeLocalizedString("remove")}
                     icon={IconX}
                     onPress={() => onChange(undefined)}
