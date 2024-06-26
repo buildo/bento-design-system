@@ -92,7 +92,7 @@ importers:
       '@testing-library/react-hooks': 8.0.1
       '@testing-library/user-event': 14.4.3
       '@types/lodash.orderby': 4.6.9
-      '@types/lodash.pick': 4.4.7
+      '@types/lodash.pick': 4.4.9
       '@types/react': ^18
       '@types/react-dom': 18.2.7
       '@types/react-input-mask': 3.0.2
@@ -243,7 +243,7 @@ importers:
       '@testing-library/react-hooks': 8.0.1_qzycrpzqvmvb7wd2jdibmpq2cy
       '@testing-library/user-event': 14.4.3_@testing-library+dom@9.3.3
       '@types/lodash.orderby': 4.6.9
-      '@types/lodash.pick': 4.4.7
+      '@types/lodash.pick': 4.4.9
       '@types/react': 18.2.14
       '@types/react-dom': 18.2.7
       '@types/react-input-mask': 3.0.2
@@ -8473,10 +8473,10 @@ packages:
       '@types/lodash': 4.17.0
     dev: true
 
-  /@types/lodash.pick/4.4.7:
-    resolution: {integrity: sha512-HgdyKz7/1+oeoVzbpu1XiX/Bti9AUksHtOILH38T07aKvqoirzcdOsrO2+Yg3L51Hv/8m1MetvHZEUGeABiTiQ==}
+  /@types/lodash.pick/4.4.9:
+    resolution: {integrity: sha512-hDpr96x9xHClwy1KX4/RXRejqjDFTEGbEMT3t6wYSYeFDzxmMnSKB/xHIbktRlPj8Nii2g8L5dtFDRaNFBEzUQ==}
     dependencies:
-      '@types/lodash': 4.14.195
+      '@types/lodash': 4.17.0
     dev: true
 
   /@types/lodash/4.14.195:
