@@ -28,10 +28,11 @@ declare module "react-select/dist/declarations/src/Select" {
 }
 
 export function SelectField<A>(props: Props<A>) {
-  const { label, hint, hintPlacement, assistiveText, issues, disabled } = props;
+  const { id, label, hint, hintPlacement, assistiveText, issues, disabled } = props;
 
   const validationState = issues ? "invalid" : "valid";
   const { labelProps, fieldProps, descriptionProps, errorMessageProps } = useField({
+    id,
     label,
     description: assistiveText,
     errorMessage: issues,
