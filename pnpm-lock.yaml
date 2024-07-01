@@ -97,7 +97,7 @@ importers:
       '@types/react-dom': 18.2.7
       '@types/react-input-mask': 3.0.5
       '@types/react-is': 18.2.1
-      '@types/react-table': 7.7.15
+      '@types/react-table': 7.7.20
       '@types/testing-library__jest-dom': 5.14.9
       '@typescript-eslint/parser': 5.62.0
       '@vanilla-extract/babel-plugin': 1.2.0
@@ -248,7 +248,7 @@ importers:
       '@types/react-dom': 18.2.7
       '@types/react-input-mask': 3.0.5
       '@types/react-is': 18.2.1
-      '@types/react-table': 7.7.15
+      '@types/react-table': 7.7.20
       '@types/testing-library__jest-dom': 5.14.9
       '@typescript-eslint/parser': 5.62.0_jkonsiqll5kf7uvjobvewtpypa
       '@vanilla-extract/babel-plugin': 1.2.0
@@ -8599,8 +8599,8 @@ packages:
       '@types/history': 4.7.11
       '@types/react': 18.2.14
 
-  /@types/react-table/7.7.15:
-    resolution: {integrity: sha512-tlXKCeq4gk2xT2lB+Hbp/dO5yYZ899HwQOAp/3o3hKw8wp7ngNpdB90BNWE6kWCm5K2KzmEsHnYoJheSS5SVjg==}
+  /@types/react-table/7.7.20:
+    resolution: {integrity: sha512-ahMp4pmjVlnExxNwxyaDrFgmKxSbPwU23sGQw2gJK4EhCvnvmib2s/O/+y1dfV57dXOwpr2plfyBol+vEHbi2w==}
     dependencies:
       '@types/react': 18.2.14
     dev: true
