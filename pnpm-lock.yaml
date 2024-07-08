@@ -105,7 +105,7 @@ importers:
       '@vanilla-extract/dynamic': 2.0.3
       '@vanilla-extract/esbuild-plugin': 2.3.8
       '@vanilla-extract/private': 1.0.5
-      '@vanilla-extract/recipes': 0.5.0
+      '@vanilla-extract/recipes': 0.5.3
       '@vanilla-extract/sprinkles': 1.6.1
       '@vanilla-extract/vite-plugin': 3.9.0
       '@vanilla-extract/webpack-plugin': 2.3.0
@@ -200,7 +200,7 @@ importers:
       '@tanstack/virtual-core': 3.0.0-beta.65
       '@vanilla-extract/css': 1.13.0
       '@vanilla-extract/dynamic': 2.0.3
-      '@vanilla-extract/recipes': 0.5.0_3qusp464cmatvw2qbjjzblbe54
+      '@vanilla-extract/recipes': 0.5.3_3qusp464cmatvw2qbjjzblbe54
       '@vanilla-extract/sprinkles': 1.6.1_3qusp464cmatvw2qbjjzblbe54
       clsx: 1.2.1
       deepmerge-ts: 4.3.0
@@ -301,7 +301,7 @@ importers:
       '@typescript-eslint/parser': 6.5.0
       '@vanilla-extract/css': 1.12.0
       '@vanilla-extract/dynamic': 2.0.3
-      '@vanilla-extract/recipes': 0.5.0
+      '@vanilla-extract/recipes': 0.5.3
       '@vanilla-extract/sprinkles': 1.6.1
       '@vanilla-extract/vite-plugin': 3.8.2
       '@vitejs/plugin-react': 4.0.4
@@ -324,7 +324,7 @@ importers:
       '@react-aria/numberfield': 3.7.0_biqbaboplfbrettd7655fr4n2y
       '@react-stately/numberfield': 3.6.0_react@18.2.0
       '@vanilla-extract/css': 1.12.0
-      '@vanilla-extract/recipes': 0.5.0_zd2pmj2rl4fq6dchynq6tm4lty
+      '@vanilla-extract/recipes': 0.5.3_zd2pmj2rl4fq6dchynq6tm4lty
       i18next: 22.5.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -9695,16 +9695,16 @@ packages:
   /@vanilla-extract/private/1.0.5:
     resolution: {integrity: sha512-6YXeOEKYTA3UV+RC8DeAjFk+/okoNz/h88R+McnzA2zpaVqTR/Ep+vszkWYlGBcMNO7vEkqbq5nT/JMMvhi+tw==}
 
-  /@vanilla-extract/recipes/0.5.0_3qusp464cmatvw2qbjjzblbe54:
-    resolution: {integrity: sha512-NfdZ8XyqCDG2RsO3FmYPALDMKg5045dRD97NbBb0Fog3LMDVXZxYgDOct5FAWob8U6W4GbhVpRZt1X9hNnH6fA==}
+  /@vanilla-extract/recipes/0.5.3_3qusp464cmatvw2qbjjzblbe54:
+    resolution: {integrity: sha512-SPREq1NmaoKuvJeOV0pppOkwy3pWZUoDufsyQ6iHrbkHhAU7XQqG9o0iZSmg5JoVgDLIiOr9djQb0x9wuxig7A==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
       '@vanilla-extract/css': 1.13.0
     dev: false
 
-  /@vanilla-extract/recipes/0.5.0_zd2pmj2rl4fq6dchynq6tm4lty:
-    resolution: {integrity: sha512-NfdZ8XyqCDG2RsO3FmYPALDMKg5045dRD97NbBb0Fog3LMDVXZxYgDOct5FAWob8U6W4GbhVpRZt1X9hNnH6fA==}
+  /@vanilla-extract/recipes/0.5.3_zd2pmj2rl4fq6dchynq6tm4lty:
+    resolution: {integrity: sha512-SPREq1NmaoKuvJeOV0pppOkwy3pWZUoDufsyQ6iHrbkHhAU7XQqG9o0iZSmg5JoVgDLIiOr9djQb0x9wuxig7A==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
