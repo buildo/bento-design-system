@@ -29,7 +29,7 @@ export function ButtonCell({
   value: buttonProps,
   column: { align },
   options,
-}: CellProps<{}, Omit<ButtonProps, "size">> & {
+}: CellProps<any, Omit<ButtonProps, "size">> & {
   options: Partial<Pick<ButtonProps, "size">>;
 }) {
   const config = useBentoConfig().table;
@@ -48,7 +48,7 @@ export function ButtonLinkCell({
   value: buttonProps,
   column: { align },
   options,
-}: CellProps<{}, Omit<ButtonLinkProps, "size">> & {
+}: CellProps<any, Omit<ButtonLinkProps, "size">> & {
   options: Partial<Pick<ButtonLinkProps, "size">>;
 }) {
   const config = useBentoConfig().table;
@@ -67,7 +67,7 @@ export function TextCell({
   value,
   column: { align },
   options,
-}: CellProps<{}, LocalizedString> & {
+}: CellProps<any, LocalizedString> & {
   options: Partial<Pick<BodyProps, "size" | "weight" | "color">>;
 }) {
   const config = useBentoConfig().table;
@@ -87,7 +87,7 @@ export function TextWithIconCell({
   column: { align },
   options,
 }: CellProps<
-  {},
+  any,
   {
     icon: ((props: IconProps) => Children) | null;
     iconPosition: "left" | "right";
@@ -132,7 +132,7 @@ export function TextWithIconCell({
   );
 }
 
-export function ChipCell({ value: chipProps, column: { align } }: CellProps<{}, ChipProps>) {
+export function ChipCell({ value: chipProps, column: { align } }: CellProps<any, ChipProps>) {
   const config = useBentoConfig().table;
   const padding = config.padding.chipCell ?? config.padding.defaultCell;
   return (
@@ -148,7 +148,7 @@ export function LabelCell({
   value,
   column: { align },
   options,
-}: CellProps<{}, LocalizedString> & {
+}: CellProps<any, LocalizedString> & {
   options: Partial<Pick<LabelProps, "size" | "color">>;
 }) {
   const config = useBentoConfig().table;
@@ -167,7 +167,7 @@ export function LinkCell({
   value,
   column: { align },
   options,
-}: CellProps<{}, ComponentProps<typeof Link>> & {
+}: CellProps<any, ComponentProps<typeof Link>> & {
   options: Partial<Pick<BodyProps, "size" | "weight">>;
 }) {
   const config = useBentoConfig().table;
@@ -186,7 +186,7 @@ export function IconCell({
   value,
   column: { align },
   options,
-}: CellProps<{}, { icon: (props: IconProps) => JSX.Element; label: LocalizedString }> & {
+}: CellProps<any, { icon: (props: IconProps) => JSX.Element; label: LocalizedString }> & {
   options: Partial<Pick<IconProps, "size" | "color">>;
 }) {
   const config = useBentoConfig().table;
@@ -203,7 +203,7 @@ export function IconButtonCell({
   value: iconButtonProps,
   column: { align },
   options,
-}: CellProps<{}, Omit<IconButtonProps, "size" | "kind" | "hierarchy">> & {
+}: CellProps<any, Omit<IconButtonProps, "size" | "kind" | "hierarchy">> & {
   options: Partial<Pick<IconButtonProps, "size" | "kind" | "hierarchy">>;
 }) {
   const config = useBentoConfig().table;

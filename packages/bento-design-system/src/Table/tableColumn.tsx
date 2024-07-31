@@ -146,7 +146,7 @@ export function textWithIcon<A extends string>({
       value: _value,
       ...props
     }: CellProps<
-      {},
+      any,
       {
         icon: ((props: IconProps) => Children) | null;
         text: LocalizedString;
@@ -177,7 +177,7 @@ export function number<A extends string>({
 } & Partial<Pick<BodyProps, "size" | "weight" | "color">>) {
   return custom({
     ...options,
-    Cell: ({ value: numericValue, ...props }: CellProps<{}, number>) => {
+    Cell: ({ value: numericValue, ...props }: CellProps<any, number>) => {
       const value = valueFormatter(numericValue);
       const textCellProps = {
         ...props,
@@ -206,7 +206,7 @@ export function numberWithIcon<A extends string>({
       value: { numericValue, icon, tooltipContent },
       ...props
     }: CellProps<
-      {},
+      any,
       {
         icon: ((props: IconProps) => Children) | null;
         numericValue: number;
