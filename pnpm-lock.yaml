@@ -198,6 +198,7 @@ importers:
       '@react-types/shared': 3.19.0_react@18.2.0
       '@tanstack/react-virtual': 3.0.0-beta.65_react@18.2.0
       '@tanstack/virtual-core': 3.0.0-beta.65
+      '@types/react-table': 7.7.20
       '@vanilla-extract/css': 1.13.0
       '@vanilla-extract/dynamic': 2.0.3
       '@vanilla-extract/recipes': 0.5.3_3qusp464cmatvw2qbjjzblbe54
@@ -248,7 +249,6 @@ importers:
       '@types/react-dom': 18.2.7
       '@types/react-input-mask': 3.0.5
       '@types/react-is': 18.2.1
-      '@types/react-table': 7.7.20
       '@types/testing-library__jest-dom': 5.14.9
       '@typescript-eslint/parser': 5.62.0_jkonsiqll5kf7uvjobvewtpypa
       '@vanilla-extract/babel-plugin': 1.2.0
@@ -8877,7 +8877,7 @@ packages:
     resolution: {integrity: sha512-ahMp4pmjVlnExxNwxyaDrFgmKxSbPwU23sGQw2gJK4EhCvnvmib2s/O/+y1dfV57dXOwpr2plfyBol+vEHbi2w==}
     dependencies:
       '@types/react': 18.2.14
-    dev: true
+    dev: false
 
   /@types/react-transition-group/4.4.6:
     resolution: {integrity: sha512-VnCdSxfcm08KjsJVQcfBmhEQAPnLB8G08hAxn39azX1qYBQ/5RVQuoHuKIcfKOdncuaUvEpFKFzEvbtIMsfVew==}
