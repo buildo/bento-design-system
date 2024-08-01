@@ -445,7 +445,7 @@ const meta = {
     data: exampleData,
   },
   parameters: { actions: { argTypesRegex: "" } },
-} satisfies Meta<TableProps<typeof exampleColumns, typeof exampleGroupedColumns>>;
+} satisfies Meta<TableProps<typeof exampleColumns>>;
 
 export default meta;
 
@@ -526,6 +526,7 @@ export const WithFilter = {
               options={statusOptions}
             />
           </FormRow>
+          {/* @ts-expect-error */}
           <Story args={{ ...ctx.args, data }} />
         </Stack>
       );
@@ -598,6 +599,7 @@ export const Grouped = {
 } satisfies Story;
 
 export const WithFillColumn = {
+  // @ts-expect-error
   args: {
     columns: [
       tableColumn.text({
@@ -664,6 +666,7 @@ function repeatToLength<T>(arr: T[], n: number): T[] {
 }
 
 export const VirtualizedRows = {
+  // @ts-expect-error
   args: {
     stickyHeaders: true,
     height: { custom: 340 },
@@ -673,6 +676,7 @@ export const VirtualizedRows = {
 } satisfies Story;
 
 export const VirtualizedRowsGroupedHeaders = {
+  // @ts-expect-error
   args: {
     columns: exampleGroupedColumns,
     stickyHeaders: true,
@@ -683,6 +687,7 @@ export const VirtualizedRowsGroupedHeaders = {
 } satisfies Story;
 
 export const VirtualizedRowsGroupedRows = {
+  // @ts-expect-error
   args: {
     columns: [
       ...exampleColumns,
