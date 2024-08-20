@@ -11,26 +11,26 @@ jobs:
     runs-on: ubuntu-latest
     name: Release
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: main
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - uses: pnpm/action-setup@v3
-        with:
-          run_install: true
-      - run: |
-          cd packages/bento-design-system
-          pnpm version --no-git-tag-version --new-version ${{ github.ref_name }}
-
       - name: Generate Github App Token
         id: github_app_token
         uses: actions/create-github-app-token@v1
         with:
           app-id: ${{ secrets.RELEASE_BOT_APP_ID }}
           private-key: ${{ secrets.RELEASE_BOT_APP_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+          token: ${{ steps.github_app_token.outputs.token }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: pnpm/action-setup@v3
+        with:
+          run_install: true
 
       - name: Commit & Push changes
         uses: actions-js/push@master
@@ -39,6 +39,10 @@ jobs:
           author_name: buildo-release-bot[bot]
           author_email: 168835274+buildo-release-bot[bot]@users.noreply.github.com
           github_token: ${{ steps.github_app_token.outputs.token }}
+
+      - run: |
+          git config --global user.name "buildo-release-bot[bot]"
+          git config --global user.email "168835274+your-app[bot]@users.noreply.github.com"
 
       - name: Publish to npm
         uses: JS-DevTools/npm-publish@v3
