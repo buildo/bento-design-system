@@ -67,7 +67,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
         with:
-          channel-id: bento
+          channel-id: C02UMTSG2BA
           payload: '{"text": ":tada: Version ${{ github.ref_name }} has been released!"}'
 
       - uses: slackapi/slack-github-action@v1.24.0
@@ -76,5 +76,5 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
         with:
-          channel-id: bento
+          channel-id: C02UMTSG2BA
           payload: '{"text": ":x: Version ${{ github.ref_name }} failed to release"}'
