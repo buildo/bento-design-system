@@ -40,10 +40,6 @@ jobs:
           author_email: 168835274+buildo-release-bot[bot]@users.noreply.github.com
           github_token: ${{ steps.github_app_token.outputs.token }}
 
-      - run: |
-          git config --global user.name "buildo-release-bot[bot]"
-          git config --global user.email "168835274+your-app[bot]@users.noreply.github.com"
-
       - name: Publish to npm
         uses: JS-DevTools/npm-publish@v3
         with:
