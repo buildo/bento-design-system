@@ -66,19 +66,15 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-          JOB_STATUS: ${{ job.status }}
-          ATTACHMENT_COLOR: "good"
         with:
           channel-id: bento
-          slack-message: ":tada: Version ${{ github.ref_name }} has been released!"
+          payload: '{"text": ":tada: Version ${{ github.ref_name }} has been released!"}'
 
       - uses: slackapi/slack-github-action@v1.24.0
         if: ${{ job.status == 'failure' }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-          JOB_STATUS: ${{ job.status }}
-          ATTACHMENT_COLOR: "danger"
         with:
           channel-id: bento
-          slack-message: ":x: Version ${{ github.ref_name }} failed to release"
+          payload: '{"text": ":x: Version ${{ github.ref_name }} failed to release"}'
