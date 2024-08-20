@@ -39,6 +39,7 @@ jobs:
           author_email: 168835274+buildo-release-bot[bot]@users.noreply.github.com
           github_token: ${{ steps.github_app_token.outputs.token }}
           rebase: true
+          branch: main
 
       - name: Publish to npm
         uses: JS-DevTools/npm-publish@v3
