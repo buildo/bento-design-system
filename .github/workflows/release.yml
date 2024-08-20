@@ -32,6 +32,10 @@ jobs:
         with:
           run_install: true
 
+      - run: |
+          cd packages/bento-design-system
+          pnpm version --no-git-tag-version --new-version ${{ github.ref_name }}
+
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
@@ -61,6 +65,7 @@ jobs:
         if: ${{ job.status == 'success' }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
           JOB_STATUS: ${{ job.status }}
           ATTACHMENT_COLOR: "good"
         with:
@@ -71,6 +76,7 @@ jobs:
         if: ${{ job.status == 'failure' }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
           JOB_STATUS: ${{ job.status }}
           ATTACHMENT_COLOR: "danger"
         with:
