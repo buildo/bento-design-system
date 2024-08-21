@@ -609,9 +609,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
           {hasHeaderContent && (
             <Columns space={8} alignY="center" align={column.align}>
               {column.Header ? (
-                <Column width="content">
-                  <Label size={config.headerSize}>{column.render("Header") as any}</Label>
-                </Column>
+                <Label size={config.headerSize}>{column.render("Header") as any}</Label>
               ) : null}
               {hint && <Column width="content">{hint}</Column>}
               {sortIcon && (

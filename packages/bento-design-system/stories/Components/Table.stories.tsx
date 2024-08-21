@@ -31,7 +31,7 @@ const exampleColumns = [
     accessor: "name",
   }),
   tableColumn.text({
-    headerLabel: "Extended address",
+    headerLabel: "Extended complete address",
     accessor: "address",
     width: { custom: 200 },
   }),
