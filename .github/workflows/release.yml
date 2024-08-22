@@ -51,6 +51,7 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
           access: "public"
           provenance: true
+          ignore-scripts: false
 
       - name: Publish to Github
         uses: JS-DevTools/npm-publish@v3
@@ -60,6 +61,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           access: "public"
           provenance: true
+          ignore-scripts: false
 
       - uses: slackapi/slack-github-action@v1.24.0
         if: ${{ job.status == 'success' }}
