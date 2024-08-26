@@ -114,7 +114,14 @@ const exampleColumnsWithFooter = [
     hint: { onPress: action("hint") },
     footer: ({ rows }) =>
       Intl.NumberFormat("en").format(
-        rows.reduce((acc, row) => acc + (row.values.applications ?? 0), 0)
+        rows.reduce(
+          (acc, row) =>
+            acc +
+            (typeof row.values.applications === "number"
+              ? row.values.applications ?? 0
+              : row.values.applications?.numericValue ?? 0),
+          0
+        )
       ),
   }),
   tableColumn.numberWithIcon({
@@ -193,7 +200,14 @@ const exampleGroupedColumns = [
         hint: { onPress: action("hint") },
         footer: ({ rows }) =>
           Intl.NumberFormat("en").format(
-            rows.reduce((acc, row) => acc + (row.values.applications ?? 0), 0)
+            rows.reduce(
+              (acc, row) =>
+                acc +
+                (typeof row.values.applications === "number"
+                  ? row.values.applications ?? 0
+                  : row.values.applications?.numericValue ?? 0),
+              0
+            )
           ),
       }),
       tableColumn.numberWithIcon({
