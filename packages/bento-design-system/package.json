@@ -168,7 +168,7 @@
     "@types/testing-library__jest-dom": "5.14.9",
     "@typescript-eslint/parser": "5.62.0",
     "@vanilla-extract/babel-plugin": "1.2.0",
-    "@vanilla-extract/esbuild-plugin": "2.3.8",
+    "@vanilla-extract/esbuild-plugin": "2.3.10",
     "@vanilla-extract/private": "1.0.5",
     "@vanilla-extract/vite-plugin": "3.9.0",
     "@vanilla-extract/webpack-plugin": "2.3.11",
