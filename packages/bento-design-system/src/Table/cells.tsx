@@ -63,27 +63,37 @@ export function ButtonLinkCell({
   );
 }
 
+type TextCellValue =
+  | LocalizedString
+  | ({ text: LocalizedString } & Partial<Pick<BodyProps, "size" | "weight" | "color" | "align">>);
 export function TextCell({
   value,
-  column: { align },
+  column,
   options,
-}: CellProps<any, LocalizedString> & {
+}: CellProps<any, TextCellValue> & {
   options: Partial<Pick<BodyProps, "size" | "weight" | "color">>;
 }) {
   const config = useBentoConfig().table;
   const padding = config.padding.textCell ?? config.padding.defaultCell;
-  const { size, weight, color } = mergeProps(config.defaultCellOptions.textCell, options);
+  const cellOptions: Omit<TextCellValue, "text"> = typeof value === "string" ? {} : value;
+
+  const { size, weight, color, align } = mergeProps(
+    column,
+    config.defaultCellOptions.textCell,
+    options,
+    cellOptions
+  );
   return (
     <Box {...padding} textAlign={align}>
       <Body size={size} weight={weight} color={color}>
-        {value}
+        {typeof value === "string" ? value : value.text}
       </Body>
     </Box>
   );
 }
 
 export function TextWithIconCell({
-  value: { icon, iconPosition, text, tooltipContent },
+  value: { icon, iconPosition, text, tooltipContent, ...cellOptions },
   column: { align },
   options,
 }: CellProps<
@@ -93,7 +103,7 @@ export function TextWithIconCell({
     iconPosition: "left" | "right";
     text: LocalizedString;
     tooltipContent?: Children;
-  }
+  } & Partial<Pick<BodyProps, "size" | "weight" | "color">>
 > & {
   options: Partial<Pick<BodyProps, "size" | "weight" | "color">> & {
     iconSize?: IconProps["size"];
@@ -103,7 +113,8 @@ export function TextWithIconCell({
   const config = useBentoConfig().table;
   const { size, weight, color, iconSize, iconColor } = mergeProps(
     config.defaultCellOptions.textWithIconCell,
-    options
+    options,
+    cellOptions
   );
   const padding = config.padding.textWithIconCell ?? config.padding.defaultCell;
   const icon_ = icon && icon({ size: iconSize, color: iconColor });
@@ -144,20 +155,30 @@ export function ChipCell({ value: chipProps, column: { align } }: CellProps<any,
   );
 }
 
+type LabelCellValue =
+  | LocalizedString
+  | ({ text: LocalizedString } & Partial<Pick<LabelProps, "size" | "color" | "align">>);
 export function LabelCell({
   value,
-  column: { align },
+  column,
   options,
-}: CellProps<any, LocalizedString> & {
+}: CellProps<any, LabelCellValue> & {
   options: Partial<Pick<LabelProps, "size" | "color">>;
 }) {
   const config = useBentoConfig().table;
   const padding = config.padding.labelCell ?? config.padding.defaultCell;
-  const { size, color } = mergeProps(config.defaultCellOptions.labelCell, options);
+  const cellOptions = typeof value === "string" ? {} : value;
+
+  const { size, color, align } = mergeProps(
+    column,
+    config.defaultCellOptions.labelCell,
+    options,
+    cellOptions
+  );
   return (
     <Box {...padding} textAlign={align}>
       <Label size={size} color={color}>
-        {value}
+        {typeof value === "string" ? value : value.text}
       </Label>
     </Box>
   );

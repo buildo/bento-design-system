@@ -34,6 +34,7 @@ const exampleColumns = [
     headerLabel: "Extended complete address",
     accessor: "address",
     width: { custom: 200 },
+    align: "center",
   }),
   tableColumn.textWithIcon({
     headerLabel: "Country",
@@ -317,7 +318,10 @@ const deleteAction = {
 const exampleData = [
   {
     name: "Amazon",
-    address: "Theodore Lowe Ap #867-859 Sit Rd. Azusa New York 39531",
+    address: {
+      text: "Theodore Lowe Ap #867-859 Sit Rd. Azusa New York 39531",
+      weight: "strong",
+    },
     country: {
       icon: IconInfoSolid,
       text: "US",
@@ -334,7 +338,7 @@ const exampleData = [
       numericValue: 100,
       icon: IconInfoSolid,
     },
-    type: "Private",
+    type: { text: "Private", color: "secondary", align: "right" },
     website: { href: "http://www.amazon.com", label: "Link" },
     alerts: { icon: IconWarningSolid, label: "Warning" },
     group: "Group 1",
@@ -379,7 +383,7 @@ const exampleData = [
       hierarchy: "primary",
       onPress: () => {},
     } as const,
-    applications: 1_000,
+    applications: { numericValue: 1_000, align: "left" },
     status: { label: "Pending", color: "yellow" } as const,
     value: {
       numericValue: 120,
@@ -436,7 +440,7 @@ const exampleData = [
     group: "Group 1",
     deleteAction,
   },
-];
+] as const;
 
 const meta = {
   component: Table,
