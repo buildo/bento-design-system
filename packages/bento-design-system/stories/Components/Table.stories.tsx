@@ -1,4 +1,4 @@
-import { useCallback, useState, ComponentProps } from "react";
+import { useCallback, useState, ComponentProps, useRef } from "react";
 import {
   tableColumn,
   FormRow,
@@ -539,7 +539,7 @@ export const WithControlledSorting = {
     onSort: action("onSort"),
   },
   render: (args) => {
-    const [, setArgs] = useArgs();
+    const [data, setData] = useState(args.data);
 
     const [numberOfRows, setNumberOfRows] = useState(2);
 
@@ -561,9 +561,9 @@ export const WithControlledSorting = {
           }),
           sortBy.map((a) => (a.desc ? "desc" : "asc"))
         ).slice(0, numberOfRows);
-        setArgs({ data: newData });
+        setData(newData);
       },
-      [numberOfRows, setArgs, args.data]
+      [numberOfRows]
     );
 
     return (
@@ -574,12 +574,12 @@ export const WithControlledSorting = {
             label="Number of rows"
             placeholder="Number of rows"
             value={numberOfRows}
-            onChange={setNumberOfRows}
+            onChange={(n) => setNumberOfRows(n)}
           />
         </FormRow>
         {/* NOTE(gabro): no idea why TS complains on the onSort type here */}
         {/* @ts-expect-error */}
-        <Table {...args} onSort={onSort} />
+        <Table {...args} onSort={onSort} data={data} />
       </Stack>
     );
   },
