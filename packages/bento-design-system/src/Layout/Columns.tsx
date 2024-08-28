@@ -1,4 +1,5 @@
 import { ReactChild, ReactElement } from "react";
+import { isLazy } from "react-is";
 import { flattenChildren } from "../util/flattenChildren";
 import { BoxProps, Box } from "../Box/Box";
 import { ResponsiveSpace } from "../internal";
@@ -66,5 +67,14 @@ export function Columns({ space, children, align, alignY, collapseBelow, reverse
 }
 
 function isColumn(child: ReactChild): child is ReactElement<ColumnProps> {
-  return typeof child === "object" && "type" in child && child.type === Column;
+  if (typeof child !== "object" || !("type" in child)) {
+    return false;
+  }
+
+  // Check if it is a lazy node (RSC)
+  if (isLazy(child)) {
+    return !!(child.type as any)._payload?.value?.includes("Column");
+  }
+
+  return child.type === Column;
 }
