@@ -72,7 +72,7 @@ function isColumn(child: ReactChild): child is ReactElement<ColumnProps> {
   }
 
   // Check if it is a lazy node (RSC)
-  if (isLazy(child.type)) {
+  if (isLazy(child)) {
     return !!(child.type as any)._payload?.value?.includes("Column");
   }
 
