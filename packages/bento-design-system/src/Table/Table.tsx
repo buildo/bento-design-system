@@ -184,6 +184,8 @@ export function Table<
     [columns]
   );
 
+  const hasOnSort = !!onSort;
+
   const {
     getTableProps,
     headerGroups,
@@ -200,8 +202,8 @@ export function Table<
         hiddenColumns: groupBy ? [groupBy] : [],
       },
       orderByFn: customOrderByFn,
-      manualSortBy: Boolean(onSort),
-      autoResetSortBy: false,
+      manualSortBy: hasOnSort,
+      autoResetSortBy: !hasOnSort && !!initialSorting,
     },
     useGridLayout,
     useGroupBy,
