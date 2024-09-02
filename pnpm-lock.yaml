@@ -108,7 +108,7 @@ importers:
       '@vanilla-extract/recipes': 0.5.5
       '@vanilla-extract/sprinkles': 1.6.3
       '@vanilla-extract/vite-plugin': 3.9.0
-      '@vanilla-extract/webpack-plugin': 2.3.11
+      '@vanilla-extract/webpack-plugin': 2.3.13
       '@vitejs/plugin-react': 4.0.4
       chromatic: 6.24.1
       clsx: 1.2.1
@@ -255,7 +255,7 @@ importers:
       '@vanilla-extract/esbuild-plugin': 2.3.10_esbuild@0.18.11
       '@vanilla-extract/private': 1.0.6
       '@vanilla-extract/vite-plugin': 3.9.0_vite@4.5.3
-      '@vanilla-extract/webpack-plugin': 2.3.11_webpack@5.94.0
+      '@vanilla-extract/webpack-plugin': 2.3.13_webpack@5.94.0
       '@vitejs/plugin-react': 4.0.4_vite@4.5.3
       chromatic: 6.24.1
       css-loader: 6.8.1_webpack@5.94.0
@@ -9535,24 +9535,6 @@ packages:
       media-query-parser: 2.0.2
       outdent: 0.8.0
 
-  /@vanilla-extract/css/1.15.3:
-    resolution: {integrity: sha512-mxoskDAxdQAspbkmQRxBvolUi1u1jnyy9WZGm+GeH8V2wwhEvndzl1QoK7w8JfA0WFevTxbev5d+i+xACZlPhA==}
-    dependencies:
-      '@emotion/hash': 0.9.1
-      '@vanilla-extract/private': 1.0.6
-      css-what: 6.1.0
-      cssesc: 3.0.0
-      csstype: 3.1.2
-      dedent: 1.5.3
-      deep-object-diff: 1.1.9
-      deepmerge: 4.3.1
-      media-query-parser: 2.0.2
-      modern-ahocorasick: 1.0.1
-      picocolors: 1.0.1
-    transitivePeerDependencies:
-      - babel-plugin-macros
-    dev: true
-
   /@vanilla-extract/css/1.15.5:
     resolution: {integrity: sha512-N1nQebRWnXvlcmu9fXKVUs145EVwmWtMD95bpiEKtvehHDpUhmO1l2bauS7FGYKbi3dU1IurJbGpQhBclTr1ng==}
     dependencies:
@@ -9628,33 +9610,6 @@ packages:
       vite-node: 0.28.5
     transitivePeerDependencies:
       - '@types/node'
-      - less
-      - lightningcss
-      - sass
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-    dev: true
-
-  /@vanilla-extract/integration/7.1.7:
-    resolution: {integrity: sha512-xKwrCtmiBq6QzRNj+IOg5cAMRQRXkFnnvcE374MROJPnVvDX0d+lrIQapFGt64F0H8Gjk4kVl4slvCiV3ECQ4w==}
-    dependencies:
-      '@babel/core': 7.24.4
-      '@babel/plugin-syntax-typescript': 7.24.1_@babel+core@7.24.4
-      '@vanilla-extract/babel-plugin-debug-ids': 1.0.6
-      '@vanilla-extract/css': 1.15.3
-      dedent: 1.5.3
-      esbuild: 0.21.5
-      eval: 0.1.8
-      find-up: 5.0.0
-      javascript-stringify: 2.1.0
-      mlly: 1.7.1
-      vite: 5.3.2
-      vite-node: 1.6.0
-    transitivePeerDependencies:
-      - '@types/node'
-      - babel-plugin-macros
       - less
       - lightningcss
       - sass
@@ -9782,12 +9737,12 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@vanilla-extract/webpack-plugin/2.3.11_webpack@5.94.0:
-    resolution: {integrity: sha512-DHHYZ3yT84FmDCgnIcgeB7gA3XtNbiHfk2/e3ugoWutKSakW6+zz0qVPV+HX7YVv9o+dlrFe0I17bCBkNaOYlA==}
+  /@vanilla-extract/webpack-plugin/2.3.13_webpack@5.94.0:
+    resolution: {integrity: sha512-9T3X87OFZYCfYqXVpzwycVIo2Bf3c+5wxFzA2KT0i4clc9dxDNL9ru2V6SyPJAul6BsQfjn0G9C4qva8hOEv8Q==}
     peerDependencies:
       webpack: ^4.30.0 || ^5.20.2
     dependencies:
-      '@vanilla-extract/integration': 7.1.7
+      '@vanilla-extract/integration': 7.1.9
       debug: 4.3.4
       loader-utils: 2.0.4
       picocolors: 1.0.1
@@ -15418,11 +15373,6 @@ packages:
     resolution: {integrity: sha512-tqNXrS78oMOE73NMxK4EMLQsQowWf8jKooH9g7xPavRT706R6bkQJ6DY2Te7QukaZsulxa30wQ7bk0pm4XiHmA==}
     engines: {node: '>=8'}
 
-  /lru-cache/10.2.0:
-    resolution: {integrity: sha512-2bIM8x+VAf6JT4bKAljS1qUWgMsqZRPGJS6FSahIMPVvctcNhyVp7AJu7quxOW9jwkryBReKZY5tY5JYv2n/7Q==}
-    engines: {node: 14 || >=16.14}
-    dev: true
-
   /lru-cache/10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
     dev: true
@@ -16521,7 +16471,7 @@ packages:
     resolution: {integrity: sha512-7xTavNy5RQXnsjANvVvMkEjvloOinkAjv/Z6Ildz9v2RinZ4SBKTWFOVRbaF8p0vpHnyjV/UwNDdKuUv6M5qcA==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
-      lru-cache: 10.2.0
+      lru-cache: 10.4.3
       minipass: 7.0.4
     dev: true
 
