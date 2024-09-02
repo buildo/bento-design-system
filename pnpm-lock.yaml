@@ -106,7 +106,7 @@ importers:
       '@vanilla-extract/esbuild-plugin': 2.3.10
       '@vanilla-extract/private': 1.0.6
       '@vanilla-extract/recipes': 0.5.5
-      '@vanilla-extract/sprinkles': 1.6.2
+      '@vanilla-extract/sprinkles': 1.6.3
       '@vanilla-extract/vite-plugin': 3.9.0
       '@vanilla-extract/webpack-plugin': 2.3.11
       '@vitejs/plugin-react': 4.0.4
@@ -202,7 +202,7 @@ importers:
       '@vanilla-extract/css': 1.13.0
       '@vanilla-extract/dynamic': 2.0.3
       '@vanilla-extract/recipes': 0.5.5_3qusp464cmatvw2qbjjzblbe54
-      '@vanilla-extract/sprinkles': 1.6.2_3qusp464cmatvw2qbjjzblbe54
+      '@vanilla-extract/sprinkles': 1.6.3_3qusp464cmatvw2qbjjzblbe54
       clsx: 1.2.1
       deepmerge-ts: 4.3.0
       lodash.pick: 4.4.0
@@ -302,7 +302,7 @@ importers:
       '@vanilla-extract/css': 1.12.0
       '@vanilla-extract/dynamic': 2.0.3
       '@vanilla-extract/recipes': 0.5.5
-      '@vanilla-extract/sprinkles': 1.6.2
+      '@vanilla-extract/sprinkles': 1.6.3
       '@vanilla-extract/vite-plugin': 3.8.2
       '@vitejs/plugin-react': 4.0.4
       eslint: 8.48.0
@@ -339,7 +339,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 6.5.0_zcnsnkqwyqryk5co7u7tcltrje
       '@typescript-eslint/parser': 6.5.0_jkonsiqll5kf7uvjobvewtpypa
       '@vanilla-extract/dynamic': 2.0.3
-      '@vanilla-extract/sprinkles': 1.6.2_zd2pmj2rl4fq6dchynq6tm4lty
+      '@vanilla-extract/sprinkles': 1.6.3_zd2pmj2rl4fq6dchynq6tm4lty
       '@vanilla-extract/vite-plugin': 3.8.2_vite@4.5.3
       '@vitejs/plugin-react': 4.0.4_vite@4.5.3
       eslint: 8.48.0
@@ -376,7 +376,7 @@ importers:
       '@types/node': 18.17.14
       '@types/react': ^18
       '@typescript-eslint/parser': 5.62.0
-      '@vanilla-extract/sprinkles': 1.6.2
+      '@vanilla-extract/sprinkles': 1.6.3
       assert: 2.0.0
       buffer: 6.0.3
       clsx: 1.2.1
@@ -433,7 +433,7 @@ importers:
       '@types/node': 18.17.14
       '@types/react': 18.2.14
       '@typescript-eslint/parser': 5.62.0_cgvy6hrg3pjeapqw5wnuqcmdo4
-      '@vanilla-extract/sprinkles': 1.6.2_3qusp464cmatvw2qbjjzblbe54
+      '@vanilla-extract/sprinkles': 1.6.3_3qusp464cmatvw2qbjjzblbe54
       eslint-config-react-app: 7.0.1_eghkgw6ifwro3uc6a2352o3yiy
       lint-staged: 13.3.0
       raw-loader: 4.0.2_webpack@5.94.0
@@ -9710,15 +9710,15 @@ packages:
       '@vanilla-extract/css': 1.12.0
     dev: false
 
-  /@vanilla-extract/sprinkles/1.6.2_3qusp464cmatvw2qbjjzblbe54:
-    resolution: {integrity: sha512-SZdrxzpAFIpRImqY/N54wODYyn6swuz+Lerd7Y1ZX5/148e6J9smpsfBf/iQpmGo17OS9b+AdYBOn7OF9cn/vA==}
+  /@vanilla-extract/sprinkles/1.6.3_3qusp464cmatvw2qbjjzblbe54:
+    resolution: {integrity: sha512-oCHlQeYOBIJIA2yWy2GnY5wE2A7hGHDyJplJo4lb+KEIBcJWRnDJDg8ywDwQS5VfWJrBBO3drzYZPFpWQjAMiQ==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
       '@vanilla-extract/css': 1.13.0
 
-  /@vanilla-extract/sprinkles/1.6.2_zd2pmj2rl4fq6dchynq6tm4lty:
-    resolution: {integrity: sha512-SZdrxzpAFIpRImqY/N54wODYyn6swuz+Lerd7Y1ZX5/148e6J9smpsfBf/iQpmGo17OS9b+AdYBOn7OF9cn/vA==}
+  /@vanilla-extract/sprinkles/1.6.3_zd2pmj2rl4fq6dchynq6tm4lty:
+    resolution: {integrity: sha512-oCHlQeYOBIJIA2yWy2GnY5wE2A7hGHDyJplJo4lb+KEIBcJWRnDJDg8ywDwQS5VfWJrBBO3drzYZPFpWQjAMiQ==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
@@ -16636,7 +16636,7 @@ packages:
       '@types/react-dom': 18.2.7
       '@vanilla-extract/css': 1.13.0
       '@vanilla-extract/css-utils': 0.1.3
-      '@vanilla-extract/sprinkles': 1.6.2_3qusp464cmatvw2qbjjzblbe54
+      '@vanilla-extract/sprinkles': 1.6.3_3qusp464cmatvw2qbjjzblbe54
       '@vanilla-extract/webpack-plugin': 2.1.12_webpack@5.94.0
       babel-loader: 9.1.2_gxbpm2p2grt3clbmoyjoto34cu
       classnames: 2.3.2
@@ -16710,7 +16710,7 @@ packages:
       '@types/react-dom': 18.2.7
       '@vanilla-extract/css': 1.13.0
       '@vanilla-extract/css-utils': 0.1.3
-      '@vanilla-extract/sprinkles': 1.6.2_3qusp464cmatvw2qbjjzblbe54
+      '@vanilla-extract/sprinkles': 1.6.3_3qusp464cmatvw2qbjjzblbe54
       '@vanilla-extract/webpack-plugin': 2.1.12_webpack@5.94.0
       babel-loader: 9.1.2_gxbpm2p2grt3clbmoyjoto34cu
       classnames: 2.3.2

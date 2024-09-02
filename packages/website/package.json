@@ -60,7 +60,7 @@
     "@types/node": "18.17.14",
     "@types/react": "18.2.21",
     "@typescript-eslint/parser": "5.62.0",
-    "@vanilla-extract/sprinkles": "1.6.2",
+    "@vanilla-extract/sprinkles": "1.6.3",
     "eslint-config-react-app": "7.0.1",
     "lint-staged": "13.3.0",
     "raw-loader": "4.0.2",
