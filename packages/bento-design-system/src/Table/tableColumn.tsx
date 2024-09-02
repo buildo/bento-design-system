@@ -151,7 +151,7 @@ export function textWithIcon<A extends string>({
         icon: ((props: IconProps) => Children) | null;
         text: LocalizedString;
         tooltipContent?: Children;
-      }
+      } & Partial<Pick<BodyProps, "size" | "weight" | "color">>
     >) => {
       const value = { ..._value, iconPosition };
       const textWithIconCellProps = {
@@ -166,6 +166,9 @@ export function textWithIcon<A extends string>({
   });
 }
 
+type NumberCellValue =
+  | number
+  | ({ numericValue: number } & Partial<Pick<BodyProps, "size" | "weight" | "color" | "align">>);
 export function number<A extends string>({
   valueFormatter,
   size,
@@ -177,17 +180,27 @@ export function number<A extends string>({
 } & Partial<Pick<BodyProps, "size" | "weight" | "color">>) {
   return custom({
     ...options,
-    Cell: ({ value: numericValue, ...props }: CellProps<any, number>) => {
-      const value = valueFormatter(numericValue);
+    Cell: ({ value, ...props }: CellProps<any, NumberCellValue>) => {
+      const numericValue = typeof value === "number" ? value : value.numericValue;
+      const formattedValue = valueFormatter(numericValue);
       const textCellProps = {
         ...props,
-        value,
-        cell: { ...props.cell, value },
-        options: { size, weight, color },
+        value: formattedValue,
+        cell: { ...props.cell, value: formattedValue },
+        options: {
+          size,
+          weight,
+          color,
+          align: typeof value === "number" ? undefined : value.align,
+        },
       };
       return <TextCell {...textCellProps} />;
     },
-    sortType: (a = 0, b = 0) => a - b,
+    sortType: (a = 0, b = 0) => {
+      const aValue = typeof a === "number" ? a : a.numericValue;
+      const bValue = typeof b === "number" ? b : b.numericValue;
+      return aValue - bValue;
+    },
   });
 }
 
@@ -203,7 +216,7 @@ export function numberWithIcon<A extends string>({
   return custom({
     ...options,
     Cell: ({
-      value: { numericValue, icon, tooltipContent },
+      value: { numericValue, icon, tooltipContent, ...cellOptions },
       ...props
     }: CellProps<
       any,
@@ -211,13 +224,14 @@ export function numberWithIcon<A extends string>({
         icon: ((props: IconProps) => Children) | null;
         numericValue: number;
         tooltipContent?: Children;
-      }
+      } & Partial<Pick<BodyProps, "size" | "weight" | "color">>
     >) => {
       const value = {
         text: valueFormatter(numericValue),
         icon,
         iconPosition: "right" as const,
         tooltipContent,
+        ...cellOptions,
       };
       const textCellProps = {
         ...props,
@@ -242,7 +256,7 @@ export function label<A extends string>({
 }: ColumnOptionsBase<A> & Partial<Pick<LabelProps, "size" | "color">>) {
   return custom({
     ...options,
-    Cell: (props: Omit<ComponentProps<typeof TextCell>, "options">) => (
+    Cell: (props: Omit<ComponentProps<typeof LabelCell>, "options">) => (
       <LabelCell {...{ ...props, options: { size, color } }} />
     ),
   });
