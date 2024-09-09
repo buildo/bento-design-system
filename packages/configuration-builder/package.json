@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@buildo/bento-design-system": "workspace:*",
-    "@phosphor-icons/react": "2.0.15",
+    "@phosphor-icons/react": "2.1.7",
     "@react-aria/i18n": "3.8.1",
     "@react-aria/numberfield": "3.7.0",
     "@react-stately/numberfield": "3.6.0",
