@@ -186,6 +186,7 @@ export const decorativeDivider: DecorativeDividerConfig = {
 };
 
 export const disclosure: DisclosureConfig = {
+  titleSpacing: 16,
   internalSpacing: 16,
   titleSize: {
     1: "medium",

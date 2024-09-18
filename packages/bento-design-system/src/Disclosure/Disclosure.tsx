@@ -46,7 +46,7 @@ export function Disclosure({
   const icon = open ? config.icons.open : config.icons.closed;
 
   return (
-    <Stack space={16}>
+    <Stack space={config.titleSpacing}>
       <Box
         {...focusProps}
         {...pressProps}
