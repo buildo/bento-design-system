@@ -1,5 +1,6 @@
-import { Card, Disclosure, Placeholder } from "..";
+import { Card, Chip, Disclosure, Placeholder, Stack } from "..";
 import { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
 
 const meta = {
   component: Disclosure,
@@ -41,4 +42,27 @@ export const InCard = {
       </Card>
     ),
   ],
+} satisfies Story;
+
+export const DelegateOpenControl = {
+  decorators: [
+    (Story) => {
+      const [open, setOpen] = useState(true);
+
+      return (
+        <Stack space={16}>
+          <Chip label={open ? "open" : "closed"} color="pink" />
+          <Disclosure title="Title" isOpen={open} onToggle={setOpen}>
+            <Placeholder />
+          </Disclosure>
+        </Stack>
+      );
+    },
+  ],
+} satisfies Story;
+
+export const InitialOpen = {
+  args: {
+    initialIsOpen: true,
+  },
 } satisfies Story;

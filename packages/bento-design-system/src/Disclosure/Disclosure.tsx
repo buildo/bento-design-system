@@ -36,7 +36,7 @@ export function Disclosure({
   const config = useBentoConfig().disclosure;
   const iconPosition = iconPosition_ ?? config.defaultIconPosition;
 
-  const [internalIsOpen, setInternalIsOpen] = useState(isOpen ?? initialIsOpen);
+  const [internalIsOpen, setInternalIsOpen] = useState(initialIsOpen);
   const open = internalIsOpen ?? isOpen;
   const onPress = onToggle ? () => onToggle(!isOpen) : () => setInternalIsOpen(!internalIsOpen);
   const { pressProps } = usePress({ onPress });
