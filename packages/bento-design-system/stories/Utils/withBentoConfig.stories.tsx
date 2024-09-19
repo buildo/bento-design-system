@@ -63,7 +63,7 @@ export const ConfiguredDisclosure = () => {
   );
 
   return (
-    <Disclosure title="Title">
+    <Disclosure title="Title" initialIsOpen>
       <Placeholder />
     </Disclosure>
   );
