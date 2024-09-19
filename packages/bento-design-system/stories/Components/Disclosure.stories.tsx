@@ -44,7 +44,7 @@ export const InCard = {
   ],
 } satisfies Story;
 
-export const DelegateOpenControl = {
+export const Controlled = {
   decorators: [
     (Story) => {
       const [open, setOpen] = useState(true);
