@@ -102,7 +102,7 @@ importers:
       '@typescript-eslint/parser': 5.62.0
       '@vanilla-extract/babel-plugin': 1.2.0
       '@vanilla-extract/css': 1.13.0
-      '@vanilla-extract/dynamic': 2.0.3
+      '@vanilla-extract/dynamic': 2.1.2
       '@vanilla-extract/esbuild-plugin': 2.3.10
       '@vanilla-extract/private': 1.0.6
       '@vanilla-extract/recipes': 0.5.5
@@ -200,7 +200,7 @@ importers:
       '@tanstack/virtual-core': 3.0.0-beta.65
       '@types/react-table': 7.7.20
       '@vanilla-extract/css': 1.13.0
-      '@vanilla-extract/dynamic': 2.0.3
+      '@vanilla-extract/dynamic': 2.1.2
       '@vanilla-extract/recipes': 0.5.5_3qusp464cmatvw2qbjjzblbe54
       '@vanilla-extract/sprinkles': 1.6.3_3qusp464cmatvw2qbjjzblbe54
       clsx: 1.2.1
@@ -300,7 +300,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 6.5.0
       '@typescript-eslint/parser': 6.5.0
       '@vanilla-extract/css': 1.12.0
-      '@vanilla-extract/dynamic': 2.0.3
+      '@vanilla-extract/dynamic': 2.1.2
       '@vanilla-extract/recipes': 0.5.5
       '@vanilla-extract/sprinkles': 1.6.3
       '@vanilla-extract/vite-plugin': 3.8.2
@@ -338,7 +338,7 @@ importers:
       '@types/react-dom': 18.2.7
       '@typescript-eslint/eslint-plugin': 6.5.0_zcnsnkqwyqryk5co7u7tcltrje
       '@typescript-eslint/parser': 6.5.0_jkonsiqll5kf7uvjobvewtpypa
-      '@vanilla-extract/dynamic': 2.0.3
+      '@vanilla-extract/dynamic': 2.1.2
       '@vanilla-extract/sprinkles': 1.6.3_zd2pmj2rl4fq6dchynq6tm4lty
       '@vanilla-extract/vite-plugin': 3.8.2_vite@5.3.6
       '@vitejs/plugin-react': 4.0.4_vite@5.3.6
@@ -9472,8 +9472,8 @@ packages:
       - babel-plugin-macros
     dev: true
 
-  /@vanilla-extract/dynamic/2.0.3:
-    resolution: {integrity: sha512-Rglfw2gXAYiBzAQ4jgUG7rBgE2c88e/zcG27ZVoIqMHVq56wf2C1katGMm1yFMNBgzqM7oBNYzz4YOMzznydkg==}
+  /@vanilla-extract/dynamic/2.1.2:
+    resolution: {integrity: sha512-9BGMciD8rO1hdSPIAh1ntsG4LPD3IYKhywR7VOmmz9OO4Lx1hlwkSg3E6X07ujFx7YuBfx0GDQnApG9ESHvB2A==}
     dependencies:
       '@vanilla-extract/private': 1.0.6
 
