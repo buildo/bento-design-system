@@ -170,7 +170,7 @@
     "@vanilla-extract/babel-plugin": "1.2.0",
     "@vanilla-extract/esbuild-plugin": "2.3.10",
     "@vanilla-extract/private": "1.0.6",
-    "@vanilla-extract/vite-plugin": "3.9.0",
+    "@vanilla-extract/vite-plugin": "3.9.5",
     "@vanilla-extract/webpack-plugin": "2.3.13",
     "@vitejs/plugin-react": "4.0.4",
     "chromatic": "6.24.1",
