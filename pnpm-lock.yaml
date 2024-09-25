@@ -356,7 +356,7 @@ importers:
       '@babel/parser': 7.22.16
       '@babel/preset-typescript': 7.22.15
       '@babel/standalone': 7.22.20
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.3
       '@babel/types': 7.22.19
       '@buildo/bento-design-system': workspace:*
       '@docusaurus/core': 2.0.1
@@ -400,7 +400,7 @@ importers:
       '@babel/parser': 7.22.16
       '@babel/preset-typescript': 7.22.15_@babel+core@7.22.20
       '@babel/standalone': 7.22.20
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.3
       '@buildo/bento-design-system': link:../bento-design-system
       '@docusaurus/core': 2.0.1_ke7zlixcmud45jrvihi6wmw3pu
       '@docusaurus/preset-classic': 2.0.1_puk5entdl5vdsms6afxrotq73y
@@ -665,7 +665,7 @@ packages:
       '@babel/helpers': 7.24.4
       '@babel/parser': 7.22.16
       '@babel/template': 7.24.0
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.3
       '@babel/types': 7.22.19
       convert-source-map: 1.9.0
       debug: 4.3.4
@@ -914,13 +914,6 @@ packages:
     resolution: {integrity: sha512-zfedSIzFhat/gFhWfHtgWvlec0nqB9YEIVrpuwjruLlXfUSnA8cJB0miHKwqDnQ7d32aKo2xt88/xZptwxbfhA==}
     engines: {node: '>=6.9.0'}
 
-  /@babel/helper-function-name/7.22.5:
-    resolution: {integrity: sha512-wtHSq6jMRE3uF2otvfuD3DIvVhOsSNshQl0Qrd7qC9oQJzHvOL4qQXlQn2916+CXGywIjpGuIkoyZRRxHPiNQQ==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/template': 7.24.0
-      '@babel/types': 7.22.19
-
   /@babel/helper-function-name/7.23.0:
     resolution: {integrity: sha512-OErEqsrxjZTJciZ4Oo+eoZqeW9UIiOcuYKRJA4ZAgV9myA+pOXhhmpfNCKjEH/auVfEYVFJ6y1Tc4r0eIApqiw==}
     engines: {node: '>=6.9.0'}
@@ -1141,7 +1134,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/template': 7.22.15
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.3
       '@babel/types': 7.22.19
     transitivePeerDependencies:
       - supports-color
@@ -3290,7 +3283,7 @@ packages:
       '@babel/code-frame': 7.24.2
       '@babel/generator': 7.22.15
       '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.22.5
+      '@babel/helper-function-name': 7.23.0
       '@babel/helper-hoist-variables': 7.22.5
       '@babel/helper-split-export-declaration': 7.22.6
       '@babel/parser': 7.22.16
@@ -3300,8 +3293,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@babel/traverse/7.23.2:
-    resolution: {integrity: sha512-azpe59SQ48qG6nu2CzcMLbxUudtN+dOM9kDbUqGq3HXUJRlo7i8fvPoxQUzYgLZ4cMVmuZgm8vvBpNeRhd6XSw==}
+  /@babel/traverse/7.23.3:
+    resolution: {integrity: sha512-+K0yF1/9yR0oHdE0StHuEj3uTPzwwbrLGfNOndVJVV2TqA5+j3oljJUb4nmB954FLGjNem976+B+eDuLIjesiQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.24.2
@@ -3424,7 +3417,7 @@ packages:
       '@babel/preset-typescript': 7.22.15_@babel+core@7.22.20
       '@babel/runtime': 7.22.5
       '@babel/runtime-corejs3': 7.22.5
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.3
       '@docusaurus/cssnano-preset': 2.0.1
       '@docusaurus/logger': 2.0.1
       '@docusaurus/mdx-loader': 2.0.1_6o6hkpjdwzgjounrmeqn67tkhu
@@ -3523,7 +3516,7 @@ packages:
       '@babel/preset-typescript': 7.22.15_@babel+core@7.22.20
       '@babel/runtime': 7.24.4
       '@babel/runtime-corejs3': 7.22.5
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.3
       '@docusaurus/cssnano-preset': 2.4.1
       '@docusaurus/logger': 2.4.1
       '@docusaurus/mdx-loader': 2.4.1_ovybaw46ulgvv5x62tnhhf5ihi
@@ -3648,7 +3641,7 @@ packages:
       react-dom: ^16.8.4 || ^17.0.0 || 18
     dependencies:
       '@babel/parser': 7.22.16
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.3
       '@docusaurus/logger': 2.0.1
       '@docusaurus/utils': 2.0.1_@docusaurus+types@2.0.1
       '@mdx-js/mdx': 1.6.22
@@ -3682,7 +3675,7 @@ packages:
       react-dom: ^16.8.4 || ^17.0.0 || 18
     dependencies:
       '@babel/parser': 7.22.16
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.3
       '@docusaurus/logger': 2.4.1
       '@docusaurus/utils': 2.4.1_@docusaurus+types@2.4.1
       '@mdx-js/mdx': 1.6.22
@@ -7630,7 +7623,7 @@ packages:
     dependencies:
       '@babel/generator': 7.24.4
       '@babel/parser': 7.24.4
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.3
       '@babel/types': 7.24.0
       '@storybook/csf': 0.1.4
       '@storybook/types': 8.0.8
@@ -17154,7 +17147,7 @@ packages:
     engines: {node: '>=16.14.0'}
     dependencies:
       '@babel/core': 7.22.20
-      '@babel/traverse': 7.24.1
+      '@babel/traverse': 7.23.3
       '@babel/types': 7.22.19
       '@types/babel__core': 7.20.5
       '@types/babel__traverse': 7.20.6
