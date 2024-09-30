@@ -172,7 +172,7 @@
     "@vanilla-extract/private": "1.0.6",
     "@vanilla-extract/vite-plugin": "3.9.5",
     "@vanilla-extract/webpack-plugin": "2.3.13",
-    "@vitejs/plugin-react": "4.0.4",
+    "@vitejs/plugin-react": "4.3.2",
     "chromatic": "6.24.1",
     "css-loader": "6.8.1",
     "date-fns": "2.30.0",
