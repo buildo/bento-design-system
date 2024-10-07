@@ -133,7 +133,7 @@ importers:
       react: 18.2.0
       react-cool-dimensions: 2.0.7
       react-dom: 18.2.0
-      react-dropzone: 14.2.3
+      react-dropzone: 14.2.9
       react-input-mask: 2.0.4
       react-is: 18.2.0
       react-select: 5.7.4
@@ -207,7 +207,7 @@ importers:
       deepmerge-ts: 4.3.0
       lodash.pick: 4.4.0
       react-cool-dimensions: 2.0.7_react@18.2.0
-      react-dropzone: 14.2.3_react@18.2.0
+      react-dropzone: 14.2.9_react@18.2.0
       react-input-mask: 2.0.4_biqbaboplfbrettd7655fr4n2y
       react-is: 18.2.0
       react-select: 5.7.4_qzycrpzqvmvb7wd2jdibmpq2cy
@@ -17361,8 +17361,8 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
-  /react-dropzone/14.2.3_react@18.2.0:
-    resolution: {integrity: sha512-O3om8I+PkFKbxCukfIR3QAGftYXDZfOE2N1mr/7qebQJHs7U+/RSL/9xomJNpRg9kM5h9soQSdf0Gc7OHF5Fug==}
+  /react-dropzone/14.2.9_react@18.2.0:
+    resolution: {integrity: sha512-jRZsMC7h48WONsOLHcmhyn3cRWJoIPQjPApvt/sJVfnYaB3Qltn025AoRTTJaj4WdmmgmLl6tUQg1s0wOhpodQ==}
     engines: {node: '>= 10.13'}
     peerDependencies:
       react: '>= 16.8 || 18.0.0 || 18'
