@@ -177,7 +177,7 @@
     "css-loader": "6.11.0",
     "date-fns": "2.30.0",
     "esbuild-loader": "2.21.0",
-    "eslint": "8.48.0",
+    "eslint": "8.57.1",
     "eslint-config-react-app": "7.0.1",
     "eslint-plugin-sort-export-all": "1.4.1",
     "eslint-plugin-storybook": "0.8.0",
