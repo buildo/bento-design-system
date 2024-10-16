@@ -375,20 +375,24 @@ export function Table<
     rowIndex: number,
     interactiveRow: boolean
   ) {
-    return cells.map((cell, index) => (
-      <CellContainer
-        {...cell.getCellProps()}
-        index={rowIndex}
-        lastLeftSticky={index === lastStickyColumnIndex}
-        style={stickyLeftColumnStyle[cell.column.id]}
-        first={index === 0}
-        last={(index + 1) % flatColumns.length === 0}
-        interactiveRow={interactiveRow}
-        withDividers={withDividers}
-      >
-        {cell.render("Cell")}
-      </CellContainer>
-    ));
+    return cells.map((cell, index) => {
+      const { key, ...cellProps } = cell.getCellProps();
+      return (
+        <CellContainer
+          key={key}
+          {...cellProps}
+          index={rowIndex}
+          lastLeftSticky={index === lastStickyColumnIndex}
+          style={stickyLeftColumnStyle[cell.column.id]}
+          first={index === 0}
+          last={(index + 1) % flatColumns.length === 0}
+          interactiveRow={interactiveRow}
+          withDividers={withDividers}
+        >
+          {cell.render("Cell")}
+        </CellContainer>
+      );
+    });
   }
 
   const rowsToRender = virtualizeRows
@@ -581,6 +585,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
   ) : null;
 
   const hasHeaderContent = column.Header || hint || sortIcon;
+  const { key: _key, ...headerProps } = column.getHeaderProps(column.getSortByToggleProps());
 
   return (
     <Box
@@ -598,7 +603,7 @@ function ColumnHeader<D extends Record<string, unknown>>({
         className={[columnHeader({ withDividers, first, lastLeftSticky })]}
         background={config.headerBackgroundColor}
         color={config.headerForegroundColor}
-        {...column.getHeaderProps(column.getSortByToggleProps())}
+        {...headerProps}
         textAlign={column.align}
         {...config.padding.header}
       >
