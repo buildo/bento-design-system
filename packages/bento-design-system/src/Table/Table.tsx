@@ -51,7 +51,7 @@ import {
   GridWidth,
   Row as RowType,
 } from "./types";
-import { useLayoutEffect, useMemo, useState, CSSProperties, useEffect, useRef } from "react";
+import { useMemo, useState, CSSProperties, useEffect, useRef } from "react";
 import { match, __ } from "ts-pattern";
 import { useBentoConfig } from "../BentoConfigContext";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
@@ -233,12 +233,12 @@ export function Table<
     .map((c) => c.id ?? c.accessor)
     .indexOf(stickyLeftColumnsIds[stickyLeftColumnsIds.length - 1]);
 
-  // Keep a style object for each sticky column, which will be updated by the useLayoutEffect below
+  // Keep a style object for each sticky column, which will be updated by the useEffect below
   const [stickyLeftColumnStyle, setStickyLeftColumnStyle] = useState(
     {} as Record<string, CSSProperties>
   );
 
-  // Keep a state for the height of the first row of headers, which will be updated by the useLayoutEffect below
+  // Keep a state for the height of the first row of headers, which will be updated by the useEffect below
   const [stickyHeaderHeight, setStickyHeaderHeight] = useState(0);
 
   const tableContainerRef = useRef<HTMLDivElement>(null);
@@ -249,7 +249,7 @@ export function Table<
   /** Get the width of each sticky column (using the header width as reference) and use it to set the `left` of each sticky column.
    *  Each sticky column must have as `left` the total width of the previous sticky columns.
    */
-  useLayoutEffect(() => {
+  useEffect(() => {
     // Make this computation only if we have any data, because headers are not rendered when there are no rows
     // and we need them to get the column width.
     if (data.length > 0) {
