@@ -1,0 +1,28 @@
+{
+  "name": "design-system",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./index.css": "./dist/index.css"
+  },
+  "scripts": {
+    "build": "tsup --minify --clean",
+    "dev": "tsup --watch"
+  },
+  "dependencies": {
+    "@buildo/bento-design-system": "0.22.25",
+    "@phosphor-icons/react": "2.1.7",
+    "@vanilla-extract/esbuild-plugin": "2.3.11"
+  },
+  "peerDependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "tsup": "8.3.0",
+    "typescript": "5.6.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}

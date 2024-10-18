@@ -1,0 +1,41 @@
+{
+  "common": {
+    "search": "Cerca...",
+    "chip": {
+      "dismissButtonLabel": "Rimuovi"
+    },
+    "banner": {
+      "dismissButtonLabel": "Chiudi"
+    },
+    "modal": {
+      "closeButtonLabel": "Chiudi"
+    },
+    "selectField": {
+      "noOptionsMessage": "Nessuna opzione",
+      "optionsPlural": "opzioni",
+      "optionsSingular": "opzione",
+      "multiOptionsSelected": "{{n}} {{options}} selezionate",
+      "selectAllButtonLabel": "Seleziona tutto",
+      "clearAllButtonLabel": "Cancella tutto"
+    },
+    "searchBar": {
+      "clearButtonLabel": "Cancella"
+    },
+    "table": {
+      "noResultsTitle": "Nessun risultato trovato",
+      "noResultsDescription": "Prova a modificare i filtri di ricerca per trovare ciò che stai cercando.",
+      "missingValue": "-"
+    },
+    "loader": {
+      "loadingMessage": "Caricamento in corso..."
+    },
+    "dateField": {
+      "previousMonthLabel": "Mese precedente",
+      "nextMonthLabel": "Mese successivo"
+    },
+    "textField": {
+      "showPasswordLabel": "Mostra password",
+      "hidePasswordLabel": "Nascondi password"
+    }
+  }
+}
