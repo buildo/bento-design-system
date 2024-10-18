@@ -1,10 +1,9 @@
 import { useTextField } from "@react-aria/textfield";
 import { HTMLAttributes, useRef } from "react";
-import useDimensions from "react-cool-dimensions";
 import { LocalizedString, Box, Field, IconButton } from "..";
 import { inputRecipe } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
-import { input } from "./SearchBar.css";
+import { input, inputContainer } from "./SearchBar.css";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { useBentoConfig } from "../BentoConfigContext";
 import { AtLeast } from "../util/AtLeast";
@@ -24,16 +23,6 @@ type Props = AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "aria
 export function SearchBar(props: Props) {
   const config = useBentoConfig().searchBar;
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const { observe: leftAccessoryRef, width: leftAccessoryWidth } = useDimensions({
-    // This is needed to include the padding in the width calculation
-    useBorderBoxSize: true,
-  });
-
-  const { observe: rightAccessoryRef, width: rightAccessoryWidth } = useDimensions({
-    // This is needed to include the padding in the width calculation
-    useBorderBoxSize: true,
-  });
 
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
     {
@@ -64,19 +53,17 @@ export function SearchBar(props: Props) {
       assistiveTextProps={descriptionProps}
       errorMessageProps={errorMessageProps}
     >
-      <Box position="relative" display="flex">
-        <Box
-          ref={leftAccessoryRef}
-          position="absolute"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          paddingLeft={config.paddingX}
-          paddingRight={config.internalSpacing}
-          top={0}
-          bottom={0}
-          left={0}
-        >
+      <Box
+        display="flex"
+        className={[inputRecipe({ validation: "valid" }), inputContainer]}
+        gap={config.internalSpacing}
+        paddingX={config.paddingX}
+        background={config.background.default}
+        paddingY={config.paddingY}
+        {...getRadiusPropsFromConfig(config.radius)}
+        style={getReadOnlyBackgroundStyle(config)}
+      >
+        <Box display="flex" justifyContent="center" alignItems="center">
           {config.searchIcon({ size: config.searchIconSize })}
         </Box>
         <Box
@@ -90,7 +77,6 @@ export function SearchBar(props: Props) {
           height={undefined}
           className={[
             input,
-            inputRecipe({ validation: "valid" }),
             bodyRecipe({
               color: props.disabled ? "disabled" : "primary",
               weight: "default",
@@ -99,29 +85,10 @@ export function SearchBar(props: Props) {
             }),
           ]}
           display="flex"
-          style={{
-            flexGrow: 1,
-            paddingLeft: leftAccessoryWidth,
-            paddingRight: rightAccessoryWidth,
-            ...getReadOnlyBackgroundStyle(config),
-          }}
-          {...getRadiusPropsFromConfig(config.radius)}
-          paddingY={config.paddingY}
-          background={config.background.default}
+          flexGrow={1}
         />
         {rightAccessoryContent && (
-          <Box
-            ref={rightAccessoryRef}
-            position="absolute"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            paddingLeft={config.internalSpacing}
-            paddingRight={config.paddingX}
-            top={0}
-            bottom={0}
-            right={0}
-          >
+          <Box display="flex" justifyContent="center" alignItems="center">
             {rightAccessoryContent}
           </Box>
         )}
