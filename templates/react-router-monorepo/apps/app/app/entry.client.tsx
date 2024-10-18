@@ -29,9 +29,6 @@ await i18next
 
 registerCustomFormats(i18next);
 
-console.log(I18nextProvider);
-console.log(i18next);
-
 startTransition(() => {
   hydrateRoot(
     document,
