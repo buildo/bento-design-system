@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "nx run app:dev",
+    "build": "nx run app:build",
+    "generate:types": "nx run app:generate:types",
+    "typecheck": "nx run-many --target=typecheck"
+  },
+  "devDependencies": {
+    "nx": "^20.0.0"
+  },
+  "packageManager": "pnpm@9.7.0"
+}
