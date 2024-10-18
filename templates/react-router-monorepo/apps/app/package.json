@@ -35,9 +35,6 @@
     "vite-plugin-checker": "^0.8.0",
     "vite-tsconfig-paths": "^5.0.1"
   },
-  "resolutions": {
-    "react-router-dom": "7.0.0-pre.1"
-  },
   "engines": {
     "node": ">=20.0.0"
   }

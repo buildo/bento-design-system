@@ -8,23 +8,21 @@
   },
   "scripts": {
     "build": "tsup --minify --clean",
-    "dev": "tsup --watch",
-    "generate:types": ""
+    "dev": "tsup --watch"
   },
   "dependencies": {
-    "@buildo/bento-design-system": "^0.22.25",
-    "@phosphor-icons/react": "^2.1.7",
-    "@vanilla-extract/esbuild-plugin": "^2.3.11"
+    "@buildo/bento-design-system": "0.22.25",
+    "@phosphor-icons/react": "2.1.7",
+    "@vanilla-extract/esbuild-plugin": "2.3.11"
   },
   "peerDependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.47.9",
-    "tsup": "^8.3.0",
-    "typescript": "^5.6.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "tsup": "8.3.0",
+    "typescript": "5.6.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   }
 }
