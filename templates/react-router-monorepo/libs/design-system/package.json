@@ -11,7 +11,7 @@
     "dev": "tsup --watch"
   },
   "dependencies": {
-    "@buildo/bento-design-system": "0.22.25",
+    "@buildo/bento-design-system": "0.22.26",
     "@phosphor-icons/react": "2.1.7",
     "@vanilla-extract/esbuild-plugin": "2.3.11"
   },
