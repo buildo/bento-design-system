@@ -1,7 +1,7 @@
 import { useLocale } from "@react-aria/i18n";
 import { useMemo } from "react";
 import { Label, LocalizedString, Box, Children, Columns } from "..";
-import { inputRecipe } from "../Field/Field.css";
+import { inputContainerRecipe, input } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { BaseNumberProps, FormatProps } from "./types";
 import { useBentoConfig } from "../BentoConfigContext";
@@ -76,7 +76,9 @@ export function BaseNumberInput(props: Props) {
 
   return (
     <Box
-      className={inputRecipe({ validation: props.isReadOnly ? "notSet" : props.validationState })}
+      className={inputContainerRecipe({
+        validation: props.isReadOnly ? "notSet" : props.validationState,
+      })}
       display="flex"
       paddingX={config.paddingX}
       paddingY={config.paddingY}
@@ -93,6 +95,7 @@ export function BaseNumberInput(props: Props) {
         width="full"
         height={undefined}
         className={[
+          input,
           bodyRecipe({
             color: props.disabled ? "disabled" : "primary",
             weight: "default",

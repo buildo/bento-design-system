@@ -3,7 +3,7 @@ import { Box } from "../Box/Box";
 import { Children } from "../util/Children";
 import { LocalizedString } from "../util/LocalizedString";
 import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
-import { inputRecipe } from "../Field/Field.css";
+import { inputContainerRecipe, input } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
 import { match } from "ts-pattern";
@@ -62,13 +62,17 @@ export function BaseTextInput(props: Props) {
   return (
     <Box
       display="flex"
-      className={inputRecipe({ validation: "valid" })}
+      className={inputContainerRecipe({
+        validation: props.isReadOnly ? "notSet" : props.validationState ?? "notSet",
+      })}
       gap={config.internalSpacing}
       paddingX={config.paddingX}
       paddingY={config.paddingY}
       background={config.background.default}
       {...getRadiusPropsFromConfig(config.radius)}
       style={getReadOnlyBackgroundStyle(config)}
+      disabled={props.disabled}
+      readOnly={props.isReadOnly}
     >
       {props.leftAccessory && (
         <Box display="flex" justifyContent="center" alignItems="center">
@@ -86,6 +90,7 @@ export function BaseTextInput(props: Props) {
         width="full"
         height={undefined}
         className={[
+          input,
           bodyRecipe({
             color: props.disabled ? "disabled" : "primary",
             weight: "default",
