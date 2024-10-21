@@ -131,7 +131,6 @@ importers:
       postcss: 8.4.47
       prettier: 2.8.8
       react: 18.3.1
-      react-cool-dimensions: 2.0.7
       react-dom: 18.3.1
       react-dropzone: 14.2.9
       react-input-mask: 2.0.4
@@ -206,7 +205,6 @@ importers:
       clsx: 1.2.1
       deepmerge-ts: 4.3.0
       lodash.pick: 4.4.0
-      react-cool-dimensions: 2.0.7_react@18.3.1
       react-dropzone: 14.2.9_react@18.3.1
       react-input-mask: 2.0.4_nnrd3gsncyragczmpvfhocinkq
       react-is: 18.3.1
@@ -18666,14 +18664,6 @@ packages:
       react: 18.3.1
       react-dom: 18.3.1_react@18.3.1
     dev: true
-
-  /react-cool-dimensions/2.0.7_react@18.3.1:
-    resolution: {integrity: sha512-z1VwkAAJ5d8QybDRuYIXTE41RxGr5GYsv1bQhbOBE8cMfoZQZpcF0odL64vdgrQVzat2jayedj1GoYi80FWcbA==}
-    peerDependencies:
-      react: '>= 16.8.0 || 18'
-    dependencies:
-      react: 18.3.1
-    dev: false
 
   /react-dev-utils/12.0.1_ui7adrgquoqvodctsjvyz7u2xe:
     resolution: {integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==}
