@@ -77,11 +77,11 @@ export function BaseNumberInput(props: Props) {
   return (
     <Box
       className={inputRecipe({ validation: props.isReadOnly ? "notSet" : props.validationState })}
-      style={getRadiusPropsFromConfig(config.radius)}
       display="flex"
       paddingX={config.paddingX}
       paddingY={config.paddingY}
       gap={config.internalSpacing}
+      {...getRadiusPropsFromConfig(config.radius)}
     >
       <Box
         as="input"
