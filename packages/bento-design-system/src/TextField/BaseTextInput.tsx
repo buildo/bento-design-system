@@ -3,10 +3,9 @@ import { Box } from "../Box/Box";
 import { Children } from "../util/Children";
 import { LocalizedString } from "../util/LocalizedString";
 import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
-import { inputRecipe } from "../Field/Field.css";
+import { inputContainerRecipe, input } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
-import useDimensions from "react-cool-dimensions";
 import { match } from "ts-pattern";
 import { Columns } from "../Layout/Columns";
 import { IconButton } from "../IconButton/IconButton";
@@ -18,9 +17,10 @@ type Props = {
   inputRef: React.Ref<HTMLInputElement>;
   placeholder?: LocalizedString;
   validationState?: "valid" | "invalid";
-  type?: "text" | "email" | "url" | "password";
+  type?: "text" | "email" | "url" | "password" | "search";
   disabled?: boolean;
   isReadOnly?: boolean;
+  leftAccessory?: Children;
   rightAccessory?: Children;
   showPasswordLabel?: never;
   hidePasswordLabel?: never;
@@ -30,11 +30,6 @@ export function BaseTextInput(props: Props) {
   const config = useBentoConfig().input;
   const { defaultMessages } = useDefaultMessages();
 
-  const { observe: rightAccessoryRef, width: rightAccessoryWidth } = useDimensions({
-    // This is needed to include the padding in the width
-    useBorderBoxSize: true,
-  });
-
   const [showPassword, setShowPassword] = useState(false);
   const passwordIcon = showPassword ? config.passwordHideIcon : config.passwordShowIcon;
   const passwordIconLabel = showPassword
@@ -43,13 +38,13 @@ export function BaseTextInput(props: Props) {
 
   const type = match(props.type ?? "text")
     .with("password", () => (showPassword ? "text" : "password"))
-    .with("text", "email", "url", () => props.type)
+    .with("text", "email", "url", "search", () => props.type)
     .exhaustive();
 
   const rightAccessory = match(props.type ?? "text")
     .with("password", () => (
       // if we have both a rightAccessory and type='password', display the accessory on the left of the password toggle field
-      <Columns space={config.paddingX} alignY="center">
+      <Columns space={config.internalSpacing} alignY="center">
         <IconButton
           size={config.passwordIconSize}
           icon={passwordIcon}
@@ -61,11 +56,29 @@ export function BaseTextInput(props: Props) {
         {props.rightAccessory}
       </Columns>
     ))
-    .with("email", "text", "url", () => props.rightAccessory)
+    .with("email", "text", "url", "search", () => props.rightAccessory)
     .exhaustive();
 
   return (
-    <Box position="relative" display="flex">
+    <Box
+      display="flex"
+      className={inputContainerRecipe({
+        validation: props.isReadOnly ? "notSet" : props.validationState ?? "notSet",
+      })}
+      gap={config.internalSpacing}
+      paddingX={config.paddingX}
+      paddingY={config.paddingY}
+      background={config.background.default}
+      {...getRadiusPropsFromConfig(config.radius)}
+      style={getReadOnlyBackgroundStyle(config)}
+      disabled={props.disabled}
+      readOnly={props.isReadOnly}
+    >
+      {props.leftAccessory && (
+        <Box display="flex" justifyContent="center" alignItems="center">
+          {props.leftAccessory}
+        </Box>
+      )}
       <Box
         as="input"
         {...props.inputProps}
@@ -77,9 +90,7 @@ export function BaseTextInput(props: Props) {
         width="full"
         height={undefined}
         className={[
-          inputRecipe({
-            validation: props.isReadOnly ? "notSet" : props.validationState ?? "notSet",
-          }),
+          input,
           bodyRecipe({
             color: props.disabled ? "disabled" : "primary",
             weight: "default",
@@ -87,28 +98,11 @@ export function BaseTextInput(props: Props) {
             ellipsis: false,
           }),
         ]}
-        {...getRadiusPropsFromConfig(config.radius)}
-        paddingX={config.paddingX}
-        paddingY={config.paddingY}
-        background={config.background.default}
-        style={{
-          paddingRight: rightAccessory ? rightAccessoryWidth : undefined,
-          flexGrow: 1,
-          ...getReadOnlyBackgroundStyle(config),
-        }}
+        outline="none"
+        flexGrow={1}
       />
       {rightAccessory && (
-        <Box
-          ref={rightAccessoryRef}
-          position="absolute"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          paddingX={config.paddingX}
-          top={0}
-          bottom={0}
-          right={0}
-        >
+        <Box display="flex" justifyContent="center" alignItems="center">
           {rightAccessory}
         </Box>
       )}

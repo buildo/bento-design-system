@@ -1,8 +1,7 @@
 import { useLocale } from "@react-aria/i18n";
 import { useMemo } from "react";
-import useDimensions from "react-cool-dimensions";
 import { Label, LocalizedString, Box, Children, Columns } from "..";
-import { inputRecipe } from "../Field/Field.css";
+import { inputContainerRecipe, input } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { BaseNumberProps, FormatProps } from "./types";
 import { useBentoConfig } from "../BentoConfigContext";
@@ -20,11 +19,6 @@ type Props = BaseNumberProps & {
 export function BaseNumberInput(props: Props) {
   const config = useBentoConfig().input;
   const { locale } = useLocale();
-
-  const { observe: rightAccessoryRef, width: rightAccessoryWidth } = useDimensions({
-    // This is needed to include the padding in the width
-    useBorderBoxSize: true,
-  });
 
   // Memoizing the currency code calculation to avoid repeating it at every render
   const currencyCode = useMemo((): LocalizedString | undefined => {
@@ -73,7 +67,7 @@ export function BaseNumberInput(props: Props) {
     .with([__.nullish, not(__.nullish)], () => rightAccessoryContent)
     .with([not(__.nullish), __.nullish], () => props.rightAccessory)
     .with([not(__.nullish), not(__.nullish)], () => (
-      <Columns space={config.paddingX} alignY="center">
+      <Columns space={config.internalSpacing} alignY="center">
         {props.rightAccessory}
         {rightAccessoryContent}
       </Columns>
@@ -81,7 +75,17 @@ export function BaseNumberInput(props: Props) {
     .exhaustive();
 
   return (
-    <Box position="relative" display="flex">
+    <Box
+      className={inputContainerRecipe({
+        validation: props.isReadOnly ? "notSet" : props.validationState,
+      })}
+      display="flex"
+      paddingX={config.paddingX}
+      paddingY={config.paddingY}
+      gap={config.internalSpacing}
+      disabled={props.disabled}
+      {...getRadiusPropsFromConfig(config.radius)}
+    >
       <Box
         as="input"
         {...props.inputProps}
@@ -92,7 +96,7 @@ export function BaseNumberInput(props: Props) {
         width="full"
         height={undefined}
         className={[
-          inputRecipe({ validation: props.isReadOnly ? "notSet" : props.validationState }),
+          input,
           bodyRecipe({
             color: props.disabled ? "disabled" : "primary",
             weight: "default",
@@ -100,29 +104,13 @@ export function BaseNumberInput(props: Props) {
             ellipsis: false,
           }),
         ]}
-        {...getRadiusPropsFromConfig(config.radius)}
-        paddingX={config.paddingX}
-        paddingY={config.paddingY}
         background={config.background.default}
-        display="flex"
-        style={{
-          paddingRight: rightAccessoryWidth,
-          flexGrow: 1,
-          ...getReadOnlyBackgroundStyle(config),
-        }}
+        outline="none"
+        flexGrow={1}
+        style={getReadOnlyBackgroundStyle(config)}
       />
       {rightAccessory && (
-        <Box
-          ref={rightAccessoryRef}
-          position="absolute"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          paddingX={16}
-          top={0}
-          bottom={0}
-          right={0}
-        >
+        <Box display="flex" justifyContent="center" alignItems="center">
           {rightAccessory}
         </Box>
       )}

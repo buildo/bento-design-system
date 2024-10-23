@@ -1,14 +1,9 @@
 import { useTextField } from "@react-aria/textfield";
 import { HTMLAttributes, useRef } from "react";
-import { LocalizedString, Box, Field, IconButton } from "..";
-import { inputRecipe } from "../Field/Field.css";
-import { bodyRecipe } from "../Typography/Body/Body.css";
-import { input, inputContainer } from "./SearchBar.css";
+import { LocalizedString, Field, IconButton, BaseTextInput } from "..";
 import { useDefaultMessages } from "../util/useDefaultMessages";
 import { useBentoConfig } from "../BentoConfigContext";
 import { AtLeast } from "../util/AtLeast";
-import { getReadOnlyBackgroundStyle } from "../Field/utils";
-import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
 type Props = AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "aria-labelledby">> & {
   value: string;
@@ -34,7 +29,7 @@ export function SearchBar(props: Props) {
 
   const { defaultMessages } = useDefaultMessages();
 
-  const rightAccessoryContent =
+  const rightAccessory =
     props.value.length > 0 ? (
       <IconButton
         label={props.clearButtonLabel ?? defaultMessages.SearchBar.clearButtonLabel}
@@ -53,46 +48,15 @@ export function SearchBar(props: Props) {
       assistiveTextProps={descriptionProps}
       errorMessageProps={errorMessageProps}
     >
-      <Box
-        display="flex"
-        className={[inputRecipe({ validation: "valid" }), inputContainer]}
-        gap={config.internalSpacing}
-        paddingX={config.paddingX}
-        background={config.background.default}
-        paddingY={config.paddingY}
-        {...getRadiusPropsFromConfig(config.radius)}
-        style={getReadOnlyBackgroundStyle(config)}
-      >
-        <Box display="flex" justifyContent="center" alignItems="center">
-          {config.searchIcon({ size: config.searchIconSize })}
-        </Box>
-        <Box
-          as="input"
-          type="search"
-          ref={inputRef}
-          {...inputProps}
-          // NOTE(gabro): this is to please TS, since the inputProps type is very broad
-          color={undefined}
-          width="full"
-          height={undefined}
-          className={[
-            input,
-            bodyRecipe({
-              color: props.disabled ? "disabled" : "primary",
-              weight: "default",
-              size: config.fontSize,
-              ellipsis: false,
-            }),
-          ]}
-          display="flex"
-          flexGrow={1}
-        />
-        {rightAccessoryContent && (
-          <Box display="flex" justifyContent="center" alignItems="center">
-            {rightAccessoryContent}
-          </Box>
-        )}
-      </Box>
+      <BaseTextInput
+        leftAccessory={config.searchIcon({ size: config.searchIconSize })}
+        rightAccessory={rightAccessory}
+        inputProps={inputProps}
+        inputRef={inputRef}
+        validationState="valid"
+        type="search"
+        {...props}
+      />
     </Field>
   );
 }

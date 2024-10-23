@@ -19,7 +19,6 @@ import { useBentoConfig } from "../BentoConfigContext";
 import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 import { Body } from "../Typography/Body/Body";
 import { Inline } from "../Layout/Inline";
-import useDimensions from "react-cool-dimensions";
 import { IconCalendar, IconMinus } from "../Icons";
 import { AriaButtonProps } from "@react-types/button";
 import { IconButton } from "../IconButton/IconButton";
@@ -89,11 +88,6 @@ export function Input(props: Props) {
   const config = useBentoConfig().input;
   const dateFieldConfig = useBentoConfig().dateField;
 
-  const { observe: rightAccessoryRef, width: rightAccessoryWidth } = useDimensions({
-    // This is needed to include the padding in the width
-    useBorderBoxSize: true,
-  });
-
   const { validationState, isDisabled, isReadOnly } = match(props)
     .with({ type: "single" }, (props) => {
       return {
@@ -128,6 +122,8 @@ export function Input(props: Props) {
   return (
     <Box
       {...getRadiusPropsFromConfig(config.radius)}
+      display="flex"
+      gap={config.internalSpacing}
       paddingX={config.paddingX}
       paddingY={config.paddingY}
       background={config.background.default}
@@ -144,36 +140,27 @@ export function Input(props: Props) {
           readOnly: isReadOnly,
         },
       ]}
-      style={{ paddingRight: rightAccessoryWidth, ...getReadOnlyBackgroundStyle(config) }}
-      position="relative"
+      style={{ ...getReadOnlyBackgroundStyle(config), justifyContent: "space-between" }}
       disabled={isDisabled}
       readOnly={isReadOnly}
     >
-      {props.type === "single" ? (
-        <DateField fieldProps={props.fieldProps} />
-      ) : (
-        <Columns space={dateFieldConfig.internalPadding} alignY="stretch">
-          <DateField fieldProps={props.fieldProps.start} />
-          <Column width="content">
-            <Box display="flex" height="full" alignItems="center">
-              <IconMinus size={dateFieldConfig.rangeSeparatorSize} />
-            </Box>
-          </Column>
-          <DateField fieldProps={props.fieldProps.end} />
-        </Columns>
-      )}
+      <Box flexGrow={1}>
+        {props.type === "single" ? (
+          <DateField fieldProps={props.fieldProps} />
+        ) : (
+          <Columns space={dateFieldConfig.internalPadding} alignY="stretch">
+            <DateField fieldProps={props.fieldProps.start} />
+            <Column width="content">
+              <Box display="flex" height="full" alignItems="center">
+                <IconMinus size={dateFieldConfig.rangeSeparatorSize} />
+              </Box>
+            </Column>
+            <DateField fieldProps={props.fieldProps.end} />
+          </Columns>
+        )}
+      </Box>
       {!isReadOnly && (
-        <Box
-          ref={rightAccessoryRef}
-          position="absolute"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          paddingX={config.paddingX}
-          top={0}
-          bottom={0}
-          right={0}
-        >
+        <Box display="flex" justifyContent="center" alignItems="center">
           <IconButton
             kind="transparent"
             hierarchy="secondary"
