@@ -54,7 +54,7 @@ const inputContainerRecipeVariants = {
     ],
     notSet: {},
   },
-} as const;
+};
 
 export const inputContainerRecipe = strictRecipe({
   base: [
