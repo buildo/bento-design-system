@@ -144,19 +144,21 @@ export function Input(props: Props) {
       disabled={isDisabled}
       readOnly={isReadOnly}
     >
-      {props.type === "single" ? (
-        <DateField fieldProps={props.fieldProps} />
-      ) : (
-        <Columns space={dateFieldConfig.internalPadding} alignY="stretch">
-          <DateField fieldProps={props.fieldProps.start} />
-          <Column width="content">
-            <Box display="flex" height="full" alignItems="center">
-              <IconMinus size={dateFieldConfig.rangeSeparatorSize} />
-            </Box>
-          </Column>
-          <DateField fieldProps={props.fieldProps.end} />
-        </Columns>
-      )}
+      <Box flexGrow={1}>
+        {props.type === "single" ? (
+          <DateField fieldProps={props.fieldProps} />
+        ) : (
+          <Columns space={dateFieldConfig.internalPadding} alignY="stretch">
+            <DateField fieldProps={props.fieldProps.start} />
+            <Column width="content">
+              <Box display="flex" height="full" alignItems="center">
+                <IconMinus size={dateFieldConfig.rangeSeparatorSize} />
+              </Box>
+            </Column>
+            <DateField fieldProps={props.fieldProps.end} />
+          </Columns>
+        )}
+      </Box>
       {!isReadOnly && (
         <Box display="flex" justifyContent="center" alignItems="center">
           <IconButton

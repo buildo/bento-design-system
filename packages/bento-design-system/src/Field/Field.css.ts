@@ -66,7 +66,7 @@ export const inputContainerRecipe = strictRecipe({
     }),
     {
       selectors: {
-        [`&:disabled${notDisabled}, &[disabled]${notDisabled}`]: {
+        [`&:disabled, &[disabled]`]: {
           background: vars.backgroundColor.backgroundPrimary,
         },
         [`input&:read-only${notDisabled}, textarea&:read-only${notDisabled}, &.readOnly${notDisabled}, &[readonly]${notDisabled}`]:
@@ -80,6 +80,15 @@ export const inputContainerRecipe = strictRecipe({
 });
 
 export const inputRecipe = strictRecipe({
-  base: input,
+  base: [
+    input,
+    {
+      selectors: {
+        "&[disabled], &:disabled": {
+          boxShadow: vars.boxShadow.outlineInputDisabled,
+        },
+      },
+    },
+  ],
   variants: inputContainerRecipeVariants,
 });

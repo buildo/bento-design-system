@@ -83,6 +83,7 @@ export function BaseNumberInput(props: Props) {
       paddingX={config.paddingX}
       paddingY={config.paddingY}
       gap={config.internalSpacing}
+      disabled={props.disabled}
       {...getRadiusPropsFromConfig(config.radius)}
     >
       <Box
