@@ -144,7 +144,7 @@ importers:
       ts-pattern: 3.3.5
       tsup: 7.2.0
       typescript: 5.1.3
-      vite: 5.4.10
+      vite: 5.4.11
       vitest: 0.34.6
       webpack: 5.94.0
       webpack-cli: 4.10.0
@@ -230,10 +230,10 @@ importers:
       '@storybook/addon-essentials': 8.0.8_vsw25juzkyj7spaf6wjn5upvjq
       '@storybook/addon-links': 8.0.8_react@18.3.1
       '@storybook/addon-themes': 8.0.8
-      '@storybook/builder-vite': 8.0.8_vtlxyzf2zx6ddan2cffoch4f7u
+      '@storybook/builder-vite': 8.0.8_7y6d3r3k7cqzwy3sqbyoqhpsde
       '@storybook/preview-api': 8.0.8
       '@storybook/react': 8.0.8_hra464h4f6agrm75kpuyuq7spu
-      '@storybook/react-vite': 8.0.8_caclsbgumdo5pqoiimnsl4n5me
+      '@storybook/react-vite': 8.0.8_bbkhls53w2xfidqp34745wetzq
       '@storybook/test': 8.0.10
       '@storybook/types': 8.0.8
       '@testing-library/dom': 9.3.4
@@ -252,9 +252,9 @@ importers:
       '@vanilla-extract/babel-plugin': 1.2.0
       '@vanilla-extract/esbuild-plugin': 2.3.11_esbuild@0.18.11
       '@vanilla-extract/private': 1.0.6
-      '@vanilla-extract/vite-plugin': 3.9.5_vite@5.4.10
+      '@vanilla-extract/vite-plugin': 3.9.5_vite@5.4.11
       '@vanilla-extract/webpack-plugin': 2.3.14_webpack@5.94.0
-      '@vitejs/plugin-react': 4.3.3_vite@5.4.10
+      '@vitejs/plugin-react': 4.3.3_vite@5.4.11
       chromatic: 6.24.1
       css-loader: 6.11.0_webpack@5.94.0
       date-fns: 2.30.0
@@ -279,7 +279,7 @@ importers:
       ts-loader: 9.4.4_x5mktmtof6c7h4sob3pmtt27xu
       tsup: 7.2.0_g6yria6oq7avprwbrw6uw76lbi
       typescript: 5.1.3
-      vite: 5.4.10
+      vite: 5.4.11
       vitest: 0.34.6_jsdom@22.1.0
       webpack: 5.94.0_xv6o4afsychpgm2yejy2midhya
       webpack-cli: 4.10.0_webpack@5.94.0
@@ -313,7 +313,7 @@ importers:
       react-router-dom: 6.16.0
       ts-pattern: 3.3.5
       typescript: 5.1.3
-      vite: 5.4.10
+      vite: 5.4.11
       vite-plugin-checker: 0.6.2
     dependencies:
       '@buildo/bento-design-system': link:../bento-design-system
@@ -338,14 +338,14 @@ importers:
       '@typescript-eslint/parser': 6.5.0_z2cqhtrhzo2dttjlb4wsdjp3di
       '@vanilla-extract/dynamic': 2.1.2
       '@vanilla-extract/sprinkles': 1.6.3_zd2pmj2rl4fq6dchynq6tm4lty
-      '@vanilla-extract/vite-plugin': 3.9.5_vite@5.4.10
-      '@vitejs/plugin-react': 4.3.3_vite@5.4.10
+      '@vanilla-extract/vite-plugin': 3.9.5_vite@5.4.11
+      '@vitejs/plugin-react': 4.3.3_vite@5.4.11
       eslint: 8.57.1
       eslint-plugin-react-hooks: 4.6.2_eslint@8.57.1
       eslint-plugin-react-refresh: 0.4.14_eslint@8.57.1
       typescript: 5.1.3
-      vite: 5.4.10
-      vite-plugin-checker: 0.6.2_xlj2hmzzqgcgwh575qh6ezk3xi
+      vite: 5.4.11
+      vite-plugin-checker: 0.6.2_6ehbelteafdjtceofxoczaixky
 
   packages/website:
     specifiers:
@@ -6600,7 +6600,7 @@ packages:
       '@types/yargs': 17.0.24
       chalk: 4.1.2
 
-  /@joshwooding/vite-plugin-react-docgen-typescript/0.3.0_vtlxyzf2zx6ddan2cffoch4f7u:
+  /@joshwooding/vite-plugin-react-docgen-typescript/0.3.0_7y6d3r3k7cqzwy3sqbyoqhpsde:
     resolution: {integrity: sha512-2D6y7fNvFmsLmRt6UCOFJPvFoPMJGT0Uh1Wg0RaigUp7kdQPs6yYn8Dmx6GZkOH/NW0yMTwRz/p0SRMMRo50vA==}
     peerDependencies:
       typescript: '>= 4.3.x'
@@ -6614,7 +6614,7 @@ packages:
       magic-string: 0.27.0
       react-docgen-typescript: 2.2.2_typescript@5.1.3
       typescript: 5.1.3
-      vite: 5.4.10
+      vite: 5.4.11
     dev: true
 
   /@jridgewell/gen-mapping/0.3.3:
@@ -7744,7 +7744,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       estree-walker: 2.0.2
       picomatch: 2.3.1
     dev: true
@@ -8139,7 +8139,7 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/builder-vite/8.0.8_vtlxyzf2zx6ddan2cffoch4f7u:
+  /@storybook/builder-vite/8.0.8_7y6d3r3k7cqzwy3sqbyoqhpsde:
     resolution: {integrity: sha512-ibWOxoHczCc6ttMQqiSXv29m/e44sKVoc1BJluApQcjCXl9g6QXyN45zV70odjCxMfNy7EQgUjCA0mgAgMHSIw==}
     peerDependencies:
       '@preact/preset-vite': '*'
@@ -8172,7 +8172,7 @@ packages:
       magic-string: 0.30.10
       ts-dedent: 2.2.0
       typescript: 5.1.3
-      vite: 5.4.10
+      vite: 5.4.11
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -8572,7 +8572,7 @@ packages:
       react-dom: 18.3.1_react@18.3.1
     dev: true
 
-  /@storybook/react-vite/8.0.8_caclsbgumdo5pqoiimnsl4n5me:
+  /@storybook/react-vite/8.0.8_bbkhls53w2xfidqp34745wetzq:
     resolution: {integrity: sha512-3xN+/KgcjEAKJ0cM8yFYk8+T59kgKSMlQaavoIgQudbEErSubr9l7jDWXH44afQIEBVs++ayYWrbEN2wyMGoug==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -8580,9 +8580,9 @@ packages:
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || 18
       vite: ^4.0.0 || ^5.0.0
     dependencies:
-      '@joshwooding/vite-plugin-react-docgen-typescript': 0.3.0_vtlxyzf2zx6ddan2cffoch4f7u
+      '@joshwooding/vite-plugin-react-docgen-typescript': 0.3.0_7y6d3r3k7cqzwy3sqbyoqhpsde
       '@rollup/pluginutils': 5.1.0
-      '@storybook/builder-vite': 8.0.8_vtlxyzf2zx6ddan2cffoch4f7u
+      '@storybook/builder-vite': 8.0.8_7y6d3r3k7cqzwy3sqbyoqhpsde
       '@storybook/node-logger': 8.0.8
       '@storybook/react': 8.0.8_hra464h4f6agrm75kpuyuq7spu
       find-up: 5.0.0
@@ -8592,7 +8592,7 @@ packages:
       react-dom: 18.3.1_react@18.3.1
       resolve: 1.22.8
       tsconfig-paths: 4.2.0
-      vite: 5.4.10
+      vite: 5.4.11
     transitivePeerDependencies:
       - '@preact/preset-vite'
       - encoding
@@ -8968,7 +8968,7 @@ packages:
   /@types/acorn/4.0.6:
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
 
   /@types/aria-query/5.0.1:
     resolution: {integrity: sha512-XTIieEY+gvJ39ChLcB4If5zHtPxt3Syj5rgZR+e1ctpmK8NjPf0zFqsz4JpLJT0xla9GFDKjy8Cpu331nrmE1Q==}
@@ -9137,7 +9137,7 @@ packages:
   /@types/estree-jsx/1.0.5:
     resolution: {integrity: sha512-52CcUVNFyfb1A2ALocQw/Dd1BQFNmSdkuC3BkZ6iqhdMfQz7JWOFRuJFloOzjk+6WijU56m9oKXFAXc7o3Towg==}
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
 
   /@types/estree/0.0.51:
     resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
@@ -9148,7 +9148,6 @@ packages:
 
   /@types/estree/1.0.6:
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
-    dev: true
 
   /@types/express-serve-static-core/4.19.0:
     resolution: {integrity: sha512-bGyep3JqPCRry1wq+O5n7oiBgGWmeIJXPjXXCo8EK0u8duZGSYar7cGqd3ML2JUsLGeB7fmc06KYo9fLGWqPvQ==}
@@ -9451,7 +9450,7 @@ packages:
   /@types/tern/0.23.4:
     resolution: {integrity: sha512-JAUw1iXGO1qaWwEOzxTKJZ/5JxVeON9kvGZ/osgZaJImBnyjyn0cjovPsf6FNLmyGY8Vw9DoXZCMlfMkMwHRWg==}
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
 
   /@types/testing-library__jest-dom/5.14.9:
     resolution: {integrity: sha512-FSYhIjFlfOpGSRyVoMBMuS3ws5ehFQODymf3vlI7U1K8c7PHwWwFY7VREfmsuzHSOnoKs/9/Y983ayOs7eRzqw==}
@@ -10149,7 +10148,7 @@ packages:
       lodash: 4.17.21
       mlly: 1.7.1
       outdent: 0.8.0
-      vite: 5.4.10
+      vite: 5.4.11
       vite-node: 1.6.0
     transitivePeerDependencies:
       - '@types/node'
@@ -10177,7 +10176,7 @@ packages:
       find-up: 5.0.0
       javascript-stringify: 2.1.0
       mlly: 1.7.1
-      vite: 5.4.10
+      vite: 5.4.11
       vite-node: 1.6.0
     transitivePeerDependencies:
       - '@types/node'
@@ -10226,7 +10225,7 @@ packages:
       '@vanilla-extract/css': 1.12.0
     dev: true
 
-  /@vanilla-extract/vite-plugin/3.9.5_vite@5.4.10:
+  /@vanilla-extract/vite-plugin/3.9.5_vite@5.4.11:
     resolution: {integrity: sha512-CWI/CtrVW6i3HKccI6T7uGQkTJ8bd8Xl2UMBg3Pkr7dwWMmavXTeucV0I9KSbmXaYXSbEj+Q8c9y0xAZwtmTig==}
     peerDependencies:
       vite: ^2.2.3 || ^3.0.0 || ^4.0.3 || ^5.0.0
@@ -10235,7 +10234,7 @@ packages:
       outdent: 0.8.0
       postcss: 8.4.49
       postcss-load-config: 4.0.1_postcss@8.4.49
-      vite: 5.4.10
+      vite: 5.4.11
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -10286,7 +10285,7 @@ packages:
       - terser
     dev: true
 
-  /@vitejs/plugin-react/4.3.3_vite@5.4.10:
+  /@vitejs/plugin-react/4.3.3_vite@5.4.11:
     resolution: {integrity: sha512-NooDe9GpHGqNns1i8XDERg0Vsg5SSYRhRxxyTGogUdkdNt47jal+fbuYi+Yfq6pzRCKXyoPcWisfxE6RIM3GKA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -10297,7 +10296,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.24.7_@babel+core@7.25.2
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 5.4.10
+      vite: 5.4.11
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -13631,7 +13630,7 @@ packages:
   /estree-util-attach-comments/3.0.0:
     resolution: {integrity: sha512-cKUwm/HUcTDsYh/9FgnuFqpfquUbwIqwKM26BVCGDPVgvaCl/nDCCjUfiLlx6lsEZ3Z4RFxNbOQ60pkaEwFxGw==}
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
 
   /estree-util-build-jsx/3.0.1:
     resolution: {integrity: sha512-8U5eiL6BTrPxp/CHbs2yMgP8ftMhR5ww1eIKoWRMlqvltHF8fZn5LRDvTKuxD3DUn+shRbLGqXemcP51oFCsGQ==}
@@ -13654,7 +13653,7 @@ packages:
   /estree-util-value-to-estree/3.1.2:
     resolution: {integrity: sha512-S0gW2+XZkmsx00tU2uJ4L9hUT7IFabbml9pHh2WQqFmAbxit++YGZne0sKJbNwkj9Wvg9E4uqWl4nCIFQMmfag==}
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
 
   /estree-util-visit/2.0.0:
     resolution: {integrity: sha512-m5KgiH85xAhhW8Wta0vShLcUvOsh3LLPI2YVwcbio1l7E09NTLL1EyMZFM1OyWowoH0skScNbhOPl4kcBgzTww==}
@@ -13669,7 +13668,7 @@ packages:
   /estree-walker/3.0.3:
     resolution: {integrity: sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==}
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
 
   /esutils/2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
@@ -14629,7 +14628,7 @@ packages:
   /hast-util-to-estree/3.1.0:
     resolution: {integrity: sha512-lfX5g6hqVh9kjS/B9E2gSkvHH4SZNiQFiqWS0x9fENzEl+8W12RqdRxX6d/Cwxi30tPQs3bIO+aolQJNp1bIyw==}
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       '@types/estree-jsx': 1.0.5
       '@types/hast': 3.0.4
       comma-separated-tokens: 2.0.3
@@ -14651,7 +14650,7 @@ packages:
   /hast-util-to-jsx-runtime/2.3.2:
     resolution: {integrity: sha512-1ngXYb+V9UT5h+PxNRa1O1FYguZK/XL+gkeqvp7EdHlB9oHUG0eYRo/vY5inBdcqo3RkPMC58/H94HvkbfGdyg==}
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       '@types/hast': 3.0.4
       '@types/unist': 3.0.2
       comma-separated-tokens: 2.0.3
@@ -15356,7 +15355,7 @@ packages:
   /is-reference/3.0.2:
     resolution: {integrity: sha512-v3rht/LgVcsdZa3O2Nqs+NMowLOxeOm7Ay9+/ARQ2F+qEoANRcqrjAZKGN0v8ymUetZGgkp26LTnGT7H0Qo9Pg==}
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
 
   /is-regex/1.1.4:
     resolution: {integrity: sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg==}
@@ -16572,7 +16571,7 @@ packages:
   /micromark-extension-mdx-expression/3.0.0:
     resolution: {integrity: sha512-sI0nwhUDz97xyzqJAbHQhp5TfaxEvZZZ2JDqUo+7NvyIYG6BZ5CPPqj2ogUoPJlmXHBnyZUzISg9+oUmU6tUjQ==}
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       devlop: 1.1.0
       micromark-factory-mdx-expression: 2.0.2
       micromark-factory-space: 2.0.0
@@ -16585,7 +16584,7 @@ packages:
     resolution: {integrity: sha512-vNuFb9czP8QCtAQcEJn0UJQJZA8Dk6DXKBqx+bg/w0WGuSxDxNr7hErW89tHUY31dUW4NqEOWwmEUNhjTFmHkg==}
     dependencies:
       '@types/acorn': 4.0.6
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       devlop: 1.1.0
       estree-util-is-identifier-name: 3.0.0
       micromark-factory-mdx-expression: 2.0.2
@@ -16604,7 +16603,7 @@ packages:
   /micromark-extension-mdxjs-esm/3.0.0:
     resolution: {integrity: sha512-DJFl4ZqkErRpq/dAPyeWp15tGrcrrJho1hKK5uBS70BCtfrIFg81sqcTVu3Ta+KD1Tk5vAtBNElWxtAa+m8K9A==}
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       devlop: 1.1.0
       micromark-core-commonmark: 2.0.1
       micromark-util-character: 2.1.0
@@ -16661,7 +16660,7 @@ packages:
   /micromark-factory-mdx-expression/2.0.2:
     resolution: {integrity: sha512-5E5I2pFzJyg2CtemqAbcyCktpHXuJbABnsb32wX2U8IQKhhVFBqkcZR5LRm1WVoFqa4kTueZK4abep7wdo9nrw==}
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       devlop: 1.1.0
       micromark-factory-space: 2.0.0
       micromark-util-character: 2.1.0
@@ -16807,7 +16806,7 @@ packages:
     resolution: {integrity: sha512-Fk+xmBrOv9QZnEDguL9OI9/NQQp6Hz4FuQ4YmCb/5V7+9eAh1s6AYSvL20kHkD67YIg7EpE54TiSlcsf3vyZgA==}
     dependencies:
       '@types/acorn': 4.0.6
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       '@types/unist': 3.0.2
       devlop: 1.1.0
       estree-util-visit: 2.0.0
@@ -17674,7 +17673,7 @@ packages:
   /periscopic/3.1.0:
     resolution: {integrity: sha512-vKiQ8RRtkl9P+r/+oefh25C3fhybptkHKCZSPlcXiJux2tJF55GnEj3BVn4A5gKfq9NWWXXrxkHBwVPUfH0opw==}
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       estree-walker: 3.0.3
       is-reference: 3.0.2
 
@@ -21301,7 +21300,7 @@ packages:
       mlly: 1.7.1
       pathe: 1.1.2
       picocolors: 1.1.0
-      vite: 5.4.10_@types+node@18.17.14
+      vite: 5.4.11_@types+node@18.17.14
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -21323,7 +21322,7 @@ packages:
       debug: 4.3.4
       pathe: 1.1.2
       picocolors: 1.1.0
-      vite: 5.4.10
+      vite: 5.4.11
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -21336,7 +21335,7 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-checker/0.6.2_xlj2hmzzqgcgwh575qh6ezk3xi:
+  /vite-plugin-checker/0.6.2_6ehbelteafdjtceofxoczaixky:
     resolution: {integrity: sha512-YvvvQ+IjY09BX7Ab+1pjxkELQsBd4rPhWNw8WLBeFVxu/E7O+n6VYAqNsKdK/a2luFlX/sMpoWdGFfg4HvwdJQ==}
     engines: {node: '>=14.16'}
     peerDependencies:
@@ -21382,15 +21381,15 @@ packages:
       strip-ansi: 6.0.1
       tiny-invariant: 1.3.1
       typescript: 5.1.3
-      vite: 5.4.10
+      vite: 5.4.11
       vscode-languageclient: 7.0.0
       vscode-languageserver: 7.0.0
       vscode-languageserver-textdocument: 1.0.8
       vscode-uri: 3.0.7
     dev: true
 
-  /vite/5.4.10:
-    resolution: {integrity: sha512-1hvaPshuPUtxeQ0hsVH3Mud0ZanOLwVTneA1EgbAM5LhaZEqyPWGRQ7BtaMvUrTDeEaC8pxtj6a6jku3x4z6SQ==}
+  /vite/5.4.11:
+    resolution: {integrity: sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -21427,8 +21426,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite/5.4.10_@types+node@18.17.14:
-    resolution: {integrity: sha512-1hvaPshuPUtxeQ0hsVH3Mud0ZanOLwVTneA1EgbAM5LhaZEqyPWGRQ7BtaMvUrTDeEaC8pxtj6a6jku3x4z6SQ==}
+  /vite/5.4.11_@types+node@18.17.14:
+    resolution: {integrity: sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -21519,7 +21518,7 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.5.0
       tinypool: 0.7.0
-      vite: 5.4.10_@types+node@18.17.14
+      vite: 5.4.11_@types+node@18.17.14
       vite-node: 0.34.6_@types+node@18.17.14
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
