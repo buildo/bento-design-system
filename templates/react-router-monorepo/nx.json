@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "dev": {
+      "dependsOn": ["generate:types", "^build"]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["{projectRoot}/dist"],
+      "cache": true
+    },
+    "generate:types": {
+      "outputs": ["{projectRoot}/.react-router/types"]
+    },
+    "typecheck": {
+      "dependsOn": ["generate:types", "^build"],
+      "cache": true
+    }
+  },
+  "defaultBase": "main"
+}

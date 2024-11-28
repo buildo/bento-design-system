@@ -5,6 +5,7 @@ import { Children } from "../util/Children";
 import { DisclosureProps } from "./Disclosure";
 
 export type DisclosureConfig = {
+  titleSpacing: BentoSprinkles["gap"];
   internalSpacing: BentoSprinkles["gap"];
   titleSize: {
     1: TitleProps["size"];

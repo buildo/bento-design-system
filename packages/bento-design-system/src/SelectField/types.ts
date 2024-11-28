@@ -32,6 +32,7 @@ export type BaseMultiProps = {
 );
 
 export type BaseSelectProps<A> = {
+  id?: string;
   menuSize?: ListSize;
   placeholder?: LocalizedString;
   options: Array<SelectOption<A>>;

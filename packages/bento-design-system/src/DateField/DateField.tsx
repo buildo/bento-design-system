@@ -18,11 +18,11 @@ export type ShortcutProps<Value> = {
 };
 type SingleDateFieldProps = {
   type?: "single";
-  shortcuts?: ShortcutProps<Date>[];
+  shortcuts?: ShortcutProps<Date | null>[];
 } & FieldProps<Date | null>;
 type RangeDateFieldProps = {
   type: "range";
-  shortcuts?: ShortcutProps<[Date, Date]>[];
+  shortcuts?: ShortcutProps<[Date, Date] | null>[];
 } & FieldProps<[Date, Date] | null>;
 type Props = (SingleDateFieldProps | RangeDateFieldProps) & {
   minDate?: Date;
@@ -138,6 +138,7 @@ function RangeDateField({ disabled, readOnly, ...props }: Extract<Props, { type:
         props.onChange([range.start.toDate(localTimeZone), range.end.toDate(localTimeZone)]);
       }
     },
+    shouldForceLeadingZeros: true,
   } as const;
   const state = useDateRangePickerState(internalProps);
   const ref = useRef(null);

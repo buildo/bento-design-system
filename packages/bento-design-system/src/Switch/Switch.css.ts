@@ -5,7 +5,7 @@ import { strictRecipe } from "../util/strictRecipe";
 import { extendedHitAreaRecipe } from "../util/extendedHitArea.css";
 
 export const switchContainer = style([
-  { position: "relative", zIndex: "1" },
+  { position: "relative" },
   extendedHitAreaRecipe({ axis: "y" }),
 ]);
 

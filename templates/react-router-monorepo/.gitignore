@@ -1,0 +1,9 @@
+node_modules
+
+/.cache
+/build
+.env
+.react-router
+
+.nx/cache
+.nx/workspace-data

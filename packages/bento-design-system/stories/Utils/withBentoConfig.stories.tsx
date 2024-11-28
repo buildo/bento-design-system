@@ -1,4 +1,10 @@
-import { DesignSystemProvider, Modal as BentoModal, withBentoConfig } from "..";
+import {
+  DesignSystemProvider,
+  Modal as BentoModal,
+  withBentoConfig,
+  Disclosure as BentoDisclosure,
+  Placeholder,
+} from "..";
 import { action } from "@storybook/addon-actions";
 import { defaultMessages } from "../../src/defaultMessages/en";
 
@@ -43,5 +49,22 @@ export const ConfiguredModal = () => {
         Modal content
       </Modal>
     </DesignSystemProvider>
+  );
+};
+
+export const ConfiguredDisclosure = () => {
+  const Disclosure = withBentoConfig(
+    {
+      disclosure: {
+        titleSpacing: 0,
+      },
+    },
+    BentoDisclosure
+  );
+
+  return (
+    <Disclosure title="Title" initialIsOpen>
+      <Placeholder />
+    </Disclosure>
   );
 };

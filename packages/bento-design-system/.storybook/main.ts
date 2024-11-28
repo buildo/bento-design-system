@@ -1,19 +1,18 @@
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
-// @ts-expect-error
-import * as path from "path";
 import type { StorybookConfig } from "@storybook/react-vite";
 import { mergeConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 const config: StorybookConfig = {
   stories: [{ directory: "../stories", files: "**/*.stories.*" }],
-  addons: ["@storybook/addon-links", "@storybook/addon-essentials", "storybook-addon-themes"],
+  addons: ["@storybook/addon-links", "@storybook/addon-essentials", "@storybook/addon-themes"],
   framework: "@storybook/react-vite",
   core: {
     builder: "@storybook/builder-vite",
   },
   viteFinal: (config) => {
     return mergeConfig(config, {
-      plugins: [vanillaExtractPlugin()],
+      plugins: [react(), vanillaExtractPlugin()],
     });
   },
 };

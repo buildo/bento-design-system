@@ -36,6 +36,14 @@ const input = style({
   ":disabled": {
     cursor: "inherit",
   },
+  selectors: {
+    [`&::-webkit-search-decoration,
+      &::-webkit-search-cancel-button,
+      &::-webkit-search-results-button,
+      &::-webkit-search-results-decoration`]: {
+      WebkitAppearance: "none",
+    },
+  },
 });
 
 const label = style({

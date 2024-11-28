@@ -1,0 +1,85 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions: write-all
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    name: Release
+    steps:
+      - name: Generate Github App Token
+        id: github_app_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.RELEASE_BOT_APP_ID }}
+          private-key: ${{ secrets.RELEASE_BOT_APP_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+          token: ${{ steps.github_app_token.outputs.token }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: pnpm/action-setup@v3
+        with:
+          run_install: true
+
+      - run: |
+          cd packages/bento-design-system
+          pnpm version --no-git-tag-version --new-version ${{ github.ref_name }}
+          new_version=$(cat package.json | jq -r '.version')
+          cd ../../templates/react-router-monorepo/libs/design-system
+          jq '.dependencies["@buildo/bento-design-system"] = "'${new_version}'"' package.json > package.json.tmp && mv package.json.tmp package.json
+
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          message: ${{ github.ref_name }}
+          author_name: buildo-release-bot[bot]
+          author_email: 168835274+buildo-release-bot[bot]@users.noreply.github.com
+          github_token: ${{ steps.github_app_token.outputs.token }}
+
+      - name: Publish to npm
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          package: "packages/bento-design-system/package.json"
+          token: ${{ secrets.NPM_TOKEN }}
+          access: "public"
+          provenance: true
+          ignore-scripts: false
+
+      - name: Publish to Github
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          package: "packages/bento-design-system/package.json"
+          registry: "https://npm.pkg.github.com"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          access: "public"
+          provenance: true
+          ignore-scripts: false
+
+      - uses: slackapi/slack-github-action@v1.24.0
+        if: ${{ job.status == 'success' }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        with:
+          channel-id: C02UMTSG2BA
+          payload: '{"text": ":tada: Version ${{ github.ref_name }} has been released!"}'
+
+      - uses: slackapi/slack-github-action@v1.24.0
+        if: ${{ job.status == 'failure' }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        with:
+          channel-id: C02UMTSG2BA
+          payload: '{"text": ":x: Version ${{ github.ref_name }} failed to release"}'

@@ -29,7 +29,7 @@ export function ButtonCell({
   value: buttonProps,
   column: { align },
   options,
-}: CellProps<{}, Omit<ButtonProps, "size">> & {
+}: CellProps<any, Omit<ButtonProps, "size">> & {
   options: Partial<Pick<ButtonProps, "size">>;
 }) {
   const config = useBentoConfig().table;
@@ -48,7 +48,7 @@ export function ButtonLinkCell({
   value: buttonProps,
   column: { align },
   options,
-}: CellProps<{}, Omit<ButtonLinkProps, "size">> & {
+}: CellProps<any, Omit<ButtonLinkProps, "size">> & {
   options: Partial<Pick<ButtonLinkProps, "size">>;
 }) {
   const config = useBentoConfig().table;
@@ -63,37 +63,47 @@ export function ButtonLinkCell({
   );
 }
 
+type TextCellValue =
+  | LocalizedString
+  | ({ text: LocalizedString } & Partial<Pick<BodyProps, "size" | "weight" | "color" | "align">>);
 export function TextCell({
   value,
-  column: { align },
+  column,
   options,
-}: CellProps<{}, LocalizedString> & {
+}: CellProps<any, TextCellValue> & {
   options: Partial<Pick<BodyProps, "size" | "weight" | "color">>;
 }) {
   const config = useBentoConfig().table;
   const padding = config.padding.textCell ?? config.padding.defaultCell;
-  const { size, weight, color } = mergeProps(config.defaultCellOptions.textCell, options);
+  const cellOptions: Omit<TextCellValue, "text"> = typeof value === "string" ? {} : value;
+
+  const { size, weight, color, align } = mergeProps(
+    column,
+    config.defaultCellOptions.textCell,
+    options,
+    cellOptions
+  );
   return (
     <Box {...padding} textAlign={align}>
       <Body size={size} weight={weight} color={color}>
-        {value}
+        {typeof value === "string" ? value : value.text}
       </Body>
     </Box>
   );
 }
 
 export function TextWithIconCell({
-  value: { icon, iconPosition, text, tooltipContent },
+  value: { icon, iconPosition, text, tooltipContent, ...cellOptions },
   column: { align },
   options,
 }: CellProps<
-  {},
+  any,
   {
     icon: ((props: IconProps) => Children) | null;
     iconPosition: "left" | "right";
     text: LocalizedString;
     tooltipContent?: Children;
-  }
+  } & Partial<Pick<BodyProps, "size" | "weight" | "color">>
 > & {
   options: Partial<Pick<BodyProps, "size" | "weight" | "color">> & {
     iconSize?: IconProps["size"];
@@ -103,7 +113,8 @@ export function TextWithIconCell({
   const config = useBentoConfig().table;
   const { size, weight, color, iconSize, iconColor } = mergeProps(
     config.defaultCellOptions.textWithIconCell,
-    options
+    options,
+    cellOptions
   );
   const padding = config.padding.textWithIconCell ?? config.padding.defaultCell;
   const icon_ = icon && icon({ size: iconSize, color: iconColor });
@@ -132,7 +143,7 @@ export function TextWithIconCell({
   );
 }
 
-export function ChipCell({ value: chipProps, column: { align } }: CellProps<{}, ChipProps>) {
+export function ChipCell({ value: chipProps, column: { align } }: CellProps<any, ChipProps>) {
   const config = useBentoConfig().table;
   const padding = config.padding.chipCell ?? config.padding.defaultCell;
   return (
@@ -144,20 +155,30 @@ export function ChipCell({ value: chipProps, column: { align } }: CellProps<{}, 
   );
 }
 
+type LabelCellValue =
+  | LocalizedString
+  | ({ text: LocalizedString } & Partial<Pick<LabelProps, "size" | "color" | "align">>);
 export function LabelCell({
   value,
-  column: { align },
+  column,
   options,
-}: CellProps<{}, LocalizedString> & {
+}: CellProps<any, LabelCellValue> & {
   options: Partial<Pick<LabelProps, "size" | "color">>;
 }) {
   const config = useBentoConfig().table;
   const padding = config.padding.labelCell ?? config.padding.defaultCell;
-  const { size, color } = mergeProps(config.defaultCellOptions.labelCell, options);
+  const cellOptions = typeof value === "string" ? {} : value;
+
+  const { size, color, align } = mergeProps(
+    column,
+    config.defaultCellOptions.labelCell,
+    options,
+    cellOptions
+  );
   return (
     <Box {...padding} textAlign={align}>
       <Label size={size} color={color}>
-        {value}
+        {typeof value === "string" ? value : value.text}
       </Label>
     </Box>
   );
@@ -167,7 +188,7 @@ export function LinkCell({
   value,
   column: { align },
   options,
-}: CellProps<{}, ComponentProps<typeof Link>> & {
+}: CellProps<any, ComponentProps<typeof Link>> & {
   options: Partial<Pick<BodyProps, "size" | "weight">>;
 }) {
   const config = useBentoConfig().table;
@@ -186,7 +207,7 @@ export function IconCell({
   value,
   column: { align },
   options,
-}: CellProps<{}, { icon: (props: IconProps) => JSX.Element; label: LocalizedString }> & {
+}: CellProps<any, { icon: (props: IconProps) => JSX.Element; label: LocalizedString }> & {
   options: Partial<Pick<IconProps, "size" | "color">>;
 }) {
   const config = useBentoConfig().table;
@@ -203,7 +224,7 @@ export function IconButtonCell({
   value: iconButtonProps,
   column: { align },
   options,
-}: CellProps<{}, Omit<IconButtonProps, "size" | "kind" | "hierarchy">> & {
+}: CellProps<any, Omit<IconButtonProps, "size" | "kind" | "hierarchy">> & {
   options: Partial<Pick<IconButtonProps, "size" | "kind" | "hierarchy">>;
 }) {
   const config = useBentoConfig().table;

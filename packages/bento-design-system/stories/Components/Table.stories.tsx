@@ -1,4 +1,4 @@
-import { useCallback, useState, ComponentProps } from "react";
+import { useCallback, useState, ComponentProps, useRef } from "react";
 import {
   tableColumn,
   FormRow,
@@ -16,7 +16,7 @@ import {
 import orderBy from "lodash.orderby";
 import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
-import { useArgs } from "@storybook/addons";
+import { useArgs } from "@storybook/preview-api";
 
 const exampleColumns = [
   tableColumn.button({
@@ -31,9 +31,10 @@ const exampleColumns = [
     accessor: "name",
   }),
   tableColumn.text({
-    headerLabel: "Extended address",
+    headerLabel: "Extended complete address",
     accessor: "address",
     width: { custom: 200 },
+    align: "center",
   }),
   tableColumn.textWithIcon({
     headerLabel: "Country",
@@ -113,7 +114,14 @@ const exampleColumnsWithFooter = [
     hint: { onPress: action("hint") },
     footer: ({ rows }) =>
       Intl.NumberFormat("en").format(
-        rows.reduce((acc, row) => acc + (row.values.applications ?? 0), 0)
+        rows.reduce(
+          (acc, row) =>
+            acc +
+            (typeof row.values.applications === "number"
+              ? row.values.applications ?? 0
+              : row.values.applications?.numericValue ?? 0),
+          0
+        )
       ),
   }),
   tableColumn.numberWithIcon({
@@ -192,7 +200,14 @@ const exampleGroupedColumns = [
         hint: { onPress: action("hint") },
         footer: ({ rows }) =>
           Intl.NumberFormat("en").format(
-            rows.reduce((acc, row) => acc + (row.values.applications ?? 0), 0)
+            rows.reduce(
+              (acc, row) =>
+                acc +
+                (typeof row.values.applications === "number"
+                  ? row.values.applications ?? 0
+                  : row.values.applications?.numericValue ?? 0),
+              0
+            )
           ),
       }),
       tableColumn.numberWithIcon({
@@ -317,7 +332,10 @@ const deleteAction = {
 const exampleData = [
   {
     name: "Amazon",
-    address: "Theodore Lowe Ap #867-859 Sit Rd. Azusa New York 39531",
+    address: {
+      text: "Theodore Lowe Ap #867-859 Sit Rd. Azusa New York 39531",
+      weight: "strong",
+    },
     country: {
       icon: IconInfoSolid,
       text: "US",
@@ -334,7 +352,7 @@ const exampleData = [
       numericValue: 100,
       icon: IconInfoSolid,
     },
-    type: "Private",
+    type: { text: "Private", color: "secondary", align: "right" },
     website: { href: "http://www.amazon.com", label: "Link" },
     alerts: { icon: IconWarningSolid, label: "Warning" },
     group: "Group 1",
@@ -379,7 +397,7 @@ const exampleData = [
       hierarchy: "primary",
       onPress: () => {},
     } as const,
-    applications: 1_000,
+    applications: { numericValue: 1_000, align: "left" },
     status: { label: "Pending", color: "yellow" } as const,
     value: {
       numericValue: 120,
@@ -436,7 +454,7 @@ const exampleData = [
     group: "Group 1",
     deleteAction,
   },
-];
+] as const;
 
 const meta = {
   component: Table,
@@ -445,7 +463,7 @@ const meta = {
     data: exampleData,
   },
   parameters: { actions: { argTypesRegex: "" } },
-} satisfies Meta<TableProps<typeof exampleColumns, typeof exampleGroupedColumns>>;
+} satisfies Meta<TableProps<typeof exampleColumns>>;
 
 export default meta;
 
@@ -526,6 +544,7 @@ export const WithFilter = {
               options={statusOptions}
             />
           </FormRow>
+          {/* @ts-expect-error */}
           <Story args={{ ...ctx.args, data }} />
         </Stack>
       );
@@ -538,7 +557,7 @@ export const WithControlledSorting = {
     onSort: action("onSort"),
   },
   render: (args) => {
-    const [, setArgs] = useArgs();
+    const [data, setData] = useState(args.data);
 
     const [numberOfRows, setNumberOfRows] = useState(2);
 
@@ -560,9 +579,9 @@ export const WithControlledSorting = {
           }),
           sortBy.map((a) => (a.desc ? "desc" : "asc"))
         ).slice(0, numberOfRows);
-        setArgs({ data: newData });
+        setData(newData);
       },
-      [numberOfRows, setArgs, args.data]
+      [numberOfRows]
     );
 
     return (
@@ -573,12 +592,12 @@ export const WithControlledSorting = {
             label="Number of rows"
             placeholder="Number of rows"
             value={numberOfRows}
-            onChange={setNumberOfRows}
+            onChange={(n) => setNumberOfRows(n)}
           />
         </FormRow>
         {/* NOTE(gabro): no idea why TS complains on the onSort type here */}
         {/* @ts-expect-error */}
-        <Table {...args} onSort={onSort} />
+        <Table {...args} onSort={onSort} data={data} />
       </Stack>
     );
   },
@@ -598,6 +617,7 @@ export const Grouped = {
 } satisfies Story;
 
 export const WithFillColumn = {
+  // @ts-expect-error
   args: {
     columns: [
       tableColumn.text({
@@ -664,6 +684,7 @@ function repeatToLength<T>(arr: T[], n: number): T[] {
 }
 
 export const VirtualizedRows = {
+  // @ts-expect-error
   args: {
     stickyHeaders: true,
     height: { custom: 340 },
@@ -673,6 +694,7 @@ export const VirtualizedRows = {
 } satisfies Story;
 
 export const VirtualizedRowsGroupedHeaders = {
+  // @ts-expect-error
   args: {
     columns: exampleGroupedColumns,
     stickyHeaders: true,
@@ -683,6 +705,7 @@ export const VirtualizedRowsGroupedHeaders = {
 } satisfies Story;
 
 export const VirtualizedRowsGroupedRows = {
+  // @ts-expect-error
   args: {
     columns: [
       ...exampleColumns,

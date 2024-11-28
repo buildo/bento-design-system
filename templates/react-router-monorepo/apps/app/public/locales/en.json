@@ -1,0 +1,42 @@
+{
+  "common": {
+    "search": "Search...",
+
+    "chip": {
+      "dismissButtonLabel": "Remove"
+    },
+    "banner": {
+      "dismissButtonLabel": "Close"
+    },
+    "modal": {
+      "closeButtonLabel": "Close"
+    },
+    "selectField": {
+      "noOptionsMessage": "No options",
+      "optionsPlural": "options",
+      "optionsSingular": "option",
+      "multiOptionsSelected": "{{n}} {{options}} selected",
+      "selectAllButtonLabel": "Select all",
+      "clearAllButtonLabel": "Clear all"
+    },
+    "searchBar": {
+      "clearButtonLabel": "Clear"
+    },
+    "table": {
+      "noResultsTitle": "No results found",
+      "noResultsDescription": "Try adjusting your search filters to find what you're looking for.",
+      "missingValue": "-"
+    },
+    "loader": {
+      "loadingMessage": "Loading..."
+    },
+    "dateField": {
+      "previousMonthLabel": "Prev month",
+      "nextMonthLabel": "Next month"
+    },
+    "textField": {
+      "showPasswordLabel": "Show password",
+      "hidePasswordLabel": "Hide password"
+    }
+  }
+}

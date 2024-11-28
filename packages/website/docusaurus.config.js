@@ -1,6 +1,7 @@
 // @ts-check
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const { themes } = require("prism-react-renderer");
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
 const { ProvidePlugin } = require("webpack");
 
 /** @type {import('@docusaurus/types').Config} */

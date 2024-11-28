@@ -186,6 +186,7 @@ export const decorativeDivider: DecorativeDividerConfig = {
 };
 
 export const disclosure: DisclosureConfig = {
+  titleSpacing: 16,
   internalSpacing: 16,
   titleSize: {
     1: "medium",
@@ -677,7 +678,9 @@ export const tooltip: TooltipConfig = {
 export const dateField: DateFieldConfig = {
   radius: 24,
   padding: 24,
+  internalPadding: 16,
   elevation: "medium",
+  rangeSeparatorSize: 24,
   monthYearLabelSize: "large",
   dayOfWeekLabelSize: "large",
   previousMonthIcon: IconChevronLeft,

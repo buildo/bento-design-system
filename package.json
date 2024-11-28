@@ -26,10 +26,10 @@
     "husky": "8.0.3",
     "turbo": "1.10.13"
   },
-  "packageManager": "pnpm@7.33.6",
+  "packageManager": "pnpm@7.33.7",
   "pnpm": {
     "overrides": {
-      "@types/react": "^18"
+      "@types/react": "18.3.12"
     },
     "peerDependencyRules": {
       "allowedVersions": {

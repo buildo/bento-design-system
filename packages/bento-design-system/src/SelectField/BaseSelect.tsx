@@ -4,7 +4,7 @@ import { FieldProps } from "../Field/FieldProps";
 import { BentoConfigProvider, useBentoConfig } from "../BentoConfigContext";
 import { AriaLabelingProps, DOMProps } from "@react-types/shared";
 import * as selectComponents from "./components";
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import { BaseMultiProps, BaseSelectProps, BaseSingleProps, SelectOption } from "./types";
 
 type MultiProps<A> = BaseMultiProps &
@@ -58,11 +58,16 @@ export function BaseSelect<A>(props: Props<A>) {
     clearable = true,
   } = props;
 
+  // NOTE(gabro): we want to make sure we have a stable ID across SSR rendering, to overcome this issue with react-select https://github.com/JedWatson/react-select/issues/2629
+  const generatedId = useId();
+  const id = fieldProps.id ?? generatedId;
+
   return (
     // NOTE(gabro): SelectField has its own config for List, so we override it here using BentoConfigProvider
     <BentoConfigProvider value={{ list: dropdownConfig.list }}>
       <Select
-        id={fieldProps.id}
+        id={id}
+        instanceId={id}
         name={name}
         aria-label={fieldProps["aria-label"]}
         aria-labelledby={fieldProps["aria-labelledby"]}
