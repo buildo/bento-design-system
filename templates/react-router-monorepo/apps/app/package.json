@@ -14,7 +14,7 @@
     "@react-router/node": "7.0.1",
     "@react-router/serve": "7.0.1",
     "design-system": "workspace:*",
-    "i18next": "23.16.2",
+    "i18next": "23.16.8",
     "i18next-browser-languagedetector": "8.0.0",
     "i18next-fs-backend": "2.3.2",
     "i18next-http-backend": "2.6.2",
