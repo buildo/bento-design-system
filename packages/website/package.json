@@ -39,7 +39,7 @@
     "docusaurus-plugin-react-docgen-typescript": "1.1.0",
     "playroom": "0.32.1",
     "prettier": "2.8.8",
-    "prism-react-renderer": "2.4.0",
+    "prism-react-renderer": "2.4.1",
     "process": "0.11.10",
     "react": "18.3.1",
     "react-docgen-typescript": "2.2.2",
