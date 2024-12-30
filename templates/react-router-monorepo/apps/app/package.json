@@ -15,7 +15,7 @@
     "@react-router/serve": "7.0.1",
     "design-system": "workspace:*",
     "i18next": "23.16.8",
-    "i18next-browser-languagedetector": "8.0.0",
+    "i18next-browser-languagedetector": "8.0.2",
     "i18next-fs-backend": "2.3.2",
     "i18next-http-backend": "2.6.2",
     "isbot": "5.1.17",
