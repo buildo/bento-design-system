@@ -108,7 +108,7 @@ importers:
       '@vanilla-extract/recipes': 0.5.5
       '@vanilla-extract/sprinkles': 1.6.3
       '@vanilla-extract/vite-plugin': 3.9.5
-      '@vanilla-extract/webpack-plugin': 2.3.17
+      '@vanilla-extract/webpack-plugin': 2.3.18
       '@vitejs/plugin-react': 4.3.4
       chromatic: 6.24.1
       clsx: 1.2.1
@@ -253,7 +253,7 @@ importers:
       '@vanilla-extract/esbuild-plugin': 2.3.14_esbuild@0.18.11
       '@vanilla-extract/private': 1.0.6
       '@vanilla-extract/vite-plugin': 3.9.5_vite@5.4.14
-      '@vanilla-extract/webpack-plugin': 2.3.17_webpack@5.94.0
+      '@vanilla-extract/webpack-plugin': 2.3.18_webpack@5.94.0
       '@vitejs/plugin-react': 4.3.4_vite@5.4.14
       chromatic: 6.24.1
       css-loader: 6.11.0_webpack@5.94.0
@@ -10504,6 +10504,24 @@ packages:
       - supports-color
     dev: true
 
+  /@vanilla-extract/integration/8.0.1:
+    resolution: {integrity: sha512-ag64t+AM96XGOiloc5ryZHP5rbfleFyfoPKa42QqOuyAlLx/UpW5epSY+RUldizP4P/uLy5WFRiYlNddK1eQUQ==}
+    dependencies:
+      '@babel/core': 7.26.0
+      '@babel/plugin-syntax-typescript': 7.24.1_@babel+core@7.26.0
+      '@vanilla-extract/babel-plugin-debug-ids': 1.2.0
+      '@vanilla-extract/css': 1.17.1
+      dedent: 1.5.3
+      esbuild: 0.21.5
+      eval: 0.1.8
+      find-up: 5.0.0
+      javascript-stringify: 2.1.0
+      mlly: 1.7.1
+    transitivePeerDependencies:
+      - babel-plugin-macros
+      - supports-color
+    dev: true
+
   /@vanilla-extract/private/1.0.6:
     resolution: {integrity: sha512-ytsG/JLweEjw7DBuZ/0JCN4WAQgM9erfSTdS1NQY778hFQSZ6cfCDEZZ0sgVm4k54uNz6ImKB33AYvSR//fjxw==}
 
@@ -10575,12 +10593,12 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@vanilla-extract/webpack-plugin/2.3.17_webpack@5.94.0:
-    resolution: {integrity: sha512-gfy80YF9NkXx4V5vKgwLk7r7H6uonLLf5R5Rb0Seynt5BfFy0Anv7DjK7vIQDaTZ1UafNxhPkRdEeDmd3YbVOQ==}
+  /@vanilla-extract/webpack-plugin/2.3.18_webpack@5.94.0:
+    resolution: {integrity: sha512-00AB9LQJZ5JM6jQCCn3upONPi4jqJnjXrN+uROgfixgxIpq0fMEfhnwOtAdECG7gRCy0T2jzpo1KO1Fh5wYsJg==}
     peerDependencies:
       webpack: ^4.30.0 || ^5.20.2
     dependencies:
-      '@vanilla-extract/integration': 8.0.0
+      '@vanilla-extract/integration': 8.0.1
       debug: 4.3.4
       loader-utils: 2.0.4
       picocolors: 1.1.1
