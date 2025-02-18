@@ -12,12 +12,18 @@ type Props = Omit<
   "onChange" | "onBlur" | "disabled" | "isReadOnly" | "placeholder" | "issues"
 > &
   (
-    | {
+    | ({
         withCopyButton: true;
         copyButtonLabel: LocalizedString;
-        copySuccessMessage: LocalizedString;
-        showToastOnCopy?: boolean;
-      }
+      } & (
+        | {
+            copySuccessMessage: LocalizedString;
+            showToastOnCopy: true;
+          }
+        | {
+            showToastOnCopy?: false;
+          }
+      ))
     | {
         withCopyButton?: false;
       }
