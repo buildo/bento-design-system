@@ -36,14 +36,16 @@ export function ReadOnlyField(props: Props) {
     <IconButton
       icon={config.copyIcon}
       onPress={async () => {
-        if (props.showToastOnCopy ?? true) {
+        if (props.withCopyButton) {
           try {
             await navigator.clipboard.writeText(props.value);
-            showToast({
-              kind: "informative",
-              message: props.copySuccessMessage,
-              dismissable: true,
-            });
+            if (props.showToastOnCopy) {
+              showToast({
+                kind: "informative",
+                message: props.copySuccessMessage,
+                dismissable: true,
+              });
+            }
           } catch {
             console.error("Could not copy to clipboard");
           }
