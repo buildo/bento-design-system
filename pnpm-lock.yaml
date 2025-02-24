@@ -305,7 +305,7 @@ importers:
       '@vitejs/plugin-react': 4.3.4
       eslint: 8.57.1
       eslint-plugin-react-hooks: 4.6.2
-      eslint-plugin-react-refresh: 0.4.18
+      eslint-plugin-react-refresh: 0.4.19
       i18next: 22.5.1
       react: 18.3.1
       react-dom: 18.3.1
@@ -342,7 +342,7 @@ importers:
       '@vitejs/plugin-react': 4.3.4_vite@5.4.14
       eslint: 8.57.1
       eslint-plugin-react-hooks: 4.6.2_eslint@8.57.1
-      eslint-plugin-react-refresh: 0.4.18_eslint@8.57.1
+      eslint-plugin-react-refresh: 0.4.19_eslint@8.57.1
       typescript: 5.1.3
       vite: 5.4.14
       vite-plugin-checker: 0.6.2_sv7f5t6lpft7x2lgqpcx4dmhfm
@@ -13788,8 +13788,8 @@ packages:
       eslint: 8.57.1
     dev: true
 
-  /eslint-plugin-react-refresh/0.4.18_eslint@8.57.1:
-    resolution: {integrity: sha512-IRGEoFn3OKalm3hjfolEWGqoF/jPqeEYFp+C8B0WMzwGwBMvlRDQd06kghDhF0C61uJ6WfSDhEZE/sAQjduKgw==}
+  /eslint-plugin-react-refresh/0.4.19_eslint@8.57.1:
+    resolution: {integrity: sha512-eyy8pcr/YxSYjBoqIFSrlbn9i/xvxUFa8CjzAYo9cFjgGXqq1hyjihcpZvxRLalpaWmueWR81xn7vuKmAFijDQ==}
     peerDependencies:
       eslint: '>=8.40'
     dependencies:
