@@ -103,7 +103,7 @@ importers:
       '@vanilla-extract/babel-plugin': 1.2.0
       '@vanilla-extract/css': 1.13.0
       '@vanilla-extract/dynamic': 2.1.2
-      '@vanilla-extract/esbuild-plugin': 2.3.14
+      '@vanilla-extract/esbuild-plugin': 2.3.15
       '@vanilla-extract/private': 1.0.6
       '@vanilla-extract/recipes': 0.5.5
       '@vanilla-extract/sprinkles': 1.6.3
@@ -250,7 +250,7 @@ importers:
       '@types/testing-library__jest-dom': 5.14.9
       '@typescript-eslint/parser': 5.62.0_z2cqhtrhzo2dttjlb4wsdjp3di
       '@vanilla-extract/babel-plugin': 1.2.0
-      '@vanilla-extract/esbuild-plugin': 2.3.14_esbuild@0.18.11
+      '@vanilla-extract/esbuild-plugin': 2.3.15_esbuild@0.18.11
       '@vanilla-extract/private': 1.0.6
       '@vanilla-extract/vite-plugin': 3.9.5_vite@5.4.14
       '@vanilla-extract/webpack-plugin': 2.3.18_webpack@5.94.0
@@ -3540,6 +3540,8 @@ packages:
     dependencies:
       '@babel/core': 7.25.2
       '@babel/plugin-transform-react-jsx': 7.22.15_@babel+core@7.25.2
+    transitivePeerDependencies:
+      - supports-color
 
   /@babel/plugin-transform-react-jsx-self/7.25.9_@babel+core@7.26.0:
     resolution: {integrity: sha512-y8quW6p0WHkEhmErnfe58r7x0A70uKphQm8Sp8cV7tjNQwK56sNVK0M73LK3WuYmsuyrftut4xAkjjgU0twaMg==}
@@ -3582,10 +3584,12 @@ packages:
     dependencies:
       '@babel/core': 7.25.2
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-module-imports': 7.24.3
+      '@babel/helper-module-imports': 7.25.9
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-jsx': 7.22.5_@babel+core@7.25.2
       '@babel/types': 7.22.19
+    transitivePeerDependencies:
+      - supports-color
 
   /@babel/plugin-transform-react-jsx/7.23.4_@babel+core@7.22.20:
     resolution: {integrity: sha512-5xOpoPguCZCRbo/JeHlloSkTA8Bld1J/E1/kLfD1nsuiW1m8tduTA1ERCgIZokDflX/IBzKcqR3l7VlRgiIfHA==}
@@ -4112,11 +4116,11 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.22.20
+      '@babel/compat-data': 7.26.2
       '@babel/core': 7.25.2
-      '@babel/helper-compilation-targets': 7.22.15
+      '@babel/helper-compilation-targets': 7.25.9
       '@babel/helper-plugin-utils': 7.22.5
-      '@babel/helper-validator-option': 7.22.15
+      '@babel/helper-validator-option': 7.25.9
       '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression': 7.22.15_@babel+core@7.25.2
       '@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining': 7.22.15_@babel+core@7.25.2
       '@babel/plugin-proposal-private-property-in-object': 7.21.0-placeholder-for-preset-env.2_@babel+core@7.25.2
@@ -4358,6 +4362,8 @@ packages:
       '@babel/plugin-transform-react-jsx': 7.22.15_@babel+core@7.25.2
       '@babel/plugin-transform-react-jsx-development': 7.22.5_@babel+core@7.25.2
       '@babel/plugin-transform-react-pure-annotations': 7.22.5_@babel+core@7.25.2
+    transitivePeerDependencies:
+      - supports-color
 
   /@babel/preset-typescript/7.22.15_@babel+core@7.22.20:
     resolution: {integrity: sha512-HblhNmh6yM+cU4VwbBRpxFhxsTdfS1zsvH9W+gEjD0ARV9+8B4sNfpI6GuhePti84nuvhiwKS539jKPFHskA9A==}
@@ -5663,7 +5669,7 @@ packages:
   /@emotion/babel-plugin/11.11.0:
     resolution: {integrity: sha512-m4HEDZleaaCH+XgDDsPF15Ht6wTLsgDTeR3WYj9Q/k76JtWhrJjcP4+/XlG8LGT/Rol9qUfOIztXeA84ATpqPQ==}
     dependencies:
-      '@babel/helper-module-imports': 7.25.7
+      '@babel/helper-module-imports': 7.25.9
       '@babel/runtime': 7.24.4
       '@emotion/hash': 0.9.1
       '@emotion/memoize': 0.8.1
@@ -10431,15 +10437,15 @@ packages:
     dependencies:
       '@vanilla-extract/private': 1.0.6
 
-  /@vanilla-extract/esbuild-plugin/2.3.14_esbuild@0.18.11:
-    resolution: {integrity: sha512-F3FjcJyZiceFlv1L9nPfUH3UHuXRBhWmCqF2syoVCwr0bsiwKxewnC4bznMDLDoVPsBlL5VLxYGzL4D7W3hsxw==}
+  /@vanilla-extract/esbuild-plugin/2.3.15_esbuild@0.18.11:
+    resolution: {integrity: sha512-Kgq86janU5KwAfHy4DuPYhY/WJQN5yRht3OntnKpC7NUL4R5BJeiLcmTY6oeRUlcGnrrDfWEfc4fbxJxD8PDXQ==}
     peerDependencies:
       esbuild: '>=0.17.6'
     peerDependenciesMeta:
       esbuild:
         optional: true
     dependencies:
-      '@vanilla-extract/integration': 8.0.0
+      '@vanilla-extract/integration': 8.0.1
       esbuild: 0.18.11
     transitivePeerDependencies:
       - babel-plugin-macros
@@ -10484,24 +10490,6 @@ packages:
       - sugarss
       - supports-color
       - terser
-    dev: true
-
-  /@vanilla-extract/integration/8.0.0:
-    resolution: {integrity: sha512-hsu5Cqs30RDTRgaOCtvdZttKIaMImObcZmylxPp693mr1pyRk+WEIEAzQAJkXE/JQ47xyqf+a63UxdI0Sf3PZw==}
-    dependencies:
-      '@babel/core': 7.26.0
-      '@babel/plugin-syntax-typescript': 7.24.1_@babel+core@7.26.0
-      '@vanilla-extract/babel-plugin-debug-ids': 1.2.0
-      '@vanilla-extract/css': 1.17.1
-      dedent: 1.5.3
-      esbuild: 0.21.5
-      eval: 0.1.8
-      find-up: 5.0.0
-      javascript-stringify: 2.1.0
-      mlly: 1.7.1
-    transitivePeerDependencies:
-      - babel-plugin-macros
-      - supports-color
     dev: true
 
   /@vanilla-extract/integration/8.0.1:
