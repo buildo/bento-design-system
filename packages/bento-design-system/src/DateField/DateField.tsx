@@ -16,28 +16,49 @@ export type ShortcutProps<Value> = {
   label: LocalizedString;
   value: Value;
 };
-type SingleDateFieldProps = {
-  type?: "single";
-  shortcuts?: ShortcutProps<Date | null>[];
-} & FieldProps<Date | null>;
-type RangeDateFieldProps = {
-  type: "range";
-  shortcuts?: ShortcutProps<[Date, Date] | null>[];
-} & FieldProps<[Date, Date] | null>;
-type Props = (SingleDateFieldProps | RangeDateFieldProps) & {
+
+type StandaloneProps<T> = Pick<
+  FieldProps<T>,
+  "autoFocus" | "disabled" | "name" | "onBlur" | "onChange" | "value"
+>;
+
+type SingleDateProps = { type?: "single"; shortcuts?: ShortcutProps<Date | null>[] };
+type RangeDateProps = { type: "range"; shortcuts?: ShortcutProps<[Date, Date] | null>[] };
+
+type SingleDateFieldProps = SingleDateProps & FieldProps<Date | null>;
+type SingleDateStandaloneProps = SingleDateProps & StandaloneProps<Date | null>;
+
+type RangeDateFieldProps = RangeDateProps & FieldProps<[Date, Date] | null>;
+type RangeDateStandaloneProps = RangeDateProps & StandaloneProps<[Date, Date] | null>;
+
+type DateProps = {
   minDate?: Date;
   maxDate?: Date;
   shouldDisableDate?: (date: Date) => boolean;
   readOnly?: boolean;
 };
 
+type PublicDateFieldProps = (SingleDateFieldProps | RangeDateFieldProps) & DateProps;
+type PublicDateInputProps = (SingleDateStandaloneProps | RangeDateStandaloneProps) & DateProps;
+
+type InternalDateProps =
+  | ({
+      isStandalone: true;
+    } & PublicDateInputProps)
+  | ({
+      isStandalone?: false;
+    } & PublicDateFieldProps);
+
 function dateToCalendarDate(date: Date): CalendarDate {
   return new CalendarDate(date.getFullYear(), date.getMonth() + 1, date.getDate());
 }
 
-function SingleDateField({ disabled, readOnly, ...props }: Extract<Props, { type?: "single" }>) {
+function SingleDate({
+  disabled,
+  readOnly,
+  ...props
+}: Extract<InternalDateProps, { type?: "single" }>) {
   const localTimeZone = getLocalTimeZone();
-
   const internalProps = {
     ...props,
     value: props.value ? dateToCalendarDate(props.value) : props.value,
@@ -46,7 +67,7 @@ function SingleDateField({ disabled, readOnly, ...props }: Extract<Props, { type
     },
     isDisabled: disabled,
     isReadOnly: readOnly,
-    validationState: props.issues ? "invalid" : "valid",
+    validationState: !props.isStandalone && props.issues ? "invalid" : "valid",
     minValue: props.minDate ? dateToCalendarDate(props.minDate) : undefined,
     maxValue: props.maxDate ? dateToCalendarDate(props.maxDate) : undefined,
     isDateUnavailable: props.shouldDisableDate
@@ -84,14 +105,8 @@ function SingleDateField({ disabled, readOnly, ...props }: Extract<Props, { type
     </Inline>
   );
 
-  return (
-    <Field
-      {...props}
-      disabled={disabled}
-      labelProps={labelProps}
-      assistiveTextProps={descriptionProps}
-      errorMessageProps={errorMessageProps}
-    >
+  const datePicker = (
+    <>
       <Box {...groupProps} ref={ref}>
         <Input
           type="single"
@@ -109,17 +124,35 @@ function SingleDateField({ disabled, readOnly, ...props }: Extract<Props, { type
           shortcuts={shortcuts}
         />
       )}
+    </>
+  );
+
+  return props.isStandalone ? (
+    datePicker
+  ) : (
+    <Field
+      {...props}
+      disabled={disabled}
+      labelProps={labelProps}
+      assistiveTextProps={descriptionProps}
+      errorMessageProps={errorMessageProps}
+    >
+      {datePicker}
     </Field>
   );
 }
 
-function RangeDateField({ disabled, readOnly, ...props }: Extract<Props, { type: "range" }>) {
+function RangeDateField({
+  disabled,
+  readOnly,
+  ...props
+}: Extract<InternalDateProps, { type: "range" }>) {
   const localTimeZone = getLocalTimeZone();
   const internalProps = {
     ...props,
     isDisabled: disabled,
     isReadOnly: readOnly,
-    validationState: props.issues ? "invalid" : "valid",
+    validationState: !props.isStandalone && props.issues ? "invalid" : "valid",
     minValue: props.minDate ? dateToCalendarDate(props.minDate) : undefined,
     maxValue: props.maxDate ? dateToCalendarDate(props.maxDate) : undefined,
     isDateUnavailable: props.shouldDisableDate
@@ -171,14 +204,8 @@ function RangeDateField({ disabled, readOnly, ...props }: Extract<Props, { type:
     </Inline>
   );
 
-  return (
-    <Field
-      {...props}
-      disabled={disabled}
-      labelProps={labelProps}
-      assistiveTextProps={descriptionProps}
-      errorMessageProps={errorMessageProps}
-    >
+  const datePicker = (
+    <>
       <Box {...groupProps} ref={ref}>
         <Input
           type="range"
@@ -196,12 +223,34 @@ function RangeDateField({ disabled, readOnly, ...props }: Extract<Props, { type:
           shortcuts={shortcuts}
         />
       )}
+    </>
+  );
+
+  return props.isStandalone ? (
+    datePicker
+  ) : (
+    <Field
+      {...props}
+      disabled={disabled}
+      labelProps={labelProps}
+      assistiveTextProps={descriptionProps}
+      errorMessageProps={errorMessageProps}
+    >
+      {datePicker}
     </Field>
   );
 }
 
-export function DateField(props: Props) {
-  return props.type === "range" ? <RangeDateField {...props} /> : <SingleDateField {...props} />;
+export function DateField(props: PublicDateFieldProps) {
+  return props.type === "range" ? <RangeDateField {...props} /> : <SingleDate {...props} />;
 }
 
-export type { Props as DateFieldProps };
+export function DateInput(props: PublicDateInputProps) {
+  return props.type === "range" ? (
+    <RangeDateField {...props} isStandalone />
+  ) : (
+    <SingleDate {...props} isStandalone />
+  );
+}
+
+export type { PublicDateFieldProps as DateFieldProps, PublicDateInputProps as DateInputProps };
