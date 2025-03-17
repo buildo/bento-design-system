@@ -11,11 +11,12 @@ import { BaseNumberInput } from "./BaseNumberInput";
 type Props = FieldProps<number | undefined, number> &
   BaseNumberProps &
   FormatProps &
-  Pick<NumberFieldStateOptions, "minValue" | "maxValue" | "step">;
+  Pick<NumberFieldStateOptions, "minValue" | "maxValue" | "step" | "formatOptions">;
 
 export function NumberField(props: Props) {
   const { locale } = useLocale();
-  const formatOptions = useFormatOptions(props);
+  const defaultFormatOptions = useFormatOptions(props);
+  const formatOptions = props.formatOptions ?? defaultFormatOptions;
   const state = useNumberFieldState({ ...props, locale, formatOptions });
   const inputRef = useRef<HTMLInputElement>(null);
 
