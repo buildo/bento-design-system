@@ -16,11 +16,12 @@ type Props = AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "aria
   BaseNumberProps & {
     validationState: "valid" | "invalid";
   } & FormatProps &
-  Pick<NumberFieldStateOptions, "minValue" | "maxValue" | "step">;
+  Pick<NumberFieldStateOptions, "minValue" | "maxValue" | "step" | "formatOptions">;
 
 export function NumberInput(props: Props) {
   const { locale } = useLocale();
-  const formatOptions = useFormatOptions(props);
+  const defaultFormatOptions = useFormatOptions(props);
+  const formatOptions = props.formatOptions ?? defaultFormatOptions;
   const state = useNumberFieldState({ ...props, locale, formatOptions });
   const inputRef = useRef<HTMLInputElement>(null);
 
