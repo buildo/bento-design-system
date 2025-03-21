@@ -10,7 +10,17 @@ import {
   CollapsibleAlignmentProps,
   responsiveCollapsibleAlignmentProps,
 } from "../util/collapsible";
-import { wideWidths, desktopWidths, tabletWidths, mobileWidths, fullWidth } from "./Column.css";
+import {
+  wideWidths,
+  desktopWidths,
+  tabletWidths,
+  mobileWidths,
+  fullWidth,
+  columnsSpace,
+  columns,
+  columnContent,
+} from "./Column.css";
+import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 type ColumnProps = {
   children: Children;
@@ -39,7 +49,7 @@ export function Column({ children, width, sticky }: ColumnProps) {
 
   return (
     <Box className={className} {...stickyProps}>
-      {children}
+      <Box className={columnContent}>{children}</Box>
     </Box>
   );
 }
@@ -53,8 +63,9 @@ export function Columns({ space, children, align, alignY, collapseBelow, reverse
   return (
     <Box
       display="flex"
-      gap={space}
       {...responsiveCollapsibleAlignmentProps({ align, alignY, collapseBelow, reverse })}
+      style={assignInlineVars({ [columnsSpace]: `${space}px` })}
+      className={columns}
     >
       {flattenChildren(children).map((child, index) => {
         if (isColumn(child)) {
