@@ -116,7 +116,9 @@ function RangeDateField(props: RangeDateFieldProps) {
   );
 }
 
-export function DateField(props: SingleDateFieldProps | RangeDateFieldProps) {
+export type DateFieldProps = SingleDateFieldProps | RangeDateFieldProps;
+
+export function DateField(props: DateFieldProps) {
   // @ts-ignore
   return match(props)
     .with({ type: "single" }, { type: undefined }, (props) => <SingleDateField {...props} />)
