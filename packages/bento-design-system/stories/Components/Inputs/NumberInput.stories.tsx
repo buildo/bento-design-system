@@ -77,3 +77,14 @@ export const KindAndRightAccessory = {
     currency: "EUR",
   },
 } satisfies Story;
+
+export const CustomFormatter = {
+  args: {
+    value: 0.123456,
+    name: "precise-number",
+    formatOptions: {
+      minimumFractionDigits: 6,
+      maximumFractionDigits: 6,
+    },
+  },
+};

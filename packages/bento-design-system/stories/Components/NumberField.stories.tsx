@@ -79,3 +79,17 @@ export const KindAndRightAccessory = {
     currency: "EUR",
   },
 } satisfies Story;
+
+export const CustomFormatter = {
+  args: {
+    value: 0.123456,
+    name: "precise-number",
+    label: "A very precise number",
+    placeholder: "A very precise number",
+    assistiveText: "A very precise number with 6 decimal digits",
+    formatOptions: {
+      minimumFractionDigits: 6,
+      maximumFractionDigits: 6,
+    },
+  },
+};
