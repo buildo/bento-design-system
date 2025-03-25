@@ -9,7 +9,17 @@ export type DateProps = {
   readOnly?: boolean;
 };
 
-export type ShortcutProps<V> = {
+type ShortcutProps<V> = {
   label: LocalizedString;
   value: V;
+};
+
+export type SingleDateProps = {
+  type?: "single";
+  shortcuts?: ShortcutProps<Date | null>[];
+};
+
+export type RangeDateProps = {
+  type: "range";
+  shortcuts?: ShortcutProps<[Date, Date] | null>[];
 };
