@@ -7,25 +7,23 @@ import { Calendar } from "./Calendar";
 import { Box } from "../Box/Box";
 import { Inline } from "../Layout/Inline";
 import { Button, FieldProps } from "..";
-import { ShortcutProps } from "./types";
+import { SingleDateProps, RangeDateProps } from "./types";
 
-type SingleDateProps = {
-  type: "single";
-  shortcuts?: ShortcutProps<Date | null>[];
+type BaseSingleDateProps = SingleDateProps & {
   datePickerAria: DatePickerAria;
   datePickerState: DatePickerState;
 } & Pick<FieldProps<Date | null>, "onChange" | "value">;
 
-type RangeDateProps = {
-  type: "range";
-  shortcuts?: ShortcutProps<[Date, Date] | null>[];
+type BaseRangeDateProps = RangeDateProps & {
   dateRangePickerAria: DateRangePickerAria;
   dateRangePickerState: DateRangePickerState;
 } & Pick<FieldProps<[Date, Date] | null>, "onChange" | "value">;
 
-type Props = (SingleDateProps | RangeDateProps) & { inputRef: React.RefObject<HTMLInputElement> };
+type Props = (BaseSingleDateProps | BaseRangeDateProps) & {
+  inputRef: React.RefObject<HTMLInputElement>;
+};
 
-function BaseSingleDateInput(props: Extract<Props, { type: "single" }>) {
+function BaseSingleDateInput(props: Extract<Props, { type?: "single" }>) {
   const shortcuts = props.shortcuts && (
     <Inline space={4}>
       {props.shortcuts.map((shortcut) => (
@@ -114,7 +112,7 @@ function BaseRangeDateInput(props: Extract<Props, { type: "range" }>) {
 
 export function BaseDateInput(props: Props) {
   return match(props)
-    .with({ type: "single" }, (props) => <BaseSingleDateInput {...props} />)
+    .with({ type: "single" }, { type: undefined }, (props) => <BaseSingleDateInput {...props} />)
     .with({ type: "range" }, (props) => <BaseRangeDateInput {...props} />)
     .exhaustive();
 }

@@ -6,22 +6,13 @@ import { FieldProps } from "../Field/FieldProps";
 import { CalendarDate, DateValue, getLocalTimeZone } from "@internationalized/date";
 import { BaseDateInput } from "./BaseDateInput";
 import { RangeValue } from "@react-types/shared";
-import { DateProps, ShortcutProps } from "./types";
+import { DateProps, SingleDateProps, RangeDateProps } from "./types";
+import { dateToCalendarDate } from "./utils";
 
 type StandaloneProps<T> = Pick<
   FieldProps<T>,
   "autoFocus" | "disabled" | "name" | "onBlur" | "onChange" | "value"
 >;
-
-type SingleDateProps = {
-  type?: "single";
-  shortcuts?: ShortcutProps<Date | null>[];
-};
-
-type RangeDateProps = {
-  type: "range";
-  shortcuts?: ShortcutProps<[Date, Date] | null>[];
-};
 
 type SingleDateInputProps = SingleDateProps &
   StandaloneProps<Date | null> &
@@ -30,10 +21,6 @@ type SingleDateInputProps = SingleDateProps &
 type RangeDateInputProps = RangeDateProps &
   StandaloneProps<[Date, Date] | null> &
   DateProps & { validationState: "valid" | "invalid" };
-
-function dateToCalendarDate(date: Date): CalendarDate {
-  return new CalendarDate(date.getFullYear(), date.getMonth() + 1, date.getDate());
-}
 
 function SingleDateInput(props: SingleDateInputProps) {
   const localTimeZone = getLocalTimeZone();
@@ -54,6 +41,8 @@ function SingleDateInput(props: SingleDateInputProps) {
       ? (date: DateValue) => props.shouldDisableDate!(date.toDate(localTimeZone))
       : undefined,
     shouldForceLeadingZeros: true,
+    onBlur: props.onBlur,
+    autoFocus: props.autoFocus,
   } as const;
 
   const datePickerState = useDatePickerState(internalProps);
@@ -100,6 +89,8 @@ function RangeDateInput(props: RangeDateInputProps) {
       ? (date: DateValue) => props.shouldDisableDate!(date.toDate(localTimeZone))
       : undefined,
     shouldForceLeadingZeros: true,
+    onBlur: props.onBlur,
+    autoFocus: props.autoFocus,
   } as const;
 
   const rangeDatePickerState = useDateRangePickerState(internalProps);
