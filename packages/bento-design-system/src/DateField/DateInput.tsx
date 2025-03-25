@@ -109,6 +109,8 @@ function RangeDateInput(props: RangeDateInputProps) {
   );
 }
 
+export type DateInputProps = SingleDateInputProps | RangeDateInputProps;
+
 export function DateInput(props: SingleDateInputProps | RangeDateInputProps) {
   return match(props)
     .with({ type: "single" }, { type: undefined }, (props) => <SingleDateInput {...props} />)

@@ -27,6 +27,7 @@ export * from "./ContentBlock/ContentBlock";
 export * from "./ContentWithSidebar/ContentWithSidebar";
 export * from "./DateField/Calendar";
 export * from "./DateField/DateField";
+export * from "./DateField/DateInput";
 export * from "./Disclosure/Disclosure";
 export * from "./DisclosureGroup/DisclosureGroup";
 export * from "./Divider/Divider";
