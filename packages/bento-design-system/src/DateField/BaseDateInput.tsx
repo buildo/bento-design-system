@@ -1,6 +1,7 @@
 import { DatePickerAria, DateRangePickerAria } from "@react-aria/datepicker";
 import { DatePickerState, DateRangePickerState } from "@react-stately/datepicker";
 import React from "react";
+import { match } from "ts-pattern";
 import { Input } from "./Input";
 import { Calendar } from "./Calendar";
 import { Box } from "../Box/Box";
@@ -9,22 +10,22 @@ import { Button, FieldProps } from "..";
 import { ShortcutProps } from "./types";
 
 type SingleDateProps = {
-  type?: "single";
+  type: "single";
   shortcuts?: ShortcutProps<Date | null>[];
   datePickerAria: DatePickerAria;
   datePickerState: DatePickerState;
-} & Pick<FieldProps<Date | null>, "onChange" | "value" | "disabled">;
+} & Pick<FieldProps<Date | null>, "onChange" | "value">;
 
 type RangeDateProps = {
   type: "range";
   shortcuts?: ShortcutProps<[Date, Date] | null>[];
   dateRangePickerAria: DateRangePickerAria;
   dateRangePickerState: DateRangePickerState;
-} & Pick<FieldProps<[Date, Date] | null>, "onChange" | "value" | "disabled">;
+} & Pick<FieldProps<[Date, Date] | null>, "onChange" | "value">;
 
 type Props = (SingleDateProps | RangeDateProps) & { inputRef: React.RefObject<HTMLInputElement> };
 
-export function BaseSingleDateInput(props: Extract<Props, { type?: "single" }>) {
+function BaseSingleDateInput(props: Extract<Props, { type: "single" }>) {
   const shortcuts = props.shortcuts && (
     <Inline space={4}>
       {props.shortcuts.map((shortcut) => (
@@ -66,7 +67,7 @@ export function BaseSingleDateInput(props: Extract<Props, { type?: "single" }>) 
   );
 }
 
-export function BaseRangeDateInput(props: Extract<Props, { type: "range" }>) {
+function BaseRangeDateInput(props: Extract<Props, { type: "range" }>) {
   const shortcuts = props.shortcuts && (
     <Inline space={4}>
       {props.shortcuts.map((shortcut) => (
@@ -109,4 +110,11 @@ export function BaseRangeDateInput(props: Extract<Props, { type: "range" }>) {
       )}
     </>
   );
+}
+
+export function BaseDateInput(props: Props) {
+  return match(props)
+    .with({ type: "single" }, (props) => <BaseSingleDateInput {...props} />)
+    .with({ type: "range" }, (props) => <BaseRangeDateInput {...props} />)
+    .exhaustive();
 }
