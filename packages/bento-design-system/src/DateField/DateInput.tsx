@@ -5,15 +5,24 @@ import { match } from "ts-pattern";
 import { FieldProps } from "../Field/FieldProps";
 import { CalendarDate, DateValue, getLocalTimeZone } from "@internationalized/date";
 import { BaseDateInput } from "./BaseDateInput";
-import { Field } from "../Field/Field";
 import { RangeValue } from "@react-types/shared";
 import { DateProps, SingleDateProps, RangeDateProps } from "./types";
 import { dateToCalendarDate } from "./utils";
 
-type SingleDateFieldProps = SingleDateProps & FieldProps<Date | null> & DateProps;
-type RangeDateFieldProps = RangeDateProps & FieldProps<[Date, Date] | null> & DateProps;
+type StandaloneProps<T> = Pick<
+  FieldProps<T>,
+  "autoFocus" | "disabled" | "name" | "onBlur" | "onChange" | "value"
+>;
 
-function SingleDateField(props: SingleDateFieldProps) {
+type SingleDateInputProps = SingleDateProps &
+  StandaloneProps<Date | null> &
+  DateProps & { validationState: "valid" | "invalid" };
+
+type RangeDateInputProps = RangeDateProps &
+  StandaloneProps<[Date, Date] | null> &
+  DateProps & { validationState: "valid" | "invalid" };
+
+function SingleDateInput(props: SingleDateInputProps) {
   const localTimeZone = getLocalTimeZone();
   const ref = useRef(null);
 
@@ -25,7 +34,7 @@ function SingleDateField(props: SingleDateFieldProps) {
     },
     isDisabled: props.disabled,
     isReadOnly: props.isReadOnly ?? props.readOnly,
-    validationState: props.issues ? "invalid" : "valid",
+    validationState: props.validationState,
     minValue: props.minDate ? dateToCalendarDate(props.minDate) : undefined,
     maxValue: props.maxDate ? dateToCalendarDate(props.maxDate) : undefined,
     isDateUnavailable: props.shouldDisableDate
@@ -40,27 +49,19 @@ function SingleDateField(props: SingleDateFieldProps) {
   const datePickerAria = useDatePicker(internalProps, datePickerState, ref);
 
   return (
-    <Field
-      {...props}
-      disabled={props.disabled}
-      labelProps={datePickerAria.labelProps}
-      assistiveTextProps={datePickerAria.descriptionProps}
-      errorMessageProps={datePickerAria.errorMessageProps}
-    >
-      <BaseDateInput
-        type="single"
-        value={props.value}
-        onChange={props.onChange}
-        shortcuts={props.shortcuts}
-        datePickerAria={datePickerAria}
-        datePickerState={datePickerState}
-        inputRef={ref}
-      />
-    </Field>
+    <BaseDateInput
+      type="single"
+      value={props.value}
+      onChange={props.onChange}
+      shortcuts={props.shortcuts}
+      datePickerAria={datePickerAria}
+      datePickerState={datePickerState}
+      inputRef={ref}
+    />
   );
 }
 
-function RangeDateField(props: RangeDateFieldProps) {
+function RangeDateInput(props: RangeDateInputProps) {
   const localTimeZone = getLocalTimeZone();
   const ref = useRef(null);
 
@@ -81,7 +82,7 @@ function RangeDateField(props: RangeDateFieldProps) {
     },
     isDisabled: props.disabled,
     isReadOnly: props.isReadOnly ?? props.readOnly,
-    validationState: props.issues ? "invalid" : "valid",
+    validationState: props.validationState,
     minValue: props.minDate ? dateToCalendarDate(props.minDate) : undefined,
     maxValue: props.maxDate ? dateToCalendarDate(props.maxDate) : undefined,
     isDateUnavailable: props.shouldDisableDate
@@ -96,32 +97,23 @@ function RangeDateField(props: RangeDateFieldProps) {
   const rangeDatePickerAria = useDateRangePicker(internalProps, rangeDatePickerState, ref);
 
   return (
-    <Field
-      {...props}
-      disabled={props.disabled}
-      labelProps={rangeDatePickerAria.labelProps}
-      assistiveTextProps={rangeDatePickerAria.descriptionProps}
-      errorMessageProps={rangeDatePickerAria.errorMessageProps}
-    >
-      <BaseDateInput
-        type="range"
-        value={props.value}
-        onChange={props.onChange}
-        shortcuts={props.shortcuts}
-        dateRangePickerAria={rangeDatePickerAria}
-        dateRangePickerState={rangeDatePickerState}
-        inputRef={ref}
-      />
-    </Field>
+    <BaseDateInput
+      type="range"
+      value={props.value}
+      onChange={props.onChange}
+      shortcuts={props.shortcuts}
+      dateRangePickerAria={rangeDatePickerAria}
+      dateRangePickerState={rangeDatePickerState}
+      inputRef={ref}
+    />
   );
 }
 
-export type DateFieldProps = SingleDateFieldProps | RangeDateFieldProps;
+export type DateInputProps = SingleDateInputProps | RangeDateInputProps;
 
-export function DateField(props: DateFieldProps) {
+export function DateInput(props: SingleDateInputProps | RangeDateInputProps) {
   return match(props)
-    .with({ type: "single" }, (props) => <SingleDateField {...props} />)
-    .with({ type: undefined }, (props) => <SingleDateField {...props} />)
-    .with({ type: "range" }, (props) => <RangeDateField {...props} />)
+    .with({ type: "single" }, { type: undefined }, (props) => <SingleDateInput {...props} />)
+    .with({ type: "range" }, (props) => <RangeDateInput {...props} />)
     .exhaustive();
 }
