@@ -370,7 +370,7 @@ importers:
       '@phosphor-icons/react': 2.1.7
       '@types/babel__generator': 7.6.8
       '@types/babel__standalone': 7.1.9
-      '@types/babel__traverse': 7.20.6
+      '@types/babel__traverse': 7.20.7
       '@types/node': 18.19.81
       '@types/react': 18.3.19
       '@typescript-eslint/parser': 5.62.0
@@ -427,7 +427,7 @@ importers:
       '@phosphor-icons/react': 2.1.7_nnrd3gsncyragczmpvfhocinkq
       '@types/babel__generator': 7.6.8
       '@types/babel__standalone': 7.1.9
-      '@types/babel__traverse': 7.20.6
+      '@types/babel__traverse': 7.20.7
       '@types/node': 18.19.81
       '@types/react': 18.3.19
       '@typescript-eslint/parser': 5.62.0_inylsuzpwuenpw7p6e7ggu4qmy
@@ -884,7 +884,7 @@ packages:
     resolution: {integrity: sha512-5Dqpl5fyV9pIAD62yK9P7fcA768uVPUyrQmqpqstHWgMma4feF1x/oFysBCVZLY5wJ2GkMUCdsNDnGZrPoR6rA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.25.8
+      '@babel/types': 7.26.0
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
       jsesc: 3.0.2
@@ -1203,7 +1203,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/traverse': 7.25.7
-      '@babel/types': 7.25.8
+      '@babel/types': 7.26.0
     transitivePeerDependencies:
       - supports-color
 
@@ -1367,7 +1367,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/traverse': 7.25.6
-      '@babel/types': 7.25.8
+      '@babel/types': 7.26.0
     transitivePeerDependencies:
       - supports-color
 
@@ -1390,6 +1390,7 @@ packages:
   /@babel/helper-string-parser/7.25.7:
     resolution: {integrity: sha512-CbkjYdsJNHFk8uqpEkpCvRs3YRp9tY6FmFY7wLMSYuGYkrdUi7r2lc4/wqsvlHoMznX3WJ9IP8giGPq68T/Y6g==}
     engines: {node: '>=6.9.0'}
+    dev: true
 
   /@babel/helper-string-parser/7.25.9:
     resolution: {integrity: sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA==}
@@ -1489,7 +1490,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.25.8
+      '@babel/types': 7.26.0
 
   /@babel/parser/7.26.2:
     resolution: {integrity: sha512-DWMCZH9WA4Maitz2q21SRKHo9QXZxkDsbNZoVD62gusNtNBBqDg9i7uOhASfTfIGNzW+O+r7+jAlM8dwphcJKQ==}
@@ -4481,7 +4482,7 @@ packages:
     dependencies:
       '@babel/code-frame': 7.25.7
       '@babel/parser': 7.25.8
-      '@babel/types': 7.25.8
+      '@babel/types': 7.26.0
 
   /@babel/template/7.25.9:
     resolution: {integrity: sha512-9DGttpmPvIxBb/2uwpVo3dqJ+O6RooAFOS+lB+xDqoE2PVCE8nfoHMdZLpfCQRLwvohzXISPZcgxt80xLfsuwg==}
@@ -4519,7 +4520,7 @@ packages:
       '@babel/helper-hoist-variables': 7.22.5
       '@babel/helper-split-export-declaration': 7.22.6
       '@babel/parser': 7.25.8
-      '@babel/types': 7.25.8
+      '@babel/types': 7.26.0
       debug: 4.3.4
       globals: 11.12.0
     transitivePeerDependencies:
@@ -4533,7 +4534,7 @@ packages:
       '@babel/generator': 7.25.6
       '@babel/parser': 7.25.8
       '@babel/template': 7.25.0
-      '@babel/types': 7.25.8
+      '@babel/types': 7.26.0
       debug: 4.3.4
       globals: 11.12.0
     transitivePeerDependencies:
@@ -4547,7 +4548,7 @@ packages:
       '@babel/generator': 7.25.7
       '@babel/parser': 7.25.8
       '@babel/template': 7.25.7
-      '@babel/types': 7.25.8
+      '@babel/types': 7.26.0
       debug: 4.3.4
       globals: 11.12.0
     transitivePeerDependencies:
@@ -4582,6 +4583,7 @@ packages:
       '@babel/helper-string-parser': 7.25.7
       '@babel/helper-validator-identifier': 7.25.7
       to-fast-properties: 2.0.0
+    dev: true
 
   /@babel/types/7.26.0:
     resolution: {integrity: sha512-Z/yiTPj+lDVnF7lWeKCIJzaIkI0vYO87dMpZ4bg4TDrFe4XXLFWL1TbXU27gBP3QccxV9mZICCrnjnYlJjXHOA==}
@@ -8530,7 +8532,7 @@ packages:
     hasBin: true
     dependencies:
       '@babel/core': 7.25.2
-      '@babel/types': 7.25.8
+      '@babel/types': 7.26.0
       '@ndelangen/get-tarball': 3.0.9
       '@storybook/codemod': 8.0.8
       '@storybook/core-common': 8.0.8
@@ -9310,7 +9312,7 @@ packages:
       '@babel/types': 7.22.19
       '@types/babel__generator': 7.6.8
       '@types/babel__template': 7.4.4
-      '@types/babel__traverse': 7.20.6
+      '@types/babel__traverse': 7.20.7
     dev: true
 
   /@types/babel__generator/7.6.8:
@@ -9327,7 +9329,7 @@ packages:
       '@types/babel__core': 7.20.5
       '@types/babel__generator': 7.6.8
       '@types/babel__template': 7.4.4
-      '@types/babel__traverse': 7.20.6
+      '@types/babel__traverse': 7.20.7
     dev: true
 
   /@types/babel__template/7.4.4:
@@ -9337,8 +9339,8 @@ packages:
       '@babel/types': 7.22.19
     dev: true
 
-  /@types/babel__traverse/7.20.6:
-    resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
+  /@types/babel__traverse/7.20.7:
+    resolution: {integrity: sha512-dkO5fhS7+/oos4ciWxyEyjWe48zmG6wbCheo/G2ZnHx4fs3EU6YC6UM8rk56gAjNJ9P3MTH2jo5jb92/K6wbng==}
     dependencies:
       '@babel/types': 7.22.19
     dev: true
@@ -19121,7 +19123,7 @@ packages:
       '@babel/traverse': 7.23.3
       '@babel/types': 7.22.19
       '@types/babel__core': 7.20.5
-      '@types/babel__traverse': 7.20.6
+      '@types/babel__traverse': 7.20.7
       '@types/doctrine': 0.0.9
       '@types/resolve': 1.20.6
       doctrine: 3.0.0
