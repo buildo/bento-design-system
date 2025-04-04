@@ -5,7 +5,7 @@ import { inputContainerRecipe, input } from "../Field/Field.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
 import { BaseNumberProps, FormatProps } from "./types";
 import { useBentoConfig } from "../BentoConfigContext";
-import { match, not, __ } from "ts-pattern";
+import { match } from "ts-pattern";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
 import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 
@@ -62,11 +62,14 @@ export function BaseNumberInput(props: Props) {
     }
   })();
 
-  const rightAccessory = match([props.rightAccessory, rightAccessoryContent] as const)
-    .with([__.nullish, __.nullish], () => undefined)
-    .with([__.nullish, not(__.nullish)], () => rightAccessoryContent)
-    .with([not(__.nullish), __.nullish], () => props.rightAccessory)
-    .with([not(__.nullish), not(__.nullish)], () => (
+  const hasRightAccessory = props.rightAccessory != null;
+  const hasRightAccessoryContent = rightAccessoryContent != null;
+
+  const rightAccessory = match([hasRightAccessory, hasRightAccessoryContent] as const)
+    .with([false, false], () => undefined)
+    .with([false, true], () => rightAccessoryContent)
+    .with([true, false], () => props.rightAccessory)
+    .with([true, true], () => (
       <Columns space={config.internalSpacing} alignY="center">
         {props.rightAccessory}
         {rightAccessoryContent}

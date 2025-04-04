@@ -23,7 +23,7 @@ import { IconCalendar, IconMinus } from "../Icons";
 import { AriaButtonProps } from "@react-types/button";
 import { IconButton } from "../IconButton/IconButton";
 import { getReadOnlyBackgroundStyle } from "../Field/utils";
-import { match, __ } from "ts-pattern";
+import { match, P } from "ts-pattern";
 import { dateFieldRecipe, dateSegment } from "./DateField.css";
 import { ValidationState } from "@react-types/shared";
 import { Column, Columns } from "../Layout/Columns";
@@ -106,9 +106,9 @@ export function Input(props: Props) {
             props.fieldProps.start.validationState,
             props.fieldProps.end.validationState,
           ] as const)
-            .with(["invalid", __], [__, "invalid"], () => "invalid" as const)
+            .with(["invalid", P.any], [P.any, "invalid"], () => "invalid" as const)
             .with([undefined, undefined], () => "notSet" as const)
-            .with([__, "valid"], ["valid", __], () => "valid" as const)
+            .with([P.any, "valid"], ["valid", P.any], () => "valid" as const)
             .exhaustive();
 
       return {

@@ -19,6 +19,7 @@ const meta = {
   component: DateInput,
   args: {
     name: "date",
+    ["aria-label"]: "Birth date",
   },
 } satisfies Meta<DateInputProps>;
 
