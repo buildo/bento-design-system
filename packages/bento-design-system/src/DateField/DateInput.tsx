@@ -117,7 +117,8 @@ function RangeDateInput(props: RangeDateInputProps) {
 export type DateInputProps = SingleDateInputProps | RangeDateInputProps;
 
 export function DateInput(props: SingleDateInputProps | RangeDateInputProps) {
-  if (props.type == undefined) {
+  // Note: checking this case in the pattern matching below doesn't work for some reason
+  if (props.type == null) {
     return <SingleDateInput {...props} />;
   }
   return match(props)

@@ -119,6 +119,7 @@ function RangeDateField(props: RangeDateFieldProps) {
 export type DateFieldProps = SingleDateFieldProps | RangeDateFieldProps;
 
 export function DateField(props: DateFieldProps) {
+  // Note: checking this case in the pattern matching below doesn't work for some reason
   if (props.type == null) {
     return <SingleDateField {...props} />;
   }
