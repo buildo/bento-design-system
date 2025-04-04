@@ -52,7 +52,7 @@ import {
   Row as RowType,
 } from "./types";
 import { useMemo, useState, CSSProperties, useEffect, useRef } from "react";
-import { match, __ } from "ts-pattern";
+import { match, P } from "ts-pattern";
 import { useBentoConfig } from "../BentoConfigContext";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { useVirtualizer } from "@tanstack/react-virtual";
@@ -349,16 +349,16 @@ export function Table<
     return match(gridWidth)
       .with("fit-content", () => "max-content")
       .with("fill-available", () => "minmax(max-content, auto)")
-      .with({ custom: __.string }, ({ custom: width }) => width)
-      .with({ custom: __.number }, ({ custom: width }) => `${width}px`)
+      .with({ custom: P.string }, ({ custom: width }) => width)
+      .with({ custom: P.number }, ({ custom: width }) => `${width}px`)
       .exhaustive();
   }
 
   function tableHeight(height: Props<C>["height"]): string | undefined {
     return match(height)
-      .with({ custom: __.string }, ({ custom: width }) => width)
-      .with({ custom: __.number }, ({ custom: width }) => `${width}px`)
-      .with(__.nullish, () => undefined)
+      .with({ custom: P.string }, ({ custom: width }) => width)
+      .with({ custom: P.number }, ({ custom: width }) => `${width}px`)
+      .with(P.nullish, () => undefined)
       .exhaustive();
   }
 

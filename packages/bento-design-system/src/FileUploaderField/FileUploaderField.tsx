@@ -2,7 +2,7 @@ import { useField } from "@react-aria/label";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { useCallback, useEffect, useState } from "react";
 import { ErrorCode as DropzoneErrorCode, FileRejection, useDropzone } from "react-dropzone";
-import { match, __ } from "ts-pattern";
+import { match, P } from "ts-pattern";
 import {
   Body,
   Box,
@@ -202,7 +202,7 @@ export function FileUploaderField<E extends string>({
       { status: "invalid" },
       (v) => v.issues.map((issue) => renderIssue(issue, v.file)) as NonEmptyArray<Children>
     )
-    .with({ status: "valid" }, __.nullish, (v) =>
+    .with({ status: "valid" }, P.nullish, (v) =>
       issues
         ? (issues.map((issue) => renderIssue(issue, v?.file)) as NonEmptyArray<Children>)
         : undefined
@@ -287,8 +287,8 @@ export function FileUploaderField<E extends string>({
         })}
         style={assignInlineVars({
           [fieldHeight]: match(height)
-            .with(__.number, (v) => `${v}px`)
-            .with(__.string, (v) => v)
+            .with(P.number, (v) => `${v}px`)
+            .with(P.string, (v) => v)
             .exhaustive(),
         })}
         {...rootProps}

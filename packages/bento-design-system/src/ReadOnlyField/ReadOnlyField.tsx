@@ -1,4 +1,4 @@
-import { match, __, not } from "ts-pattern";
+import { match } from "ts-pattern";
 import { useBentoConfig } from "../BentoConfigContext";
 import { IconButton } from "../IconButton/IconButton";
 import { Columns } from "../Layout/Columns";
@@ -64,11 +64,14 @@ export function ReadOnlyField(props: Props) {
     />
   ) : undefined;
 
-  const rightAccessory = match([props.rightAccessory, copyButtonAccessory] as const)
-    .with([__.nullish, __.nullish], () => undefined)
-    .with([__.nullish, not(__.nullish)], () => copyButtonAccessory)
-    .with([not(__.nullish), __.nullish], () => props.rightAccessory)
-    .with([not(__.nullish), not(__.nullish)], () => (
+  const hasRightAccessory = props.rightAccessory != null;
+  const hasCopyButtonAccessory = copyButtonAccessory != null;
+
+  const rightAccessory = match([hasRightAccessory, hasCopyButtonAccessory] as const)
+    .with([false, false], () => undefined)
+    .with([false, true], () => copyButtonAccessory)
+    .with([true, false], () => props.rightAccessory)
+    .with([true, true], () => (
       <Columns space={inputConfig.paddingX} alignY="center">
         {props.rightAccessory}
         {copyButtonAccessory}
