@@ -2,7 +2,7 @@ import { renderHook } from "@testing-library/react";
 import { BentoConfigProvider, Children, createBentoProvider, useBentoConfig } from "../src";
 import { defaultMessages } from "../src/defaultMessages/en";
 
-describe("createBentoProviders", () => {
+describe("createBentoProvider", () => {
   test("the config passed as prop is merged with the one passed at creation", () => {
     const BentoProvider = createBentoProvider({ button: { uppercaseLabel: true } });
 
