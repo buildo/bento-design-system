@@ -1,12 +1,12 @@
-import { Children, PartialBentoConfig } from ".";
+import { BentoConfig, Children, PartialBentoConfig } from ".";
 import { bentoSprinkles } from "./internal";
 import { ToastProvider } from "./Toast/ToastProvider";
 import { OverlayProvider } from "@react-aria/overlays";
 import { DefaultMessages, DefaultMessagesContext } from "./DefaultMessagesContext";
 import { LinkComponentContext, LinkComponentProps } from "./util/link";
-import { ComponentType, useContext } from "react";
+import { ComponentType, useContext, useMemo } from "react";
 import { I18nProvider } from "@react-aria/i18n";
-import { BentoConfigProvider } from "./BentoConfigContext";
+import { BentoConfigProvider, deepmerge } from "./BentoConfigContext";
 import { SprinklesFn } from "./util/ConfigurableTypes";
 import { SprinklesContext } from "./SprinklesContext";
 import { BentoTheme, BentoThemeProvider } from "./BentoThemeContext";
@@ -88,11 +88,16 @@ export function createBentoProvider(
     ...props
   }: Props) {
     const linkComponentFromContext = useContext(LinkComponentContext);
+    const defaultMessagesValue = useMemo(() => {
+      return {
+        defaultMessages,
+      };
+    }, [defaultMessages]);
     return (
       <I18nProvider locale={locale}>
         <OverlayProvider style={{ height: "100%" }}>
-          <DefaultMessagesContext.Provider value={{ defaultMessages }}>
-            <BentoConfigProvider value={props.config ?? config}>
+          <DefaultMessagesContext.Provider value={defaultMessagesValue}>
+            <BentoConfigProvider value={deepmerge(config, props.config) as BentoConfig}>
               <OptionalThemeWrapper theme={props.theme || theme}>
                 <SprinklesContext.Provider value={props.sprinkles ?? sprinkles}>
                   <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
