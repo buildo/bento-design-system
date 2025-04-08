@@ -97,7 +97,9 @@ export function createBentoProvider(
       <I18nProvider locale={locale}>
         <OverlayProvider style={{ height: "100%" }}>
           <DefaultMessagesContext.Provider value={defaultMessagesValue}>
-            <BentoConfigProvider value={deepmerge(config, props.config) as BentoConfig}>
+            <BentoConfigProvider
+              value={props.config ? (deepmerge(config, props.config) as BentoConfig) : config}
+            >
               <OptionalThemeWrapper theme={props.theme || theme}>
                 <SprinklesContext.Provider value={props.sprinkles ?? sprinkles}>
                   <LinkComponentContext.Provider value={linkComponent ?? linkComponentFromContext}>
