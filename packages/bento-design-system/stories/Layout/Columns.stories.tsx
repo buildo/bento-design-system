@@ -37,7 +37,7 @@ export const TwoColumn1_3 = {
         <Column width="1/3">
           <Placeholder height={200} label="1/3" />
         </Column>
-        <Column width="1/3">
+        <Column>
           <Placeholder height={200} />
         </Column>
       </>

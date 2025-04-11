@@ -6,6 +6,7 @@ export const columnsSpace = createVar("columns-space");
 
 export const columns = style({
   marginLeft: `calc(${columnsSpace} * -1)`,
+  rowGap: columnsSpace,
 });
 
 export const columnContent = style({
