@@ -123,7 +123,7 @@
     "lodash.pick": "4.4.0",
     "react-dropzone": "14.2.9",
     "react-input-mask": "2.0.4",
-    "react-is": "18.3.1",
+    "react-is": "19.1.0",
     "react-select": "5.7.4",
     "react-table": "7.8.0",
     "recharts": "2.8.0",
@@ -189,8 +189,8 @@
     "playroom": "0.32.1",
     "postcss": "8.4.49",
     "prettier": "2.8.8",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "storybook": "8.0.8",
     "style-loader": "3.3.4",
     "ts-loader": "9.4.4",
@@ -202,8 +202,8 @@
     "webpack-cli": "4.10.0"
   },
   "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "madge": {
     "tsConfig": "./tsconfig.json",
