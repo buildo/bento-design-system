@@ -5,8 +5,8 @@ const meta = {
   component: NumberInput,
   args: {
     value: undefined,
+    name: "number-input",
     "aria-label": "number-input",
-    validationState: "valid",
   },
 } satisfies Meta<typeof NumberInput>;
 
