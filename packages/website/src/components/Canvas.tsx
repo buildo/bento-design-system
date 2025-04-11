@@ -1,4 +1,4 @@
-import CodeBlock from "@theme/CodeBlock";
+import CodeBlock from "@theme-original/CodeBlock";
 import * as React from "react";
 import { Expression, VariableDeclaration, Node } from "@babel/types";
 import { transform } from "@babel/standalone";

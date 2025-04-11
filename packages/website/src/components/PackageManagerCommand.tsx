@@ -1,7 +1,7 @@
 import * as React from "react";
-import CodeBlock from "@theme/CodeBlock";
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
+import CodeBlock from "@theme-original/CodeBlock";
+import TabItem from "@theme-original/TabItem";
+import Tabs from "@theme-original/Tabs";
 
 type Props = {
   command: {

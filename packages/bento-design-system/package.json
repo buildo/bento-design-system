@@ -65,7 +65,6 @@
   "license": "MIT",
   "homepage": "https://github.com/buildo/bento-design-system#readme",
   "dependencies": {
-    "@datepicker-react/hooks": "2.8.4",
     "@dessert-box/core": "0.2.0",
     "@floating-ui/core": "1.4.1",
     "@floating-ui/dom": "1.5.1",

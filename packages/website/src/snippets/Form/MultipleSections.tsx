@@ -54,7 +54,7 @@ export default function MultipleSections() {
         </FormRow>
         <FormRow>
           <ExampleRadioGroupField
-            label={"What's your main income source?"}
+            label="What's your main income source?"
             options={[
               { label: "Working", value: "W" },
               { label: "Inheritance", value: "I" },
