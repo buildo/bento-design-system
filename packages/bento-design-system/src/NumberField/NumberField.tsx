@@ -47,6 +47,8 @@ export function NumberField(props: Props) {
         inputProps={inputProps}
         inputRef={inputRef}
         validationState={validationState}
+        name={props.name}
+        numberValue={state.numberValue}
         {...props}
       />
     </Field>

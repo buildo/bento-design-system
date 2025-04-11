@@ -65,6 +65,8 @@ export function CounterField(props: Omit<NumberFieldProps, "kind" | "currency">)
           inputProps={inputProps}
           inputRef={inputRef}
           validationState={validationState}
+          name={props.name}
+          numberValue={state.numberValue}
           {...props}
         />
         <Column width="content">

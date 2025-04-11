@@ -14,7 +14,7 @@ type Props = AtLeast<Pick<HTMLAttributes<HTMLInputElement>, "aria-label" | "aria
     "autoFocus" | "disabled" | "name" | "onBlur" | "onChange" | "value"
   > &
   BaseNumberProps & {
-    validationState: "valid" | "invalid";
+    validationState?: "valid" | "invalid";
   } & FormatProps &
   Pick<NumberFieldStateOptions, "minValue" | "maxValue" | "step" | "formatOptions">;
 
@@ -35,7 +35,16 @@ export function NumberInput(props: Props) {
     inputRef
   );
 
-  return <BaseNumberInput inputProps={inputProps} inputRef={inputRef} {...props} />;
+  return (
+    <BaseNumberInput
+      inputProps={inputProps}
+      inputRef={inputRef}
+      name={props.name}
+      numberValue={state.numberValue}
+      validationState={props.validationState ?? "valid"}
+      {...props}
+    />
+  );
 }
 
 export type { Props as NumberInputProps };

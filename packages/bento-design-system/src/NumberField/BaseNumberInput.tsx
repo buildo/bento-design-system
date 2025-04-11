@@ -12,8 +12,10 @@ import { getRadiusPropsFromConfig } from "../util/BorderRadiusConfig";
 type Props = BaseNumberProps & {
   inputProps: React.InputHTMLAttributes<HTMLInputElement>;
   inputRef: React.Ref<HTMLInputElement>;
+  numberValue: number;
   validationState: "valid" | "invalid";
   disabled?: boolean;
+  name?: string;
 } & FormatProps;
 
 export function BaseNumberInput(props: Props) {
@@ -116,6 +118,13 @@ export function BaseNumberInput(props: Props) {
         <Box display="flex" justifyContent="center" alignItems="center">
           {rightAccessory}
         </Box>
+      )}
+      {props.name && (
+        <input
+          type="hidden"
+          name={props.name}
+          value={isNaN(props.numberValue) ? "" : props.numberValue}
+        />
       )}
     </Box>
   );
