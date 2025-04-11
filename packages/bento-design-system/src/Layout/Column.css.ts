@@ -10,6 +10,7 @@ export const columns = style({
 
 export const columnContent = style({
   marginLeft: columnsSpace,
+  height: "100%",
 });
 
 const styleForScale = (scale: number): StyleRule => ({
