@@ -1,4 +1,4 @@
-import { Card, Column, Columns, Display, Placeholder } from "..";
+import { Card, Column, Columns, Display, Placeholder, Stack } from "..";
 import { alignArgType, alignYArgType, disableControlArgType, spaceArgType } from "../util";
 import { Meta, StoryObj } from "@storybook/react";
 
@@ -51,7 +51,7 @@ export const ThreeColumn = {
       <Column width="1/5">
         <Placeholder height={200} label="1/5" />
       </Column>,
-      <Column>
+      <Column width="3/5">
         <Placeholder height={200} />
       </Column>,
       <Column width="1/5">
@@ -164,3 +164,40 @@ export const Sticky = {
   },
   parameters: { viewport: { defaultViewport: "mobile1" } },
 } satisfies Story;
+
+export const MultipleRowsLayout = () => {
+  return (
+    <Stack space={16}>
+      <Columns space={16}>
+        <Column width="1/3">
+          <Placeholder height={200} label="1/3" />
+        </Column>
+        <Column width="2/3">
+          <Placeholder height={200} label="2/3" />
+        </Column>
+      </Columns>
+      <Columns space={16}>
+        <Column width="1/3">
+          <Placeholder height={200} label="1/3" />
+        </Column>
+        <Column width="1/3">
+          <Placeholder height={200} label="1/3" />
+        </Column>
+      </Columns>
+      <Columns space={16}>
+        <Column width="1/3">
+          <Placeholder height={200} label="1/3" />
+        </Column>
+        <Placeholder height={200} label="auto" />
+      </Columns>
+      <Columns space={16}>
+        <Column width="1/3">
+          <Placeholder height={200} label="1/3" />
+        </Column>
+        <Column width="content">
+          <Placeholder height={200} width={150} label="150px" />
+        </Column>
+      </Columns>
+    </Stack>
+  );
+};
