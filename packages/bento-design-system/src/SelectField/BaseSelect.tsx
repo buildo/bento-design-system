@@ -62,6 +62,10 @@ export function BaseSelect<A>(props: Props<A>) {
   const generatedId = useId();
   const id = fieldProps.id ?? generatedId;
 
+  const assignValue = isMulti
+    ? options.filter((o) => ((value ?? []) as readonly A[]).includes(o.value))
+    : options.find((o) => o.value === value);
+
   return (
     // NOTE(gabro): SelectField has its own config for List, so we override it here using BentoConfigProvider
     <BentoConfigProvider value={{ list: dropdownConfig.list }}>
@@ -74,11 +78,7 @@ export function BaseSelect<A>(props: Props<A>) {
         isDisabled={disabled}
         isReadOnly={isReadOnly || false}
         autoFocus={autoFocus}
-        value={
-          isMulti
-            ? options.filter((o) => ((value ?? []) as readonly A[]).includes(o.value))
-            : options.find((o) => o.value === value)
-        }
+        value={assignValue ? assignValue : null}
         onChange={(o) => {
           if (isMulti) {
             const multiValue = o as MultiValueT<SelectOption<A>>;
