@@ -78,7 +78,7 @@ export function BaseSelect<A>(props: Props<A>) {
         isDisabled={disabled}
         isReadOnly={isReadOnly || false}
         autoFocus={autoFocus}
-        value={assignValue ? assignValue : null}
+        value={assignValue ?? null}
         onChange={(o) => {
           if (isMulti) {
             const multiValue = o as MultiValueT<SelectOption<A>>;
