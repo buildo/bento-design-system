@@ -104,7 +104,7 @@ importers:
       '@vanilla-extract/css': 1.13.0
       '@vanilla-extract/dynamic': 2.1.2
       '@vanilla-extract/esbuild-plugin': 2.3.15
-      '@vanilla-extract/private': 1.0.6
+      '@vanilla-extract/private': 1.0.7
       '@vanilla-extract/recipes': 0.5.5
       '@vanilla-extract/sprinkles': 1.6.3
       '@vanilla-extract/vite-plugin': 3.9.5
@@ -251,7 +251,7 @@ importers:
       '@typescript-eslint/parser': 5.62.0_z2cqhtrhzo2dttjlb4wsdjp3di
       '@vanilla-extract/babel-plugin': 1.2.0
       '@vanilla-extract/esbuild-plugin': 2.3.15_esbuild@0.18.11
-      '@vanilla-extract/private': 1.0.6
+      '@vanilla-extract/private': 1.0.7
       '@vanilla-extract/vite-plugin': 3.9.5_vite@5.4.19
       '@vanilla-extract/webpack-plugin': 2.3.18_webpack@5.94.0
       '@vitejs/plugin-react': 4.3.4_vite@5.4.19
@@ -10457,7 +10457,7 @@ packages:
     resolution: {integrity: sha512-TEttZfnqTRtwgVYiBWQSGGUiVaYWReHp59DsavITEvh4TpJNifZFGhBznHx4wQFEsyio6xA513jps4tmqR6zmw==}
     dependencies:
       '@emotion/hash': 0.9.1
-      '@vanilla-extract/private': 1.0.6
+      '@vanilla-extract/private': 1.0.7
       ahocorasick: 1.0.2
       chalk: 4.1.2
       css-what: 6.1.0
@@ -10472,7 +10472,7 @@ packages:
     resolution: {integrity: sha512-JFFBXhnJrPlGqHBabagXqo5ghXw9mtV270ycIGyLDZG8NAK5eRwAYkMowAxuzK7wZSm67GnETWYB7b0AUmyttg==}
     dependencies:
       '@emotion/hash': 0.9.1
-      '@vanilla-extract/private': 1.0.6
+      '@vanilla-extract/private': 1.0.7
       ahocorasick: 1.0.2
       chalk: 4.1.2
       css-what: 6.1.0
@@ -10487,7 +10487,7 @@ packages:
     resolution: {integrity: sha512-N1nQebRWnXvlcmu9fXKVUs145EVwmWtMD95bpiEKtvehHDpUhmO1l2bauS7FGYKbi3dU1IurJbGpQhBclTr1ng==}
     dependencies:
       '@emotion/hash': 0.9.1
-      '@vanilla-extract/private': 1.0.6
+      '@vanilla-extract/private': 1.0.7
       css-what: 6.1.0
       cssesc: 3.0.0
       csstype: 3.1.2
@@ -10506,7 +10506,7 @@ packages:
     resolution: {integrity: sha512-tOHQXHm10FrJeXKFeWE09JfDGN/tvV6mbjwoNB9k03u930Vg021vTnbrCwVLkECj9Zvh/SHLBHJ4r2flGqfovw==}
     dependencies:
       '@emotion/hash': 0.9.1
-      '@vanilla-extract/private': 1.0.6
+      '@vanilla-extract/private': 1.0.7
       css-what: 6.1.0
       cssesc: 3.0.0
       csstype: 3.1.2
@@ -10524,7 +10524,7 @@ packages:
   /@vanilla-extract/dynamic/2.1.2:
     resolution: {integrity: sha512-9BGMciD8rO1hdSPIAh1ntsG4LPD3IYKhywR7VOmmz9OO4Lx1hlwkSg3E6X07ujFx7YuBfx0GDQnApG9ESHvB2A==}
     dependencies:
-      '@vanilla-extract/private': 1.0.6
+      '@vanilla-extract/private': 1.0.7
 
   /@vanilla-extract/esbuild-plugin/2.3.15_esbuild@0.18.11:
     resolution: {integrity: sha512-Kgq86janU5KwAfHy4DuPYhY/WJQN5yRht3OntnKpC7NUL4R5BJeiLcmTY6oeRUlcGnrrDfWEfc4fbxJxD8PDXQ==}
@@ -10599,8 +10599,8 @@ packages:
       - supports-color
     dev: true
 
-  /@vanilla-extract/private/1.0.6:
-    resolution: {integrity: sha512-ytsG/JLweEjw7DBuZ/0JCN4WAQgM9erfSTdS1NQY778hFQSZ6cfCDEZZ0sgVm4k54uNz6ImKB33AYvSR//fjxw==}
+  /@vanilla-extract/private/1.0.7:
+    resolution: {integrity: sha512-v9Yb0bZ5H5Kr8ciwPXyEToOFD7J/fKKH93BYP7NCSZg02VYsA/pNFrLeVDJM2OO/vsygduPKuiEI6ORGQ4IcBw==}
 
   /@vanilla-extract/recipes/0.5.5_3qusp464cmatvw2qbjjzblbe54:
     resolution: {integrity: sha512-VadU7+IFUwLNLMgks29AHav/K5h7DOEfTU91RItn5vwdPfzduodNg317YbgWCcpm7FSXkuR3B3X8ZOi95UOozA==}
