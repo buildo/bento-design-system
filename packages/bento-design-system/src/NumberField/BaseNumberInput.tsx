@@ -89,7 +89,10 @@ export function BaseNumberInput(props: Props) {
       paddingY={config.paddingY}
       gap={config.internalSpacing}
       disabled={props.disabled}
+      background={config.background.default}
       {...getRadiusPropsFromConfig(config.radius)}
+      style={getReadOnlyBackgroundStyle(config)}
+      readOnly={props.isReadOnly}
     >
       <Box
         as="input"
@@ -109,10 +112,8 @@ export function BaseNumberInput(props: Props) {
             ellipsis: false,
           }),
         ]}
-        background={config.background.default}
         outline="none"
         flexGrow={1}
-        style={getReadOnlyBackgroundStyle(config)}
       />
       {rightAccessory && (
         <Box display="flex" justifyContent="center" alignItems="center">
