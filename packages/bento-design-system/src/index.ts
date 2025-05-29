@@ -64,6 +64,7 @@ export * from "./RadioGroupField/RadioGroupField";
 export * from "./ReadOnlyField/ReadOnlyField";
 export * from "./SearchBar/SearchBar";
 export * from "./SelectField/BaseSelect";
+export * from "./SelectField/AsyncSelectField";
 export * from "./SelectField/SelectField";
 export * from "./SelectField/SelectInput";
 export * from "./Slider/Slider";
