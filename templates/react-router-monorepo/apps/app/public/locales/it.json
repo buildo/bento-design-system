@@ -16,7 +16,8 @@
       "optionsSingular": "opzione",
       "multiOptionsSelected": "{{n}} {{options}} selezionate",
       "selectAllButtonLabel": "Seleziona tutto",
-      "clearAllButtonLabel": "Cancella tutto"
+      "clearAllButtonLabel": "Cancella tutto",
+      "loadingMessage": "Caricamento in corso..."
     },
     "searchBar": {
       "clearButtonLabel": "Cancella"
