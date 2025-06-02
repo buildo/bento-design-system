@@ -31,7 +31,7 @@
   "devDependencies": {
     "@react-types/numberfield": "3.5.0",
     "@tsconfig/vite-react": "2.0.1",
-    "@types/react": "18.3.21",
+    "@types/react": "18.3.23",
     "@types/react-dom": "18.3.7",
     "@typescript-eslint/eslint-plugin": "6.5.0",
     "@typescript-eslint/parser": "6.5.0",
