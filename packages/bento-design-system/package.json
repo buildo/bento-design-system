@@ -168,7 +168,7 @@
     "@typescript-eslint/parser": "5.62.0",
     "@vanilla-extract/babel-plugin": "1.2.0",
     "@vanilla-extract/esbuild-plugin": "2.3.15",
-    "@vanilla-extract/private": "1.0.7",
+    "@vanilla-extract/private": "1.0.8",
     "@vanilla-extract/vite-plugin": "3.9.5",
     "@vanilla-extract/webpack-plugin": "2.3.18",
     "@vitejs/plugin-react": "4.3.4",
