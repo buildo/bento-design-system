@@ -108,7 +108,7 @@ importers:
       '@vanilla-extract/recipes': 0.5.5
       '@vanilla-extract/sprinkles': 1.6.3
       '@vanilla-extract/vite-plugin': 3.9.5
-      '@vanilla-extract/webpack-plugin': 2.3.18
+      '@vanilla-extract/webpack-plugin': 2.3.20
       '@vitejs/plugin-react': 4.3.4
       chromatic: 6.24.1
       clsx: 1.2.1
@@ -253,7 +253,7 @@ importers:
       '@vanilla-extract/esbuild-plugin': 2.3.15_esbuild@0.18.11
       '@vanilla-extract/private': 1.0.8
       '@vanilla-extract/vite-plugin': 3.9.5_vite@5.4.19
-      '@vanilla-extract/webpack-plugin': 2.3.18_webpack@5.94.0
+      '@vanilla-extract/webpack-plugin': 2.3.20_webpack@5.94.0
       '@vitejs/plugin-react': 4.3.4_vite@5.4.19
       chromatic: 6.24.1
       css-loader: 6.11.0_webpack@5.94.0
@@ -10439,6 +10439,14 @@ packages:
       - supports-color
     dev: true
 
+  /@vanilla-extract/babel-plugin-debug-ids/1.2.1:
+    resolution: {integrity: sha512-RkXKzcKVZtcDNmcGh8Bv9MNW6oYYUzy90GYt8amMrk5P+myXsdFSU9N7V+cJAf80l+AsMVMyK0GK7Qj35Sfppg==}
+    dependencies:
+      '@babel/core': 7.26.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@vanilla-extract/babel-plugin/1.2.0:
     resolution: {integrity: sha512-4R+hqoyzoyJIrE+NgrYxZuL6GqGH28hiBrPUOxwtvqnJJ5WnUl2/WzItLDDH9YT1Auwl3cIR7pcbrV6HIchORA==}
     deprecated: The features of this plugin are now built-in to all vanilla-extract bundler integrations — making this plugin no longer required. For more information about test environment integrations, see https://vanilla-extract.style/documentation/test-environments/
@@ -10504,6 +10512,25 @@ packages:
 
   /@vanilla-extract/css/1.17.1:
     resolution: {integrity: sha512-tOHQXHm10FrJeXKFeWE09JfDGN/tvV6mbjwoNB9k03u930Vg021vTnbrCwVLkECj9Zvh/SHLBHJ4r2flGqfovw==}
+    dependencies:
+      '@emotion/hash': 0.9.1
+      '@vanilla-extract/private': 1.0.8
+      css-what: 6.1.0
+      cssesc: 3.0.0
+      csstype: 3.1.2
+      dedent: 1.5.3
+      deep-object-diff: 1.1.9
+      deepmerge: 4.3.1
+      lru-cache: 10.4.3
+      media-query-parser: 2.0.2
+      modern-ahocorasick: 1.0.1
+      picocolors: 1.1.1
+    transitivePeerDependencies:
+      - babel-plugin-macros
+    dev: true
+
+  /@vanilla-extract/css/1.17.3:
+    resolution: {integrity: sha512-jHivr1UPoJTX5Uel4AZSOwrCf4mO42LcdmnhJtUxZaRWhW4FviFbIfs0moAWWld7GOT+2XnuVZjjA/K32uUnMQ==}
     dependencies:
       '@emotion/hash': 0.9.1
       '@vanilla-extract/private': 1.0.8
@@ -10599,6 +10626,24 @@ packages:
       - supports-color
     dev: true
 
+  /@vanilla-extract/integration/8.0.3:
+    resolution: {integrity: sha512-7sCd4kBp/u02iNq3cYBXtOzKyX5muoHylsqcEjyuJWfnxOb1iB/jDCyTsiSRXcByj/wKjgjItbAdm/uzrUlAVw==}
+    dependencies:
+      '@babel/core': 7.26.0
+      '@babel/plugin-syntax-typescript': 7.24.1_@babel+core@7.26.0
+      '@vanilla-extract/babel-plugin-debug-ids': 1.2.1
+      '@vanilla-extract/css': 1.17.3
+      dedent: 1.5.3
+      esbuild: 0.21.5
+      eval: 0.1.8
+      find-up: 5.0.0
+      javascript-stringify: 2.1.0
+      mlly: 1.7.1
+    transitivePeerDependencies:
+      - babel-plugin-macros
+      - supports-color
+    dev: true
+
   /@vanilla-extract/private/1.0.8:
     resolution: {integrity: sha512-oRAbUlq1SyTWCo7dQnTVm+xgJMqNl8K1dEempQHXzQvUuyEfBabMt0wNGf+VCHzvKbx/Bzr9p/2wy8WA9+2z2g==}
 
@@ -10670,12 +10715,12 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@vanilla-extract/webpack-plugin/2.3.18_webpack@5.94.0:
-    resolution: {integrity: sha512-00AB9LQJZ5JM6jQCCn3upONPi4jqJnjXrN+uROgfixgxIpq0fMEfhnwOtAdECG7gRCy0T2jzpo1KO1Fh5wYsJg==}
+  /@vanilla-extract/webpack-plugin/2.3.20_webpack@5.94.0:
+    resolution: {integrity: sha512-I/tQQdpGLVXiLFB3/yORzhA5etK+8gNr3e+mwFLYWNClcoAjAIJ6ywADqbkqxEaRCX5pvqKNJodwxhvsdELHMw==}
     peerDependencies:
       webpack: ^4.30.0 || ^5.20.2
     dependencies:
-      '@vanilla-extract/integration': 8.0.1
+      '@vanilla-extract/integration': 8.0.3
       debug: 4.3.4
       loader-utils: 2.0.4
       picocolors: 1.1.1
