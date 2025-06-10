@@ -17,7 +17,8 @@
       "optionsSingular": "option",
       "multiOptionsSelected": "{{n}} {{options}} selected",
       "selectAllButtonLabel": "Select all",
-      "clearAllButtonLabel": "Clear all"
+      "clearAllButtonLabel": "Clear all",
+      "loadingMessage": "Loading..."
     },
     "searchBar": {
       "clearButtonLabel": "Clear"
