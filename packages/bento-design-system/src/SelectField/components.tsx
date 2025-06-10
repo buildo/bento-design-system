@@ -308,7 +308,7 @@ export function LoadingMessage<A>(props: NoticeProps<A>) {
 }
 
 export function LoadingIndicator() {
-  return <></>;
+  return null;
 }
 
 export const IndicatorSeparator = null;
