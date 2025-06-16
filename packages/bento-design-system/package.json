@@ -170,7 +170,7 @@
     "@vanilla-extract/esbuild-plugin": "2.3.15",
     "@vanilla-extract/private": "1.0.9",
     "@vanilla-extract/vite-plugin": "3.9.5",
-    "@vanilla-extract/webpack-plugin": "2.3.20",
+    "@vanilla-extract/webpack-plugin": "2.3.22",
     "@vitejs/plugin-react": "4.3.4",
     "chromatic": "6.24.1",
     "css-loader": "6.11.0",
