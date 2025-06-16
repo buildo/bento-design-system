@@ -108,7 +108,7 @@ importers:
       '@vanilla-extract/recipes': 0.5.5
       '@vanilla-extract/sprinkles': 1.6.3
       '@vanilla-extract/vite-plugin': 3.9.5
-      '@vanilla-extract/webpack-plugin': 2.3.20
+      '@vanilla-extract/webpack-plugin': 2.3.22
       '@vitejs/plugin-react': 4.3.4
       chromatic: 6.24.1
       clsx: 1.2.1
@@ -253,7 +253,7 @@ importers:
       '@vanilla-extract/esbuild-plugin': 2.3.15_esbuild@0.18.11
       '@vanilla-extract/private': 1.0.9
       '@vanilla-extract/vite-plugin': 3.9.5_vite@5.4.19
-      '@vanilla-extract/webpack-plugin': 2.3.20_webpack@5.94.0
+      '@vanilla-extract/webpack-plugin': 2.3.22_webpack@5.94.0
       '@vitejs/plugin-react': 4.3.4_vite@5.4.19
       chromatic: 6.24.1
       css-loader: 6.11.0_webpack@5.94.0
@@ -10439,8 +10439,8 @@ packages:
       - supports-color
     dev: true
 
-  /@vanilla-extract/babel-plugin-debug-ids/1.2.1:
-    resolution: {integrity: sha512-RkXKzcKVZtcDNmcGh8Bv9MNW6oYYUzy90GYt8amMrk5P+myXsdFSU9N7V+cJAf80l+AsMVMyK0GK7Qj35Sfppg==}
+  /@vanilla-extract/babel-plugin-debug-ids/1.2.2:
+    resolution: {integrity: sha512-MeDWGICAF9zA/OZLOKwhoRlsUW+fiMwnfuOAqFVohL31Agj7Q/RBWAYweqjHLgFBCsdnr6XIfwjJnmb2znEWxw==}
     dependencies:
       '@babel/core': 7.26.0
     transitivePeerDependencies:
@@ -10529,8 +10529,8 @@ packages:
       - babel-plugin-macros
     dev: true
 
-  /@vanilla-extract/css/1.17.3:
-    resolution: {integrity: sha512-jHivr1UPoJTX5Uel4AZSOwrCf4mO42LcdmnhJtUxZaRWhW4FviFbIfs0moAWWld7GOT+2XnuVZjjA/K32uUnMQ==}
+  /@vanilla-extract/css/1.17.4:
+    resolution: {integrity: sha512-m3g9nQDWPtL+sTFdtCGRMI1Vrp86Ay4PBYq1Bo7Bnchj5ElNtAJpOqD+zg+apthVA4fB7oVpMWNjwpa6ElDWFQ==}
     dependencies:
       '@emotion/hash': 0.9.1
       '@vanilla-extract/private': 1.0.9
@@ -10626,13 +10626,13 @@ packages:
       - supports-color
     dev: true
 
-  /@vanilla-extract/integration/8.0.3:
-    resolution: {integrity: sha512-7sCd4kBp/u02iNq3cYBXtOzKyX5muoHylsqcEjyuJWfnxOb1iB/jDCyTsiSRXcByj/wKjgjItbAdm/uzrUlAVw==}
+  /@vanilla-extract/integration/8.0.4:
+    resolution: {integrity: sha512-cmOb7tR+g3ulKvFtSbmdw3YUyIS1d7MQqN+FcbwNhdieyno5xzUyfDCMjeWJhmCSMvZ6WlinkrOkgs6SHB+FRg==}
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-syntax-typescript': 7.24.1_@babel+core@7.26.0
-      '@vanilla-extract/babel-plugin-debug-ids': 1.2.1
-      '@vanilla-extract/css': 1.17.3
+      '@vanilla-extract/babel-plugin-debug-ids': 1.2.2
+      '@vanilla-extract/css': 1.17.4
       dedent: 1.5.3
       esbuild: 0.21.5
       eval: 0.1.8
@@ -10715,12 +10715,12 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@vanilla-extract/webpack-plugin/2.3.20_webpack@5.94.0:
-    resolution: {integrity: sha512-I/tQQdpGLVXiLFB3/yORzhA5etK+8gNr3e+mwFLYWNClcoAjAIJ6ywADqbkqxEaRCX5pvqKNJodwxhvsdELHMw==}
+  /@vanilla-extract/webpack-plugin/2.3.22_webpack@5.94.0:
+    resolution: {integrity: sha512-3Cx8DkbX3EeLHGbD049jjj6/bWB0VK4YFfWWsf8VXBI8dgf5SvEef1VfET22IOcT9GzLl8MqfsLr/XSo9iv67Q==}
     peerDependencies:
       webpack: ^4.30.0 || ^5.20.2
     dependencies:
-      '@vanilla-extract/integration': 8.0.3
+      '@vanilla-extract/integration': 8.0.4
       debug: 4.3.4
       loader-utils: 2.0.4
       picocolors: 1.1.1
