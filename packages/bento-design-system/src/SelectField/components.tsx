@@ -21,7 +21,6 @@ import {
   Body,
   Children,
   IconCheck,
-  IconProps,
   Box,
   Columns,
   Column,
@@ -82,15 +81,19 @@ export function ValueContainer<A>(props: ValueContainerProps<A>) {
   );
 }
 
-export function SingleValue<A extends object>({ children, isDisabled, data }: SingleValueProps<A>) {
+export function SingleValue<A extends SelectOption<unknown>>({
+  children,
+  isDisabled,
+  data,
+}: SingleValueProps<A>) {
   const inputConfig = useBentoConfig().input;
 
   return (
     <Box className={singleValue}>
       <Columns space={16} alignY="center">
-        {"icon" in data && (
+        {data.icon && (
           <Column width="content">
-            {(data as unknown as { icon: (props: IconProps) => Children }).icon({
+            {data.icon({
               size: 24,
             })}
           </Column>
