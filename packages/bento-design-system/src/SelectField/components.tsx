@@ -29,6 +29,7 @@ import {
   Button,
   Chip,
   LocalizedString,
+  InlineLoader,
 } from "..";
 import { singleValue, placeholder, menu, control } from "./SelectField.css";
 import { bodyRecipe } from "../Typography/Body/Body.css";
@@ -299,6 +300,20 @@ export function MultiValue<A extends SelectOption<unknown>>(props: MultiValuePro
   }
 }
 
+export function LoadingMessage<A>(props: NoticeProps<A>) {
+  return (
+    <Inset space={16}>
+      <Inline align="center" space={0}>
+        <InlineLoader message={props.children as LocalizedString} />
+      </Inline>
+    </Inset>
+  );
+}
+
+export function LoadingIndicator() {
+  return null;
+}
+
 export const IndicatorSeparator = null;
 
 export function styles<A>(): StylesConfig<A> {
@@ -309,5 +324,7 @@ export function styles<A>(): StylesConfig<A> {
     menu: () => ({}),
     menuList: ({ paddingTop, paddingBottom, ...provided }) => provided,
     option: () => ({}),
+    loadingMessage: ({ color, ...provided }) => provided,
+    loadingIndicator: ({ color, ...provided }) => provided,
   };
 }
