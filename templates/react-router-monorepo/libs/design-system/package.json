@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@buildo/bento-design-system": "0.23.3",
-    "@phosphor-icons/react": "2.1.7",
+    "@phosphor-icons/react": "2.1.10",
     "@vanilla-extract/esbuild-plugin": "2.3.15"
   },
   "peerDependencies": {
