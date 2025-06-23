@@ -29,6 +29,7 @@ export const useDefaultMessages = (): ComponentProps<typeof BentoProvider>["defa
       },
       selectAllButtonLabel: t("common.selectField.selectAllButtonLabel", "Select all"),
       clearAllButtonLabel: t("common.selectField.clearAllButtonLabel", "Clear all"),
+      loadingMessage: t("common.selectField.loadingMessage", "Loading..."),
     },
     SearchBar: {
       clearButtonLabel: t("common.searchBar.clearButtonLabel", "Clear"),
