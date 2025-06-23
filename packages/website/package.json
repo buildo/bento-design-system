@@ -52,7 +52,7 @@
     "@docusaurus/theme-classic": "3.5.2",
     "@docusaurus/theme-live-codeblock": "3.5.2",
     "@docusaurus/types": "3.5.2",
-    "@phosphor-icons/react": "2.1.7",
+    "@phosphor-icons/react": "2.1.10",
     "@docusaurus/tsconfig": "3.5.2",
     "@types/babel__generator": "7.27.0",
     "@types/babel__standalone": "7.1.9",

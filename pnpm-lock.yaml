@@ -27,7 +27,7 @@ importers:
       '@floating-ui/utils': 0.1.1
       '@fontsource/lexend': 5.0.22
       '@internationalized/date': 3.4.0
-      '@phosphor-icons/react': 2.1.7
+      '@phosphor-icons/react': 2.1.10
       '@react-aria/breadcrumbs': 3.5.4
       '@react-aria/button': 3.8.1
       '@react-aria/calendar': 3.4.0
@@ -217,7 +217,7 @@ importers:
       '@babel/preset-env': 7.22.20_@babel+core@7.22.20
       '@babel/preset-react': 7.22.15_@babel+core@7.22.20
       '@babel/preset-typescript': 7.22.15_@babel+core@7.22.20
-      '@phosphor-icons/react': 2.1.7_nnrd3gsncyragczmpvfhocinkq
+      '@phosphor-icons/react': 2.1.10_nnrd3gsncyragczmpvfhocinkq
       '@react-types/breadcrumbs': 3.6.1_react@18.3.1
       '@react-types/button': 3.7.4_react@18.3.1
       '@react-types/datepicker': 3.5.0_react@18.3.1
@@ -287,7 +287,7 @@ importers:
   packages/configuration-builder:
     specifiers:
       '@buildo/bento-design-system': workspace:*
-      '@phosphor-icons/react': 2.1.7
+      '@phosphor-icons/react': 2.1.10
       '@react-aria/i18n': 3.8.1
       '@react-aria/numberfield': 3.7.0
       '@react-stately/numberfield': 3.6.0
@@ -317,7 +317,7 @@ importers:
       vite-plugin-checker: 0.6.2
     dependencies:
       '@buildo/bento-design-system': link:../bento-design-system
-      '@phosphor-icons/react': 2.1.7_nnrd3gsncyragczmpvfhocinkq
+      '@phosphor-icons/react': 2.1.10_nnrd3gsncyragczmpvfhocinkq
       '@react-aria/i18n': 3.8.1_react@18.3.1
       '@react-aria/numberfield': 3.7.0_nnrd3gsncyragczmpvfhocinkq
       '@react-stately/numberfield': 3.6.0_react@18.3.1
@@ -367,7 +367,7 @@ importers:
       '@docusaurus/types': 3.5.2
       '@easyops-cn/docusaurus-search-local': 0.45.0
       '@mdx-js/react': 3.0.1
-      '@phosphor-icons/react': 2.1.7
+      '@phosphor-icons/react': 2.1.10
       '@types/babel__generator': 7.27.0
       '@types/babel__standalone': 7.1.9
       '@types/babel__traverse': 7.20.7
@@ -424,7 +424,7 @@ importers:
       '@docusaurus/theme-live-codeblock': 3.5.2_4bmfkyyevsv35oqe5bsc6vsoey
       '@docusaurus/tsconfig': 3.5.2
       '@docusaurus/types': 3.5.2_nnrd3gsncyragczmpvfhocinkq
-      '@phosphor-icons/react': 2.1.7_nnrd3gsncyragczmpvfhocinkq
+      '@phosphor-icons/react': 2.1.10_nnrd3gsncyragczmpvfhocinkq
       '@types/babel__generator': 7.27.0
       '@types/babel__standalone': 7.1.9
       '@types/babel__traverse': 7.20.7
@@ -7238,8 +7238,8 @@ packages:
       regexpu-core: 4.8.0
     dev: true
 
-  /@phosphor-icons/react/2.1.7_nnrd3gsncyragczmpvfhocinkq:
-    resolution: {integrity: sha512-g2e2eVAn1XG2a+LI09QU3IORLhnFNAFkNbo2iwbX6NOKSLOwvEMmTa7CgOzEbgNWR47z8i8kwjdvYZ5fkGx1mQ==}
+  /@phosphor-icons/react/2.1.10_nnrd3gsncyragczmpvfhocinkq:
+    resolution: {integrity: sha512-vt8Tvq8GLjheAZZYa+YG/pW7HDbov8El/MANW8pOAz4eGxrwhnbfrQZq0Cp4q8zBEu8NIhHdnr+r8thnfRSNYA==}
     engines: {node: '>=10'}
     peerDependencies:
       react: '>= 16.8 || 18'
