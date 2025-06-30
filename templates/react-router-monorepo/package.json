@@ -7,7 +7,7 @@
     "typecheck": "nx run-many --target=typecheck"
   },
   "devDependencies": {
-    "nx": "20.6.0"
+    "nx": "20.8.2"
   },
   "packageManager": "pnpm@9.7.0"
 }
