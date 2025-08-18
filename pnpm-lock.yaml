@@ -126,7 +126,7 @@ importers:
       lodash.orderby: 4.6.0
       lodash.pick: 4.4.0
       madge: 5.0.2
-      mini-css-extract-plugin: 2.9.3
+      mini-css-extract-plugin: 2.9.4
       playroom: 0.32.1
       postcss: 8.5.6
       prettier: 2.8.8
@@ -268,7 +268,7 @@ importers:
       lint-staged: 13.3.0
       lodash.orderby: 4.6.0
       madge: 5.0.2
-      mini-css-extract-plugin: 2.9.3_webpack@5.94.0
+      mini-css-extract-plugin: 2.9.4_webpack@5.94.0
       playroom: 0.32.1_2wr43u5pdpa7jm27w6mzi7gyky
       postcss: 8.5.6
       prettier: 2.8.8
@@ -4856,7 +4856,7 @@ packages:
       html-webpack-plugin: 5.5.3_webpack@5.94.0
       leven: 3.1.0
       lodash: 4.17.21
-      mini-css-extract-plugin: 2.9.3_webpack@5.94.0
+      mini-css-extract-plugin: 2.9.4_webpack@5.94.0
       p-map: 4.0.0
       postcss: 8.5.6
       postcss-loader: 7.3.3_lyzfou7tn7df5bap3jm7ygyli4
@@ -4956,7 +4956,7 @@ packages:
       html-webpack-plugin: 5.5.3_webpack@5.94.0
       leven: 3.1.0
       lodash: 4.17.21
-      mini-css-extract-plugin: 2.9.3_webpack@5.94.0
+      mini-css-extract-plugin: 2.9.4_webpack@5.94.0
       p-map: 4.0.0
       postcss: 8.5.6
       postcss-loader: 7.3.3_lyzfou7tn7df5bap3jm7ygyli4
@@ -17625,8 +17625,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /mini-css-extract-plugin/2.9.3_webpack@5.94.0:
-    resolution: {integrity: sha512-tRA0+PsS4kLVijnN1w9jUu5lkxBwUk9E8SbgEB5dBJqchE6pVYdawROG6uQtpmAri7tdCK9i7b1bULeVWqS6Ag==}
+  /mini-css-extract-plugin/2.9.4_webpack@5.94.0:
+    resolution: {integrity: sha512-ZWYT7ln73Hptxqxk2DxPU9MmapXRhxkJD6tkSR04dnQxm8BGu2hzgKLugK5yySD97u/8yy7Ma7E76k9ZdvtjkQ==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
@@ -18425,7 +18425,7 @@ packages:
       localforage: 1.10.0
       lodash: 4.17.21
       lz-string: 1.5.0
-      mini-css-extract-plugin: 2.9.3_webpack@5.94.0
+      mini-css-extract-plugin: 2.9.4_webpack@5.94.0
       parse-prop-types: 0.3.0_prop-types@15.8.1
       polished: 4.2.2
       portfinder: 1.0.32
@@ -18500,7 +18500,7 @@ packages:
       localforage: 1.10.0
       lodash: 4.17.21
       lz-string: 1.5.0
-      mini-css-extract-plugin: 2.9.3_webpack@5.94.0
+      mini-css-extract-plugin: 2.9.4_webpack@5.94.0
       parse-prop-types: 0.3.0_prop-types@15.8.1
       polished: 4.2.2
       portfinder: 1.0.32
