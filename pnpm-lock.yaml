@@ -140,7 +140,7 @@ importers:
       recharts: 2.8.0
       storybook: 8.0.8
       style-loader: 3.3.4
-      ts-loader: 9.5.2
+      ts-loader: 9.5.4
       ts-pattern: 5.7.0
       tsup: 7.2.0
       typescript: 5.1.3
@@ -276,7 +276,7 @@ importers:
       react-dom: 18.3.1_react@18.3.1
       storybook: 8.0.8_xocsflgxn6nkocig632xj2smfe
       style-loader: 3.3.4_webpack@5.94.0
-      ts-loader: 9.5.2_x5mktmtof6c7h4sob3pmtt27xu
+      ts-loader: 9.5.4_x5mktmtof6c7h4sob3pmtt27xu
       tsup: 7.2.0_ospyyfbcowz5ml7xvf5hyr3qne
       typescript: 5.1.3
       vite: 5.4.19
@@ -21270,8 +21270,8 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /ts-loader/9.5.2_x5mktmtof6c7h4sob3pmtt27xu:
-    resolution: {integrity: sha512-Qo4piXvOTWcMGIgRiuFa6nHNm+54HbYaZCKqc9eeZCLRy3XqafQgwX2F7mofrbJG3g7EEb+lkiR+z2Lic2s3Zw==}
+  /ts-loader/9.5.4_x5mktmtof6c7h4sob3pmtt27xu:
+    resolution: {integrity: sha512-nCz0rEwunlTZiy6rXFByQU1kVVpCIgUpc/psFiKVrUwrizdnIbRFu8w7bxhUF0X613DYwT4XzrZHpVyMe758hQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       typescript: '*'
