@@ -47,6 +47,7 @@ export const useTooltip = <TValue extends ValueType, TName extends NameType>(
                 : typeof formatterResult === "string" || typeof formatterResult === "number"
                 ? `${name}: ${formatterResult}`
                 : `${name}: ${value}`;
+              const tooltipColor = color ?? item.fill;
               return (
                 <Columns key={name} space={4} alignY="center">
                   <Column width="content">
@@ -54,7 +55,7 @@ export const useTooltip = <TValue extends ValueType, TName extends NameType>(
                       height={16}
                       width={16}
                       borderRadius={4}
-                      style={{ backgroundColor: color }}
+                      style={{ backgroundColor: tooltipColor }}
                     />
                   </Column>
                   <Body size="small">{formattedText}</Body>
