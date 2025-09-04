@@ -1,6 +1,6 @@
 {
   "name": "@buildo/bento-design-system",
-  "version": "0.23.4",
+  "version": "0.23.5",
   "description": "The buildo DS",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
