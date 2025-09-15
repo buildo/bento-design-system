@@ -56,7 +56,7 @@
     "@docusaurus/tsconfig": "3.5.2",
     "@types/babel__generator": "7.27.0",
     "@types/babel__standalone": "7.1.9",
-    "@types/babel__traverse": "7.20.7",
+    "@types/babel__traverse": "7.28.0",
     "@types/node": "18.19.124",
     "@types/react": "18.3.24",
     "@typescript-eslint/parser": "5.62.0",
