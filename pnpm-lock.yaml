@@ -144,7 +144,7 @@ importers:
       ts-pattern: 5.7.0
       tsup: 7.2.0
       typescript: 5.1.3
-      vite: 5.4.20
+      vite: 5.4.21
       vitest: 0.34.6
       webpack: 5.94.0
       webpack-cli: 4.10.0
@@ -230,10 +230,10 @@ importers:
       '@storybook/addon-essentials': 8.0.8_thnsr5vmbyu2c2tstbgmpkmkte
       '@storybook/addon-links': 8.0.8_react@18.3.1
       '@storybook/addon-themes': 8.0.8
-      '@storybook/builder-vite': 8.0.8_eablox4yqdizfsm6s6ms6xmdpy
+      '@storybook/builder-vite': 8.0.8_w4d6pn2qtwafhmr2agdsq5b5sq
       '@storybook/preview-api': 8.0.8
       '@storybook/react': 8.0.8_hra464h4f6agrm75kpuyuq7spu
-      '@storybook/react-vite': 8.0.8_mw5a4fstrrru6cl43hvkthtb2y
+      '@storybook/react-vite': 8.0.8_cogymxhenfdgdsfpaic3kb56ze
       '@storybook/test': 8.0.10
       '@storybook/types': 8.0.8
       '@testing-library/dom': 9.3.4
@@ -252,9 +252,9 @@ importers:
       '@vanilla-extract/babel-plugin': 1.2.0
       '@vanilla-extract/esbuild-plugin': 2.3.15_esbuild@0.18.11
       '@vanilla-extract/private': 1.0.9
-      '@vanilla-extract/vite-plugin': 3.9.5_vite@5.4.20
+      '@vanilla-extract/vite-plugin': 3.9.5_vite@5.4.21
       '@vanilla-extract/webpack-plugin': 2.3.22_webpack@5.94.0
-      '@vitejs/plugin-react': 4.7.0_vite@5.4.20
+      '@vitejs/plugin-react': 4.7.0_vite@5.4.21
       chromatic: 6.24.1
       css-loader: 6.11.0_webpack@5.94.0
       date-fns: 2.30.0
@@ -279,7 +279,7 @@ importers:
       ts-loader: 9.5.4_x5mktmtof6c7h4sob3pmtt27xu
       tsup: 7.2.0_ospyyfbcowz5ml7xvf5hyr3qne
       typescript: 5.1.3
-      vite: 5.4.20
+      vite: 5.4.21
       vitest: 0.34.6_jsdom@22.1.0
       webpack: 5.94.0_xv6o4afsychpgm2yejy2midhya
       webpack-cli: 4.10.0_webpack@5.94.0
@@ -313,7 +313,7 @@ importers:
       react-router-dom: 6.28.0
       ts-pattern: 3.3.5
       typescript: 5.1.3
-      vite: 5.4.20
+      vite: 5.4.21
       vite-plugin-checker: 0.6.2
     dependencies:
       '@buildo/bento-design-system': link:../bento-design-system
@@ -338,14 +338,14 @@ importers:
       '@typescript-eslint/parser': 6.5.0_z2cqhtrhzo2dttjlb4wsdjp3di
       '@vanilla-extract/dynamic': 2.1.2
       '@vanilla-extract/sprinkles': 1.6.3_zd2pmj2rl4fq6dchynq6tm4lty
-      '@vanilla-extract/vite-plugin': 3.9.5_vite@5.4.20
-      '@vitejs/plugin-react': 4.7.0_vite@5.4.20
+      '@vanilla-extract/vite-plugin': 3.9.5_vite@5.4.21
+      '@vitejs/plugin-react': 4.7.0_vite@5.4.21
       eslint: 8.57.1
       eslint-plugin-react-hooks: 4.6.2_eslint@8.57.1
       eslint-plugin-react-refresh: 0.4.24_eslint@8.57.1
       typescript: 5.1.3
-      vite: 5.4.20
-      vite-plugin-checker: 0.6.2_cpvg2t6kdk4x55amdkpujlhyum
+      vite: 5.4.21
+      vite-plugin-checker: 0.6.2_ohbyytj5rtx2fz7eo6jgumjnea
 
   packages/website:
     specifiers:
@@ -7080,7 +7080,7 @@ packages:
       '@types/yargs': 17.0.24
       chalk: 4.1.2
 
-  /@joshwooding/vite-plugin-react-docgen-typescript/0.3.0_eablox4yqdizfsm6s6ms6xmdpy:
+  /@joshwooding/vite-plugin-react-docgen-typescript/0.3.0_w4d6pn2qtwafhmr2agdsq5b5sq:
     resolution: {integrity: sha512-2D6y7fNvFmsLmRt6UCOFJPvFoPMJGT0Uh1Wg0RaigUp7kdQPs6yYn8Dmx6GZkOH/NW0yMTwRz/p0SRMMRo50vA==}
     peerDependencies:
       typescript: '>= 4.3.x'
@@ -7094,7 +7094,7 @@ packages:
       magic-string: 0.27.0
       react-docgen-typescript: 2.2.2_typescript@5.1.3
       typescript: 5.1.3
-      vite: 5.4.20
+      vite: 5.4.21
     dev: true
 
   /@jridgewell/gen-mapping/0.3.12:
@@ -8638,7 +8638,7 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/builder-vite/8.0.8_eablox4yqdizfsm6s6ms6xmdpy:
+  /@storybook/builder-vite/8.0.8_w4d6pn2qtwafhmr2agdsq5b5sq:
     resolution: {integrity: sha512-ibWOxoHczCc6ttMQqiSXv29m/e44sKVoc1BJluApQcjCXl9g6QXyN45zV70odjCxMfNy7EQgUjCA0mgAgMHSIw==}
     peerDependencies:
       '@preact/preset-vite': '*'
@@ -8671,7 +8671,7 @@ packages:
       magic-string: 0.30.10
       ts-dedent: 2.2.0
       typescript: 5.1.3
-      vite: 5.4.20
+      vite: 5.4.21
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -9071,7 +9071,7 @@ packages:
       react-dom: 18.3.1_react@18.3.1
     dev: true
 
-  /@storybook/react-vite/8.0.8_mw5a4fstrrru6cl43hvkthtb2y:
+  /@storybook/react-vite/8.0.8_cogymxhenfdgdsfpaic3kb56ze:
     resolution: {integrity: sha512-3xN+/KgcjEAKJ0cM8yFYk8+T59kgKSMlQaavoIgQudbEErSubr9l7jDWXH44afQIEBVs++ayYWrbEN2wyMGoug==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -9079,9 +9079,9 @@ packages:
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || 18
       vite: ^4.0.0 || ^5.0.0
     dependencies:
-      '@joshwooding/vite-plugin-react-docgen-typescript': 0.3.0_eablox4yqdizfsm6s6ms6xmdpy
+      '@joshwooding/vite-plugin-react-docgen-typescript': 0.3.0_w4d6pn2qtwafhmr2agdsq5b5sq
       '@rollup/pluginutils': 5.1.0
-      '@storybook/builder-vite': 8.0.8_eablox4yqdizfsm6s6ms6xmdpy
+      '@storybook/builder-vite': 8.0.8_w4d6pn2qtwafhmr2agdsq5b5sq
       '@storybook/node-logger': 8.0.8
       '@storybook/react': 8.0.8_hra464h4f6agrm75kpuyuq7spu
       find-up: 5.0.0
@@ -9091,7 +9091,7 @@ packages:
       react-dom: 18.3.1_react@18.3.1
       resolve: 1.22.8
       tsconfig-paths: 4.2.0
-      vite: 5.4.20
+      vite: 5.4.21
     transitivePeerDependencies:
       - '@preact/preset-vite'
       - encoding
@@ -10744,7 +10744,7 @@ packages:
       lodash: 4.17.21
       mlly: 1.7.1
       outdent: 0.8.0
-      vite: 5.4.20
+      vite: 5.4.21
       vite-node: 1.6.0
     transitivePeerDependencies:
       - '@types/node'
@@ -10829,7 +10829,7 @@ packages:
       '@vanilla-extract/css': 1.12.0
     dev: true
 
-  /@vanilla-extract/vite-plugin/3.9.5_vite@5.4.20:
+  /@vanilla-extract/vite-plugin/3.9.5_vite@5.4.21:
     resolution: {integrity: sha512-CWI/CtrVW6i3HKccI6T7uGQkTJ8bd8Xl2UMBg3Pkr7dwWMmavXTeucV0I9KSbmXaYXSbEj+Q8c9y0xAZwtmTig==}
     peerDependencies:
       vite: ^2.2.3 || ^3.0.0 || ^4.0.3 || ^5.0.0
@@ -10838,7 +10838,7 @@ packages:
       outdent: 0.8.0
       postcss: 8.5.6
       postcss-load-config: 4.0.1_postcss@8.5.6
-      vite: 5.4.20
+      vite: 5.4.21
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -10881,7 +10881,7 @@ packages:
       - supports-color
     dev: true
 
-  /@vitejs/plugin-react/4.7.0_vite@5.4.20:
+  /@vitejs/plugin-react/4.7.0_vite@5.4.21:
     resolution: {integrity: sha512-gUu9hwfWvvEDBBmgtAowQCojwZmJ5mcLn3aufeCsitijs3+f2NsrPtlAWIR6OPiqljl96GVCUbLe0HyqIpVaoA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -10893,7 +10893,7 @@ packages:
       '@rolldown/pluginutils': 1.0.0-beta.27
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 5.4.20
+      vite: 5.4.21
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -21936,7 +21936,7 @@ packages:
       mlly: 1.7.1
       pathe: 1.1.2
       picocolors: 1.1.1
-      vite: 5.4.20_@types+node@18.17.14
+      vite: 5.4.21_@types+node@18.17.14
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -21958,7 +21958,7 @@ packages:
       debug: 4.3.4
       pathe: 1.1.2
       picocolors: 1.1.1
-      vite: 5.4.20
+      vite: 5.4.21
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -21971,7 +21971,7 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-checker/0.6.2_cpvg2t6kdk4x55amdkpujlhyum:
+  /vite-plugin-checker/0.6.2_ohbyytj5rtx2fz7eo6jgumjnea:
     resolution: {integrity: sha512-YvvvQ+IjY09BX7Ab+1pjxkELQsBd4rPhWNw8WLBeFVxu/E7O+n6VYAqNsKdK/a2luFlX/sMpoWdGFfg4HvwdJQ==}
     engines: {node: '>=14.16'}
     peerDependencies:
@@ -22017,15 +22017,15 @@ packages:
       strip-ansi: 6.0.1
       tiny-invariant: 1.3.1
       typescript: 5.1.3
-      vite: 5.4.20
+      vite: 5.4.21
       vscode-languageclient: 7.0.0
       vscode-languageserver: 7.0.0
       vscode-languageserver-textdocument: 1.0.8
       vscode-uri: 3.0.7
     dev: true
 
-  /vite/5.4.20:
-    resolution: {integrity: sha512-j3lYzGC3P+B5Yfy/pfKNgVEg4+UtcIJcVRt2cDjIOmhLourAqPqf8P7acgxeiSgUB7E3p2P8/3gNIgDLpwzs4g==}
+  /vite/5.4.21:
+    resolution: {integrity: sha512-o5a9xKjbtuhY6Bi5S3+HvbRERmouabWbyUcpXXUA1u+GNUKoROi9byOJ8M0nHbHYHkYICiMlqxkg1KkYmm25Sw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -22062,8 +22062,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite/5.4.20_@types+node@18.17.14:
-    resolution: {integrity: sha512-j3lYzGC3P+B5Yfy/pfKNgVEg4+UtcIJcVRt2cDjIOmhLourAqPqf8P7acgxeiSgUB7E3p2P8/3gNIgDLpwzs4g==}
+  /vite/5.4.21_@types+node@18.17.14:
+    resolution: {integrity: sha512-o5a9xKjbtuhY6Bi5S3+HvbRERmouabWbyUcpXXUA1u+GNUKoROi9byOJ8M0nHbHYHkYICiMlqxkg1KkYmm25Sw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -22154,7 +22154,7 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.5.0
       tinypool: 0.7.0
-      vite: 5.4.20_@types+node@18.17.14
+      vite: 5.4.21_@types+node@18.17.14
       vite-node: 0.34.6_@types+node@18.17.14
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
