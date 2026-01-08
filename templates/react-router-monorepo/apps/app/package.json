@@ -11,7 +11,7 @@
     "generate:types": "react-router typegen"
   },
   "dependencies": {
-    "@react-router/node": "7.0.1",
+    "@react-router/node": "7.9.4",
     "@react-router/serve": "7.0.1",
     "design-system": "workspace:*",
     "i18next": "23.16.8",
