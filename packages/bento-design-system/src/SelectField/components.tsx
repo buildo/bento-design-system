@@ -239,6 +239,7 @@ export function Option<B, A extends SelectOption<B>>(props: OptionProps<A>) {
         // that could hit whatever is behind the menu after it closes.
         onTouchEnd: (e) => {
           e.preventDefault();
+          innerProps.onTouchEnd?.(e);
         },
       }}
     >
