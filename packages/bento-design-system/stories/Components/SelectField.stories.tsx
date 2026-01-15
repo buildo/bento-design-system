@@ -8,6 +8,8 @@ import {
   BentoConfigProvider,
   SelectFieldProps,
   SelectOption,
+  Button,
+  Stack,
 } from "..";
 import { useState } from "react";
 
@@ -210,6 +212,25 @@ export const NotClearable = {
         value={value}
         onChange={onChange}
       />
+    );
+  },
+} satisfies Story;
+
+// Story to test ghost click prevention on touch devices
+export const WithButtonBelow = {
+  render: (args) => {
+    const [value, onChange] = useState<number | undefined>(undefined);
+    const [clickCount, setClickCount] = useState(0);
+    return (
+      <Stack space={16}>
+        <SelectField {...args} value={value} onChange={(v) => onChange(v as number)} />
+        <Button
+          kind="solid"
+          hierarchy="primary"
+          label={`Button clicked ${clickCount} times`}
+          onPress={() => setClickCount((c) => c + 1)}
+        />
+      </Stack>
     );
   },
 } satisfies Story;

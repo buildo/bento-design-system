@@ -229,7 +229,16 @@ export function MenuList<A extends { disabled?: boolean }>(props: MenuListProps<
 
 export function Option<B, A extends SelectOption<B>>(props: OptionProps<A>) {
   return (
-    <defaultComponents.Option {...props}>
+    <defaultComponents.Option
+      {...props}
+      innerProps={{
+        ...props.innerProps,
+        onClick: (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+        },
+      }}
+    >
       <ListItem
         {...props.data}
         size={props.selectProps.menuSize ?? "medium"}
