@@ -228,20 +228,9 @@ export function MenuList<A extends { disabled?: boolean }>(props: MenuListProps<
 }
 
 export function Option<B, A extends SelectOption<B>>(props: OptionProps<A>) {
-  const { innerProps } = props;
-
+  const { onClick, ...innerProps } = props.innerProps;
   return (
-    <defaultComponents.Option
-      {...props}
-      innerProps={{
-        ...innerProps,
-        // On touch devices, prevent the browser from synthesizing a follow-up click
-        // that could hit whatever is behind the menu after it closes.
-        onTouchEnd: (e) => {
-          e.preventDefault();
-        },
-      }}
-    >
+    <defaultComponents.Option {...props} innerProps={innerProps}>
       <ListItem
         {...props.data}
         size={props.selectProps.menuSize ?? "medium"}
