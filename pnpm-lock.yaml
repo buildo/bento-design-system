@@ -126,7 +126,7 @@ importers:
       lodash.orderby: 4.6.0
       lodash.pick: 4.4.0
       madge: 5.0.2
-      mini-css-extract-plugin: 2.9.4
+      mini-css-extract-plugin: 2.10.0
       playroom: 0.32.1
       postcss: 8.5.6
       prettier: 2.8.8
@@ -268,7 +268,7 @@ importers:
       lint-staged: 13.3.0
       lodash.orderby: 4.6.0
       madge: 5.0.2
-      mini-css-extract-plugin: 2.9.4_webpack@5.104.1
+      mini-css-extract-plugin: 2.10.0_webpack@5.104.1
       playroom: 0.32.1_2wr43u5pdpa7jm27w6mzi7gyky
       postcss: 8.5.6
       prettier: 2.8.8
@@ -3793,7 +3793,7 @@ packages:
       html-webpack-plugin: 5.5.3_webpack@5.104.1
       leven: 3.1.0
       lodash: 4.17.21
-      mini-css-extract-plugin: 2.9.4_webpack@5.104.1
+      mini-css-extract-plugin: 2.10.0_webpack@5.104.1
       p-map: 4.0.0
       postcss: 8.5.6
       postcss-loader: 7.3.3_q2umauecsar7hfff66gfyfj7h4
@@ -3893,7 +3893,7 @@ packages:
       html-webpack-plugin: 5.5.3_webpack@5.104.1
       leven: 3.1.0
       lodash: 4.17.21
-      mini-css-extract-plugin: 2.9.4_webpack@5.104.1
+      mini-css-extract-plugin: 2.10.0_webpack@5.104.1
       p-map: 4.0.0
       postcss: 8.5.6
       postcss-loader: 7.3.3_q2umauecsar7hfff66gfyfj7h4
@@ -10381,7 +10381,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.20
       find-cache-dir: 3.3.2
-      schema-utils: 4.2.0
+      schema-utils: 4.3.3
       webpack: 5.104.1_xv6o4afsychpgm2yejy2midhya
 
   /babel-loader/9.2.1_fljn5x5dvutztizlsgxqcup534:
@@ -10393,7 +10393,7 @@ packages:
     dependencies:
       '@babel/core': 7.25.2
       find-cache-dir: 4.0.0
-      schema-utils: 4.2.0
+      schema-utils: 4.3.3
       webpack: 5.104.1
 
   /babel-plugin-add-module-exports/0.2.1:
@@ -11199,7 +11199,7 @@ packages:
       glob-parent: 6.0.2
       globby: 13.2.1
       normalize-path: 3.0.0
-      schema-utils: 4.2.0
+      schema-utils: 4.3.3
       serialize-javascript: 6.0.1
       webpack: 5.104.1
 
@@ -11344,7 +11344,7 @@ packages:
       cssnano: 6.1.2_postcss@8.5.6
       jest-worker: 29.5.0
       postcss: 8.5.6
-      schema-utils: 4.2.0
+      schema-utils: 4.3.3
       serialize-javascript: 6.0.1
       webpack: 5.104.1
 
@@ -12101,7 +12101,7 @@ packages:
     engines: {node: '>=10.13.0'}
     dependencies:
       graceful-fs: 4.2.11
-      tapable: 2.2.1
+      tapable: 2.3.0
     dev: true
 
   /enhanced-resolve/5.19.0:
@@ -13992,7 +13992,7 @@ packages:
       html-minifier-terser: 6.1.0
       lodash: 4.17.21
       pretty-error: 4.0.0
-      tapable: 2.2.1
+      tapable: 2.3.0
       webpack: 5.104.1_xv6o4afsychpgm2yejy2midhya
 
   /htmlparser2/6.1.0:
@@ -16099,14 +16099,14 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /mini-css-extract-plugin/2.9.4_webpack@5.104.1:
-    resolution: {integrity: sha512-ZWYT7ln73Hptxqxk2DxPU9MmapXRhxkJD6tkSR04dnQxm8BGu2hzgKLugK5yySD97u/8yy7Ma7E76k9ZdvtjkQ==}
+  /mini-css-extract-plugin/2.10.0_webpack@5.104.1:
+    resolution: {integrity: sha512-540P2c5dYnJlyJxTaSloliZexv8rji6rY8FhQN+WF/82iHQfA23j/xtJx97L+mXOML27EqksSek/g4eK7jaL3g==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
     dependencies:
-      schema-utils: 4.2.0
-      tapable: 2.2.1
+      schema-utils: 4.3.3
+      tapable: 2.3.0
       webpack: 5.104.1_xv6o4afsychpgm2yejy2midhya
 
   /minimalistic-assert/1.0.1:
@@ -16820,7 +16820,7 @@ packages:
       localforage: 1.10.0
       lodash: 4.17.21
       lz-string: 1.5.0
-      mini-css-extract-plugin: 2.9.4_webpack@5.104.1
+      mini-css-extract-plugin: 2.10.0_webpack@5.104.1
       parse-prop-types: 0.3.0_prop-types@15.8.1
       polished: 4.2.2
       portfinder: 1.0.32
@@ -16895,7 +16895,7 @@ packages:
       localforage: 1.10.0
       lodash: 4.17.21
       lz-string: 1.5.0
-      mini-css-extract-plugin: 2.9.4_webpack@5.104.1
+      mini-css-extract-plugin: 2.10.0_webpack@5.104.1
       parse-prop-types: 0.3.0_prop-types@15.8.1
       polished: 4.2.2
       portfinder: 1.0.32
@@ -18639,15 +18639,6 @@ packages:
       ajv: 6.12.6
       ajv-keywords: 3.5.2_ajv@6.12.6
 
-  /schema-utils/4.2.0:
-    resolution: {integrity: sha512-L0jRsrPpjdckP3oPug3/VxNKt2trR8TcabrM6FOAAlvC/9Phcmm+cuAgTlxBqdBR1WJx7Naj9WHw+aOmheSVbw==}
-    engines: {node: '>= 12.13.0'}
-    dependencies:
-      '@types/json-schema': 7.0.15
-      ajv: 8.12.0
-      ajv-formats: 2.1.1_ajv@8.12.0
-      ajv-keywords: 5.1.0_ajv@8.12.0
-
   /schema-utils/4.3.3:
     resolution: {integrity: sha512-eflK8wEtyOE6+hsaRVPxvUKYCpRgzLqDTb8krvAsRIwOGlHoSgYLgBXoubGgLd2fT41/OUYdb48v4k4WWHQurA==}
     engines: {node: '>= 10.13.0'}
@@ -19376,6 +19367,7 @@ packages:
   /tapable/2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
+    dev: true
 
   /tapable/2.3.0:
     resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
@@ -20681,7 +20673,7 @@ packages:
       memfs: 3.5.3
       mime-types: 2.1.35
       range-parser: 1.2.1
-      schema-utils: 4.2.0
+      schema-utils: 4.3.3
       webpack: 5.104.1_xv6o4afsychpgm2yejy2midhya
 
   /webpack-dev-server/4.15.1_3n5bgh5vxr5xym6kgoiewdkkx4:
@@ -20720,7 +20712,7 @@ packages:
       open: 8.4.2
       p-retry: 4.6.2
       rimraf: 3.0.2
-      schema-utils: 4.2.0
+      schema-utils: 4.3.3
       selfsigned: 2.1.1
       serve-index: 1.9.1
       sockjs: 0.3.24
@@ -20771,7 +20763,7 @@ packages:
       open: 8.4.2
       p-retry: 4.6.2
       rimraf: 3.0.2
-      schema-utils: 4.2.0
+      schema-utils: 4.3.3
       selfsigned: 2.1.1
       serve-index: 1.9.1
       sockjs: 0.3.24
@@ -20823,7 +20815,7 @@ packages:
       open: 8.4.2
       p-retry: 4.6.2
       rimraf: 3.0.2
-      schema-utils: 4.2.0
+      schema-utils: 4.3.3
       selfsigned: 2.1.1
       serve-index: 1.9.1
       sockjs: 0.3.24
