@@ -16,9 +16,9 @@
   "dependencies": {
     "@buildo/bento-design-system": "workspace:*",
     "@phosphor-icons/react": "2.1.10",
-    "@react-aria/i18n": "3.8.1",
-    "@react-aria/numberfield": "3.7.0",
-    "@react-stately/numberfield": "3.6.0",
+    "@react-aria/i18n": "3.12.15",
+    "@react-aria/numberfield": "3.12.4",
+    "@react-stately/numberfield": "3.10.4",
     "@vanilla-extract/css": "1.12.0",
     "@vanilla-extract/recipes": "0.5.5",
     "i18next": "22.5.1",
@@ -29,7 +29,7 @@
     "ts-pattern": "3.3.5"
   },
   "devDependencies": {
-    "@react-types/numberfield": "3.5.0",
+    "@react-types/numberfield": "3.8.17",
     "@tsconfig/vite-react": "2.0.1",
     "@types/react": "18.3.27",
     "@types/react-dom": "18.3.7",
