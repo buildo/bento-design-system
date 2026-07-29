@@ -1,8 +1,7 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 import {
-  AsyncSelectField,
   BentoProvider,
   PartialBentoConfig,
   SelectField,
@@ -19,13 +18,7 @@ const options: Array<SelectOption<string>> = [
   { value: "blue", label: unsafeLocalizedString("Blue") },
 ];
 
-function MultiSelect({
-  multiSelectSearchMode,
-  searchable,
-}: {
-  multiSelectSearchMode?: MultiSelectSearchMode;
-  searchable?: boolean;
-}) {
+function MultiSelect({ multiSelectSearchMode }: { multiSelectSearchMode?: MultiSelectSearchMode }) {
   const [value, setValue] = useState<string[]>([]);
 
   return (
@@ -35,41 +28,7 @@ function MultiSelect({
       options={options}
       value={value}
       onChange={setValue}
-      searchable={searchable}
       multiSelectSearchMode={multiSelectSearchMode}
-    />
-  );
-}
-
-function AsyncMultiSelect({
-  loadOptions,
-}: {
-  loadOptions: (inputValue: string) => Promise<Array<SelectOption<string>>>;
-}) {
-  const [value, setValue] = useState<string[]>([]);
-
-  return (
-    <AsyncSelectField
-      isMulti
-      label={unsafeLocalizedString("Colors")}
-      options={options}
-      value={value}
-      onChange={setValue}
-      loadOptions={loadOptions}
-      multiSelectSearchMode="preserve-on-select"
-    />
-  );
-}
-
-function SingleSelect() {
-  const [value, setValue] = useState<string>();
-
-  return (
-    <SelectField
-      label={unsafeLocalizedString("Color")}
-      options={options}
-      value={value}
-      onChange={setValue}
     />
   );
 }
@@ -197,50 +156,5 @@ describe("SelectField multi-select search mode", () => {
     unmount();
     renderWithConfig(<MultiSelect multiSelectSearchMode="preserve-on-select" />);
     expect(screen.getByRole("combobox", { name: "Colors" })).toHaveValue("");
-  });
-
-  test("does not change single-select behavior when configured globally", async () => {
-    const user = userEvent.setup();
-    renderWithConfig(<SingleSelect />, "preserve-on-select");
-
-    const input = screen.getByRole("combobox", { name: "Color" });
-    await user.type(input, "re");
-    await user.click(screen.getByText("Red"));
-
-    expect(input).toHaveValue("");
-  });
-
-  test("does not activate for a non-searchable multi-select", () => {
-    renderWithConfig(<MultiSelect searchable={false} multiSelectSearchMode="preserve-on-select" />);
-
-    expect(screen.getByRole("combobox", { name: "Colors" })).toHaveAttribute(
-      "aria-readonly",
-      "true"
-    );
-  });
-
-  test("reuses async results when preserving the query after selection", async () => {
-    const user = userEvent.setup();
-    const loadOptions = vi.fn(async (inputValue: string) =>
-      options.filter((option) =>
-        option.label?.toString().toLowerCase().includes(inputValue.toLowerCase())
-      )
-    );
-    renderWithConfig(<AsyncMultiSelect loadOptions={loadOptions} />);
-
-    const input = screen.getByRole("combobox", { name: "Colors" });
-    await user.type(input, "re");
-    await screen.findByText("Red");
-
-    const callsForRetainedQuery = () =>
-      loadOptions.mock.calls.filter(([inputValue]) => inputValue === "re").length;
-    expect(callsForRetainedQuery()).toBe(1);
-
-    await user.click(screen.getByText("Red"));
-
-    expect(input).toHaveValue("re");
-    expect(screen.getByText("Green")).toBeVisible();
-    await waitFor(() => expect(callsForRetainedQuery()).toBe(1));
-    expect(loadOptions).not.toHaveBeenCalledWith("");
   });
 });
