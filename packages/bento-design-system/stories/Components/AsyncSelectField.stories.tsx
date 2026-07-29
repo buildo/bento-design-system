@@ -122,6 +122,35 @@ export const MultiSelectMultipleOptionsSelected = {
   },
 } satisfies Story;
 
+export const MultiSelectPreserveSearch = {
+  args: {
+    value: [],
+    isMulti: true,
+  },
+  render: (args) => {
+    const [value, onChange] = useState<number[]>([]);
+    return (
+      <AsyncSelectField
+        isMulti
+        label="Colors"
+        placeholder="Select colors"
+        options={args.options as SelectOption<number>[]}
+        value={value}
+        onChange={onChange}
+        loadOptions={args.loadOptions}
+        multiSelectSearchMode="preserve-on-select"
+      />
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Async multi-selects can preserve the active query and reuse its loaded results.",
+      },
+    },
+  },
+} satisfies Story;
+
 const manyColors = [
   "red",
   "green",

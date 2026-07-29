@@ -1,6 +1,7 @@
 import { ListItemProps, ListSize } from "..";
 import { LocalizedString } from "../util/LocalizedString";
 import { Omit } from "../util/Omit";
+import { MultiSelectSearchMode } from "./Config";
 
 export type SelectOption<A> = Omit<
   ListItemProps,
@@ -16,6 +17,7 @@ export type BaseSingleProps = {
 
 export type BaseMultiProps = {
   isMulti: true;
+  multiSelectSearchMode?: MultiSelectSearchMode;
   showMultiSelectBulkActions?: boolean;
   selectAllButtonLabel?: LocalizedString;
   clearAllButtonLabel?: LocalizedString;

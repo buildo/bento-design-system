@@ -502,6 +502,7 @@ export const dropdown: DropdownConfig = {
   chipColor: "indigo",
   chipSpacing: 4,
   openMenuOnFocus: true,
+  multiSelectSearchMode: "clear-on-select",
 };
 
 export const table: TableConfig = {

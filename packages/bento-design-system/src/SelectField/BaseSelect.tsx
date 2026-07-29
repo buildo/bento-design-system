@@ -5,7 +5,7 @@ import { FieldProps } from "../Field/FieldProps";
 import { BentoConfigProvider, useBentoConfig } from "../BentoConfigContext";
 import { AriaLabelingProps, DOMProps } from "@react-types/shared";
 import * as selectComponents from "./components";
-import { ComponentProps, useEffect, useId, useRef } from "react";
+import { ComponentProps, useEffect, useId, useRef, useState } from "react";
 import { BaseMultiProps, BaseSelectProps, BaseSingleProps, SelectOption } from "./types";
 
 type MultiProps<A> = BaseMultiProps &
@@ -63,6 +63,13 @@ export function BaseSelect<A>(props: Props<A>) {
     loadingMessage,
     loadOptions,
   } = props;
+
+  const [inputValue, setInputValue] = useState("");
+  const preserveMultiSelectSearch =
+    isMulti &&
+    !isReadOnly &&
+    (searchable ?? true) &&
+    (props.multiSelectSearchMode ?? dropdownConfig.multiSelectSearchMode) === "preserve-on-select";
 
   // NOTE(gabro): we want to make sure we have a stable ID across SSR rendering, to overcome this issue with react-select https://github.com/JedWatson/react-select/issues/2629
   const generatedId = useId();
@@ -143,6 +150,18 @@ export function BaseSelect<A>(props: Props<A>) {
       ? props.selectAllButtonLabel ?? defaultMessages.SelectField.selectAllButtonLabel
       : undefined,
     multiSelectMode: isMulti ? props.multiSelectMode : undefined,
+    ...(preserveMultiSelectSearch
+      ? {
+          inputValue,
+          onInputChange: (newValue, actionMeta) => {
+            const nextInputValue =
+              actionMeta.action === "set-value" ? actionMeta.prevInputValue : newValue;
+            setInputValue(nextInputValue);
+            return nextInputValue;
+          },
+          blurInputOnSelect: false,
+        }
+      : {}),
   };
 
   return (
@@ -151,6 +170,7 @@ export function BaseSelect<A>(props: Props<A>) {
       {loadOptions ? (
         <AsyncSelect
           {...commonProps}
+          cacheOptions={preserveMultiSelectSearch}
           defaultOptions={previousOptions.current.filter((o) =>
             (isMulti ? value : [value]).includes(o.value)
           )}

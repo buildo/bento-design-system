@@ -110,6 +110,75 @@ export const MultiSelectMultipleOptionsSelected = {
   },
 } satisfies Story;
 
+function SearchModeMultiSelect({
+  multiSelectSearchMode,
+}: {
+  multiSelectSearchMode?: "clear-on-select" | "preserve-on-select";
+}) {
+  const [value, onChange] = useState<number[]>([]);
+
+  return (
+    <SelectField
+      isMulti
+      label="Colors"
+      placeholder="Select colors"
+      options={[
+        { value: 1, label: "Red" },
+        { value: 2, label: "Green" },
+        { value: 3, label: "Blue" },
+      ]}
+      value={value}
+      onChange={onChange}
+      multiSelectSearchMode={multiSelectSearchMode}
+    />
+  );
+}
+
+export const MultiSelectPreserveSearchFromConfig = {
+  args: {
+    value: [],
+    isMulti: true,
+  },
+  render: () => <SearchModeMultiSelect />,
+  decorators: [
+    (Story: StoryFn) => (
+      <BentoConfigProvider value={{ dropdown: { multiSelectSearchMode: "preserve-on-select" } }}>
+        <Story />
+      </BentoConfigProvider>
+    ),
+  ],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The dropdown configuration can preserve a searchable multi-select query for consecutive selections.",
+      },
+    },
+  },
+} satisfies Story;
+
+export const MultiSelectClearSearchOverride = {
+  args: {
+    value: [],
+    isMulti: true,
+  },
+  render: () => <SearchModeMultiSelect multiSelectSearchMode="clear-on-select" />,
+  decorators: [
+    (Story: StoryFn) => (
+      <BentoConfigProvider value={{ dropdown: { multiSelectSearchMode: "preserve-on-select" } }}>
+        <Story />
+      </BentoConfigProvider>
+    ),
+  ],
+  parameters: {
+    docs: {
+      description: {
+        story: "The component prop overrides the configured multi-select search mode.",
+      },
+    },
+  },
+} satisfies Story;
+
 const manyColors = [
   "red",
   "green",

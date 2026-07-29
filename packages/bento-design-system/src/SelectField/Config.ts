@@ -5,6 +5,8 @@ import { ListConfig } from "../List/Config";
 import { BorderRadiusConfig } from "../util/BorderRadiusConfig";
 import { Children } from "../util/Children";
 
+export type MultiSelectSearchMode = "clear-on-select" | "preserve-on-select";
+
 export type DropdownConfig = {
   elevation: "small" | "medium" | "large";
   radius: BorderRadiusConfig;
@@ -17,4 +19,5 @@ export type DropdownConfig = {
   chipColor: ChipProps["color"];
   chipSpacing: BentoSprinkles["gap"];
   openMenuOnFocus: boolean;
+  multiSelectSearchMode: MultiSelectSearchMode;
 };
