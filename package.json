@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "husky": "8.0.3",
-    "turbo": "1.13.4"
+    "turbo": "2.9.14"
   },
   "packageManager": "pnpm@7.33.7",
   "pnpm": {
