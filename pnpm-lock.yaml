@@ -114,7 +114,7 @@ importers:
       clsx: 1.2.1
       css-loader: 6.11.0
       date-fns: 2.30.0
-      deepmerge-ts: 4.3.0
+      deepmerge-ts: 8.0.0
       esbuild-loader: 2.21.0
       eslint: 8.57.1
       eslint-config-react-app: 7.0.1
@@ -203,7 +203,7 @@ importers:
       '@vanilla-extract/recipes': 0.5.5_3qusp464cmatvw2qbjjzblbe54
       '@vanilla-extract/sprinkles': 1.6.3_3qusp464cmatvw2qbjjzblbe54
       clsx: 1.2.1
-      deepmerge-ts: 4.3.0
+      deepmerge-ts: 8.0.0
       lodash.pick: 4.4.0
       react-dropzone: 14.2.9_react@18.3.1
       react-input-mask: 2.0.4_nnrd3gsncyragczmpvfhocinkq
@@ -11697,9 +11697,9 @@ packages:
   /deep-object-diff/1.1.9:
     resolution: {integrity: sha512-Rn+RuwkmkDwCi2/oXOFS9Gsr5lJZu/yTGpK7wAaAIE75CC+LCGEZHpY6VQJa/RoJcrmaA/docWJZvYohlNkWPA==}
 
-  /deepmerge-ts/4.3.0:
-    resolution: {integrity: sha512-if3ZYdkD2dClhnXR5reKtG98cwyaRT1NeugQoAPTTfsOpV9kqyeiBF9Qa5RHjemb3KzD5ulqygv6ED3t5j9eJw==}
-    engines: {node: '>=12.4.0'}
+  /deepmerge-ts/8.0.0:
+    resolution: {integrity: sha512-ICNjaP0ML+eSdEpJYQC46XiAn/UjAdwbEl0dE8p85ZTeNDinN4Kd4+9jS4OSAuH7st6eC7rQhsqTF5zIDaUm2g==}
+    engines: {node: '>=16.0.0'}
     dev: false
 
   /deepmerge/4.3.1:
