@@ -21,7 +21,7 @@
     "prettier-write": "prettier --parser=typescript \"src/**/*.{ts,tsx}\" --write"
   },
   "dependencies": {
-    "@babel/core": "7.22.20",
+    "@babel/core": "7.29.6",
     "@babel/generator": "7.22.15",
     "@babel/parser": "7.22.16",
     "@babel/preset-typescript": "7.22.15",
